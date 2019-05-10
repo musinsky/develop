@@ -1,0 +1,84 @@
+# 2005-03-11
+
+************************** DAQ7300 RAW Data Format **************************
+
+RAW data is stored as it goes from hardware.
+All data is interpreted as 32-bit words (Intel byte order).
+Highest 4 bits are data type (code). The code interpretation
+follows:
+
+0x0   TDC --- not used ---
+0x1   TDC --- not used ---
+0x2   TDC chip header
+0x3   TDC chip trailer
+0x4   TDC leading edge measurement
+0x5   TDC trailing edge measurement
+0x6   TDC error
+0x7   TDC debug --- not used ---
+
+0x8   Module header
+0x9   Module trailer
+0xA   Event header
+0xB   Event trailer
+0xC   Spill header
+0xD   Spill trailer
+0xE   Status --- not used ---
+0xF   ADC data ***
+
+*** ADC32 data format is special: no module header and trailer.
+
+Data sequence is:
+
+ Spill #1 header
+   Event #1 header
+         Module #1 header
+             module data (TDC data)
+                   ...
+         Module #1 trailer
+           ADC32 data
+         Event #1 trailer
+         Event #2 header
+           ... event data ...
+         Event #2 trailer
+         ... more events ...
+         Event #last header
+           ... event data ...
+         Event #last trailer
+ Spill #1 trailer
+ Spill #2 header
+  ...
+ and so on...
+
+Details on common data:
+
+ Spill header: no data
+ Spill trailer: bits 0-27: spill wordcount
+
+ Event header: bits 0-19: event number
+ Event trailer: bits 0-15 event wordcount, bits 16-23 - xoff count
+
+ Module header: bits 0-19: event number, bits 20-23: module type
+ Module trailer: bits 0-11: module wordcount
+
+
+
+
+
+
+
+Details on TDC data:
+ Please refer to HPTDC manual.
+ HPTDC homepage: http://micdigital.web.cern.ch/micdigital/hptdc.htm
+ HPTDC Manual: http://micdigital.web.cern.ch/micdigital/hptdc/hptdc_manual_ver2.2.pdf
+
+Details on ADC data:
+ bits 0-9: adc value
+ bits 10-14: adc channel number
+ bit 15: flag (not used)
+ bits 16-27: not used, must be 0xFFF
+
+For more details please look in C header files:
+   adc32/adc32.h
+         adlvme/vme7300.h
+   daq/decoder.h
+         phtdc/phtdc.h

@@ -1,0 +1,998 @@
+  [00000000]     0: c00000df SHDR      
+  [00000001]     1: a0000000  EHDR     ev 0
+  [00000002]     2: 810a0000   MHDR    ev 0, id 10 (TRIG  ), ga 2
+  [00000003]     3: 40cc290e    TS_L   TS lo:  cc290e
+  [00000004]     4: 50000040    TS_H   TS hi:  0, trigbits:   40. Event 0 time: 167.248 ms
+  [00000005]     5: 70000000    ICNT   in_cnt[ 0]: 0
+  [00000006]     6: 70000000    ICNT   in_cnt[ 1]: 0
+  [00000007]     7: 70000000    ICNT   in_cnt[ 2]: 0
+  [00000008]     8: 70000000    ICNT   in_cnt[ 3]: 0
+  [00000009]     9: 70000000    ICNT   in_cnt[ 4]: 0
+  [0000000a]    10: 70000000    ICNT   in_cnt[ 5]: 0
+  [0000000b]    11: 70000001    ICNT   in_cnt[ 6]: 1
+  [0000000c]    12: 70000000    ICNT   in_cnt[ 7]: 0
+  [0000000d]    13: 70000000    ICNT   in_cnt[ 8]: 0
+  [0000000e]    14: 70000000    ICNT   in_cnt[ 9]: 0
+  [0000000f]    15: 70000000    ICNT   in_cnt[10]: 0
+  [00000010]    16: 70000000    ICNT   in_cnt[11]: 0
+  [00000011]    17: 70000000    ICNT   in_cnt[12]: 0
+  [00000012]    18: 70000000    ICNT   in_cnt[13]: 0
+  [00000013]    19: 70000000    ICNT   in_cnt[14]: 0
+  [00000014]    20: 70000000    ICNT   in_cnt[15]: 0
+  [00000015]    21: 70000000    ICNT   in_cnt[16]: 0
+  [00000016]    22: 70000000    ICNT   in_cnt[17]: 0
+  [00000017]    23: 70000000    ICNT   in_cnt[18]: 0
+  [00000018]    24: 70000000    ICNT   in_cnt[19]: 0
+  [00000019]    25: 70000000    ICNT   in_cnt[20]: 0
+  [0000001a]    26: 70000000    ICNT   in_cnt[21]: 0
+  [0000001b]    27: 70000000    ICNT   in_cnt[22]: 0
+  [0000001c]    28: 70000000    ICNT   in_cnt[23]: 0
+  [0000001d]    29: 70000000    ICNT   in_cnt[24]: 0
+  [0000001e]    30: 70000000    ICNT   in_cnt[25]: 0
+  [0000001f]    31: 70000000    ICNT   in_cnt[26]: 0
+  [00000020]    32: 70000000    ICNT   in_cnt[27]: 0
+  [00000021]    33: 70000000    ICNT   in_cnt[28]: 0
+  [00000022]    34: 70000000    ICNT   in_cnt[29]: 0
+  [00000023]    35: 70000000    ICNT   in_cnt[30]: 0
+  [00000024]    36: 70000000    ICNT   in_cnt[31]: 0
+  [00000025]    37: 70000000    ICNT   in_cnt[32]: 0
+  [00000026]    38: 70000000    ICNT   in_cnt[33]: 0
+  [00000027]    39: 70000000    ICNT   in_cnt[34]: 0
+  [00000028]    40: 70000000    ICNT   in_cnt[35]: 0
+  [00000029]    41: 70000000    ICNT   in_cnt[36]: 0
+  [0000002a]    42: 70000000    ICNT   in_cnt[37]: 0
+  [0000002b]    43: 70000000    ICNT   in_cnt[38]: 0
+  [0000002c]    44: 70000000    ICNT   in_cnt[39]: 0
+  [0000002d]    45: 919f002a   MTRL    wc 42, crc 19, flags: 
+  [0000002e]    46: 83900000   MHDR    ev 0, id 16 (TDC64V), ga 7
+  [0000002f]    47: 22000455    THDR   Bunch ID=1109, EvID=0
+  [00000030]    48: 425024e9     LD    ch=10, coarse=73 fine=105 
+  [00000031]    49: 52502669     TR    ch=10, coarse=76 fine=105 
+  [00000032]    50: 32000004    TTRL   EvID=0, wordcount=4
+  [00000033]    51: 21000455    THDR   Bunch ID=1109, EvID=0
+  [00000034]    52: 31000002    TTRL   EvID=0, wordcount=2
+  [00000035]    53: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000036]    54: 9f1f0007   MTRL    wc 7, crc f1, flags: 
+  [00000037]    55: ffffffff           
+  [00000038]    56: 84900000   MHDR    ev 0, id 16 (TDC64V), ga 9
+  [00000039]    57: 22000455    THDR   Bunch ID=1109, EvID=0
+  [0000003a]    58: 32000002    TTRL   EvID=0, wordcount=2
+  [0000003b]    59: 21000455    THDR   Bunch ID=1109, EvID=0
+  [0000003c]    60: 31000002    TTRL   EvID=0, wordcount=2
+  [0000003d]    61: 70000000    TDEBG  debug: separator Bunch ID=0
+  [0000003e]    62: 96bf0005   MTRL    wc 5, crc 6b, flags: 
+  [0000003f]    63: ffffffff           
+  [00000040]    64: 85900000   MHDR    ev 0, id 16 (TDC64V), ga 11
+  [00000041]    65: 22000455    THDR   Bunch ID=1109, EvID=0
+  [00000042]    66: 32000002    TTRL   EvID=0, wordcount=2
+  [00000043]    67: 21000455    THDR   Bunch ID=1109, EvID=0
+  [00000044]    68: 31000002    TTRL   EvID=0, wordcount=2
+  [00000045]    69: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000046]    70: 92bf0005   MTRL    wc 5, crc 2b, flags: 
+  [00000047]    71: ffffffff           
+  [00000048]    72: 86900000   MHDR    ev 0, id 16 (TDC64V), ga 13
+  [00000049]    73: 22000455    THDR   Bunch ID=1109, EvID=0
+  [0000004a]    74: 32000002    TTRL   EvID=0, wordcount=2
+  [0000004b]    75: 21000455    THDR   Bunch ID=1109, EvID=0
+  [0000004c]    76: 31000002    TTRL   EvID=0, wordcount=2
+  [0000004d]    77: 70000000    TDEBG  debug: separator Bunch ID=0
+  [0000004e]    78: 9ebf0005   MTRL    wc 5, crc eb, flags: 
+  [0000004f]    79: ffffffff           
+  [00000050]    80: 87890000   MHDR    ev 0, id 9 (TQDC  ), ga 15
+  [00000051]    81: 2000046b    DAT 2  TDC  Bunch ID=1131, EvID=0
+  [00000052]    82: 30000002    DAT 3  TDC  EvID=0, wordcount=2
+  [00000053]    83: 2000046b    DAT 2  TDC  Bunch ID=1131, EvID=0
+  [00000054]    84: 30000002    DAT 3  TDC  EvID=0, wordcount=2
+  [00000055]    85: 70000000    ????   
+  [00000056]    86: 70000000    ????   
+  [00000057]    87: 991f0006   MTRL    wc 6, crc 91, flags: 
+  [00000058]    88: 88890000   MHDR    ev 0, id 9 (TQDC  ), ga 17
+  [00000059]    89: 2000046b    DAT 2  TDC  Bunch ID=1131, EvID=0
+  [0000005a]    90: 30000002    DAT 3  TDC  EvID=0, wordcount=2
+  [0000005b]    91: 2000046b    DAT 2  TDC  Bunch ID=1131, EvID=0
+  [0000005c]    92: 30000002    DAT 3  TDC  EvID=0, wordcount=2
+  [0000005d]    93: 70000000    ????   
+  [0000005e]    94: 70000000    ????   
+  [0000005f]    95: 902f0006   MTRL    wc 6, crc 02, flags: 
+  [00000060]    96: 89890000   MHDR    ev 0, id 9 (TQDC  ), ga 19
+  [00000061]    97: 2000046b    DAT 2  TDC  Bunch ID=1131, EvID=0
+  [00000062]    98: 50000217     D     TDC  ch= 0, coarse=4 fine=23 DATA    217
+  [00000063]    99: 500801c7     D     TDC  ch= 1, coarse=3 fine=71 DATA    1c7
+  [00000064]   100: 50100200     D     TDC  ch= 2, coarse=4 fine=0 DATA    200
+  [00000065]   101: 500803f2     D     TDC  ch= 1, coarse=7 fine=114 DATA    3f2
+  [00000066]   102: 50080460     D     TDC  ch= 1, coarse=8 fine=96 DATA    460
+  [00000067]   103: 5008057f     D     TDC  ch= 1, coarse=10 fine=127 DATA    57f
+  [00000068]   104: 30000008    DAT 3  TDC  EvID=0, wordcount=8
+  [00000069]   105: 2000046b    DAT 2  TDC  Bunch ID=1131, EvID=0
+  [0000006a]   106: 30000002    DAT 3  TDC  EvID=0, wordcount=2
+  [0000006b]   107: 70000000    ????   
+  [0000006c]   108: 480028d3     D     ADC  ch= 0 TS(31:16) 28d3 (10451, 1)
+  [0000006d]   109: 480128e2     D     ADC  ch= 0 TS(15:0) 28e2 (10466, 1)
+  [0000006e]   110: 58002027     D     ADC  ch= 0 SAMPL    39                 *                
+  [0000006f]   111: 58002026     D     ADC  ch= 0 SAMPL    38                 *                
+  [00000070]   112: 5800202f     D     ADC  ch= 0 SAMPL    47                 *                
+  [00000071]   113: 580021db     D     ADC  ch= 0 SAMPL   475                 *                
+  [00000072]   114: 5800238d     D     ADC  ch= 0 SAMPL   909                  *               
+  [00000073]   115: 58002231     D     ADC  ch= 0 SAMPL   561                  *               
+  [00000074]   116: 58002065     D     ADC  ch= 0 SAMPL   101                 *                
+  [00000075]   117: 5800202d     D     ADC  ch= 0 SAMPL    45                 *                
+  [00000076]   118: 480828d3     D     ADC  ch= 1 TS(31:16) 28d3 (10451, 1)
+  [00000077]   119: 480928e2     D     ADC  ch= 1 TS(15:0) 28e2 (10466, 1)
+  [00000078]   120: 5808202a     D     ADC  ch= 1 SAMPL    42                 *                
+  [00000079]   121: 58082033     D     ADC  ch= 1 SAMPL    51                 *                
+  [0000007a]   122: 58082580     D     ADC  ch= 1 SAMPL  1408                   *              
+  [0000007b]   123: 5808377a     D     ADC  ch= 1 SAMPL  6010                            *     
+  [0000007c]   124: 5808387e     D     ADC  ch= 1 SAMPL  6270                             *    
+  [0000007d]   125: 58082806     D     ADC  ch= 1 SAMPL  2054                     *            
+  [0000007e]   126: 58081fcd     D     ADC  ch= 1 SAMPL   -51                *                 
+  [0000007f]   127: 580821e3     D     ADC  ch= 1 SAMPL   483                 *                
+  [00000080]   128: 481028d3     D     ADC  ch= 2 TS(31:16) 28d3 (10451, 1)
+  [00000081]   129: 481128e2     D     ADC  ch= 2 TS(15:0) 28e2 (10466, 1)
+  [00000082]   130: 58101fe7     D     ADC  ch= 2 SAMPL   -25                *                 
+  [00000083]   131: 58101fea     D     ADC  ch= 2 SAMPL   -22                *                 
+  [00000084]   132: 58102020     D     ADC  ch= 2 SAMPL    32                 *                
+  [00000085]   133: 5810221c     D     ADC  ch= 2 SAMPL   540                  *               
+  [00000086]   134: 581022cc     D     ADC  ch= 2 SAMPL   716                  *               
+  [00000087]   135: 58102102     D     ADC  ch= 2 SAMPL   258                 *                
+  [00000088]   136: 58101fce     D     ADC  ch= 2 SAMPL   -50                *                 
+  [00000089]   137: 58101ff7     D     ADC  ch= 2 SAMPL    -9                *                 
+  [0000008a]   138: 70000000    ????   
+  [0000008b]   139: 91af002a   MTRL    wc 42, crc 1a, flags: 
+  [0000008c]   140: b000008a  ETRL     wc 138 
+  [0000008d]   141: a0000001  EHDR     ev 1
+  [0000008e]   142: 810a0001   MHDR    ev 1, id 10 (TRIG  ), ga 2
+  [0000008f]   143: 40083e0f    TS_L   TS lo:   83e0f
+  [00000090]   144: 50100040    TS_H   TS hi:  1, trigbits:   40. Event 1 time: 216.467 ms
+  [00000091]   145: 70000000    ICNT   in_cnt[ 0]: 0
+  [00000092]   146: 70000000    ICNT   in_cnt[ 1]: 0
+  [00000093]   147: 70000000    ICNT   in_cnt[ 2]: 0
+  [00000094]   148: 70000000    ICNT   in_cnt[ 3]: 0
+  [00000095]   149: 70000000    ICNT   in_cnt[ 4]: 0
+  [00000096]   150: 70000000    ICNT   in_cnt[ 5]: 0
+  [00000097]   151: 70000001    ICNT   in_cnt[ 6]: 1
+  [00000098]   152: 70000000    ICNT   in_cnt[ 7]: 0
+  [00000099]   153: 70000000    ICNT   in_cnt[ 8]: 0
+  [0000009a]   154: 70000000    ICNT   in_cnt[ 9]: 0
+  [0000009b]   155: 70000000    ICNT   in_cnt[10]: 0
+  [0000009c]   156: 70000000    ICNT   in_cnt[11]: 0
+  [0000009d]   157: 70000000    ICNT   in_cnt[12]: 0
+  [0000009e]   158: 70000000    ICNT   in_cnt[13]: 0
+  [0000009f]   159: 70000000    ICNT   in_cnt[14]: 0
+  [000000a0]   160: 70000000    ICNT   in_cnt[15]: 0
+  [000000a1]   161: 70000000    ICNT   in_cnt[16]: 0
+  [000000a2]   162: 70000000    ICNT   in_cnt[17]: 0
+  [000000a3]   163: 70000000    ICNT   in_cnt[18]: 0
+  [000000a4]   164: 70000000    ICNT   in_cnt[19]: 0
+  [000000a5]   165: 70000000    ICNT   in_cnt[20]: 0
+  [000000a6]   166: 70000000    ICNT   in_cnt[21]: 0
+  [000000a7]   167: 70000000    ICNT   in_cnt[22]: 0
+  [000000a8]   168: 70000000    ICNT   in_cnt[23]: 0
+  [000000a9]   169: 70000000    ICNT   in_cnt[24]: 0
+  [000000aa]   170: 70000000    ICNT   in_cnt[25]: 0
+  [000000ab]   171: 70000000    ICNT   in_cnt[26]: 0
+  [000000ac]   172: 70000000    ICNT   in_cnt[27]: 0
+  [000000ad]   173: 70000000    ICNT   in_cnt[28]: 0
+  [000000ae]   174: 70000000    ICNT   in_cnt[29]: 0
+  [000000af]   175: 70000000    ICNT   in_cnt[30]: 0
+  [000000b0]   176: 70000000    ICNT   in_cnt[31]: 0
+  [000000b1]   177: 70000000    ICNT   in_cnt[32]: 0
+  [000000b2]   178: 70000000    ICNT   in_cnt[33]: 0
+  [000000b3]   179: 70000000    ICNT   in_cnt[34]: 0
+  [000000b4]   180: 70000000    ICNT   in_cnt[35]: 0
+  [000000b5]   181: 70000000    ICNT   in_cnt[36]: 0
+  [000000b6]   182: 70000000    ICNT   in_cnt[37]: 0
+  [000000b7]   183: 70000000    ICNT   in_cnt[38]: 0
+  [000000b8]   184: 70000000    ICNT   in_cnt[39]: 0
+  [000000b9]   185: 923f002a   MTRL    wc 42, crc 23, flags: 
+  [000000ba]   186: 83900001   MHDR    ev 1, id 16 (TDC64V), ga 7
+  [000000bb]   187: 22001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000bc]   188: 42502575     LD    ch=10, coarse=74 fine=117 
+  [000000bd]   189: 525026f5     TR    ch=10, coarse=77 fine=117 
+  [000000be]   190: 32001004    TTRL   EvID=1, wordcount=4
+  [000000bf]   191: 21001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000c0]   192: 31001002    TTRL   EvID=1, wordcount=2
+  [000000c1]   193: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000000c2]   194: 96bf0007   MTRL    wc 7, crc 6b, flags: 
+  [000000c3]   195: ffffffff           
+  [000000c4]   196: 84900001   MHDR    ev 1, id 16 (TDC64V), ga 9
+  [000000c5]   197: 22001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000c6]   198: 32001002    TTRL   EvID=1, wordcount=2
+  [000000c7]   199: 21001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000c8]   200: 31001002    TTRL   EvID=1, wordcount=2
+  [000000c9]   201: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000000ca]   202: 950f0005   MTRL    wc 5, crc 50, flags: 
+  [000000cb]   203: ffffffff           
+  [000000cc]   204: 85900001   MHDR    ev 1, id 16 (TDC64V), ga 11
+  [000000cd]   205: 22001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000ce]   206: 32001002    TTRL   EvID=1, wordcount=2
+  [000000cf]   207: 21001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000d0]   208: 31001002    TTRL   EvID=1, wordcount=2
+  [000000d1]   209: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000000d2]   210: 910f0005   MTRL    wc 5, crc 10, flags: 
+  [000000d3]   211: ffffffff           
+  [000000d4]   212: 86900001   MHDR    ev 1, id 16 (TDC64V), ga 13
+  [000000d5]   213: 22001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000d6]   214: 32001002    TTRL   EvID=1, wordcount=2
+  [000000d7]   215: 21001ed5    THDR   Bunch ID=3797, EvID=1
+  [000000d8]   216: 31001002    TTRL   EvID=1, wordcount=2
+  [000000d9]   217: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000000da]   218: 9d0f0005   MTRL    wc 5, crc d0, flags: 
+  [000000db]   219: ffffffff           
+  [000000dc]   220: 87890001   MHDR    ev 1, id 9 (TQDC  ), ga 15
+  [000000dd]   221: 20001eeb    DAT 2  TDC  Bunch ID=3819, EvID=1
+  [000000de]   222: 30001002    DAT 3  TDC  EvID=1, wordcount=2
+  [000000df]   223: 20001eeb    DAT 2  TDC  Bunch ID=3819, EvID=1
+  [000000e0]   224: 30001002    DAT 3  TDC  EvID=1, wordcount=2
+  [000000e1]   225: 70000000    ????   
+  [000000e2]   226: 70000000    ????   
+  [000000e3]   227: 92ef0006   MTRL    wc 6, crc 2e, flags: 
+  [000000e4]   228: 88890001   MHDR    ev 1, id 9 (TQDC  ), ga 17
+  [000000e5]   229: 20001eeb    DAT 2  TDC  Bunch ID=3819, EvID=1
+  [000000e6]   230: 30001002    DAT 3  TDC  EvID=1, wordcount=2
+  [000000e7]   231: 20001eeb    DAT 2  TDC  Bunch ID=3819, EvID=1
+  [000000e8]   232: 30001002    DAT 3  TDC  EvID=1, wordcount=2
+  [000000e9]   233: 70000000    ????   
+  [000000ea]   234: 70000000    ????   
+  [000000eb]   235: 9bdf0006   MTRL    wc 6, crc bd, flags: 
+  [000000ec]   236: 89890001   MHDR    ev 1, id 9 (TQDC  ), ga 19
+  [000000ed]   237: 20001eeb    DAT 2  TDC  Bunch ID=3819, EvID=1
+  [000000ee]   238: 500002b1     D     TDC  ch= 0, coarse=5 fine=49 DATA    2b1
+  [000000ef]   239: 50080280     D     TDC  ch= 1, coarse=5 fine=0 DATA    280
+  [000000f0]   240: 50100290     D     TDC  ch= 2, coarse=5 fine=16 DATA    290
+  [000000f1]   241: 5008051f     D     TDC  ch= 1, coarse=10 fine=31 DATA    51f
+  [000000f2]   242: 50080637     D     TDC  ch= 1, coarse=12 fine=55 DATA    637
+  [000000f3]   243: 50080676     D     TDC  ch= 1, coarse=12 fine=118 DATA    676
+  [000000f4]   244: 30001008    DAT 3  TDC  EvID=1, wordcount=8
+  [000000f5]   245: 20001eeb    DAT 2  TDC  Bunch ID=3819, EvID=1
+  [000000f6]   246: 30001002    DAT 3  TDC  EvID=1, wordcount=2
+  [000000f7]   247: 70000000    ????   
+  [000000f8]   248: 48003dd3     D     ADC  ch= 0 TS(31:16) 3dd3 (15827, 2)
+  [000000f9]   249: 48013de4     D     ADC  ch= 0 TS(15:0) 3de4 (15844, 4)
+  [000000fa]   250: 58002028     D     ADC  ch= 0 SAMPL    40                 *                
+  [000000fb]   251: 58002035     D     ADC  ch= 0 SAMPL    53                 *                
+  [000000fc]   252: 580021f4     D     ADC  ch= 0 SAMPL   500                 *                
+  [000000fd]   253: 580024cf     D     ADC  ch= 0 SAMPL  1231                   *              
+  [000000fe]   254: 5800238b     D     ADC  ch= 0 SAMPL   907                  *               
+  [000000ff]   255: 580020be     D     ADC  ch= 0 SAMPL   190                 *                
+  [00000100]   256: 5800201d     D     ADC  ch= 0 SAMPL    29                 *                
+  [00000101]   257: 580020be     D     ADC  ch= 0 SAMPL   190                 *                
+  [00000102]   258: 48083dd3     D     ADC  ch= 1 TS(31:16) 3dd3 (15827, 2)
+  [00000103]   259: 48093de3     D     ADC  ch= 1 TS(15:0) 3de3 (15843, 3)
+  [00000104]   260: 5808202a     D     ADC  ch= 1 SAMPL    42                 *                
+  [00000105]   261: 5808202c     D     ADC  ch= 1 SAMPL    44                 *                
+  [00000106]   262: 58082110     D     ADC  ch= 1 SAMPL   272                 *                
+  [00000107]   263: 58082be0     D     ADC  ch= 1 SAMPL  3040                      *           
+  [00000108]   264: 5808348c     D     ADC  ch= 1 SAMPL  5260                           *      
+  [00000109]   265: 58082b45     D     ADC  ch= 1 SAMPL  2885                      *           
+  [0000010a]   266: 58082116     D     ADC  ch= 1 SAMPL   278                 *                
+  [0000010b]   267: 5808207c     D     ADC  ch= 1 SAMPL   124                 *                
+  [0000010c]   268: 48103dd3     D     ADC  ch= 2 TS(31:16) 3dd3 (15827, 2)
+  [0000010d]   269: 48113de3     D     ADC  ch= 2 TS(15:0) 3de3 (15843, 3)
+  [0000010e]   270: 58101fe5     D     ADC  ch= 2 SAMPL   -27                *                 
+  [0000010f]   271: 58101fea     D     ADC  ch= 2 SAMPL   -22                *                 
+  [00000110]   272: 58102019     D     ADC  ch= 2 SAMPL    25                 *                
+  [00000111]   273: 58102238     D     ADC  ch= 2 SAMPL   568                  *               
+  [00000112]   274: 581023a1     D     ADC  ch= 2 SAMPL   929                  *               
+  [00000113]   275: 581021e5     D     ADC  ch= 2 SAMPL   485                 *                
+  [00000114]   276: 5810201f     D     ADC  ch= 2 SAMPL    31                 *                
+  [00000115]   277: 58101fee     D     ADC  ch= 2 SAMPL   -18                *                 
+  [00000116]   278: 70000000    ????   
+  [00000117]   279: 910f002a   MTRL    wc 42, crc 10, flags: 
+  [00000118]   280: b000008a  ETRL     wc 138 
+  [00000119]   281: a0000002  EHDR     ev 2
+  [0000011a]   282: 810a0002   MHDR    ev 2, id 10 (TRIG  ), ga 2
+  [0000011b]   283: 40550fa7    TS_L   TS lo:  550fa7
+  [0000011c]   284: 50100040    TS_H   TS hi:  1, trigbits:   40. Event 2 time: 279.397 ms
+  [0000011d]   285: 70000000    ICNT   in_cnt[ 0]: 0
+  [0000011e]   286: 70000000    ICNT   in_cnt[ 1]: 0
+  [0000011f]   287: 70000000    ICNT   in_cnt[ 2]: 0
+  [00000120]   288: 70000000    ICNT   in_cnt[ 3]: 0
+  [00000121]   289: 70000000    ICNT   in_cnt[ 4]: 0
+  [00000122]   290: 70000000    ICNT   in_cnt[ 5]: 0
+  [00000123]   291: 70000001    ICNT   in_cnt[ 6]: 1
+  [00000124]   292: 70000000    ICNT   in_cnt[ 7]: 0
+  [00000125]   293: 70000000    ICNT   in_cnt[ 8]: 0
+  [00000126]   294: 70000000    ICNT   in_cnt[ 9]: 0
+  [00000127]   295: 70000000    ICNT   in_cnt[10]: 0
+  [00000128]   296: 70000000    ICNT   in_cnt[11]: 0
+  [00000129]   297: 70000000    ICNT   in_cnt[12]: 0
+  [0000012a]   298: 70000000    ICNT   in_cnt[13]: 0
+  [0000012b]   299: 70000000    ICNT   in_cnt[14]: 0
+  [0000012c]   300: 70000000    ICNT   in_cnt[15]: 0
+  [0000012d]   301: 70000000    ICNT   in_cnt[16]: 0
+  [0000012e]   302: 70000000    ICNT   in_cnt[17]: 0
+  [0000012f]   303: 70000000    ICNT   in_cnt[18]: 0
+  [00000130]   304: 70000000    ICNT   in_cnt[19]: 0
+  [00000131]   305: 70000000    ICNT   in_cnt[20]: 0
+  [00000132]   306: 70000000    ICNT   in_cnt[21]: 0
+  [00000133]   307: 70000000    ICNT   in_cnt[22]: 0
+  [00000134]   308: 70000000    ICNT   in_cnt[23]: 0
+  [00000135]   309: 70000000    ICNT   in_cnt[24]: 0
+  [00000136]   310: 70000000    ICNT   in_cnt[25]: 0
+  [00000137]   311: 70000000    ICNT   in_cnt[26]: 0
+  [00000138]   312: 70000000    ICNT   in_cnt[27]: 0
+  [00000139]   313: 70000000    ICNT   in_cnt[28]: 0
+  [0000013a]   314: 70000000    ICNT   in_cnt[29]: 0
+  [0000013b]   315: 70000000    ICNT   in_cnt[30]: 0
+  [0000013c]   316: 70000000    ICNT   in_cnt[31]: 0
+  [0000013d]   317: 70000000    ICNT   in_cnt[32]: 0
+  [0000013e]   318: 70000000    ICNT   in_cnt[33]: 0
+  [0000013f]   319: 70000000    ICNT   in_cnt[34]: 0
+  [00000140]   320: 70000000    ICNT   in_cnt[35]: 0
+  [00000141]   321: 70000000    ICNT   in_cnt[36]: 0
+  [00000142]   322: 70000000    ICNT   in_cnt[37]: 0
+  [00000143]   323: 70000000    ICNT   in_cnt[38]: 0
+  [00000144]   324: 70000000    ICNT   in_cnt[39]: 0
+  [00000145]   325: 987f002a   MTRL    wc 42, crc 87, flags: 
+  [00000146]   326: 83900002   MHDR    ev 2, id 16 (TDC64V), ga 7
+  [00000147]   327: 220027a1    THDR   Bunch ID=1953, EvID=2
+  [00000148]   328: 42502536     LD    ch=10, coarse=74 fine=54 
+  [00000149]   329: 525026b6     TR    ch=10, coarse=77 fine=54 
+  [0000014a]   330: 32002004    TTRL   EvID=2, wordcount=4
+  [0000014b]   331: 210027a1    THDR   Bunch ID=1953, EvID=2
+  [0000014c]   332: 31002002    TTRL   EvID=2, wordcount=2
+  [0000014d]   333: 70000000    TDEBG  debug: separator Bunch ID=0
+  [0000014e]   334: 986f0007   MTRL    wc 7, crc 86, flags: 
+  [0000014f]   335: ffffffff           
+  [00000150]   336: 84900002   MHDR    ev 2, id 16 (TDC64V), ga 9
+  [00000151]   337: 220027a1    THDR   Bunch ID=1953, EvID=2
+  [00000152]   338: 32002002    TTRL   EvID=2, wordcount=2
+  [00000153]   339: 210027a1    THDR   Bunch ID=1953, EvID=2
+  [00000154]   340: 31002002    TTRL   EvID=2, wordcount=2
+  [00000155]   341: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000156]   342: 90af0005   MTRL    wc 5, crc 0a, flags: 
+  [00000157]   343: ffffffff           
+  [00000158]   344: 85900002   MHDR    ev 2, id 16 (TDC64V), ga 11
+  [00000159]   345: 220027a1    THDR   Bunch ID=1953, EvID=2
+  [0000015a]   346: 32002002    TTRL   EvID=2, wordcount=2
+  [0000015b]   347: 210027a1    THDR   Bunch ID=1953, EvID=2
+  [0000015c]   348: 31002002    TTRL   EvID=2, wordcount=2
+  [0000015d]   349: 70000000    TDEBG  debug: separator Bunch ID=0
+  [0000015e]   350: 94af0005   MTRL    wc 5, crc 4a, flags: 
+  [0000015f]   351: ffffffff           
+  [00000160]   352: 86900002   MHDR    ev 2, id 16 (TDC64V), ga 13
+  [00000161]   353: 220027a1    THDR   Bunch ID=1953, EvID=2
+  [00000162]   354: 32002002    TTRL   EvID=2, wordcount=2
+  [00000163]   355: 210027a1    THDR   Bunch ID=1953, EvID=2
+  [00000164]   356: 31002002    TTRL   EvID=2, wordcount=2
+  [00000165]   357: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000166]   358: 98af0005   MTRL    wc 5, crc 8a, flags: 
+  [00000167]   359: ffffffff           
+  [00000168]   360: 87890002   MHDR    ev 2, id 9 (TQDC  ), ga 15
+  [00000169]   361: 200027b7    DAT 2  TDC  Bunch ID=1975, EvID=2
+  [0000016a]   362: 30002002    DAT 3  TDC  EvID=2, wordcount=2
+  [0000016b]   363: 200027b7    DAT 2  TDC  Bunch ID=1975, EvID=2
+  [0000016c]   364: 30002002    DAT 3  TDC  EvID=2, wordcount=2
+  [0000016d]   365: 70000000    ????   
+  [0000016e]   366: 70000000    ????   
+  [0000016f]   367: 96cf0006   MTRL    wc 6, crc 6c, flags: 
+  [00000170]   368: 88890002   MHDR    ev 2, id 9 (TQDC  ), ga 17
+  [00000171]   369: 200027b7    DAT 2  TDC  Bunch ID=1975, EvID=2
+  [00000172]   370: 30002002    DAT 3  TDC  EvID=2, wordcount=2
+  [00000173]   371: 200027b7    DAT 2  TDC  Bunch ID=1975, EvID=2
+  [00000174]   372: 30002002    DAT 3  TDC  EvID=2, wordcount=2
+  [00000175]   373: 70000000    ????   
+  [00000176]   374: 70000000    ????   
+  [00000177]   375: 9fff0006   MTRL    wc 6, crc ff, flags: 
+  [00000178]   376: 89890002   MHDR    ev 2, id 9 (TQDC  ), ga 19
+  [00000179]   377: 200027b7    DAT 2  TDC  Bunch ID=1975, EvID=2
+  [0000017a]   378: 50000278     D     TDC  ch= 0, coarse=4 fine=120 DATA    278
+  [0000017b]   379: 50080262     D     TDC  ch= 1, coarse=4 fine=98 DATA    262
+  [0000017c]   380: 5010024f     D     TDC  ch= 2, coarse=4 fine=79 DATA    24f
+  [0000017d]   381: 50080617     D     TDC  ch= 1, coarse=12 fine=23 DATA    617
+  [0000017e]   382: 30002006    DAT 3  TDC  EvID=2, wordcount=6
+  [0000017f]   383: 200027b7    DAT 2  TDC  Bunch ID=1975, EvID=2
+  [00000180]   384: 30002002    DAT 3  TDC  EvID=2, wordcount=2
+  [00000181]   385: 70000000    ????   
+  [00000182]   386: 48000f6b     D     ADC  ch= 0 TS(31:16) 0f6b (3947, 2)
+  [00000183]   387: 48010f7b     D     ADC  ch= 0 TS(15:0) 0f7b (3963, 3)
+  [00000184]   388: 58002027     D     ADC  ch= 0 SAMPL    39                 *                
+  [00000185]   389: 58002026     D     ADC  ch= 0 SAMPL    38                 *                
+  [00000186]   390: 5800207a     D     ADC  ch= 0 SAMPL   122                 *                
+  [00000187]   391: 580022d8     D     ADC  ch= 0 SAMPL   728                  *               
+  [00000188]   392: 580023f1     D     ADC  ch= 0 SAMPL  1009                  *               
+  [00000189]   393: 580021fc     D     ADC  ch= 0 SAMPL   508                 *                
+  [0000018a]   394: 5800205d     D     ADC  ch= 0 SAMPL    93                 *                
+  [0000018b]   395: 58002060     D     ADC  ch= 0 SAMPL    96                 *                
+  [0000018c]   396: 48080f6b     D     ADC  ch= 1 TS(31:16) 0f6b (3947, 2)
+  [0000018d]   397: 48090f7b     D     ADC  ch= 1 TS(15:0) 0f7b (3963, 3)
+  [0000018e]   398: 58082029     D     ADC  ch= 1 SAMPL    41                 *                
+  [0000018f]   399: 58082029     D     ADC  ch= 1 SAMPL    41                 *                
+  [00000190]   400: 58082200     D     ADC  ch= 1 SAMPL   512                  *               
+  [00000191]   401: 58082a81     D     ADC  ch= 1 SAMPL  2689                      *           
+  [00000192]   402: 58082bef     D     ADC  ch= 1 SAMPL  3055                      *           
+  [00000193]   403: 58082456     D     ADC  ch= 1 SAMPL  1110                   *              
+  [00000194]   404: 58081ff4     D     ADC  ch= 1 SAMPL   -12                *                 
+  [00000195]   405: 580820bb     D     ADC  ch= 1 SAMPL   187                 *                
+  [00000196]   406: 48100f6b     D     ADC  ch= 2 TS(31:16) 0f6b (3947, 2)
+  [00000197]   407: 48110f7b     D     ADC  ch= 2 TS(15:0) 0f7b (3963, 3)
+  [00000198]   408: 58101fe8     D     ADC  ch= 2 SAMPL   -24                *                 
+  [00000199]   409: 58101fea     D     ADC  ch= 2 SAMPL   -22                *                 
+  [0000019a]   410: 58102194     D     ADC  ch= 2 SAMPL   404                 *                
+  [0000019b]   411: 5810260a     D     ADC  ch= 2 SAMPL  1546                    *             
+  [0000019c]   412: 58102587     D     ADC  ch= 2 SAMPL  1415                   *              
+  [0000019d]   413: 5810217b     D     ADC  ch= 2 SAMPL   379                 *                
+  [0000019e]   414: 58101fc2     D     ADC  ch= 2 SAMPL   -62                *                 
+  [0000019f]   415: 5810204a     D     ADC  ch= 2 SAMPL    74                 *                
+  [000001a0]   416: 70000000    ????   
+  [000001a1]   417: 9e3f0028   MTRL    wc 40, crc e3, flags: 
+  [000001a2]   418: b0000088  ETRL     wc 136 
+  [000001a3]   419: a0000003  EHDR     ev 3
+  [000001a4]   420: 810a0003   MHDR    ev 3, id 10 (TRIG  ), ga 2
+  [000001a5]   421: 40693653    TS_L   TS lo:  693653
+  [000001a6]   422: 50100040    TS_H   TS hi:  1, trigbits:   40. Event 3 time: 295.905 ms
+  [000001a7]   423: 70000000    ICNT   in_cnt[ 0]: 0
+  [000001a8]   424: 70000000    ICNT   in_cnt[ 1]: 0
+  [000001a9]   425: 70000000    ICNT   in_cnt[ 2]: 0
+  [000001aa]   426: 70000000    ICNT   in_cnt[ 3]: 0
+  [000001ab]   427: 70000000    ICNT   in_cnt[ 4]: 0
+  [000001ac]   428: 70000000    ICNT   in_cnt[ 5]: 0
+  [000001ad]   429: 70000001    ICNT   in_cnt[ 6]: 1
+  [000001ae]   430: 70000000    ICNT   in_cnt[ 7]: 0
+  [000001af]   431: 70000000    ICNT   in_cnt[ 8]: 0
+  [000001b0]   432: 70000000    ICNT   in_cnt[ 9]: 0
+  [000001b1]   433: 70000000    ICNT   in_cnt[10]: 0
+  [000001b2]   434: 70000000    ICNT   in_cnt[11]: 0
+  [000001b3]   435: 70000000    ICNT   in_cnt[12]: 0
+  [000001b4]   436: 70000000    ICNT   in_cnt[13]: 0
+  [000001b5]   437: 70000000    ICNT   in_cnt[14]: 0
+  [000001b6]   438: 70000000    ICNT   in_cnt[15]: 0
+  [000001b7]   439: 70000000    ICNT   in_cnt[16]: 0
+  [000001b8]   440: 70000000    ICNT   in_cnt[17]: 0
+  [000001b9]   441: 70000000    ICNT   in_cnt[18]: 0
+  [000001ba]   442: 70000000    ICNT   in_cnt[19]: 0
+  [000001bb]   443: 70000000    ICNT   in_cnt[20]: 0
+  [000001bc]   444: 70000000    ICNT   in_cnt[21]: 0
+  [000001bd]   445: 70000000    ICNT   in_cnt[22]: 0
+  [000001be]   446: 70000000    ICNT   in_cnt[23]: 0
+  [000001bf]   447: 70000000    ICNT   in_cnt[24]: 0
+  [000001c0]   448: 70000000    ICNT   in_cnt[25]: 0
+  [000001c1]   449: 70000000    ICNT   in_cnt[26]: 0
+  [000001c2]   450: 70000000    ICNT   in_cnt[27]: 0
+  [000001c3]   451: 70000000    ICNT   in_cnt[28]: 0
+  [000001c4]   452: 70000000    ICNT   in_cnt[29]: 0
+  [000001c5]   453: 70000000    ICNT   in_cnt[30]: 0
+  [000001c6]   454: 70000000    ICNT   in_cnt[31]: 0
+  [000001c7]   455: 70000000    ICNT   in_cnt[32]: 0
+  [000001c8]   456: 70000000    ICNT   in_cnt[33]: 0
+  [000001c9]   457: 70000000    ICNT   in_cnt[34]: 0
+  [000001ca]   458: 70000000    ICNT   in_cnt[35]: 0
+  [000001cb]   459: 70000000    ICNT   in_cnt[36]: 0
+  [000001cc]   460: 70000000    ICNT   in_cnt[37]: 0
+  [000001cd]   461: 70000000    ICNT   in_cnt[38]: 0
+  [000001ce]   462: 70000000    ICNT   in_cnt[39]: 0
+  [000001cf]   463: 93af002a   MTRL    wc 42, crc 3a, flags: 
+  [000001d0]   464: 83900003   MHDR    ev 3, id 16 (TDC64V), ga 7
+  [000001d1]   465: 22003af7    THDR   Bunch ID=2807, EvID=3
+  [000001d2]   466: 42502564     LD    ch=10, coarse=74 fine=100 
+  [000001d3]   467: 525026f2     TR    ch=10, coarse=77 fine=114 
+  [000001d4]   468: 32003004    TTRL   EvID=3, wordcount=4
+  [000001d5]   469: 21003af7    THDR   Bunch ID=2807, EvID=3
+  [000001d6]   470: 31003002    TTRL   EvID=3, wordcount=2
+  [000001d7]   471: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000001d8]   472: 9cdf0007   MTRL    wc 7, crc cd, flags: 
+  [000001d9]   473: ffffffff           
+  [000001da]   474: 84900003   MHDR    ev 3, id 16 (TDC64V), ga 9
+  [000001db]   475: 22003af7    THDR   Bunch ID=2807, EvID=3
+  [000001dc]   476: 4250177d     LD    ch=10, coarse=46 fine=125 
+  [000001dd]   477: 42b8197d     LD    ch=23, coarse=50 fine=125 
+  [000001de]   478: 42c8234b     LD    ch=25, coarse=70 fine=75 
+  [000001df]   479: 52501d0d     TR    ch=10, coarse=58 fine=13 
+  [000001e0]   480: 52b81b74     TR    ch=23, coarse=54 fine=116 
+  [000001e1]   481: 52c82440     TR    ch=25, coarse=72 fine=64 
+  [000001e2]   482: 425028b3     LD    ch=10, coarse=81 fine=51 
+  [000001e3]   483: 42b81c53     LD    ch=23, coarse=56 fine=83 
+  [000001e4]   484: 42c82649     LD    ch=25, coarse=76 fine=73 
+  [000001e5]   485: 52502967     TR    ch=10, coarse=82 fine=103 
+  [000001e6]   486: 52b81d11     TR    ch=23, coarse=58 fine=17 
+  [000001e7]   487: 52c82808     TR    ch=25, coarse=80 fine=8 
+  [000001e8]   488: 42b81e29     LD    ch=23, coarse=60 fine=41 
+  [000001e9]   489: 42c82b1f     LD    ch=25, coarse=86 fine=31 
+  [000001ea]   490: 52b81fc2     TR    ch=23, coarse=63 fine=66 
+  [000001eb]   491: 52c82be0     TR    ch=25, coarse=87 fine=96 
+  [000001ec]   492: 42b820b0     LD    ch=23, coarse=65 fine=48 
+  [000001ed]   493: 52b82199     TR    ch=23, coarse=67 fine=25 
+  [000001ee]   494: 42b8230c     LD    ch=23, coarse=70 fine=12 
+  [000001ef]   495: 52b823f4     TR    ch=23, coarse=71 fine=116 
+  [000001f0]   496: 42b8285b     LD    ch=23, coarse=80 fine=91 
+  [000001f1]   497: 52b828ae     TR    ch=23, coarse=81 fine=46 
+  [000001f2]   498: 32003018    TTRL   EvID=3, wordcount=24
+  [000001f3]   499: 21003af7    THDR   Bunch ID=2807, EvID=3
+  [000001f4]   500: 31003002    TTRL   EvID=3, wordcount=2
+  [000001f5]   501: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000001f6]   502: 9c6f001b   MTRL    wc 27, crc c6, flags: 
+  [000001f7]   503: ffffffff           
+  [000001f8]   504: 85900003   MHDR    ev 3, id 16 (TDC64V), ga 11
+  [000001f9]   505: 22003af7    THDR   Bunch ID=2807, EvID=3
+  [000001fa]   506: 32003002    TTRL   EvID=3, wordcount=2
+  [000001fb]   507: 21003af7    THDR   Bunch ID=2807, EvID=3
+  [000001fc]   508: 31003002    TTRL   EvID=3, wordcount=2
+  [000001fd]   509: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000001fe]   510: 9b2f0005   MTRL    wc 5, crc b2, flags: 
+  [000001ff]   511: ffffffff           
+  [00000200]   512: 86900003   MHDR    ev 3, id 16 (TDC64V), ga 13
+  [00000201]   513: 22003af7    THDR   Bunch ID=2807, EvID=3
+  [00000202]   514: 32003002    TTRL   EvID=3, wordcount=2
+  [00000203]   515: 21003af7    THDR   Bunch ID=2807, EvID=3
+  [00000204]   516: 31003002    TTRL   EvID=3, wordcount=2
+  [00000205]   517: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000206]   518: 972f0005   MTRL    wc 5, crc 72, flags: 
+  [00000207]   519: ffffffff           
+  [00000208]   520: 87890003   MHDR    ev 3, id 9 (TQDC  ), ga 15
+  [00000209]   521: 20003b0d    DAT 2  TDC  Bunch ID=2829, EvID=3
+  [0000020a]   522: 30003002    DAT 3  TDC  EvID=3, wordcount=2
+  [0000020b]   523: 20003b0d    DAT 2  TDC  Bunch ID=2829, EvID=3
+  [0000020c]   524: 30003002    DAT 3  TDC  EvID=3, wordcount=2
+  [0000020d]   525: 70000000    ????   
+  [0000020e]   526: 70000000    ????   
+  [0000020f]   527: 98cf0006   MTRL    wc 6, crc 8c, flags: 
+  [00000210]   528: 88890003   MHDR    ev 3, id 9 (TQDC  ), ga 17
+  [00000211]   529: 20003b0d    DAT 2  TDC  Bunch ID=2829, EvID=3
+  [00000212]   530: 30003002    DAT 3  TDC  EvID=3, wordcount=2
+  [00000213]   531: 20003b0d    DAT 2  TDC  Bunch ID=2829, EvID=3
+  [00000214]   532: 30003002    DAT 3  TDC  EvID=3, wordcount=2
+  [00000215]   533: 70000000    ????   
+  [00000216]   534: 70000000    ????   
+  [00000217]   535: 91ff0006   MTRL    wc 6, crc 1f, flags: 
+  [00000218]   536: 89890003   MHDR    ev 3, id 9 (TQDC  ), ga 19
+  [00000219]   537: 20003b0d    DAT 2  TDC  Bunch ID=2829, EvID=3
+  [0000021a]   538: 5020027d     D     TDC  ch= 4, coarse=4 fine=125 DATA    27d
+  [0000021b]   539: 50080239     D     TDC  ch= 1, coarse=4 fine=57 DATA    239
+  [0000021c]   540: 50180237     D     TDC  ch= 3, coarse=4 fine=55 DATA    237
+  [0000021d]   541: 50180605     D     TDC  ch= 3, coarse=12 fine=5 DATA    605
+  [0000021e]   542: 30003006    DAT 3  TDC  EvID=3, wordcount=6
+  [0000021f]   543: 20003b0d    DAT 2  TDC  Bunch ID=2829, EvID=3
+  [00000220]   544: 30003002    DAT 3  TDC  EvID=3, wordcount=2
+  [00000221]   545: 70000000    ????   
+  [00000222]   546: 48083617     D     ADC  ch= 1 TS(31:16) 3617 (13847, 2)
+  [00000223]   547: 48093627     D     ADC  ch= 1 TS(15:0) 3627 (13863, 3)
+  [00000224]   548: 5808202d     D     ADC  ch= 1 SAMPL    45                 *                
+  [00000225]   549: 5808202e     D     ADC  ch= 1 SAMPL    46                 *                
+  [00000226]   550: 580820ca     D     ADC  ch= 1 SAMPL   202                 *                
+  [00000227]   551: 580821c5     D     ADC  ch= 1 SAMPL   453                 *                
+  [00000228]   552: 5808216b     D     ADC  ch= 1 SAMPL   363                 *                
+  [00000229]   553: 58082071     D     ADC  ch= 1 SAMPL   113                 *                
+  [0000022a]   554: 58082023     D     ADC  ch= 1 SAMPL    35                 *                
+  [0000022b]   555: 58082045     D     ADC  ch= 1 SAMPL    69                 *                
+  [0000022c]   556: 48183617     D     ADC  ch= 3 TS(31:16) 3617 (13847, 2)
+  [0000022d]   557: 48193627     D     ADC  ch= 3 TS(15:0) 3627 (13863, 3)
+  [0000022e]   558: 58182017     D     ADC  ch= 3 SAMPL    23                 *                
+  [0000022f]   559: 58182022     D     ADC  ch= 3 SAMPL    34                 *                
+  [00000230]   560: 58182485     D     ADC  ch= 3 SAMPL  1157                   *              
+  [00000231]   561: 5818313c     D     ADC  ch= 3 SAMPL  4412                         *        
+  [00000232]   562: 58183190     D     ADC  ch= 3 SAMPL  4496                         *        
+  [00000233]   563: 581825c7     D     ADC  ch= 3 SAMPL  1479                   *              
+  [00000234]   564: 58181fe2     D     ADC  ch= 3 SAMPL   -30                *                 
+  [00000235]   565: 58182160     D     ADC  ch= 3 SAMPL   352                 *                
+  [00000236]   566: 48203617     D     ADC  ch= 4 TS(31:16) 3617 (13847, 2)
+  [00000237]   567: 48213627     D     ADC  ch= 4 TS(15:0) 3627 (13863, 3)
+  [00000238]   568: 58201fc9     D     ADC  ch= 4 SAMPL   -55                *                 
+  [00000239]   569: 58201fcb     D     ADC  ch= 4 SAMPL   -53                *                 
+  [0000023a]   570: 58201ff8     D     ADC  ch= 4 SAMPL    -8                *                 
+  [0000023b]   571: 582021f7     D     ADC  ch= 4 SAMPL   503                 *                
+  [0000023c]   572: 5820232d     D     ADC  ch= 4 SAMPL   813                  *               
+  [0000023d]   573: 58202176     D     ADC  ch= 4 SAMPL   374                 *                
+  [0000023e]   574: 58201fdf     D     ADC  ch= 4 SAMPL   -33                *                 
+  [0000023f]   575: 58201fd4     D     ADC  ch= 4 SAMPL   -44                *                 
+  [00000240]   576: 70000000    ????   
+  [00000241]   577: 93cf0028   MTRL    wc 40, crc 3c, flags: 
+  [00000242]   578: b000009e  ETRL     wc 158 
+  [00000243]   579: a0000004  EHDR     ev 4
+  [00000244]   580: 810a0004   MHDR    ev 4, id 10 (TRIG  ), ga 2
+  [00000245]   581: 40d99f0d    TS_L   TS lo:  d99f0d
+  [00000246]   582: 50100040    TS_H   TS hi:  1, trigbits:   40. Event 4 time: 387.991 ms
+  [00000247]   583: 70000000    ICNT   in_cnt[ 0]: 0
+  [00000248]   584: 70000000    ICNT   in_cnt[ 1]: 0
+  [00000249]   585: 70000000    ICNT   in_cnt[ 2]: 0
+  [0000024a]   586: 70000000    ICNT   in_cnt[ 3]: 0
+  [0000024b]   587: 70000000    ICNT   in_cnt[ 4]: 0
+  [0000024c]   588: 70000000    ICNT   in_cnt[ 5]: 0
+  [0000024d]   589: 70000001    ICNT   in_cnt[ 6]: 1
+  [0000024e]   590: 70000000    ICNT   in_cnt[ 7]: 0
+  [0000024f]   591: 70000000    ICNT   in_cnt[ 8]: 0
+  [00000250]   592: 70000000    ICNT   in_cnt[ 9]: 0
+  [00000251]   593: 70000000    ICNT   in_cnt[10]: 0
+  [00000252]   594: 70000000    ICNT   in_cnt[11]: 0
+  [00000253]   595: 70000000    ICNT   in_cnt[12]: 0
+  [00000254]   596: 70000000    ICNT   in_cnt[13]: 0
+  [00000255]   597: 70000000    ICNT   in_cnt[14]: 0
+  [00000256]   598: 70000000    ICNT   in_cnt[15]: 0
+  [00000257]   599: 70000000    ICNT   in_cnt[16]: 0
+  [00000258]   600: 70000000    ICNT   in_cnt[17]: 0
+  [00000259]   601: 70000000    ICNT   in_cnt[18]: 0
+  [0000025a]   602: 70000000    ICNT   in_cnt[19]: 0
+  [0000025b]   603: 70000000    ICNT   in_cnt[20]: 0
+  [0000025c]   604: 70000000    ICNT   in_cnt[21]: 0
+  [0000025d]   605: 70000000    ICNT   in_cnt[22]: 0
+  [0000025e]   606: 70000000    ICNT   in_cnt[23]: 0
+  [0000025f]   607: 70000000    ICNT   in_cnt[24]: 0
+  [00000260]   608: 70000000    ICNT   in_cnt[25]: 0
+  [00000261]   609: 70000000    ICNT   in_cnt[26]: 0
+  [00000262]   610: 70000000    ICNT   in_cnt[27]: 0
+  [00000263]   611: 70000000    ICNT   in_cnt[28]: 0
+  [00000264]   612: 70000000    ICNT   in_cnt[29]: 0
+  [00000265]   613: 70000000    ICNT   in_cnt[30]: 0
+  [00000266]   614: 70000000    ICNT   in_cnt[31]: 0
+  [00000267]   615: 70000000    ICNT   in_cnt[32]: 0
+  [00000268]   616: 70000000    ICNT   in_cnt[33]: 0
+  [00000269]   617: 70000000    ICNT   in_cnt[34]: 0
+  [0000026a]   618: 70000000    ICNT   in_cnt[35]: 0
+  [0000026b]   619: 70000000    ICNT   in_cnt[36]: 0
+  [0000026c]   620: 70000000    ICNT   in_cnt[37]: 0
+  [0000026d]   621: 70000000    ICNT   in_cnt[38]: 0
+  [0000026e]   622: 70000000    ICNT   in_cnt[39]: 0
+  [0000026f]   623: 920f002a   MTRL    wc 42, crc 20, flags: 
+  [00000270]   624: 83900004   MHDR    ev 4, id 16 (TDC64V), ga 7
+  [00000271]   625: 22004f55    THDR   Bunch ID=3925, EvID=4
+  [00000272]   626: 4250243e     LD    ch=10, coarse=72 fine=62 
+  [00000273]   627: 525025ce     TR    ch=10, coarse=75 fine=78 
+  [00000274]   628: 32004004    TTRL   EvID=4, wordcount=4
+  [00000275]   629: 21004f55    THDR   Bunch ID=3925, EvID=4
+  [00000276]   630: 31004002    TTRL   EvID=4, wordcount=2
+  [00000277]   631: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000278]   632: 90bf0007   MTRL    wc 7, crc 0b, flags: 
+  [00000279]   633: ffffffff           
+  [0000027a]   634: 84900004   MHDR    ev 4, id 16 (TDC64V), ga 9
+  [0000027b]   635: 22004f55    THDR   Bunch ID=3925, EvID=4
+  [0000027c]   636: 32004002    TTRL   EvID=4, wordcount=2
+  [0000027d]   637: 21004f55    THDR   Bunch ID=3925, EvID=4
+  [0000027e]   638: 31004002    TTRL   EvID=4, wordcount=2
+  [0000027f]   639: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000280]   640: 963f0005   MTRL    wc 5, crc 63, flags: 
+  [00000281]   641: ffffffff           
+  [00000282]   642: 85900004   MHDR    ev 4, id 16 (TDC64V), ga 11
+  [00000283]   643: 22004f55    THDR   Bunch ID=3925, EvID=4
+  [00000284]   644: 32004002    TTRL   EvID=4, wordcount=2
+  [00000285]   645: 21004f55    THDR   Bunch ID=3925, EvID=4
+  [00000286]   646: 31004002    TTRL   EvID=4, wordcount=2
+  [00000287]   647: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000288]   648: 923f0005   MTRL    wc 5, crc 23, flags: 
+  [00000289]   649: ffffffff           
+  [0000028a]   650: 86900004   MHDR    ev 4, id 16 (TDC64V), ga 13
+  [0000028b]   651: 22004f55    THDR   Bunch ID=3925, EvID=4
+  [0000028c]   652: 32004002    TTRL   EvID=4, wordcount=2
+  [0000028d]   653: 21004f55    THDR   Bunch ID=3925, EvID=4
+  [0000028e]   654: 31004002    TTRL   EvID=4, wordcount=2
+  [0000028f]   655: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000290]   656: 9e3f0005   MTRL    wc 5, crc e3, flags: 
+  [00000291]   657: ffffffff           
+  [00000292]   658: 87890004   MHDR    ev 4, id 9 (TQDC  ), ga 15
+  [00000293]   659: 20004f6b    DAT 2  TDC  Bunch ID=3947, EvID=4
+  [00000294]   660: 30004002    DAT 3  TDC  EvID=4, wordcount=2
+  [00000295]   661: 20004f6b    DAT 2  TDC  Bunch ID=3947, EvID=4
+  [00000296]   662: 30004002    DAT 3  TDC  EvID=4, wordcount=2
+  [00000297]   663: 70000000    ????   
+  [00000298]   664: 70000000    ????   
+  [00000299]   665: 9c6f0006   MTRL    wc 6, crc c6, flags: 
+  [0000029a]   666: 88890004   MHDR    ev 4, id 9 (TQDC  ), ga 17
+  [0000029b]   667: 20004f6b    DAT 2  TDC  Bunch ID=3947, EvID=4
+  [0000029c]   668: 30004002    DAT 3  TDC  EvID=4, wordcount=2
+  [0000029d]   669: 20004f6b    DAT 2  TDC  Bunch ID=3947, EvID=4
+  [0000029e]   670: 30004002    DAT 3  TDC  EvID=4, wordcount=2
+  [0000029f]   671: 70000000    ????   
+  [000002a0]   672: 70000000    ????   
+  [000002a1]   673: 955f0006   MTRL    wc 6, crc 55, flags: 
+  [000002a2]   674: 89890004   MHDR    ev 4, id 9 (TQDC  ), ga 19
+  [000002a3]   675: 20004f6b    DAT 2  TDC  Bunch ID=3947, EvID=4
+  [000002a4]   676: 5000014f     D     TDC  ch= 0, coarse=2 fine=79 DATA    14f
+  [000002a5]   677: 50080104     D     TDC  ch= 1, coarse=2 fine=4 DATA    104
+  [000002a6]   678: 5030014b     D     TDC  ch= 6, coarse=2 fine=75 DATA    14b
+  [000002a7]   679: 5018013c     D     TDC  ch= 3, coarse=2 fine=60 DATA    13c
+  [000002a8]   680: 50200159     D     TDC  ch= 4, coarse=2 fine=89 DATA    159
+  [000002a9]   681: 50280104     D     TDC  ch= 5, coarse=2 fine=4 DATA    104
+  [000002aa]   682: 50080324     D     TDC  ch= 1, coarse=6 fine=36 DATA    324
+  [000002ab]   683: 502803a1     D     TDC  ch= 5, coarse=7 fine=33 DATA    3a1
+  [000002ac]   684: 500804c5     D     TDC  ch= 1, coarse=9 fine=69 DATA    4c5
+  [000002ad]   685: 502804c4     D     TDC  ch= 5, coarse=9 fine=68 DATA    4c4
+  [000002ae]   686: 500804fb     D     TDC  ch= 1, coarse=9 fine=123 DATA    4fb
+  [000002af]   687: 3000400d    DAT 3  TDC  EvID=4, wordcount=13
+  [000002b0]   688: 20004f6b    DAT 2  TDC  Bunch ID=3947, EvID=4
+  [000002b1]   689: 30004002    DAT 3  TDC  EvID=4, wordcount=2
+  [000002b2]   690: 70000000    ????   
+  [000002b3]   691: 48009ed3     D     ADC  ch= 0 TS(31:16) 9ed3 (40659, 4)
+  [000002b4]   692: 48019ee1     D     ADC  ch= 0 TS(15:0) 9ee1 (40673, 3)
+  [000002b5]   693: 58002023     D     ADC  ch= 0 SAMPL    35                 *                
+  [000002b6]   694: 58002026     D     ADC  ch= 0 SAMPL    38                 *                
+  [000002b7]   695: 580020af     D     ADC  ch= 0 SAMPL   175                 *                
+  [000002b8]   696: 5800221b     D     ADC  ch= 0 SAMPL   539                  *               
+  [000002b9]   697: 580021d6     D     ADC  ch= 0 SAMPL   470                 *                
+  [000002ba]   698: 58002085     D     ADC  ch= 0 SAMPL   133                 *                
+  [000002bb]   699: 58002022     D     ADC  ch= 0 SAMPL    34                 *                
+  [000002bc]   700: 5800206e     D     ADC  ch= 0 SAMPL   110                 *                
+  [000002bd]   701: 48089ed3     D     ADC  ch= 1 TS(31:16) 9ed3 (40659, 4)
+  [000002be]   702: 48099ee0     D     ADC  ch= 1 TS(15:0) 9ee0 (40672, 2)
+  [000002bf]   703: 58082029     D     ADC  ch= 1 SAMPL    41                 *                
+  [000002c0]   704: 5808202e     D     ADC  ch= 1 SAMPL    46                 *                
+  [000002c1]   705: 580820da     D     ADC  ch= 1 SAMPL   218                 *                
+  [000002c2]   706: 58082974     D     ADC  ch= 1 SAMPL  2420                     *            
+  [000002c3]   707: 58082faa     D     ADC  ch= 1 SAMPL  4010                        *         
+  [000002c4]   708: 58082826     D     ADC  ch= 1 SAMPL  2086                     *            
+  [000002c5]   709: 5808208e     D     ADC  ch= 1 SAMPL   142                 *                
+  [000002c6]   710: 5808206a     D     ADC  ch= 1 SAMPL   106                 *                
+  [000002c7]   711: 48189ed3     D     ADC  ch= 3 TS(31:16) 9ed3 (40659, 4)
+  [000002c8]   712: 48199ee1     D     ADC  ch= 3 TS(15:0) 9ee1 (40673, 3)
+  [000002c9]   713: 5818201c     D     ADC  ch= 3 SAMPL    28                 *                
+  [000002ca]   714: 5818201d     D     ADC  ch= 3 SAMPL    29                 *                
+  [000002cb]   715: 581822c3     D     ADC  ch= 3 SAMPL   707                  *               
+  [000002cc]   716: 58182958     D     ADC  ch= 3 SAMPL  2392                     *            
+  [000002cd]   717: 5818286f     D     ADC  ch= 3 SAMPL  2159                     *            
+  [000002ce]   718: 58182220     D     ADC  ch= 3 SAMPL   544                  *               
+  [000002cf]   719: 58181fbc     D     ADC  ch= 3 SAMPL   -68                *                 
+  [000002d0]   720: 581820ca     D     ADC  ch= 3 SAMPL   202                 *                
+  [000002d1]   721: 48209ed3     D     ADC  ch= 4 TS(31:16) 9ed3 (40659, 4)
+  [000002d2]   722: 48219ee1     D     ADC  ch= 4 TS(15:0) 9ee1 (40673, 3)
+  [000002d3]   723: 58201fc7     D     ADC  ch= 4 SAMPL   -57                *                 
+  [000002d4]   724: 58201fc2     D     ADC  ch= 4 SAMPL   -62                *                 
+  [000002d5]   725: 5820202c     D     ADC  ch= 4 SAMPL    44                 *                
+  [000002d6]   726: 58202254     D     ADC  ch= 4 SAMPL   596                  *               
+  [000002d7]   727: 582022bc     D     ADC  ch= 4 SAMPL   700                  *               
+  [000002d8]   728: 582020d9     D     ADC  ch= 4 SAMPL   217                 *                
+  [000002d9]   729: 58201fbc     D     ADC  ch= 4 SAMPL   -68                *                 
+  [000002da]   730: 58201fee     D     ADC  ch= 4 SAMPL   -18                *                 
+  [000002db]   731: 48289ed3     D     ADC  ch= 5 TS(31:16) 9ed3 (40659, 4)
+  [000002dc]   732: 48299ee0     D     ADC  ch= 5 TS(15:0) 9ee0 (40672, 2)
+  [000002dd]   733: 58281fef     D     ADC  ch= 5 SAMPL   -17                *                 
+  [000002de]   734: 58281fed     D     ADC  ch= 5 SAMPL   -19                *                 
+  [000002df]   735: 582820db     D     ADC  ch= 5 SAMPL   219                 *                
+  [000002e0]   736: 5828320f     D     ADC  ch= 5 SAMPL  4623                          *       
+  [000002e1]   737: 58283fff     D     ADC  ch= 5 SAMPL  8191                                * 
+  [000002e2]   738: 58283ee6     D     ADC  ch= 5 SAMPL  7910                                * 
+  [000002e3]   739: 58282892     D     ADC  ch= 5 SAMPL  2194                     *            
+  [000002e4]   740: 58282138     D     ADC  ch= 5 SAMPL   312                 *                
+  [000002e5]   741: 48309ed3     D     ADC  ch= 6 TS(31:16) 9ed3 (40659, 4)
+  [000002e6]   742: 48319ee1     D     ADC  ch= 6 TS(15:0) 9ee1 (40673, 3)
+  [000002e7]   743: 58302021     D     ADC  ch= 6 SAMPL    33                 *                
+  [000002e8]   744: 58302020     D     ADC  ch= 6 SAMPL    32                 *                
+  [000002e9]   745: 58302139     D     ADC  ch= 6 SAMPL   313                 *                
+  [000002ea]   746: 583024d9     D     ADC  ch= 6 SAMPL  1241                   *              
+  [000002eb]   747: 583024b1     D     ADC  ch= 6 SAMPL  1201                   *              
+  [000002ec]   748: 5830217c     D     ADC  ch= 6 SAMPL   380                 *                
+  [000002ed]   749: 58302018     D     ADC  ch= 6 SAMPL    24                 *                
+  [000002ee]   750: 5830208e     D     ADC  ch= 6 SAMPL   142                 *                
+  [000002ef]   751: 70000000    ????   
+  [000002f0]   752: 942f004d   MTRL    wc 77, crc 42, flags: 
+  [000002f1]   753: ffffffff           
+  [000002f2]   754: b00000ae  ETRL     wc 174 
+  [000002f3]   755: a0000005  EHDR     ev 5
+  [000002f4]   756: 810a0005   MHDR    ev 5, id 10 (TRIG  ), ga 2
+  [000002f5]   757: 403a6811    TS_L   TS lo:  3a6811
+  [000002f6]   758: 50200040    TS_H   TS hi:  2, trigbits:   40. Event 5 time: 467.277 ms
+  [000002f7]   759: 70000000    ICNT   in_cnt[ 0]: 0
+  [000002f8]   760: 70000000    ICNT   in_cnt[ 1]: 0
+  [000002f9]   761: 70000000    ICNT   in_cnt[ 2]: 0
+  [000002fa]   762: 70000000    ICNT   in_cnt[ 3]: 0
+  [000002fb]   763: 70000000    ICNT   in_cnt[ 4]: 0
+  [000002fc]   764: 70000000    ICNT   in_cnt[ 5]: 0
+  [000002fd]   765: 70000001    ICNT   in_cnt[ 6]: 1
+  [000002fe]   766: 70000000    ICNT   in_cnt[ 7]: 0
+  [000002ff]   767: 70000000    ICNT   in_cnt[ 8]: 0
+  [00000300]   768: 70000000    ICNT   in_cnt[ 9]: 0
+  [00000301]   769: 70000000    ICNT   in_cnt[10]: 0
+  [00000302]   770: 70000000    ICNT   in_cnt[11]: 0
+  [00000303]   771: 70000000    ICNT   in_cnt[12]: 0
+  [00000304]   772: 70000000    ICNT   in_cnt[13]: 0
+  [00000305]   773: 70000000    ICNT   in_cnt[14]: 0
+  [00000306]   774: 70000000    ICNT   in_cnt[15]: 0
+  [00000307]   775: 70000000    ICNT   in_cnt[16]: 0
+  [00000308]   776: 70000000    ICNT   in_cnt[17]: 0
+  [00000309]   777: 70000000    ICNT   in_cnt[18]: 0
+  [0000030a]   778: 70000000    ICNT   in_cnt[19]: 0
+  [0000030b]   779: 70000000    ICNT   in_cnt[20]: 0
+  [0000030c]   780: 70000000    ICNT   in_cnt[21]: 0
+  [0000030d]   781: 70000000    ICNT   in_cnt[22]: 0
+  [0000030e]   782: 70000000    ICNT   in_cnt[23]: 0
+  [0000030f]   783: 70000000    ICNT   in_cnt[24]: 0
+  [00000310]   784: 70000000    ICNT   in_cnt[25]: 0
+  [00000311]   785: 70000000    ICNT   in_cnt[26]: 0
+  [00000312]   786: 70000000    ICNT   in_cnt[27]: 0
+  [00000313]   787: 70000000    ICNT   in_cnt[28]: 0
+  [00000314]   788: 70000000    ICNT   in_cnt[29]: 0
+  [00000315]   789: 70000000    ICNT   in_cnt[30]: 0
+  [00000316]   790: 70000000    ICNT   in_cnt[31]: 0
+  [00000317]   791: 70000000    ICNT   in_cnt[32]: 0
+  [00000318]   792: 70000000    ICNT   in_cnt[33]: 0
+  [00000319]   793: 70000000    ICNT   in_cnt[34]: 0
+  [0000031a]   794: 70000000    ICNT   in_cnt[35]: 0
+  [0000031b]   795: 70000000    ICNT   in_cnt[36]: 0
+  [0000031c]   796: 70000000    ICNT   in_cnt[37]: 0
+  [0000031d]   797: 70000000    ICNT   in_cnt[38]: 0
+  [0000031e]   798: 70000000    ICNT   in_cnt[39]: 0
+  [0000031f]   799: 968f002a   MTRL    wc 42, crc 68, flags: 
+  [00000320]   800: 83900005   MHDR    ev 5, id 16 (TDC64V), ga 7
+  [00000321]   801: 220053d7    THDR   Bunch ID=983, EvID=5
+  [00000322]   802: 4250246b     LD    ch=10, coarse=72 fine=107 
+  [00000323]   803: 525025fe     TR    ch=10, coarse=75 fine=126 
+  [00000324]   804: 32005004    TTRL   EvID=5, wordcount=4
+  [00000325]   805: 210053d7    THDR   Bunch ID=983, EvID=5
+  [00000326]   806: 31005002    TTRL   EvID=5, wordcount=2
+  [00000327]   807: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000328]   808: 91ef0007   MTRL    wc 7, crc 1e, flags: 
+  [00000329]   809: ffffffff           
+  [0000032a]   810: 84900005   MHDR    ev 5, id 16 (TDC64V), ga 9
+  [0000032b]   811: 220053d7    THDR   Bunch ID=983, EvID=5
+  [0000032c]   812: 32005002    TTRL   EvID=5, wordcount=2
+  [0000032d]   813: 210053d7    THDR   Bunch ID=983, EvID=5
+  [0000032e]   814: 31005002    TTRL   EvID=5, wordcount=2
+  [0000032f]   815: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000330]   816: 937f0005   MTRL    wc 5, crc 37, flags: 
+  [00000331]   817: ffffffff           
+  [00000332]   818: 85900005   MHDR    ev 5, id 16 (TDC64V), ga 11
+  [00000333]   819: 220053d7    THDR   Bunch ID=983, EvID=5
+  [00000334]   820: 32005002    TTRL   EvID=5, wordcount=2
+  [00000335]   821: 210053d7    THDR   Bunch ID=983, EvID=5
+  [00000336]   822: 31005002    TTRL   EvID=5, wordcount=2
+  [00000337]   823: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000338]   824: 977f0005   MTRL    wc 5, crc 77, flags: 
+  [00000339]   825: ffffffff           
+  [0000033a]   826: 86900005   MHDR    ev 5, id 16 (TDC64V), ga 13
+  [0000033b]   827: 220053d7    THDR   Bunch ID=983, EvID=5
+  [0000033c]   828: 32005002    TTRL   EvID=5, wordcount=2
+  [0000033d]   829: 210053d7    THDR   Bunch ID=983, EvID=5
+  [0000033e]   830: 31005002    TTRL   EvID=5, wordcount=2
+  [0000033f]   831: 70000000    TDEBG  debug: separator Bunch ID=0
+  [00000340]   832: 9b7f0005   MTRL    wc 5, crc b7, flags: 
+  [00000341]   833: ffffffff           
+  [00000342]   834: 87890005   MHDR    ev 5, id 9 (TQDC  ), ga 15
+  [00000343]   835: 200053ed    DAT 2  TDC  Bunch ID=1005, EvID=5
+  [00000344]   836: 30005002    DAT 3  TDC  EvID=5, wordcount=2
+  [00000345]   837: 200053ed    DAT 2  TDC  Bunch ID=1005, EvID=5
+  [00000346]   838: 30005002    DAT 3  TDC  EvID=5, wordcount=2
+  [00000347]   839: 70000000    ????   
+  [00000348]   840: 70000000    ????   
+  [00000349]   841: 9abf0006   MTRL    wc 6, crc ab, flags: 
+  [0000034a]   842: 88890005   MHDR    ev 5, id 9 (TQDC  ), ga 17
+  [0000034b]   843: 200053ed    DAT 2  TDC  Bunch ID=1005, EvID=5
+  [0000034c]   844: 30005002    DAT 3  TDC  EvID=5, wordcount=2
+  [0000034d]   845: 200053ed    DAT 2  TDC  Bunch ID=1005, EvID=5
+  [0000034e]   846: 30005002    DAT 3  TDC  EvID=5, wordcount=2
+  [0000034f]   847: 70000000    ????   
+  [00000350]   848: 70000000    ????   
+  [00000351]   849: 938f0006   MTRL    wc 6, crc 38, flags: 
+  [00000352]   850: 89890005   MHDR    ev 5, id 9 (TQDC  ), ga 19
+  [00000353]   851: 200053ed    DAT 2  TDC  Bunch ID=1005, EvID=5
+  [00000354]   852: 30005002    DAT 3  TDC  EvID=5, wordcount=2
+  [00000355]   853: 200053ed    DAT 2  TDC  Bunch ID=1005, EvID=5
+  [00000356]   854: 50600181     D     TDC  ch=12, coarse=3 fine=1 DATA    181
+  [00000357]   855: 5060050a     D     TDC  ch=12, coarse=10 fine=10 DATA    50a
+  [00000358]   856: 30005004    DAT 3  TDC  EvID=5, wordcount=4
+  [00000359]   857: 70000000    ????   
+  [0000035a]   858: 486067d7     D     ADC  ch=12 TS(31:16) 67d7 (26583, 3)
+  [0000035b]   859: 486167e5     D     ADC  ch=12 TS(15:0) 67e5 (26597, 2)
+  [0000035c]   860: 58601fec     D     ADC  ch=12 SAMPL   -20                *                 
+  [0000035d]   861: 58601fea     D     ADC  ch=12 SAMPL   -22                *                 
+  [0000035e]   862: 5860203a     D     ADC  ch=12 SAMPL    58                 *                
+  [0000035f]   863: 586023bc     D     ADC  ch=12 SAMPL   956                  *               
+  [00000360]   864: 58602672     D     ADC  ch=12 SAMPL  1650                    *             
+  [00000361]   865: 5860236d     D     ADC  ch=12 SAMPL   877                  *               
+  [00000362]   866: 5860200f     D     ADC  ch=12 SAMPL    15                 *                
+  [00000363]   867: 58601fe5     D     ADC  ch=12 SAMPL   -27                *                 
+  [00000364]   868: 70000000    ????   
+  [00000365]   869: 912f0012   MTRL    wc 18, crc 12, flags: 
+  [00000366]   870: b0000072  ETRL     wc 114 
+  [00000367]   871: a0000006  EHDR     ev 6
+  [00000368]   872: 810a0006   MHDR    ev 6, id 10 (TRIG  ), ga 2
+  [00000369]   873: 40d68592    TS_L   TS lo:  d68592
+  [0000036a]   874: 50200040    TS_H   TS hi:  2, trigbits:   40. Event 6 time: 595.167 ms
+  [0000036b]   875: 70000000    ICNT   in_cnt[ 0]: 0
+  [0000036c]   876: 70000000    ICNT   in_cnt[ 1]: 0
+  [0000036d]   877: 70000000    ICNT   in_cnt[ 2]: 0
+  [0000036e]   878: 70000000    ICNT   in_cnt[ 3]: 0
+  [0000036f]   879: 70000000    ICNT   in_cnt[ 4]: 0
+  [00000370]   880: 70000000    ICNT   in_cnt[ 5]: 0
+  [00000371]   881: 70000001    ICNT   in_cnt[ 6]: 1
+  [00000372]   882: 70000000    ICNT   in_cnt[ 7]: 0
+  [00000373]   883: 70000000    ICNT   in_cnt[ 8]: 0
+  [00000374]   884: 70000000    ICNT   in_cnt[ 9]: 0
+  [00000375]   885: 70000000    ICNT   in_cnt[10]: 0
+  [00000376]   886: 70000000    ICNT   in_cnt[11]: 0
+  [00000377]   887: 70000000    ICNT   in_cnt[12]: 0
+  [00000378]   888: 70000000    ICNT   in_cnt[13]: 0
+  [00000379]   889: 70000000    ICNT   in_cnt[14]: 0
+  [0000037a]   890: 70000000    ICNT   in_cnt[15]: 0
+  [0000037b]   891: 70000000    ICNT   in_cnt[16]: 0
+  [0000037c]   892: 70000000    ICNT   in_cnt[17]: 0
+  [0000037d]   893: 70000000    ICNT   in_cnt[18]: 0
+  [0000037e]   894: 70000000    ICNT   in_cnt[19]: 0
+  [0000037f]   895: 70000000    ICNT   in_cnt[20]: 0
+  [00000380]   896: 70000000    ICNT   in_cnt[21]: 0
+  [00000381]   897: 70000000    ICNT   in_cnt[22]: 0
+  [00000382]   898: 70000000    ICNT   in_cnt[23]: 0
+  [00000383]   899: 70000000    ICNT   in_cnt[24]: 0
+  [00000384]   900: 70000000    ICNT   in_cnt[25]: 0
+  [00000385]   901: 70000000    ICNT   in_cnt[26]: 0
+  [00000386]   902: 70000000    ICNT   in_cnt[27]: 0
+  [00000387]   903: 70000000    ICNT   in_cnt[28]: 0
+  [00000388]   904: 70000000    ICNT   in_cnt[29]: 0
+  [00000389]   905: 70000000    ICNT   in_cnt[30]: 0
+  [0000038a]   906: 70000000    ICNT   in_cnt[31]: 0
+  [0000038b]   907: 70000000    ICNT   in_cnt[32]: 0
+  [0000038c]   908: 70000000    ICNT   in_cnt[33]: 0
+  [0000038d]   909: 70000000    ICNT   in_cnt[34]: 0
+  [0000038e]   910: 70000000    ICNT   in_cnt[35]: 0
+  [0000038f]   911: 70000000    ICNT   in_cnt[36]: 0
+  [00000390]   912: 70000000    ICNT   in_cnt[37]: 0
+  [00000391]   913: 70000000    ICNT   in_cnt[38]: 0
+  [00000392]   914: 70000000    ICNT   in_cnt[39]: 0
+  [00000393]   915: 9c2f002a   MTRL    wc 42, crc c2, flags: 
+  [00000394]   916: 83900006   MHDR    ev 6, id 16 (TDC64V), ga 7
+  [00000395]   917: 22006297    THDR   Bunch ID=663, EvID=6
+  [00000396]   918: 425024bf     LD    ch=10, coarse=73 fine=63 
+  [00000397]   919: 5250264f     TR    ch=10, coarse=76 fine=79 
+  [00000398]   920: 32006004    TTRL   EvID=6, wordcount=4
+  [00000399]   921: 21006297    THDR   Bunch ID=663, EvID=6
+  [0000039a]   922: 31006002    TTRL   EvID=6, wordcount=2
+  [0000039b]   923: 70000000    TDEBG  debug: separator Bunch ID=0
+  [0000039c]   924: 9fcf0007   MTRL    wc 7, crc fc, flags: 
+  [0000039d]   925: ffffffff           
+  [0000039e]   926: 84900006   MHDR    ev 6, id 16 (TDC64V), ga 9
+  [0000039f]   927: 22006297    THDR   Bunch ID=663, EvID=6
+  [000003a0]   928: 32006002    TTRL   EvID=6, wordcount=2
+  [000003a1]   929: 21006297    THDR   Bunch ID=663, EvID=6
+  [000003a2]   930: 31006002    TTRL   EvID=6, wordcount=2
+  [000003a3]   931: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000003a4]   932: 9d3f0005   MTRL    wc 5, crc d3, flags: 
+  [000003a5]   933: ffffffff           
+  [000003a6]   934: 85900006   MHDR    ev 6, id 16 (TDC64V), ga 11
+  [000003a7]   935: 22006297    THDR   Bunch ID=663, EvID=6
+  [000003a8]   936: 32006002    TTRL   EvID=6, wordcount=2
+  [000003a9]   937: 21006297    THDR   Bunch ID=663, EvID=6
+  [000003aa]   938: 31006002    TTRL   EvID=6, wordcount=2
+  [000003ab]   939: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000003ac]   940: 993f0005   MTRL    wc 5, crc 93, flags: 
+  [000003ad]   941: ffffffff           
+  [000003ae]   942: 86900006   MHDR    ev 6, id 16 (TDC64V), ga 13
+  [000003af]   943: 22006297    THDR   Bunch ID=663, EvID=6
+  [000003b0]   944: 32006002    TTRL   EvID=6, wordcount=2
+  [000003b1]   945: 21006297    THDR   Bunch ID=663, EvID=6
+  [000003b2]   946: 31006002    TTRL   EvID=6, wordcount=2
+  [000003b3]   947: 70000000    TDEBG  debug: separator Bunch ID=0
+  [000003b4]   948: 953f0005   MTRL    wc 5, crc 53, flags: 
+  [000003b5]   949: ffffffff           
+  [000003b6]   950: 87890006   MHDR    ev 6, id 9 (TQDC  ), ga 15
+  [000003b7]   951: 200062ad    DAT 2  TDC  Bunch ID=685, EvID=6
+  [000003b8]   952: 30006002    DAT 3  TDC  EvID=6, wordcount=2
+  [000003b9]   953: 200062ad    DAT 2  TDC  Bunch ID=685, EvID=6
+  [000003ba]   954: 30006002    DAT 3  TDC  EvID=6, wordcount=2
+  [000003bb]   955: 70000000    ????   
+  [000003bc]   956: 70000000    ????   
+  [000003bd]   957: 97ff0006   MTRL    wc 6, crc 7f, flags: 
+  [000003be]   958: 88890006   MHDR    ev 6, id 9 (TQDC  ), ga 17
+  [000003bf]   959: 200062ad    DAT 2  TDC  Bunch ID=685, EvID=6
+  [000003c0]   960: 30006002    DAT 3  TDC  EvID=6, wordcount=2
+  [000003c1]   961: 200062ad    DAT 2  TDC  Bunch ID=685, EvID=6
+  [000003c2]   962: 30006002    DAT 3  TDC  EvID=6, wordcount=2
+  [000003c3]   963: 70000000    ????   
+  [000003c4]   964: 70000000    ????   
+  [000003c5]   965: 9ecf0006   MTRL    wc 6, crc ec, flags: 
+  [000003c6]   966: 89890006   MHDR    ev 6, id 9 (TQDC  ), ga 19
+  [000003c7]   967: 200062ad    DAT 2  TDC  Bunch ID=685, EvID=6
+  [000003c8]   968: 502001cf     D     TDC  ch= 4, coarse=3 fine=79 DATA    1cf
+  [000003c9]   969: 501801d5     D     TDC  ch= 3, coarse=3 fine=85 DATA    1d5
+  [000003ca]   970: 30006004    DAT 3  TDC  EvID=6, wordcount=4
+  [000003cb]   971: 200062ad    DAT 2  TDC  Bunch ID=685, EvID=6
+  [000003cc]   972: 30006002    DAT 3  TDC  EvID=6, wordcount=2
+  [000003cd]   973: 70000000    ????   
+  [000003ce]   974: 48188557     D     ADC  ch= 3 TS(31:16) 8557 (34135, 0)
+  [000003cf]   975: 48198566     D     ADC  ch= 3 TS(15:0) 8566 (34150, 0)
+  [000003d0]   976: 58182017     D     ADC  ch= 3 SAMPL    23                 *                
+  [000003d1]   977: 5818201b     D     ADC  ch= 3 SAMPL    27                 *                
+  [000003d2]   978: 5818214d     D     ADC  ch= 3 SAMPL   333                 *                
+  [000003d3]   979: 5818256d     D     ADC  ch= 3 SAMPL  1389                   *              
+  [000003d4]   980: 58182563     D     ADC  ch= 3 SAMPL  1379                   *              
+  [000003d5]   981: 5818218b     D     ADC  ch= 3 SAMPL   395                 *                
+  [000003d6]   982: 58181fd5     D     ADC  ch= 3 SAMPL   -43                *                 
+  [000003d7]   983: 5818206c     D     ADC  ch= 3 SAMPL   108                 *                
+  [000003d8]   984: 48208557     D     ADC  ch= 4 TS(31:16) 8557 (34135, 0)
+  [000003d9]   985: 48218566     D     ADC  ch= 4 TS(15:0) 8566 (34150, 0)
+  [000003da]   986: 58201fcb     D     ADC  ch= 4 SAMPL   -53                *                 
+  [000003db]   987: 58201fca     D     ADC  ch= 4 SAMPL   -54                *                 
+  [000003dc]   988: 5820208a     D     ADC  ch= 4 SAMPL   138                 *                
+  [000003dd]   989: 582022c8     D     ADC  ch= 4 SAMPL   712                  *               
+  [000003de]   990: 582022b6     D     ADC  ch= 4 SAMPL   694                  *               
+  [000003df]   991: 582020b3     D     ADC  ch= 4 SAMPL   179                 *                
+  [000003e0]   992: 58201fc1     D     ADC  ch= 4 SAMPL   -63                *                 
+  [000003e1]   993: 58202001     D     ADC  ch= 4 SAMPL     1                 *                
+  [000003e2]   994: 70000000    ????   
+  [000003e3]   995: 9adf001c   MTRL    wc 28, crc ad, flags: 
+  [000003e4]   996: b000007c  ETRL     wc 124 
+  [000003e5]   997: a0000007  EHDR     ev 7
