@@ -1,0 +1,211 @@
+% 2009-01-26 original
+% 2019-05-13 cosmetic update
+
+\documentclass[12pt,oneside,slovak]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+\usepackage{lmodern}
+
+% !!! mucha: begin
+\usepackage{cite}   % potrebny package
+
+\makeatletter
+\newcommand{\citer}[0]{\renewcommand\citeform[1]   % cite roman
+  {\romannumeral ##1}}
+\newcommand{\citeR}[0]{\renewcommand\citeform[1]   % cite Roman
+  {\expandafter\@slowromancap\romannumeral ##1@}}
+\newcommand{\cited}[0]{\renewcommand\citeform[1]   % cite default (arabic)
+  {##1}}
+%\newcommand{\citea}[0]{\renewcommand\citeform[1]   % cite arabic (manual)
+%  {\@arabic ##1}}
+\makeatother
+
+% ak nechcem pouzivat "nove prikazy", mozem menit pocitadlo
+% aj manulane, stale pred zmenenim cislovania pred prikazom '\cite'
+% napisem jeden z tychto prikazov (Roman, roman, default):
+% \renewcommand\citeform[1]{\expandafter\@slowromancap\romannumeral #1@}
+% \renewcommand\citeform[1]{\romannumeral #1}
+% \renewcommand\citeform[1]{##1}
+% !!! mucha: end
+
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+
+\begin{document}
+
+{ % curly braces must be
+  \renewcommand{\chaptername}[2]{Úvod}
+  \chapter{}
+
+  So štúdiom produkcie mezónov v hadrónovo-hadrónových interakciách v blízkosti
+  kinematického prahu sa začalo v pätdesiatych rokoch, ked sa objavili
+  urýchlovače, ktoré poskytli zväzky protónov s dostatočne vysokou
+  energiou. Silná vzájomná prepojenost medzi rozvojom urýchlovačovej fyziky,
+  pokrokom v oblasti detekčných metod a teoretickou interpretáciou viedla k
+  burlivému rozmachu tejto oblasti fyziky. Už experimenty vykonané pomocou
+  bublinových komôr naznačili niektoré typické črty týchto procesov, ktoré boli
+  potom konfrontované s výsledkami ovela komplexnejších štúdií v nukleónových
+  zväzkoch na urýchlovačoch TRIUMF, LAMPF, PSI, LEAR a SATURNE. Nástup nových
+  urýchlovačov s chladenými zväzkami ako IUCF, CELSIUS a COSY otvoril novú éru
+  precíznych experimentov a znamenal dôležitý krok v skúmaní procesov produkcie
+  mezónov v blízkosti kinematického prahu. Produkcia mezónov bola práve jedným z
+  nosných programov troch vyššie uvedených centier.
+} % curly braces must be
+
+\setcounter{chapter}{0}
+\chapter{Popis experimentálnej apartúry kolaborácie GEM}
+
+Experimentálna aparatúra GEM bola ožarovaná zväzkami synchrotrónu Cooler
+Synchrotron (COSY), Forschungszentrum (FZ) Jülich a je realizovaná ako
+kombinácia dvoch typov detektorov.
+\begin{itemize}
+\item
+  Centrálny detektor s veľkou uhlovou akceptanciou, umiestnený pri terčíku. Je
+  to jeden z detektorov buď germániová stena (Germanium Wall - GeWall) alebo
+  ENSTAR.
+\item
+  Detektor s malou uhlovou akceptanciou magnetický spektrometer (spektrograf)
+  Big Karl v súčinnosti s mnohovláknovými driftovými komorami a scintilátorovými
+  hodoskopmi.
+\end{itemize}
+
+\section{Detektor ENSTAR}
+
+Detektor ENSTAR bol navrhnutý v kombinácii s magnetickým spektrometrom Big Karl
+na štúdium možnej produkcie $\eta$-mezónových jadier v reakciách typu:
+$p + (^{Z}X_{A}) \rightarrow  ^{3}He + (^{Z-1}X_{A-2})\eta$, pričom rýchle jadrá
+$^{3}He$ vylietavajúce pod malými uhlami ($ < 6^{\circ}$) sa detegujú
+spektrometrom. Produkty rozpadu pomalého $N^{*}$ - protón a $\pi$  mezón budú
+registrované detektorom ENSTAR, ktorý pozostáva z troch vrstiev scintilačných
+detektorov, vytvárajúcich koncentrický válec. Tenká vnútorná vrstva hrá úlohu
+detektora $\Delta$ E a dve hrubé vonkajšie vrstvy merajú depozitovanú energiu.
+Detektor je členený tak, aby umožnil stanovenie azimutálneho a polárneho uhla
+častíc. Podrobný popis detektora sa nachádza  v priloženej publikácii
+% !!! mucha: odteraz sa bude stale cislovat Roman
+\citeR \cite{EnstarDetector}.
+
+\section{Magnetický spektrometer Big Karl}
+
+Magnetický spektrometer pozostáva z dvoch dipolóvych a zo štyroch quadrupólových
+magnetov a slúži na fokusáciu častíc vylietavajúcich v úzkom kúželi okolo
+$0^{\circ}$. Podľa veľkosti rigidity častice buď ju transportuje do štandardnej
+fokálnej roviny alebo častica opustí spektrometer cez výstup prvého dipólu. Na
+dvoch výstupoch sú umiestnené dva identické detekčné systémy, pozostávajúce z
+dvoch mnohovláknových driftových komôr a zo scintilačného hodoskópu. Trajektória
+častíc je popísaná transportnou maticou. V dobrom priblížení sa dá povedať, že:
+horizontálna pozícia je daná hybnosťou častice, horizontálny uhol a vertikálna
+pozícia sú určené horizontálnym a vertikálnym uhlom trajektórie v terčíku. Uhly
+a súradnice vo výstupnych rovinách sa dajú určiť pomocou driftových komôr.
+Scintilačné detektory merajú dobu preletu častíc. Podrobný popis magnetického
+spektrometra spolu s ďalšími referenciami možno nájsť v priloženej publikácii
+\cite{BigKarl}
+% !!! mucha
+a este \cite{QuarkMassDiffViaISBGeWall} a stale velkym Romanom a este dalsia
+literatura \cite{PiEtaMixpdResultsBigKarl, BoundEtaJha}.
+
+A teraz čo napíšeš
+% !!! mucha: odteraz sa bude stale cislovat default (t.j. arabic)
+\cited \cite{PDG2004} teraz bude stale \cite{Ueda} cislovat default, t.j. v
+nasom pripade arabic \cite{Willisetal}.
+
+
+{ % curly braces must be
+  \renewcommand{\bibname}{Zoznam priloženej literatúry}
+  % !!! mucha: begin
+  \makeatletter
+  \renewcommand{\@biblabel}[1]{[\Roman{enumiv}]\indent\indent}
+  %\renewcommand{\@biblabel}[1]{[\roman{enumiv}]\indent}
+  \makeatother
+  % !!! mucha: end
+  \begin{thebibliography}{VIII}  %for 2 digits
+
+  \bibitem{EnstarDetector}
+    M.G. Betigeri, ... J. Urbán, ... et al., A large acceptance scintillator
+    detector with wavelength shifting fibre readout for search of $\eta-$
+    nucleus bound states \\
+    Nucl. Instr. and Meth., A 578 (2007) 198-206.
+
+  \bibitem {BigKarl}
+    J. Bojowald, ... J. Urbán, ... et al., Magnetic spectrometer Big Karl for
+    studies of meson production reactions \\
+    Nucl. Instr. and Meth., A 487 (2002) 314-322.
+
+  \bibitem{SimMeaspdGeWall}
+    S. Abdel-Samad, ... J. Urbán, ... et al., Simultaneous Measurements of $p+d
+    \rightarrow ^{3}He + \pi^{0}$ and $p+d \rightarrow ^{3}H + \pi^{+}$
+    Reactions with the GEM detector \\
+    Physica Scripta T104 (2003) 88-90.
+
+  \bibitem{QuarkMassDiffViaISBGeWall}
+    H. Machner, ... J. Urbán, ... et al., Search for Up-Down Quark Mass
+    Difference via Isospin Symmetry Breaking \\
+    Progress in Particle and Nuclear Physics 50 (2003) 605-614.
+
+  \bibitem{PiEtaMixpdResultsBigKarl}
+    M. Abdel-Bary, ... J. Urbán, ... et al.,
+    $\pi^{0}-\eta$ meson mixing in $p+d \rightarrow ^{3}H\pi^{+}/^{3}He\pi^{0}$
+    reactions \\
+    Phys. Rev. C 68 (2003) 021603(R)
+
+  \bibitem{EtaMass}
+    S. Abdel-Bary, ... J. Urbán, ... et al., A precision determination of the
+    mass of the $\eta$ meson\\
+    Phys. Lett. B 619 (2005) 281-287.
+
+  \bibitem{BoundEtaJha}
+    V. Jha,  ... J. Urbán, ... et al., Search for $\eta$-Nucleus Bound State at
+    Cosy \\
+    Int. Journal of Mod. Phys. A 22 (2007) 596-599.
+
+  \end{thebibliography}
+} % curly braces must be
+
+
+\renewcommand{\bibname}{Zoznam použitej literatúry}
+
+\begin{thebibliography}{99}  %for 2 digits
+
+\bibitem {PDG2004}
+  S. Eidelman et al., Phys. Lett. B 592 (2004) 1.
+
+\bibitem{LagetLecolley}
+  J.M. Laget a J.F Lecolley, Phys. Lett. B 194 (1987) 177.
+
+\bibitem{Ueda}
+  T. Ueda,  Nucl. Phys. A 505 (1989) 610.
+
+\bibitem{MillerNefkensSlaus}
+  G.A. Miller, B.M.K. Nefkens a I. \v{S}laus, Phys. Rep. 194 (1999) 1.
+
+\bibitem{MagieraMachner}
+  A. Magiera a H. Machner, Nucl. Phys. A 674 (2000) 515.
+
+\bibitem{LiuSukromna}
+  L.C. Liu, Súkromná informácia \footnote{Výsledky pochádzajú zo súkromnej
+    komunikácie medzi L.C. Liu a J. Lieb, ktorý mi ich podstúpil.}
+
+\bibitem{PDG1998}
+  C. Caso et al., Eur. Journal of Physics, C 3 (1998) 109.
+
+\bibitem{gem_eta_mass_proposal}
+  http://www.fz-juelich.de/ikp/gem   Proposals, I/2000.
+
+\bibitem{WycechGreenNiskanen}
+  S. Wycech, A.M. Green, J.A. Niskanen, Phys. Rev. C 52 (1995) 544.
+
+\bibitem{Rakytyanskyetal}
+  S.A. Rakytyansky et al., Phys. Rev. 53 (1996) R2043.
+
+\bibitem{FixArenhovel}
+  A. Fix and H. Arenh\"{o}vel, Phys. Rev. C 66 (2002) 024002.
+
+\bibitem{Willisetal}
+  N. Willis et al., Phys. Lett. B 406 (1997) 14.
+
+\end{thebibliography}
+
+\end{document}
