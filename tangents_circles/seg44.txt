@@ -1,0 +1,32 @@
+,
+,
+,
+Circles Geometry Set 6,Line Tangent to Two Circles
+Circle 1,
+Circle Center Coordinate X1,3
+Circle Center Coordinate Y1,-3
+Circle 1 Radius,2
+Circle 2,
+Circle Center Coordinate X2,7
+Circle Center Coordinate Y2,-7
+Circle 2 Radius,"0,5"
+,
+Line 1 Tangent 1X,"4,73858901432936"
+Line 1 Tangent 1Y,"-2,01141098567036"
+Line 1 Tangent 2X,"7,43464725358234"
+Line 1 Tangent 2Y,"-6,75285274641759"
+,
+Line 2 Tangent 1X,"2,01141098567072"
+Line 2 Tangent 1Y,"-4,73858901432957"
+Line 2 Tangent 2X,"6,75285274641768"
+Line 2 Tangent 2Y,"-7,43464725358239"
+,
+Line 3 Tangent 1X,"4,89361144563659"
+Line 3 Tangent 1Y,"-2,35638855436367"
+Line 3 Tangent 2X,"6,52659713859085"
+Line 3 Tangent 2Y,"-7,16090286140908"
+,
+Line 4 Tangent 1X,"2,35638855436367"
+Line 4 Tangent 1Y,"-4,89361144563659"
+Line 4 Tangent 2X,"7,16090286140908"
+Line 4 Tangent 2Y,"-6,52659713859085"
