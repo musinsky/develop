@@ -11,6 +11,8 @@
 // http://atlas-computing.web.cern.ch/atlas-computing/links/AtlasReconstructionDir/Tracking/TrkUtilityPackages/TrkDriftCircleMath/src/TangentToCircles.cxx
 //     /afs/cern.ch/atlas/software/builds/nightlies/copy/AtlasReconstruction/rel_2/Tracking/TrkUtilityPackages/TrkDriftCircleMath/src/TangentToCircles.cxx   # latest -> rel_2
 //
+// https://habr.com/ru/post/451642/
+
 // # g++ emaxx_circle_tangents.c
 
 #include <vector>
