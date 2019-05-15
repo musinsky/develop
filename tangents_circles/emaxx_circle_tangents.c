@@ -4,6 +4,7 @@
 // http://e-maxx.ru/forum/viewtopic.php?id=348
 // 2019-05-14
 // https://cp-algorithms.com/geometry/tangents-to-two-circles.html
+// http://www.ambrsoft.com/TrigoCalc/Circles2/Circles2Tangent_.htm   # online calculator
 // https://www.geogebra.org/classic
 // https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Tangents_between_two_circles
 // https://github.com/FunctionReturn/Moon/blob/master/frontend/examples/rope/third_party/wikibooks/circle-circle-tangents.js
