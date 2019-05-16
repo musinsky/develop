@@ -1,0 +1,32 @@
+# rootcint -f ExamDict.cxx -c TMyEvent.h TStrawTrack.h TrackLinkDef.h
+# g++ -O2 -fPIC -I$ROOTSYS/include -c ExamDict.cxx TMyEvent.cxx TStrawTrack.cxx
+# g++ -O2 -shared ExamDict.o TMyEvent.o TStrawTrack.o -o libMyEvent.so
+
+ROOTSYS2	= $(shell root-config --prefix)
+include $(ROOTSYS2)/etc/Makefile.arch
+
+ExamO	= TMyEvent.$(ObjSuf) TStrawTrack.$(ObjSuf) ExamDict.$(ObjSuf)
+ExamS	= TMyEvent.$(SrcSuf) TStrawTrack.$(SrcSuf) ExamDict.$(SrcSuf)
+ExamH	= TMyEvent.h TStrawTrack.h TrackLinkDef.h
+
+OBJS	= $(ExamO)
+MYLIB	= lib/libMyEvent.$(DllSuf)
+
+all:		$(MYLIB)
+
+$(MYLIB):	$(OBJS)
+		@[ -d $(dir $@) ] || mkdir -p $(dir $@)
+		$(LD) $(SOFLAGS) $(LDFLAGS) $(OBJS) $(OutPutOpt) $(MYLIB)
+		@echo "$@ done"
+clean:
+		@rm -f $(OBJS) ExamDict.* $(MYLIB)
+
+
+ExamDict.$(SrcSuf):	$(ExamH)
+		@echo "Generating dictionary $@"
+		rootcint -f $@ -c $^
+
+.SUFFIXES:	.$(SrcSuf)
+
+.$(SrcSuf).$(ObjSuf):
+		$(CXX) $(CXXFLAGS) -c $<
