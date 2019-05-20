@@ -1,0 +1,18 @@
+# 2013-06-20
+
+OUT1	= ascii2bin
+OUT2	= bin2ascii
+SRCS1	= ${OUT1}.f
+SRCS2	= ${OUT2}.f
+FC	= gfortran
+
+all:		${OUT1} ${OUT2}
+
+${OUT1}:	${SRCS1}
+		${FC} -o $@ $^
+
+${OUT2}:	${SRCS2}
+		${FC} -o $@ $^
+
+clean:
+		rm -f ${OUT1} ${OUT2}

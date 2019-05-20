@@ -1,0 +1,23 @@
+# 2013-06-19
+
+NAME	= strela.geant.all2pr
+SRCS	= $(wildcard *.f)
+OUT	= $(NAME).exe
+FC	= gfortran
+FCFLAGS	= -O2
+CERNLIB	= `cernlib geant321`
+DISTSRC	= $(NAME).$(shell date +%F).source
+
+all:	${OUT}
+
+${OUT}:	${SRCS}
+	${FC} $(FCFLAGS) -o $@ $^ ${CERNLIB}
+
+clean:
+	rm -f ${OUT}
+
+distsrc:
+	@rm -f $(DISTSRC).tar.gz;
+	@tar --ignore-failed-read -czvf $(DISTSRC).tar.gz \
+	  $(SRCS) ppn.dat Makefile;
+	@echo -e "\n$(DISTSRC).tar.gz done\n"
