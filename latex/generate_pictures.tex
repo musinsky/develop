@@ -1,0 +1,54 @@
+% 2020-05-14
+
+% $ tlmgr install standalone preview currfile # varwidth
+%
+% $ pdflatex -shell-escape generate_pictures.tex
+
+\documentclass[preview,border=1,multi,convert={density=300,%size=x50,
+  outext=.png}]{standalone}
+% https://www.ctan.org/pkg/standalone
+% https://www.ctan.org/pkg/preview
+%
+% Preview loads the preview package with the tightpage option and wraps
+% the content into a preview environment.
+% Convert (Image Magick) is used for PDF LaTeX files by default. Another
+% conversion program is Ghostscript or user custom command (see doc).
+
+\usepackage{currfile}
+\renewcommand{\ttdefault}{txtt}
+% Standard cmtt family fonts (amsfonts) has no bold font. Replace (for example)
+% by txtt family fonts (txfonts) with bold font.
+
+\begin{document}
+
+\standaloneconfig{border=5}
+\begin{preview}
+  {\ttfamily
+    [shell]\$ pdflatex {\bfseries -shell-escape} \currfilename \\
+    \# without {\em -shell-escape} conversion to pictures failed
+  }
+\end{preview}
+\standaloneconfig{border=1}
+\begin{preview}
+  Kosice
+\end{preview}
+\begin{preview}
+  Kosice is the largest city in eastern Slovakia.
+\end{preview}
+\begin{preview}
+  Kosice is the largest city in eastern Slovakia. It is situated on the river
+  Hornad at~the eastern reaches of the Slovak Ore Mountains, near the border
+  with Hungary. With a population of approximately 240 000, Kosice is the second
+  largest city in Slovakia, after the capital Bratislava.
+\end{preview}
+\standaloneconfig{border=3}
+\begin{preview}
+  $(d\sigma/dt)_{np \to np} = (\pi/p^2)\,
+  \bigl[\,|a|^2 + |b|^2 + 2|c|^2 + |e|^2 + |f|^2 \bigr]$
+\end{preview}
+\begin{preview}
+  $(d\sigma/dt)_{dp \to (pp)n} = \bigl[1 - F_d(t)\bigr]\,(d\sigma/dt)^{SI}_{np
+    \to np} +\,\bigl[1 - 1/3\,F_d(t)\bigr]\,(d\sigma/dt)^{SD}_{np \to np}$
+\end{preview}
+
+\end{document}
