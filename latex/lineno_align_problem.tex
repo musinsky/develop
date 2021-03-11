@@ -1,0 +1,119 @@
+% 2021-03-11
+
+\documentclass[twocolumn]{article}
+
+\usepackage[a4paper, margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+
+\usepackage[switch]{lineno}
+%\renewcommand\linenumberfont{\normalfont\small\sffamily}
+\linenumbers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% https://tex.stackexchange.com/questions/43648/why-doesnt-lineno-number-a-paragraph-when-it-is-followed-by-an-align-equation
+%%% https://texblog.org/2012/02/08/adding-line-numbers-to-documents/
+%%% korektne align pre rozne enviroment
+% \newcommand*\patchAmsMathEnvironmentForLineno[1]{
+%   \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+%   \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+%   \renewenvironment{#1}
+%   {\linenomath\csname old#1\endcsname}
+%   {\csname oldend#1\endcsname\endlinenomath}}
+% \newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{
+%   \patchAmsMathEnvironmentForLineno{#1}
+%   \patchAmsMathEnvironmentForLineno{#1*}}
+% \AtBeginDocument{
+%   \patchBothAmsMathEnvironmentsForLineno{equation}
+%   \patchBothAmsMathEnvironmentsForLineno{align}
+%   \patchBothAmsMathEnvironmentsForLineno{flalign}
+%   \patchBothAmsMathEnvironmentsForLineno{alignat}
+%   \patchBothAmsMathEnvironmentsForLineno{gather}
+%   \patchBothAmsMathEnvironmentsForLineno{multline}
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begin{document}
+
+Specificky problem pri pouziti balika \texttt{lineno}. Tento problem vznikol pri
+pisani clanku s pouzitim SVJour3 LaTeX document class for Springer journals
+(EPJA). Tento class pri pisani matematickych formul pouziva "nejaky align" aj v
+prostredi \texttt{equation}.
+
+Pre ilustraciu problemu pouzijeme prostredie \texttt{align}, pricom je
+podstatne, ci pred prostredim (vzorcom) je \textbf{prazdny riadok}.
+\begin{align}
+  1+1=2 \hspace{0.5cm}\text{bez prazdneho riadku }\texttt{align}
+\end{align}
+a pokracujeme pisanim dalsieho super zloziteho matematickeho vzorca
+\begin{align}
+  2+2=4 \hspace{0.5cm}\text{bez prazdneho riadku }\texttt{align}
+\end{align}
+koniec ilustracie problemu.
+
+\vspace{0.5cm}
+\hrule
+\vspace{0.5cm}
+Specificky problem pri pouziti balika \texttt{lineno}. Tento problem vznikol pri
+pisani clanku s pouzitim SVJour3 LaTeX document class for Springer journals
+(EPJA). Tento class pri pisani matematickych formul pouziva "nejaky align" aj v
+prostredi \texttt{equation}.
+
+Pre ilustraciu problemu pouzijeme prostredie \texttt{align}, pricom je
+podstatne, ci pred prostredim (vzorcom) je \textbf{prazdny riadok}.
+\begin{align}
+  1+1=2 \hspace{0.5cm}\text{bez prazdneho riadku }\texttt{align}
+\end{align}
+a pokracujeme pisanim dalsieho super zloziteho matematickeho vzorca
+
+\begin{align}
+  2+2=4 \hspace{0.5cm}\text{prazdny riadok pred }\texttt{align}
+\end{align}
+koniec ilustracie problemu.
+
+\vspace{0.5cm}
+\hrule
+\vspace{0.5cm}
+Specificky problem pri pouziti balika \texttt{lineno}. Tento problem vznikol pri
+pisani clanku s pouzitim SVJour3 LaTeX document class for Springer journals
+(EPJA). Tento class pri pisani matematickych formul pouziva "nejaky align" aj v
+prostredi \texttt{equation}.
+
+Pre ilustraciu problemu pouzijeme prostredie \texttt{align}, pricom je
+podstatne, ci pred prostredim (vzorcom) je \textbf{prazdny riadok}.
+
+\begin{align}
+  1+1=2 \hspace{0.5cm}\text{prazdny riadok pred }\texttt{align}
+\end{align}
+a pokracujeme pisanim dalsieho super zloziteho matematickeho vzorca
+
+\begin{align}
+  2+2=4 \hspace{0.5cm}\text{prazdny riadok pred }\texttt{align}
+\end{align}
+koniec ilustracie problemu.
+
+\newpage
+Specificky problem pri pouziti balika \texttt{lineno}. Tento problem vznikol pri
+pisani clanku s pouzitim SVJour3 LaTeX document class for Springer journals
+(EPJA). Tento class pri pisani matematickych formul pouziva "nejaky align" aj v
+prostredi \texttt{equation}.
+
+V tomto priklade pre prostredie \texttt{equation} nevznika tento problem,
+ale prejavuje sa s pouzitim SVJour3 LaTeX document class.
+\begin{equation}
+  1+1=2 \hspace{0.5cm}\text{bez prazdneho riadku }\texttt{equation}
+\end{equation}
+a pokracujeme pisanim dalsieho super zloziteho matematickeho vzorca
+\begin{equation}
+  2+2=4 \hspace{0.5cm}\text{bez prazdneho riadku }\texttt{equation}
+\end{equation}
+koniec ilustracie problemu.
+
+\vspace{0.5cm}
+\hrule
+\vspace{0.5cm}
+Odkomentovanim preambuly v zdrojovom kode \LaTeX, bude balik \texttt{lineno}
+korektne cislovat riadky nezavisle od pouziteho prostredia.
+
+\end{document}
