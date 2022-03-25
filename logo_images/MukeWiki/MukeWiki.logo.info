@@ -1,0 +1,43 @@
+# 2022-03-25
+
+https://www.svgrepo.com/svg/228617/nuclear-atom
+
+Logo vytvorene pomocou Inkscape. Save as "Inkscape SVG", co je v principe
+identicke ako save as "Plain SVG", ale je tam nejake navyse info, resp. prikazy
+pre samotny Inkscape editor (do bucnosti).
+
+POZOR !!!
+Logo obsahuje text s Exo 2 fonts, ktore mam nainstalovane v systeme navyse.
+Samotny SVG subor sa na tieto fonty "len odvolava", takze na inom pocitaci,
+kde nie su Exo 2 fonts nainstalovane, budu nahradene nejakymi default fonts.
+
+Text (MukeWiki) je v danom pripade object (fonts s nejakymi vlastnostami).
+Inkscape umoznuje "object" konvertovat na "path" (Path -> Object to Path),
+t.j. v pripade textu (MukeWiki) ho prekresli na zakladne, univerzalne geometricke
+utvary.
+
+Analogicky to plati pre PDF format. V pripade, ak ulozim nejaky text ako "object"
+do PDF formatu, tak v tomto PDF subore je text mozne napr. vyznacit a kopirovat.
+Ale ak tento text object konvertujem na "path" a nasledne ulozim do PDF, tak taka
+moznost uz nie je.
+
+Na rozdiel od SVG formatu, PDF subor umoznuje vlozenie fonts (embedded fonts).
+V suboroch, ktore obsahuju mnozstvo textu, je kontraproduktivne (velkost suboru,
+rychlost renderovania) konvertovat (object to path), prekreslovat kazde jedno pismeno
+na konkretny geometricky utvar.
+
+
+$ inkscape --export-type=pdf,png MukeWiki.Inkscape.object.svg
+# ak nebudu Exo 2 fonts nainstalovane, budu nahradene inymi default fonts,
+# alebo potom konvertovat z MukeWiki.Inkscape.path.svg
+
+$ inkscape --export-filename=MukeWiki.logo.png -w 300 --export-area-drawing MukeWiki.Inkscape.path.svg
+Background RRGGBBAA: ffffff00
+Area 50:5:650:495 exported to 300 x 245 pixels (48 dpi)
+# konkretne MukeWiki logo je v odtienoch sedej
+# priamo v Inkscape programe mam moznost "Export PNG image" a v Advanced nastaveniach
+vybrat "Bit depth" moznost "GrayAlpha_8" namiesto default "RGBA_8", ale prikazova riadka
+programu Inkscape to neumoznuje
+$ convert -colorspace gray MukeWiki.logo.png MukeWiki.logo.gray.png
+
+$ inkscape --export-type=png --export-filename=- MukeWiki.Inkscape.path.svg | convert - -colorspace gray MukeWiki.logo.png
