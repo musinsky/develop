@@ -1,0 +1,17 @@
+# 2022-03-29
+
+http://www.jinr.ru/photoarchive-en/ => JINR Official logos
+http://www.jinr.ru/wp-content/uploads/logo/logo_jinr_21.jpg
+na jinr strankach sa nepodarilo najst vektorovy format
+
+https://dlnp.jinr.ru/en/component/edocman/logo/
+https://dlnp.jinr.ru/en/component/edocman/logotip-oiyai-pdf/download
+$ wget https://dlnp.jinr.ru/en/component/edocman/logotip-oiyai-pdf/download -O jinr_logo.pdf
+PDF subor bol vytvoreny (podla info zo stranok dlnp) 2017-01-25
+
+POZOR !!!
+Original JINR PDF logo je v "nejakom" tamovo sedom prevedeni,
+SVG uz ako cisto cierne.
+
+
+https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Slovakia.svg
