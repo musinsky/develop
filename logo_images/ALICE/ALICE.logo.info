@@ -1,0 +1,17 @@
+# 2022-03-31
+
+https://alice-figure.web.cern.ch/alice_logo (login required)
+neobsahuje ziadne vektorove (okrem rainbow logo) obrazky
+
+https://alice-figure.web.cern.ch/
+Files with the ALICE logo: (v spodnej casti stranky)
+https://alice-figure.web.cern.ch/sites/default/files/documents/ALICE_EPS_Logos.zip
+
+color = ALICE_EPS_Logos/Without Strapline/Clear Background/Four_Colors_Logo.eps
+gray  = ALICE_EPS_Logos/Without Strapline/Clear Background/One_Color_Logo.eps
+Last modified 2012-08-03. EPS subory su ulozene uplne "prasacky", velkost cca 900 KB
+a vo vnutri je vnorene "bohvieco". Original subory ani neviem zobrazit, potrebne
+prekonvertovat do pdf, resp. eps.
+
+Inkscape nastastie importuje priamo original "prasacky" eps subor. Minimalne upravy
+(vycentrovanie), zachovane povodne colors. Odstraneny node s white vrstvou.
