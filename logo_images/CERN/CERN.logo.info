@@ -1,7 +1,11 @@
-# 2022-03-30
+# 2022-04-07
 
-https://design-guidelines.web.cern.ch/downloads   (login required)
+https://design-guidelines.web.cern.ch/downloads (login required)
+https://design-guidelines.web.cern.ch/sites/default/files/2021-06/CERN%20Logo%20%3A%20RGB%20colors%20%28for%20web%29.zip
+File "CERN Logo RGB colors (for web).zip" last modified 2021-06-02 (info from site).
 
-"CERN Logo RGB colors (for web).zip" last modified 2021-06-02
+badge = Badge/LogoBadge_Logo Badge.svg
+black = Outline/SVG/LogoOutline-Black.svg
+blue  = Outline/SVG/LogoOutline-Blue.svg
 
 CERN RGBA blue color = [0,51,160,100] (#0033A0FF)
