@@ -1,0 +1,16 @@
+# 2022-04-07
+
+Logo.Inkscape.object.svg - text ako object, vhodne pre dalsiu upravu textu
+Logo.Inkscape.path.svg   - text ako path (glyphs), vhodne na konvertovanie
+
+$ inkscape --export-type=pdf,png Logo.Inkscape.object.svg # iba ak mam nainstalovane potrebne fonts
+$ inkscape --export-type=pdf,png Logo.Inkscape.path.svg   # text ako glyphs, fonts sa nepouziva
+
+$ inkscape --export-filename=logo.png -w 500 --export-area-drawing Logo.Inkscape.path.svg
+
+Pre obrazky, ktore su v odtienoch sedej, v Inkscape programe mam moznost "Export PNG image"
+a v Advanced nastaveniach vybrat priamo "Bit depth" moznost "GrayAlpha_8", namiesto default
+"RGBA_8". Prikazova riadka programu Inkscape to vsak neumoznuje (export asi vzdy do RGBA).
+
+$ convert -colorspace gray logo.png logo.gray.png
+$ inkscape --export-type=png --export-filename=- logo.svg | convert - -colorspace gray logo.png
