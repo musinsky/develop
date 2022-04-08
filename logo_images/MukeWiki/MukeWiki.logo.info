@@ -1,4 +1,4 @@
-# 2022-04-07
+# 2022-04-08
 
 https://www.svgrepo.com/svg/228617/nuclear-atom
 
@@ -37,3 +37,7 @@ Preto vhodnejsie konvertovat z "MukeWiki.Inkscape.path.svg", nezavisle od toho,
 ci v systeme su nainstalovane konkretne fonts alebo nie.
 Subor "MukeWiki.Inkscape.object.svg" vhodnejsi pre moznost dalsieho editovanie
 textu ako celeho object.
+
+# --export-area-page             # 700 x 500 = frame + text + logo
+# --export-area=130:25:570:465   # 440 x 440 = text + logo
+# --export-area=170:20:530:380   # 360 x 360 = logo
