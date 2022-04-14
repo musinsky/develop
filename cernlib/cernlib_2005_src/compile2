@@ -1,0 +1,15 @@
+#!/bin/bash
+# Jan Musinsky
+# mucha@sunhe.jinr.ru
+# 24.11.2004
+
+rm -f out.exe
+
+g77 -O -fno-automatic -fno-second-underscore -fugly-complex \
+    -DCERNLIB_LINUX -DCERNLIB_UNIX -DCERNLIB_LNX -DCERNLIB_QMGLIBC \
+    -o out.exe *.F \
+    `cernlib geant321 graflib/Motif kernlib mathlib packlib`
+
+#    for Geant321 better use low optimisation -DCERNLIB_BLDLIB \
+
+#    -o out.exe out.f \

@@ -1,0 +1,20 @@
+# 2022-04-14
+
+-r--r--r-- 1      501 2004-11-24 17:33:00 compile
+-r--r--r-- 1      381 2004-11-24 17:34:00 compile2
+-r--r--r-- 1     2327 2005-05-30 09:41:40 compile_cernlib
+-r--r--r-- 1   252881 2005-05-30 09:08:58 src_car.tar.gz
+-r--r--r-- 1   135539 2005-05-30 09:09:04 src_cfortran.tar.gz
+-r--r--r-- 1   273322 2005-05-30 09:09:08 src_cmz.tar.gz
+-r--r--r-- 1   100115 2005-05-30 09:09:12 src_config.tar.gz
+-r--r--r-- 1 10920878 2005-05-30 09:09:37 src_geant321.tar.gz
+-r--r--r-- 1   774771 2005-05-30 09:09:25 src_graflib.tar.gz
+-r--r--r-- 1      392 2005-05-30 09:08:50 src_Imakefile.tar.gz
+-r--r--r-- 1      287 2005-05-30 09:09:32 src_include.tar.gz
+-r--r--r-- 1   673617 2005-05-30 09:09:37 src_mathlib.tar.gz
+-r--r--r-- 1  8622280 2005-05-30 09:09:59 src_mclibs.tar.gz
+-r--r--r-- 1  4744556 2005-05-30 09:10:05 src_packlib.tar.gz
+-r--r--r-- 1   195348 2005-05-30 09:10:07 src_patchy.tar.gz
+-r--r--r-- 1  3003377 2005-05-30 09:10:16 src_pawlib.tar.gz
+-r--r--r-- 1    23001 2005-05-30 09:10:22 src_phtools.tar.gz
+-r--r--r-- 1     5434 2005-05-30 09:10:26 src_scripts.tar.gz

@@ -1,0 +1,23 @@
+#!/bin/bash
+# Jan Musinsky
+# mucha@sunhe.jinr.ru
+# 24.11.2004
+
+if test "$1" = "" ; then
+  echo "usage:	compile file_name.f"
+  exit
+fi
+
+if ( ! test -e $1 ) ; then
+  echo "incorrect name of file: $1 !!!"
+  exit
+fi
+
+rm -f $1.exe
+
+g77 -O -fno-automatic -fno-second-underscore -fugly-complex \
+    -DCERNLIB_LINUX -DCERNLIB_UNIX -DCERNLIB_LNX -DCERNLIB_QMGLIBC \
+    -o $1.exe $1 \
+    `cernlib geant321 graflib/Motif kernlib mathlib packlib`
+
+#    for Geant321 better use low optimisation -DCERNLIB_BLDLIB

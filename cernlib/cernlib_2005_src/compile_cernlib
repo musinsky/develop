@@ -1,0 +1,93 @@
+#!/bin/sh
+# 30.05.2005
+
+# Unpack the source files and set up the build structure, e.g.
+# /tmp/cernlib/2005/src (and lib)
+
+list=`ls src_*.gz`
+
+for ffile in $list
+do
+  gunzip -c $ffile | tar xf -
+done
+
+# Establish the environment variables for the build procedures
+# Depending on the system, other directories may need to be added to the PATH
+# e.g. for the build tools and alternative compilers.
+
+CERN_LEVEL=`gunzip -c src_Imakefile.tar.gz | tar tf - | awk -F/ '{print $1}'`
+
+CERN=`pwd`
+CERN_ROOT=$CERN/$CERN_LEVEL
+CVSCOSRC=$CERN/$CERN_LEVEL/src
+PATH=$CERN_ROOT/bin:$PATH
+
+export CERN
+export CERN_LEVEL
+export CERN_ROOT 
+export CVSCOSRC
+export PATH
+
+# Create the build directory structure
+
+cd $CERN_ROOT
+mkdir -p build bin lib build/log
+
+# add mucha
+cd $CERN
+if [ -f /usr/lib/libblas.a ]
+then echo OK,  you have /usr/lib/libblas.a file
+else echo You must have /usr/lib/libblas.a file !!!; exit
+fi
+if [ -f /usr/lib/liblapack.a ]
+then echo OK,  you have /usr/lib/liblapack.afile
+else echo You must have /usr/lib/liblapack.a file !!!; exit
+fi
+ln -s /usr/lib/libblas.a $CERN_ROOT/lib/libblas.a
+ln -s /usr/lib/liblapack.a $CERN_ROOT/lib/liblapack3.a
+mv -i $CVSCOSRC/geant321/data/xsneut95.dat $CERN_ROOT/lib/xsneut95.dat
+
+# Create the top level Makefile with imake
+
+cd $CERN_ROOT/build
+$CVSCOSRC/config/imake_boot
+
+# Install kuipc and the scripts (cernlib, paw and gxint) in $CERN_ROOT/bin
+
+gmake bin/kuipc > log/kuipc 2>&1
+gmake scripts/Makefile
+cd scripts
+gmake install.bin > ../log/scripts 2>&1
+
+# Install the libraries
+
+cd $CERN_ROOT/build
+gmake > log/make.`date +%m%d` 2>&1
+
+
+#add mucha
+
+# packlib (need only kxterm)
+cd $CERN_ROOT/build/packlib
+gmake install.bin > ../log/log_packlib
+
+# pawlib
+cd $CERN_ROOT/build/pawlib
+gmake install.bin > ../log/log_pawlib
+
+# teraz instalacia vsetkeho do /cern/$CERN_ROOT
+cd $CERN
+mkdir -p /cern/$CERN_LEVEL/lib
+mkdir -p /cern/$CERN_LEVEL/bin
+ln -s /cern/$CERN_LEVEL /cern/pro
+
+cp -l compile /cern/pro/
+cp -l compile2 /cern/pro/
+cp -l $CERN_ROOT/lib/* /cern/pro/lib/
+#cp -l $CERN_ROOT/bin/* /cern/pro/bin/
+cp -l $CERN_ROOT/bin/cernlib /cern/pro/bin/cernlib
+cp -l $CERN_ROOT/bin/gxint /cern/pro/bin/gxint
+cp -l $CERN_ROOT/bin/kxterm /cern/pro/bin/kxterm
+cp -l $CERN_ROOT/bin/paw /cern/pro/bin/paw
+cp -l $CERN_ROOT/bin/paw++ /cern/pro/bin/paw++
+cp -l $CERN_ROOT/bin/pawX11 /cern/pro/bin/pawX11

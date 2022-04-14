@@ -1,0 +1,35 @@
+# 2022-04-14
+
+./bin:
+-rw-rw-r-- 1     696 2005-10-10 14:12:26 cern_compile.bat
+-rw-rw-r-- 1    5614 2005-10-12 12:17:42 cernlib.bat
+-rw-rw-r-- 1   34304 1998-09-30 18:31:20 ix_higz.dll
+-rw-rw-r-- 1  146432 1998-03-23 10:37:04 kuipc.exe
+-rw-rw-r-- 1     149 2005-10-10 13:33:44 paw.bat
+-rw-rw-r-- 1      15 2005-10-10 13:03:00 pawlogon.kumac
+-rw-rw-r-- 1 5021592 2001-09-12 18:50:46 pawNT.exe
+
+./lib:
+-rw-rw-r-- 1  362222 1998-06-29 19:26:04 ariadne.lib
+-rw-rw-r-- 1  494184 2000-06-28 12:40:50 blas.lib
+-rw-rw-r-- 1   69485 1998-06-29 19:26:06 cojets.dat
+-rw-rw-r-- 1  762432 1998-06-29 19:26:08 cojets.lib
+-rw-rw-r-- 1  169753 1998-06-29 19:26:10 eurodec.dat
+-rw-rw-r-- 1  195082 1998-06-29 19:26:12 eurodec.lib
+-rw-rw-r-- 1  275601 1998-06-29 19:26:14 flukaaf.dat
+-rw-rw-r-- 1 1526388 1998-06-29 19:26:18 fritiof.lib
+-rw-rw-r-- 1 5326182 1999-02-01 18:26:22 geant321.lib
+-rw-rw-r-- 1 1170136 2001-05-18 19:13:24 graflib.lib
+-rw-rw-r-- 1 1345426 2001-06-28 16:05:08 grafX11.lib
+-rw-rw-r-- 1 2244032 2001-05-18 19:18:32 isajet751.lib
+-rw-rw-r-- 1  100587 2001-05-18 19:18:42 isajet.dat
+-rw-rw-r-- 1 1481436 2001-05-18 19:19:38 jetset74.lib
+-rw-rw-r-- 1  872048 2001-05-18 19:13:48 kernlib.lib
+-rw-rw-r-- 1 5907068 2000-06-28 12:42:12 lapack3.lib
+-rw-rw-r-- 1  361002 1998-06-29 19:26:48 lepto63.lib
+-rw-rw-r-- 1 1726564 2001-05-18 19:14:08 mathlib.lib
+-rw-rw-r-- 1 7086056 2001-05-29 16:13:52 packlib.lib
+-rw-rw-r-- 1 5056344 2001-06-28 16:06:58 pawlib.lib
+-rw-rw-r-- 1   82052 1999-04-07 19:09:46 photos202.lib
+-rw-rw-r-- 1   68940 1998-06-29 19:27:58 photos.lib
+-rw-rw-r-- 1 2536682 2001-05-18 19:20:16 pythia6152.lib
