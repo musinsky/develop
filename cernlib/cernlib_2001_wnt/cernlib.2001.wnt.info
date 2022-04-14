@@ -1,0 +1,50 @@
+# 2022-04-14
+# tested on Windows 10 Home x64 (version 21H2)
+
+## about
+Digital Visual Fortran 6.0 => Compaq bought Digital in 1999 => Compaq Visual Fortran 6.1
+
+Compaq_Visual_Fortran_6.5.7z    => CD-ROM from Dubna 2004 (version exist also on ru tracker)
+cernlib_archive_20220413.tar.xz => from cernlib web
+
+## install Compaq Visual Fortran v6.5
+- Compaq_Visual_Fortran_6.5\X86\SETUPX86.EXE   (not Compaq_Visual_Fortran_6.5\SETUP.EXE)
+- Setup Install Type
+  Custom
+  Change Directory => C:\Program Files (x86)\Microsoft Visual Studio\*   (not C:\Program Files\)
+- Custom Options Selection
+  Fortran Compiler and Microsoft Studio (only these two components)
+
+- Environment Variable Update => Yes
+- Compaq Array Visualizer Install => No
+
+- upgrade to v6.6 and v6.6C   (optional)
+
+## install CERNLIB 2001
+- copy necessary files from "download\2001_wnt\bin\" and "download\2001_wnt\lib\" to
+  "C:\Program Files (x86)\cernlib\2001\bin"
+  "C:\Program Files (x86)\cernlib\2001\lib"
+  skip all "xxxmd.*" multithread files with Castor (rfio)
+
+- set Environment Variables in Windows as administrator
+  C:\Windows\system32> rundll32.exe sysdm.cpl,EditEnvironmentVariables (as admin)
+  add "C:\Program Files (x86)\cernlib\2001\bin\" to Path (as user or system variable)
+  add "C:\Program Files (x86)\cernlib\2001\lib\" to LIB  (must be as system variable)
+
+- to make PAW refresh the screen put (create) in your "%USERPROFILE%\pawlogon.kumac"
+IGSET 2buf 11
+
+## usage
+D:\> fl32 hexam.f packlib.lib
+D:\> fl32 htest.f packlib.lib
+D:\> fl32 minexam.f fcnk0.f packlib.lib
+
+## notes
+- C:\Program Files (x86)\cernlib\2001\bin\cernlib.bat
+  "fl32 your_program_name.f @cernlib"
+  create "cernlib" file, but with "shiftmd.lib" multithread library, why ?!
+
+- use "FL32.exe", "F77.exe" or "DF.exe" gives different results ?!
+
+- batch file with CVF environment variable
+  C:\Program Files (x86)\Microsoft Visual Studio\DF98\BIN\DFVARS.BAT
