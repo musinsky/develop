@@ -1,11 +1,16 @@
 #!/usr/bin/bash
 
-# 2022-04-27
+# 2022-04-28
 # https://github.com/musinsky/develop/blob/master/disk_drive/disk_part_info.sh
 
 # GPT or MBR (dos) disk partitions info (run as root or use sudo)
 # util-linux 2.35+ lsblk support all necessary columns to print
 # util-linux 2.36+ fdisk support -x, --list-details
+
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root (or sudo user)"
+    exit 1
+fi
 
 DISK="/dev/nvme0n1"   # or change to necessary (no multiple disks)
 if [ ! -e "$DISK" ]; then
