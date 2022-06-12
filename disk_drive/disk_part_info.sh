@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# 2022-04-28
+# 2022-06-12
 # https://github.com/musinsky/develop/blob/master/disk_drive/disk_part_info.sh
 
 # GPT or MBR (dos) disk partitions info (run as root or use sudo)
@@ -21,7 +21,7 @@ echo "DISK="$DISK
 DISKMODEL=$(fdisk -l $DISK | grep 'Disk model:')
 DISKMODEL=$(echo $DISKMODEL | sed 's/ *$//')          # remove trailing spaces
 DISKMODEL=$(echo $DISKMODEL | sed 's/Disk model: //') # remove "Disk model: "
-DISKMODEL=$(echo $DISKMODEL | sed 's/ /./')           # replace " " by "."
+DISKMODEL=$(echo $DISKMODEL | sed 's/ /./g')          # replace " " by "."
 echo "DISKMODEL="$DISKMODEL
 
 DISKTYPE=$(fdisk -l $DISK | gawk '/Disklabel type:/ {print $3}')
