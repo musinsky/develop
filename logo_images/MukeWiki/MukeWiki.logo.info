@@ -1,4 +1,4 @@
-# 2022-04-08
+# 2022-06-13
 
 https://www.svgrepo.com/svg/228617/nuclear-atom
 
@@ -15,7 +15,8 @@ default fonts.
 Text (MukeWiki) je v danom pripade textovy object s nejakymi vlastnostami
 ako napr. font, farba, velkost a pod. Inkscape umoznuje "object" konvertovat
 na "path" (Path -> Object to Path), t.j. v pripade textu (MukeWiki) ho prekresli
-na zakladne, univerzalne geometricke utvary, resp. glyphs.
+na zakladne, univerzalne geometricke utvary, resp. glyphs. Tato moznost existuje
+aj pomocou prikazoveho riadku 'inkscape --export-text-to-path'.
 
 Analogicky to plati pre PDF format. V pripade, ak ulozim nejaky text ako "object"
 do PDF formatu, tak v tomto PDF subore je text mozne napr. vyznacit a kopirovat.
@@ -41,3 +42,4 @@ textu ako celeho object.
 # --export-area-page             # 700 x 500 = frame + text + logo
 # --export-area=130:25:570:465   # 440 x 440 = text + logo
 # --export-area=170:20:530:380   # 360 x 360 = logo
+# --export-area=140:395:560:465  # 420 x 70  = text
