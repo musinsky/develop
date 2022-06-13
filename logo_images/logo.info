@@ -1,4 +1,4 @@
-# 2022-06-10
+# 2022-06-13
 
 Logo.Inkscape.object.svg - text ako object, vhodne pre dalsiu upravu textu
 Logo.Inkscape.path.svg   - text ako path (glyphs), vhodne na konvertovanie
@@ -6,6 +6,7 @@ Logo.Inkscape.path.svg   - text ako path (glyphs), vhodne na konvertovanie
 $ inkscape --export-type=pdf,png Logo.Inkscape.object.svg # iba ak mam nainstalovane potrebne fonts
 $ inkscape --export-type=pdf,png Logo.Inkscape.path.svg   # text ako glyphs, fonts sa nepouziva
 
+# finalna produkcia do plain svg formatu
 $ inkscape --export-filename=logo.svg --export-plain-svg --export-text-to-path Logo.Inkscape.object.svg
 $ inkscape --export-filename=logo.svg --export-plain-svg Logo.Inkscape.path.svg
 
