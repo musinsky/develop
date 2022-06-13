@@ -38,7 +38,6 @@ sed -i 's/height.*/height=\"50\"/' $EDIR/MukeWiki.logo.icon.svg # one separate l
 ## mediawiki logos, wordmark (vector 2022)
 # Exo2 font-weight (Ultra-Bold=800) je pre wordmark az "prilis tlsta"
 # (pre logo ako celok OK), vhodnejsia Exo2 font-weight pre wordmark Semi-Bold=600
-
 inkscape --export-filename=- --export-id=text31681 --export-id-only $MUKEOBJECT \
     | sed 's/font-weight:800/font-weight:600/' \
     | inkscape --pipe --export-filename=$EDIR/MukeWiki.logo.wordmark.svg \
