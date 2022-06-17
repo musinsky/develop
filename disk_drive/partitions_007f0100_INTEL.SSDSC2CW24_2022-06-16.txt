@@ -1,0 +1,31 @@
+# 2022-06-16
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.38-1.fc31.x86_64 (manual upgrade instead of 2.34-4)
+util-linux-2.38-1.fc31.x86_64 (manual upgrade instead of 2.34-4)
+gdisk-1.0.5-1.fc31.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/sda
+NAME          SIZE TYPE FSTYPE FSVER LABEL MOUNTPOINT PTTYPE PARTTYPE PARTTYPENAME    PARTLABEL PARTFLAGS
+/dev/sda    223.6G disk                               dos                                       
+├─/dev/sda1    75G part ntfs               /mnt/win_c dos    0x7      HPFS/NTFS/exFAT           0x80
+├─/dev/sda2    50G part ext4   1.0         /          dos    0x83     Linux                     
+├─/dev/sda3    60G part ext4   1.0         /home      dos    0x83     Linux                     
+└─/dev/sda4  38.6G part ext4   1.0         /opt       dos    0x83     Linux                     
+
+[root]# fdisk -x /dev/sda | grep -B 999 '^$' && fdisk -l -o +Attrs /dev/sda | grep -A 999 'Device'
+Disk /dev/sda: 223.57 GiB, 240057409536 bytes, 468862128 sectors
+Disk model: INTEL SSDSC2CW24
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xfae6c276
+
+Device     Boot     Start       End   Sectors  Size Id Type            Attrs
+/dev/sda1  *         2048 157288447 157286400   75G  7 HPFS/NTFS/exFAT    80
+/dev/sda2       157288448 262146047 104857600   50G 83 Linux           
+/dev/sda3       262146048 387975167 125829120   60G 83 Linux           
+/dev/sda4       387975168 468862127  80886960 38.6G 83 Linux           
+
+[root]#
