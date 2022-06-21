@@ -1,0 +1,47 @@
+# 2022-06-21
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.32.1-35.el8.x86_64
+util-linux-2.32.1-35.el8.x86_64
+gdisk-1.0.3-11.el8.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT,PARTTYPE,PARTLABEL,PARTFLAGS /dev/sdb
+NAME         SIZE TYPE FSTYPE LABEL MOUNTPOINT PARTTYPE                             PARTLABEL PARTFLAGS
+/dev/sdb     1.8T disk                                                                        
+└─/dev/sdb1  1.8T part ext4         /mnt/free  0fc63daf-8483-4772-8e79-3d69d8477de4           
+
+[root]# fdisk -l -o +Type-UUID,Name,Attrs /dev/sdb
+Disk /dev/sdb: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: C84FDDBA-1433-4A37-8EA4-749DD7B3B732
+
+Device     Start        End    Sectors  Size Type             Type-UUID                            Name Attrs
+/dev/sdb1   2048 3907028991 3907026944  1.8T Linux filesystem 0FC63DAF-8483-4772-8E79-3D69D8477DE4      
+
+[root]# gdisk -l /dev/sdb
+GPT fdisk (gdisk) version 1.0.3
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+Disk /dev/sdb: 3907029168 sectors, 1.8 TiB
+Model: WDC WD20EFRX-68A
+Sector size (logical/physical): 512/4096 bytes
+Disk identifier (GUID): C84FDDBA-1433-4A37-8EA4-749DD7B3B732
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 3907029134
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2157 sectors (1.1 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048      3907028991   1.8 TiB     8300  
+
+[root]#

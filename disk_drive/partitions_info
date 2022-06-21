@@ -1,5 +1,9 @@
 # 2022-06-21
 
-007f0100 old work PC with F31 (current CS8)
+007f0100 old work PC with F31
+d59353c0 old work PC with CS8 (shell script has been slightly modified)
+
 d5934bc0 work PC
-a8c06a00 Intel NUC obyvacka BJ (2022-04-29 Win7, 2022-04-30 Win10 default partition table)
+
+a8c06a00 Intel NUC obyvacka BJ (2022-04-29 Win7)
+a8c06a00 Intel NUC obyvacka BJ (2022-04-30 Win10 default partition table)
