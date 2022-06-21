@@ -1,0 +1,27 @@
+# 2022-06-21
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.38-1.fc36.x86_64
+util-linux-2.38-1.fc36.x86_64
+gdisk-1.0.9-2.fc36.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/sdc
+NAME         SIZE TYPE FSTYPE FSVER LABEL   MOUNTPOINT                 PTTYPE PARTTYPE PARTTYPENAME       PARTLABEL PARTFLAGS
+/dev/sdc    14.9G disk                                                 dos                                          
+├─/dev/sdc1 14.9G part exfat  1.0   Ventoy  /run/media/musinsky/Ventoy dos    0x7      HPFS/NTFS/exFAT              0x80
+└─/dev/sdc2   32M part vfat   FAT16 VTOYEFI                            dos    0xef     EFI (FAT-12/16/32)           
+
+[root]# fdisk -x /dev/sdc | grep -B 999 '^$' && fdisk -l -o +Attrs /dev/sdc | grep -A 999 'Device'
+Disk /dev/sdc: 14.91 GiB, 16013852672 bytes, 31277056 sectors
+Disk model: silicon-power   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x4b1d6082
+
+Device     Boot    Start      End  Sectors  Size Id Type               Attrs
+/dev/sdc1  *        2048 31211519 31209472 14.9G  7 HPFS/NTFS/exFAT       80
+/dev/sdc2       31211520 31277055    65536   32M ef EFI (FAT-12/16/32) 
+
+[root]#
