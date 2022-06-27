@@ -1,0 +1,54 @@
+# 2022-06-27
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.38-1.fc36.x86_64
+util-linux-2.38-1.fc36.x86_64
+gdisk-1.0.9-2.fc36.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/sda
+NAME         SIZE TYPE FSTYPE FSVER LABEL MOUNTPOINT PTTYPE PARTTYPE                             PARTTYPENAME         PARTLABEL            PARTFLAGS
+/dev/sda     3.6T disk                               gpt                                                                                   
+└─/dev/sda1  3.6T part ntfs         WD4TB /mnt/win_f gpt    ebd0a0a2-b9e5-4433-87c0-68b6b72699c7 Microsoft basic data Microsoft basic data 
+
+[root]# fdisk -x /dev/sda | grep -B 999 '^$' && fdisk -l -o +Type-UUID,Name,Attrs /dev/sda | grep -A 999 'Device'
+Disk /dev/sda: 3.64 TiB, 4000787030016 bytes, 7814037168 sectors
+Disk model: WDC WD40EFRX-68N
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 283978E6-E725-4C15-8A9D-914D25B70FB1
+First usable LBA: 34
+Last usable LBA: 7814037134
+Alternative LBA: 7814037167
+Partition entries starting LBA: 2
+Allocated partition entries: 128
+Partition entries ending LBA: 33
+
+Device     Start        End    Sectors  Size Type                 Type-UUID                            Name                 Attrs
+/dev/sda1   2048 7814035455 7814033408  3.6T Microsoft basic data EBD0A0A2-B9E5-4433-87C0-68B6B72699C7 Microsoft basic data 
+
+[root]# gdisk -l /dev/sda
+GPT fdisk (gdisk) version 1.0.9
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+Disk /dev/sda: 7814037168 sectors, 3.6 TiB
+Model: WDC WD40EFRX-68N
+Sector size (logical/physical): 512/4096 bytes
+Disk identifier (GUID): 283978E6-E725-4C15-8A9D-914D25B70FB1
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 7814037134
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 3693 sectors (1.8 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048      7814035455   3.6 TiB     0700  Microsoft basic data
+
+[root]#

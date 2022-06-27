@@ -1,9 +1,11 @@
-# 2022-06-21
+# 2022-06-27
 
-007f0100 old work PC with F31
+007f0100 old work PC with F31 (MBR)
 d59353c0 old work PC with CS8 (shell script has been slightly modified)
 
 d5934bc0 work PC
 
-a8c06a00 Intel NUC obyvacka BJ (2022-04-29 Win7)
+a8c06201 home PC (2022-06-27)
+
+a8c06a00 Intel NUC obyvacka BJ (2022-04-29 Win7, MBR)
 a8c06a00 Intel NUC obyvacka BJ (2022-04-30 Win10 default partition table)

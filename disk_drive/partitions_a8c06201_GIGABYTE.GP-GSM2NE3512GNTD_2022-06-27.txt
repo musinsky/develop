@@ -1,0 +1,54 @@
+# 2022-06-27
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.38-1.fc36.x86_64
+util-linux-2.38-1.fc36.x86_64
+gdisk-1.0.9-2.fc36.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/nvme1n1
+NAME               SIZE TYPE FSTYPE FSVER LABEL         MOUNTPOINT PTTYPE PARTTYPE                             PARTTYPENAME         PARTLABEL PARTFLAGS
+/dev/nvme1n1     476.9G disk                                       gpt                                                                        
+└─/dev/nvme1n1p1 476.9G part ntfs         Gigabyte476GB /mnt/win_e gpt    ebd0a0a2-b9e5-4433-87c0-68b6b72699c7 Microsoft basic data           
+
+[root]# fdisk -x /dev/nvme1n1 | grep -B 999 '^$' && fdisk -l -o +Type-UUID,Name,Attrs /dev/nvme1n1 | grep -A 999 'Device'
+Disk /dev/nvme1n1: 476.94 GiB, 512110190592 bytes, 1000215216 sectors
+Disk model: GIGABYTE GP-GSM2NE3512GNTD              
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 77A2FBF6-58A3-43CE-9B33-93D9774F79FB
+First usable LBA: 34
+Last usable LBA: 1000215182
+Alternative LBA: 1000215215
+Partition entries starting LBA: 2
+Allocated partition entries: 128
+Partition entries ending LBA: 33
+
+Device         Start        End    Sectors   Size Type                 Type-UUID                            Name Attrs
+/dev/nvme1n1p1  2048 1000214527 1000212480 476.9G Microsoft basic data EBD0A0A2-B9E5-4433-87C0-68B6B72699C7      
+
+[root]# gdisk -l /dev/nvme1n1
+GPT fdisk (gdisk) version 1.0.9
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+Disk /dev/nvme1n1: 1000215216 sectors, 476.9 GiB
+Model: GIGABYTE GP-GSM2NE3512GNTD              
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 77A2FBF6-58A3-43CE-9B33-93D9774F79FB
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 1000215182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2669 sectors (1.3 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048      1000214527   476.9 GiB   0700  
+
+[root]#
