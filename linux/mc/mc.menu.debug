@@ -1,0 +1,59 @@
+shell_patterns=0
+
+# 2022-06-29
+# https://github.com/musinsky/develop/blob/master/linux/mc/mc.menu.debug
+
+# S dokumentaciou to nie je prilis optimalne, najviac info v "man mc"
+# https://github.com/MidnightCommander/mc/blob/master/misc/mc.menu.in
+# http://www.softpanorama.org/OFM/MC/user_menu.shtml
+# https://phdru.name/Software/dotfiles/mc/menu.html
+
+# Pattern is normal shell pattern (i.e. wildcards) or a regular expression
+# according to the global setting configured in the Options/Configuration
+# dialog. This setting can be overridden by adding "shell_patterns" as the first
+# line of the menu file. A value of 1 forces use of shell patterns, while a
+# value of 0 forces regular expressions instead.
+
+# Max. horizontalna sirka, ktora sa zaobrazi v menu je 60 znakov. Vertikalne
+# parvdepodobne bez obmedzeni.
+
+d       Documentation
+        %view
+        echo -e "At the moment, unfortunately, Midnight Commander lacks \
+                 a comprehensive set of documentation \ncovering its common \
+                 features and various best practices. Manual pages are most \
+                 complete doc.\n"
+        echo -e "$ man mc   # especially 'Edit Menu File' and \
+                 'Macro Substitution' sections\n"
+        echo "https://github.com/MidnightCommander/mc/blob/master/misc/mc.menu.in"
+        echo "http://www.softpanorama.org/OFM/MC/user_menu.shtml"
+
+m       Show macro substitution
+        %view
+        echo -e "%%m   The current menu name\n=>   %m"
+        echo -e "%%f   The current file name (if non-local vfs, file will \
+                 be copied locally and %%f will be full path to it)\n=>   %f"
+        echo -e "%%p   The current file name\n=>   %p"
+        echo -e "%%x   The extension of current file name\n=>   %x"
+        echo -e "%%b   The current file name without extension\n=>   %b"
+        echo -e "%%d   The current directory name\n=>   %d"
+        echo -e "%%t   The currently tagged files\n=>   %t"
+        echo -e "%%u   Similar to the %%t macro, but in addition the files \
+                 are untagged\n=>   DOES NOT SHOW IN THIS EXAMPLE"
+        echo -e "%%s   The selected files (the tagged files if any, otherwise \
+                 the current file)\n=>   %s"
+        echo "##########"
+        echo -e "If the format letter is in uppercase (%%F, %%P, %%X, %%B, \
+                 %%D, %%T, %%U or %%S),\nit refers to the other (unselected) \
+                 panel. For example,"
+        echo "##########"
+        echo -e "%%S   The selected files in the unselected panel\n=>   %S"
+
+012345678_maximum_menu_entry_size_is_60_chars____50123456789END
+
+# pozor zavisi aky "shell_patterns=" 0 alebo 1
+
+=+ f \.7z | f *.ZIP & t rl
+x       Extract the contents of a zip or 7z file
+        echo "7z x %f"
+        7z x %f
