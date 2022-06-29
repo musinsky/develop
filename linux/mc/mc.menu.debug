@@ -1,21 +1,24 @@
-shell_patterns=0
+shell_patterns=1
 
 # 2022-06-29
 # https://github.com/musinsky/develop/blob/master/linux/mc/mc.menu.debug
 
-# S dokumentaciou to nie je prilis optimalne, najviac info v "man mc"
-# https://github.com/MidnightCommander/mc/blob/master/misc/mc.menu.in
-# http://www.softpanorama.org/OFM/MC/user_menu.shtml
-# https://phdru.name/Software/dotfiles/mc/menu.html
-
 # Pattern is normal shell pattern (i.e. wildcards) or a regular expression
-# according to the global setting configured in the Options/Configuration
+# according to the global setting configured in the Options -> Configuration
 # dialog. This setting can be overridden by adding "shell_patterns" as the first
 # line of the menu file. A value of 1 forces use of shell patterns, while a
-# value of 0 forces regular expressions instead.
+# value of 0 forces regular (GNU regex) expressions instead.
 
-# Max. horizontalna sirka, ktora sa zaobrazi v menu je 60 znakov. Vertikalne
-# parvdepodobne bez obmedzeni.
+# Macro (command) "%view" is used to invoke the internal viewer. This macro can
+# be used alone, or with arguments (separated by commas). If you pass any
+# arguments to this macro, they should be enclosed in brackets {}. The arguments
+# are: "ascii" to force the viewer into ascii mode; "hex" to force the viewer
+# into hex mode; "nroff" to tell the viewer that it should interpret color
+# highlighting and the bold and underline sequences of nroff; "unformatted" to
+# tell the viewer to not interpret nroff commands for making the text bold or
+# underlined.
+
+# By default first menu entry is the default entry
 
 d       Documentation
         %view
@@ -26,18 +29,25 @@ d       Documentation
         echo -e "$ man mc   # especially 'Edit Menu File' and \
                  'Macro Substitution' sections\n"
         echo "https://github.com/MidnightCommander/mc/blob/master/misc/mc.menu.in"
+        echo "https://github.com/MidnightCommander/mc/blob/master/misc/mc.ext.in"
+        echo "https://github.com/MidnightCommander/mc/tree/master/misc/macros.d \
+              (very old date)"
         echo "http://www.softpanorama.org/OFM/MC/user_menu.shtml"
 
-m       Show macro substitution
+m       Macro substitution
         %view
         echo -e "%%m   The current menu name\n=>   %m"
+        echo "##########"
+        echo -e "%%p   The current file name (without path, but pwd is its \
+                 path)\n=>   %p"
         echo -e "%%f   The current file name (if non-local vfs, file will \
                  be copied locally and %%f will be full path to it)\n=>   %f"
-        echo -e "%%p   The current file name\n=>   %p"
         echo -e "%%x   The extension of current file name\n=>   %x"
         echo -e "%%b   The current file name without extension\n=>   %b"
-        echo -e "%%d   The current directory name\n=>   %d"
-        echo -e "%%t   The currently tagged files\n=>   %t"
+        echo -e "%%d   The current directory name (pwd, without trailing \
+                 slash)\n=>   %d"
+        echo -e "%%t   The currently tagged files (space separated \
+                 list)\n=>   %t"
         echo -e "%%u   Similar to the %%t macro, but in addition the files \
                  are untagged\n=>   DOES NOT SHOW IN THIS EXAMPLE"
         echo -e "%%s   The selected files (the tagged files if any, otherwise \
@@ -49,11 +59,31 @@ m       Show macro substitution
         echo "##########"
         echo -e "%%S   The selected files in the unselected panel\n=>   %S"
 
+p       Prompt for the substitution
+        %view
+        bla="%{type some text}"
+        echo $bla
+        echo "You typed $(echo $bla | wc -w) words"
+
 012345678_maximum_menu_entry_size_is_60_chars____50123456789END
+|----------------------------------------------------------|
+-       ##### Conditions try with *.tar.gz files #####
+-       ##### don't try "multi type" & t rlf     #####
+-       ##### instead of & t r & t l & t f       #####
 
-# pozor zavisi aky "shell_patterns=" 0 alebo 1
+= f *.tar.gz & t r
+-1      condition "= f *.tar.gz & t r"
 
-=+ f \.7z | f *.ZIP & t rl
-x       Extract the contents of a zip or 7z file
-        echo "7z x %f"
-        7z x %f
++ f *.tar.gz & t r
+-2      condition "+ f *.tar.gz & t r"
+
+=+ f *.tar.gz & t r
+-3      condition "=+ f *.tar.gz & t r" (but -1 is first)
+
+=+ f *.tar.gz & t r & t t
+-4      condition "=+ f *.tar.gz & t r & t t"
+
+=+ t *.tar.gz & t r & t t
+-5      condition "=+ t *.tar.gz & t r & t t"
+
+-6      last condition is 6
