@@ -1,6 +1,6 @@
 shell_patterns=1
 
-# 2022-06-29
+# 2022-06-30
 # https://github.com/musinsky/develop/blob/master/linux/mc/mc.menu.debug
 
 # Pattern is normal shell pattern (i.e. wildcards) or a regular expression
@@ -8,6 +8,14 @@ shell_patterns=1
 # dialog. This setting can be overridden by adding "shell_patterns" as the first
 # line of the menu file. A value of 1 forces use of shell patterns, while a
 # value of 0 forces regular (GNU regex) expressions instead.
+
+# When an option is selected (from menu) all the command lines of the option are
+# copied to a temporary file in the temporary directory and then that file is
+# executed. This allows the user to put normal shell constructs in the menus.
+# Also simple macro substitution takes place before executing the menu code.
+#   menu item      => $ /bin/sh /var/tmp/mc-musinsky/mcusrGJ2DO1 # Fedora linux
+#   e     example     #! /bin/sh
+#         echo %f     echo foo.bar
 
 # Macro (command) "%view" is used to invoke the internal viewer. This macro can
 # be used alone, or with arguments (separated by commas). If you pass any
