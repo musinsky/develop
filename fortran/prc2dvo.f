@@ -1,5 +1,6 @@
-c     2002-10-23
-c     ascii -> bin
+c     1997-06-04
+c     prc_dvo.f na VVG pocitaci, neskor tiez pod nazvom ascii2bin.f
+c     povodny program na prevod allppn.dst -> allppn.dvo (ascii -> bin)
 
       program prc_dvo
 
