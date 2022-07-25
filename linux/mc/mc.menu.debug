@@ -1,6 +1,6 @@
 shell_patterns=1
 
-# 2022-06-30
+# 2022-07-26
 # https://github.com/musinsky/develop/blob/master/linux/mc/mc.menu.debug
 
 # Pattern is normal shell pattern (i.e. wildcards) or a regular expression
@@ -72,6 +72,11 @@ p       Prompt for the substitution
         bla="%{type some text}"
         echo $bla
         echo "You typed $(echo $bla | wc -w) words"
+
+c       Color View
+        %view{ascii,nroff}
+        echo "\fB\-\-automake\-acdir\fR=\fI\,DIR\/\fR" \
+             "bla_\fBaaa\fR=\fIbbb\fR_bla" | nroff -c -Tlatin1 -mandoc
 
 012345678_maximum_menu_entry_size_is_60_chars____50123456789END
 |----------------------------------------------------------|
