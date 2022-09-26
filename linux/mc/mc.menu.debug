@@ -1,6 +1,6 @@
 shell_patterns=1
 
-# 2022-07-28
+# 2022-09-26
 # https://github.com/musinsky/develop/blob/master/linux/mc/mc.menu.debug
 
 # Pattern is normal shell pattern (i.e. wildcards) or a regular expression
@@ -8,6 +8,16 @@ shell_patterns=1
 # dialog. This setting can be overridden by adding "shell_patterns" as the first
 # line of the menu file. A value of 1 forces use of shell patterns, while a
 # value of 0 forces regular (GNU regex) expressions instead.
+
+# At the moment, unfortunately, Midnight Commander lacks a comprehensive set of
+# documentation covering its common features and various best practices. Manual
+# pages are most complete doc.
+# $ man mc   # especially 'Edit Menu File' and 'Macro Substitution' sections
+# https://github.com/MidnightCommander/mc/blob/master/misc/mc.menu.in
+# https://github.com/MidnightCommander/mc/blob/master/misc/mc.ext.ini.in
+# http://www.softpanorama.org/OFM/MC/user_menu.shtml
+# "Adventures with the Linux Command Line" by William Shotts, online book with
+# Midnight Commander chapter available on http://linuxcommand.org/tlcl.php
 
 # When an option is selected (from menu) all the command lines of the option are
 # copied to a temporary file in the temporary directory and then that file is
@@ -26,21 +36,40 @@ shell_patterns=1
 # tell the viewer to not interpret nroff commands for making the text bold or
 # underlined.
 
+# Viewer in Midnight Commander don't support SGR Escape sequences, only the
+# backspace character, resp. by overstriking with backspaces.
+# https://github.com/MidnightCommander/mc/blob/master/tests/src/viewer/viewertest.txt
+# https://midnight-commander.org/ticket/1849
+# https://midnight-commander.org/ticket/3264
+# $ mc --help-color
+# Viewer colors are: viewnormal, viewbold, viewunderline, viewselected
+
 # By default first menu entry is the default entry
 
-d       Documentation
-        %view
-        echo -e "At the moment, unfortunately, Midnight Commander lacks \
-                 a comprehensive set of documentation \ncovering its common \
-                 features and various best practices. Manual pages are most \
-                 complete doc.\n"
-        echo -e "$ man mc   # especially 'Edit Menu File' and \
-                 'Macro Substitution' sections\n"
-        echo "https://github.com/MidnightCommander/mc/blob/master/misc/mc.menu.in"
-        echo "https://github.com/MidnightCommander/mc/blob/master/misc/mc.ext.in"
-        echo "https://github.com/MidnightCommander/mc/tree/master/misc/macros.d \
-              (very old date)"
-        echo "http://www.softpanorama.org/OFM/MC/user_menu.shtml"
+c       Color, using the backspace character (direct), WORK
+        %view{nroff}
+        echo "bboolldd_i_t_a_l_i_cregular"
+
+c       Color, using the backspace character (echo), WORK
+        %view{nroff}
+        echo -e "b\bbo\bol\bld\bd_\bi_\bt_\ba_\bl_\bi_\bcregular"
+
+c       Color, using the backspace character (groff), WORK
+        %view{nroff}
+        echo "\\fBbold\\fIitalic\\fRregular" | groff -T utf8 -man -P-c
+        # nroff -c = groff -mtty-char -Tutf8 -P-c
+
+c       Color, using SGR Escape sequence, NOT WORKING
+        %view{nroff}
+        echo "\\fBbold\\fIitalic\\fRregular" | groff -T utf8 -man
+
+c       Color, replace SGR by backspace character in grep
+        %view{nroff}
+        G_COLOR='\x1b\[31m' # SGR color
+        G_RESET='\x1b\[m'   # SGR reset
+        G_UNDER='_\x08'     # underline (overstriking with backspace)
+        echo "123" | GREP_COLORS='mt=31:ne' grep --color=always '1\|3' \
+            | sed -e "s/$G_COLOR/$G_UNDER/g" -e "s/$G_RESET//g"
 
 m       Macro substitution
         %view
@@ -72,21 +101,6 @@ p       Prompt for the substitution
         bla="%{type some text}"
         echo $bla
         echo "You typed $(echo $bla | wc -w) words"
-
-c       Color View
-        %view{ascii,nroff}
-        echo "\fB\-\-automake\-acdir\fR=\fI\,DIR\/\fR" \
-             "bla_\fBaaa\fR=\fIbbb\fR_bla" | nroff -c -Tlatin1 -mandoc
-
-# https://askubuntu.com/questions/1042234/modifying-the-color-of-grep
-# default 'ms=01;31', ale mozem zmenit napr. na inu 'nezmyselnu' hodnotu
-# export GREP_COLORS='ms=3;2;1'
-c       GREP Color View
-        %view{ascii,nroff}
-        echo "abc abc abc" | grep --color=always b | cat -v | \
-             # sed "s/\^\[\[01;31m\^\[\[K/_PRED_/g" | sed "s/\^\[\[m\^\[\[K/_POTOM_/g"
-             sed "s/\^\[\[01;31m\^\[\[K/\\\fI/g" | sed "s/\^\[\[m\^\[\[K/\\\fR/g" \
-             | nroff -c -Tutf8
 
 012345678_maximum_menu_entry_size_is_60_chars____50123456789END
 |----------------------------------------------------------|
