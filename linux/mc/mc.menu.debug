@@ -1,6 +1,6 @@
 shell_patterns=1
 
-# 2022-09-26
+# 2022-09-27
 # https://github.com/musinsky/develop/blob/master/linux/mc/mc.menu.debug
 
 # Pattern is normal shell pattern (i.e. wildcards) or a regular expression
@@ -35,9 +35,12 @@ shell_patterns=1
 # highlighting and the bold and underline sequences of nroff; "unformatted" to
 # tell the viewer to not interpret nroff commands for making the text bold or
 # underlined.
+# F9 Toggle the format/unformat mode: when format mode is on the viewer will
+# interpret some string sequences to show bold and underline with different
+# colors. Also, on button label is the other mode than current.
 
 # Viewer in Midnight Commander don't support SGR Escape sequences, only the
-# backspace character, resp. by overstriking with backspaces.
+# backspace character, resp. overstriking with backspaces.
 # https://github.com/MidnightCommander/mc/blob/master/tests/src/viewer/viewertest.txt
 # https://midnight-commander.org/ticket/1849
 # https://midnight-commander.org/ticket/3264
@@ -46,81 +49,77 @@ shell_patterns=1
 
 # By default first menu entry is the default entry
 
-c       Color, using the backspace character (direct), WORK
-        %view{nroff}
-        echo "bboolldd_i_t_a_l_i_cregular"
+c   Color using the backspace character (Ctrl-key), OK
+    %view{nroff}
+    echo "bboolldd_i_t_a_l_i_cregular1"
 
-c       Color, using the backspace character (echo), WORK
-        %view{nroff}
-        echo -e "b\bbo\bol\bld\bd_\bi_\bt_\ba_\bl_\bi_\bcregular"
+c   Color using the backspace character (echo), OK
+    %view{nroff}
+    echo -e "b\bbo\bol\bld\bd_\bi_\bt_\ba_\bl_\bi_\bcregular2"
 
-c       Color, using the backspace character (groff), WORK
-        %view{nroff}
-        echo "\\fBbold\\fIitalic\\fRregular" | groff -T utf8 -man -P-c
-        # nroff -c = groff -mtty-char -Tutf8 -P-c
+c   Color using the backspace character (groff), OK
+    %view{nroff}
+    echo "\\fBbold\\fIitalic\\fRregular3" | groff -T utf8 -man -P-c
+    # nroff -c = groff -mtty-char -Tutf8 -P-c
 
-c       Color, using SGR Escape sequence, NOT WORKING
-        %view{nroff}
-        echo "\\fBbold\\fIitalic\\fRregular" | groff -T utf8 -man
+c   Color using SGR Escape sequences, NOT WORKING
+    %view{nroff}
+    echo "\\fBbold\\fIitalic\\fRregular4" | groff -T utf8 -man
 
-c       Color, replace SGR by backspace character in grep
-        %view{nroff}
-        G_COLOR='\x1b\[31m' # SGR color
-        G_RESET='\x1b\[m'   # SGR reset
-        G_UNDER='_\x08'     # underline (overstriking with backspace)
-        echo "123" | GREP_COLORS='mt=31:ne' grep --color=always '1\|3' \
-            | sed -e "s/$G_COLOR/$G_UNDER/g" -e "s/$G_RESET//g"
+c   Color replace SGR by backspace character in grep
+    %view{nroff}
+    G_COLOR='\x1b\[31m' # SGR color
+    G_RESET='\x1b\[m'   # SGR reset
+    G_UNDER='_\x08'     # underline (overstriking with backspace)
+    echo "123" | GREP_COLORS='mt=31:ne' grep --color=always '1\|3' \
+        | sed -e "s/$G_COLOR/$G_UNDER/g" -e "s/$G_RESET//g"
 
-m       Macro substitution
-        %view
-        echo -e "%%m   The current menu name\n=>   %m"
-        echo "##########"
-        echo -e "%%p   The current file name (without path, but pwd is its \
-                 path)\n=>   %p"
-        echo -e "%%f   The current file name (if non-local vfs, file will \
-                 be copied locally and %%f will be full path to it)\n=>   %f"
-        echo -e "%%x   The extension of current file name\n=>   %x"
-        echo -e "%%b   The current file name without extension\n=>   %b"
-        echo -e "%%d   The current directory name (pwd, without trailing \
-                 slash)\n=>   %d"
-        echo -e "%%t   The currently tagged files (space separated \
-                 list)\n=>   %t"
-        echo -e "%%u   Similar to the %%t macro, but in addition the files \
-                 are untagged\n=>   DOES NOT SHOW IN THIS EXAMPLE"
-        echo -e "%%s   The selected files (the tagged files if any, otherwise \
-                 the current file)\n=>   %s"
-        echo "##########"
-        echo -e "If the format letter is in uppercase (%%F, %%P, %%X, %%B, \
-                 %%D, %%T, %%U or %%S),\nit refers to the other (unselected) \
-                 panel. For example,"
-        echo "##########"
-        echo -e "%%S   The selected files in the unselected panel\n=>   %S"
+m   Midnight Commander macro substitution
+    %view
+    echo -e "%%m   The current menu name\n=>   %m"
+    echo "##########"
+    echo -e "%%p   The current file name (without path, but pwd is its path)\n=>   %p"
+    echo -e "%%f   The current file name (if non-local vfs, file will be copied locally \
+             and %%f will be full path to it)\n=>   %f"
+    echo -e "%%x   The extension of current file name\n=>   %x"
+    echo -e "%%b   The current file name without extension\n=>   %b"
+    echo -e "%%d   The current directory name (pwd, without trailing slash)\n=>   %d"
+    echo -e "%%t   The currently tagged files (space separated list)\n=>   %t"
+    echo -e "%%u   Similar to the %%t macro, but in addition the files are \
+             untagged\n=>   DOES NOT SHOW IN THIS EXAMPLE"
+    echo -e "%%s   The selected files (the tagged files if any, otherwise the current \
+             file)\n=>   %s"
+    echo "##########"
+    echo -e "If the format letter is in uppercase (%%P, %%F, %%X, %%B, %%D, %%T, %%U or \
+             %%S),\nit refers to the other (unselected, opposite) panel. For example,"
+    echo "##########"
+    echo -e "%%S   The selected files in the unselected panel\n=>   %S"
 
-p       Prompt for the substitution
-        %view
-        bla="%{type some text}"
-        echo $bla
-        echo "You typed $(echo $bla | wc -w) words"
+p   Prompt for the substitution
+    %view
+    bla="%{type some text}"
+    echo $bla
+    echo "You typed $(echo $bla | wc -w) words"
 
 012345678_maximum_menu_entry_size_is_60_chars____50123456789END
 |----------------------------------------------------------|
--       ##### Conditions try with *.tar.gz files #####
--       ##### don't try "multi type" & t rlf     #####
--       ##### instead of & t r & t l & t f       #####
+-   ##### Conditions try with *.tar.gz files #####
+-   ##### don't try "multi type" & t rlf     #####
+-   ##### instead of & t r & t l & t f       #####
 
 = f *.tar.gz & t r
--1      condition "= f *.tar.gz & t r"
+-1  condition "= f *.tar.gz & t r"
 
 + f *.tar.gz & t r
--2      condition "+ f *.tar.gz & t r"
+-2  condition "+ f *.tar.gz & t r"
 
 =+ f *.tar.gz & t r
--3      condition "=+ f *.tar.gz & t r" (but -1 is first)
+-3  condition "=+ f *.tar.gz & t r" (but -1 is first)
 
 =+ f *.tar.gz & t r & t t
--4      condition "=+ f *.tar.gz & t r & t t"
+-4  condition "=+ f *.tar.gz & t r & t t"
 
 =+ t *.tar.gz & t r & t t
--5      condition "=+ t *.tar.gz & t r & t t"
+-5  condition "=+ t *.tar.gz & t r & t t"
 
--6      last condition is 6
+-6  last condition is 6
