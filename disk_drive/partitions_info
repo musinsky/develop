@@ -1,4 +1,4 @@
-# 2022-06-27
+# 2022-10-26
 
 007f0100 old work PC with F31 (MBR)
 d59353c0 old work PC with CS8 (shell script has been slightly modified)
@@ -9,3 +9,6 @@ a8c06201 home PC (2022-06-27)
 
 a8c06a00 Intel NUC obyvacka BJ (2022-04-29 Win7, MBR)
 a8c06a00 Intel NUC obyvacka BJ (2022-04-30 Win10 default partition table)
+
+NUC.WIN10.22H2_partitions_a8c07000_WD_BLACK.SN770.500GB_2022-10-22.txt
+Intel NUC obyvacka NEW (2022-10-22 Win10 22H2 default partition table)
