@@ -1,0 +1,29 @@
+# 2022-11-05
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.38.1-1.fc37.x86_64
+util-linux-2.38.1-1.fc37.x86_64
+gdisk-1.0.9-4.fc37.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/sdd
+NAME         SIZE TYPE FSTYPE            FSVER  LABEL         MOUNTPOINT PTTYPE PARTTYPE PARTTYPENAME          PARTLABEL PARTFLAGS
+/dev/sdd     1.8T disk                                                   dos                                             
+├─/dev/sdd1  2.4G part linux_raid_member 0.90.0                          dos    0xfd     Linux raid autodetect           
+├─/dev/sdd2    2G part linux_raid_member 0.90.0                          dos    0xfd     Linux raid autodetect           
+└─/dev/sdd3  1.8T part linux_raid_member 1.2    DiskStation:2            dos    0xfd     Linux raid autodetect           
+
+[root]# fdisk -x /dev/sdd | grep -B 999 '^$' && fdisk -l -o +Attrs /dev/sdd | grep -A 999 'Device'
+Disk /dev/sdd: 1.82 TiB, 2000398934016 bytes, 3907029168 sectors
+Disk model: 02FYPS-02W3B0   
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x000109db
+
+Device     Boot   Start        End    Sectors  Size Id Type                  Attrs
+/dev/sdd1           256    4980735    4980480  2.4G fd Linux raid autodetect 
+/dev/sdd2       4980736    9175039    4194304    2G fd Linux raid autodetect 
+/dev/sdd3       9437184 3907024064 3897586881  1.8T fd Linux raid autodetect 
+
+[root]#
