@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2022-12-13
+# 2022-12-15
 
 # https://en.wikipedia.org/wiki/Cyrillic_script_in_Unicode
 # https://en.wikipedia.org/wiki/Russian_alphabet
@@ -27,11 +27,6 @@ printf "'%s' created\n" "$UDRA"
 
 # printf '\u044F'; printf '%b' '\u044F'
 # UNICODE_HEX="U+044F"; printf ${UNICODE_HEX/U+/"\U"}
-
-function print_info {
-    printf '%04d | U+%04X | %b\n' "$1" "$1" "$(printf '\\u%04X' "$1")"
-    (( "$1" == 0x042F )) && printf '\n'
-}
 function print_letter {
     printf '%b\n' "$(printf '\\u%04X' "$1")"
     (( "$1" == 0x042F )) && printf '\n'
@@ -43,22 +38,35 @@ function print_letter_row {
     (( "$1" == 0x044F )) && { printf '\n'; need_space=0; }
     (( "$need_space" == 1 )) && printf ' '
 }
+function print_info {
+    printf '%04d | U+%04X | %b\n' "$1" "$1" "$(printf '\\u%04X' "$1")"
+    (( "$1" == 0x042F )) && printf '\n'
+}
+function gen_ru_unicode_capital {
+    for ((num = 0x0410; num <= 0x0415; num++)); do   # [А-Е]
+        $1 "$num"
+    done
+    $1     "0x0401"                                  # Ё
+    for ((num = 0x0416; num <= 0x042F; num++)); do   # [Ж-Я]
+        $1 "$num"
+    done
+}
+function gen_ru_unicode_small {
+    for ((num = 0x0430; num <= 0x0435; num++)); do   # [а-е]
+        $1 "$num"
+    done
+    $1     "0x0451"                                  # ё
+    for ((num = 0x0436; num <= 0x044F; num++)); do   # [ж-я]
+        $1 "$num"
+    done
+}
 
-print_what="print_letter_row"
-for ((num = 0x0410; num <= 0x0415; num++)); do   # [А-Е]
-    $print_what "$num"
-done
-$print_what "0x0401"                             # Ё
-for ((num = 0x0416; num <= 0x042F; num++)); do   # [Ж-Я]
-    $print_what "$num"
-done
-for ((num = 0x0430; num <= 0x0435; num++)); do   # [а-е]
-    $print_what "$num"
-done
-$print_what "0x0451"                             # ё
-for ((num = 0x0436; num <= 0x044F; num++)); do   # [ж-я]
-    $print_what "$num"
-done
+gen_ru_unicode_capital "print_letter" >  russian.alphabet.01.column.utf8
+gen_ru_unicode_small   "print_letter" >> russian.alphabet.01.column.utf8
+gen_ru_unicode_capital "print_letter_row" >  russian.alphabet.01.row.utf8
+gen_ru_unicode_small   "print_letter_row" >> russian.alphabet.01.row.utf8
+gen_ru_unicode_capital "print_info" >  russian.alphabet.02.column.utf8
+gen_ru_unicode_small   "print_info" >> russian.alphabet.02.column.utf8
 
 
 ## sort notes
