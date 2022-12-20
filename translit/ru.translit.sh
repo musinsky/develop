@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2022-12-19
+# 2022-12-20
 
 # https://stackoverflow.com/q/19619490
 # https://stackoverflow.com/q/6980090
@@ -10,15 +10,10 @@
 #
 # [ "$1" ] && FILE=$1 || FILE="-" equivalent FILE=${1:--}
 
-TF=$(mktemp)
 while read -r line
 do
     echo "$line" |
-        sed 'y/ХхЦцЫыЭэ/HhCcYyEe/; s/[ЪЬъь]//g' |
+        sed 'y/ЁёЩщ/ЕеШш/; y/ХхЦцЫыЭэ/HhCcYyEe/; s/[ЪЬъь]//g' |
         LC_CTYPE=C iconv -f UTF-8 -t ASCII//TRANSLIT |
-        tr -s '[:blank:]' '.' > "$TF"
-    cat "$TF"
-    echo "$line" | diff --color=always "$TF" -
-    # echo
+        tr -s '[:blank:]' '.'
 done < "${1:-/dev/stdin}"
-rm "$TF"
