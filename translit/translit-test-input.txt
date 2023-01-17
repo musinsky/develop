@@ -1,0 +1,9 @@
+# https://sourceware.org/bugzilla/show_bug.cgi?id=2872
+# https://sourceware.org/bugzilla/show_activity.cgi?id=2872
+
+CYRILLIC Съешь ещё этих мягких французских булок, да выпей же чаю.
+GREEK    Ελληνικό Ίδρυμα Ευρωπαϊκής και Εξωτερικής.
+GERMAN   Zwölf Boxkämpfer jagen Victor quer über den großen Sylter Deich.
+FRENCH   Dès Noël où un zéphyr haï me vêt de glaçons würmiens je dîne d’exquis rôtis de bœuf au kir à l’aÿ d’âge mûr \& cætera.
+SPANISH  El veloz murciélago hindú comía feliz cardillo y kiwi, la cigüeña tocaba el saxofón detrás del palenque de paja.
+SLOVAK   Diakritické znamienka ako sú dĺžne, mäkčene, dve bodky (ä) a vokáň (ô) majú v slovenčine nezastupiteľnú úlohu.

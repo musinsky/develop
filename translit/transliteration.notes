@@ -1,0 +1,33 @@
+# 2023-01-17
+
+https://en.wikipedia.org/wiki/Transliteration
+https://transliteration.ru/
+
+https://en.wikipedia.org/wiki/Cyrillic_script_in_Unicode
+https://en.wikipedia.org/wiki/Russian_alphabet
+https://www.unicode.org/Public/UNIDATA/UnicodeData.txt
+
+# glibc
+https://sourceware.org/glibc/wiki/Locales
+https://sourceware.org/bugzilla/show_bug.cgi?id=2872
+https://sourceware.org/bugzilla/show_activity.cgi?id=2872
+
+https://sourceware.org/git/?p=glibc.git;a=tree;f=localedata/charmaps
+https://sourceware.org/git/?p=glibc.git;a=tree;f=localedata/locales
+https://sourceware.org/git/?p=glibc.git;a=tree;f=localedata/unicode-gen
+
+https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=localedata/locales/C
+
+# libiconv
+https://git.savannah.gnu.org/gitweb/?p=libiconv.git;a=blob;f=lib/translit.def
+
+# others
+https://metacpan.org/dist/Lingua-Translit
+https://pypi.org/project/Unidecode/
+
+https://access.redhat.com/solutions/4248381   # !!!
+
+# final
+$ cat russian.alphabet.01.column.utf8 | LC_CTYPE=C iconv -f UTF-8 -t ASCII//TRANSLIT > ru.translit.default
+$ cat russian.alphabet.01.column.utf8 | sed 'y/ЁёЩщ/ЕеШш/; y/ХхЦцЫыЭэ/HhCcYyEe/; s/[ЪЬъь]//g' | LC_CTYPE=C iconv -f UTF-8 -t ASCII//TRANSLIT > ru.translit.custom
+# compare 'ru.translit.default' and 'ru.translit.custom'
