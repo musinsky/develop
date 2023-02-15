@@ -1,0 +1,11 @@
+# 2023-02-15
+
+https://root.cern/for_developers/logos/
+https://github.com/petrstepanov/gnome-third-party-icons/blob/main/icons/gnome-cernroot.svg
+
+Vektorovy format ziskany pomocou "Trace Bitmap" v Inkscape
+z kvalitneho (1024x1024) "osx-icon-1024.png" obrazku.
+
+mozno vhodnejsie zamenit circle r="512" na r="510"
+
+ROOT cyan color RGBA = [30,212,229,100] (#1ed4e5ff)
