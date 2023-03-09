@@ -28,9 +28,9 @@ if ! echo "$NAME2" | grep --color -P '[^A-Za-z0-9/._-]'; then
     #printf "%s   # portable name\n" "$1"
 fi
 
-CHAR2='.'     # file
+CHAR2='.'     # file.name
 if [ -d "$1" ]; then
-    CHAR2='_' # dir
+    CHAR2='_' # dir_name
 fi
 
 NAME2="$(echo "$NAME2" | sed "s/[^A-Za-z0-9/._-]/$CHAR2/g")"
