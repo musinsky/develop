@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# 2023-03-09
+# 2023-03-10
 
 if [ ! -e "$1" ]; then
     printf "no such file or directory '%s'\n" "$1"
@@ -43,7 +43,7 @@ printf "portable name: %s" "$NAME2"
 if [ "$1" = "$NAME2" ]; then
     printf "   # name unchanged\n\n"
     read -n 1 -r -s -p "press any key to exit"
-    printf "\n"
+    #printf "\n"
     exit 0
 else
     printf "\n\n"
@@ -53,4 +53,8 @@ read -r -p "rename original to portable name? [y]:"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     mv -v -i "$1" "$NAME2" | grep --silent . && \
         printf "'%s'\nhas been renamed to\n'%s'\n" "$1" "$NAME2"
+else
+    printf "'%s' not renamed\n" "$1"
 fi
+
+read -n 1 -r -s -p "press any key to exit"
