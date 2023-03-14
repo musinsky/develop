@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# 2023-03-10
+# 2023-03-14
 
 if [ ! -e "$1" ]; then
     printf "no such file or directory '%s'\n" "$1"
@@ -57,4 +57,5 @@ else
     printf "'%s' not renamed\n" "$1"
 fi
 
+printf "\n"
 read -n 1 -r -s -p "press any key to exit"
