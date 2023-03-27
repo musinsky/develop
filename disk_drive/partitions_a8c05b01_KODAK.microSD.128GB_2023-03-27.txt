@@ -1,0 +1,24 @@
+# 2023-03-27
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.38.1-4.fc38.x86_64
+util-linux-2.38.1-4.fc38.x86_64
+gdisk-1.0.9-5.fc38.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/mmcblk0
+NAME               SIZE TYPE FSTYPE FSVER LABEL MOUNTPOINT                PTTYPE PARTTYPE PARTTYPENAME    PARTLABEL PARTFLAGS
+/dev/mmcblk0     117.8G disk                                              dos                                       
+└─/dev/mmcblk0p1 117.7G part exfat  1.0   KODAK /run/media/musinsky/KODAK dos    0x7      HPFS/NTFS/exFAT           
+
+[root]# fdisk -x /dev/mmcblk0 | grep -B 999 '^$' && fdisk -l -o +Attrs /dev/mmcblk0 | grep -A 999 'Device'
+Disk /dev/mmcblk0: 117.75 GiB, 126437294080 bytes, 246947840 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x00000000
+
+Device         Boot Start       End   Sectors   Size Id Type            Attrs
+/dev/mmcblk0p1      32768 246947839 246915072 117.7G  7 HPFS/NTFS/exFAT 
+
+[root]#
