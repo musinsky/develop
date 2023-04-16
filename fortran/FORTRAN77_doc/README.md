@@ -2,7 +2,7 @@
 
 ## FORTRAN 77 (ANSI X3J3/90.4) standard
 
-### [standard/F77_std/](standard/F77_std/) dir with html pages
+### [standard/F77_std/](standard/F77_std/) dir with html pages [see directly from GitHub](https://raw.githack.com/musinsky/develop/master/fortran/FORTRAN77_doc/standard/F77_std/rjcnf.html)
 * https://web.archive.org/web/20101122180558/http://www.fortran.com/F77_std/rjcnf.html
 * https://web.archive.org/web/20100823024523/http://www.fortran.com/F77_std/
 
