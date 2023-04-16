@@ -1,0 +1,126 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-1.html","20060326202624","https://web.archive.org/","web","/_static/",
+	      "1143404784");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>1 INTRODUCTION</title></head><body>
+
+<h1><a name="sh-1">1 INTRODUCTION</a></h1>
+
+<h2><a name="sh-1.1">1.1 Purpose</a></h2>
+
+This standard specifies the form and establishes the interpretation of programs expressed in the FORTRAN language.  The purpose of this standard is to promote portability of FORTRAN programs for use on a variety of data processing systems.
+
+<h2><a name="sh-1.2">1.2 Processor</a></h2>
+
+The combination of a data processing system and the mechanism by which programs are transformed for use on that data processing system is called a <i>processor</i> in this standard.
+
+<h2><a name="sh-1.3">1.3 Scope</a></h2>
+
+<h3><a name="sh-1.3.1">1.3.1 Inclusions.</a></h3>
+
+This standard specifies:
+<p><ol>
+<li>The form of a program written in the FORTRAN language
+<li>Rules for interpreting the meaning of such a program and its data
+<li>The form of writing input data to be processed by such a program operating on data processing systems
+<li>The form of the output data resulting from the use of such a program on data processing systems
+</ol>
+<h3><a name="sh-1.3.2">1.3.2 Exclusions.</a></h3>
+
+This standard does not specify:
+<p><ol>
+<li>The mechanism by which programs are transformed for use on a data processing system
+<li>The method of transcription of programs or their input or output data to or from a data processing medium
+<li>The operations required for setup and control of the use of programs on data processing systems
+<li>The results when the rules of this standard fail to establish an interpretation
+<li>The size or complexity of a program and its data that will exceed the capacity of any specific data processing system or the capability of a particular processor
+<li>The range or precision of numeric quantities and the method of rounding of numeric results
+<li>The physical properties of input/output records, files, and units
+<li>The physical properties and implementation of storage
+</ol>
+<h2><a name="sh-1.4">1.4 Conformance</a></h2>
+
+The  requirements, prohibitions, and options specified in this standard generally refer to permissible forms and relationships for standard-conforming programs rather than for processors.  The obvious exceptions are the optional output forms produced by a processor, which are not under the control of a program.  The requirements, prohibitions, and options for a standard-conforming processor usually must be inferred from those given for programs.
+<p>
+An executable program (<a href="rjcnf-2.html#sh-2.4.2">2.4.2</a>) conforms to this standard if it uses only those forms and relationships described herein and if the executable program has an interpretation according to this standard.  A program unit (<a href="rjcnf-2.html#sh-2.4">2.4</a>) conforms to this standard if it can be included in an executable program in a manner that allows the executable program to be standard conforming.
+<p>
+A processor conforms to this standard if it executes standard-conforming programs in a manner that fulfills the interpretations prescribed herein.  A standard-conforming processor may allow additional forms and relationships provided that such additions do not conflict with the standard forms and relationships.  However, a standard-conforming processor may allow additional intrinsic functions (<a href="rjcnf-15.html#sh-15.10">15.10</a>) even though this could cause a conflict with the name of an external function in a standard-conforming program.  If such a conflict occurs, the
+processor is permitted to use the intrinsic function unless the name appears in an EXTERNAL statement within the program unit.  A standard-conforming program must not use intrinsic functions that have been added by the processor.  Note that a standard-conforming program must not use any forms or relationships that are prohibited by this standard, but a standard-conforming processor may allow such forms and relationships if they do not change the proper interpretation of a standard-conforming program.
+<p>
+Because a standard-conforming program may place demands on the processor that are not within the scope of this standard or may include standard items that are not portable, such as external procedures defined by means other than FORTRAN, conformance to this standard does not ensure that a standard-conforming program will execute consistently on all or any standard-conforming processors.
+
+<h3><a name="sh-1.4.1">1.4.1 Subset Conformance.</a></h3>
+
+This standard describes two levels of the FORTRAN language, referred to as FORTRAN and subset FORTRAN.  FORTRAN is the full language.  Subset FORTRAN is a subset of the full language.
+<p>
+An executable program conforms to the subset level of this standard if it uses only those forms and relationships described herein for that level and if the executable program has an interpretation according to this standard at that level and would have the same interpretation in the full language.  A program unit conforms to the subset level of this standard if it can be included in an executable program in a manner that allows the executable program to be standard conforming at that level.
+<p>
+A subset level processor conforms to the subset level of this standard if it executes subset level standard-conforming programs in a manner that fulfills the interpretations prescribed herein for subset FORTRAN.  A subset level processor may include an extension that has a form and would have an interpretation at the full level only if the extension has the interpretation provided by the full level.  A subset level processor may also include extensions that do not have forms and interpretations in the full language.
+
+<h2><a name="sh-1.5">1.5 Notation Used in This Standard</a></h2>
+
+In this standard, "must" is to be interpreted as a requirement; conversely, "must not" is to be interpreted as a prohibition.
+<p>
+In describing the form of FORTRAN statements or constructs, the following metalanguage conventions and symbols are used:
+<p><ol>
+<li>Special characters from the FORTRAN character set, uppercase letters, and uppercase words are to be written as shown, except where otherwise noted.
+<li>Lowercase letters and lowercase words indicate general entities for which specific entities must be substituted in actual statements.  Once a given lowercase letter or word is used in a syntactic specification to represent an entity, all subsequent occurrences of that letter or word represent the same entity until that letter or word is used in a subsequent syntactic specification to represent a different entity.
+<li>Brackets, [ ], are used to indicate optional items.
+<li>An ellipsis, ..., indicates that the preceding optional items may appear one or more times in succession.
+<li>Blanks are used to improve readability, but unless otherwise noted have no significance.
+<li>Words or groups of words that have special significance are underlined where their meaning is described.  Titles and the metalanguage symbols described in <a href="#sh-1.5">1.5</a>(2) are also underlined.
+</ol><p>
+An example illustrates the metalanguage.  Given a description of the form of a statement as:
+<p><pre>
+      CALL <i>sub</i> [( [<i>a</i> [,<i>a</i>]...] )]
+</pre><p>
+the following forms are allowed:
+<p><pre>
+      CALL <i>sub</i>
+      CALL <i>sub</i> ()
+      CALL <i>sub</i> (<i>a</i>)
+      CALL <i>sub</i> (<i>a</i>, <i>a</i>)
+      CALL <i>sub</i> (<i>a</i>, <i>a</i>, <i>a</i>)
+      etc
+</pre><p>
+When an actual statement is written, specific entities are substituted for <i>sub</i> and each <i>a</i>; for example:
+<p><pre>
+      CALL ABCD (X,1.0)
+</pre>
+<h2><a name="sh-1.6">1.6 Subset Text</a></h2>
+
+The section titles in the subset description are identical to the section titles in the full language description.
+<p>
+There are some instances in which a general situation occurs in the full language but only a restricted case applies to the subset.  For example, in <a href="rjcnf-3.html#sh-3.6">3.6</a>, the "nonexecutable statements" that may appear between executable statements may only be FORMAT statements in the subset.  In most of these instances, the more general text of the full language description has been retained in the subset description, even though it is to be interpreted as covering only the restricted case.
+<p>
+To help find differences between the full and subset languages, vertical bars have been added in the margins where the text of the full and subset languages differ.  For example, this sentence does not appear in the subset language text.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:26:24 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:16 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 418.88
+  exclusion.robots: 0.084
+  exclusion.robots.policy: 0.073
+  cdx.remote: 0.075
+  esindex: 0.01
+  LoadShardBlock: 390.431 (3)
+  PetaboxLoader3.datanode: 378.37 (4)
+  load_resource: 66.798
+  PetaboxLoader3.resolve: 28.584
+-->

@@ -1,0 +1,300 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-5.html","20060326202711","https://web.archive.org/","web","/_static/",
+	      "1143404831");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>5 ARRAYS AND SUBSTRINGS</title></head><body>
+
+<h1><a name="sh-5">5 ARRAYS AND SUBSTRINGS</a></h1>
+
+An <i>array</i> is a nonempty sequence of data.  An <i>array element</i> is one member of the sequence of data.  An <i>array name</i> is the symbolic name of an array.  An <i>array element name</i> is an array name qualified by a subscript (<a href="#sh-5.3">5.3</a>).
+<p>
+An array name not qualified by a subscript identifies the entire sequence of elements of the array in certain forms where such use is permitted (<a href="#sh-5.6">5.6</a>); however, in an EQUIVALENCE statement, an array name not qualified by a subscript identifies the first element of the array (<a href="rjcnf-8.html#sh-8.2.4">8.2.4</a>).
+<p>
+An array element name identifies one element of the sequence.  The subscript value (Table 1) specifies the element of the array being identified.  A different array element may be identified by changing the subscript value
+of the array element name.
+<p>
+An array name is local to a program unit (<a href="rjcnf-18.html#sh-18.1.2">18.1.2</a>).
+<p>
+A <i>substring</i> is a contiguous portion of a character datum.
+
+<h2><a name="sh-5.1">5.1 Array Declarator</a></h2>
+
+An <i>array declarator</i> specifies a symbolic name that identifies an array within a program unit and specifies certain properties of the array.  Only one array declarator for an array name is permitted in a program unit.
+
+<h3><a name="sh-5.1.1">5.1.1 Form of an Array Declarator.</a></h3>
+
+The form of an array declarator is:
+<p><pre>
+      <i>a</i> (<i>d</i> [,<i>d</i>]...)
+</pre><p>
+where:<ul>
+<li><i>a</i> is the symbolic name of the array
+<li><i>d</i> is a dimension declarator
+</ul><p>
+The number of dimensions of the array is the number of dimension declarators in the array declarator.  The minimum number of dimensions is one and the maximum is seven.
+
+<h4><a name="sh-5.1.1.1">5.1.1.1 Form of a Dimension Declarator.</a></h4>
+
+The form of a <i>dimension declarator</i> is:
+<p><pre>
+      [<i>d</i><sub>1</sub>:] <i>d</i><sub>2</sub>
+</pre><p>
+where:<ul>
+<li><i>d</i><sub>1</sub> is the lower dimension bound
+<li><i>d</i><sub>2</sub> is the upper dimension bound
+</ul><p>
+The lower and upper dimension bounds are arithmetic expressions, called <i>dimension bound expressions,</i> in which all constants, symbolic names of constants, and variables are of type integer.  The upper dimension bound of the last dimension may be an asterisk in assumed-size array declarators (<a href="#sh-5.1.2">5.1.2</a>).  A dimension bound expression must not contain a function or array element reference.  Integer variables may appear in dimension bound expressions only in adjustable array declarators (<a href="#sh-5.1.2">5.1.2</a>).
+<p>
+If the symbolic name of a constant or variable that appears in a dimension bound expression is not of default implied integer type (<a href="rjcnf-4.html#sh-4.1.2">4.1.2</a>), it must be specified as integer by an IMPLICIT statement or a type-statement prior to its appearance in a dimension bound expression.
+
+<h4><a name="sh-5.1.1.2">5.1.1.2 Value of Dimension Bounds.</a></h4>
+
+The value of either dimension bound may be positive, negative, or zero; however, the value of the upper dimension bound must be greater than or equal to the value of the lower dimension bound.  If only the upper dimension bound is specified, the value of the lower dimension bound is one.  An upper dimension bound of an asterisk is always greater than or equal to the lower dimension bound.
+
+<h3><a name="sh-5.1.2">5.1.2 Kinds and Occurrences of Array Declarators.</a></h3>
+
+Each array declarator is either a constant array declarator, an adjustable array declarator, or an assumed-size array declarator.  A <i>constant array declarator</i> is an array declarator in which each of the dimension bound expressions is an integer constant expression (<a href="rjcnf-6.html#sh-6.1.3.1">6.1.3.1</a>).  An <i>adjustable array declarator</i> is an array declarator that contains one or more variables. An <i>assumed-size array declarator</i> is a constant array declarator or an adjustable array declarator, except that the upper dimension bound of the last dimension is an asterisk.
+<p>
+Each array declarator is either an actual array declarator or a dummy array declarator.
+
+<h4><a name="sh-5.1.2.1">5.1.2.1 Actual Array Declarator.</a></h4>
+
+An <i>actual array declarator</i> is an array declarator in which the array name is not a dummy argument.  Each actual array declarator must be a constant array declarator.  An actual array declarator is permitted in a DIMENSION statement, type-statement, or COMMON statement (Section <a href="rjcnf-8.html#sh-8">8</a>).
+
+<h4><a name="sh-5.1.2.2">5.1.2.2 Dummy Array Declarator.</a></h4>
+
+A <i>dummy array declarator</i> is an array declarator in which the array name is a dummy argument.  A dummy array declarator may be either a constant array declarator, an adjustable array declarator, or an assumed-size array declarator.  A dummy array declarator is permitted in a DIMENSION statement or a type-statement but not in a COMMON statement.  A dummy array declarator may appear only in a function or subroutine subprogram.
+
+<h2><a name="sh-5.2">5.2 Properties of an Array</a></h2>
+
+The following properties of an array are specified by the array declarator: the number of dimensions of the array, the size and bounds of each dimension, and therefore the number of array elements.
+<p>
+The properties of an array in a program unit are specified by the array declarator for the array in that program unit.
+
+<h3><a name="sh-5.2.1">5.2.1 Data Type of an Array and an Array Element.</a></h3>
+
+An array name has a data type (<a href="rjcnf-4.html#sh-4.1.1">4.1.1</a>).  An array element name has the same data type as the array name.
+
+<h3><a name="sh-5.2.2">5.2.2 Dimensions of an Array.</a></h3>
+
+The number of dimensions of an array is equal to the number of dimension declarators in the array declarator.
+<p>
+The <i>size of a dimension</i> is the value:
+<p><dl>
+<dd><i>d</i><sub>2</sub> - <i>d</i><sub>1</sub> + 1
+</dl><p>
+where:<ul>
+<li><i>d</i><sub>1</sub> is the value of the lower dimension bound
+<li><i>d</i><sub>2</sub> is the value of the upper dimension bound
+</ul><p>
+Note that if the value of the lower dimension bound is one, the size of the dimension is <i>d</i><sub>2</sub>.
+<p>
+The size of a dimension whose upper bound is an asterisk is not specified.
+<p>
+The number and size of dimensions in one array declarator may be different from the number and size of dimensions in another array declarator that is associated by common, equivalence, or argument association.
+
+<h3><a name="sh-5.2.3">5.2.3 Size of an Array.</a></h3>
+
+The <i>size of an array</i> is equal to the number of elements in the array.  The size of an array is equal to the product of the sizes of the dimensions specified by the array declarator for that array name.  The size of an assumed-size dummy array (<a href="#sh-5.5">5.5</a>) is determined as follows:
+<p><ol>
+<li>If the actual argument corresponding to the dummy array is a noncharacter array name, the size of the dummy array is the size of the actual argument array.
+<li>If the actual argument corresponding to the dummy array name is a noncharacter array element name with a subscript value of <i>r</i> in an array of size <i>x</i>, the size of the dummy array is <i>x</i> + 1 - <i>r</i>.
+<li>If the actual argument is a character array name, character array element name, or character array element substring name and begins at character storage unit <i>t</i> of an array with <i>c</i> character storage units, then the size of the dummy array is INT((<i>c</i> + 1 - <i>t</i>) / <i>ln</i>), where <i>ln</i> is the length of an element of the dummy array.
+</ol><p>
+If an assumed-size dummy array has <i>n</i> dimensions, the product of the sizes of the first <i>n</i> - 1 dimensions must be less than or equal to the size of the array, as determined by one of the immediately preceding rules.
+
+<h3><a name="sh-5.2.4">5.2.4 Array Element Ordering.</a></h3>
+
+The elements of an array are ordered in a sequence (<a href="rjcnf-2.html#sh-2.1">2.1</a>).  An array element name contains a subscript (<a href="#sh-5.4.1">5.4.1</a>) whose subscript value (<a href="#sh-5.4.3">5.4.3</a>) determines which element of the array is identified by the array element name.  The first element of the array has a subscript value of one; the second element has a subscript value of two; the last element has a subscript value equal to the size of the array.
+<p>
+Whenever an array name unqualified by a subscript is used to designate the whole array (<a href="#sh-5.6">5.6</a>), the appearance of the array name implies that the number of values to be processed is equal to the number of elements in the array and that the elements of the array are to be taken in sequential order.
+
+<h3><a name="sh-5.2.5">5.2.5 Array Storage Sequence.</a></h3>
+
+An array has a storage sequence consisting of the storage sequences of the array elements in the order determined by the array element ordering.  The number of storage units in an array is <i>x</i>*<i>z</i>, where <i>x</i> is the number of the elements in the array and <i>z</i> is the number of storage units for each array element.
+
+<h2><a name="sh-5.3">5.3 Array Element Name</a></h2>
+
+The form of an array element name is:
+<p><pre>
+      <i>a</i> (<i>s</i> [,<i>s</i>]...)
+</pre><p>
+where:<ul>
+<li><i>a</i> is the array name
+<li>(<i>s</i> [,<i>s</i>]...) is a subscript (<a href="#sh-5.4.1">5.4.1</a>)
+<li><i>s</i> is a subscript expression (<a href="#sh-5.4.2">5.4.2</a>)
+</ul><p>
+The number of subscript expressions must be equal to the number of dimensions in the array declarator for the array name.
+
+<h2><a name="sh-5.4">5.4 Subscript</a></h2>
+
+<h3><a name="sh-5.4.1">5.4.1 Form of a Subscript.</a></h3>
+
+The form of a <i>subscript </i> is:
+<p><pre>
+      (<i>s</i> [,<i>s</i>]...)
+</pre><p>
+where <i>s</i> is a subscript expression.
+<p>
+Note that the term "subscript" includes the parentheses that delimit the list of subscript expressions.
+
+<h3><a name="sh-5.4.2">5.4.2 Subscript Expression.</a></h3>
+
+A <i>subscript expression</i> is an integer expression.  A subscript expression may contain array element references and function references.  Note that a restriction in the evaluation of expressions (<a href="rjcnf-6.html#sh-6.6">6.6</a>) prohibits certain side effects.  In particular, evaluation of a function must not alter the value of any other subscript expression within the same subscript.
+<p>
+Within a program unit, the value of each subscript expression must be greater than or equal to the corresponding lower dimension bound in the array declarator for the array.  The value of each subscript expression must not exceed the corresponding upper dimension bound declared for the array in the program unit.  If the upper dimension bound is an asterisk, the value of the corresponding subscript expression must be such that the subscript value does not exceed the size of the dummy array.
+
+<h3><a name="sh-5.4.3">5.4.3 Subscript Value.</a></h3>
+
+The <i>subscript value </i> of a subscript is specified in Table 1.  The subscript value determines which array element is identified by the array element name.  Within a program unit, the subscript value depends on the values of the subscript expressions in the subscript and on the dimensions of the array specified in the array declarator for the array in the program unit.  If the subscript value is <i>r</i>, the <i>r</i>th element of the array is identified.
+
+<h4 align="center">Table 1 Subscript Value</h4>
+<pre>
+          ____________________________________________________________
+          |   |                     |              |                 |
+          | n |     Dimension       |  Subscript   |    Subscript    |
+          |   |     Declarator      |              |      Value      |
+          |___|_____________________|______________|_________________|
+          |   |                     |              |                 |
+          | 1 | (j :k )             |  (s )        | 1+(s -j )       |
+          |   |   1  1              |    1         |     1  1        |
+          |___|_____________________|______________|_________________|
+          |   |                     |              |                 |
+          | 2 | (j :k ,j :k )       |  (s ,s )     | 1+(s -j )       |
+          |   |   1  1  2  2        |    1  2      |     1  1        |
+          |   |                     |              |  +(s -j )*d     |
+          |   |                     |              |     2  2   1    |
+          |___|_____________________|______________|_________________|
+          |   |                     |              |                 |
+          | 3 | (j :k ,j :k ,j :k ) |  (s ,s ,s )  | 1+(s -j )       |
+          |   |   1  1  2  2  3  3  |    1  2  3   |     1  1        |
+          |   |                     |              |  +(s -j )*d     |
+          |   |                     |              |     2  2   1    |
+          |   |                     |              |  +(s -j )*d *d  |
+          |   |                     |              |     3  3   2  1 |
+          |___|_____________________|______________|_________________|
+          |   |                     |              |                 |
+          |___|_____________________|______________|_________________|
+          |   |                     |              |                 |
+          | n | (j :k ,...,j :k )   |  (s ,...,s ) | 1+(s -j )       |
+          |   |   1  1      n  n    |    1      n  |     1  1        |
+          |   |                     |              |  +(s -j )*d     |
+          |   |                     |              |     2  2   1    |
+          |   |                     |              |  +(s -j )*d *d  |
+          |   |                     |              |     3  3   2  1 |
+          |   |                     |              |  +..            |
+          |   |                     |              |  +(s -j )*d     |
+          |   |                     |              |     n  n   n-1  |
+          |   |                     |              |   *d    ... d   |
+          |   |                     |              |     n-2      1  |
+          |___|_____________________|______________|_________________|
+</pre>
+Notes for Table 1:
+<ol>
+<li>n is the number of dimensions, 1 &lt;= n &lt;= 7.
+<li>j<sub>i</sub> is the value of the lower bound of the ith dimension.
+<li>k<sub>i</sub> is the value of the upper bound of the ith dimension.
+<li>If only the upper bound is specified, then j<sub>i</sub>% = 1.
+<li>s<sub>i</sub> is the integer value of the ith subscript expression.
+<li>d<sub>i</sub> = k<sub>i</sub>-j<sub>i</sub>+1 is the size of the ith dimension.  If the value of the lower bound is 1, then d<sub>i</sub> = k<sub>i</sub>.
+</ol><p>
+Note that a subscript of the form (j<sub>1</sub>,...j<sub>n</sub>) has a subscript value of one and identifies the first element of the array.  A subscript of the form (k<sub>1</sub>,...,k<sub>n</sub>) identifies the last element of the array; its subscript value is equal to the number of elements in the array.
+<p>
+The subscript value and the subscript expression value are not necessarily the same, even for a one-dimensional array.  In the example:
+<p><pre>
+      DIMENSION A(-1:8),B(10,10)
+      A(2) = B(1,2)
+</pre><p>
+A(2) identifies the fourth element of A, the subscript is (2) with a subscript value of four, and the subscript expression is 2 with a value of two.  B(1,2) identifies the eleventh element of B, the subscript is (1,2) with a subscript value of eleven, and the subscript expressions are 1 and 2 with values of one and two.
+
+<h2><a name="sh-5.5">5.5 Dummy and Actual Arrays</a></h2>
+
+A <i>dummy array</i> is an array for which the array declarator is a dummy array declarator.  An <i>assumed-size dummy array</i> is a dummy array for which the array declarator is an assumed-size array declarator.  A dummy array is permitted only in a function or subroutine subprogram (Section <a href="rjcnf-15.html#sh-15">15</a>).
+<p>
+An <i>actual array</i> is an array for which the array declarator is an actual array declarator.  Each array in the main program is an actual array and must have a constant array declarator.  A dummy array may be used as an actual argument.
+
+<h3><a name="sh-5.5.1">5.5.1 Adjustable Arrays and Adjustable Dimensions.</a></h3>
+
+An <i>adjustable array</i> is an array for which the array declarator is an adjustable array declarator.  In an adjustable array declarator, those dimension declarators that contain a variable name are called <i>adjustable dimensions</i>.
+<p>
+An adjustable array declarator must be a dummy array declarator.  At least one dummy argument list of the subprogram must contain the name of the adjustable array.  A variable name that appears in a dimension bound expression of an array must also appear as a name either in every dummy argument list that contains the array name or in a common block in that subprogram.
+<p>
+At the time of execution of a reference to a function or subroutine containing an adjustable array in its dummy argument list, each actual argument that corresponds to a dummy argument appearing in a dimension bound expression for the array and each variable in common appearing in a dimension bound expression for the array must be defined with an integer value.  The values of those dummy arguments or variables in common, together with any constants and symbolic names of constants appearing in the dimension bound expression, determine the size of the corresponding adjustable dimension for the execution of the subprogram.  The sizes of the adjustable dimensions and of any constant dimensions appearing in an adjustable array declarator determine the number of elements in the array and the array element ordering.  The execution of different references to a subprogram or different executions of the same reference determine possibly different properties (size of dimensions, dimension bounds, number of elements, and array element ordering) for each adjustable array in the subprogram.  These properties depend on the values of any actual arguments and variables in common that are referenced in the adjustable dimension expressions in the subprogram.
+<p>
+During the execution of an external procedure in a subprogram containing an adjustable array, the array properties of dimension size, lower and upper dimension bounds, and array size (number of elements in the array) do not change.  However, the variables involved in an adjustable dimension may be redefined or become undefined during execution of the external procedure with no effect on the above-mentioned properties.
+
+<h2><a name="sh-5.6">5.6 Use of Array Names</a></h2>
+
+In a program unit, each appearance of an array name must be in an array element name except in the following cases:
+<p><ol>
+<li>In a list of dummy arguments
+<li>In a COMMON statement
+<li>In a type-statement
+<li>In an array declarator.  Note that although the form of an array declarator may be identical to that of an array element name, an array declarator is not an array element name.
+<li>In an EQUIVALENCE statement
+<li>In a DATA statement
+<li>In the list of actual arguments in a reference to an external procedure
+<li>In the list of an input/output statement if the array is not an assumed-size dummy array
+<li>As a unit identifier for an internal file in an input/output statement if the array is not an assumed-size dummy array
+<li>As the format identifier in an input/output statement if the array is not an assumed-size dummy array
+<li>In a SAVE statement
+</ol>
+<h2><a name="sh-5.7">5.7 Character Substring</a></h2>
+
+A character substring is a contiguous portion of a character datum and is of type character. A character substring is identified by a substring name and may be assigned values and referenced.
+
+<h3><a name="sh-5.7.1">5.7.1 Substring Name.</a></h3>
+
+The forms of a <i>substring name</i> are:
+<p><pre>
+      <i>v</i> ( [<i>e</i><sub>1</sub>] : [<i>e</i><sub>2</sub>] )
+
+      <i>a</i> (<i>s</i> [,<i>s</i>]...)( [<i>e</i><sub>1</sub>] : [<i>e</i><sub>2</sub>] )
+</pre><p>
+where:<ul>
+<li><i>v</i> is a character variable name
+<li><i>a</i> (<i>s</i> [,<i>s</i>]...) is a character array element name
+<li><i>e</i><sub>1</sub> and <i>e</i><sub>2</sub> are each an integer expression and are called <i>substring expressions</i>
+</ul><p>
+The value <i>e</i><sub>1</sub> specifies the leftmost character position of the substring, and the value <i>e</i><sub>2</sub> specifies the rightmost character position. For example, A(2:4) specifies characters in positions two through four of the character variable A, and B(4,3)(1:6) specifies characters in positions one through six of the character array element B(4,3).
+<p>
+The values of <i>e</i><sub>1</sub> and <i>e</i><sub>2</sub> must be such that:
+<p><pre>
+      1 &lt;= <i>e</i><sub>1</sub> &lt;= <i>e</i><sub>2</sub> &lt;= <i>len</i>
+</pre><p>
+where <i>len</i> is the length of the character variable or array element (<a href="rjcnf-8.html#sh-8.4.2">8.4.2</a>).  If <i>e</i><sub>1</sub> is omitted, a value of one is implied for <i>e</i><sub>1</sub>.  If <i>e</i><sub>2</sub> is omitted, a value of <i>len</i> is implied for <i>e</i><sub>2</sub>.  Both <i>e</i><sub>1</sub> and <i>e</i><sub>2</sub> may be omitted; for example, the form <i>v</i>(:) is equivalent to <i>v</i>, and the form <i>a</i>(<i>s</i> [,<i>s</i>]...)(:) is equivalent to <i>a</i>(<i>s</i> [,<i>s</i>]...).  The length of a character
+substring is <i>e</i><sub>2</sub> - <i>e</i><sub>1</sub> + 1.
+
+<h3><a name="sh-5.7.2">5.7.2 Substring Expression.</a></h3>
+
+A <i>substring expression</i> may be any integer expression.  A substring expression may contain array element references and function references.  Note that a restriction in the evaluation of expressions (<a href="rjcnf-6.html#sh-6.6">6.6</a>) prohibits certain side effects.  In particular, evaluation of a function must not alter the value of any other expression within the same substring name.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:27:11 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:54 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 97.728
+  exclusion.robots: 0.069
+  exclusion.robots.policy: 0.059
+  RedisCDXSource: 0.605
+  esindex: 0.007
+  LoadShardBlock: 81.018 (3)
+  PetaboxLoader3.datanode: 137.638 (4)
+  load_resource: 150.036
+  PetaboxLoader3.resolve: 45.81
+-->

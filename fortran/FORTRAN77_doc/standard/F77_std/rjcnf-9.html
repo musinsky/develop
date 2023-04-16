@@ -1,0 +1,109 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf-9.html","20060328112233","https://web.archive.org/","web","/_static/",
+	      "1143544953");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>9 DATA STATEMENT</title></head><body>
+
+<h1><a name="sh-9">9 DATA STATEMENT</a></h1>
+
+A DATA statement is used to provide initial values for variables, arrays, array elements, and substrings.  A DATA statement is nonexecutable and may appear in a program unit anywhere after the specification statements, if any.
+<p>
+All initially defined entities are defined when an executable program begins execution.  All entities not initially defined, or associated with an initially defined entity, are undefined at the beginning of execution of an executable program.
+
+<h2><a name="sh-9.1">9.1 Form of a DATA Statement</a></h2>
+
+The form of a DATA statement is:
+<p><pre>
+      DATA <i>nlist</i> /<i>clist</i>/ [ <i>nlist</i> /<i>clist</i>/]...
+</pre><p>
+where:<ul>
+<li><i>nlist</i> is a list (<a href="rjcnf-2.html#sh-2.10">2.10</a>) of variable names, array names, array element names, substring names, and implied-DO lists
+<li><i>clist</i> is a list of the form:
+<dl>
+<dd><i>a</i> [,<i>a</i>]...
+</dl>
+where <i>a</i> is one of the forms:
+<dl>
+<dd><i>c</i><br>
+<dd><i>r</i>*<i>c</i></pre>
+</dl><ul type="disc">
+<li><i>c</i> is a constant or the symbolic name of a constant
+<li><i>r</i> is a nonzero, unsigned, integer constant or the symbolic name of such a constant.  The <i>r</i>*<i>c</i> form is equivalent to <i>r</i> successive appearances of the constant <i>c</i>.
+</ul></ul>
+<h2><a name="sh-9.2">9.2 DATA Statement Restrictions</a></h2>
+
+Names of dummy arguments, functions, and entities in blank common (including entities associated with an entity in blank common) must not appear in the list <i>nlist</i>.  Names of entities in a named common block may appear in the list <i>nlist</i> only within a block data subprogram.
+<p>
+There must be the same number of items specified by each list <i>nlist</i> and its corresponding list <i>clist</i>.  There is a one-to-one correspondence between the items specified by <i>nlist</i> and the constants specified by <i>clist</i> such that the first item of <i>nlist</i> corresponds to the first constant of <i>clist</i>, etc.  By this correspondence, the initial value is established and the entity is initially defined.  If an array name without a subscript is in the list, there must be one constant for each element of that array.  The ordering of array elements is determined by the array element subscript value (<a href="rjcnf-5.html#sh-5.2.4">5.2.4</a>).
+<p>
+The type of the <i>nlist</i> entity and the type of the corresponding <i>clist</i> constant must agree when either is of type character or logical.  When the <i>nlist</i> entity is of type integer, real, double precision, or complex, the corresponding <i>clist</i> constant must also be of type integer, real, double precision, or complex; if necessary, the <i>clist</i> constant is converted to the type of the <i>nlist</i> entity according to the rules for arithmetic conversion (Table 4).  Note that if an <i>nlist</i> entity is of type double precision and the <i>clist</i> constant is of type real, the processor may supply more precision derived from the constant than can be contained in a real datum.
+<p>
+Any variable, array element, or substring may be initially defined except for:
+<p><ol>
+<li>an entity that is a dummy argument,
+<li>an entity in blank common, which includes an entity associated with an entity in blank common, or 
+<li>a variable in a function subprogram whose name is also the name of the function subprogram or an entry in the function subprogram.
+</ol><p>
+A variable, array element, or substring must not be initially defined more than once in an executable program.  If two entities are associated, only one may be initially defined in a DATA statement in the same executable program.
+<p>
+Each subscript expression in the list <i>nlist</i> must be an integer constant expression except for implied-DO-variables as noted in <a href="#sh-9.3">9.3</a>.  Each substring expression in the list <i>nlist</i> must be an integer constant expression.
+
+<h2><a name="sh-9.3">9.3 Implied-DO in a DATA Statement</a></h2>
+
+The form of an implied-DO list in a DATA statement is:
+<p><pre>
+      ( <i>dlist</i>, <i>i</i> = <i>m</i><sub>1</sub>, <i>m</i><sub>2</sub> [,<i>m</i><sub>3</sub> ] )
+</pre><p>
+where:<ul>
+<li><i>dlist</i> is a list of array element names and implied-DO lists
+<li><i>i</i> is the name of an integer variable, called the <i>implied</i>-<i>DO</i>-<i>variable</i>
+<li><i>m</i><sub>1</sub> <i>m</i><sub>2</sub> <i>m</i><sub>3</sub> are each an integer constant expression, except that the expression may contain implied-DO-variables of other implied-DO lists that have this implied-DO list within their ranges
+</ul><p>
+The range of an implied-DO list is the list <i>dlist</i>.  An iteration count and the values of the implied-DO-variable are established from <i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>, and <i>m</i><sub>3</sub>
+ exactly as for a DO-loop (<a href="rjcnf-11.html#sh-11.10">11.10</a>), except that the iteration count must be positive.  When an implied-DO list appears in a DATA statement, the list items in <i>dlist</i> are specified once for each iteration of the implied-DO list with the appropriate substitution of values for any occurrence of the implied-DO-variable <i>i</i>.  The appearance of an implied-DO-variable name in a DATA statement does not affect the definition status of a variable of the same name in the same program unit.
+<p>
+Each subscript expression in the list <i>dlist</i> must be an integer constant expression, except that the expression may contain implied-DO-variables of implied-DO lists that have the subscript expression within their ranges.
+<p>
+The following is an example of a DATA statement that contains implied-DO lists:
+<p><pre>
+      DATA (( X(J,I), I=1,J), J=1,5) / 15*0. /
+</pre>
+<h2><a name="sh-9.4">9.4 Character Constant in a DATA Statement</a></h2>
+
+An entity in the list <i>nlist</i> that corresponds to a character constant must be of type character.
+<p>
+If the length of the character entity in the list <i>nlist</i> is greater than the length of its corresponding character constant, the additional rightmost characters in the entity are initially defined with blank characters.
+<p>
+If the length of the character entity in the list <i>nlist</i> is less than the length of its corresponding character constant, the additional rightmost characters in the constant are ignored.
+<p>
+Note that initial definition of a character entity causes definition of all of the characters in the entity, and that each character constant initially defines exactly one variable, array element, or substring.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 11:22:33 Mar 28, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:07 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 152.337
+  exclusion.robots: 0.065
+  exclusion.robots.policy: 0.056
+  cdx.remote: 0.05
+  esindex: 0.008
+  LoadShardBlock: 130.905 (3)
+  PetaboxLoader3.datanode: 157.925 (4)
+  load_resource: 131.01
+  PetaboxLoader3.resolve: 67.573
+-->

@@ -1,0 +1,182 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf-2.html","20060328110356","https://web.archive.org/","web","/_static/",
+	      "1143543836");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>2 FORTRAN TERMS AND CONCEPTS</title></head><body>
+
+<h1><a name="sh-2">2 FORTRAN TERMS AND CONCEPTS</a></h1>
+
+This section introduces basic terminology and concepts, some of which are clarified further in later sections.  Many terms and concepts of more specialized meaning are also introduced in later sections.  The underlined words are described here and used throughout this standard.
+
+<h2><a name="sh-2.1">2.1 Sequence</a></h2>
+
+A <i>sequence</i> is a set ordered by a one-to-one correspondence with the numbers 1, 2, through <i>n</i>.  The number of elements in the sequence is <i>n</i>.  A sequence may be empty, in which case it contains no elements.
+<p>
+The elements of a nonempty sequence are referred to as the first element, second element, etc.  The <i>n</i>th  element, where <i>n</i> is the number of elements in the sequence, is called the last element.  An empty sequence has no first or last element.
+
+<h2><a name="sh-2.2">2.2 Syntactic Items</a></h2>
+
+Letters, digits, and special characters of the FORTRAN character set (<a href="rjcnf-3.html#sh-3.1">3.1</a>) are used to form the syntactic items of the FORTRAN language.  The basic syntactic items of the FORTRAN language are constants, symbolic names, statement labels, keywords, operators, and special characters.
+<p>
+The form of a constant is described in Section <a href="rjcnf-4.html#sh-4">4</a>.
+<p>
+A <i>symbolic name</i> takes the form of a sequence of one to six letters or digits, the first of which must be a letter.  Classification of symbolic names and restrictions on their use are described in Section <a href="rjcnf-18.html#sh-18">18</a>.
+<p>
+A <i>statement label</i> takes the form of a sequence of one to five digits, one of which must be nonzero, and is used to identify a statement (<a href="rjcnf-3.html#sh-3.4">3.4</a>).
+<p>
+A <i>keyword</i> takes the form of a specified sequence of letters.  The keywords that are significant in the FORTRAN language are described in Sections 7 through 16.  In many instances, a keyword or a portion of a keyword also meets the requirements for a symbolic name.  Whether a particular sequence of characters identifies a keyword or a symbolic name is implied by context.  There is no sequence of characters that is reserved in all contexts in FORTRAN.
+<p>
+The set of special characters is described in <a href="rjcnf-3.html#sh-3.1.4">3.1.4</a>.  A special character may be an operator or part of a constant or have some other special meaning.  The interpretation is implied by context.
+
+<h2><a name="sh-2.3">2.3 Statements, Comments, and Lines</a></h2>
+
+A FORTRAN <i>statement</i> is a sequence of syntactic items, as described in Sections 7 through 16.  Except for assignment and statement function statements, each  statement begins with a keyword.  In this standard, the keyword or keywords that begin the statement are used to identify that   statement.  For example, a DATA statement begins with the keyword DATA.
+<p>
+A statement is written in one or more lines, the first of which is called an <i>initial line</i> (<a href="rjcnf-3.html#sh-3.2.2">3.2.2</a>); succeeding lines, if any, are called <i>continuation lines</i> (<a href="rjcnf-3.html#sh-3.2.3">3.2.3</a>).
+<p>
+There is also a line called a <i>comment line</i> (<a href="rjcnf-3.html#sh-3.2.1">3.2.1</a>), which is not part of any statement and is intended to provide documentation.
+
+<h3><a name="sh-2.3.1">2.3.1 Classes of Statements.</a></h3>
+
+Each statement is classified as executable or nonexecutable (Section <a href="rjcnf-7.html#sh-7">7</a>).  Executable statements specify actions.  Nonexecutable statements describe the characteristics, arrangement, and initial values of data; contain editing information; specify statement functions; classify program units; and specify entry points within subprograms.
+
+<h2><a name="sh-2.4">2.4 Program Units and Procedures</a></h2>
+
+A <i>program unit</i> consists of a sequence of statements and optional comment lines.  A program unit is either a main program or a subprogram.
+<p>
+A <i>main program</i> is a program unit that does not have a FUNCTION, SUBROUTINE, or BLOCK DATA statement as its first statement; it may have a PROGRAM statement as its first statement.
+<p>
+A <i>subprogram</i> is a program unit that has a FUNCTION, SUBROUTINE, or BLOCK DATA statement as its first statement.  A subprogram whose first statement is a FUNCTION statement is called a <i>function subprogram.</i> A subprogram whose first statement is a SUBROUTINE statement is called a <i>subroutine subprogram</i>.  Function subprograms and subroutine subprograms are called <i>procedure subprograms</i>.  A subprogram whose first statement is a BLOCK DATA statement is called a <i>block data subprogram</i>.
+
+<h3><a name="sh-2.4.1">2.4.1 Procedures.</a></h3>
+
+Subroutines (<a href="rjcnf-15.html#sh-15.6">15.6</a>), external functions (<a href="rjcnf-15.html#sh-15.5">15.5</a>), statement functions (<a href="rjcnf-15.html#sh-15.4">15.4</a>), and the intrinsic functions (<a href="rjcnf-15.html#sh-15.3">15.3</a>) are called <i>procedures</i>.  Subroutines and external functions are called <i>external procedures</i>.  Function subprograms and subroutine subprograms may specify one or more external functions and subroutines, respectively (<a href="rjcnf-15.html#sh-15.7">15.7</a>).  External procedures may also be specified by means other than FORTRAN subprograms.
+
+<h3><a name="sh-2.4.2">2.4.2 Executable Program.</a></h3>
+
+An <i>executable program</i> is a collection of program units that consists of exactly one main program and any number, including none, of subprograms and external procedures.
+
+<h2><a name="sh-2.5">2.5 Variable</a></h2>
+
+A <i>variable</i> is an entity that has both a name and a type.  A variable name is a symbolic name of a datum.  Such a datum may be identified, defined
+(<a href="#sh-2.11">2.11</a>), and referenced (<a href="#sh-2.12">2.12</a>).  Note that the usage in this standard of the word "variable" is more restricted than its normal usage, in that it does not include array elements.
+<p>
+The type of a variable is optionally specified by the appearance of the variable name in a type-statement (<a href="rjcnf-8.html#sh-8.4">8.4</a>).  If it is not so specified, the type of a variable is implied by the first letter of the variable name to be integer or real (<a href="rjcnf-4.html#sh-4.1.2">4.1.2</a>), unless the initial letter type implication is changed by the use of an IMPLICIT statement (<a href="rjcnf-8.html#sh-8.5">8.5</a>).
+<p>
+At any given time during the execution of an executable program, a variable is either defined or undefined (<a href="#sh-2.11">2.11</a>).
+
+<h2><a name="sh-2.6">2.6 Array</a></h2>
+
+An <i>array</i> is a nonempty sequence of data that has a name and a type.  The name of an array is a symbolic name.
+
+<h3><a name="sh-2.6.1">2.6.1 Array Elements.</a></h3>
+
+Each of the elements of an array is called an <i>array element</i>.  An array name qualified by a subscript is an array element name and identifies a particular element of the array (<a href="rjcnf-5.html#sh-5.3">5.3</a>).  Such a datum may be identified, defined (<a href="#sh-2.11">2.11</a>), and referenced (<a href="#sh-2.12">2.12</a>).  The number of array elements in an array  is specified by an <i>array declarator</i> (<a href="rjcnf-5.html#sh-5.1">5.1</a>).
+<p>
+An array element has a type.  The type of all array elements within an array is the same, and is optionally specified by the appearance of the array name in a type-statement (<a href="rjcnf-8.html#sh-8.4">8.4</a>).  If it is not so specified, the type of an array element is implied by the first letter of the array name to be integer or real (<a href="rjcnf-4.html#sh-4.1.2">4.1.2</a>), unless the initial letter type implication is changed by the use of an IMPLICIT statement (<a href="rjcnf-8.html#sh-8.5">8.5</a>).
+<p>
+At any given time during the execution of an executable program, an array element is either defined or undefined (<a href="#sh-2.11">2.11</a>).
+
+<h2><a name="sh-2.7">2.7 Substring</a></h2>
+
+A character datum is a nonempty sequence of characters.  A <i>substring</i> is a contiguous portion of a character datum.  The form of a substring name used to identify, define (<a href="#sh-2.11">2.11</a>), or reference (<a href="#sh-2.12">2.12</a>) a substring is described in <a href="rjcnf-5.html#sh-5.7.1">5.7.1</a>.
+<p>
+At any given time during the execution of an executable program, a substring is either defined or undefined (<a href="#sh-2.11">2.11</a>).
+
+<h2><a name="sh-2.8">2.8 Dummy Argument</a></h2>
+
+A dummy argument in a procedure is either a symbolic name or an asterisk.  A symbolic name dummy argument identifies a variable, array, or procedure that becomes associated (<a href="#sh-2.14">2.14</a>) with an actual argument of each reference (<a href="#sh-2.12">2.12</a>) to the procedure (<a href="rjcnf-15.html#sh-15.2">15.2</a>, <a href="rjcnf-15.html#sh-15.4.2">15.4.2</a>, <a href="rjcnf-15.html#sh-15.5.2">15.5.2</a>, and <a href="rjcnf-15.html#sh-15.6.2">15.6.2</a>).  An asterisk dummy argument indicates that the corresponding actual argument is an alternate return specifier (<a href="rjcnf-15.html#sh-15.6.2.3">15.6.2.3</a>, <a href="rjcnf-15.html#sh-15.8.3">15.8.3</a>, and <a href="rjcnf-15.html#sh-15.9.3.5">15.9.3.5</a>).
+<p>
+Each dummy argument name that is classified as a variable, array, or dummy procedure may appear wherever an actual name of the same class (Section <a href="rjcnf-18.html#sh-18">18</a>) and type may appear, except where explicitly prohibited.
+
+<h2><a name="sh-2.9">2.9 Scope of Symbolic Names and Statement Labels</a></h2>
+
+The scope of a symbolic name (<a href="rjcnf-18.html#sh-18.1">18.1</a>) is an executable program, a program unit, a statement function statement, or an implied-DO list in a DATA statement.
+<p>
+The name of the main program and the names of block data subprograms, external functions, subroutines, and common blocks have a scope of an executable program.
+<p>
+The names of variables, arrays, constants, statement functions, intrinsic functions, and dummy procedures have a scope of a program unit.
+<p>
+The names of variables that appear as dummy arguments in a statement function statement have a scope of that statement.
+<p>
+The names of variables that appear as the DO-variable of an implied-DO in a DATA statement have a scope of the implied-DO list.
+<p>
+Statement labels have a scope of a program unit.
+
+<h2><a name="sh-2.10">2.10 List</a></h2>
+
+A <i>list</i> is a nonempty sequence (<a href="#sh-2.1">2.1</a>) of syntactic entities separated by commas.  The entities in the list are called <i>list items</i>.
+
+<h2><a name="sh-2.11">2.11 Definition Status</a></h2>
+
+At any given time during the execution of an executable program, the <i>definition status</i> of each variable, array element, or substring is either <i>defined</i> or <i>undefined</i> (Section <a href="rjcnf-17.html#sh-17">17</a>).
+<p>
+A defined entity has a value.  The value of a defined entity does not change until the entity becomes undefined or is redefined with a different value.
+<p>
+If a variable, array element, or substring is undefined, it does not have a predictable value.
+<p>
+A previously defined variable or array element may become undefined.  Subsequent definition of a defined variable or array element is permitted, except where it is explicitly prohibited.
+<p>
+A character variable, character array element, or character substring is defined if every substring of length one of the entity is defined.  Note that if a string is defined, every substring of the string is defined, and if any substring of the string is undefined, the string is undefined.  Defining any substring does not cause any other string or substring to become undefined.
+<p>
+An entity is <i>initially defined</i> if it is assigned a value in a DATA statement (Section <a href="rjcnf-9.html#sh-9">9</a>).  Initially defined entities are in the defined state at the beginning of execution of an executable program.  All variables and array elements not initially defined, or associated (<a href="#sh-2.14">2.14</a>) with an initially defined entity, are undefined at the beginning of execution of an executable program.
+<p>
+An entity must be defined at the time a reference to it is executed.
+
+<h2><a name="sh-2.12">2.12 Reference</a></h2>
+
+A variable, array element, or substring <i>reference</i> is the appearance of a variable, array element, or substring name, respectively, in a statement in a context requiring the value of that entity to be used during the execution of the executable program.  When a reference to an entity is executed, its current value is available.  In this standard, the act of defining an entity is not considered a reference to that entity.
+<p>
+A procedure reference is the appearance of a procedure name in a statement in a context that requires the actions specified by the procedure to be executed during the execution of the executable program.  When a procedure reference is executed, the procedure must be available.
+
+<h2><a name="sh-2.13">2.13 Storage</a></h2>
+
+A <i>storage sequence</i> is a sequence of storage units.  A <i>storage unit</i> is either a numeric storage unit or a character storage unit.
+<p>
+An integer, real, or logical datum has one <i>numeric storage unit</i> in a storage sequence. A double precision or complex datum has two numeric storage units in a storage sequence.  A character datum has one <i>character storage unit</i> in a storage sequence for each character in the datum.  This standard does not specify a relationship between a numeric storage unit and a character storage unit.
+<p>
+If a datum requires more than one storage unit in a storage sequence, those storage units are consecutive.
+<p>
+The concept of a storage sequence is used to describe relationships that exist among variables, array elements, arrays, substrings, and common blocks.  This standard does not specify a relationship between the storage sequence concept and the physical properties or implementation of storage.
+
+<h2><a name="sh-2.14">2.14 Association</a></h2>
+
+<i>Association</i> of entities exists if the same datum may be identified by different symbolic names in the same program unit, or by the same name or a different name in different program units of the same executable program
+(<a href="rjcnf-17.html#sh-17.1">17.1</a>).
+<p>
+Entities may become associated by the following:
+<p><ol>
+<li>Common association (<a href="rjcnf-8.html#sh-8.3.4">8.3.4</a>)
+<li>Equivalence association (<a href="rjcnf-8.html#sh-8.2.2">8.2.2</a>)
+<li>Argument association (<a href="rjcnf-15.html#sh-15.9.3">15.9.3</a>)
+<li>Entry association (<a href="rjcnf-15.html#sh-15.7.3">15.7.3</a>)
+</ol><p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 11:03:56 Mar 28, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:46 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 71.873
+  exclusion.robots: 0.08
+  exclusion.robots.policy: 0.069
+  cdx.remote: 0.064
+  esindex: 0.011
+  LoadShardBlock: 41.911 (3)
+  PetaboxLoader3.datanode: 60.968 (4)
+  load_resource: 72.748
+  PetaboxLoader3.resolve: 49.299
+-->

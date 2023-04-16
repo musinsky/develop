@@ -1,0 +1,141 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-17.html","20060326202726","https://web.archive.org/","web","/_static/",
+	      "1143404846");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>17 ASSOCIATION AND DEFINITION</title></head><body>
+
+<h1><a name="sh-17">17 ASSOCIATION AND DEFINITION</a></h1>
+
+<h2><a name="sh-17.1">17.1 Storage and Association</a></h2>
+
+Storage sequences are used to describe relationships that exist among variables, array elements, substrings, common blocks, and arguments.
+
+<h3><a name="sh-17.1.1">17.1.1 Storage Sequence.</a></h3>
+
+A <i>storage sequence</i> is a sequence (<a href="rjcnf-2.html#sh-2.1">2.1</a>) of storage units.  The <i>size of a storage sequence</i>
+is the number of storage units in the storage sequence.  A <i>storage unit</i> is a character storage unit or a numeric storage unit.
+<p>
+A variable or array element of type integer, real, or logical has a storage sequence of one numeric storage unit.
+<p>
+A variable or array element of type double precision or complex has a storage sequence of two numeric storage units.  In a complex storage sequence, the real part has the first storage unit and the imaginary part has the second storage unit.
+<p>
+A variable, array element, or substring of type character has a storage sequence of character storage units.  The number of character storage units in the storage sequence is the length of the character entity.  The order of the sequence corresponds to the ordering of character positions (<a href="rjcnf-4.html#sh-4.8">4.8</a>).
+<p>
+Each array and common block has a storage sequence (<a href="rjcnf-5.html#sh-5.2.5">5.2.5</a> and <a href="rjcnf-8.html#sh-8.3.2">8.3.2</a>).
+
+<h3><a name="sh-17.1.2">17.1.2 Association of Storage Sequences.</a></h3>
+
+Two storage sequences <i>s</i><sub>1</sub> and <i>s</i><sub>2</sub> are
+<i>associated if the ith storage unit of s<sub>1</sub> is the same as</i> the jth storage unit of <i>s</i><sub>2</sub>.  This causes the (i+k)th storage unit of <i>s</i><sub>1</sub> to be the same as the (j+k)th storage unit of <i>s</i><sub>2</sub>, for each integer k such that 1 &lt;= i+k &lt;= size of <i>s</i><sub>1</sub> and 1 &lt;= j+k &lt;= size of <i>s</i><sub>2</sub>.
+
+<h3><a name="sh-17.1.3">17.1.3 Association of Entities.</a></h3>
+
+Two variables, array elements, or substrings are <i>associated</i> if their storage sequences are associated.  Two entities are <i>totally associated</i> if they have the same storage sequence.  Two entities are <i>partially associated</i> if they are associated but not totally associated.
+<p>
+The definition status and value of an entity affects the definition status and value of any associated entity.  An EQUIVALENCE statement, a COMMON statement, an ENTRY statement(<a href="rjcnf-15.html#sh-15.7.3">15.7.3</a>), or a procedure reference (argument association) may cause association of storage sequences.
+<p>
+An EQUIVALENCE statement causes association of entities only within one program unit, unless one of the equivalenced entities is also in a common block (<a href="rjcnf-8.html#sh-8.3">8.3</a>).
+<p>
+Arguments and COMMON statements cause entities in one program unit to become associated with entities in another program unit (<a href="rjcnf-8.html#sh-8.3">8.3</a> and <a href="rjcnf-15.html#sh-15.9">15.9</a>).  Note that association between actual and dummy arguments does not imply association of storage sequences except when the actual argument is the name of a variable, array element, array, or substring.
+<p>
+In a function subprogram, an ENTRY statement causes the entry name to become associated with the name of the function subprogram which appears in the FUNCTION statement.
+<p>
+Partial association may exist only between two character entities or between a double precision or complex entity and an entity of type integer, real, logical, double precision, or complex.
+<p>
+Except for character entities, partial association may occur only through the use of COMMON, EQUIVALENCE, or ENTRY statements.  Partial association must not occur through argument association, except for arguments of type character.
+<p>
+In the example:
+<p><pre>
+      REAL A(4),B
+      COMPLEX C(2)
+      DOUBLE PRECISION D
+      EQUIVALENCE (C(2),A(2),B), (A,D)
+</pre><p>
+the third storage unit of C, the second storage unit of A, the storage unit of B, and the second storage unit of D are specified as the same.  The storage sequences may be illustrated as:
+<p><pre>
+         storage unit |   1  |   2  |   3  |   4  |   5  |
+                      |-----C(1)----|-----C(2)----|
+                             | A(1) | A(2) | A(3) | A(4) |
+                                    |---B--|
+                             |------D------|
+</pre><p>
+A(2) and B are totally associated.  The following are partially associated: A(1) and C(1), A(2) and C(2), A(3) and C(2), B and C(2), A(1) and D, A(2) and D, B and D, C(1) and D, and C(2) and D.  Note that although C(1) and C(2) are each associated with D, C(1) and C(2) are not associated with each other.
+<p>
+Partial association of character entities occurs when some, but not all, of the storage units of the entities are the same.  In the example:
+<p><pre>
+      CHARACTER A*4,B*4,C*3
+      EQUIVALENCE (A(2:3),B,C)
+</pre><p>
+A, B, and C are partially associated.
+
+<h2><a name="sh-17.2">17.2 Events That Cause Entities to Become Defined</a></h2>
+
+Variables, array elements, and substrings become defined as follows:
+<p><ol>
+<li>Execution of an arithmetic, logical, or character assignment statement causes the entity that precedes the equals to become defined.
+<li>As execution of an input statement proceeds, each entity that is assigned a value of its corresponding type from the input medium becomes defined at the time of such assignment.
+<li>Execution of a DO statement causes the DO-variable to become defined.
+<li>Beginning of execution of action specified by an implied-DO list in an input/output statement causes the implied-DO-variable to become defined.
+<li>A DATA statement causes entities to become initially defined at the beginning of execution of an executable program.
+<li>Execution of an ASSIGN statement causes the variable in the statement to become defined with a statement label value.
+<li>When an entity of a given type becomes defined, all totally associated entities of the same type become defined except that entities totally associated with the variable in an ASSIGN statement become undefined when the ASSIGN statement is executed.
+<li>A reference to a subprogram causes a dummy argument to become defined if the corresponding actual argument is defined with a value that is not a statement label value.  Note that there must be agreement between the actual argument and the dummy argument (<a href="rjcnf-15.html#sh-15.9.3">15.9.3</a>).
+<li>Execution of an input/output statement containing an input/output status specifier causes the specified integer variable or array element
+to become defined.
+<li>Execution of an INQUIRE statement causes any entity that is assigned a value during the execution of the statement to become defined if no error condition exists.
+<li>When a complex entity becomes defined, all partially associated real entities become defined.
+<li>When both parts of a complex entity become defined as a result of partially associated real or complex entities becoming defined, the complex entity becomes defined.
+<li>When all characters of a character entity become defined, the character entity becomes defined.
+</ol>
+<h2><a name="sh-17.3">17.3 Events That Caused Entities to Become Undefined</a></h2>
+
+Variables, array elements, and substrings become undefined as follows:
+<p><ol>
+<li>All entities are undefined at the beginning of execution of an executable program except those entities initially defined by DATA statements.
+<li>When an entity of a given type becomes defined, all totally associated entities of different type become undefined.
+<li>Execution of an ASSIGN statement causes the variable in the statement to become undefined as an integer.  Entities that are associated with the variable become undefined.
+<li>When an entity of type other than character becomes defined, all partially associated entities become undefined.  However, when an entity of type real is partially associated with an entity of type complex, the complex entity does not become undefined when the real entity becomes defined and the real entity does not become undefined when the complex
+entity becomes defined.  When an entity of type complex is partially associated with another entity of type complex, definition of one entity does not cause the other to become undefined.
+<li>When the evaluation of a function causes an argument of the function or an entity in common to become defined and if a reference to the function appears in an expression in which the value of the function is not needed to determine the value of the expression, then the argument or the entity in common becomes undefined when the expression is evaluated (<a href="rjcnf-6.html#sh-6.6.1">6.6.1</a>).
+<li>The execution of a RETURN statement or an END statement within a subprogram causes all entities within the subprogram to become undefined except for the following:
+<ol type="a">
+<li>Entities in blank common
+<li>Initially defined entities that have neither been redefined nor become undefined
+<li>Entities specified by SAVE statements
+<li>Entities in a named common block that appears in the subprogram and appears in at least one other program unit that is either directly or indirectly referencing the subprogram
+</ol>
+<li>When an error condition or end-of-file condition occurs during execution of an input statement, all of the  entities specified by the input list of the statement become undefined.
+<li>Execution of a direct access input statement that specifies a record that has not been previously written causes all of the entities specified by the input list of the statement to become undefined.
+<li>Execution of an INQUIRE statement may cause entities to become undefined (<a href="rjcnf-12.html#sh-12.10.3">12.10.3</a>).
+<li>When any character of a character entity becomes undefined, the character entity becomes undefined.
+<li>When an entity becomes undefined as a result of conditions described in (5) through (10), all totally associated entities become undefined and all partially associated entities of type other than character become undefined.
+</ol><p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:27:26 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:38 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 143.434
+  exclusion.robots: 0.069
+  exclusion.robots.policy: 0.061
+  RedisCDXSource: 4.252
+  esindex: 0.007
+  LoadShardBlock: 122.741 (3)
+  PetaboxLoader3.datanode: 112.453 (4)
+  load_resource: 67.163
+  PetaboxLoader3.resolve: 41.357
+-->

@@ -1,0 +1,181 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-18.html","20060326202636","https://web.archive.org/","web","/_static/",
+	      "1143404796");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>18 SCOPES AND CLASSES OF SYMBOLIC NAMES</title></head><body>
+
+<h1><a name="sh-18">18 SCOPES AND CLASSES OF SYMBOLIC NAMES</a></h1>
+
+A symbolic name consists of one to six alphanumeric characters, the first of which must be a letter.  Some sequences of characters, such as format edit descriptors and keywords that uniquely identify certain statements, for example, GO TO, READ, FORMAT, etc, are not symbolic names in such occurrences nor do they form the first characters of symbolic names in such occurrences.
+
+<h2><a name="sh-18.1">18.1 Scope of Symbolic Names</a></h2>
+
+The scope of a symbolic name is an executable program, a program unit, a statement function statement, or an implied-DO list in a DATA statement.
+<p>
+The name of the main program and the names of block data subprograms, external functions, subroutines, and common blocks have a scope of an executable program.
+<p>
+The names of variables, arrays, constants, statement functions, intrinsic functions, and dummy procedures have a scope of a program unit.
+<p>
+The names of variables that appear as dummy arguments in a statement function statement have a scope of that statement.
+<p>The names of variables that appear as the DO-variable of an implied-DO in a DATA statement have a scope of the implied-DO list.
+
+<h3><a name="sh-18.1.1">18.1.1 Global Entities.</a></h3>
+
+The main program, common blocks, subprograms, and external procedures are global entities of an executable program.  A symbolic name that identifies a global entity must not be used to identify any other global entity in the same executable program.
+
+<h4><a name="sh-18.1.1.1">18.1.1.1 Classes of Global Entities.</a></h4>
+
+A symbolic name in one of the following classes is a global entity in an executable program:
+<p><ol>
+<li>Common block
+<li>External function
+<li>Subroutine
+<li>Main program
+<li>Block data subprogram
+</ol>
+
+<h3><a name="sh-18.1.2">18.1.2 Local Entities.</a></h3>
+
+The symbolic name of a local entity identifies that entity in a single program unit.  Within a program unit, a symbolic name that is in one class of entities local to the program unit must not also be in another class of entities local to the program unit.  However, a symbolic name that identifies a local entity may, in a different program unit, identify an entity of any class that is either local to that program unit or global to the executable program.  A symbolic name that identifies a global entity in a program unit must not be used to identify a local entity in that program unit, except for a common block name and an external function name (<a href="#sh-18.2.1">18.2.1</a> and <a href="#sh-18.2.2">18.2.2</a>).
+
+<h4><a name="sh-18.1.2.1">18.1.2.1 Classes of Local Entities.</a></h4>
+
+A symbolic name in one of the following classes is a local entity in a program unit.
+<p><ol>
+<li>Array
+<li>Variable
+<li>Constant
+<li>Statement function
+<li>Intrinsic function
+<li>Dummy procedure
+</ol><p>
+A symbolic name that is a dummy argument of a procedure is classified as a variable, array, or dummy procedure.  The specification and usage must not violate the respective class rules.
+
+<h2><a name="sh-18.2">18.2 Classes of Symbolic Names</a></h2>
+
+In a program unit, a symbolic name must not be in more than one class except as noted in the following paragraphs of this section.  There are no restrictions on the appearances of the same symbolic name in different program units of an executable program other than those noted in this section.
+
+<h3><a name="sh-18.2.1">18.2.1 Common block.</a></h3>
+
+A symbolic name is the name of a common block if and only if it appears as a block name in a COMMON statement (<a href="rjcnf-8.html#sh-8.3">8.3</a>).
+<p>
+A common block name is global to the executable program.
+<p>
+A common block name in a program unit may also be the name of any local entity other than a constant, intrinsic function, or a local variable that is also an external function in a function subprogram.  If a name is used for both a common block and a local entity, the appearance of that name in any context other than as a common block name in a COMMON or SAVE statement identifies only the local entity.  Note that an intrinsic function name may be a common block name in a program unit that does not reference the intrinsic function.
+
+<h3><a name="sh-18.2.2">18.2.2 External Function.</a></h3>
+
+A symbolic name is the name of an external function if it meets either of the following conditions:
+<p><ol>
+<li>The name appears immediately following the word FUNCTION in a FUNCTION statement or the word ENTRY in an ENTRY statement within a function subprogram.
+<li>It is not an array name, character variable name, statement function name, intrinsic function name, dummy argument, or subroutine name, and every appearance is immediately followed by a left parenthesis except in a type-statement, in an EXTERNAL statement, or as an actual argument.
+</ol><p>
+In a function subprogram, the name of a function that appears immediately after the word FUNCTION in a FUNCTION statement or immediately after the word ENTRY in an ENTRY statement may also be the name of a variable in that subprogram (<a href="rjcnf-15.html#sh-15.5.1">15.5.1</a>).  At least one such function name must be the name of a variable in a function subprogram.
+<p>
+An external function name is global to the executable program.
+
+<h3><a name="sh-18.2.3">18.2.3 Subroutine.</a></h3>
+
+A symbolic name is the name of a subroutine if it meets either of the following conditions:
+<p><ol>
+<li>The name appears immediately following the word SUBROUTINE in a SUBROUTINE statement or the word ENTRY in an ENTRY statement within a subroutine subprogram.
+<li>The name appears immediately following the word CALL in a CALL statement and is not a dummy argument.
+</ol><p>
+A subroutine name is global to the executable program.
+
+<h3><a name="sh-18.2.4">18.2.4 Main Program.</a></h3>
+
+A symbolic name is the name of a main program if and only if it appears in a PROGRAM statement in the main program.
+<p>
+A main program name is global to the executable program.
+
+<h3><a name="sh-18.2.5">18.2.5 Block Data Subprogram.</a></h3>
+
+A symbolic name is the name of a block data subprogram if and only if it appears in a BLOCK DATA statement.
+<p>
+A block data subprogram name is global to the executable program.
+
+<h3><a name="sh-18.2.6">18.2.6 Array.</a></h3>
+
+A symbolic name is the name of an array if it appears as the array name in an array declarator (<a href="rjcnf-5.html#sh-5.1">5.1</a>) in a DIMENSION, COMMON, or type-statement.
+<p>
+An array name is local to a program unit.
+<p>
+An array name may be the same as a common block name.
+
+<h3><a name="sh-18.2.7">18.2.7 Variable.</a></h3>
+
+A symbolic name is the name of a variable if it meets all of the following conditions:
+<p><ol>
+<li>It does not appear in a PARAMETER, INTRINSIC, or EXTERNAL statement.
+<li>It is not the name of an array, subroutine, main program, or block data subprogram.
+<li>It appears other than as the name of a common block, the name of an external function in a FUNCTION statement, or an entry name in an ENTRY statement in an external function.
+<li>It is never immediately followed by a left parenthesis unless it is immediately preceded by the word FUNCTION in a FUNCTION statement, is immediately preceded by the word ENTRY in an ENTRY statement, or is at the beginning of a character substring name (<a href="rjcnf-5.html#sh-5.7.1">5.7.1</a>).
+</ol><p>
+A variable name in the dummy argument list of a statement function statement is local to the statement function statement in which it occurs.  Note that the use of a name that appears in Table 5 as a dummy argument of a statement function removes it from the class of intrinsic functions.  A variable name that appears as an implied-DO-variable in a DATA statement is local to the implied-DO list.  All other variable names are local to a program unit.
+<p>
+A statement function dummy argument name may also be the name of a variable or common block in the program unit.  The appearance of the name in any context other than as a dummy argument of the statement function identifies the local variable or common block.  The statement function dummy argument name and local variable name have the same type and, if of type character, both have the same constant length.
+<p>
+The name of an implied-DO-variable in a DATA statement may also be the name of a variable or common block in the program unit.  The appearance of the name in any context other than as an implied-DO-variable in the DATA statement identifies the local variable or common block.  The implied-DO-variable and the local variable have the same type.
+
+<h3><a name="sh-18.2.8">18.2.8 Constant.</a></h3>
+
+A symbolic name is the name of a constant if it appears as a symbolic name in a PARAMETER statement.
+<p>
+The symbolic name of a constant is local to a program unit.
+
+<h3><a name="sh-18.2.9">18.2.9 Statement Function.</a></h3>
+
+A symbolic name is the name of a statement function if a statement function statement (<a href="rjcnf-15.html#sh-15.4">15.4</a>) is present for that symbolic name and it is not an array name.
+<p>
+A statement function name is local to a program unit.  A statement function name may be the same as a common block name.
+
+<h3><a name="sh-18.2.10">18.2.10 Intrinsic Function.</a></h3>
+
+A symbolic name is the name of an intrinsic function if it meets all of the following conditions:
+<p><ol>
+<li>The name appears in the Specific Name column or the Generic Name column of Table 5.
+<li>It is not an array name, statement function name, subroutine name, or dummy argument name.
+<li>Every appearance of the symbolic name, except in an INTRINSIC statement, a type-statement, or as an actual argument, is immediately followed by an actual argument list enclosed in parentheses.
+</ol><p>
+An intrinsic function name is local to a program unit.
+
+<h3><a name="sh-18.2.11">18.2.11 Dummy Procedure.</a></h3>
+
+A symbolic name is the name of a dummy procedure if the name appears in the dummy argument list of a FUNCTION, SUBROUTINE, or ENTRY statement and meets one or more of the following conditions:
+<p><ol>
+<li>It appears in an EXTERNAL statement.
+<li>It appears immediately following the word CALL in a CALL statement.
+<li>It is not an array name or character variable name, and every appearance is immediately followed by a left parenthesis except in a type-statement, in an EXTERNAL statement, in a CALL statement, as a dummy argument, as an actual argument, or as a common block name in a COMMON or SAVE statement.
+</ol><p>
+A dummy procedure name is local to a program unit.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:26:36 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:40 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 56.675
+  exclusion.robots: 0.064
+  exclusion.robots.policy: 0.056
+  RedisCDXSource: 0.57
+  esindex: 0.006
+  LoadShardBlock: 35.664 (3)
+  PetaboxLoader3.datanode: 50.067 (4)
+  load_resource: 97.561
+  PetaboxLoader3.resolve: 59.723
+-->

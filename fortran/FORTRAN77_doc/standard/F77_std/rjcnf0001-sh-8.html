@@ -1,0 +1,726 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf0001-sh-8.html","20051016190511","https://web.archive.org/","web","/_static/",
+	      "1129489511");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>
+8 SPECIFICATION STATEMENTS
+</title></head><body>
+<h1><a name="sh-8">8 SPECIFICATION STATEMENTS</a></h1>
+
+There are nine kinds of specification statements:
+<ol>
+<li>DIMENSION
+<li>EQUIVALENCE
+<li>COMMON
+<li>INTEGER, REAL, DOUBLE PRECISION, COMPLEX, LOGICAL, and CHARACTER type-statements
+<li>IMPLICIT
+<li>PARAMETER
+<li>EXTERNAL
+<li>INTRINSIC
+<li>SAVE
+</ol>
+<p>All specification statements are nonexecutable.
+<p><h2><a name="sh-8.1">8.1 DIMENSION Statement</a></h2>
+A DIMENSION statement is used to specify the symbolic names
+and dimension specifications of arrays.
+<p>The form of a DIMENSION statement is:
+<pre>
+DIMENSION <i>a</i>(<i>d</i>) [,<i>a</i>(<i>d</i>)]...</pre>
+
+where each 
+<i>a</i>(<i>d</i>)
+ is an array declarator (
+<a href="rjcnf0001-sh-5.html#sh-5.1">5.1</a>).
+<p>Each symbolic name 
+<i>a</i>
+ appearing in a DIMENSION statement
+declares 
+<i>a</i>
+ to be an array in that program unit.  Note that
+array declarators may also appear in COMMON statements and
+type-statements.  Only one appearance of a symbolic name
+as an array name in an array declarator in a program unit
+is permitted.
+<p><h2><a name="sh-8.2">8.2 EQUIVALENCE Statement</a></h2>
+An EQUIVALENCE statement is used to specify the sharing
+of storage units by two or more entities in a program unit.
+This causes association of the entities that share the
+storage units.
+<p>If the equivalenced entities are of different data types,
+the EQUIVALENCE statement does not cause type conversion
+or imply mathematical equivalence.  If a variable and an
+array are equivalenced, the variable does not have array
+properties and the array does not have the properties of
+a variable.
+<p><h3><a name="sh-8.2.1">8.2.1 Form of an EQUIVALENCE Statement.</a></h3>
+The form of an EQUIVALENCE statement is:
+<pre>
+EQUIVALENCE (<i>nlist</i>) [,(<i>nlist</i>)]...</pre>
+
+where each 
+<i>nlist</i>
+ is a list (
+<a href="rjcnf0001-sh-2.html#sh-2.10">2.10</a>) of variable names, array
+element names, array names, and character substring names.  Each list must
+contain at least two names.  Names of dummy
+arguments of an external procedure in
+a subprogram must not appear in
+the list.  If a variable name is also a function
+name (
+<a href="rjcnf0001-sh-15.html#sh-15.5.1">15.5.1</a>), that name must not appear in the
+list.
+<p>Each subscript expression or substring expression in a list 
+<i>nlist</i>
+ must be an integer
+constant expression.
+<p><h3><a name="sh-8.2.2">8.2.2 Equivalence Association.</a></h3>
+An EQUIVALENCE statement specifies that the storage
+sequences of the entities whose names appear in a list 
+<i>nlist</i>
+ have the same
+first storage unit.  This causes the association of the
+entities in the list 
+<i>nlist</i>
+ and may cause association of
+other entities (
+<a href="rjcnf0001-sh-17.html#sh-17.1">17.1</a>).
+<p><h3><a name="sh-8.2.3">8.2.3 Equivalence of Character Entities.</a></h3>
+An entity of type character may be equivalenced only with
+other entities of type character. The lengths of the
+equivalenced entities are not required to be the same.
+<p>An EQUIVALENCE statement specifies that the storage
+sequences of the character entities whose names appear in a list 
+<i>nlist</i>
+ have
+the same first character storage unit.  This causes the
+association of the entities in the list 
+<i>nlist</i>
+ and may cause
+association of other entities (
+<a href="rjcnf0001-sh-17.html#sh-17.1">17.1</a>).
+Any adjacent characters in the associated entities may also have
+the same character storage unit and thus may also be associated.
+In the example:
+<ol>
+<li> CHARACTER A*4, B*4, C(2)*3
+<li> EQUIVALENCE (A,C(1)), (B,C(2))
+</ol>
+<p>the association of A, B, and C can be graphically illustrated as:
+<pre>
+| 01|  02|  03|  04|  05|  06|  07|
+
+            | --------A--------|
+                             --------B--------|
+            | ----C(1)----<b>|</b>  ----C(2)----|
+</pre>
+
+<p><h3><a name="sh-8.2.4">8.2.4 Array Names and Array Element Names.</a></h3>
+If an array element name appears in an EQUIVALENCE
+statement, the number of subscript expressions must be the same as
+the number of dimensions specified in the array declarator for the
+array name.
+<p>The use of an array name unqualified by a subscript in an
+EQUIVALENCE statement has the same effect as using an array
+element name that identifies the first element of the
+array.
+<p><h3><a name="sh-8.2.5">8.2.5 Restrictions on EQUIVALENCE Statements.</a></h3>
+An EQUIVALENCE statement must not specify that the same
+storage unit is to occur more than once in a storage
+sequence.  For example,
+<ol>
+<li> DIMENSION A(2)
+<li> EQUIVALENCE (A(1),B), (A(2),B)
+</ol>
+<p>is prohibited, because it would specify the same storage
+unit for A(1) and A(2).  An EQUIVALENCE statement must not
+specify that consecutive storage units are to be
+nonconsecutive.  For example, the following is prohibited:
+<ol>
+<li> REAL A(2)
+<li> DOUBLE PRECISION D(2)
+<li> EQUIVALENCE (A(1),D(1)), (A(2),D(2))
+</ol>
+<p><h2><a name="sh-8.3">8.3 COMMON Statement</a></h2>
+The COMMON statement provides a means of associating
+entities in different program units.  This allows different
+program units to define and reference the same data without
+using arguments, and to share storage units.
+<p><h3><a name="sh-8.3.1">8.3.1 Form of a COMMON Statement.</a></h3>
+The form of a COMMON statement is:
+<pre>
+COMMON [/[<i>cb</i>]/] <i>nlist</i> [/[<i>cb</i>]/ <i>nlist</i>]...</pre>
+
+<ul>
+<li> where: 
+<i>cb</i>
+is a common block name (
+<a href="rjcnf0001-sh-18.html#sh-18.2.1">18.2.1</a>)
+</ul>
+<ul>
+<li> 
+<i>nlist</i>
+is a list (
+<a href="rjcnf0001-sh-2.html#sh-2.10">2.10</a>) of variable names, array
+names, and array declarators.
+Only one appearance of a symbolic name as a variable name,
+array name, or array declarator is permitted in all
+such lists within a program unit.
+Names of dummy arguments of an external procedure in
+a subprogram must not appear in
+the list.  If a variable name is also
+a function name (
+<a href="rjcnf0001-sh-15.html#sh-15.5.1">15.5.1</a>), that name
+must not appear in the list.
+</ul>
+<p>Each omitted 
+<i>cb</i>
+ specifies the blank common block.  If the 
+first 
+<i>cb</i>
+ is omitted, the first two slashes are optional.
+<p>In each COMMON statement, the entities whose names appear in
+an 
+<i>nlist</i>
+ following a block name 
+<i>cb</i>
+ are declared to be in
+common block 
+<i>cb</i>
+.  If the first 
+<i>cb</i>
+ is omitted, all entities
+whose names appear in the first 
+<i>nlist</i>
+ are specified to be in
+blank common.  Alternatively, the appearance of two slashes
+with no block name between them declares the entities whose
+names appear in the list 
+<i>nlist</i>
+ that follows to be in blank
+common.
+<p>Any common block name 
+<i>cb</i>
+ or an omitted 
+<i>cb</i>
+ for blank common
+may occur more than once in one or more COMMON statements
+in a program unit.  The list 
+<i>nlist</i>
+ following each successive
+appearance of the same common block name is treated as a
+continuation of the list for that common block name.
+<p>If a character variable or character array is in a common
+block, all of the entities in that common block must be
+of type character.
+<p><h3><a name="sh-8.3.2">8.3.2 Common Block Storage Sequence.</a></h3>
+For each common block, a
+<i>common block storage sequence</i>
+is
+formed as follows:
+<ol>
+<li>A storage sequence is formed consisting of the
+storage sequences of all entities in the lists 
+<i>nlist</i>
+Z
+for the common block.  The order of the storage
+sequence is the same as the order of the appearance
+of the lists 
+<i>nlist</i>
+ in the program unit.
+<li>The storage sequence formed in (1) is extended to
+include all storage units of any storage sequence
+associated with it by equivalence association.  The
+sequence may be extended only by adding storage
+units beyond the last storage unit.  Entities
+associated with an entity in a common block are
+considered to be in that common block.
+</ol>
+<p><h3><a name="sh-8.3.3">8.3.3 Size of a Common Block.</a></h3>
+The
+<i>size of a common block</i>
+is the size of its common block
+storage sequence, including any extensions of the sequence
+resulting from equivalence association.
+<p>Within an executable program, all named common blocks that
+have the same name must be the same size.  Blank common
+blocks within an executable program are not required to
+be the same size.
+<p><h3><a name="sh-8.3.4">8.3.4 Common Association.</a></h3>
+Within an executable program, the common block storage
+sequences of all common blocks with the same name have the
+same first storage unit.  Within an executable program,
+the common block storage sequences of all blank common
+blocks have the same first storage unit.  This results in
+the association (
+<a href="rjcnf0001-sh-17.html#sh-17.1">17.1</a>) of entities in different program
+units.
+<p><h3><a name="sh-8.3.5">8.3.5 Differences between Named Common and Blank Common.</a></h3>
+A blank common block has the same properties as a named
+common block, except for the following:
+<ol>
+<li>Execution of a RETURN or END statement sometimes
+causes entities in named common blocks to become
+undefined but never causes entities in blank common
+to become undefined (
+<a href="rjcnf0001-sh-15.html#sh-15.8.4">15.8.4</a>).
+<li>Named common blocks of the same name must be of the same
+size in all program units of an executable
+program in which they appear, but
+blank common blocks may be of different sizes.
+<li>Entities in named common blocks may be initially defined by means
+of a DATA statement in a block data subprogram, but entities in
+blank common must not be initially defined (Section 
+<a href="rjcnf0001-sh-9.html#sh-9">9</a>).
+</ol>
+<p><h3><a name="sh-8.3.6">8.3.6 Restrictions on Common and Equivalence.</a></h3>
+An EQUIVALENCE statement must not cause the storage
+sequences of two different common blocks in the same program
+unit to be associated.  Equivalence association must not
+cause a common block storage sequence to be extended by
+adding storage units preceding the first storage unit of
+the first entity specified in a COMMON statement for the
+common block.  For example, the following is not permitted:
+<ol>
+<li> COMMON /X/A
+<li> REAL B(2)
+<li> EQUIVALENCE (A,B(2))
+</ol>
+<p><h2><a name="sh-8.4">8.4 Type-Statements</a></h2>
+A type-statement is used to override or confirm implicit
+typing and may specify dimension information.
+<p>The appearance of the symbolic name of a constant, variable, array,
+external function, or statement
+function in a type-statement specifies the data type
+for that name for all appearances in the program unit.
+Within a program unit, a name must not have its type
+explicitly specified more than once.
+<p>A type-statement that confirms the type of an intrinsic function
+whose name appears in the Specific Name column of Table 5
+is not required,  but is permitted.
+If a generic function name appears in a type-statement, such an
+appearance is not sufficient by itself to remove the generic
+properties from that function.
+<p>The name of a main program, subroutine, or block data subprogram
+must not appear
+in a type-statement.
+<p><h3><a name="sh-8.4.1">8.4.1 INTEGER, REAL, DOUBLE PRECISION, COMPLEX, and LOGICAL Type-Statements.</a></h3>
+An INTEGER, REAL, DOUBLE PRECISION, COMPLEX, or LOGICAL type-statement is of the form:
+<pre>
+<i>typ</i> <i>v</i>[,<i>v</i>]...</pre>
+
+<ul>
+<li> where: 
+<i>typ</i>
+is one of INTEGER, REAL, DOUBLE PRECISION,
+COMPLEX, or LOGICAL
+</ul>
+<ul>
+<li> 
+<i>v</i>
+is a variable name, array name, array declarator,
+symbolic name of a constant, function name, or dummy procedure name (
+<a href="rjcnf0001-sh-18.html#sh-18.2.11">18.2.11</a>)
+</ul>
+<p><h3><a name="sh-8.4.2">8.4.2 CHARACTER Type-Statement.</a></h3>
+The form of a CHARACTER type-statement is:
+<pre>
+CHARACTER [*<i>len</i> ] <i>nam</i> [,<i>nam</i>]...</pre>
+
+<ul>
+<li> where: 
+<i>nam</i>
+is of one of&#160;the forms:
+</ul>
+<ul>
+<li> 
+<i>v</i> [*<i>len</i>]
+
+<li> 
+<i>a</i> [(<i>d</i>)] [*<i>len</i>]
+
+<li> 
+<i>v</i>
+is a variable name, symbolic name of a constant, function
+name, or dummy procedure name
+<li> 
+<i>a</i>
+is an array name
+<li> 
+<i>a</i>(<i>d</i>)
+is an array declarator
+<li> 
+<i>len</i>
+is the length (number of characters) of a
+character variable, character array element,
+character constant that has a symbolic name, or
+character function, and is called the 
+<i>length</i>_<i>specification</i>.
+
+
+<i>len</i>
+ is one of the following:
+</ul>
+<ul>
+<li>(1)An unsigned, nonzero, integer constant
+<li>(2)An integer constant expression (
+<a href="rjcnf0001-sh-6.html#sh-6.1.3.1">6.1.3.1</a>)
+enclosed in parentheses and with a positive
+value
+<li>(3)An asterisk in parentheses, (*)
+</ul>
+<p>A length 
+<i>len</i>
+ immediately following the word CHARACTER is
+the length specification for each entity in the statement
+not having its own length specification.  A length
+specification immediately following an entity is the length
+specification for only that entity.  Note that for an
+array the length specified is for each array element.  If
+a length is not specified for an entity, its length is
+one.
+<p>An entity declared in a CHARACTER statement must have a
+length specification that is an integer constant expression,
+unless that entity is an external function, a dummy argument
+of an external procedure, or a character constant that has a
+symbolic name.
+<p>If a dummy argument has a 
+<i>len</i>
+ of (*) declared, the dummy
+argument assumes the length of the associated actual argument
+for each reference of the subroutine or function.
+If the associated actual argument is an array name, the
+length assumed by the dummy argument is the length of an
+array element in the associated actual argument array.
+<p>If an external function has a 
+<i>len</i>
+ of (*) declared in a
+function subprogram, the function name must appear as the
+name of a function in a FUNCTION or ENTRY statement in the
+same subprogram.  When a reference to such a function is 
+executed, the function assumes the length specified in the
+referencing program unit.
+<p>The length specified for a character function in the program
+unit that references the function must be an integer
+constant expression and must agree with the length specified
+in the subprogram that specifies the function.  Note that
+there always is agreement of length if a 
+<i>len</i>
+ of (*) is
+specified in the subprogram that specifies the function.
+<p>If a character constant that has a symbolic name has a 
+<i>len</i>
+
+of (*) declared, the constant assumes the length of its
+corresponding constant expression in a PARAMETER statement.
+<p>The length specified for a character statement function or
+statement function dummy argument of type character must be
+an integer constant expression.
+<p><h2><a name="sh-8.5">8.5 IMPLICIT Statement</a></h2>
+An IMPLICIT statement is used to change or confirm the
+default implied integer and real typing.
+<p>The form of an IMPLICIT statement is:
+<pre>
+IMPLICIT <i>typ</i> (<i>a</i> [,<i>a</i>]...) [,<i>typ</i> (<i>a</i> [,<i>a</i>]...)]...</pre>
+
+<ul>
+<li> where: 
+<i>typ</i>
+is one of INTEGER, REAL, DOUBLE PRECISION,
+COMPLEX, LOGICAL, or CHARACTER 
+[*<i>len</i>]
+
+</ul>
+<ul>
+<li> 
+<i>a</i>
+is either a single letter or a range of single
+letters in alphabetical order.  A range is
+denoted by the first and last letter of the
+range separated by a minus.  Writing a range
+of letters 
+<i>a</i>  - <i>a</i>
+                           1    2
+ has the same effect as writing
+a list of the single letters 
+<i>a</i>
+                              1
+ through 
+<i>a</i>
+                              2
+.
+<li> 
+<i>len</i>
+is the length of the character entities and is
+one of the following:
+<ul>
+<li>(1)An unsigned, nonzero, integer constant
+<li>(2)An integer constant expression (6.. 1.3.1)
+enclosed in parentheses and with a positive
+value
+</ul>
+<li> If 
+<i>len</i>
+ is not specified, the length is one.
+</ul>
+<p>An IMPLICIT statement specifies a type for all variables,
+arrays, symbolic names of constants, external functions, and statement^  functions that
+begin with any letter that appears in the specification,
+either as a single letter or included in a range of letters.
+IMPLICIT statements do not change the type of any intrinsic
+functions.  An IMPLICIT statement applies only to the
+program unit that contains it.
+<p>Type  specification by an IMPLICIT statement may be
+overridden or confirmed for any particular variable, array,
+symbolic name of a constant, external function, or statement
+function name by the appearance of that name in a
+type-statement.  An explicit type specification in a FUNCTION
+statement overrides an IMPLICIT statement for the name of
+that function subprogram.  Note that the length is also
+overridden when a particular name appears in a CHARACTER
+or CHARACTER FUNCTION statement.
+<p>Within the specification statements of a program unit,
+IMPLICIT statements must precede all other specification
+statements except PARAMETER statements.  A program unit may contain more than one
+IMPLICIT statement.
+<p>The same letter must not appear as a single letter, or be
+included in a range of letters, more than once in all of
+the IMPLICIT statements in a program unit.
+<p><h2><a name="sh-8.6">8.6 PARAMETER Statement</a></h2>
+The PARAMETER statement is used to give a constant a symbolic name.
+<p>The form of a PARAMETER statement is:
+<pre>
+PARAMETER (<i>p</i>=<i>e</i> [,<i>p</i>=<i>e</i>]...)</pre>
+
+<ul>
+<li> where: 
+<i>p</i>
+is a symbolic name
+</ul>
+<ul>
+<li> 
+<i>e</i>
+is a constant expression (
+<a href="rjcnf0001-sh-6.html#sh-6.7">6.7</a>)
+</ul>
+<p>If the symbolic name 
+<i>p</i>
+ is of type integer, real, double
+precision, or complex, the corresponding expression 
+<i>e</i>
+ must
+be an arithmetic constant expression (
+<a href="rjcnf0001-sh-6.html#sh-6.1.3">6.1.3</a>).  If the
+symbolic name 
+<i>p</i>
+ is of type character or logical, the
+corresponding expression 
+<i>e</i>
+ must be a character constant
+expression (
+<a href="rjcnf0001-sh-6.html#sh-6.2.3">6.2.3</a>) or a logical constant expression (
+<a href="rjcnf0001-sh-6.html#sh-6.4.4">6.4.4</a>),
+respectively.
+<p>Each 
+<i>p</i>
+ is the
+<i>symbolic name of a constant</i>
+that becomes
+defined with the value determined from the expression 
+<i>e</i>
+ that
+appears on the right of the equals, in accordance with the
+rules for assignment statements (
+<a href="rjcnf0001-sh-10.html#sh-10.1">10.1</a>, 
+<a href="rjcnf0001-sh-10.html#sh-10.2">10.2</a>, and 
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>).
+<p>Any symbolic name of a constant that appears in an
+expression 
+<i>e</i>
+ must have been defined previously in the same
+or a different PARAMETER statement in the same program unit.
+<p>A symbolic name of a constant must not become defined more
+than once in a program unit.
+<p>If a symbolic name of a constant is not of default implied
+type, its type must be specified by a type-statement or
+IMPLICIT statement prior to its first appearance in a
+PARAMETER statement.  If the length specified for the
+symbolic name of a constant of type character is not the
+default length of one, its length must be specified in a
+type-statement or IMPLICIT statement prior to the first
+appearance of the symbolic name of the constant.  Its length
+must not be changed by subsequent statements including
+IMPLICIT statements.
+<p>Once such a symbolic name is defined, that name may appear
+in that program unit in any subsequent statement as a
+primary in an expression or in a DATA statement (
+<a href="rjcnf0001-sh-9.html#sh-9.1">9.1</a>).  A
+symbolic name of a constant must not be part of a format
+specification.  A symbolic name of a constant must not be
+used to form part of another constant, for example, any part
+of a complex constant.
+<p>A symbolic name in a PARAMETER statement may identify only
+the corresponding constant in that program unit.
+<p><h2><a name="sh-8.7">8.7 EXTERNAL Statement</a></h2>
+An EXTERNAL statement is used to identify a symbolic name
+as representing an external procedure or dummy procedure,
+and to permit such a name to be used as an actual argument.
+<p>The form of an EXTERNAL statement is:
+<pre>
+EXTERNAL <i>proc</i> [,<i>proc</i>]...</pre>
+
+where each 
+<i>proc</i>
+ is the name of an external procedure, dummy
+procedure, or block data subprogram.
+Appearance of a name in an EXTERNAL statement declares
+that name to be an external procedure name or dummy
+procedure name, or block data subprogram name.  If an external procedure na`)me or a dummy
+procedure name is used as an actual argument in a program
+unit, it must appear in an EXTERNAL statement in that
+program unit.  Note that a statement function name must
+not appear in an EXTERNAL statement.
+<p>If an intrinsic function name appears in an EXTERNAL
+statement in a program unit, that name becomes the name
+of some external procedure and an intrinsic function of
+the same name is not available for reference in the program
+unit.
+<p>Only one appearance of a symbolic name in all of the
+EXTERNAL statements of a program unit is permitted.
+<p><h2><a name="sh-8.8">8.8 INTRINSIC Statement</a></h2>
+An INTRINSIC statement is used to identify a symbolic name
+as representing an intrinsic function (
+<a href="rjcnf0001-sh-15.html#sh-15.3">15.3</a>).  It also
+permits a name that represents a specific intrinsic function
+to be used as an actual argument.
+<p>The form of an INTRINSIC statement is:
+<pre>
+INTRINSIC <i>fun</i> [,<i>fun</i>]...</pre>
+
+where each 
+<i>fun</i>
+ is an intrinsic function name.
+<p>Appearance of a name in an INTRINSIC statement declares
+that name to be an intrinsic function name.  If a specific
+name of an intrinsic function is used as an actual argument
+in a program unit, it must appear in an INTRINSIC statement
+in that program unit.  The names of intrinsic functions
+for type conversion (INT, IFIX, IDINT,
+FLOAT, SNGL, REAL, DBLE, CMPLX, ICHAR, CHAR), lexical relationship
+(LGE, LGT, LLE, LLT), and
+for choosing the largest or smallest value (MAX, MAX0, AMAX1,
+DMAX1, AMAX0, MAX1, MIN, MIN0, AMIN1, DMIN1, AMIN0, MIN1) must not be used
+as actual arguments.
+<p>The appearance of a generic function name in an
+INTRINSIC statement does not cause that name to lose its generic
+property.
+<p>Only one appearance of a symbolic name in all of the
+INTRINSIC statements of a program unit is permitted.  Note
+that a symbolic name must not appear in both an EXTERNAL
+and an INTRINSIC statement in a program unit.
+<p><h2><a name="sh-8.9">8.9 SAVE Statement</a></h2>
+A SAVE statement is used to retain the definition status of
+an entity after the execution of a RETURN or END statement
+in a subprogram.
+Within a function or subroutine subprogram, an entity
+specified by a SAVE statement does not become undefined
+as a result of the execution of a RETURN or END statement
+in the subprogram.
+However, such an entity in a common block may become
+undefined or redefined in another program unit.
+<p>The form of a SAVE statement is:
+<pre>
+SAVE [<i>a</i> [,<i>a</i>]...]</pre>
+
+where each 
+<i>a</i>
+ is a named common block name preceded and
+followed by a slash, a variable name, or an array name.  Redundant appearances of
+an item are not permitted.
+<p>Dummy argument names, procedure names, and names of entities
+in a common block must not appear in a SAVE statement.
+<p>A SAVE statement without a list is treated as though it 
+contained the names of all allowable items in the program unit.
+<p>The appearance of a common block name preceded and
+followed by a slash in a SAVE statement
+has the effect of specifying all of the entities in that
+common block.
+<p>If a particular common block name is specified by a SAVE statement
+in a subprogram of an executable program,
+it must be specified by a SAVE statement in every
+subprogram in which that common block appears.
+<p>A SAVE statement is optional in a main program
+and has no effect.
+<p>If a named common block is specified in a SAVE statement
+in a subprogram, the current values of the entities
+in the common block storage sequence (
+<a href="#sh-8.3.3">8.3.3</a>)
+at the time a RETURN or END statement is executed
+are made available to the next program unit
+that specifies that common block name in the
+execution sequence of an executable program.
+<p>If a named common block is specified in the main program unit,
+the current values of the common block storage sequence
+are made available to each subprogram that specifies that
+named common block;
+a SAVE statement in the subprogram has no effect.
+<p>The definition status of each entity in the named common block
+storage sequence depends on the association that has
+been established for the common block storage
+sequence (
+<a href="rjcnf0001-sh-17.html#sh-17.2">17.2</a> and 
+<a href="rjcnf0001-sh-17.html#sh-17.3">17.3</a>).
+<p>If a local entity that is specified by a SAVE statement and
+is not in a common block is in a defined state at the time a
+RETURN or END statement is executed in a subprogram, that
+entity is defined with the same value at the next reference
+of that subprogram.
+<p>The execution of a RETURN statement or an END statement
+within a subprogram causes all entities within the
+subprogram to become undefined except for the following:
+<ol>
+<li>Entities specified by SAVE statements
+<li>Entities in blank common
+<li>Initially defined entities that have neither been
+redefined nor become undefined
+<li>Entities in a named common block that appears in the
+subprogram and appears in at least one other program
+unit that is referencing, either directly or
+indirectly, that subprogram
+</ol> 
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<hr> <a href="rjcnf0001.html">[Contents]</a> <a href="rjcnf0001-sh-7.html">[Previous]</a> <a href="rjcnf0001-sh-9.html">[Next]</a> <br>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+<p>
+</body></html>
+
+<!--
+     FILE ARCHIVED ON 19:05:11 Oct 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:35 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 75.132
+  exclusion.robots: 0.125
+  exclusion.robots.policy: 0.111
+  cdx.remote: 0.092
+  esindex: 0.012
+  LoadShardBlock: 44.604 (3)
+  PetaboxLoader3.datanode: 82.989 (4)
+  load_resource: 105.619
+  PetaboxLoader3.resolve: 45.436
+-->

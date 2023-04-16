@@ -1,0 +1,193 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-3.html","20060326202719","https://web.archive.org/","web","/_static/",
+	      "1143404839");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>3 CHARACTERS, LINES, AND EXECUTION SEQUENCE</title></head><body>
+
+<h1><a name="sh-3">3 CHARACTERS, LINES, AND EXECUTION SEQUENCE</a></h1>
+
+<h2><a name="sh-3.1">3.1 FORTRAN Character Set</a></h2>
+
+The FORTRAN character set consists of twenty-six letters, ten digits, and thirteen special characters.
+
+<h3><a name="sh-3.1.1">3.1.1 Letters.</a></h3>
+
+A <i>letter</i> is one of the twenty-six characters:
+<p><dl>
+<dd>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+</dl>
+<h3><a name="sh-3.1.2">3.1.2 Digits.</a></h3>
+
+A <i>digit</i> is one of the ten characters:
+<p><dl>
+<dd>0 1 2 3 4 5 6 7 8 9
+</dl><p>
+A string of digits is interpreted in the decimal base number system when a numeric interpretation is appropriate.
+
+<h3><a name="sh-3.1.3">3.1.3 Alphanumeric Characters.</a></h3>
+
+An <i>alphanumeric character</i> is a letter or a digit.
+
+<h3><a name="sh-3.1.4">3.1.4 Special Characters.</a></h3>
+
+A <i>special character</i> is one of the thirteen characters:
+<p><pre>
+                       ___________________________________
+                       |           |                     |
+                       | Character |  Name of Character  |
+                       |___________|_____________________|
+                       |           |                     |
+                       |           |  Blank              |
+                       |     =     |  Equals             |
+                       |     +     |  Plus               |
+                       |     -     |  Minus              |
+                       |     *     |  Asterisk           |
+                       |     /     |  Slash              |
+                       |     (     |  Left Parenthesis   |
+                       |     )     |  Right Parenthesis  |
+                       |     .     |  Decimal Point      |
+                       |     ,     |  Comma              |
+                       |     $     |  Currency Symbol    |
+                       |     '     |  Apostrophe         |
+                       |     :     |  Colon              |
+                       |___________|_____________________|
+</pre>
+<h3><a name="sh-3.1.5">3.1.5 Collating Sequence and Graphics.</a></h3>
+
+The order in which the letters are listed in <a href="#sh-3.1.1">3.1.1</a> specifies the collating sequence for the letters; A is less than Z.  The order in which the digits are listed in <a href="#sh-3.1.2">3.1.2</a> specifies the collating sequence for the digits; 0 is less than 9.  The digits and letters must not be intermixed in the collating sequence; all of the digits must precede A or all of the digits must follow Z. The character blank is less than the letter A and less than the digit 0.  The order in which the special characters are listed in <a href="#sh-3.1.4">3.1.4</a> does not imply a collating sequence.
+<p>
+Except for the currency symbol, the graphics used for the forty-nine characters must be as given in <a href="#sh-3.1.1">3.1.1</a>, <a href="#sh-3.1.2">3.1.2</a>, and <a href="#sh-3.1.4">3.1.4</a>.  However, the style of any graphic is not specified.
+
+<h3><a name="sh-3.1.6">3.1.6 Blank Character.</a></h3>
+
+With the exception of the uses specified (<a href="#sh-3.2.2">3.2.2</a>, <a href="#sh-3.2.3">3.2.3</a>, <a href="#sh-3.3">3.3</a>, <a href="rjcnf-4.html#sh-4.8">4.8</a>, <a href="rjcnf-4.html#sh-4.8.1">4.8.1</a>, <a href="rjcnf-13.html#sh-13.5.1">13.5.1</a>, and <a href="rjcnf-13.html#sh-13.5.2">13.5.2</a>), a blank character within a program unit has no meaning and may be used to improve the appearance of the program unit, subject to the restriction on the number of consecutive continuation lines (<a href="#sh-3.3">3.3</a>).
+
+<h2><a name="sh-3.2">3.2 Lines</a></h2>
+
+A <i>line</i> in a program unit is a sequence of 72 characters.  All characters must be from the FORTRAN character set, except as described in <a href="#sh-3.2.1">3.2.1</a>, <a href="rjcnf-4.html#sh-4.8">4.8</a>, <a href="rjcnf-12.html#sh-12.2.2">12.2.2</a>, and <a href="rjcnf-13.html#sh-13.2.1">13.2.1</a>.
+<p>
+The character positions in a line are called <i>columns</i> and are numbered consecutively 1, 2, through 72.  The number indicates the sequential position of a character in the line, beginning at the left and proceeding to the right.  Lines are ordered by the sequence in which they are presented to the processor.  Thus, a program unit consists of a totally ordered set of characters.
+
+<h3><a name="sh-3.2.1">3.2.1 Comment Line.</a></h3>
+
+A <i>comment line</i> is any line that contains a C or an asterisk in column 1, or contains only blank characters in columns 1 through 72.  A comment line that contains a C or an asterisk in column 1 may contain any character capable of representation in the processor in columns 2 through 72.
+<p>
+A comment line does not affect the executable program in any way and may be used to provide documentation.
+<p>
+Comment lines may appear anywhere in the program unit.  Comment lines may precede the initial line of the first statement of any program unit.  Comment lines may appear between an initial line and its first continuation line or between two continuation lines.
+
+<h3><a name="sh-3.2.2">3.2.2 Initial Line.</a></h3>
+
+An <i>initial line</i> is any line that is not a comment line and contains the character blank or the digit 0 in column 6.  Columns 1 through 5 may contain a statement label (<a href="#sh-3.4">3.4</a>), or each of the columns 1 through 5 must contain the character blank.
+
+<h3><a name="sh-3.2.3">3.2.3 Continuation Line.</a></h3>
+
+A <i>continuation line</i> is any line that contains any character of the FORTRAN character set other than the character blank or the digit 0 in column 6 and contains only blank characters in columns 1 through 5.  A statement must not have more than nineteen continuation lines.
+
+<h2><a name="sh-3.3">3.3 Statements</a></h2>
+
+The statements of the FORTRAN language are described in Sections 7 through 16 and are used to form program units.  Each statement is written in columns 7 through 72 of an initial line and as many as nineteen continuation lines.  An END statement is written only in columns 7 through 72 of an initial line.  No other statement in a program unit may have an initial line that appears to be an END statement.  Note that a statement must contain no more than 1320 characters.  Except as part of a logical IF statement (<a href="rjcnf-11.html#sh-11.5">11.5</a>), no statement may begin on a line that contains any part of the previous statement.
+<p>
+Blank characters preceding, within, or following a statement do not change the interpretation of the statement, except when they appear within the datum strings of character constants or the H or apostrophe edit descriptors in FORMAT statements.  However, blank characters do count as characters in the limit of total characters allowed in any one statement.
+
+<h2><a name="sh-3.4">3.4 Statement Labels</a></h2>
+
+Statement labels provide a means of referring to individual statements.  Any statement may be labeled, but only labeled executable statements and FORMAT statements may be referred to by the use of statement labels.  The form of a statement label is a sequence of one to five digits, one of which must be nonzero.  The statement label may be placed anywhere in columns 1 through 5 of the initial line of the statement.  The same statement label must not be given to more than one statement in a program unit.  Blanks and leading zeros are not significant in distinguishing between statement labels.
+
+<h2><a name="sh-3.5">3.5 Order of Statements and Lines</a></h2>
+
+A PROGRAM statement may appear only as the first statement of a main program.  The first statement of a subprogram must be either a FUNCTION, SUBROUTINE, or BLOCK DATA statement.
+<p>
+Within a program unit that permits the statements:
+<p><ol>
+<li>FORMAT statements may appear anywhere;
+<li>all specification statements must precede all DATA statements, statement function statements, and executable statements;
+<li>all statement function statements must precede all executable statements;
+<li>DATA statements may appear anywhere after the specification statements; and
+<li>ENTRY statements may appear anywhere except between a block IF statement and its corresponding END IF statement, or between a DO statement and the terminal statement of its DO-loop.
+</ol><p>
+Within the specification statements of a program unit, IMPLICIT statements must precede all other specification statements except PARAMETER statements.  Any specification statement that specifies the type of a symbolic name of a constant must precede the PARAMETER statement that defines that particular symbolic name of a constant; the PARAMETER statement must precede all other statements containing the symbolic names of constants that are defined in the PARAMETER statement.
+<p>
+The last line of a program unit must be an END statement.
+
+<h4 align="center">Figure 1 Required Order of Statements and Comment Lines</h4>
+<pre>
+           ___________________________________________________________
+           |         |                                               |
+           |         |       PROGRAM, FUNCTION, SUBROUTINE, or       |
+           |         |              BLOCK DATA Statement             |
+           |         |_______________________________________________|
+           |         |              |              |    IMPLICIT     |
+           |         |              |              |   Statements    |
+           |         |              |  PARAMETER   |_________________|
+           | Comment |              |  Statements  |     Other       |
+           |  Lines  |    FORMAT    |              |  Specification  |
+           |         |     and      |              |   Statements    |
+           |         |    ENTRY     |______________|_________________|
+           |         |  Statements  |              |   Statement     |
+           |         |              |              |    Function     |
+           |         |              |     DATA     |   Statements    |
+           |         |              |  Statements  |_________________|
+           |         |              |              |   Executable    |
+           |         |              |              |   Statements    |
+           |_________|______________|______________|_________________|
+           |                                                         |
+           |                      END Statement                      |
+           |_________________________________________________________|
+</pre><p>
+Figure 1 is a diagram of the required order of statements and comment lines for a program unit.  Vertical lines delineate varieties of statements that may be interspersed.  For example, FORMAT statements may be interspersed with statement function statements and executable statements.  Horizontal lines delineate varieties of statements that must not be interspersed.  For example, statement function statements must not be interspersed with executable statements.  Note that an END statement is also an executable statement and must appear only as the last statement of a program unit.
+
+<h2><a name="sh-3.6">3.6 Normal Execution Sequence and Transfer of Control</a></h2>
+
+<i>Normal execution sequence</i> is the execution of executable statements in the order in which they appear in a program unit.  Execution of an executable program begins with the execution of the first executable statement of the main program.  When an external procedure specified in a subprogram is referenced, execution begins with the first executable statement that follows the FUNCTION, SUBROUTINE, or ENTRY statement that specifies the referenced procedure as the name of a procedure.
+<p>
+A <i>transfer of control</i> is an alteration of the normal execution sequence.  Statements that may cause a transfer of control are:
+<p><ol>
+<li>GO TO
+<li>Arithmetic IF
+<li>RETURN
+<li>STOP
+<li>An input/output statement containing an error specifier or end-of-file specifier
+<li>CALL with an alternate return specifier
+<li>A logical IF statement containing any of the above forms
+<li>Block IF and ELSE IF
+<li>The last statement, if any, of an IF-block or ELSE IF-block
+<li>DO
+<li>The terminal statement of a DO-loop
+<li>END
+</ol><p>
+The effect of these statements on the execution sequence is described in Sections <a href="rjcnf-11.html#sh-11">11</a>, <a href="rjcnf-12.html#sh-12">12</a>, and <a href="rjcnf-15.html#sh-15">15</a>.
+<p>
+The normal execution sequence is not affected by the appearance of nonexecutable statements or comment lines between executable statements.  Execution of a function reference or a CALL statement is not considered a transfer of control in the program unit that contains the reference, except when control is returned to a statement identified by an alternate return specifier in a CALL statement.  Execution of a RETURN or END statement in a referenced procedure, or execution of a transfer of control within a referenced procedure, is not considered a transfer of control in the program unit that contains the reference.
+<p>
+In the execution of an executable program, a procedure subprogram must not be referenced a second time without the prior execution of a RETURN or END statement in that procedure.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:27:19 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:50 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 1662.455
+  exclusion.robots: 0.083
+  exclusion.robots.policy: 0.073
+  RedisCDXSource: 0.999
+  esindex: 0.006
+  LoadShardBlock: 1644.175 (3)
+  PetaboxLoader3.datanode: 1535.279 (4)
+  PetaboxLoader3.resolve: 182.566 (2)
+  load_resource: 107.25
+-->

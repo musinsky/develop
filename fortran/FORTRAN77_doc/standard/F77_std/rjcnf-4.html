@@ -1,0 +1,179 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-4.html","20060326202715","https://web.archive.org/","web","/_static/",
+	      "1143404835");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>4 DATA TYPES AND CONSTANTS</title></head><body>
+
+<h1><a name="sh-4">4 DATA TYPES AND CONSTANTS</a></h1>
+
+<h2><a name="sh-4.1">4.1 Data Types</a></h2>
+
+The six types of data are:
+<p><ol>
+<li>Integer
+<li>Real
+<li>Double precision
+<li>Complex
+<li>Logical
+<li>Character
+</ol><p>
+Each type is different and may have a different internal representation.  The type may affect the interpretation of the operations involving the datum.
+
+<h3><a name="sh-4.1.1">4.1.1 Data Type of a Name.</a></h3>
+
+The name employed to identify a datum or a function also identifies its data type.  A symbolic name representing a constant, variable, array, or function (except a generic function) must have only one type for each program unit.  Once a particular name is identified with a particular type in a program unit, that type is implied for any usage of the name in the program unit that requires a type.
+
+<h3><a name="sh-4.1.2">4.1.2 Type Rules for Data and Procedure Identifiers.</a></h3>
+
+A symbolic name that identifies a constant, variable, array, external function, or statement function may have its type specified in a type-statement (<a href="rjcnf-8.html#sh-8.4">8.4</a>) as integer, real, double precision, complex, logical, or character.  In the absence of an explicit declaration in a type-statement, the type is implied by the first letter of the name.  A first letter of I, J, K, L, M, or N implies type integer and any other letter implies type real, unless an IMPLICIT statement (<a href="rjcnf-8.html#sh-8.5">8.5</a>) is used to change the default implied type.
+<p>
+The data type of an array element name is the same as the type of its array name.
+<p>
+The data type of a function name specifies the type of the datum supplied by the function reference in an expression.
+<p>
+A symbolic name that identifies a specific intrinsic function in a program unit has a type as specified in <a href="rjcnf-15.html#sh-15.10">15.10</a>.  An explicit type-statement is not required; however, it is permitted.  A generic function name does not have a predetermined type; the result of a generic function reference assumes a type that depends on the type of the argument, as specified in <a href="rjcnf-15.html#sh-15.10">15.10</a>.  If a generic function name appears in a type-statement, such an appearance is not sufficient by itself to remove the generic properties from that function.
+<p>
+In a program unit that contains an external function reference, the type of the function is determined in the same manner as for variables and arrays.
+<p>
+The type of an external function is specified implicitly by its name, explicitly in a FUNCTION statement, or explicitly in a type-statement.  Note that an IMPLICIT statement within a function subprogram may affect the type of the external function specified in the subprogram.
+<p>
+A symbolic name that identifies a main program, subroutine, common block, or block data subprogram has no data type.
+
+<h3><a name="sh-4.1.3">4.1.3 Data Type Properties.</a></h3>
+
+The mathematical and representation properties for each of the data types are specified in the following sections.  For real, double precision, and integer data, the value zero is considered neither positive nor negative.  The value of a signed zero is the same as the value of an unsigned zero.
+
+<h2><a name="sh-4.2">4.2 Constants</a></h2>
+
+A <i>constant</i> is an arithmetic constant, logical constant, or character constant.  The value of a constant does not change.  Within an executable program, all constants that have the same form have the same value.
+
+<h3><a name="sh-4.2.1">4.2.1 Data Type of a Constant.</a></h3>
+
+The form of the string representing a constant specifies both its value and data type.  A PARAMETER statement (<a href="rjcnf-8.html#sh-8.6">8.6</a>) allows a constant to be given a symbolic name.  The symbolic name of a constant must not be used to form part of another constant.
+
+<h3><a name="sh-4.2.2">4.2.2 Blanks in Constants.</a></h3>
+
+Blank characters occurring in a constant, except in a character constant, have no effect on the value of the constant.
+
+<h3><a name="sh-4.2.3">4.2.3 Arithmetic Constants.</a></h3>
+
+Integer, real, double precision, and complex constants are <i>arithmetic constants</i>.
+
+<h4><a name="sh-4.2.3.1">4.2.3.1 Signs of Constants.</a></h4>
+
+An <i>unsigned constant</i> is a constant without a leading sign.  A <i>signed constant</i> is a constant with a leading plus or minus sign.  An <i>optionally signed constant</i> is a constant that may be either signed or unsigned.  Integer, real, and double precision constants may be optionally signed constants, except where specified otherwise.
+
+<h2><a name="sh-4.3">4.3 Integer Type</a></h2>
+
+An integer datum is always an exact representation of an integer value.  It may assume a positive, negative, or zero value.  It may assume only an integral value.  An integer datum has one numeric storage unit in a storage sequence.
+
+<h3><a name="sh-4.3.1">4.3.1 Integer Constant.</a></h3>
+
+The form of an <i>integer constant</i> is an optional sign followed by a nonempty string of digits.  The digit string is interpreted as a decimal number.
+
+<h2><a name="sh-4.4">4.4 Real Type</a></h2>
+
+A real datum is a processor approximation to the value of a real number.  It may assume a positive, negative, or zero value.  A real datum has one numeric storage unit in a storage sequence.
+
+<h3><a name="sh-4.4.1">4.4.1 Basic Real Constant.</a></h3>
+
+The form of a <i>basic real constant</i> is an optional sign, an integer part, a decimal point, and a fractional part, in that order.  Both the integer part and the fractional part are strings of digits; either of these parts may be omitted but not both.  A basic real constant may be written with more digits than a processor will use to approximate the value of the constant.  A basic real constant is interpreted as a decimal number.
+
+<h3><a name="sh-4.4.2">4.4.2 Real Exponent.</a></h3>
+
+The form of a <i>real exponent</i> is the letter E followed by an optionally signed integer constant.  A real exponent denotes a power of ten.
+
+<h3><a name="sh-4.4.3">4.4.3 Real Constant.</a></h3>
+
+The forms of a <i>real constant</i> are:
+<p><ol>
+<li>Basic real constant
+<li>Basic real constant followed by a real exponent
+<li>Integer constant followed by a real exponent
+</ol><p>
+The value of a real constant that contains a real exponent is the product of the constant that precedes the E and the power of ten indicated by the integer following the E.  The integer constant part of form (3) may be written with more digits than a processor will use to approximate the value of the constant.
+
+<h2><a name="sh-4.5">4.5 Double Precision Type</a></h2>
+
+A double precision datum is a processor approximation to the value of a real number.  The precision, although not specified, must be greater than that of type real.  A double precision datum may assume a positive, negative, or zero value.  A double precision datum has two consecutive numeric storage units in a storage sequence.
+
+<h3><a name="sh-4.5.1">4.5.1 Double Precision Exponent.</a></h3>
+
+The form of a <i>double precision exponent</i> is the letter D followed by an optionally signed integer constant.  A double precision exponent denotes a power of ten.  Note that the form and interpretation of a double precision exponent are identical to those of a real exponent, except that the letter D is used instead of the letter E.
+
+<h3><a name="sh-4.5.2">4.5.2 Double Precision Constant.</a></h3>
+
+The forms of a <i>double precision constant</i> are:
+<p><ol>
+<li>Basic real constant followed by a double precision exponent
+<li>Integer constant followed by a double precision exponent
+</ol><p>
+The value of a double precision constant is the product of the constant that precedes the D and the power of ten indicated by the integer following the D.  The integer constant part of form (2) may be written with more digits than a processor will use to approximate the value of the constant.
+
+<h2><a name="sh-4.6">4.6 Complex Type</a></h2>
+
+A complex datum is a processor approximation to the value of a complex number.  The representation of a complex datum is in the form of an ordered pair of real data.  The first of the pair represents the real part of the complex datum and the second represents the imaginary part.  Each part has the same degree of approximation as for a real datum.  A complex datum has two consecutive numeric storage units in a storage sequence; the first storage unit is the real part and the second storage unit is the imaginary part.
+
+<h3><a name="sh-4.6.1">4.6.1 Complex Constant.</a></h3>
+
+The form of a <i>complex constant</i> is a left parenthesis followed by an ordered pair of real or integer constants separated by a comma, and followed by a right parenthesis.  The first constant of the pair is the real part of the complex constant and the second is the imaginary part.
+
+<h2><a name="sh-4.7">4.7 Logical Type</a></h2>
+
+A logical datum may assume only the values true or false.  A logical datum has one numeric storage unit in a storage sequence.
+
+<h3><a name="sh-4.7.1">4.7.1 Logical Constant.</a></h3>
+
+The forms and values of a <i>logical constant</i> are:
+<p><pre>
+                               ___________________
+                               |         |       |
+                               |  Form   | Value |
+                               |_________|_______|
+                               |         |       |
+                               | .TRUE.  | true  |
+                               |         |       |
+                               | .FALSE. | false |
+                               |_________|_______|
+</pre>
+<h2><a name="sh-4.8">4.8 Character Type</a></h2>
+
+A character datum is a string of characters.  The string may consist of any characters capable of representation in the processor.  The blank character is valid and significant in a character datum.  The <i>length</i> of a character datum is the number of characters in the string.  A character datum has one character storage unit in a storage sequence for each character in the string.
+<p>
+Each character in the string has a character position that is numbered consecutively 1, 2, 3, etc.  The number indicates the sequential position of a character in the string, beginning at the left and proceeding to the right.
+
+<h3><a name="sh-4.8.1">4.8.1 Character Constant.</a></h3>
+
+The form of a <i>character constant</i> is an apostrophe followed by a nonempty string of characters followed by an apostrophe.  The string may consist of any characters capable of representation in the processor.  Note that the delimiting apostrophes are not part of the datum represented by the constant.  An apostrophe within the datum string is represented by two consecutive apostrophes with no intervening blanks.  In a character constant, blanks embedded between the delimiting apostrophes are significant.
+<p>
+The length of a character constant is the number of characters between the delimiting apostrophes, except that each pair of consecutive apostrophes counts as a single character.  The delimiting apostrophes are not counted.  The length of a character constant must be greater than zero.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:27:15 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:51 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 74.074
+  exclusion.robots: 0.071
+  exclusion.robots.policy: 0.06
+  cdx.remote: 0.059
+  esindex: 0.009
+  LoadShardBlock: 46.91 (3)
+  PetaboxLoader3.datanode: 45.894 (4)
+  load_resource: 54.957
+  PetaboxLoader3.resolve: 34.092
+-->

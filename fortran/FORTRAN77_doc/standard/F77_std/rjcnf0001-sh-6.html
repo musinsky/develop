@@ -1,0 +1,1261 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf0001-sh-6.html","20051016193456","https://web.archive.org/","web","/_static/",
+	      "1129491296");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>
+6 EXPRESSIONS
+</title></head><body>
+<h1><a name="sh-6">6 EXPRESSIONS</a></h1>
+
+This section describes the formation, interpretation, and
+evaluation rules for arithmetic, character, relational,
+and logical expressions.  An expression is formed from
+operands, operators, and parentheses.
+<p><h2><a name="sh-6.1">6.1 Arithmetic Expressions</a></h2>
+An arithmetic expression is used to express a numeric
+computation. Evaluation of an arithmetic expression produces
+a numeric !value.
+<p>The simplest form of an arithmetic expression is an unsigned arithmetic
+constant, symbolic name of an arithmetic constant,
+arithmetic variable reference,
+arithmetic array element reference,  or arithmetic function reference.
+More
+complicated arithmetic expressions may be formed by using
+one or more arithmetic operands together with arithmetic
+operators and parentheses.  Arithmetic operands must
+identify values of type integer, real, double precision,
+or complex.
+<p><h3><a name="sh-6.1.1">6.1.1 Arithmetic Operators.</a></h3>
+The five arithmetic operators are:
+<pre>
+____________________________________
+           |         |                         |
+           |_<i>Operator|</i>__<i>Representing</i>___________<i>|</i>
+           |         |                         |
+           |    **   |  Exponentiation         |
+           |    /    |  Division               |
+           |    *    |  Multiplication         |
+           |    -    |  Subtraction or Negation|
+           |    +    |  Addition or Identity   |
+           |_________<i>|</i>_________________________<i>|</i>
+</pre>
+
+<p>Each of the operators **, /, and * operates on a pair of
+operands and is written between the two operands.  Each
+of the operators + and - either:
+<ol>
+<li>operates on a pair of operands and is written between
+the two operands, or
+<li>operates on a single operand and is  written
+preceding that operand.
+</ol>
+<p><h3><a name="sh-6.1.2">6.1.2 Form and Interpretation of Arithmetic Expressions.</a></h3>
+The interpretation of the expression formed with each of
+the arithmetic operators in each form of use is as follows:
+<pre>
+___________________________________________________
+   |                |                                 |
+   |_<i>Use</i>_<i>of</i>_<i>Operator|</i>__<i>Interpretation</i>_________________<i>|</i>
+   |                |                                 |
+   |    x  ** x     |  Exponentiate x  to the power x |
+   |     1     2    |                1               2|
+   |     x  / x     |  Divide x  by x                 |
+   |      1    2    |          1     2                |
+   |     x  * x     |  Multiply x  and x              |
+   |      1    2    |            1      2             |
+   |     x  - x     |  Subtract x  from x             |
+   |      1    2    |            2       1            |
+   |        - x     |  Negate x                       |
+   |           2    |          2                      |
+   |     x  + x     |  Add x  and x                   |
+   |      1    2    |       1      2                  |
+   |        + x     |  Same as x                      |
+   |___________<i>2</i>____<i>|</i>___________<i>2</i>_____________________<i>|</i>
+</pre>
+
+<ul>
+<li> where: 
+x
+                              1
+denotes the operand to the left of the operator
+</ul>
+<ul>
+<li> 
+x
+                              2
+denotes the operand to the right of the operator
+</ul>
+<p>The interpretation of a division may depend on the data
+types of the operands (
+<a href="#sh-6.1.5">6.1.5</a>).
+<p>A set of formation rules is used to establish the
+interpretation of an arithmetic expression that contains
+two or more operators.  There is a precedence among the
+arithmetic operators, which determines the order in which
+the operands are to be combined unless the order is changed
+by the use of parentheses.  The precedence of the arithmetic
+operators is as follows:
+<pre>
+_________________________
+                |         |              |
+                |_<i>Operator|</i>__<i>Precedence</i>__<i>|</i>
+                |         |              |
+                |    **   |  Highest     |
+                | * and / |  Intermediate|
+                | + and - |  Lowest      |
+                |_________<i>|</i>______________<i>|</i>
+</pre>
+
+<p>For example, in the expression
+<pre>
+- A ** 2</pre>
+
+the exponentiation operator (**) has precedence over the
+negation operator (-); therefore, the operands of the
+exponentiation operator are combined to form an expression
+that is used as the operand of the negation operator.  The
+interpretation of the above expression is the same as the
+interpretation of the expression
+<pre>
+- (A ** 2)</pre>
+
+The
+<i>arithmetic operands</i>
+are:
+<ol>
+<li>Primary
+<li>Factor
+<li>Term
+<li>Arithmetic expression
+</ol>
+<p>The formation rules to be applied in establishing the
+interpretation of arithmetic expressions are in
+
+<a href="#sh-6.1.2.1">6.1.2.1</a> through 6.1.2.4.
+<p><h4><a name="sh-6.1.2.1">6.1.2.1 Primaries.</a></h4>
+The
+<i>primaries</i>
+are:
+<ol>
+<li>Unsigned arithmetic constant (
+<a href="rjcnf0001-sh-4.html#sh-4.2.3">4.2.3</a>)
+<li>Symbolic name of an arithmetic constant (
+<a href="rjcnf0001-sh-8.html#sh-8.6">8.6</a>)
+<li>Arithmetic variable reference (
+<a href="rjcnf0001-sh-2.html#sh-2.5">2.5</a>)
+<li>Arithmetic array element reference (
+<a href="rjcnf0001-sh-5.html#sh-5.3">5.3</a>)
+<li>Arithmetic function reference (
+<a href="rjcnf0001-sh-15.html#sh-15.2">15.2</a>)
+<li>Arithmetic expression enclosed in parentheses
+(
+<a href="#sh-6.1.2.4">6.1.2.4</a>)
+</ol>
+<p><h4><a name="sh-6.1.2.2">6.1.2.2 Factor.</a></h4>
+The forms of a
+<i>factor</i>
+are:
+<ol>
+<li>Primary
+<li>Primary ** factor
+</ol>
+<p>Thus, a factor is formed from a sequence of one or more primaries
+separated by the exponentiation operator.  Form (2)
+indicates that in interpreting a factor containing two or
+more exponentiation operators, the primaries are combined
+from right to left.  For example, the factor
+<pre>
+2**3**2</pre>
+
+has the same interpretation as the factor
+<pre>
+2**(3**2)</pre>
+
+<p><h4><a name="sh-6.1.2.3">6.1.2.3 Term.</a></h4>
+The forms of a
+<i>term</i>
+are:
+<ol>
+<li>Factor
+<li>Term / factor
+<li>Term * factor
+</ol>
+<p>Thus, a term is formed from a sequence of one or more factors separated
+by either the multiplication operator or the division
+operator.  Forms (2) and (3) indicate that in interpreting
+a term containing two or more multiplication or division
+operators, the factors are combined from left to right.
+<p><h4><a name="sh-6.1.2.4">6.1.2.4 Arithmetic Expression.</a></h4>
+The forms of an
+<i>arithmetic expression</i>
+are:
+<ol>
+<li>Term
+<li>+ term
+<li>- term
+<li>Arithmetic expression + term
+<li>Arithmetic expression - term
+</ol>
+<p>Thus, an arithmetic expression is formed from a sequence of one or
+more terms separated by either the addition operator or
+the subtraction operator.  The first term in an arithmetic
+expression may be preceded by the identity or the negation
+operator.  Forms (4) and (5) indicate that in interpreting
+an arithmetic expression containing two or more addition
+or subtraction operators, the terms are combined from left
+to right.
+<p>Note that these formation rules do not permit expressions
+containing two consecutive arithmetic operators, such as
+A**-B or A+-B.  However, expressions such as A**(-B) and
+A+(-B) are permitted.
+<p><h3><a name="sh-6.1.3">6.1.3 Arithmetic Constant Expression.</a></h3>
+An
+<i>arithmetic constant expression</i>
+is an arithmetic
+expression in which each primary is an arithmetic constant,
+the symbolic name of an arithmetic constant, or an
+arithmetic constant expression enclosed in parentheses.
+The exponentiation operator is not permitted
+unless the exponent is of type integer.
+Note that
+variable, array element, and function references are not
+allowed.
+<p><h4><a name="sh-6.1.3.1">6.1.3.1 Integer Constant Expression.</a></h4>
+An
+<i>integer constant expression</i>
+is an arithmetic constant
+expression in which each constant or symbolic name of a
+constant is of type integer.
+Note that variable, array element, and
+function references are not allowed.
+<p>The following are examples of integer constant expressions:
+<ol>
+<li> 3
+<li> -3
+<li> -3+4
+</ol>
+<p><h3><a name="sh-6.1.4">6.1.4 Type and Interpretation of Arithmetic Expressions.</a></h3>
+The data type of a constant
+is determined by the form of the constant (
+<a href="rjcnf0001-sh-4.html#sh-4.2.1">4.2.1</a>).  The data
+type of an arithmetic variable reference, symbolic name of
+an arithmetic constant,
+arithmetic array element reference, or arithmetic
+function reference is determined by the name of the datum
+or function (
+<a href="rjcnf0001-sh-4.html#sh-4.1.2">4.1.2</a>).  The data type of an arithmetic
+expression containing one or more arithmetic operators is
+determined from the data types of the operands.
+<p>
+<i>Integer expressions, real expressions, double precision expressions,</i>
+and
+<i>complex expressions </i>
+are arithmetic
+expressions whose values are of type integer, real, double
+precision, and complex, respectively.
+<p>When the operator + or - operates on a single operand, the
+data type of the resulting expression is the same as the
+data type of the operand.
+<p>When an arithmetic operator operates on a pair of operands,
+the data type of the resulting expression is given in
+Tables 2 and 3.  In these tables, each letter I, R, D, or
+C represents an operand or result of type integer, real,
+double precision, or complex, respectively.
+<p>The type of the result is indicated by the I, R, D, or C
+that precedes the equals, and the interpretation is
+indicated by the expression to the right of the equals.
+REAL, DBLE, and CMPLX are the type-conversion
+functions described in 
+<a href="rjcnf0001-sh-15.html#sh-15.10">15.10</a>.
+<dl><dd></dl><br>
+<i>Table</i>_<i>2</i>
+<p>
+<dl><dd>Type and Interpretation of Result for </dl><br>
+x  + x
+                           1    2
+<pre>
+____________________________________________________________
+|      |                          |                        |
+|  x2  |            I2            |           R2           |
+<i>|x1</i>____<i>|</i>__________________________<i>|</i>________________________<i>|</i>
+|      |                          |                        |
+|I     |        I = I  + I        |  R = REAL(I ) + R      |
+| 1    |             1    2       |            1     2     |
+|R     |     R = R  + REAL(I )    |  R = R  + R            |
+| 1    |          1         2     |       1    2           |
+|D     |     D = D  + DBLE(I )    |  D = D  + DBLE(R )     |
+| 1    |          1         2     |       1         2      |
+|C     |  C=C +CMPLX(REAL(I ),0.) |  C = C  + CMPLX(R ,0.) |
+<i>|</i>_<i>1</i>____<i>|</i>_____<i>1</i>_____________<i>2</i>______<i>|</i>_______<i>1</i>__________<i>2</i>_____<i>|</i>
+</pre>
+
+<pre>
+____________________________________________________________
+|       |                      |                           |
+|   x2  |          D2          |             C2            |
+<i>|</i>_<i>x1</i>____<i>|</i>______________________<i>|</i>___________________________<i>|</i>
+|       |                      |                           |
+| I     |   D = DBLE(I ) + D   |   C=CMPLX(REAL(I ),0.)+C  |
+|  1    |             2     2  |                 2       2 |
+| R     |   D = DBLE(R ) + D   |   C = CMPLX(R ,0.) + C    |
+|  1    |             1     2  |              1        2   |
+| D     |   D = D  + D         |         Prohibited        |
+|  1    |        1    2        |                           |
+| C     |      Prohibited      |   C = C  + C              |
+<i>|</i>__<i>1</i>____<i>|</i>______________________<i>|</i>________<i>1</i>____<i>2</i>_____________<i>|</i>
+</pre>
+
+<p>Tables giving the type and interpretation of expressions
+involving -, *, and / may be obtained by replacing all
+occurrences of + in Table 2 by -, *, or /, respectively.
+<dl><dd></dl><br>
+<i>Table</i>_<i>3</i>
+<p>
+<dl><dd>Type and Interpretation of Result for </dl><br>
+x **x
+                            1   2
+<pre>
+____________________________________________________________
+|          |                   |                           |
+|    x2    |         I2        |              R2           |
+<i>|</i>__<i>x1</i>______<i>|</i>___________________<i>|</i>___________________________<i>|</i>
+|          |                   |                           |
+|  I       |     I = I **I     |     R = REAL(I )**R       |
+|   1      |          1   2    |               1    2      |
+|  R       |     R = R **I     |     R = R **R             |
+|   1      |          1   2    |          1   2            |
+|  D       |     D = D **I     |     D = D **DBLE(R )      |
+|   1      |          1   2    |          1        2       |
+|  C       |     C = C **I     |     C = C **CMPLX(R ,0.)  |
+<i>|</i>___<i>1</i>______<i>|</i>__________<i>1</i>___<i>2</i>____<i>|</i>__________<i>1</i>_________<i>2</i>______<i>|</i>
+</pre>
+
+<pre>
+____________________________________________________________
+|       |                     |                            |
+|   x2  |          D2         |              C2            |
+<i>|</i>_<i>x1</i>____<i>|</i>_____________________<i>|</i>____________________________<i>|</i>
+|       |                     |                            |
+| I     |   D = DBLE(I )**D   |   C=CMPLX(REAL(I ),0.)**C  |
+|  2    |             2    2  |                 2        2 |
+| R     |   D = DBLE(R )**D   |   C = CMPLX(R ,0.)**C      |
+|  1    |             1    2  |              1       2     |
+| D     |   D = D **D         |          Prohibited        |
+|  1    |        1   2        |                            |
+| C     |      Prohibited     |   C = C **C                |
+<i>|</i>__<i>1</i>____<i>|</i>_____________________<i>|</i>________<i>1</i>___<i>2</i>_______________<i>|</i>
+</pre>
+
+<p>Four entries in Table 3 specify an interpretation to be
+a complex value raised to a complex power.
+In these cases, the value of the expression is the
+"principal value" determined by 
+x **x  = EXP(x *LOG(x ))
+                   1   2        2      1
+,
+where EXP and LOG are functions described in 
+<a href="rjcnf0001-sh-15.html#sh-15.10">15.10</a>.
+<p>Except for a value raised to an integer power, Tables 2
+and 3 specify that if two operands are of different type,
+the operand that differs in type from the result of the
+operation is converted to the type of the result and then
+the operator operates on a pair of operands of the same
+type.  When a primary of type real, double precision, or complex
+is raised to an integer power, the integer operand
+need not be converted.
+If the value of 
+I
+                              2
+ is negative, the interpretation of
+
+I **I
+                            1   2
+ is the same as the interpretation of
+
+1/(I **ABS(I ))
+                          1       2
+, which is subject to the rules for integer
+division (
+<a href="#sh-6.1.5">6.1.5</a>).
+For example, 2**(-3) has the value of 1/(2**3), which is zero.
+<p>The type and interpretation of an expression that
+consists of an operator operating on either a single operand
+or a pair of operands are independent of the context in
+which the expression appears.  In particular, the type and
+interpretation of such an expression are independent of
+the type of any other operand of any larger expression in
+which it appears.
+For example, if X is of type real, J is of type integer,
+and INT is the real-to-integer conversion function,
+the expression INT(X+J) is an integer expression and
+X+J is a real expression.
+<p><h3><a name="sh-6.1.5">6.1.5 Integer Division.</a></h3>
+One operand of type integer may be divided by another
+operand of type integer.  Although the mathematical
+quotient of two integers is not necessarily an integer,
+Table 2 specifies that an expression involving the division
+operator with two operands of type integer is
+interpreted as an expression of type integer.  The
+result of such a division is called an
+<i>integer quotient</i>
+and is obtained as follows:  If the magnitude of the
+mathematical quotient is less than one, the integer quotient
+is zero.  Otherwise, the integer quotient is the integer
+whose magnitude is the largest integer that does not exceed
+the magnitude of the mathematical quotient and whose sign
+is the same as the sign of the mathematical quotient.  For
+example, the value of the expression (-8)/3 is (-2).
+<p><h2><a name="sh-6.2">6.2 Character Expressions</a></h2>
+A character expression is used to express a character
+string.  Evaluation of a character expression produces a
+result of type character.
+<p>The simplest form of a character expression is a character
+constant, symbolic name of a character constant, character
+variable reference, character array element reference,
+character substring reference, or character function
+reference. More complicated character expressions may be
+formed by using one or more character operands together
+with character operators and parentheses.
+<p><h3><a name="sh-6.2.1">6.2.1 Character Operator.</a></h3>
+The character operator is:
+<pre>
+__________________________
+                |         |               |
+                |_<i>Operator|</i>__<i>Representing</i>_<i>|</i>
+                |         |               |
+                |    //   |  Concatenation|
+                |_________<i>|</i>_______________<i>|</i>
+</pre>
+
+<p>The interpretation of the expression formed with the
+character operator is:
+<pre>
+__________________________________________
+        |                |                        |
+        |_<i>Use</i>_<i>of</i>_<i>Operator|</i>__<i>Interpretation</i>________<i>|</i>
+        |                |                        |
+        |    x  // x     |  Concatenate x  with x |
+        |_____<i>1</i>_____<i>2</i>____<i>|</i>_______________<i>1</i>_______<i>2|</i>
+</pre>
+
+<ul>
+<li> where: 
+x
+                              1
+denotes the operand to the left of the operator
+</ul>
+<ul>
+<li> 
+x
+                              2
+denotes the operand to the right of the operator
+</ul>
+<p>The result of a concatenation operation is a character
+string whose value is the value of 
+x
+                              1
+ concatenated on the
+right with the value of 
+x
+                              2
+ and whose length is the sum of
+the lengths of 
+x
+                              1
+ and 
+x
+                              2
+.  For example, the value of 
+'AB' // 'CDE'
+ is
+the string ABCDE.
+<p><h3><a name="sh-6.2.2">6.2.2 Form and Interpretation of Character Expressions.</a></h3>
+A character expression and the operands of a character
+expression must identify values of type character.  Except
+in a character assignment statement (
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>),
+a character expression must not involve concatenation
+of an operand whose length
+specification is an asterisk in parentheses (
+<a href="rjcnf0001-sh-8.html#sh-8.4.2">8.4.2</a>)
+unless the operand is the symbolic name of a constant.
+<p><h4><a name="sh-6.2.2.1">6.2.2.1 Character Primaries.</a></h4>
+The
+<i>character primaries</i>
+are:
+<ol>
+<li>Character constant (
+<a href="rjcnf0001-sh-4.html#sh-4.8.1">4.8.1</a>)
+<li>Symbolic name of a character constant (
+<a href="rjcnf0001-sh-8.html#sh-8.6">8.6</a>)
+<li>Character variable reference (
+<a href="rjcnf0001-sh-2.html#sh-2.5">2.5</a>)
+<li>Character array element reference (
+<a href="rjcnf0001-sh-5.html#sh-5.3">5.3</a>)
+<li>Character substring reference (
+<a href="rjcnf0001-sh-5.html#sh-5.7">5.7</a>)
+<li>Character function reference (
+<a href="rjcnf0001-sh-15.html#sh-15.2">15.2</a>)
+<li>Character expression enclosed in parentheses
+(
+<a href="#sh-6.2.2.2">6.2.2.2</a>)
+</ol>
+<p><h4><a name="sh-6.2.2.2">6.2.2.2 Character Expression.</a></h4>
+The forms of a 
+<i>character expression</i>
+are:
+<ol>
+<li>Character primary
+<li>Character expression // character primary
+</ol>
+<p>Thus, a character expression is a sequence of one or more
+character primaries separated by the concatenation operator.
+Form (2) indicates that in a character expression containing
+two or more concatenation operators, the primaries are
+combined from left to right to establish the interpretation
+of the expression.  For example, the formation rules specify
+that the interpretation of the character expression
+<pre>
+'AB' // 'CD' // 'EF'</pre>
+
+is the same as the interpretation of the character
+expression
+<pre>
+('AB' // 'CD') // 'EF'</pre>
+
+The value of the character
+expression in this example is the same as that of the
+constant 'ABCDEF'.
+Note that parentheses have no effect on the value of a
+character expression.
+<p><h3><a name="sh-6.2.3">6.2.3 Character Constant Expression.</a></h3>
+A
+<i>character constant expression</i>
+is a character expression
+in which each primary is a character constant, the symbolic
+name of a character constant, or a character constant
+expression enclosed in parentheses.  Note that variable,
+array element, substring, and function references are not
+allowed.
+<p><h2><a name="sh-6.3">6.3 Relational Expressions</a></h2>
+A relational expression is used to compare the values of
+two arithmetic expressions or two character expressions.
+A relational expression may not be used to compare the
+value of an arithmetic expression with the value of a
+character expression.
+<p>Relational expressions may appear only within logical
+expressions.  Evaluation of a relational expression produces
+a result of type logical, with a value of true or false.
+<p><h3><a name="sh-6.3.1">6.3.1 Relational Operators.</a></h3>
+The relational operators are:
+<pre>
+_____________________________________
+          |         |                          |
+          |_<i>Operator|</i>__<i>Representing</i>____________<i>|</i>
+          |         |                          |
+          |   .LT.  |  Less than               |
+          |   .LE.  |  Less than or equal to   |
+          |   .EQ.  |  Equal to                |
+          |   .NE.  |  Not equal to            |
+          |   .GT.  |  Greater than            |
+          |   .GE.  |  Greater than or equal to|
+          |_________<i>|</i>__________________________<i>|</i>
+</pre>
+
+<p><h3><a name="sh-6.3.2">6.3.2 Arithmetic Relational Expression.</a></h3>
+The form of an
+<i>arithmetic relational expression</i>
+is:
+<pre>
+<i>e</i>  <i>relop</i> <i>e</i>
+                         1        2</pre>
+
+<ul>
+<li> where: 
+<i>e</i>  and <i>e</i>
+                          1      2
+are each an integer, real, double precision,
+or complex expression
+</ul>
+<ul>
+<li> 
+<i>relop</i>
+is a relational operator
+</ul>
+<p>A complex operand is permitted only when the relational
+operator is .EQ. or .NE.
+<p><h3><a name="sh-6.3.3">6.3.3 Interpretation of Arithmetic Relational Expressions.</a></h3>
+An arithmetic relational expression is interpreted as having the
+logical value true if the values of the operands satisfy
+the relation specified by the operator.  An arithmetic
+relational expression is interpreted as having the logical value
+false if the values of the operands do not satisfy the
+relation specified by the operator.
+<p>If the two arithmetic expressions are of different types,
+the value of the relational expression
+<pre>
+<i>e</i>  <i>relop</i> <i>e</i>
+                         1        2</pre>
+
+is the value of the expression
+<pre>
+((<i>e</i> ) - (<i>e</i> )) <i>relop</i> 0
+                      1      2</pre>
+
+where 0 (zero) is of the same type as the expression
+
+((<i>e</i> ) (<i>e</i> ))
+                           1    2
+, and 
+<i>relop</i>
+ is the same relational operator in both
+expressions.
+Note that the comparison of a double precision value and a
+complex value is not permitted.
+<p><h3><a name="sh-6.3.4">6.3.4 Character Relational Expression.</a></h3>
+The form of a 
+<i>character relational expression</i>
+is:
+<pre>
+<i>e</i>  <i>relop</i> <i>e</i>
+                         1        2</pre>
+
+<ul>
+<li> where: 
+<i>e</i>  and <i>e</i>
+                          1      2
+are character expressions
+</ul>
+<ul>
+<li> 
+<i>relop</i>
+ is a relational operator
+</ul>
+<p><h3><a name="sh-6.3.5">6.3.5 Interpretation of Character Relational Expressions.</a></h3>
+A character relational expression is interpreted as the
+logical value true if the values of the operands satisfy
+the relation specified by the operator.  A character
+relational expression is interpreted as the logical value
+false if the values of the operands do not satisfy the
+relation specified by the operator.
+<p>The character expression 
+<i>e</i>
+                              1
+ is considered to be less than
+
+<i>e</i>
+                              2
+ if the value of 
+<i>e</i>
+                              1
+ precedes the value of 
+<i>e</i>
+                              2
+ in the
+collating sequence; 
+<i>e</i>
+                              1
+ is greater than 
+<i>e</i>
+                              2
+ if the value of
+
+<i>e</i>
+                              1
+ follows the value of 
+<i>e</i>
+                              2
+ in the collating sequence
+(
+<a href="rjcnf0001-sh-3.html#sh-3.1.5">3.1.5</a>). Note that the collating sequence depends partially
+on the processor; however, the result of the use
+of the operators .EQ. and .NE. does not depend
+on the collating sequence.
+If the operands are of unequal length,
+the shorter operand is considered as if it were extended
+on the right with blanks to the length of the longer
+operand.
+<p><h2><a name="sh-6.4">6.4 Logical Expressions</a></h2>
+A logical expression is used to express a logical
+computation.  Evaluation of a logical expression produces
+a result of type logical, with a value of true or false.
+<p>The simplest form of a logical expression is a logical
+constant, symbolic name of a logical constant, logical
+variable reference, logical array element reference, logical
+function reference, or relational expression.  More
+complicated logical expressions may be formed by using one
+or more logical operands together with logical operators
+and parentheses.
+<p><h3><a name="sh-6.4.1">6.4.1 Logical Operators.</a></h3>
+The
+<i>logical operators</i>
+are:
+<pre>
+__________________________________________
+        |         |                               |
+        |_<i>Operator|</i>__<i>Representing</i>_________________<i>|</i>
+        |         |                               |
+        |  .NOT.  |  Logical Negation             |
+        |  .AND.  |  Logical Conjunction          |
+        |   .OR.  |  Logical Inclusive Disjunction|
+        |  .EQV.  |  Logical Equivalence          |
+        |  .NEQV. |  Logical Nonequivalence       |
+        |_________<i>|</i>_______________________________<i>|</i>
+</pre>
+
+<p><h3><a name="sh-6.4.2">6.4.2 Form and Interpretation of Logical Expressions.</a></h3>
+A set of formation rules is used to establish the
+interpretation of a logical expression that contains two
+or more logical operators.  There is a precedence among
+the logical operators, which determines the order in which
+the operands are to be combined unless the order is changed
+by the use of parentheses.
+The precedence of the logical operators is as follows:
+<pre>
+______________________________
+              |                |            |
+              |____<i>Operator</i>____<i>|</i>__<i>Precedence|</i>
+              |                |            |
+              |      .NOT.     |  Highest   |
+              |      .AND.     |            |
+              |      .OR.      |            |
+              | .EQV. or .NEQV.|  Lowest    |
+              |________________<i>|</i>____________<i>|</i>
+</pre>
+
+<p>For example, in the expression
+<pre>
+A .OR. B .AND. C</pre>
+
+the .AND. operator has higher precedence than the &amp;'.OR.
+operator; therefore, the interpretation of the above
+expression is the same as the interpretation of the
+expression
+<pre>
+A .OR. (B .AND. C)</pre>
+
+The
+<i>logical operands</i>
+are:
+<ol>
+<li>Logical primary
+<li>Logical factor
+<li>Logical term
+<li>Logical disjunct
+<li>Logical expression
+</ol>
+<p>The formation rules to be applied in establishing the
+interpretation of a logical expression are in
+
+<a href="#sh-6.4.2.1">6.4.2.1</a> through 6.4.2.5.
+<p><h4><a name="sh-6.4.2.1">6.4.2.1 Logical Primaries.</a></h4>
+The
+<i>logical primaries</i>
+are:
+<ol>
+<li>Logical constant (
+<a href="rjcnf0001-sh-4.html#sh-4.7.1">4.7.1</a>)
+<li>Symbolic name of a logical constant (
+<a href="rjcnf0001-sh-8.html#sh-8.6">8.6</a>)
+<li>Logical variable reference (
+<a href="rjcnf0001-sh-2.html#sh-2.5">2.5</a>)
+<li>Logical array element reference (
+<a href="rjcnf0001-sh-5.html#sh-5.3">5.3</a>)
+<li>Logical function reference (
+<a href="rjcnf0001-sh-15.html#sh-15.2">15.2</a>)
+<li>Relational expression (
+<a href="#sh-6.3">6.3</a>)
+<li>Logical expression enclosed in parentheses (
+<a href="#sh-6.4.2.5">6.4.2.5</a>)
+</ol>
+<p><h4><a name="sh-6.4.2.2">6.4.2.2 Logical Factor.</a></h4>
+The forms of a
+<i>logical factor</i>
+are:
+<ol>
+<li>Logical primary
+<li>
+
+ logical primary
+</ol>
+<p><h4><a name="sh-6.4.2.3">6.4.2.3 Logical Term.</a></h4>
+The forms of a
+<i>logical term</i>
+are:
+<ol>
+<li>Logical factor
+<li>Logical term .AND. logical factor
+</ol>
+<p>Thus, a logical term is a sequence of logical factors
+separated by the .AND. operator.  Form (2) indicates that
+in interpreting a logical term containing two or more .AND.
+operators, the logical factors are combined from left to
+right.
+<p><h4><a name="sh-6.4.2.4">6.4.2.4 Logical Disjunct.</a></h4>
+The forms of a
+<i>logical disjunct</i>
+are:
+<ol>
+<li>Logical term
+<li>Logical disjunct .OR. logical term
+</ol>
+<p>Thus, a logical disjunct is a sequence of logical terms
+separated by the .OR. operator.
+Form (2) indicates that in interpreting a logical
+disjunct containing two or more .OR. operators,
+the logical terms are combined from left to right.
+<p><h4><a name="sh-6.4.2.5">6.4.2.5 Logical Expression.</a></h4>
+The forms of a
+<i>logical expression</i>
+are:
+<ol>
+<li>Logical disjunct
+<li>Logical expression .EQV. logical disjunct
+<li>Logical expression .NEQV. logical disjunct
+</ol>
+<p>Thus, a logical expression is a sequence of logical
+disjuncts separated by either the .EQV. operator or the .NEQV. operator.
+Forms (2) and (3)
+indicate that in interpreting a logical expression
+containing two or more .EQV. or .NEQV. operators, the logical
+disjuncts are combined from left to right.
+<p><h3><a name="sh-6.4.3">6.4.3 Value of Logical Factors, Terms, Disjuncts, and Expressions.</a></h3>
+The value of a logical factor involving .NOT. is shown
+below:
+<pre>
+__________________
+                    |      |          |
+                    |__<i>x2</i>__<i>|</i>__<i>.NOT.</i>_<i>x2|</i>
+                    |      |          |
+                    | true |   false  |
+                    | false|   true   |
+                    |______<i>|</i>__________<i>|</i>
+</pre>
+
+<p>The value of a logical term involving .AND. is shown below:
+<pre>
+_____________________________
+              |      |       |             |
+              |__<i>x1</i>__<i>|</i>___<i>x2</i>__<i>|</i>__<i>x1</i>_<i>.AND.</i>_<i>x2|</i>
+              |      |       |             |
+              | true |  true |     true    |
+              | true |  false|     false   |
+              | false|  true |     false   |
+              | false|  false|     false   |
+              |______<i>|</i>_______<i>|</i>_____________<i>|</i>
+</pre>
+
+<p>The value of a logical disjunct involving .OR. is shown
+below:
+<pre>
+____________________________
+               |      |       |            |
+               |__<i>x1</i>__<i>|</i>___<i>x2</i>__<i>|</i>__<i>x1</i>_<i>.OR.</i>_<i>x2|</i>
+               |      |       |            |
+               | true |  true |    true    |
+               | true |  false|    true    |
+               | false|  true |    true    |
+               | false|  false|    false   |
+               |______<i>|</i>_______<i>|</i>____________<i>|</i>
+</pre>
+
+<p>The value of a logical expression involving .EQV. is shown
+below:
+<pre>
+_____________________________
+              |      |       |             |
+              |__<i>x1</i>__<i>|</i>___<i>x2</i>__<i>|</i>__<i>x1</i>_<i>.EQV.</i>_<i>x2|</i>
+              |      |       |             |
+              | true |  true |     true    |
+              | true |  false|     false   |
+              | false|  true |     false   |
+              | false|  false|     true    |
+              |______<i>|</i>_______<i>|</i>_____________<i>|</i>
+</pre>
+
+<p>The value of a logical expression involving .NEQV. is shown
+below:
+<pre>
+______________________________
+              |      |       |              |
+              |__<i>x1</i>__<i>|</i>___<i>x2</i>__<i>|</i>__<i>x1</i>_<i>.NEQV.</i>_<i>x2|</i>
+              |      |       |              |
+              | true |  true |     false    |
+              | true |  false|     true     |
+              | false|  true |     true     |
+              | false|  false|     false    |
+              |______<i>|</i>_______<i>|</i>______________<i>|</i>
+</pre>
+
+<p><h3><a name="sh-6.4.4">6.4.4 Logical Constant Expression.</a></h3>
+A
+<i>logical constant expression</i>
+is a logical expression
+in which each primary is a logical constant, the symbolic
+name of a logical constant,
+a relational expression in which each primary is a
+constant expression, or a logical constant
+expression enclosed in parentheses.  Note that variable,
+array element, and function references are not
+allowed.
+<p><h2><a name="sh-6.5">6.5 Precedence of Operators</a></h2>
+In 
+<a href="#sh-6.1.2">6.1.2</a> and 
+<a href="#sh-6.4.2">6.4.2</a> precedences have been established among
+the arithmetic operators and the logical operators,
+respectively.  There is only one character operator.  No
+precedence has been established among the relational
+operators. The precedences among the various operators
+are:
+<pre>
+_________________________
+                |           |            |
+                |_<i>Operator</i>__<i>|</i>__<i>Precedence|</i>
+                |           |            |
+                | Arithmetic|  Highest   |
+                | Character |            |
+                | Relational|            |
+                | Logical   |  Lowest    |
+                |___________<i>|</i>____________<i>|</i>
+</pre>
+
+<p>An expression may contain more than one kind of operator.
+For example, the logical expression
+<pre>
+L .OR. A + B .GE. C</pre>
+
+where A, B, and C are of type real, and L is of type logical,
+contains an arithmetic operator, a relational operator,
+and a logical operator.  This expression would be
+interpreted the same as the expression
+<pre>
+L .OR. ((A + B) .GE. C)</pre>
+
+<p><h3><a name="sh-6.5.1">6.5.1 Summary of Interpretation Rules.</a></h3>
+The order in which primaries are combined using operators
+is determined by the following:
+<ol>
+<li>Use of parentheses
+<li>Precedence of the operators
+<li>Right-to-left interpretation of exponentiations in
+a factor
+<li>Left-to-right interpretation of multiplications and
+divisions in a term
+<li>Left-to-right interpretation of additions and
+subtractions in an arithmetic expression
+<li>Left-to-right interpretation of concatenations in
+a character expression
+<li>Left-to-right interpretation of conjunctions in a
+logical term
+<li>Left-to-right interpretation of disjunctions in a
+logical disjunct
+<li>Left-to-right interpretation of logical equivalences
+in a logical expression
+</ol>
+<p><h2><a name="sh-6.6">6.6 Evaluation of Expressions</a></h2>
+This section applies to arithmetic, character, relational,
+and logical expressions.
+<p>Any variable, array element, function, or character
+substring referenced as an operand in an expression must
+be defined at the time the reference is executed.  An
+integer operand must be defined with an integer value
+rather than a statement label value.  Note that if a
+character string or substring is referenced, all of the
+referenced characters must be defined at the time the
+reference is executed.
+<p>Any arithmetic operation whose result is not mathematically
+defined is prohibited in the execution of an executable
+program.  Examples are dividing by zero and raising a zero-
+valued primary to a zero-valued or negative-valued power.
+Raising a negative-valued primary to a real or double
+precision power is also prohibited.
+<p>The execution of a function reference in a statement may
+not alter the value of any other entity within the statement
+in which the function reference appears.  The execution
+of a function reference in a statement may not alter the
+value of any entity in common (
+<a href="rjcnf0001-sh-8.html#sh-8.3">8.3</a>) that affects the value
+of any other function reference in that statement.  However,
+execution of a function reference in the expression 
+<i>e</i>
+ of
+a logical IF statement (
+<a href="rjcnf0001-sh-11.html#sh-11.5">11.5</a>) is permitted to affect
+entities in the statement 
+<i>st</i>
+ that is executed when the
+value of the expression 
+<i>e</i>
+ is true.  If a function reference
+causes definition of an actual argument of
+the function, that argument or any associated entities
+must not appear elsewhere in the same statement. For example,
+the statements
+<pre>
+A(I) = F(I)</pre>
+
+<pre>
+Y = G(X) + X</pre>
+
+are prohibited if the reference to F defines I or the
+reference to G defines X.
+<p>The data type of an expression in which a function reference
+appears does not affect the evaluation of the actual
+arguments of the function.  The data type of an expression
+in which a function reference appears is not affected by
+the evaluation of the actual arguments of the function,
+except that the result of a generic function reference
+assumes a data type that depends on
+the data type of its arguments
+as specified in 
+<a href="rjcnf0001-sh-15.html#sh-15.10">15.10</a>.
+<p>Any execution of an array element reference requires the
+evaluation of its subscript.  The data type of an expression
+in which a subscript appears does not affect, nor is it
+affected by, the evaluation of the subscript.
+<p>Any execution of a substring reference requires the evaluation
+of its substring expressions.
+The data type of an expression in which a substring
+name appears does not affect, nor is it affected by,
+the evaluation of the substring expressions.
+<p><h3><a name="sh-6.6.1">6.6.1 Evaluation of Operands.</a></h3>
+It is not necessary for a processor to evaluate all of the
+operands of an expression if the value of the expression
+can be determined otherwise.  This principle is most often
+applicable to logical express(ions, but it applies to all
+expressions.  For example, in evaluating the logical
+expression
+<pre>
+X .GT. Y .OR. L(Z)</pre>
+
+where X, Y, and Z are real, and L is a logical function,
+the function reference L(Z) need not be evaluated if X is
+greater than Y.  If a statement contains a function
+reference in a part of an expression that need not be
+evaluated, all entities that would have become defined in
+the execution of that reference become undefined at the
+completion of evaluation of the expression containing the
+function reference.  In the example above, evaluation of
+the expression causes Z to become undefined if L defines
+its argument.
+<p><h3><a name="sh-6.6.2">6.6.2 Order of Evaluation of Functions.</a></h3>
+If a statement contains more than one function reference,
+a processor may evaluate the functions in any order, except
+for a logical IF statement and a function argument list
+containing function references.  For example, the statement
+<pre>
+Y = F(G(X))</pre>
+
+where F and G are functions, requires G to be evaluated
+before F is evaluated.
+<p>In a statement that contains more than one function
+reference, the value provided by each function reference
+must be independent of the order chosen by the processor
+for evaluation of the function references.
+<p><h3><a name="sh-6.6.3">6.6.3 Integrity of Parentheses.</a></h3>
+The sections that follow state certain conditions under
+which a processor may evaluate an expression different
+from the one obtained by applying the interpretation rules
+given in 
+<a href="#sh-6.1">6.1</a> through 6.5.  However, any expression
+contained in parentheses must be treated as an entity.
+For example, in evaluating the expression A*(B*C), the
+product of B and C must be evaluated and then multiplied
+by A; the processor must not evaluate the mathematically
+equivalent expression (A*B)*C.
+<p><h3><a name="sh-6.6.4">6.6.4 Evaluation of Arithmetic Expressions.</a></h3>
+The rules given in 
+<a href="#sh-6.1.2">6.1.2</a> specify the interpretation of
+an arithmetic expression.  Once the interpretation has
+been established in accordance with those rules, the
+processor may evaluate any mathematically equivalent
+expression, provided that the integrity of parentheses is
+not violated.
+<p>Two arithmetic expressions are mathematically equivalent
+if, for all possible values of their primaries, their
+mathematical values are equal.  However, mathematically
+equivalent arithmetic expressions may produce different
+computational results.
+<p>The mathematical definition of integer division is given
+in 
+<a href="#sh-6.1.5">6.1.5</a>.  The difference between the value of the
+expression 5/2 and 5./2. is a mathematical difference, not
+a computational difference.
+<p>The following are examples of expressions, along with
+allowable alternative forms that may be used by the
+processor in the evaluation of those expressions.  A, B,
+and C represent arbitrary real, double precision, or complex
+operands; I and J represent arbitrary integer operands;
+and X, Y, and Z represent arbitrary arithmetic operands.
+(Note that Table 2 prohibits combinations of double
+precision and complex data types.)
+<pre>
+_________________________________________
+        |           |                            |
+        |_<i>Expression|</i>__<i>Allowable</i>_<i>Alternative</i>_<i>Form|</i>
+        |           |                            |
+        | X+Y       |  Y+X                       |
+        | X*Y       |  Y*X                       |
+        | -X+Y      |  Y-X                       |
+        | X+Y+Z     |  X+(Y+Z)                   |
+        | X-Y+Z     |  X-(Y-Z)                   |
+        | X*B/Z     |  X*(B/Z)                   |
+        | X*Y-X*Z   |  X*(Y-Z)                   |
+        | A/B/C     |  A/(B*C)                   |
+        | A/5.0     |  0.2*A                     |
+        |___________<i>|</i>____________________________<i>|</i>
+</pre>
+
+<p>The following are examples of expressions along with
+forbidden forms that must not be used by the processor in
+the evaluation of those expressions.
+<pre>
+________________________________________
+         |            |                          |
+         | Expression |  Nonallowable Alternative|
+         |____________<i>|</i>____________<i>Form</i>__________<i>|</i>
+         |            |                          |
+         | I/2        |  0.5*I                   |
+         | X*I/J      |  X*(I/J)                 |
+         | I/J/A      |  I/(J*A)                 |
+         | (X*Y)-(X*Z)|  X*(Y-Z)                 |
+         | X*(Y-Z)    |  X*Y-X*Z                 |
+         |____________<i>|</i>__________________________<i>|</i>
+</pre>
+
+<p>In addition to the parentheses required to establish the
+desired interpretation, parentheses may be included to
+restrict the alternative forms that may be used by the
+processor in the actual evaluation of the expression.
+This is useful for controlling the magnitude and accuracy
+of intermediate values developed during the evaluation of
+an expression.  For example, in the expression
+<pre>
+A+(B-C)</pre>
+
+the term (B-C) must be evaluated and then added to A.
+Note that the inclusion of parentheses may change the
+mathematical value of an expression.  For example, the two
+expressions:
+<pre>
+A*I/J</pre>
+
+<pre>
+A*(I/J)</pre>
+
+may have different mathematical values if I and J are
+factors of integer data type.
+<p>Each operand of an arithmetic
+operator has a data type that
+may depend on the order of evaluation used by the
+processor.  For example, in the evaluation of the expression
+<pre>
+D+R+I</pre>
+
+where D, R, and I represent terms of double precision,
+real, and integer data type, respectively, the data type
+of the operand that is added to I may be either double
+precision or real, depending on which pair of operands (D
+and R, R and I, or D and I) is added first.
+<p><h3><a name="sh-6.6.5">6.6.5 Evaluation of Character Expressions.</a></h3>
+The rules given in 
+<a href="#sh-6.2.2">6.2.2</a> specify the interpretation of
+a character expression as a string of characters.  A
+processor needs to evaluate only as much of the character
+expression as is required by the context in which the
+expression appears.  For example, the statements
+<ol>
+<li> 
+CHARACTER*2 C1,C2,C3,CF
+
+<li> 
+C1 = C2 // CF(C3)
+
+</ol>
+<p>do not require
+the function CF to be evaluated, because only the
+value of C2 is needed to determine the value of C1.
+<p><h3><a name="sh-6.6.6">6.6.6 Evaluation of Relational Expressions.</a></h3>
+The rules given in 
+<a href="#sh-6.3.3">6.3.3</a> and 
+<a href="#sh-6.3.5">6.3.5</a> specify the
+interpretation of relational expressions.  Once the
+interpretation of an expression has been established in
+accordance with those rules, the processor may evaluate
+any other expression that is relationally equivalent.  For
+example, the processor may choose to evaluate the relational
+expression
+<pre>
+I .GT. J</pre>
+
+where I and J are integer variables, as
+<pre>
+J - I .LT. 0</pre>
+
+Two relational expressions are relationally equivalent if
+their logical values are equal for all possible values of
+their primaries.
+<p><h3><a name="sh-6.6.7">6.6.7 Evaluation of Logical Expressions.</a></h3>
+The rules given in 
+<a href="#sh-6.4.2">6.4.2</a> specify the interpretation of
+a logical expression.  Once the interpretation of an
+expression has been established in accordance with those
+rules, the processor may evaluate any other expression
+that is logically equivalent, provided that the integrity
+of parentheses is not violated.  For example, the processor
+may choose to evaluate the logical expression
+<pre>
+L1 .AND. L2 .AND. L3</pre>
+
+where L1, L2, and L3 are logical variables, as
+<pre>
+L1 .AND. (L2 .AND. L3)</pre>
+
+Two logical expressions are logically equivalent if their
+values are equal for all possible values of their primaries.
+<p><h2><a name="sh-6.7">6.7 Constant Expressions</a></h2>
+A
+<i>constant expression</i>
+is an arithmetic constant expression
+(
+<a href="#sh-6.1.3">6.1.3</a>), a character constant expression (
+<a href="#sh-6.2.3">6.2.3</a>), or a
+logical constant expression (
+<a href="#sh-6.4.4">6.4.4</a>).
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<hr> <a href="rjcnf0001.html">[Contents]</a> <a href="rjcnf0001-sh-5.html">[Previous]</a> <a href="rjcnf0001-sh-7.html">[Next]</a> <br>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+<p>
+</body></html>
+
+<!--
+     FILE ARCHIVED ON 19:34:56 Oct 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:33 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 151.063
+  exclusion.robots: 0.159
+  exclusion.robots.policy: 0.143
+  cdx.remote: 0.102
+  esindex: 0.015
+  LoadShardBlock: 109.688 (3)
+  PetaboxLoader3.datanode: 104.163 (4)
+  load_resource: 86.995
+  PetaboxLoader3.resolve: 48.44
+-->

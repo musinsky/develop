@@ -1,0 +1,818 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-12.html","20060326202702","https://web.archive.org/","web","/_static/",
+	      "1143404822");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>12 INPUT/OUTPUT STATEMENTS</title></head><body>
+
+<h1><a name="sh-12">12 INPUT/OUTPUT STATEMENTS</a></h1>
+
+Input statements provide the means of transferring data from external media to internal storage or from an internal file to internal storage.  This process is called <i>reading</i>.  Output statements provide the means of transferring data from internal storage to external media or from internal storage to an internal file.  This process is called <i>writing</i>.  Some input/output statements specify that editing of the data is to be performed.
+<p>
+In addition to the statements that transfer data, there are auxiliary input/output statements to manipulate the external medium, or to inquire about or describe the properties of the connection to the external medium.
+<p>
+There are nine input/output statements:
+<p><ol>
+<li>READ
+<li>WRITE
+<li>PRINT
+<li>OPEN
+<li>CLOSE
+<li>INQUIRE
+<li>BACKSPACE
+<li>ENDFILE
+<li>REWIND
+</ol><p>
+The READ, WRITE, and PRINT statements are <i>data transfer input/output statements</i> (<a href="#sh-12.8">12.8</a>).  The OPEN, CLOSE, INQUIRE, BACKSPACE, ENDFILE, and REWIND statements are <i>auxiliary input/output statements</i> (<a href="#sh-12.10">12.10</a>).  The BACKSPACE, ENDFILE, and REWIND statements are <i>file positioning input/output statements</i> (<a href="#sh-12.10.4">12.10.4</a>).
+
+<h2><a name="sh-12.1">12.1 Records</a></h2>
+
+A <i>record</i> is a sequence (<a href="rjcnf-2.html#sh-2.1">2.1</a>) of values or a sequence of characters.  For example, a punched card is usually
+considered to be a record.  However, a record does not necessarily correspond to a physical entity.  There are three kinds of records:
+<p><ol>
+<li>Formatted
+<li>Unformatted
+<li>Endfile
+</ol>
+<h3><a name="sh-12.1.1">12.1.1 Formatted Record.</a></h3>
+
+A formatted record consists of a sequence of characters that are capable of representation in the processor.  The length of a formatted record is measured in characters and depends primarily on the number of characters put into the record when it is written.  However, it may depend on the
+processor and the external medium.  The length may be zero.  Formatted records may be read or written only by formatted input/output statements (<a href="#sh-12.8.1">12.8.1</a>).
+<p>
+Formatted records may be prepared by some means other than FORTRAN; for example, by some manual input device.
+
+<h3><a name="sh-12.1.2">12.1.2 Unformatted Record.</a></h3>
+
+An unformatted record consists of a sequence of values in a processor-dependent form and may contain both character and noncharacter data or may contain no data.  The length of an unformatted record is measured in processor-dependent units and depends on the output list (<a href="#sh-12.8.2">12.8.2</a>) used when it is written, as well as on the processor and the external medium.  The length may be zero.
+<p>
+Unformatted records may be read or written only by unformatted input/output statements (<a href="#sh-12.8.1">12.8.1</a>).
+
+<h3><a name="sh-12.1.3">12.1.3 Endfile Record.</a></h3>
+
+An endfile record is written by an ENDFILE statement.  An endfile record may occur only as the last record of a file.  An endfile record does not have a length property.
+
+<h2><a name="sh-12.2">12.2 Files</a></h2>
+
+A <i>file</i> is a sequence (<a href="rjcnf-2.html#sh-2.1">2.1</a>) of records.
+<p>
+There are two kinds of files:
+<p><ol>
+<li>External
+<li>Internal
+</ol>
+<h3><a name="sh-12.2.1">12.2.1 File Existence.</a></h3>
+
+At any given time, there is a processor-determined set of files that are said to <i>exist</i> for an executable program.  A file may be known to the processor, yet not exist for an executable program at a particular time.  For example, security reasons may prevent a file from existing for an executable program.  A file may exist and contain no records; an example is a newly created file not yet written.
+<p>
+To <i>create a file</i> means to cause a file to exist that did not previously exist.  To <i>delete a file</i> means to terminate the existence of the file.
+<p>
+All input/output statements may refer to files that exist.  The INQUIRE, OPEN, CLOSE, WRITE, PRINT, and ENDFILE statements may also refer to files that do not exist.
+
+<h3><a name="sh-12.2.2">12.2.2 File Properties.</a></h3>
+
+At any given time, there is a processor-determined <i>set of allowed access methods</i>, a processor-determined <i>set of allowed forms</i>, and a processor-determined <i>set of allowed record lengths</i> for a file.
+<p>
+A file may have a name; a file that has a name is called a <i>named file</i>.  The name of a named file is a character string.  The set of allowable names is processor dependent and may be empty.
+
+<h3><a name="sh-12.2.3">12.2.3 File Position.</a></h3>
+
+A file that is connected to a unit (<a href="#sh-12.3">12.3</a>) has a position property.  Execution of certain input/output statements affects the position of a file.  Certain circumstances can cause the position of a file to become indeterminate.
+<p>
+The <i>initial point</i> of a file is the position just before the first record.  The <i>terminal point</i> is the position just after the last record.
+<p>
+If a file is positioned within a record, that record is the <i>current record</i>; otherwise, there is no current record.
+<p>
+Let <i>n</i> be the number of records in the file.  If 1 &lt; <i>i</i> &lt;= <i>n</i> and a file is positioned within the <i>i</i>th record or between the (<i>i</i>-1)th record and the <i>i</i>th record, the (<i>i</i>-1)th record is the <i>preceding record</i>.  If <i>n</i> &gt;=1 and the file is positioned at its terminal point, the preceding record is the <i>n</i>th and last record.  If <i>n</i>=0 or if a file is positioned at its initial point or within the first record, there is no preceding record.
+<p>
+If 1 &lt;= <i>i</i> &lt; <i>n</i> and a file is positioned within the <i>i</i>th record or between the <i>i</i>th and (<i>i</i>+1)th record, the (<i>i</i>+1)th record is the <i>next record</i>.  If <i>n</i> &gt;= 1 and the file is positioned at its initial point, the first record is the next record.  If <i>n</i>=0 or if a file is positioned at its terminal point or within the <i>n</i>th and last record, there is no next record.
+
+<h3><a name="sh-12.2.4">12.2.4 File Access.</a></h3>
+
+There are two methods of accessing the records of an external file: sequential and direct.  Some files may have more than one allowed access method; other files may be restricted to one access method.  For example, a processor may allow only sequential access to a file on magnetic tape.  Thus, the set of allowed access methods depends on the file and the processor.
+<p>
+The method of accessing the file is determined when the file is connected to a unit (<a href="#sh-12.3.2">12.3.2</a>).
+<p>
+An internal file must be accessed sequentially.
+
+<h4><a name="sh-12.2.4.1">12.2.4.1 Sequential Access.</a></h4>
+
+When connected for sequential access, a file has the following properties:
+<p><ol>
+<li>The order of the records is the order in which they were written if the direct access method is not a member of the set of allowed access methods for the file.  If the direct access method is also a member of the set of allowed access methods for the file, the order of the records is the same as that specified for direct access (<a href="#sh-12.2.4.2">12.2.4.2</a>).  The first record accessed by sequential access is the record whose record number is 1 for direct access.  The second record accessed by sequential access is the record whose record number is 2 for direct access, etc.  A record that has not been written since the file was created must not be read.
+<li>The records of the file are either all formatted or all unformatted, except that the last record of the file may be an endfile record.
+<li>The records of the file must not be read or written by direct access input/output statements (<a href="#sh-12.8.1">12.8.1</a>).
+</ol>
+<h4><a name="sh-12.2.4.2">12.2.4.2 Direct Access.</a></h4>
+
+When connected for direct access, a file has the following properties:
+<p><ol>
+<li>The order of the records is the order of their record numbers.  The records may be read or written in any order.
+<li>The records of the file are either all formatted or all unformatted.  If the sequential access method is also a member of the set of allowed access methods for the file, its endfile record, if any, is not considered to be part of the file while it is connected for direct access.  If the sequential access method is not a member of the set of allowed access methods for the file, the file must not contain an endfile record.
+<li>Reading and writing records is accomplished only by direct access input/output statements (<a href="#sh-12.8.1">12.8.1</a>).
+<li>All records of the file have the same length.
+<li>Each record of the file is uniquely identified by a positive integer called the <i>record number</i>.  The record number of a record is specified when the record is written.  Once established, the record number of a record can never be changed.
+<p>
+Note that a record may not be deleted; however, a record may be rewritten.
+<li>Records need not be read or written in the order of their record numbers.  Any record may be written into the file while it is connected (<a href="#sh-12.3.2">12.3.2</a>) to a unit.  For example, it is permissible to write record 3, even though records 1 and 2 have not been written.  Any record may be read from the file while it is connected to a unit, provided that the record was written since the file was created.
+<li>The records of the file must not be read or written using list-directed formatting.
+</ol>
+<h3><a name="sh-12.2.5">12.2.5 Internal Files.</a></h3>
+
+Internal files provide a means of transferring and converting data from internal storage to internal storage.
+
+<h4><a name="sh-12.2.5.1">12.2.5.1 Internal File Properties.</a></h4>
+
+An internal file has the following properties:
+<p><ol>
+<li>The file is a character variable, character array element, character array, or character substring.
+<li>A record of an internal file is a character variable, character array element, or character substring.
+<li>If the file is a character variable, character array element, or character substring, it consists of a single record whose length is the same as the length of the variable, array element, or substring, respectively.  If the file is a character array, it is treated as a sequence of character array elements.  Each array element is a record of the file.  The ordering of the records of the file is the same as the ordering of the array elements in the array (<a href="rjcnf-5.html#sh-5.2.4">5.2.4</a>).  Every record of the file has the same length, which is the length of an array element in the array.
+<li>The variable, array element, or substring that is the record of the internal file becomes defined by writing the record.  If the number of characters written in a record is less than the length of the record, the remaining portion of the record is filled with blanks.
+<li>A record may be read only if the variable, array element, or substring that is the record is defined.
+<li>A variable, array element, or substring that is a record of an internal file may become defined (or undefined) by means other than an output statement.  For example, the variable, array element, or substring may become defined by a character assignment statement.
+<li>An internal file is always positioned at the beginning of the first record prior to data transfer.
+</ol>
+<h4><a name="sh-12.2.5.2">12.2.5.2 Internal File Restrictions.</a></h4>
+
+An internal file has the following restrictions:
+<p><ol>
+<li>Reading and writing records is accomplished only by sequential access formatted input/output statements (<a href="#sh-12.8.1">12.8.1</a>) that do not specify list-directed formatting.
+<li>An auxiliary input/output statement must not specify an internal file.
+</ol>
+<h2><a name="sh-12.3">12.3 Units</a></h2>
+
+A <i>unit</i> is a means of referring to a file.
+
+<h3><a name="sh-12.3.1">12.3.1 Unit Existence.</a></h3>
+
+At any given time, there is a processor-determined set of units that are said to <i>exist</i> for an executable program.
+<p>
+All input/output statements may refer to units that exist.  The INQUIRE and CLOSE statements may also refer to units that do not exist.
+
+<h3><a name="sh-12.3.2">12.3.2 Connection of a Unit.</a></h3>
+
+A unit has a property of being connected or not connected.  If connected, it refers to a file.  A unit may become connected by preconnection or by the execution of an OPEN statement.  The property of connection is symmetric: if a unit is connected to a file, the file is connected to the unit.
+<p>
+Preconnection means that the unit is connected to a file at the beginning of execution of the executable program and therefore may be referenced by input/output statements without the prior execution of an OPEN statement.
+<p>
+All input/output statements except OPEN, CLOSE, and INQUIRE must reference a unit that is connected to a file and thereby make use of or affect that file.
+<p>
+A file may be connected and not exist.  An example is a preconnected new file.
+<p>
+A unit must not be connected to more than one file at the same time, and a file must not be connected to more than one unit at the same time.  However, means are provided to change the status of a unit and to connect a unit to a different file.
+<p>
+After a unit has been disconnected by the execution of a CLOSE statement, it may be connected again within the same executable program to the same file or a different file.  After a file has been disconnected by the execution of a CLOSE statement, it may be connected again within the same executable program to the same unit or a different unit.  Note, however, that the only means to refer to a file that has been disconnected is by its name in an OPEN or INQUIRE statement.  Therefore, there may be no means of reconnecting an unnamed file once it is disconnected.
+
+<h3><a name="sh-12.3.3">12.3.3 Unit Specifier and Identifier.</a></h3>
+
+The form of a <i>unit specifier</i> is:
+<p><pre>
+      [UNIT =] <i>u</i>
+</pre><p>
+where <i>u</i> is an external unit identifier or an internal file identifier.
+<p>
+An external unit identifier is used to refer to an external file.  An internal file identifier is used to refer to an internal file.
+<p>
+An <i>external unit identifier</i> is one of the following:
+<p><ol>
+<li>An integer expression <i>i</i> whose value must be zero or positive
+<li>An asterisk, identifying a particular processor-determined external unit that is preconnected for formatted sequential access (<a href="#sh-12.9.2">12.9.2</a>)
+</ol><p>
+The external unit identified by the value of <i>i</i> is the same external unit in all program units of the executable program.  In the example:
+<p><pre>
+      SUBROUTINE A
+      READ (6) X
+<p>
+      SUBROUTINE B
+      N=6
+      REWIND N
+</pre><p>
+the value 6 used in both program units identifies the same external unit.
+<p>
+An external unit identifier in an auxiliary input/output statement (<a href="#sh-12.10">12.10</a>) must not be an asterisk.
+<p>
+An <i>internal file identifier</i> is the name of a character variable, character array, character array element, or character substring.
+<p>
+If the optional characters UNIT= are omitted from the unit specifier, the unit specifier must be the first item in a list of specifiers.
+
+<h2><a name="sh-12.4">12.4 Format Specifier and Identifier</a></h2>
+
+The form of a <i>format specifier</i> is:
+<p><pre>
+      [FMT =] <i>f</i>
+</pre><p>
+where <i>f</i> is a format identifier.
+<p>
+A <i>format identifier</i> identifies a format.  A format identifier must be one of the following:
+<p><ol>
+<li>The statement label of a FORMAT statement that appears in the same program unit as the format identifier.
+<li>An integer variable name that has been assigned the statement label of a FORMAT statement that appears in the same program unit as the format identifier (<a href="rjcnf-10.html#sh-10.3">10.3</a>).
+<li>A character array name (<a href="rjcnf-13.html#sh-13.1.2">13.1.2</a>).
+<li>Any character expression except a character expression involving concatenation of an operand whose length specification is an asterisk in parentheses unless the operand is the symbolic name of a constant.  Note that a character constant is permitted.
+<li>An asterisk, specifying list-directed formatting.
+</ol><p>
+If the optional characters FMT= are omitted from the format specifier, the format specifier must be the second item in the control information list and the first item must be the unit specifier without the optional characters UNIT=.
+
+<h2><a name="sh-12.5">12.5 Record Specifier</a></h2>
+
+The form of a <i>record specifier</i> is:
+<p><pre>
+      REC = <i>rn</i>
+</pre><p>
+where <i>rn</i> is an integer expression whose value is positive.  It specifies the number of the record that is to be read or written in a file connected for direct access.
+
+<h2><a name="sh-12.6">12.6 Error and End-of-File Conditions</a></h2>
+
+The set of input/output error conditions is processor dependent.
+<p>
+An end-of-file condition exists if either of the following events occurs:
+<p><ol>
+<li>An endfile record is encountered during the reading of a file connected for sequential access.  In this case, the file is positioned after the endfile record.
+<li>An attempt is made to read a record beyond the end of an internal file.
+</ol><p>
+If an error condition occurs during execution of an input/output statement, execution of the input/output statement terminates and the position of the file becomes indeterminate.
+<p>
+If an error condition or an end-of-file condition occurs during execution of a READ statement, execution of the READ statement terminates and the entities specified by the input list and implied-DO-variables in the input list become undefined.  Note that variables and array elements appearing only in subscripts, substring expressions, and implied-DO parameters in an input list do not become undefined when the entities specified by the list become undefined.
+<p>
+If an error condition occurs during execution of an output statement, execution of the output statement terminates and implied-DO-variables in the output list become undefined.
+<p>
+If an error condition occurs during execution of an input/output statement that contains neither an input/output status specifier (<a href="#sh-12.7">12.7</a>) nor an error specifier (<a href="#sh-12.7.1">12.7.1</a>), or if an end-of-file condition occurs during execution of a READ statement that contains neither an input/output status specifier nor an end-of-file specifier (<a href="#sh-12.7.2">12.7.2</a>), execution of the executable program is terminated.
+
+<h2><a name="sh-12.7">12.7 Input/Output Status, Error, and End-of-File Specifiers</a></h2>
+
+The form of an <i>input/output status specifier</i> is:
+<p><pre>
+      IOSTAT = <i>ios</i>
+</pre><p>
+where <i>ios</i> is an integer variable or integer array element.
+<p>
+Execution of an input/output statement containing this specifier causes <i>ios</i> to become defined:
+<p><ol>
+<li>with a zero value if neither an error condition nor an end-of-file condition is encountered by the processor,
+<li>with a processor-dependent positive integer value if an error condition is encountered, or
+<li>with a processor-dependent negative integer value if an end-of-file condition is encountered and no error condition is encountered.
+</ol>
+<h3><a name="sh-12.7.1">12.7.1 Error Specifier.</a></h3>
+
+The form of an <i>error specifier</i> is:
+<p><pre>
+      ERR = <i>s</i>
+</pre><p>
+where <i>s</i> is the statement label of an executable statement that appears in the same program unit as the error specifier.
+<p>
+If an input/output statement contains an error specifier and the processor encounters an error condition during execution of the statement:
+<p><ol>
+<li>execution of the input/output statement terminates,
+<li>the position of the file specified in the input/output statement becomes indeterminate,
+<li>if the input/output statement contains an input/output status specifier (<a href="#sh-12.7">12.7</a>), the variable or array element <i>ios</i>
+ becomes defined with a processor-dependent positive integer value, and
+<li>execution continues with the statement labeled <i>s</i>.
+</ol>
+<h3><a name="sh-12.7.2">12.7.2 End-of-File Specifier.</a></h3>
+
+The form of an
+<i>end-of-file specifier</i> is:
+<p><pre>
+      END = <i>s</i>
+</pre><p>
+where <i>s</i> is the statement label of an executable statement that appears in the same program unit as the end-of-file specifier.
+<p>
+If a READ statement contains an end-of-file specifier and the processor encounters an end-of-file condition and no error condition during execution of the statement:
+<p><ol>
+<li>execution of the READ statement terminates,
+<li>if the READ statement contains an input/output status specifier (<a href="#sh-12.7">12.7</a>), the variable or array element <i>ios</i> becomes defined with a processor-dependent negative integer value, and
+<li>execution continues with the statement labeled <i>s</i>.
+</ol>
+<h2><a name="sh-12.8">12.8 READ, WRITE, and PRINT Statements</a></h2>
+
+The READ statement is the data transfer input statement.  The WRITE and PRINT statements are the data transfer output statements.  The forms of the data transfer input/output statements are:
+<pre>
+      READ (<i>cilist</i>) [<i>iolist</i>]
+<p>
+      READ <i>f</i> [,<i>iolist</i>]
+<p>
+      WRITE (<i>cilist</i>) [<i>iolist</i>]
+<p>
+      PRINT <i>f</i> [,<i>iolist</i>]
+</pre><p>
+where:<ul>
+<li><i>cilist</i> is a control information list (<a href="#sh-12.8.1">12.8.1</a>) that includes:
+<ol>
+<li>A reference to the source or destination of the data to be transferred
+<li>Optional specification of editing processes
+<li>Optional specifiers that determine the execution sequence on the occurrence of certain events
+<li>Optional specification to identify a record
+<li>Optional specification to provide the return of the input/output status
+</ol>
+<li><i>f</i> is a format identifier (<a href="#sh-12.4">12.4</a>)
+<li><i>iolist</i> is an input/output list (<a href="#sh-12.8.2">12.8.2</a>) specifying the data to be transferred
+</ul>
+<h3><a name="sh-12.8.1">12.8.1 Control Information List.</a></h3>
+
+A <i>control information list, cilist,</i> is a list (<a href="rjcnf-2.html#sh-2.10">2.10</a>) whose list items may be any of the following:
+<p><pre>
+                                ________________
+                                |<i>              </i>|
+                                | [UNIT =] <i>u</i>   |
+                                | [FMT =] <i>f</i>    |
+                                | REC = <i>rn</i>     |
+                                | IOSTAT = <i>ios</i> |
+                                | ERR = <i>s</i>      |
+                                | END = <i>s</i>      |
+                                |<i>______________</i>|
+</pre><p>
+A control information list must contain exactly one unit specifier (<a href="#sh-12.3.3">12.3.3</a>), at most one format specifier (<a href="#sh-12.4">12.4</a>), at most one record specifier (<a href="#sh-12.5">12.5</a>), at most one input/output status specifier (<a href="#sh-12.7">12.7</a>), at most one error specifier (<a href="#sh-12.7.1">12.7.1</a>), and at most one end-of-file specifier (<a href="#sh-12.7.2">12.7.2</a>).
+<p>
+If the control information list contains a format specifier, the statement is a <i>formatted input/output statement</i>; otherwise, it is an <i>unformatted input/output statement</i>.
+<p>
+If the control information list contains a record specifier, the statement is a <i>direct access input/output statement</i>; otherwise, it is a <i>sequential access input/output statement</i>.
+<p>
+If the optional characters UNIT= are omitted from the unit specifier, the unit specifier must be the first item in the control information list.
+<p>
+If the optional characters FMT= are omitted from the format specifier, the format specifier must be the second item in the control information list and the first item must be the unit specifier without the optional characters UNIT=.
+<p>
+A control information list must not contain both a record specifier and an end-of-file specifier.
+<p>
+If the format identifier is an asterisk, the statement is a <i>list-directed input/output statement</i> and a record specifier must not be present.
+<p>
+In a WRITE statement, the control information list must
+not contain an end-of-file specifier.
+<p>
+If the unit specifier specifies an internal file, the control information list must contain a format identifier other than an asterisk and must not contain a record specifier.
+
+<h3><a name="sh-12.8.2">12.8.2 Input/Output List.</a></h3>
+
+An <i>input/output list</i>, <i>iolist</i>, specifies the entities whose values are transferred by a data transfer input/output statement.
+<p>
+An input/output list is a list (<a href="rjcnf-2.html#sh-2.10">2.10</a>) of input/output list items and implied-DO lists (<a href="#sh-12.8.2.3">12.8.2.3</a>).  An <i>input/output list item</i> is either an input list item or an output list item.
+<p>
+If an array name appears as an input/output list item, it is treated as if all of the elements of the array were specified in the order given by array element ordering (<a href="rjcnf-5.html#sh-5.2.4">5.2.4</a>).  The name of an assumed-size dummy array must not appear as an input/output list item.
+
+<h4><a name="sh-12.8.2.1">12.8.2.1 Input List Items.</a></h4>
+
+An <i>input list item</i> must be one of the following:
+<p><ol>
+<li>A variable name
+<li>An array element name
+<li>A character substring name
+<li>An array name
+</ol><p>
+Only input list items may appear as input/output list items in an input statement.
+
+<h4><a name="sh-12.8.2.2">12.8.2.2 Output List Items.</a></h4>
+
+An <i>output list item</i> must be one of the following:
+<p><ol>
+<li>A variable name
+<li>An array element name
+<li>A character substring name
+<li>An array name
+<li>Any other expression except a character expression involving concatenation of an operand whose length specification is an asterisk in parentheses unless the operand is the symbolic name of a constant
+</ol><p>
+Note that a constant, an expression involving operators or function references, or an expression enclosed in parentheses may appear as an output list item but must not appear as an input list item.
+
+<h4><a name="sh-12.8.2.3">12.8.2.3 Implied-DO List.</a></h4>
+
+An <i>implied-DO list</i> is of the form:
+<p><pre>
+      ( <i>dlist</i>, <i>i</i> = <i>e</i><sub>1</sub>, <i>e</i><sub>2</sub> [,<i>e</i><sub>3</sub> ] )
+</pre><p>
+where:<ul>
+<li><i>i</i>, <i>e</i><sub>1</sub>, <i>e</i><sub>2</sub>, and <i>e</i><sub>3</sub> are as specified for the DO statement (<a href="rjcnf-11.html#sh-11.10">11.10</a>)
+<li><i>dlist</i> is an input/output list
+</ul><p>
+The range of an implied-DO list is the list <i>dlist</i>.  Note that <i>dlist</i> may contain implied-DO lists.  The iteration count and the values of the DO-variable <i>i</i> are established from <i>e</i><sub>1</sub>, <i>e</i><sub>2</sub>, and <i>e</i><sub>3</sub> exactly as for a DO-loop.  In an input statement, the DO-variable <i>i</i>, or an associated entity, must not appear as an input list item in <i>dlist</i>.  When an implied-DO list appears in an input/output list, the list items in <i>dlist</i> are specified once for each iteration of the implied-DO list with appropriate substitution of values for any occurrence of the DO-variable <i>i</i>.
+
+<h2><a name="sh-12.9">12.9 Execution of a Data Transfer Input/Output Statement</a></h2>
+
+The effect of executing a data transfer input/output statement must be as if the following operations were performed in the order specified:
+<p><ol>
+<li>Determine the direction of data transfer
+<li>Identify the unit
+<li>Establish the format if any is specified
+<li>Position the file prior to data transfer
+<li>Transfer data between the file and the entities specified by the input/output list (if any)
+<li>Position the file after data transfer
+<li>Cause the specified integer variable or array element in the input/output status specifier (if any) to become defined
+</ol>
+<h3><a name="sh-12.9.1">12.9.1 Direction of Data Transfer.</a></h3>
+
+Execution of a READ statement causes values to be transferred from a file to the entities specified by the input list, if one is specified.
+<p>
+Execution of a WRITE or PRINT statement causes values to be transferred to a file from the entities specified by the output list and format specification (if any).  Execution of a WRITE or PRINT statement for a file that does not exist creates the file, unless an error condition occurs.
+
+<h3><a name="sh-12.9.2">12.9.2 Identifying a Unit.</a></h3>
+
+A data transfer input/output statement that contains a control information list (<a href="#sh-12.8.1">12.8.1</a>) includes a unit specifier that identifies an external unit or an internal file.  A READ statement that does not contain a control information list specifies a particular processor-determined unit, which is the same as the unit identified by an asterisk in a READ statement that contains a control information list.  A PRINT statement specifies some other processor-determined unit, which is the same as the unit identified by an asterisk in a WRITE statement.  Thus, each data transfer input/output statement identifies an external unit or an internal file.
+<p>
+The unit identified by a data transfer input/output statement must be connected to a file when execution of the statement begins.
+
+<h3><a name="sh-12.9.3">12.9.3 Establishing a Format.</a></h3>
+
+If the control information list contains a format identifier other than an asterisk, the format specification identified by the format identifier is established.  If the format identifier is an asterisk, list-directed formatting is established.
+<p>
+On output, if an internal file has been specified, a format specification (<a href="rjcnf-13.html#sh-13.1">13.1</a>) that is in the file or is associated (<a href="rjcnf-17.html#sh-17.1">17.1</a>) with the file must not be specified.
+
+<h3><a name="sh-12.9.4">12.9.4 File Position Prior to Data Transfer.</a></h3>
+
+The positioning of the file prior to data transfer depends on the method of access: sequential or direct.
+<p>
+If the file contains an endfile record, the file must not be positioned after the endfile record prior to data transfer.
+
+<h4><a name="sh-12.9.4.1">12.9.4.1 Sequential Access.</a></h4>
+
+On input, the file is positioned at the beginning of the next record.  This record becomes the current record.  On output, a new record is created and becomes the last record of the file.
+<p>
+An internal file is always positioned at the beginning of the first record of the file.  This record becomes the current record.
+
+<h4><a name="sh-12.9.4.2">12.9.4.2 Direct Access.</a></h4>
+
+For direct access, the file is positioned at the beginning of the record specified by the record specifier (<a href="#sh-12.5">12.5</a>).  This record becomes the current record.
+
+<h3><a name="sh-12.9.5">12.9.5 Data Transfer.</a></h3>
+
+Data are transferred between records and entities specified by the input/output list.  The list items are processed in the order of the input/output list.
+<p>
+All values needed to determine which entities are specified by an input/output list item are determined at the beginning of the processing of that item.  All values are transmitted to or from the entities specified by a list item prior to the processing of any succeeding list item.  In the example,
+<p><pre>
+      READ (3) N, A(N)
+</pre><p>
+two values are read; one is assigned to N, and the second is assigned to A(N) for the new value of N.
+<p>
+An input list item, or an entity associated with it (<a href="rjcnf-17.html#sh-17.1.3">17.1.3</a>), must not contain any portion of the established format specification.
+<p>
+If an intern file has been specified, an input/output list item must not be in the file or associated with the file.
+<p>
+A DO-variable becomes defined at the beginning of processing of the items that constitute the range of an implied-DO list.
+<p>
+On output, every entity whose value is to be transferred must be defined.
+<p>
+On input, an attempt to read a record of a file connected for direct access that has not previously been written causes all entities specified by the input list to become undefined.
+
+<h4><a name="sh-12.9.5.1">12.9.5.1 Unformatted Data Transfer.</a></h4>
+
+During unformatted data transfer, data are transferred without editing between the current record and the entities specified by the input/output list.  Exactly one record is read or written.
+<p>
+On input, the file must be positioned so that the record read is an unformatted record or an endfile record.
+<p>
+On input, the number of values required by the input list must be less than or equal to the number of values in the record.
+<p>
+On input, the type of each value in the record must agree with the type of the corresponding entity in the input list, except that one complex value may correspond to two real list entities or two real values may correspond to one complex list entity.  If an entity in the input list is of type character, the length of the character entity must agree with the length of the character value.
+<p>
+On output to a file connected for direct access, the output list must not specify more values than can fit into a record.
+<p>
+On output, if the file is connected for direct access and the values specified by the output list do not fill the record, the remainder of the record is undefined.
+<p>
+If the file is connected for formatted input/output, unformatted data transfer is prohibited.
+<p>
+The unit specified must be an external unit.
+
+<h4><a name="sh-12.9.5.2">12.9.5.2 Formatted Data Transfer.</a></h4>
+
+During formatted data transfer, data are transferred with editing between the entities specified by the input/output list and the file.  The current record and possibly additional records are read or written.
+<p>
+On input, the file must be positioned so that the record read is a formatted record or an endfile record.
+<p>
+If the file is connected for unformatted input/output, formatted data transfer is prohibited.
+
+<h5><a name="sh-12.9.5.2.1">12.9.5.2.1 Using a Format Specification.</a></h5>
+
+If a format specification has been established, format control (<a href="rjcnf-13.html#sh-13.3">13.3</a>) is initiated and editing is performed as described in 13.3 through <a href="rjcnf-13.html#sh-13.5">13.5</a>.
+<p>
+On input, the input list and format specification must not require more characters from a record than the record contains.
+<p>
+If the file is connected for direct access, the record number is increased by one as each succeeding record is read or written.
+<p>
+On output, if the file is connected for direct access or is an internal file and the characters specified by the output list and format do not fill a record, blank characters are added to fill the record.
+<p>
+On output, if the file is connected for direct access or is an internal file, the output list and format specification must not specify more characters for a record than can fit into the record.
+
+<h5><a name="sh-12.9.5.2.2">12.9.5.2.2 List-Directed Formatting.</a></h5>
+
+If list-directed formatting has been established, editing is performed as described in <a href="rjcnf-13.html#sh-13.6">13.6</a>.
+
+<h5><a name="sh-12.9.5.2.3">12.9.5.2.3 Printing of Formatted Records.</a></h5>
+
+The transfer of information in a formatted record to certain devices determined by the processor is called <i>printing</i>.  If a formatted record is printed, the first character of the record is not printed.  The remaining characters of the record, if any, are printed in one line beginning at the left margin.
+<p>
+The first character of such a record determines vertical spacing as follows:
+<p><pre>
+                ________________________________________________
+                |           |                                  |
+                | Character | Vertical Spacing Before Printing |
+                |___________|__________________________________|
+                |           |                                  |
+                |   Blank   | One Line                         |
+                |     0     | Two Lines                        |
+                |     1     | To First Line of Next Page       |
+                |     +     | No Advance                       |
+                |___________|__________________________________|
+</pre><p>
+If there are no characters in the record (<a href="rjcnf-13.html#sh-13.5.4">13.5.4</a>), the vertical spacing is one line and no characters other than blank are printed in that line.
+<p>
+A PRINT statement does not imply that printing will occur, and a WRITE statement does not imply that printing will not occur.
+
+<h3><a name="sh-12.9.6">12.9.6 File Position After Data Transfer.</a></h3>
+
+If an end-of-file condition exists as a result of reading an endfile record, the file is positioned after the endfile record.
+<p>
+If no error condition or end-of-file condition exists, the file is positioned after the last record read or written and that record becomes the preceding record.  A record written on a file connected for sequential access becomes the last record of the file.
+<p>
+If the file is positioned after the endfile record, execution of a data transfer input/output statement is prohibited.  However, a BACKSPACE or REWIND statement may be used to reposition the file.
+<p>
+If an error condition exists, the position of the file is indeterminate.
+
+<h3><a name="sh-12.9.7">12.9.7 Input/Output Status Specifier Definition.</a></h3>
+
+If the data transfer input/output statement contains an input/output status specifier, the integer variable or array element <i>ios</i> becomes defined.  If no error condition or end-of-file condition exists, the value of <i>ios</i> is zero.  If an error condition exists, the value of <i>ios</i> is positive.  If an end-of-file condition exists and no error condition exists, the value of <i>ios</i> is negative.
+
+<h2><a name="sh-12.10">12.10 Auxiliary Input/Output Statements</a></h2>
+
+<h3><a name="sh-12.10.1">12.10.1 OPEN Statement.</a></h3>
+
+An OPEN statement may be used to connect (<a href="#sh-12.3.2">12.3.2</a>) an existing file to a unit, create a file (<a href="#sh-12.2.1">12.2.1</a>) that is preconnected, create a file and connect it to a unit, or change certain specifiers of a connection between a file and a unit.
+<p>
+The form of an OPEN statement is:
+<p><pre>
+      OPEN (<i>olist</i>)
+</pre><p>
+where <i>olist</i> is a list (<a href="rjcnf-2.html#sh-2.10">2.10</a>) of specifiers:
+<p><pre>
+                                ________________
+                                |<i>              </i>|
+                                | [UNIT =] <i>u</i>   |
+                                | IOSTAT = <i>ios</i> |
+                                | ERR = <i>s</i>      |
+                                | FILE = <i>fin</i>   |
+                                | STATUS = <i>sta</i> |
+                                | ACCESS = <i>acc</i> |
+                                | FORM = <i>fm</i>    |
+                                | RECL = <i>rl</i>    |
+                                | BLANK = <i>blnk</i> |
+                                |<i>______________</i>|
+</pre><p>
+<i>olist</i> must contain exactly one external unit specifier (<a href="#sh-12.3.3">12.3.3</a>) and may contain at most one of each of the other specifiers.
+<p>
+The other specifiers are described as follows:
+<p><dl>
+<dt>IOSTAT = <i>ios</i>
+<dd>is an input/output status specifier (<a href="#sh-12.7">12.7</a>).  Execution of an OPEN statement containing this specifier causes <i>ios</i> to become defined with a zero value if no error condition exists or with a processor-dependent positive integer value if an error condition exists.
+<dt>ERR = <i>s</i>
+<dd>is an error specifier (<a href="#sh-12.7.1">12.7.1</a>).
+<dt>FILE = <i>fin</i>
+<dd><i>fin</i> is a character expression whose value when any trailing blanks are removed is the name of the file to be connected to the specified unit.  The file name must be a name that is allowed by the processor.  If this specifier is omitted and the unit is not connected to a file, it becomes connected to a processor-determined file.  (See also <a href="#sh-12.10.1.1">12.10.1.1</a>.)
+<dt>STATUS = <i>sta</i>
+<dd><i>sta</i> is a character expression whose value when any trailing blanks are removed is OLD, NEW, SCRATCH, or UNKNOWN.  If OLD or NEW is specified, a FILE= specifier must be given.  If OLD is specified, the file must exist.  If NEW is specified, the file must not exist.  Successful execution of an OPEN statement with NEW specified creates the file and changes the status to OLD (<a href="#sh-12.10.1.1">12.10.1.1</a>).  If SCRATCH is specified with an unnamed file, the file is connected to the specified unit for use by the executable program but is deleted (<a href="#sh-12.2.1">12.2.1</a>) at the execution of a CLOSE statement referring to the same unit or at the termination of the executable program.  SCRATCH must not be specified with a named file.  If UNKNOWN is specified, the status is processor dependent.  If this specifier is omitted, a value of UNKNOWN is assumed.
+<dt>ACCESS = <i>acc</i>
+<dd><i>acc</i> is a character expression whose value when any trailing blanks are removed is SEQUENTIAL or DIRECT.  It specifies the access method for the connection of the file as being sequential or direct (<a href="#sh-12.2.4">12.2.4</a>).  If this specifier is omitted, the assumed value is SEQUENTIAL.  For an existing file, the specified access method must be included in the set of allowed access methods for the file (<a href="#sh-12.2.4">12.2.4</a>).  For a new file, the processor creates the file with a set of allowed access methods that includes the specified method.
+<dt>FORM = <i>fm</i>
+<dd><i>fm</i> is a character expression whose value when any trailing blanks are removed is FORMATTED or UNFORMATTED.  It specifies that the file is being connected for formatted or unformatted input/output, respectively.  If this specifier is omitted, a value of UNFORMATTED is assumed if the file is being connected for direct access, and a value of FORMATTED is assumed if the file is being connected for sequential access.  For an existing file, the specified form must be included in the set of allowed forms for the file (<a href="#sh-12.2.2">12.2.2</a>).  For a new file, the processor creates the file with a set of allowed forms that includes the specified form.
+<dt>RECL = <i>rl</i>
+<dd><i>rl</i> is an integer expression whose value must be positive.  It specifies the length of each record in a file being connected for direct access.  If the file is being connected for formatted input/output, the length is the number of characters.  If the file is being connected for unformatted input/output, the length is measured in processor-dependent units.  For an existing file, the value of <i>rl</i> must be included in the set of allowed record lengths for the file (<a href="#sh-12.2.2">12.2.2</a>).  For a new file, the processor creates the file with a set of allowed record lengths that includes the specified value.  This specifier must be given when a file is being connected for direct access; otherwise, it must be omitted.
+<dt>BLANK = <i>blnk</i>
+<dd><i>blnk</i> is a character expression whose value when any trailing blanks are removed is NULL or ZERO.  If NULL is specified, all blank characters in numeric formatted input fields on the specified unit are ignored, except that a field of all blanks has a value of zero.  If ZERO is specified, all blanks other than leading blanks are treated as zeros.  If this specifier is omitted, a value of NULL is assumed.  This specifier is permitted only for a file being connected for formatted input/output.
+</dl><p>
+The unit specifier is required to appear; all other specifiers are optional, except that the record length <i>rl</i> must be specified if a file is being connected for direct access.  Note that some of the specifications have an assumed value if they are omitted.
+<p>
+The unit specified must exist.
+<p>
+A unit may be connected by execution of an OPEN statement in any program unit of an executable program and, once connected, may be referenced in any program unit of the executable program.
+
+<h4><a name="sh-12.10.1.1">12.10.1.1 Open of a Connected Unit.</a></h4>
+
+If a unit is connected to a file that exists, execution of an OPEN statement for that unit is permitted.  If the FILE= specifier is not included in the OPEN statement, the file to be connected to the unit is the same as the file to which the unit is connected.
+<p>
+If the file to be connected to the unit does not exist, but is the same as the file to which the unit is preconnected, the properties specified by the OPEN statement become a part of the connection.
+<p>
+If the file to be connected to the unit is not the same as the file to which the unit is connected, the effect is as if a CLOSE statement (<a href="#sh-12.10.2">12.10.2</a>) without a STATUS= specifier had been executed for the unit immediately prior to the execution of the OPEN statement.
+<p>
+If the file to be connected to the unit is the same as the file to which the unit is connected, only the BLANK= specifier may have a value different from the one currently in effect.  Execution of the OPEN statement causes the new value of the BLANK= specifier to be in effect.  The position of the file is unaffected.
+<p>
+If a file is connected to a unit, execution of an OPEN statement on that file and a different unit is not permitted.
+
+<h3><a name="sh-12.10.2">12.10.2 CLOSE Statement.</a></h3>
+
+A CLOSE statement is used to terminate the connection of a particular file to a unit.
+<p>
+The form of a CLOSE statement is:
+<p><pre>
+      CLOSE (<i>cllist</i>)
+</pre><p>
+where <i>cllist</i> is a list(<a href="rjcnf-2.html#sh-2.10">2.10</a>) of specifiers:
+<p><pre>
+                                ________________
+                                |<i>              </i>|
+                                | [UNIT =] <i>u</i>   |
+                                | IOSTAT = <i>ios</i> |
+                                | ERR = <i>s</i>      |
+                                | STATUS = <i>sta</i> |
+                                |<i>______________</i>|
+</pre><p>
+<i>cllist</i> must contain exactly one external unit specifier (<a href="#sh-12.3.3">12.3.3</a>) and may contain at most one of each of the other specifiers.
+<p>
+The other specifiers are described as follows:
+<p><dl>
+<dt>IOSTAT = <i>ios</i>
+<dd>is an input/output status specifier (<a href="#sh-12.7">12.7</a>).  Execution of a CLOSE statement containing this specifier causes <i>ios</i> to become defined with a zero value if no error condition exists or with a processor-dependent positive integer value if an error condition exists.
+<dt>ERR = <i>s</i>
+<dd>is an error specifier (<a href="#sh-12.7.1">12.7.1</a>).
+<dt>STATUS = <i>sta</i>
+<dd><i>sta</i> is a character expression whose value when any trailing blanks are removed is KEEP or DELETE.  <i>sta</i> determines the disposition of the file that is connected to the specified unit.  KEEP must not be
+specified for a file whose status prior to execution of the CLOSE statement is SCRATCH.  If KEEP is specified for a file that exists, the file continues to exist after the execution of the CLOSE statement.  If KEEP is specified for a file that does not exist, the file will not exist after the execution of the CLOSE statement.  If DELETE is specified, the file will not exist after execution of the CLOSE statement.  If this specifier is omitted, the assumed value is KEEP, unless the file status prior to execution of the CLOSE statement is SCRATCH, in which case the assumed value is DELETE.
+</dl><p>
+Execution of a CLOSE statement that refers to a unit may occur in any program unit of an executable program and need not occur in the same program unit as the execution of an OPEN statement referring to that unit.
+<p>
+Execution of a CLOSE statement specifying a unit that does not exist or has no file connected to it is permitted and affects no file.
+<p>
+After a unit has been disconnected by execution of a CLOSE statement, it may be connected again within the same executable program, either to the same file or to a different file.  After a file has been disconnected by execution of a CLOSE statement, it may be connected again within the same executable program, either to the same unit or to a different unit, provided that the file still exists.
+
+<h4><a name="sh-12.10.2.1">12.10.2.1 Implicit Close at Termination of Execution.</a></h4>
+
+At termination of execution of an executable program for reasons other than an error condition, all units that are connected are closed.  Each unit is closed with status KEEP unless the file status prior to termination of execution was SCRATCH, in which case the unit is closed with status DELETE.  Note that the effect is as though a CLOSE statement without a STATUS= specifier were executed on each connected unit.
+
+<h3><a name="sh-12.10.3">12.10.3 INQUIRE Statement.</a></h3>
+
+An INQUIRE statement may be used to inquire about properties of a particular named file or of the connection to a particular unit.  There are two forms of the INQUIRE statement: inquire by file and inquire by unit.  All value assignments are done according to the rules for assignment statements.
+<p>
+The INQUIRE statement may be executed before, while, or after a file is connected to a unit.  All values assigned by the INQUIRE statement are those that are current at the time the statement is executed.
+
+<h4><a name="sh-12.10.3.1">12.10.3.1 INQUIRE by File.</a></h4>
+
+The form of an INQUIRE by file statement is:
+<p><pre>
+      INQUIRE (<i>iflist</i>)
+</pre><p>
+where <i>iflist</i> is a list (<a href="rjcnf-2.html#sh-2.10">2.10</a>) of specifiers that must contain exactly one file specifier and may contain other inquiry specifiers.  The <i>iflist</i> may contain at most one of each of the inquiry specifiers described in <a href="#sh-12.10.3.3">12.10.3.3</a>.
+<p>
+The form of a file specifier is:
+<p><pre>
+      FILE = <i>fin</i>
+</pre><p>
+where <i>fin</i> is a character expression whose value when any trailing blanks are removed specifies the name of the file being inquired about.
+The named file need not exist or be connected to a unit.  The value of <i>fin</i> must be of a form acceptable to the processor as a file name.
+
+<h4><a name="sh-12.10.3.2">12.10.3.2 INQUIRE by Unit.</a></h4>
+
+The form of an INQUIRE by unit statement is:
+<p><pre>
+      INQUIRE (<i>iulist</i>)
+</pre><p>
+where <i>iulist</i> is a list (<a href="rjcnf-2.html#sh-2.10">2.10</a>) of specifiers that must contain exactly one external unit specifier (<a href="#sh-12.3.3">12.3.3</a>) and may contain other inquiry specifiers.  The <i>iulist</i> may contain at most one of each of the inquiry specifiers described in <a href="#sh-12.10.3.3">12.10.3.3</a>.  The unit specified need not exist or be connected to a file.  If it is connected to a file, the inquiry is being made about the connection and about the file connected.
+
+<h4><a name="sh-12.10.3.3">12.10.3.3 Inquiry Specifiers.</a></h4>
+
+The following inquiry specifiers may be used in either form of the INQUIRE statement:
+<p><pre>
+                             _____________________
+                             |<i>                   </i>|
+                             | IOSTAT = <i>ios</i>      |
+                             | ERR = <i>s</i>           |
+                             | EXIST = <i>ex</i>        |
+                             | OPENED = <i>od</i>       |
+                             | NUMBER = <i>num</i>      |
+                             | NAMED = <i>nmd</i>       |
+                             | NAME = <i>fn</i>         |
+                             | ACCESS = <i>acc</i>      |
+                             | SEQUENTIAL = <i>seq</i>  |
+                             | DIRECT = <i>dir</i>      |
+                             | FORM = <i>fm</i>         |
+                             | FORMATTED = <i>fmt</i>   |
+                             | UNFORMATTED = <i>unf</i> |
+                             | RECL = <i>rcl</i>        |
+                             | NEXTREC = <i>nr</i>      |
+                             | BLANK = <i>blnk</i>      |
+                             |<i>___________________</i>|
+</pre><p>
+The specifiers are described as follows:
+<p><dl>
+<dt>IOSTAT = <i>ios</i>
+<dd>is an input/output status specifier (<a href="#sh-12.7">12.7</a>).  Execution of an INQUIRE statement containing this specifier causes <i>ios</i> to become defined with a zero value if no error condition exists or with a processor-dependent positive integer value if an error condition exists.
+<dt>ERR = <i>s</i>
+<dd>is an error specifier (<a href="#sh-12.7.1">12.7.1</a>).
+<dt>EXIST = <i>ex</i>
+<dd><i>ex</i> is a logical variable or logical array element.  Execution of an INQUIRE by file statement causes <i>ex</i> to be assigned the value true if there exists a file with the specified name; otherwise, <i>ex</i> is assigned the value false.  Execution of an INQUIRE by unit statement causes <i>ex</i> to be assigned the value true if the specified unit exists; otherwise, <i>ex</i> is assigned the value false.
+<dt>OPENED = <i>od</i>
+<dd><i>od</i> is a logical variable or logical array element.  Execution of an INQUIRE by file statement causes <i>od</i> to be assigned the value true if the file specified is connected to a unit; otherwise, <i>od</i> is assigned the value false.  Execution of an INQUIRE by unit statement causes <i>od</i> to be assigned the value true if the specified unit is connected to a file; otherwise, <i>od</i> is assigned the value false.
+<dt>NUMBER = <i>num</i>
+<dd><i>num</i> is an integer variable or integer array element that is assigned the value of the external unit identifier of the unit that is currently connected to the file.  If there is no unit connected to the file, <i>num</i> becomes undefined.
+<dt>NAMED = <i>nmd</i>
+<dd><i>nmd</i> is a logical variable or logical array element that is assigned the value true if the file has a name; otherwise, it is assigned the value false.
+<dt>NAME = <i>fn</i>
+<dd><i>fn</i> is a character variable or character array element that is assigned the value of the name of the file, if the file has a name; otherwise, it becomes undefined.  Note that if this specifier appears in an INQUIRE by file statement, its value is not necessarily the same as the name given in the FILE= specifier.  For example, the processor may return a file name qualified by a user identification.  However, the value returned must be suitable for use as the value of a FILE= specifier in an OPEN statement.
+<dt>ACCESS = <i>acc</i>
+<dd><i>acc</i> is a character variable or character array element that is assigned the value SEQUENTIAL if the file is connected for sequential access, and DIRECT if the file is connected for direct access.  If there is no connection, <i>acc</i> becomes undefined.
+<dt>SEQUENTIAL = <i>seq</i>
+<dd><i>seq</i> is a character variable or character array element that is assigned the value YES if SEQUENTIAL is included in the set of allowed access methods for the file, NO if SEQUENTIAL is not included in the set of allowed access methods for the file, and UNKNOWN if the processor is unable to determine whether or not SEQUENTIAL is included in the set of allowed access methods for the file.
+<dt>DIRECT = <i>dir</i>
+<dd><i>dir</i> is a character variable or character array element that is assigned the value YES if DIRECT is included in the set of allowed access methods for the file, NO if DIRECT is not included in the set of allowed access methods for the file, and UNKNOWN if the processor is unable to determine whether or not DIRECT is included in the set of allowed access methods for the file.
+<dt>FORM = <i>fm</i>
+<dd><i>fm</i> is a character variable or character array element that is assigned the value FORMATTED if the file is connected for formatted input/output, and is assigned the value UNFORMATTED if the file is connected for unformatted input/output.  If there is no connection, <i>fm</i> becomes undefined.
+<dt>FORMATTED = <i>fmt</i>
+<dd><i>fmt</i> is a character variable or character array element that is assigned the value YES if FORMATTED is included in the set of allowed forms for the file, NO if FORMATTED is not included in the set of allowed forms for the file, and UNKNOWN if the processor is unable to determine whether or not FORMATTED is included in the set of allowed forms for the file.
+<dt>UNFORMATTED = <i>unf</i>
+<dd><i>unf</i> is a character variable or character array element that is assigned the value YES if UNFORMATTED is included in the set of allowed forms for the file, NO if UNFORMATTED is not included in the set of allowed forms for the file, and UNKNOWN if the processor is unable to determine whether or not UNFORMATTED is included in the set of allowed forms for the file.
+<dt>RECL = <i>rcl</i>
+<dd><i>rcl</i> is an integer variable or integer array element that is assigned the value of the record length of the file connected for direct access.  If the file is connected for formatted input/output, the length is the number of characters.  If the file is connected for unformatted input/output, the length is measured in processor-dependent units.  If there is no connection or if the connection is not for direct access, <i>rcl</i> becomes undefined.
+<dt>NEXTREC = <i>nr</i>
+<dd><i>nr</i> is an integer variable or integer array element that is assigned the value <i>n</i>+1, where <i>n</i> is the record number of the last record read or written on the file connected for direct access.  If the file is connected but no records have been read or written since the connection, <i>nr</i> is assigned the value 1.  If the file is not connected for direct access or if the position of the file is indeterminate because of a previous error condition, <i>nr</i> becomes undefined.
+<dt>BLANK = <i>blnk</i>
+<dd><i>blnk</i> is a character variable or character array element assigned the value NULL if null blank control is in effect for the file connected for formatted input/output, and is assigned the value ZERO if zero blank control is in effect for the file connected for formatted input/output.  If there is no connection, or if the connection is not for formatted input/output, <i>blnk</i> becomes undefined.
+</dl><p>
+A variable or array element that may become defined or undefined as a result of its use as a specifier in an INQUIRE statement, or any associated entity, must not be referenced by any other specifier in the same INQUIRE statement.
+<p>
+Execution of an INQUIRE by file statement causes the specifier variables or array elements <i>nmd</i>, <i>fn</i>, <i>seq</i>, <i>dir</i>, <i>fmt</i>, and <i>unf</i> to be assigned values only if the value of <i>fin</i> is acceptable to the processor as a file name and if there exists a file by that name; otherwise, they become undefined.  Note that <i>num</i> becomes defined it and only if <i>od</i> becomes defined with the value true.  Note also that the specifier variables or array elements <i>acc</i>, <i>fm</i>, <i>rcl</i>, <i>nr</i>, and <i>blnk</i> may become defined only if <i>od</i> becomes defined with the value true.
+<p>
+Execution of an INQUIRE by unit statement causes the specifier variables or array elements <i>num</i>, </i>nmd</i>, </i>fn</i>, </i>acc</i>, </i>seq</i>, </i>dir</i>, </i>fm</i>, </i>fmt</i>, </i>unf</i>, </i>rcl</i>, </i>nr</i>, and <i>blnk</i> to be assigned values only if the specified unit exists and if a file is connected to the unit; otherwise, they become undefined.
+<p>
+If an error condition occurs during execution of an INQUIRE statement, all of the inquiry specifier variables and array elements except <i>ios</i> become undefined.
+<p>
+Note that the specifier variables or array elements <i>ex</i> and <i>od</i> always become defined unless an error condition occurs.
+
+<h3><a name="sh-12.10.4">12.10.4 File Positioning Statements.</a></h3>
+
+The forms of the file positioning statements are:
+<p><pre>
+      BACKSPACE <i>u</i>
+      BACKSPACE (<i>alist</i>)
+<p>
+      ENDFILE <i>u</i>
+      ENDFILE (<i>alist</i>)
+<p>
+      REWIND <i>u</i>
+      REWIND (<i>alist</i>)
+</pre><p>
+where:<ul>
+<li><i>u</i> is an external unit identifier (<a href="#sh-12.3.3">12.3.3</a>)
+<li><i>alist</i> is a list (2.20) of specifiers:
+</ul><p><pre>
+                                ________________
+                                |<i>              </i>|
+                                | [ UNIT =] <i>u</i>  |
+                                | IOSTAT = <i>ios</i> |
+                                | ERR = <i>s</i>      |
+                                |<i>______________</i>|
+</pre><p>
+<i>alist</i> must contain exactly one external unit specifier (<a href="#sh-12.3.3">12.3.3</a>) and may contain at most one of each of the other specifiers.
+<p>
+The external unit specified by a BACKSPACE, ENDFILE, or REWIND statement must be connected for sequential access.
+<p>
+Execution of a file positioning statement containing an input/output status specifier causes <i>ios</i> to become defined with a zero value if no error condition exists or with a processor-dependent positive integer value if an error condition exists.
+
+<h4><a name="sh-12.10.4.1">12.10.4.1 BACKSPACE Statement.</a></h4>
+
+Execution of a BACKSPACE statement causes the file connected to the specified unit to be positioned before the preceding record.  If there is no preceding record, the position of the file is not changed.  Note that if the preceding record is an endfile record, the file becomes positioned before the endfile record.
+<p>
+Backspacing a file that is connected but does not exist is prohibited.
+<p>
+Backspacing over records written using list-directed formatting is prohibited.
+
+<h4><a name="sh-12.10.4.2">12.10.4.2 ENDFILE Statement.</a></h4>
+
+Execution of an ENDFILE statement writes an endfile record as the next record of the file.  The file is then positioned after the endfile record.  If the file may also be connected for direct access, only those records before the endfile record are considered to have been written.  Thus, only those records may be read during subsequent direct access connections to the file.
+<p>
+After execution of an ENDFILE statement, a BACKSPACE or REWIND statement must be used to reposition the file prior to execution of any data transfer input/output statement.
+<p>
+Execution of an ENDFILE statement for a file that is connected but does not exist creates the file.
+
+<h4><a name="sh-12.10.4.3">12.10.4.3 REWIND Statement.</a></h4>
+
+Execution of a REWIND statement causes the specified file to be positioned at its initial point.  Note that if the file is already positioned at its initial point, execution of this statement has no effect on the position of the file.
+<p>
+Execution of a REWIND statement for a file that is connected but does not exist is permitted but has no effect.
+
+<h2><a name="sh-12.11">12.11 Restrictions on Function References and List Items</a></h2>
+
+A function must not be referenced within an expression appearing anywhere in an input/output statement if such a reference causes an input/output statement to be executed.  Note that a restriction in the evaluation of expressions (<a href="rjcnf-6.html#sh-6.6">6.6</a>) prohibits certain side effects.
+
+<h2><a name="sh-12.12">12.12 Restriction on Input/Output Statements</a></h2>
+
+If a unit, or a file connected to a unit, does not have all of the properties required for the execution of certain input/output statements, those statements must not refer to the unit.
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:27:02 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:25 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 76.68
+  exclusion.robots: 0.062
+  exclusion.robots.policy: 0.054
+  RedisCDXSource: 0.538
+  esindex: 0.006
+  LoadShardBlock: 61.01 (3)
+  PetaboxLoader3.datanode: 51.837 (4)
+  load_resource: 63.331
+  PetaboxLoader3.resolve: 49.293
+-->

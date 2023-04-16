@@ -1,0 +1,1727 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf0100-sh-19.html","20051016193852","https://web.archive.org/","web","/_static/",
+	      "1129491532");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>
+19 Criteria
+</title></head><body>
+<p><h1><a name="sh-19" href="rjcnf0001.html#toc-sh-19">19 Criteria</a></h1>The principal criteria used in developing this FORTRAN
+standard were:
+<ol>
+<li>Interchangeability of FORTRAN programs between
+processors
+<li>Compatibility with ANSI X3.9-1966, allied standards, and
+existing practices
+<li> Consistency and simplicity to user
+<li>Suitability for efficient processor operation for
+a wide range of computing equipment of varying
+structure and power
+<li>Allowance for future growth in the language
+<li>Achievement of capabilities not currently available,
+but needed for processes appropriately expressed
+in FORTRAN
+<li>Acceptability by a significant portion of users
+<li>Improved ability to use FORTRAN programs and data
+in conjunction with other languages and environments
+</ol>
+<p><h1><a name="sh-20" href="rjcnf0001.html#toc-sh-20">20 Conflicts with ANSI X3.9-1966</a></h1>An extremely important consideration in the preparation
+of this standard was the minimization of conflicts with
+the previous standard, ANSI X3.9-1966.  This standard
+includes changes that create conflicts with ANSI X3.9-1966 only
+when such changes were necessary to correct an error in
+the previous standard or to add to the power of the FORTRAN
+language in a significant manner.  The following is a list
+of known conflicts:
+<ol>
+<li>A line that contains only blank characters in columns 1 through
+72 is a comment line.  ANSI X3.9-1966 allowed such a
+line to be the initial line of a statement.
+<li>Columns 1 through 5 of a continuation line must
+contain blanks.  A published interpretation of
+ANSI X3.9-1966 specified that columns 1-5 of a continuation
+line may contain any character from the FORTRAN
+character set except that column 1 must not contain
+a C.
+<li>Hollerith constants and Hollerith data are not
+permitted in this standard.  ANSI X3.9-1966 permitted
+the use of Hollerith constants in DATA and CALL
+statements, the use of noncharacter list items in
+formatted input/output statements with A edit
+descriptors, and the referencing of noncharacter
+arrays as formats.  Note that the H edit
+(field) descriptor is permitted; it is not a
+Hollerith constant.
+<li>The value of each comma-separated subscript expression
+in a subscript must not exceed its corresponding upper bound
+declared for the array name in the program unit.
+In the example:
+<ol>
+<li> DIMENSION A(10,5)
+<li>Y=A(11,1)
+</ol>The reference to A(11,1) is not permitted for the array
+A(10,5).
+ANSI X3.9-1966 permitted a subscript expression to exceed its
+corresponding upper bound if the maximum subscript value
+for the array was not exceeded.
+<li>Only an array that is declared as a one-dimensional
+array in the program unit may have a one-dimensional subscript
+in an EQUIVALENCE statement.
+In the example:
+<ol>
+<li> DIMENSION B(2,3,4), C(4,8)
+<li>EQUIVALENCE (B(23), C(1,1))
+</ol>B(23) is not permitted.
+ANSI X3.9-1966 permitted arrays that were declared as
+two- or three-dimensional arrays to appear in an
+EQUIVALENCE statement with a one-dimensional subscript.
+<li>A name must not have its type explicitly
+specified more than once in a program unit.
+ANSI X3.9-1966 did not explicitly have
+such a prohibition.
+<li>This standard does not permit a transfer
+of control into the range of a DO-loop from
+outside the range.
+The range of a DO-loop may be entered only by
+the execution of a DO statement.
+ANSI X3.9-1966 permitted transfer of control into
+the range of a DO-loop under certain conditions.
+This involved the concept referred to as
+"extended range of a DO."
+<li>A labeled END statement could conflict with the
+initial line of a statement in an ANSI X3.9-1966
+standard-conforming program.
+<li>A record must not be written after an endfile record
+in a sequential file.  ANSI X3.9-1966 did not prohibit
+this, but provided no interpretation for the reading
+of an endfile record.
+<li>A sequential file may not contain both formatted
+and unformatted records.  A published interpretation
+of ANSI X3.9-1966 specified that this was permitted.
+<li>Negative values for input/output unit identifiers
+are prohibited in this standard.  ANSI X3.9-1966 did not explicitly
+prohibit them for variable unit identifiers.
+<li>A simple I/O list enclosed in parentheses is
+prohibited from appearing in an I/O list.
+<p>This requires that parentheses enclosing more than
+one I/O list item must mark an implied DO-loop.
+The restriction was imposed to eliminate potential
+syntactic ambiguities introduced by complex constants
+in list-directed output lists.  As all the
+parentheses referred to are redundant, a program
+can be made conforming with this standard by deleting
+redundant parentheses enclosing more than one list
+item in an I/O list.
+<li>The definition of an entity associated with an
+entity in an input list occurs at the same time as
+the definition of the list entity.  ANSI X3.9-1966 delayed
+the definition of such an associated entity until
+the end of execution of the input statement.
+<li>Reading into an H edit (field) descriptor
+in a FORMAT statement is prohibited in this standard.
+<li>The range of a scale factor for E, D, and G output
+fields is restricted to reasonable values.
+ANSI X3.9-1966 had no such restriction, but did not provide
+a clear interpretation of the meaning of the
+unreasonable values.
+<li>A processor must not produce a numeric output field
+containing a negative zero.  ANSI X3.9-1966 required
+this if the internal value of a real or double
+precision datum was negative.
+<li>On output, the I edit descriptor must not produce
+unnecessary leading zeros.
+<li>On output, the F edit descriptor must not produce
+unnecessary leading zeros, other than the optional
+leading zero for a value less than one.
+<li>Following the E or D in an E or D output field,
+a + or - is required immediately prior to the
+exponent field.  This improves compatibility with
+American National Standard for the Representation
+of Numeric Values in Character Strings for Information
+Interchange, ANSI X3.42-1975.
+ANSI X3.9-1966 permitted a blank as a
+replacement for + in the exponent sign.
+<li>An intrinsic function name that is used as an actual
+argument must appear in an INTRINSIC statement
+rather than an EXTERNAL statement.  Note that the
+intrinsic function class includes the basic external
+function class of ANSI X3.9-1966.
+<li>The appearance of an intrinsic function name in a type-statement
+that conflicts with the type specified in Table 5 is not
+sufficient to remove the name from the intrinsic function
+class.
+In ANSI X3.9-1966, this condition was sufficient to remove the name
+from the intrinsic function class.
+<li>More intrinsic function names have been added and
+could conflict with the names of subprograms.  These
+names are ACOS, ANINT, ASIN, CHAR, COSH, DACOS, DASIN,
+DCOSH, DDIM, DINT, DNINT, DPROD, DSINH, DTAN,
+DTANH, ICHAR, IDNINT, INDEX, LEN,
+LGE, LGT, LLE, LLT,
+LOG, LOG10, MAX, MIN, NINT,
+SINH, and TAN.
+<li>The units of the arguments and results of the
+intrinsic functions (and basic external functions)
+were not specified in ANSI X3.9-1966 and are specified
+in this standard.  The range of the arguments and results has also
+been specified.  These specifications may be
+different from those used on some processors
+conforming to ANSI X3.9-1966.
+<li>An executable program must not contain more than
+one unnamed block data subprogram.  ANSI X3.9-1966 did
+not have this prohibition and could be interpreted
+to permit more than one.
+</ol>
+<p><h1><a name="sh-21" href="rjcnf0001.html#toc-sh-21">21 Standard Items That Inhibit Portability</a></h1>Although the primary purpose of this standard is to promote
+portability of FORTRAN programs, there are some items in
+it that tend to inhibit portability.
+<ol>
+<li>Procedures written in languages other than FORTRAN
+may not be portable.
+<li>Because the collating sequence has not been
+completely specified, character relational
+expressions do not necessarily have the same value
+on all processors.
+However, the intrinsic functions LGE, LGT, LLE, and LLT
+can be used to provide a more portable comparison of
+character entities.
+<li>Character data, H edit descriptors, apostrophe edit
+descriptors, and comment lines may include characters
+that are acceptable to one processor but unacceptable
+to another processor.
+<li>No explicit requirements are specified for file
+names.  A file name that is acceptable to one
+processor may be unacceptable to another processor.
+<li>Input/output unit numbers and unit capabilities may
+vary among processors.
+</ol>
+<p><h1><a name="sh-22" href="rjcnf0001.html#toc-sh-22">22 Recommendation for Enhancing Portability</a></h1>To enhance the development of portable FORTRAN programs,
+a producer should provide some means of identifying
+nonstandard syntax supported by his processor.  Alternatives
+for doing this include appropriate documentation, features
+of the processor, and other means.
+<p>
+'
+<pre>
+</pre>
+
+<p><h1><a name="sh-23" href="rjcnf0001.html#toc-sh-23">23 Section 1 Notes</a></h1>What this standard calls a "processor" is any mechanism that
+can carry out the actions of a program.
+Commonly, this may
+be any of these:
+<ol>
+<li>The combined actions of a computer (hardware), its
+operating system, a compiler, and a loader
+<li>An interpreter
+<li>The mind of a human, perhaps with the help of paper
+and pencil
+</ol>
+<p>When you read this standard, it is important to keep its
+point of view in mind.
+The standard is written from the
+point of view of a programmer using the language, and not
+from the point of view of the implementation of a processor.
+This point of view affects the way you should interpret the
+standard.
+For example, in 
+<a href="rjcnf0001-sh-3.html#sh-3.3">3.3</a> the assertion is
+made:
+<ul>
+<li> "... a statement must contain no more than 1320
+characters."
+</ul>
+<p>This means that if a programmer writes a longer statement,
+his program is not standard conforming.
+Therefore, it
+will get different treatment on different processors.
+Some
+processors will accept the program, and some will not.
+Some
+may even seemingly accept the program but process it
+incorrectly.
+The assertion means that all standard-conforming
+processors must accept statements up to 1320
+characters long.
+That is the only inference about a
+standard-conforming processor that can be made from the
+assertion.
+<p>The assertion does not mean that a standard-conforming
+processor is prohibited from accepting longer statements.
+Accepting longer statements would be an extension.
+<p>The assertion does not mean that a standard-conforming
+processor must diagnose statements longer than 1320
+characters, although it may do so.
+<p>In general, a standard-conforming processor is one that
+accepts all standard-conforming programs and processes them
+according to the rules of this standard.
+Thus, the
+specification of a standard-conforming processor must be
+inferred from this document.
+<p>In some places, explicit prohibitions or restrictions are
+stated, such as the above statement-length restriction.
+Such assertions restrict what programmers can write in
+standard-conforming programs
+and have no more
+weight in the standard than an omitted feature.
+For
+example, there is no mention anywhere in the standard of
+double precision integers.
+Because it is omitted,
+programmers must not use this feature in standard-conforming
+programs.
+A standard-conforming processor may or may not
+provide it or diagnose its use.
+Thus, an explicit
+prohibition (such as statements longer than 1320 characters)
+and an omission (such as double precision integers) are
+equivalent in this standard.
+<p><h1><a name="sh-24" href="rjcnf0001.html#toc-sh-24">24 Section 2 Notes</a></h1>Some of the terminology used in this document is different
+from that used to describe other programming languages.
+The following indicates terms from other languages that
+are approximately equivalent to some FORTRAN terms.
+<pre>
+<i>FORTRAN</i>                <i>Other</i>_<i>Languages</i>
+
+       Variable               Simple Variable
+       Array Element          Subscripted Variable
+       Subscript Expression   Subscript
+       Subscript              (none)
+       Dummy Argument         Formal Argument, Formal
+                                Parameter
+       Actual Argument        Actual Parameter
+</pre>
+
+In particular, the FORTRAN terms "subscript" and
+"subscript expression" should be studied
+carefully by readers who are unfamiliar with this standard (
+<a href="rjcnf0001-sh-5.html#sh-5.4">5.4</a>).
+<p>The term "symbolic name" is frequently shortened to "name"
+throughout the standard.
+<p><h1><a name="sh-25" href="rjcnf0001.html#toc-sh-25">25 Section 3 Notes</a></h1>A partial collating sequence is specified.
+If possible,
+a processor should use the
+American National Standard Code for Information Interchange,
+ANSI X3.4-1977 (ASCII),
+sequence for the complete FORTRAN character set.
+<p>When a continuation line follows a comment line, the
+continuation line is part of the current statement; it is
+not a continuation of the comment line.
+A comment line is not part of a statement.
+<p>The standard does not restrict the number of consecutive
+comment lines.
+The limit of 19 continuation lines permitted for a
+statement should not be construed as being a limitation
+on the number of consecutive comment lines.
+<p>There are 99999 unique statement labels and a processor must
+accept 99999 as a statement label.
+However, a processor may
+have an implementation limit on the total number of unique
+statement labels in one program unit (
+<a href="rjcnf0001-sh-3.html#sh-3.4">3.4</a>).
+<p>Blanks and leading zeros are not significant in
+distinguishing between statement labels.
+For example, 123,
+1 23, and 0123 are all forms of the same statement label.
+<p><h1><a name="sh-26" href="rjcnf0001.html#toc-sh-26">26 Section 4 Notes</a></h1>A processor must not consider a negative zero to be
+different from a positive zero.
+<p>ANSI X3.9-1966 used the term "constant" to mean
+an unsigned
+constant.
+This standard uses the term "constant" to have
+its more normal meaning of an optionally signed constant
+when describing arithmetic constants.
+The term "unsigned
+constant" is used wherever a leading sign is not permitted
+on an arithmetic constant.
+<p>A character constant is a representation of a character
+value.
+The delimiting apostrophes are part of the
+representation but not part of the value; double apostrophes
+are used to represent a single embedded apostrophe.
+For
+example:
+<pre>
+____________________________
+               |               |           |
+               |   Character   |  Character|
+               |___<i>Constant</i>____<i>|</i>____<i>Value</i>__<i>|</i>
+               |               |           |
+               |     'CAT'     |     CAT   |
+               |    'ISN''T'   |    ISN'T  |
+               | '''ISN''''T'''|  'ISN''T' |
+               |_______________<i>|</i>___________<i>|</i>
+</pre>
+
+<p>Note that the value of the character constant '''ISN''''T'''
+is a representation of another character constant.
+<p>Some programs that used an extension to ANSI X3.9-1966 that
+permitted a Hollerith constant delimited by apostrophes
+instead of the 
+<i>n</i>H
+ form do not conform to this standard.
+<p><h1><a name="sh-27" href="rjcnf0001.html#toc-sh-27">27 Section 5 Notes</a></h1>For the array declarator A(2,3), the use of the array name A
+in the proper context, such as in an input/output list,
+specifies the following order for the array elements:
+A(1,1), A(2,1), A(1,2), A(2,2), A(1,3), A(2,3).
+<p><h1><a name="sh-28" href="rjcnf0001.html#toc-sh-28">28 Section 6 Notes</a></h1>If V is a variable name, the interpretation and value of V,
++V, and (V) are the same.
+However, the three forms may not
+always be used interchangeably.
+For example, the forms +V
+and (V) may not be used as list items of a READ statement or
+as actual arguments of a procedure reference if the
+procedure defines the corresponding dummy argument.
+<p><h1><a name="sh-29" href="rjcnf0001.html#toc-sh-29">29 Section 7 Notes</a></h1>Although DIMENSION statements, type-statements, and
+statement function statements are classified as
+nonexecutable statements, they may contain references that
+are executed.
+Expressions containing variables in DIMENSION
+statements and type-statements may be evaluated whenever a
+reference to the program unit is executed.
+The expression
+in a statement function statement is evaluated whenever a
+function reference to the statement function is executed.
+<p><h1><a name="sh-30" href="rjcnf0001.html#toc-sh-30">30 Section 8 Notes</a></h1>If a processor allows a one-dimensional subscript for a
+multidimensional array in an EQUIVALENCE statement, the
+interpretation should be as though the subscript expression
+were the leftmost one and the missing subscript expressions
+each have their respective lower dimension bound value.
+<p>ANSI X3.9-1966 permitted two- and three-dimensional arrays
+to have a one-dimensional subscript in an EQUIVALENCE statement.
+The following table can be used to convert a one-dimensional
+subscript to the corresponding multidimensional subscript:
+<pre>
+___________________________________________________
+   |  |            |           |                      |
+   | <i>n</i>|  Dimension |  Subscript|  Subscript           |
+   |__<i>|</i>____________<i>|</i>____<i>Value</i>__<i>|</i>______________________<i>|</i>
+   |  |            |           |                      |
+   | 1|     (d )   |      s    |  (s)                 |
+   |__<i>|</i>_______<i>1</i>____<i>|</i>___________<i>|</i>______________________<i>|</i>
+   |  |            |           |                      |
+   | 2|   (d1,d2)  |      s    |  (1+MOD(s-1,d1),     |
+   |__<i>|</i>____________<i>|</i>___________<i>|</i>___<i>1+(s-1)/d1</i>_________<i>|</i>
+   |  |            |           |                      |
+   | 3|  (d ,d ,d )|      s    |  (1+MOD(s-1,d ),     |
+   |  |    1  2  3 |           |   1+MOD((s-1)1d ,d ),|
+   |  |            |           |   1+(s-1)/(d *d1))2  |
+   |__<i>|</i>____________<i>|</i>___________<i>|</i>_____________<i>1</i>__<i>2</i>_____<i>|</i>
+</pre>
+
+<p>Each expression in the last column of the
+table is evaluated according to the rules
+for integer expressions.
+<p>A processor that allows additional intrinsic functions
+should allow their names to appear in an INTRINSIC
+statement.
+<p>As an extension to ANSI X3.9-1966, many processors permitted the
+retention of certain values at the completion of execution
+of a subprogram, such as local variables and arrays,
+initially defined data that had been changed, and named common
+blocks not specified in the main program, whereas other
+processors prohibited the retention of such values.
+In ANSI X3.9-1966 such entities were undefined at the completion of execution of the
+subprogram, and therefore a
+standard-conforming program could not retain these values.
+The SAVE
+statement provides a facility for data retention.
+<p><h1><a name="sh-31" href="rjcnf0001.html#toc-sh-31">31 Section 9 Notes</a></h1>An entity is "initially defined" only by a DATA statement.
+An assignment statement may define or redefine an entity
+but it does not "initially define" the entity.
+<p>Initially defined entities in a subprogram may become
+undefined at the execution of a RETURN or END statement
+if they are assigned any value, including their
+initial value, during the execution of the executable
+program (see 
+<a href="rjcnf0001-sh-8.html#sh-8.9">8.9</a> and 
+<a href="rjcnf0001-sh-15.html#sh-15.8.4">15.8.4</a>).
+<p><h1><a name="sh-32" href="rjcnf0001.html#toc-sh-32">32 Section 10 Notes</a></h1>All four types of implied arithmetic conversion are
+permitted in an arithmetic assignment statement.
+<p><h1><a name="sh-33" href="rjcnf0001.html#toc-sh-33">33 Section 11 Notes</a></h1>A logical IF statement must not contain another logical IF
+statement or a block IF statement; however, it may contain
+an arithmetic IF statement.
+The following is allowed:
+<dl><dd></dl><br>
+
+<pre>
+IF (logical expr.) IF (arithmetic expr.) <i>s</i> ,<i>s</i> ,<i>s</i>
+                                               1  2  3</pre>
+
+A processor is not required to evaluate the iteration count
+in a DO-loop if the same effect is achieved without
+evaluation.
+However, the processor must allow
+redefinition of variables and array elements that appear
+after the equals in a DO statement during the execution of
+the DO-loop without affecting the number of times the DO-loop
+is executed and without affecting the value by which
+the DO-variable is incremented.
+<p>If J1 &gt; J2, ANSI X3.9-1966 does not allow execution of the
+following DO statement:
+<pre>
+DO 100 J=J1,J2</pre>
+
+<p>Some processors that allowed such a case executed the range
+of the DO-loop once, whereas other processors did not execute
+the range of the DO-loop.
+This standard allows such a case
+and requires that the processor execute the range of the
+DO-loop zero times.
+The following change to
+the DO statement will require that the processor execute the
+range at least once:
+<pre>
+DO 100 J=J1,MAX(J1,J2)</pre>
+
+<p>References to function procedures and subroutine procedures may appear
+within the range of a DO-loop or within an IF-block, ELSE IF-block, or
+ELSE-block.
+Execution of a function reference or a CALL statement is not considered
+a transfer of control in the program unit that contains the
+reference, except when control is returned to a statement
+identified by an alternate return specifier in a CALL statement.
+Execution of a RETURN or END statement in a referenced procedure,
+or execution of a transfer of control within a referenced procedure,
+is not considered a transfer of control in the program unit
+that contains the reference.
+<p>The CONTINUE statement is an executable statement that has no
+effect of itself.
+It can serve as an executable statement on which to place a
+statement label when no effect of execution is desired.
+For example, it can serve as the statement referred to by a
+GO TO statement or as&amp; the terminal statement of a DO-loop.
+Although the CONTINUE statement has no
+effect of itself,
+it causes execution to continue
+with incrementation processing when it is the terminal
+statement of a DO-loop.
+<p>The standard does not define the term "accessible"
+in the STOP or PAUSE statement in order to allow a wide
+latitude in adapting to a processor environment.
+Some processors may use the 
+<i>n</i>
+ the PAUSE or STOP
+statement for documentation only.
+Other processors may display the 
+<i>n</i>
+ to the user or
+to the operator.
+In order not to confine its use, the meaning of "accessible" is
+purposely left vague.
+<p><h1><a name="sh-34" href="rjcnf0001.html#toc-sh-34">34 Section 12 Notes</a></h1>What is called a "record" in FORTRAN is commonly called a
+"logical record."
+There is no concept in FORTRAN of a
+"physical record."
+<p>An endfile record does not necessarily
+have any physical embodiment.  The processor may use a
+record count or other  means to register the position of the
+file at the  time an ENDFILE statement is executed,  so
+that it can take appropriate action when that position  is
+again reached during a read operation.
+The endfile record, however it is implemented, is
+considered to exist for the BACKSPACE statement.
+<p>An internal file permits data to be transferred
+with conversion between internal storage areas using the
+READ and WRITE statements.
+This facility was implemented as
+an extension to ANSI X3.9-1966 on many processors as ENCODE and
+DECODE statements.
+Specifying the READ and WRITE statements
+to perform this process avoids such confusion as:  "Is ENCODE
+like READ or is it like WRITE?"
+<p>This standard accommodates, but it does not require, file
+cataloging.
+To do this, several concepts are introduced.
+<p>In ANSI X3.9-1966 many properties were given to a unit that in
+this standard are given to the connection of a file
+to a unit.
+Also, additional
+properties are introduced.
+<p>Before any input/output can be performed on a file, it must
+be connected to a unit.
+The unit then serves as a
+designator for that file as long as it is connected.
+To
+be connected does not imply that "buffers" have or have not
+been allocated, that "file-control tables" have or have not been
+filled out, or that any other method of implementation
+has been used.
+Connection means that (barring some other fault) a
+READ or WRITE statement can be executed on the unit, hence
+on the file.
+Without a connection, a READ or WRITE
+statement cannot be executed.
+<p>Totally independent of the connection state is the property
+of existence, this being a file property.
+The processor
+"knows" of a set of files that exist at a given time for a
+given executable program.
+This set would include tapes
+ready to read, files in a catalog, a keyboard, a printer,
+etc.
+The set may exclude files inaccessible to the
+executable program because of security, because they are already in
+use by another executable program, etc.
+This standard does
+not specify which files exist, hence wide latitude is
+available to a processor to implement security, locks,
+privilege techniques, etc.
+Existence is a
+convenient concept to designate all of the files that an
+executable program can potentially process.
+<p>All four combinations of connection and existence may occur:
+<pre>
+______________________________________________
+      |        |       |                            |
+      |_<i>Connect|</i>__<i>Exist|</i>___________<i>Examples</i>_________<i>|</i>
+      |        |       |                            |
+      |   Yes  |   Yes |  A card reader loaded and  |
+      |        |       |  ready to be read          |
+      |________<i>|</i>_______<i>|</i>____________________________<i>|</i>
+      |        |       |                            |
+      |   Yes  |   No  |  A printer before the first|
+      |________<i>|</i>_______<i>|</i>__<i>line</i>_<i>is</i>_<i>written</i>___________<i>|</i>
+      |        |       |                            |
+      |   No   |   Yes |  A file named 'JOE' in     |
+      |        |       |  the catalog               |
+      |________<i>|</i>_______<i>|</i>____________________________<i>|</i>
+      |        |       |                            |
+      |   No   |   No  |  A reel of tape destroyed  |
+      <b>|</b>________<i><b>|</b></i>_______<i><b>|</b></i>__<i>in</i>_<i>the</i>_<i>fire</i>_<i>last</i>_<i>week</i>_____<i><b>|</b></i>
+</pre>
+
+<p>Means are provided to create, delete, connect, and
+disconnect files.
+<p>A file may have a name.
+The form of a file name is not
+specified.
+If a system does not have some form of
+cataloging or tape labeling for at least some of its files,
+all file names will disappear at the termination of
+execution.
+This is a valid implementation.
+Nowhere does
+this standard require names to survive for any period of
+time longer than the execution time span of an executable
+program.
+Therefore, this standard does not impose
+cataloging as a prerequisite.
+The naming feature is
+intended to allow use of a cataloging
+system where one exists.
+<p>A file may become connected to a unit in either of two ways:
+preconnection or execution of an OPEN statement.
+Preconnection is performed prior to the beginning of
+execution of an executable program by means external to
+FORTRAN.
+For example, it may be done by job control action
+or by processor established defaults.
+Execution of an OPEN
+statement is not required to access preconnected files.
+<p>The OPEN statement provides a means to access existing files
+that are not preconnected.
+An OPEN statement may be used in either of
+two ways: with a file name (open by name) and without a file
+name (open by unit).
+A unit is given in either case.
+Open
+by name connects the specified file to the specified unit.
+Open by unit connects a processor-determined default file to
+the specified unit.
+(The default file may or may not have a
+name.)
+<p>Therefore, there are three ways a file may become connected
+and hence processed: preconnection, open by name, and open
+by unit.
+Once a file is connected, there is no means in standard FORTRAN to
+determine how it became connected.
+<p>In subset FORTRAN, sequential access may be
+performed only on preconnected files, and direct access only
+on files that are opened by unit.
+<p>An OPEN statement
+may also be used to create a new file.
+In fact, any of the
+foregoing three connection methods may be performed on a file
+that does not exist.
+When a unit is preconnected, writing
+the first record creates the file.
+With the other two methods,
+execution of the OPEN statement creates the file.
+<p>When a unit becomes connected to a file, either by
+execution of an OPEN statement or by preconnection,
+the following connection properties may be established:
+<ol>
+<li>An access method, which is sequential or direct, is
+established for the connection.
+<li>A form, which is formatted or unformatted, is established
+for a connection to a file that exists or is created
+by the connection.
+For a connection that results from execution of an
+OPEN statement, a default form (which depends on the
+access method, as described in 
+<a href="rjcnf0001-sh-12.html#sh-12.10.1">12.10.1</a>) is established if no form is specified.
+For a preconnected file that exists, a form is established by preconnection.
+For a preconnected file that does not exist, a form
+may be established, or the establishment of a form
+may be delayed until the file is created
+(for example, by execution of a formatted or unformatted
+WRITE statement).
+<li>A record length may be established.  If the access method
+is direct, the connection establishes a record length, which
+specifies the length of each record of the file.
+A connection for sequential access does not have this property.
+<li>A blank significance property, which is
+ZERO or NULL, is established for a connection
+for which the form is formatted.
+This property has no effect on output.
+For a connection that results from execution of an OPEN statement,
+the blank significance property is NULL by default if no
+blank significance property is specified.
+For a preconnected file, the property
+is established by preconnection.
+<p>The blank significance property of the
+connection is effective at the beginning of
+each formatted input statement.
+During execution of the statement, any BN or BZ edit
+descriptors encountered may temporarily
+change the effect of embedded and trailing blanks.
+</ol>
+<p>A processor has wide latitude in adapting these concepts and
+actions to its own cataloging and job control conventions.
+Some processors may require job control action to specify
+the set of files that exist or that will be created by an
+executable program.
+Some processors may  require no job
+control action prior to execution.
+This standard enables
+processors to perform a
+dynamic open, close, and file creation, but it does not require
+such capabilities of the processor.
+<p>The meaning of "open" in contexts other than FORTRAN may
+include such things as mounting a tape, console messages,
+spooling, label checking, security checking, etc.
+These
+actions may occur upon job control action external to
+FORTRAN, upon execution of an OPEN statement, or upon
+execution of the first read or write of the file.
+The OPEN statement describes properties of the
+connection to the file and may or may not cause physical
+activities to take place.
+It is a place for an
+implementation to define properties of a file beyond those
+required in standard FORTRAN.
+<p>Similarly, the actions of dismounting a tape, protection,
+etc.
+of a "close" may be implicit at the end of a run.
+The CLOSE statement
+may or may not cause such actions to occur.
+This is another place to extend file properties beyond those
+of standard FORTRAN.
+Note, however, that the execution of a CLOSE statement on
+unit 10 followed by an OPEN statement on the same unit to the
+same file or to a different file is a permissible sequence of
+events.
+The processor may not deny this sequence solely
+because the implementation chooses to do the physical act of
+closing the file at the termination of execution of the
+program.
+<p>This standard does not address problems of security,
+protection, locking, and many other concepts that may
+be part of the concept of "right of access."
+Such concepts are considered to be in the province of an
+operating system.
+The OPEN and INQUIRE statements can be extended naturally to
+consider these things.
+<p>Possible access methods for a file are:
+sequential and direct.
+The processor may implement two different types
+of files, each with its own access method.
+It may also implement one type of file with
+two different access methods.
+<p>Direct access to files is of a simple and commonly available
+type, that is, fixed-length records.
+The key is a positive integer.
+<p>Keyword forms of specifiers are used because there are many
+specifiers and a positional notation is difficult to
+remember.
+The keyword form sets a style for processor
+extensions.
+The UNIT= and FMT= keywords are offered for
+completeness, but their use is optional.
+Thus,
+compatibility with ANSI X3.9-1966 is achieved.
+<p>Format specifications may be included in READ and WRITE
+statements, as in:
+<dl><dd></dl><br>
+
+<pre>
+READ ( UNIT=10, FMT='(I3,A4,F10.2)' ) K,ALPH,X</pre>
+
+<p>ANSI X3.9-1966 allowed a standard-conforming program to write an
+endfile record but did not allow the reading of an endfile record.
+In this standard, the END= specifier allows end-of-file
+detection and continuation of execution of the program.
+<p>List-directed input/output allows data editing according to
+the type of the list item instead of by a format specifier.
+It also allows data to be free-field, that is, separated by
+commas or blanks.
+<p>List-directed input/output is record oriented to or from a
+formatted sequential file.
+Each read or write begins with a new record.
+The form of list-directed data on a sequential output
+file is not necessarily suitable for list-directed input.
+However, there are no mandatory errors specified for reading
+list-directed data previously written.
+The results may not be guaranteed because of the syntax
+using apostrophes for character data or the 
+<i>r</i>*<i>c</i>
+ form of
+a repeated constant.
+All other applications should work, and attempting to read previously written
+list-directed output is not prohibited in a standard-conforming
+program.
+<p>If no list items are specified in a list-directed
+input/output statement, one input record is skipped or one
+empty output record is written.
+<p>An example of a restriction on input/output statements
+(
+<a href="rjcnf0001-sh-12.html#sh-12.12">12.12</a>) is that an input statement may not specify that data
+are to be read from a printer.
+<p><h1><a name="sh-35" href="rjcnf0001.html#toc-sh-35">35 Section 13 Notes</a></h1>The term "edit descriptor" in this standard was "field
+descriptor" in ANSI X3.9-1966.
+<p>If a character constant is used as a format identifier in an
+input/output statement, care must be taken that the value of
+the character constant is a valid format specification.
+In
+particular, if the format specification contains an
+apostrophe edit descriptor, two apostrophes must be written
+to delimit the apostrophe edit descriptor and four
+apostrophes must be written for each apostrophe that occurs
+within the apostrophe edit descriptor.
+For example, the text:
+<pre>
+2 ISN'T 3</pre>
+
+<p>may be written by various combinations of output statements
+and format specifications:
+<ol>
+<li> WRITE(6,100) 2,3
+<li>100FORMAT(1X,I1,1X,'ISN''T',1X,I1)
+<p>
+<li> WRITE(6,'(1X,I1,1X,''ISN''''T'',1X,I1)' ) 2,3
+<p>
+<li> WRITE(6,200) 2,3
+<li>200FORMAT(1X,I1,1X,5HISN'T,1X,I1)
+<p>
+<li> WRITE(6,'(1X,I1,1X,5HISN''T,1X,I1)' ) 2,3
+<p>
+<li> WRITE(6,'(A)') ' 2 ISN''T 3'
+<p>
+<li> WRITE(6,'(1X,I1,A,I1)') 2, ' ISN''T ', 3
+</ol>
+<p>Note that two consecutive apostrophes in an H edit
+descriptor within a character constant are counted as only
+one Hollerith character.
+<p>The T edit descriptor includes the carriage control
+character in lines that are to be printed.
+T1 specifies the
+carriage control character, and T2 specifies the first
+character that is printed.
+<p>The length of a record is not always specified exactly and
+may be processor dependent.
+<p>The number of records read by a formatted input statement can
+be determined from the following rule:  A record is read at
+the beginning of the format scan (even if the input list is
+empty), at each slash edit descriptor encountered in the format,
+and when a format rescan occurs at the end of the format.
+<p>The number of records written by a formatted output statement
+can be determined from the following rule:  A record is written
+when a slash edit descriptor is encountered in the format,
+when a format rescan occurs at the end of the format, and at
+completion of execution of the output statement (even if the
+output list is empty).
+Thus, the occurrence of 
+<i>n</i>
+ successive slashes between two other
+edit descriptors causes 
+<i>n</i> - 1
+ blank lines if the records are
+printed.
+The occurrence of 
+<i>n</i>
+ slashes at the beginning or
+end of a complete format specification causes 
+<i>n</i>
+ blank lines
+if the records are printed.
+However, a complete format specification containing 
+<i>n</i>
+
+slashes 
+(<i>n</i> &gt;= 0)
+ and no other edit descriptors causes 
+<i>n</i> + 1
+ blank
+lines if the records are printed.
+For example, the statements
+<ol>
+<li> PRINT 3
+<li>3FORMAT(/)
+</ol>
+<p>will write two records that cause two blank lines if the
+records are printed.
+<p>The following examples illustrate list-directed input.
+A
+blank character is represented by 
+<i>b</i>
+.
+<br>
+Example 1:
+<ul>
+<li>Program:J=3
+<br>
+READ *,I
+<br>
+READ *,J
+</ul>
+<ul>
+<li>Sequential input file:
+<li> 
+record 1: <i>b</i>1<i>b</i>,4<i>bbbbb</i>
+
+<br>
+
+record 2: ,2<i>bbbbbbbb</i>
+
+<li> Result: I=1, J=3
+</ul>
+<p>Explanation: The second READ statement reads the second record.
+The initial comma in the record designates a null value;
+therefore, J is not redefined.
+<br>
+Example 2:
+<ul>
+<li>Program:CHARACTER A*8, B*1
+<br>
+READ *, A, B
+</ul>
+<ul>
+<li>Sequential input file:
+<li> record 1: 
+'<i>bbbbbbbb</i>'
+
+<br>
+record 2: 
+'QXY'<i>b</i>'Z'
+
+<li> Result: 
+A='<i>bbbbbbbb</i>', B='Q'
+
+</ul>
+<p>Explanation: The end of a record cannot occur between two
+apostrophes representing an embedded apostrophe in a character
+constant;
+therefore, A is set to the character constant 
+'<i>bbbbbbbb</i>'
+.
+The end of a record acts as a blank, which in this case is a
+value separator because it occurs between two constants.
+<p><h1><a name="sh-36" href="rjcnf0001.html#toc-sh-36">36 Section 14 Notes</a></h1>The name of a main program has no explicit use within the
+FORTRAN language.
+It is available for documentation and for
+possible use within a computer environment.
+<p><h1><a name="sh-37" href="rjcnf0001.html#toc-sh-37">37 Section 15 Notes</a></h1>A FUNCTION statement specifies the name of an external
+function, and each ENTRY statement in a function
+subprogram specifies an additional external
+function name.
+A SUBROUTINE statement specifies the name of a subroutine, and
+each ENTRY statement in a subroutine subprogram specifies
+an additional subroutine name.
+<p>The intrinsic function names IFIX, IDINT, FLOAT, and SNGL
+have been retained to support programs that conform
+to ANSI X3.9-1966.
+However, future use of these intrinsic function names is not recommended.
+<p>For the specific functions that define the maximum and minimum
+values with a function type different from the argument
+type (AMAX0, MAX1, AMIN0, and MIN1),
+it is recommended that an expression containing the
+generic name preceded by a type conversion function
+be used, for example, 
+REAL(MAX(<i>a</i> , <i>a</i> ,...))
+                             1   2
+ for
+
+AMAX0(<i>a</i> , <i>a</i> ,...)
+                            1   2
+, so that these specific function
+names may be deleted in a future revision of this standard.
+<p>This standard provides that a standard-conforming processor
+may supply intrinsic functions in addition to those defined
+in Table 5 (
+<a href="rjcnf0001-sh-15.html#sh-15.10">15.10</a>).
+Because of this, care must be taken when a
+program is used on more than one processor because a
+function name not in Table 5 may be classified as an
+external function name on one processor and as an intrinsic
+function name on another processor in the absence of a
+declaration for that name in an EXTERNAL or INTRINSIC
+statement.
+<p>To guard against this possibility, it is suggested that any
+external functions referenced in a program should appear in
+an EXTERNAL statement in every program unit in which a
+reference to that function appears.
+If a program unit references a processor-supplied intrinsic
+function that does not appear in Table 5, the name of
+the function should appear in an INTRINSIC statement
+in the program unit.
+<p>The distinction between external functions (user defined)
+and intrinsic functions (processor defined) may be clarified
+by the following table:
+<pre>
+_________________________________________
+                |                                         |
+                |      Different Processor Definitions    |
+                | ___________<i>(Table</i>_<i>5</i>_<i>extended)</i>___________<i>|</i>
+                |             |             |             |
+                |  Processor 1|  Processor 2|  Processor 3|
+ _______________<i>|</i>_____________<i>|</i>_____________<i>|</i>_____________<i>|</i>
+|               |             |             |             |
+|               |             |             |             |
+| Different     |  Intrinsic  |  Intrinsic  |             |
+| User          |  Integer    |  Complex    |   (none)    |
+|_<i>Specifications|</i>__<i>FROG</i>_______<i>|</i>__<i>FROG</i>_______<i>|</i>_____________<i>|</i>
+|               |             |             |             |
+|_______________<i>|</i>_____________<i>|</i>_____________<i>|</i>_____________<i>|</i>
+|               |             |             |             |
+| Y=FROG(A)     |  Intrinsic  |  Intrinsic  |  External   |
+|               |  Integer    |  Complex    |  Real       |
+|_______________<i>|</i>__<i>FROG</i>_______<i>|</i>__<i>FROG</i>_______<i>|</i>__<i>FROG</i>_______<i>|</i>
+|               |             |             |             |
+| INTRINSIC FROG|  Intrinsic  |  Intrinsic  |             |
+| Y=FROG(A)     |  Integer    |  Complex    |  Undefined  |
+|               |  FROG       |  FROG       |             |
+|_______________<i>|</i>_____________<i>|</i>_____________<i>|</i>_____________<i>|</i>
+|               |             |             |             |
+| INTEGER FROG  |  Intrinsic  |             |  External   |
+| Y=FROG(A)     |  Integer    |  Undefined  |  Integer    |
+|_______________<i>|</i>__<i>FROG</i>_______<i>|</i>_____________<i>|</i>__<i>FROG</i>_______<i>|</i>
+|               |             |             |             |
+| INTRINSIC FROG|  Intrinsic  |             |             |
+| INTEGER FROG  |  Integer    |  Undefined  |  Undefined  |
+| Y-FROG(A)     |  FROG       |             |             |
+|_______________<i>|</i>_____________<i>|</i>_____________<i>|</i>_____________<i>|</i>
+|               |             |             |             |
+| EXTERNAL FROG |  External   |  External   |  External   |
+| Y=FROG(A)     |  Real       |  Real       |  Real       |
+|_______________<i>|</i>__<i>FROG</i>_______<i>|</i>__<i>FROG</i>_______<i>|</i>__<i>FROG</i>_______<i>|</i>
+|               |             |             |             |
+| EXTERNAL FROG |  External   |  External   |  External   |
+| INTEGER FROG  |  Integer    |  Integer    |  Integer    |
+| Y=FROG(A)     |  FROG       |  FROG       |  FROG       |
+|_______________<i>|</i>_____________<i>|</i>_____________<i>|</i>_____________<i>|</i>
+</pre>
+
+<p>If a generic name is the same as the specific name of an
+intrinsic function for a specified type of argument, a
+reference to the function with an argument of that type
+may be considered to be either a
+specific or generic function reference.
+<p>The use of the concatenation operator with operands of
+nonconstant length has been restricted to the assignment
+statement so that a processor need not implement dynamic
+storage allocation.
+<p>When a character array is an actual argument, the array is
+considered to be one string of characters and there need not
+be correspondence between the actual array elements and the
+dummy array elements.
+Only subset FORTRAN requires such correspondence.
+<p>The intrinsic functions ICHAR and CHAR provide a means of
+converting between a character and an integer, based on
+the position of the character in the processor collating
+sequence.
+The first character in the collating sequence corresponds
+to position 0 and the last to position 
+<i>n</i> - 1
+, where 
+<i>n</i>
+ is the
+number of characters in the collating sequence.
+<p>Many processors provide a collating sequence that is the
+same as the ordering of the internal representation
+of the character (where the internal representation
+may be regarded as either a representation of a character
+or of some integer).
+For example, for a seven-bit character, the internal representation
+of the first character is '0000000' binary (0 decimal)
+and the last character is '1111111' binary (127 decimal).
+For such a processor, ICHAR returns the value of an internal
+character representation, considered as an integer.
+CHAR takes an appropriate small integer and returns the
+character having the same internal representation.
+<p><h1><a name="sh-38" href="rjcnf0001.html#toc-sh-38">38 Section 16 Notes</a></h1>The name of a block data subprogram has no explicit use
+within the FORTRAN language.
+It is available for
+documentation and for possible use within a computer
+environment.
+<p><h1><a name="sh-39" href="rjcnf0001.html#toc-sh-39">39 Section 17 Notes</a></h1>The size of an array is the number of elements (
+<a href="rjcnf0001-sh-5.html#sh-5.2.3">5.2.3</a>), but
+the storage sequence of the array also has a size, which may
+be different from the number of elements (
+<a href="rjcnf0001-sh-17.html#sh-17.1.1">17.1.1</a>).
+<p>The definition of character entities occurs on a
+character-by-character basis.
+The use of substrings or partially
+associated entities permits individual characters or groups
+of characters within an entity to become defined or
+undefined.
+<p><h1><a name="sh-40" href="rjcnf0001.html#toc-sh-40">40 Section 18 Notes</a></h1>There is no explicit means for declaring an entity to be a
+variable.
+An entity becomes a variable if it is used in a
+manner that does not cause it to be exclusively something
+else.
+Note that the name of a variable may also be the name
+of a common block, except when the name of the variable is
+also the name of a function.
+<p>
+'
+<pre>
+</pre>
+
+The character data type was added to provide a character
+data processing capability that is superior to the Hollerith
+data capability that existed in ANSI X3.9-1966.
+<p>The Hollerith data type has been deleted.  For processors
+that extend the standard by allowing Hollerith data, the
+following rules for programs are recommended:
+<p><h1><a name="sh-41" href="rjcnf0001.html#toc-sh-41">41 Hollerith Data Type</a></h1>Hollerith is a data type; however, a symbolic name must not
+be of type Hollerith.  Hollerith data, other than constants,
+are identified under the guise of a name of type integer,
+real, or logical.  They must not be identified under the guise
+of type character.  No recommendation is made regarding
+Hollerith under the guise of double precision or complex.
+<p>A Hollerith datum is a string of characters.  The string may
+consist of any characters capable of representation in the
+processor.  The blank character is significant in a
+Hollerith datum.  Hollerith data may have an internal
+representation that is different from that of other data
+types.
+<p>An entity of type integer, real, or logical may be defined
+with a Hollerith value by means of a DATA statement (C4)
+or READ statement (C6).  When an entity is defined with a
+Hollerith value, its totally associated entities are also
+defined with that Hollerith value.  When an entity of type
+integer, real, or logical is defined with a Hollerith value,
+the entity and its associates become undefined for use as an
+integer, real, or logical datum.
+<p><h1><a name="sh-42" href="rjcnf0001.html#toc-sh-42">42 Hollerith Constant</a></h1>The form of a Hollerith constant is a nonzero, unsigned,
+integer constant 
+<i>n</i>
+ followed by the letter H, followed by a
+string of exactly 
+<i>n</i>
+ contiguous characters.  The string may
+consist of any characters capable of representation in the
+processor.  The string of 
+<i>n</i>
+ characters is the Hollerith
+datum.
+<p>In a Hollerith constant, blanks are significant only in the
+
+<i>n</i>
+ characters following the letter H.
+<p><h1><a name="sh-43" href="rjcnf0001.html#toc-sh-43">43 Restrictions on Hollerith Constants</a></h1>A Hollerith constant may appear only in a DATA statement and
+in the argument list of a CALL statement.
+<p><h1><a name="sh-44" href="rjcnf0001.html#toc-sh-44">44 Hollerith Constant</a></h1>An integer, real, or logical entity may be initially defined with
+a Hollerith datum by a DATA statement.
+<p>A Hollerith constant may appear in the list 
+<i>clist</i>
+, and the
+corresponding entity in the list 
+<i>nlist</i>
+ may be of type
+integer, real, or logical.
+<p>For an entity of type integer, real, or logical, the number
+of characters 
+<i>n</i>
+ in the corresponding Hollerith constant must
+be less than or equal to 
+<i>g</i>
+, where 
+<i>g</i>
+ is the maximum number of
+characters that can be stored in a single numeric storage
+unit at one time.  If 
+<i>n</i>
+ is less than 
+<i>g</i>
+, the entity is
+initially defined with the 
+<i>n</i>
+ Hollerith characters extended on the
+right with 
+<i>g</i> - <i>n</i>
+ blank characters.
+<p>Note that each Hollerith constant initially defines exactly one
+variable or array element.  Also note that 
+<i>g</i>
+ is processor
+dependent.
+<p><h1><a name="sh-45" href="rjcnf0001.html#toc-sh-45">45 Hollerith Format Specification</a></h1>A format specification may be an array name of type integer,
+real, or logical.
+<p>The leftmost characters of the specified entity must contain
+Hollerith data that constitute a format specification when
+the statement is executed.
+<p>The format specification must be of the form described in
+
+<a href="rjcnf0001-sh-13.html#sh-13.2">13.2</a>.  It must begin with a left parenthesis and must end
+with a right parenthesis.  Data may follow the right
+parenthesis that ends the format specification and have no
+effect.  Blank characters may precede the format
+specification.
+<p>A Hollerith format specification must not contain an
+apostrophe edit descriptor or an H edit descriptor.
+<p><h1><a name="sh-46" href="rjcnf0001.html#toc-sh-46">46 A Editing of Hollerith Data</a></h1>The 
+A<i>w</i>
+ edit descriptor may be used with Hollerith data when
+the input/output list item is of type integer, real, or
+logical.  On input, the input list item will become defined
+with Hollerith data.  On output, the list item must be
+defined with Hollerith data.
+<p>Editing is as described for 
+A<i>w</i>
+ editing of character data
+except that 
+<i>len</i>
+ is the maximum number of characters that can
+be stored in a single numeric storage unit.
+<p><h1><a name="sh-47" href="rjcnf0001.html#toc-sh-47">47 Hollerith Constant in a Subroutine Reference</a></h1>An actual argument in a subroutine reference may be a
+Hollerith constant.  The corresponding dummy argument must be
+of type integer, real, or logical.  Note that this is an
+exception to the rule that requires that the type of the
+actual and dummy argument must agree.
+<p>
+'
+<pre>
+</pre>
+
+This Appendix provides an overview of the two levels of
+FORTRAN specified in this standard, including the general
+criteria used for including or excluding a feature at a
+given level, and a section-by-section summary of the
+principal differences between the full language and the
+subset.
+<p><h1><a name="sh-48" href="rjcnf0001.html#toc-sh-48">48 Background</a></h1>The full FORTRAN language described in this document
+is a superset of the FORTRAN language described in
+ANSI X3.9-1966, with the exceptions previously noted.  In
+formulating a subset philosophy, the following existing
+FORTRAN standards were considered:
+<ol>
+<li>American National Standard FORTRAN, ANSI X3.9-1966
+<li>American National Standard Basic FORTRAN,
+ANSI X3.10-1966
+<li>International Standard Programming Language FORTRAN,
+ISO R1539
+</ol>
+<p>The ISO R1539 document describes three levels: basic,
+intermediate, and full.  The ISO R1539 basic level corresponds
+closely with ANSI X3.10-1966; the ISO R1539 full level corresponds
+closely with ANSI X3.9-1966; and the ISO R1539 intermediate level
+is in between.
+<p>It was thought that the ISO R1539 basic level and the ANSI X3.10-1966
+had not been sufficiently used, even on small computer
+systems, to warrant a subset corresponding to that level.
+<p>The ISO R1539 intermediate level has been sufficiently used to
+warrant a subset of similar capability.
+<p>However, it was also thought that some of the capabilities
+in the full language described here, but not part of any
+current standard or recommendation, are so important for
+the general use of the language that they should be present
+in the subset, at least to some degree.
+<p>Furthermore, it was thought that the specification of
+ANSI X3.10-1966 in such a manner that it is not a subset of
+ANSI X3.9-1966 was inconsistent with the primary goal of
+promoting program interchange.  Consequently, careful
+attention has been given to ensuring that a program that
+conforms to the subset of this standard will also conform
+to the full language.
+<p><h1><a name="sh-49" href="rjcnf0001.html#toc-sh-49">49 Criteria</a></h1>The criteria in 
+<a href="#sh-49.1">D2.1</a> and 
+<a href="#sh-49.2">D2.2</a> were adopted for the two levels of
+FORTRAN within this standard.
+<p><h2><a name="sh-49.1" href="rjcnf0001.html#toc-sh-49.1">49.1 Full Language.</a></h2>The most notable new elements of the full language that
+have been included at both levels are: character data type,
+mixed-type arithmetic, INTRINSIC statement, SAVE statement,
+and direct access I/O statements.
+<p><h2><a name="sh-49.2" href="rjcnf0001.html#toc-sh-49.2">49.2 Subset Language.</a></h2>
+<ol>
+<li>The subset must be a proper subset of the full
+language.
+<li>The subset must be based on ISO
+R1539 intermediate level FORTRAN.
+<li>The subset must include, at a fundamental level,
+those features of the full language that
+significantly increase the scope of the language.
+<li>The elements of the subset must make a minimum
+demand on storage requirements, particularly during
+execution.
+<li>The subset must require a minimum of effort for
+the development and maintenance of a viable FORTRAN
+processor.
+</ol>
+<p><h1><a name="sh-50" href="rjcnf0001.html#toc-sh-50">50 Summary of Subset Differences</a></h1>This section summarizes the differences between the full
+language and the subset in this standard.  It is organized
+primarily on the basis of the standard itself.  The
+differences are discussed under the section where each
+language element is primarily presented.  Of course, a
+difference in one section may cause changes in other
+sections.  Such changes are not noted here.
+<p>An exception to the above practice is the subsetting of
+the character data type.  The description of character
+data type and its usage is so distributed throughout the
+standard that a more meaningful summary is produced by
+collecting the relevant items into a single presentation.
+<p><h2><a name="sh-50.1" href="rjcnf0001.html#toc-sh-50.1">50.1 Section 1: Introduction.</a></h2>The subset is the same as the full language (see also
+
+<a href="#sh-51">D4</a>).
+<p><h2><a name="sh-50.2" href="rjcnf0001.html#toc-sh-50.2">50.2 Section 2: FORTRAN Terms and Concepts.</a></h2>The subset is the same as the full language.
+<p><h2><a name="sh-50.3" href="rjcnf0001.html#toc-sh-50.3">50.3 Section 3: Characters, Lines, and Execution Sequence.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>The character set does not include the currency
+symbol 
+missing " in
+        file rjcnf0100-eqn.49, between lines 2 and 3
+        (
+")$ or the colon (:).
+<li>Statements may have up to nine continuation lines.
+<li>DATA statements must follow all specification
+statements and precede all statement function
+statements and executable statements.
+<li>A comment line must not precede a continuation line.
+</ol>
+<p><h2><a name="sh-50.4" href="rjcnf0001.html#toc-sh-50.4">50.4 Section 4: Data Types and Constants.</a></h2>The subset is the same as the full language except that
+double precision and complex data types are not included.
+Note that each entity of type character must have a constant
+length.
+<p><h2><a name="sh-50.5" href="rjcnf0001.html#toc-sh-50.5">50.5 Section 5: Arrays and Substrings.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>An array declarator must not have an explicit lower
+bound.
+<li>A dimension declarator must be either an integer
+constant or an integer variable.  (This excludes
+integer expressions, but allows a variable in
+common.)
+<li>An array may have up to three dimensions.
+<li>A subscript expression may be an expression
+containing only integer variables and constants.
+(This excludes function and array element references.)
+</ol>
+<p><h2><a name="sh-50.6" href="rjcnf0001.html#toc-sh-50.6">50.6 Section 6: Expressions.</a></h2>The subset is the same as the full language except that a constant
+expression is allowed only where a general expression is allowed,
+the logical operators .EQV. and .NEQV. are not included, and there are
+restrictions on character expressions as described in 
+<a href="#sh-50.19">D3.19</a>.
+<p><h2><a name="sh-50.7" href="rjcnf0001.html#toc-sh-50.7">50.7 Section 7: Executable and Nonexecutable Statement Classification.</a></h2>The classification of a statement in the subset is the
+same as in the full language.  However, the subset does
+not include PRINT, CLOSE, INQUIRE, ENTRY, BLOCK DATA,
+PARAMETER, DOUBLE PRECISION, and COMPLEX statements.
+<p><h2><a name="sh-50.8" href="rjcnf0001.html#toc-sh-50.8">50.8 Section 8: Specification Statements.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>The PARAMETER statement is not included.
+<li>Only the names of common blocks (enclosed in slashes)
+may appear in the list of a SAVE statement.  The
+form of the SAVE statement without a list is not
+included.
+</ol>
+<p><h2><a name="sh-50.9" href="rjcnf0001.html#toc-sh-50.9">50.9 Section 9: DATA Statement.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>Only names of variables, arrays, and array elements
+are allowed in the list 
+<i>nlist</i>
+.  Implied-DO lists
+are not included.
+<li>Values in the list 
+<i>clist</i>
+ must agree in type with
+the corresponding item in the list 
+<i>nlist</i>
+.  Type
+conversion is not included.
+</ol>
+<p>Note that DATA statements must follow all specification
+statements and precede all statement function statements
+and executable statements.
+<p><h2><a name="sh-50.10" href="rjcnf0001.html#toc-sh-50.10">50.10 Section 10: Assignment Statements.</a></h2>The subset is the same as the full language except for
+restrictions on character type presented in 
+<a href="#sh-50.19">D3.19</a>.
+<p><h2><a name="sh-50.11" href="rjcnf0001.html#toc-sh-50.11">50.11 Section 11: Control Statements.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>A DO-variable must be an integer variable and DO
+parameters must be integer constants or integer
+variables.
+<li>In a computed GOTO statement, the index expression
+must be an integer variable.
+</ol>
+<p><h2><a name="sh-50.12" href="rjcnf0001.html#toc-sh-50.12">50.12 Section 12: Input/Output Statements.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>The CLOSE statement is not included.
+<li>The INQUIRE statement is not included.
+<li>List-directed READ and WRITE statements are not
+included.
+<li>An internal file identifier must be a character
+variable or character array element.
+<li>Formatted direct access files and statements are
+not included.
+<li>External unit identifiers must be an integer constant
+or integer variable.
+<li>A format identifier must be the label of a FORMAT
+statement, an integer variable that has been assigned
+the label of a FORMAT statement, or a character
+constant.
+<li>The UNIT= and FMT= forms of unit and format
+specifiers are not included.
+<li>The ERR= specifier is not included.
+<li>The forms READ 
+f [,<i>iolist</i>]
+ and PRINT 
+f [,<i>iolist</i>]
+
+are not included.
+<li>In input/output lists, the implied-DO parameters
+must be integer constants and variables.
+Implied-DO-variables must be of type integer.
+<li>Variable names, array element names, and array names
+may appear as input/output list items; constants,
+character substring references, and general
+expressions are not included.
+<li>A limited form of OPEN statement is included with
+the following 
+<i>olist</i>
+ specifiers required, and no
+others are allowed:
+<ol>
+<ol>
+<li>An integer constant unit identifier
+<li>The keyword specifier ACCESS= 'DIRECT'
+<li>The record length specifier 
+RECL= <i>rl</i>
+, where 
+<i>rl</i>
+
+is an integer constant
+<p>
+</ol>
+</ol>The OPEN statement is included in the subset only to the
+extent needed to connect a unit to a direct access
+unformatted file.  Once a unit has been connected
+to a direct access file, it may not be reconnected
+to any other file.
+<li>Named files are not included.
+</ol>
+<p><h2><a name="sh-50.13" href="rjcnf0001.html#toc-sh-50.13">50.13 Section 13: Format Specification.</a></h2>The subset is the same as the full language except that:
+<ol>
+<li>The following edit descriptors are not included:
+<pre>
+I<i>w</i>.<i>m</i>     T<i>c</i>    S
+                     D<i>w</i>.<i>d</i>     TL<i>c</i>   SP
+                     G<i>w</i>.<i>d</i>     TR<i>c</i>   SS
+                     G<i>w</i>.<i>d</i>E<i>e</i>
+</pre>
+
+<li>At most three levels of parentheses are permitted.
+<li>The format scan terminator (colon) is not included.
+</ol>
+<p><h2><a name="sh-50.14" href="rjcnf0001.html#toc-sh-50.14">50.14 Section 14: Main Program.</a></h2>The subset is the same as the full language.
+<p><h2><a name="sh-50.15" href="rjcnf0001.html#toc-sh-50.15">50.15 Section 15: Functions and Subroutines.</a></h2>The subset is the same as the full language except that
+the following are not included:
+<ol>
+<li>The ENTRY statement
+<li>Alternate return specifier
+<li>Generic function references
+<li>Intrinsic functions involving arguments or results
+of type double precision or complex
+</ol>
+<p>Other exclusions are presented in 
+<a href="#sh-50.19">D3.19</a>, most notably an
+asterisk character length specifier, character functions,
+the intrinsic functions LEN, CHAR, and INDEX, and partial
+association.
+<p><h2><a name="sh-50.16" href="rjcnf0001.html#toc-sh-50.16">50.16 Section 16: Block Data Subprogram.</a></h2>Block data subprograms are not included in the subset.
+<p><h2><a name="sh-50.17" href="rjcnf0001.html#toc-sh-50.17">50.17 Section 17: Association and Definition.</a></h2>The subset is the same as the full language except that
+the concept of partial association does not apply to the
+subset.
+<p><h2><a name="sh-50.18" href="rjcnf0001.html#toc-sh-50.18">50.18 Section 18: Scope and Classes of Symbolic Names.</a></h2>The subset is the same as the full language.
+<p><h2><a name="sh-50.19" href="rjcnf0001.html#toc-sh-50.19">50.19 Section 1 to 18: Character Type.</a></h2>The primary intent of the the subset character facility
+is to provide a minimal character capability that is
+functionally comparable to what is possible with most
+extensions of Hollerith data.
+<p><h3><a name="sh-50.19.1" href="rjcnf0001.html#toc-sh-50.19.1">50.19.1 Character Features in the Subset.</a></h3>The subset includes the following character data type
+features:
+<ol>
+<li>Character constants, variables, and arrays, but not
+character functions
+<li>CHARACTER and IMPLICIT statements for declaring
+character entities and their lengths; a length
+specification must be an integer constant (not an
+asterisk)
+<li>Character assignment statements in which the right-hand
+side is a variable, array element, or constant
+<li>Character relational expressions in which the
+operands are variables, array elements, or constants
+<li>Initialization of character variables, arrays, and
+array elements in a DATA statement
+<li>Character variables, arrays, and array elements
+in output lists
+<li>Character variables, arrays, array elements, and
+constants as arguments in subprogram references
+<li>Character constants (but not variables or array
+elements) as a format specification
+<li>Total, but not partial, association of character
+entities (that is, association of character entities
+only of the same length by means of COMMON and
+EQUIVALENCE statements or by argument association)
+<li>Input/output of character data, both formatted
+(using character edit descriptors) and unformatted
+</ol>
+<p><h3><a name="sh-50.19.2" href="rjcnf0001.html#toc-sh-50.19.2">50.19.2 Character Features Not in the Subset.</a></h3>The subset does not include the following character data
+type features:
+<ol>
+<li>Substring reference and definition
+<li>Concatenation operator
+<li>Use of character variables or array elements as
+format specifications
+<li>Partial association of character entities
+<li>Character functions
+<li>The intrinsic functions LEN, CHAR, and INDEX
+<li>Character length specification consisting of an
+asterisk or any expression other than a constant
+</ol>
+<p><h1><a name="sh-51" href="rjcnf0001.html#toc-sh-51">51 Subset Conformance.</a></h1>Conformance at the subset level of this standard involves
+requirements that relate to the full language for both
+processors and programs.
+<p><h2><a name="sh-51.1" href="rjcnf0001.html#toc-sh-51.1">51.1 Subset Processor Conformance.</a></h2>A standard-conforming subset processor may include an
+extension to the subset language that has an interpretation
+in the full language only if the processor provides the
+interpretation described for the full language.  That is,
+a standard-conforming subset processor may not provide an
+extension that conflicts with the full language.  Extensions
+that do not have forms and interpretations in the full
+language are not precluded by this requirement.
+<p>As an example, a standard-conforming subset processor may
+provide a double precision data type provided that the
+requirements for double precision are fulfilled.
+<p><h2><a name="sh-51.2" href="rjcnf0001.html#toc-sh-51.2">51.2 Subset Program Performance.</a></h2>A program that conforms to the subset level of this standard
+must have the same interpretation at both the subset level
+and the full language level.  The principal implication
+of this requirement concerns the use of function names
+that are identified as specific or generic intrinsic
+function names at the full language level but which are
+not available at the subset level.  Examples of such names
+are DSIN, MIN, and CABS.
+<p>A subset-conforming program may not use such names as
+intrinsic functions because these names are not defined
+as intrinsic functions in the subset language.  Moreover,
+a subset-conforming program may not use such names as
+external function names unless such names are identified
+as external function names by appearing in an EXTERNAL
+statement.  If such names are not explicitly declared as
+external, the names would be classified as external by a
+subset processor and as intrinsic by a full
+language processor.  Note that the burden of avoiding this
+situation rests on the program.  A subset-conforming
+processor is not required to recognize that a full language
+intrinsic name is being used without being declared as
+external.  In effect, the full set of names described in
+Table 5 may be considered as reserved intrinsic function
+names in the subset even though only a subset of those
+names is available for use.
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<pre>
+<i>Form</i>                                      <i>Descriptive</i>_<i>Heading</i>
+
+ASSIGN s TO i                             Statement Label
+                                          Assignment Statement
+
+BACKSPACE u                               File Positioning
+BACKSPACE (alist)                         Statements
+
+BLOCK DATA [sub]                          BLOCK DATA Statement
+
+CALL sub [([a [,a]...])]                  Subroutine Reference:
+                                          CALL Statement
+
+CHARACTER [*len[,]] nam [,nam]...         Character Type-
+                                          Statement
+
+CLOSE (cllist)                            CLOSE Statement
+
+COMMON [/[cb]/]nlist[[,]/[cb]/nlist]...   COMMON Statement
+
+COMPLEX v [,v]...                         Complex Type-
+                                          Statement
+
+CONTINUE                                  CONTINUE Statement
+
+DATA nlist/clist/ [[,]nlist/clist/]...    DATA Statement
+
+DIMENSION a(d) [,a(d)]...                 DIMENSION Statement
+
+DO s [,] i=e ,e [,e ]                     DO Statement
+            1  2   3
+DOUBLE PRECISION v [,v]...                Double Precision
+                                          Type-Statement
+
+ELSE                                      ELSE Statement
+
+ELSE IF (e) THEN                          ELSE IF Statement
+
+END                                       END Statement
+
+END IF                                    END IF Statement
+
+ENDFILE u                                 File Positioning
+ENDFILE (alist)                           Statements
+
+ENTRY en [([d [,d]...])]                  ENTRY Statement
+
+EQUIVALENCE (nlist) [,(nlist)]...         EQUIVALENCE Statement
+
+EXTERNAL proc [,proc]...                  EXTERNAL Statement
+</pre>
+
+<p>
+<pre>
+<i>Form</i>                                    <i>Descriptive</i>_<i>Heading</i>
+
+FORMAT fs                               FORMAT Statement
+fun ([d [,d]...]) = e                   Statement Function
+                                        Statement
+
+[typ] FUNCTION fun ([d [,d]...])        FUNCTION Statement
+
+GO TO i [[,](s [,s]...)]                Assigned GO TO
+                                        Statement
+
+GO TO s                                 Unconditional GO TO
+                                        Statement
+
+GO TO (s [,s]...)[,] i                  Computed GO TO
+                                        Statement
+
+IF (e) st                               Logical IF Statement
+
+IF (e) s , s , s                        Arithmetic IF
+        1   2   3                       Statement
+
+IF (e) THEN                             Block IF Statement
+
+IMPLICIT typ (a [,s]...)                IMPLICIT Statement
+  [,typ (a [,a]...)]...
+
+INQUIRE (iflist)                        INQUIRE by File
+                                        Statement
+
+INQUIRE (iulist)                        INQUIRE by Unit
+                                        Statement
+
+INTEGER v [,v]...                       Integer Type-
+                                        Statement
+
+INTRINSIC fun [,fun]...                 INTRINSIC Statement
+
+LOGICAL v [,v]...                       Logical Type-
+                                        Statement
+
+OPEN (olist)                            OPEN Statement
+
+PARAMETER (p=e [,p=e]...)               PARAMETER Statement
+
+PAUSE [n]                               PAUSE Statement
+
+PRINT f [,iolist]                       Data Transfer Output
+                                        Statement
+
+PROGRAM pgm                             PROGRAM Statement
+</pre>
+
+<p>
+<pre>
+<i>Form</i>                                   <i>Descriptive</i>_<i>Heading</i>
+
+READ (cilist) [iolist]                 Data Transfer Input
+                                       Statement
+
+READ f [,iolist]                       Data Transfer Input
+                                       Statement
+REAL v [,v]...                         Real Type-Statement
+
+RETURN [e]                             RETURN Statement
+
+REWIND u                               File Positioning
+REWIND (alist)                         Statements
+
+SAVE [a [,a]...]                       SAVE Statement
+
+STOP [n]                               STOP Statement
+
+SUBROUTINE sub [([d [,d]...])]         Subroutine Subprogram
+                                       and SUBROUTINE
+                                       Statement
+
+v = e                                  Arithmetic Assignment
+                                       Statement
+
+v = e                                  Logical Assignment
+                                       Statement
+
+v = e                                  Character Assignment
+                                       Statement
+
+WRITE (cilist) [iolist]                Data Transfer Output
+                                       Statement
+</pre>
+
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<p>
+<dl><dd>Appendix F is temporarily unavailable.</dl><br>
+
+<p>
+<hr>
+<i>This document was translated by troff2html v0.21 on August 17, 1995.</i>
+<p>
+</body></html>
+
+<!--
+     FILE ARCHIVED ON 19:38:52 Oct 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:40 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 93.979
+  exclusion.robots: 0.072
+  exclusion.robots.policy: 0.063
+  RedisCDXSource: 0.488
+  esindex: 0.007
+  LoadShardBlock: 77.535 (3)
+  PetaboxLoader3.datanode: 85.052 (4)
+  load_resource: 64.159
+  PetaboxLoader3.resolve: 47.862
+-->

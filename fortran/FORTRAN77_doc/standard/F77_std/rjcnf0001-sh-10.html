@@ -1,0 +1,259 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf0001-sh-10.html","20051016193709","https://web.archive.org/","web","/_static/",
+	      "1129491429");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>
+10 ASSIGNMENT STATEMENTS
+</title></head><body>
+<h1><a name="sh-10">10 ASSIGNMENT STATEMENTS</a></h1>
+
+Completion of execution of an
+assignment statement causes definition of an entity.
+<p>There are four kinds of assignment statements:
+<ol>
+<li>Arithmetic
+<li>Logical
+<li>Statement label (ASSIGN)
+<li>Character
+</ol>
+<p><h2><a name="sh-10.1">10.1 Arithmetic Assignment Statement</a></h2>
+The form of an arithmetic assignment statement is:
+<pre>
+<i>v</i> = <i>e</i></pre>
+
+<ul>
+<li> where: 
+<i>v</i>
+is the name of a variable or array element of
+type integer, real, double precision, or complex
+</ul>
+<ul>
+<li> 
+<i>e</i>
+is an arithmetic expression
+</ul>
+<p>Execution of an arithmetic assignment statement causes the evaluation of the
+expression 
+<i>e</i>
+ by the rules in Section 
+<a href="rjcnf0001-sh-6.html#sh-6">6</a>, conversion of 
+<i>e</i>
+
+to the type of 
+<i>v</i>
+, and definition and assignment of 
+<i>v</i>
+
+with the resulting value, as established by the rules in Table 4.
+<dl><dd></dl><br>
+Table 4
+<p>
+<dl><dd>Arithmetic Conversion and Assignment of </dl><br>
+<i>e</i>
+ to 
+<i>v</i>
+<pre>
+_____________________________
+              |                 |          |
+              | Type of <i>v</i>       |  Value   |
+              |_________________<i>|</i>__<i>Assigned|</i>
+              |                 |          |
+              | Integer         |  INT(<i>e</i>)  |
+              |_________________<i>|</i>__________<i>|</i>
+              |                 |          |
+              |_<i>Real</i>____________<i>|</i>__<i>REAL(</i><i>e</i><i>)</i>_<i>|</i>
+              |                 |          |
+              | Double precision|  DBLE(<i>e</i>) |
+              |_________________<i>|</i>__________<i>|</i>
+              |                 |          |
+              <b>|</b>_<i>Complex</i>_________<i><b>|</b></i>__<i>CMPLX(</i><i>e</i><i>)</i><i><b>|</b></i>
+</pre>
+
+<p>The functions in the "Value Assigned" column of Table 4 are
+generic functions described in Table 5 (
+<a href="rjcnf0001-sh-15.html#sh-15.10">15.10</a>).
+<p><h2><a name="sh-10.2">10.2 Logical Assignment Statement</a></h2>
+The form of a logical assignment statement is:
+<pre>
+<i>v</i> = <i>e</i></pre>
+
+<ul>
+<li> where: 
+<i>v</i>
+is the name of a logical variable or logical
+array element
+</ul>
+<ul>
+<li> 
+<i>e</i>
+is a logical expression
+</ul>
+<p>Execution of a logical assignment
+statement causes the evaluation of the logical expression
+
+<i>e</i>
+ and the assignment and definition of 
+<i>v</i>
+ with the value
+of 
+<i>e</i>
+.  Note that 
+<i>e</i>
+ must have a value of either true or false.
+<p><h2><a name="sh-10.3">10.3 Statement Label Assignment (ASSIGN) Statement</a></h2>
+The form of a statement label assignment statement is:
+<pre>
+ASSIGN <i>s</i> TO <i>i</i></pre>
+
+<ul>
+<li> where: 
+<i>s</i>
+is a statement label
+</ul>
+<ul>
+<li> 
+<i>i</i>
+is an integer variable name
+</ul>
+<p>Execution of an ASSIGN statement causes the statement label 
+<i>s</i>
+ to be assigned to
+the integer variable 
+<i>i</i>
+.
+The statement label must be the label of a statement
+that appears
+in the same program unit as the ASSIGN statement.
+The statement label must
+be the label of an executable statement or a FORMAT statement.
+<p>Execution of a statement label assignment statement is the
+only way that a variable may be defined with a statement
+label value.
+<p>A variable must be defined with a statement label value when
+referenced in an assigned GO TO statement (
+<a href="rjcnf0001-sh-11.html#sh-11.3">11.3</a>) or as a format
+identifier (
+<a href="rjcnf0001-sh-12.html#sh-12.4">12.4</a>) in an input/output statement.
+While defined with a statement label value, the variable must not
+be referenced in any other way.
+<p>An integer variable defined with a statement label value may
+be redefined with the same or a different statement
+label value or an integer value.
+<p><h2><a name="sh-10.4">10.4 Character Assignment Statement</a></h2>
+The form of a character assignment statement is:
+<pre>
+<i>v</i> = <i>e</i></pre>
+
+<ul>
+<li> where: 
+<i>v</i>
+is the name of a character variable, character
+array element, or character substring
+</ul>
+<ul>
+<li> 
+<i>e</i>
+is a character expression
+</ul>
+<p>Execution of a character assignment statement causes the evaluation of the
+expression 
+<i>e</i>
+ and the assignment and definition of 
+<i>v</i>
+ with the value of 
+<i>e</i>
+.
+None of the character positions
+being defined in 
+<i>v</i>
+ may be referenced in 
+<i>e</i>
+.
+
+<i>v</i>
+ and 
+<i>e</i>
+ may have
+different lengths.  If the length of 
+<i>v</i>
+ is greater than the length of 
+<i>e</i>
+,
+the effect is as though 
+<i>e</i>
+ were extended to the right with
+blank characters until it is the same length as
+
+<i>v</i>
+ and then assigned.
+If the length of 
+<i>v</i>
+ is less than the length of 
+<i>e</i>
+,
+the effect is as though 
+<i>e</i>
+ were
+truncated from the right until it is the same length as 
+<i>v</i>
+ and
+then assigned.
+<p>Only as much of the value of 
+<i>e</i>
+ must be defined as is
+needed to define 
+<i>v</i>
+.  In the example:
+<ol>
+<li> CHARACTER A*2,B*4
+<li> A=B
+</ol>
+<p>the assignment A=B requires that the substring B(1:2)
+be defined.
+It does not require that the substring B(3:4) be defined.
+<p>If 
+<i>v</i>
+ is a substring, 
+<i>e</i>
+ is assigned only to the substring.
+The definition status of substrings not specified by 
+<i>v</i>
+
+is unchanged.
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<hr> <a href="rjcnf0001.html">[Contents]</a> <a href="rjcnf0001-sh-9.html">[Previous]</a> <a href="rjcnf0001-sh-11.html">[Next]</a> <br>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+<p>
+</body></html>
+
+<!--
+     FILE ARCHIVED ON 19:37:09 Oct 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:12 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 64.9
+  exclusion.robots: 0.087
+  exclusion.robots.policy: 0.077
+  RedisCDXSource: 6.019
+  esindex: 0.009
+  LoadShardBlock: 42.848 (3)
+  PetaboxLoader3.datanode: 51.681 (4)
+  load_resource: 391.951
+  PetaboxLoader3.resolve: 379.801
+-->

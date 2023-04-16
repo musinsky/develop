@@ -1,0 +1,62 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com/F77_std/rjcnf-16.html","20060326202757","https://web.archive.org/","web","/_static/",
+	      "1143404877");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>16 BLOCK DATA SUBPROGRAM</title></head><body>
+
+<h1><a name="sh-16">16 BLOCK DATA SUBPROGRAM</a></h1>
+
+Block data subprograms are used to provide initial values for variables and array elements in named common blocks.
+<p>
+A block data subprogram is a program unit that has a BLOCK DATA statement as its first statement.  A block data subprogram is nonexecutable.  There may be more than one block data subprogram in an executable program.
+
+<h2><a name="sh-16.1">16.1 BLOCK DATA Statement</a></h2>
+
+The form of a BLOCK DATA statement is:
+<p><pre>
+      BLOCK DATA [<i>sub</i>]
+</pre><p>
+where <i>sub</i> is the symbolic name of the block data subprogram in which the BLOCK DATA statement appears.
+<p>
+The optional name <i>sub</i> is a global name (<a href="rjcnf-18.html#sh-18.1.1">18.1.1</a>) and must not be the same as the name of an external procedure, main program, common block, or other block data subprogram in the same executable program.  The name <i>sub</i> must not be the same as any local name in the subprogram.
+
+<h2><a name="sh-16.2">16.2 Block Data Subprogram Restrictions</a></h2>
+
+The BLOCK DATA statement must appear only as the first statement of a block data subprogram.  The only other statements that may appear in a block data subprogram are IMPLICIT, PARAMETER, DIMENSION, COMMON, SAVE, EQUIVALENCE, DATA, END, and type-statements.  Note that comment lines are permitted.
+<p>
+If an entity in a named common block is initially defined, all entities having storage units in the common block storage sequence must be specified even if they are not all initially defined.  More than one named common block may have entities initially defined in a single block data subprogram.
+<p>
+Only an entity in a named common block may be initially defined in a block data subprogram.  Note that entities associated with an entity in a common block are considered to be in that common block.
+<p>
+The same named common block may not be specified in more than one block data subprogram in the same executable program.
+<p>
+There must not be more than one unnamed block data subprogram in an executable program.
+<p><hr>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+</body></html>
+<!--
+     FILE ARCHIVED ON 20:27:57 Mar 26, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:52:36 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 584.214
+  exclusion.robots: 0.084
+  exclusion.robots.policy: 0.074
+  RedisCDXSource: 17.221
+  esindex: 0.007
+  LoadShardBlock: 550.786 (3)
+  PetaboxLoader3.datanode: 55.687 (4)
+  load_resource: 82.859
+  PetaboxLoader3.resolve: 62.222
+-->

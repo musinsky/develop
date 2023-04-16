@@ -1,0 +1,1939 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf0001-sh-15.html","20051016213204","https://web.archive.org/","web","/_static/",
+	      "1129498324");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>
+15 FUNCTIONS AND SUBROUTINES
+</title></head><body>
+<h1><a name="sh-15">15 FUNCTIONS AND SUBROUTINES</a></h1>
+
+<p><h2><a name="sh-15.1">15.1 Categories of Functions and Subroutines</a></h2>
+
+<p><h3><a name="sh-15.1.1">15.1.1 Procedures.</a></h3>
+Functions and subroutines are
+<i>procedures.</i>
+There are four
+categories of procedures:
+<ol>
+<li>Intrinsic functions
+<li>Statement functions
+<li>External functions
+<li>Subroutines
+</ol>
+<p>Intrinsic functions, statement functions, and external
+functions are referred to collectively as
+<i>functions.</i>
+<p>External functions and subroutines are referred to
+collectively as 
+<i>external procedures.</i>
+<p><h3><a name="sh-15.1.2">15.1.2 External Functions.</a></h3>
+There are two categories of
+<i>external functions:</i>
+<ol>
+<li>External functions specified in function subprograms
+<li>External functions specified by means other than
+FORTRAN subprograms
+</ol>
+<p><h3><a name="sh-15.1.3">15.1.3 Subroutines.</a></h3>
+There are two categories of
+<i>subroutines:</i>
+<ol>
+<li>Subroutines specified in subroutine subprograms
+<li>Subroutines specified by means other than FORTRAN
+subprograms
+</ol>
+<p><h3><a name="sh-15.1.4">15.1.4 Dummy Procedure.</a></h3>
+A
+<i>dummy procedure</i>
+is a dummy argument that is identified
+as a procedure (
+<a href="rjcnf0001-sh-18.html#sh-18.2.11">18.2.11</a>).
+<p><h2><a name="sh-15.2">15.2 Referencing a Function</a></h2>
+A function is referenced in an expression and supplies a
+value to the expression.
+The value supplied is the value
+of the function.
+<p>An intrinsic function may be referenced in the main program
+or in any procedure subprogram of an executable program.
+<p>A statement function may be referenced only in the program
+unit in which the statement function statement appears.
+<p>An external function specified by a function subprogram
+may be referenced within any other procedure subprogram
+or the main program of the executable program.
+A subprogram
+must not reference itself, either directly or indirectly.
+<p>An external function specified by means other than a
+subprogram may be referenced within any procedure subprogram
+or the main program of the executable program.
+<p>If a character function is referenced in a program unit,
+the function length specified in the program unit must be
+an integer constant expression.
+<p><h3><a name="sh-15.2.1">15.2.1 Form of a Function Reference.</a></h3>
+A function reference is used to reference an intrinsic
+function, statement function, or external function.
+<p>The form of a function reference is:
+<pre>
+<i>fun</i> ( [<i>a</i> [,<i>a</i>]...] )</pre>
+
+<ul>
+<li> where: 
+<i>fun</i>
+is the symbolic name of a function or a dummy
+procedure
+</ul>
+<ul>
+<li> 
+<i>a</i>
+is an actual argument
+</ul>
+<p>The type of the result of a statement function or external
+function reference is the same as the type of the function
+name.
+The type is specified in the same manner as for
+variables and arrays (
+<a href="rjcnf0001-sh-4.html#sh-4.1.2">4.1.2</a>).
+The type of the result of
+an intrinsic function is specified in Table 5 (
+<a href="#sh-15.10">15.10</a>).
+<p><h3><a name="sh-15.2.2">15.2.2 Execution of a Function Reference.</a></h3>
+A function reference may appear only as a primary in an
+arithmetic, logical, or character expression.
+Execution
+of a function reference in an expression causes the
+evaluation of the function identified by 
+<i>fun.</i>
+<p>Return of control from a referenced function completes
+execution of the function reference.
+The value of the
+function is available to the referencing expression.
+<p><h2><a name="sh-15.3">15.3 Intrinsic Functions</a></h2>
+Intrinsic functions are supplied by the processor and have
+a special meaning.
+The specific names that identify the
+intrinsic functions, their generic names, function
+definitions, type of arguments, and type of results appear
+in Table 5.
+<p>An IMPLICIT statement does not change the type of an
+intrinsic function.
+<p><h3><a name="sh-15.3.1">15.3.1 Specific Names and Generic Names.</a></h3>
+Generic names simplify the referencing of intrinsic
+functions, because the same function name may be used with
+more than one type of argument.
+Only a specific intrinsic
+function name may be used as an actual argument when the
+argument is an intrinsic function.
+<p>If a generic name is used to reference an intrinsic
+function, the type of the result (except for intrinsic
+functions performing type conversion, nearest integer, and
+absolute value
+with a complex argument) is the same as the type of
+the argument.
+<p>For those intrinsic functions that have
+more than one argument, all arguments must be of the same
+type.
+<p>If the specific name or generic name of an intrinsic
+function appears in the dummy argument list of a function
+or subroutine in a subprogram, that symbolic name does not
+identify an intrinsic function in the program unit.
+The
+data type identified with the symbolic name is specified
+in the same manner as for variables and arrays (
+<a href="rjcnf0001-sh-4.html#sh-4.1.2">4.1.2</a>).
+<p>A name in an INTRINSIC statement must be the specific name
+or generic name of an intrinsic function.
+<p><h3><a name="sh-15.3.2">15.3.2 Referencing an Intrinsic Function.</a></h3>
+An intrinsic function is referenced by using its reference
+as a primary in an expression.
+For each intrinsic function described
+in Table 5, execution of an intrinsic function reference
+causes the actions specified in Table 5, and the result
+depends on the values of the actual arguments.
+The
+resulting value is available to the expression that contains
+the function reference.
+<p>The actual arguments that constitute the argument list
+must agree in order, number, and type with the specification
+in Table 5 and may be any expression of the specified type.
+An actual argument in an intrinsic function reference
+may be any expression except a character expression
+involving concatenation of an operand
+whose length specification is an asterisk in parentheses
+unless the operand is the symbolic name of a constant.
+<p>A specific name of an intrinsic function that appears in
+an INTRINSIC statement may be used as an actual argument
+in an external procedure reference; however, the names of
+intrinsic functions for type conversion, lexical relationship,
+and for choosing the largest or smallest
+value must not be used as actual arguments.
+Note that
+such an appearance does not cause the intrinsic function
+to be classified as an external function (
+<a href="rjcnf0001-sh-18.html#sh-18.2.10">18.2.10</a>).
+<p><h3><a name="sh-15.3.3">15.3.3 Intrinsic Function Restrictions.</a></h3>
+Arguments for which the result is not mathematically defined
+or exceeds the numeric range of the processor cause the
+result of the function to become undefined.
+<p>Restrictions on the range of arguments and results for
+intrinsic functions are described in 
+<a href="#sh-15.10.1">15.10.1</a>.
+<p><h2><a name="sh-15.4">15.4 Statement Function</a></h2>
+A statement function is a procedure specified by a single
+statement that is similar in form to an arithmetic,
+logical, or character assignment statement.
+A statement function
+statement must appear only after the specification
+statements and before the first executable statement of
+the program unit in which it is referenced (
+<a href="rjcnf0001-sh-3.html#sh-3.5">3.5</a>).
+<p>A statement function statement is classified as a
+nonexecutable statement; it is not a part of the normal
+execution sequence.
+<p><h3><a name="sh-15.4.1">15.4.1 Form of a Statement Function Statement.</a></h3>
+The form of a statement function statement is:
+<pre>
+<i>fun</i> ( [<i>d</i> [,<i>d</i>]...] ) = <i>e</i></pre>
+
+<ul>
+<li> where: 
+<i>fun</i>
+is the symbolic name of the statement function
+</ul>
+<ul>
+<li> 
+<i>d</i>
+is a statement function dummy argument
+<li> 
+<i>e</i>
+is an expression
+</ul>
+<p>The relationship between 
+<i>fun</i>
+ and 
+<i>e</i>
+ must conform to the
+assignment rules in 
+<a href="rjcnf0001-sh-10.html#sh-10.1">10.1</a>, 
+<a href="rjcnf0001-sh-10.html#sh-10.2">10.2</a>, and 
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>.  Note that the
+type of the expression may be different from the type of
+the statement function name.
+<p>Each 
+<i>d</i>
+ is a variable name called a
+<i>statement function dummy argument.</i>
+The statement function
+dummy argument list serves only to indicate order, number, and
+type of arguments for the statement function.
+The variable names that appear as dummy
+arguments of a statement function have a scope of that
+statement (
+<a href="rjcnf0001-sh-18.html#sh-18.1">18.1</a>).
+A given symbolic name may appear only
+once in any statement function dummy argument list.
+The symbolic name of a statement function dummy argument
+may be used to identify other dummy arguments of
+the same type in different statement function statements.
+The name may also be used to identify a
+variable of the same type appearing elsewhere in the
+program unit, including its appearance as a dummy argument
+in a FUNCTION, SUBROUTINE, or ENTRY statement.
+The name must not be used to identify any other entity
+in the program unit except a common block.
+<p>Each primary of the expression 
+<i>e</i>
+ must be one of the
+following:
+<ol>
+<li>A constant
+<li>The symbolic name of a constant
+<li>A variable reference
+<li>An array element reference
+<li>An intrinsic function reference
+<li>A reference to a statement function for which the
+statement function statement appears in preceding
+lines of the program unit
+<li>An external function reference
+<li>A dummy procedure reference
+<li>An expression enclosed in parentheses
+that meets all of the requirements
+specified for the expression 
+<i>e</i>
+
+</ol>
+<p>Each variable reference may be either a reference to a
+dummy argument of the statement function or a reference
+to a variable that appears within the same program unit
+as the statement function statement.
+<p>If a statement function dummy argument name is the same
+as the name of another entity, the appearance of that name
+in the expression of a statement function statement is a
+reference to the statement function dummy argument.
+A
+dummy argument that appears in a FUNCTION or SUBROUTINE
+statement may be referenced in the expression of a statement
+function statement within the subprogram.
+A dummy argument
+that appears in an ENTRY statement that precedes a statement
+function statement may be referenced in the expression of
+the statement function statement within the subprogram.
+<p><h3><a name="sh-15.4.2">15.4.2 Referencing a Statement Function.</a></h3>
+A statement function is referenced by using its function
+reference as a primary in an expression.
+<p>Execution of a statement function reference results in:
+<ol>
+<li>evaluation of actual arguments that are expressions,
+<li>association of actual arguments with the
+corresponding dummy arguments,
+<li>evaluation of the expression 
+<i>e</i>
+, and
+<li>conversion, if necessary, of an
+arithmetic expression value to
+the type of the statement function according
+to the assignment rules in 
+<a href="rjcnf0001-sh-10.html#sh-10.1">10.1</a>
+or a change, if necessary, in the length of a character
+expression value according to the rules in 
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>.
+</ol>
+<p>The resulting value is available to the expression that
+contains the function reference.
+<p>The actual arguments, which constitute the argument list,
+must agree in order, number, and type with the corresponding
+dummy arguments.
+An actual argument in a statement function
+reference may be any expression except a character
+expression involving concatenation of an operand
+whose length specification is an asterisk in parentheses
+unless the operand is the symbolic name of a constant.
+<p>When a statement function reference is executed, its actual
+arguments must be defined.
+<p><h3><a name="sh-15.4.3">15.4.3 Statement Function Restrictions.</a></h3>
+A statement function may be referenced only in the program
+unit that contains the statement function statement.
+<p>A statement function statement must not contain a reference
+to another statement function that appears following the
+reference in the sequence of lines in the program unit.
+The symbolic name used to identify a statement function
+must not appear as a symbolic name in any specification
+statement except in a type-statement (to specify the type
+of the function) or as the name of a common block in the
+same program unit.
+<p>An external function reference in the expression of a
+statement function statement must not cause a dummy argument
+of the statement function to become undefined or redefined.
+<p>The symbolic name of a statement function is a local name
+(
+<a href="rjcnf0001-sh-18.html#sh-18.1.2">18.1.2</a>) and must not be the same as the name of any other
+entity in the program unit except the name of a common
+block.
+<p>The symbolic name of a statement function may not be an
+actual argument.
+It must not appear in an EXTERNAL
+statement.
+<p>A statement function statement in a function subprogram
+must not contain a function reference to the name of the function
+subprogram or an entry name in the function subprogram.
+<p>The length specification of a character statement function
+or statement function dummy argument of type character
+must be an integer constant expression.
+<p><h2><a name="sh-15.5">15.5 External Functions</a></h2>
+An external function is specified externally to the program
+unit that references it.
+An external function is a
+procedure and may be specified in a function subprogram
+or by some other means.
+<p><h3><a name="sh-15.5.1">15.5.1 Function Subprogram and FUNCTION Statement.</a></h3>
+A function subprogram specifies one or more external
+functions (
+<a href="#sh-15.7">15.7</a>).
+A function subprogram is a program unit that
+has a FUNCTION statement as its first statement.
+The form
+of a function subprogram is as described in 
+<a href="rjcnf0001-sh-2.html#sh-2.4">2.4</a> and 
+<a href="rjcnf0001-sh-3.html#sh-3.5">3.5</a>,
+except as noted in 
+<a href="#sh-15.5.3">15.5.3</a> and 
+<a href="#sh-15.7.4">15.7.4</a>.
+<p>The form of a FUNCTION statement is:
+<pre>
+[<i>typ</i>] FUNCTION <i>fun</i> ( [<i>d</i> [,<i>d</i>]...] )</pre>
+
+<ul>
+<li> where: 
+<i>typ</i>
+is one of INTEGER, REAL, DOUBLE PRECISION,
+COMPLEX, LOGICAL, or CHARACTER 
+[*<i>len</i>]
+ where 
+<i>len</i>
+
+is the length specification of the result of
+the character function.
+
+<i>len</i>
+ may have any of
+the forms allowed in a CHARACTER statement
+(
+<a href="rjcnf0001-sh-8.html#sh-8.4.2">8.4.2</a>) except that an integer constant expression
+must not include the symbolic name of a constant.
+If a length is not specified in a
+CHARACTER FUNCTION statement, the character
+function has a length of one.
+</ul>
+<ul>
+<li> 
+<i>fun</i>
+is the symbolic name of the function subprogram
+in which the FUNCTION statement appears.
+
+<i>fun</i>
+
+is an
+<i>external function name.</i>
+<li> 
+<i>d</i>
+is a variable name, array name, or dummy
+procedure name.
+
+<i>d</i>
+ is a dummy argument.
+</ul>
+<p>The symbolic name of a function subprogram or an associated
+entry name of the same type must appear as a variable name in the function
+subprogram.
+During every execution of the external function,
+this variable must become defined and, once defined, may
+be referenced or become redefined.
+The value of this
+variable when a RETURN or END statement is executed in the
+subprogram is the value of the function.
+If this variable
+is a character variable with a length specification that
+is an asterisk in parentheses, it must not appear as an
+operand for concatenation except in a character assignment
+statement (
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>).
+<p>An external function in
+a function subprogram may define one or more of its dummy
+arguments to return values in addition to the value of the
+function.
+<p><h3><a name="sh-15.5.2">15.5.2 Referencing an External Function.</a></h3>
+An external function is referenced by using its reference
+as a primary in an expression.
+<p><h4><a name="sh-15.5.2.1">15.5.2.1 Execution of an External Function Reference.</a></h4>
+Execution of an external function reference results in:
+<ol>
+<li>evaluation of actual arguments that are expressions,
+<li>association of actual arguments with the
+corresponding dummy arguments, and
+<li>the actions specified by the referenced function.
+</ol>
+<p>The type of the function name in the function reference
+must be the same as the type of the function name in the
+referenced function.
+The length of the character function
+in a character function reference must be the same as the
+length of the character function in the referenced function.
+<p>When an external function reference is executed, the
+function must be one of the external functions in the
+executable program.
+<p><h4><a name="sh-15.5.2.2">15.5.2.2 Actual Arguments for an External Function.</a></h4>
+The actual arguments in an external function reference
+must agree in order, number, and type with the corresponding
+dummy arguments in the referenced function.
+The use of
+a subroutine name as an actual argument is an exception
+to the rule requiring agreement of type because subroutine
+names do not have a type.
+<p>An actual argument in Tan external function reference must
+be one of the following:
+<ol>
+<li>An expression except a character expression involving
+concatenation of an operand whose length
+specification is an asterisk in parentheses
+unless the operand is the symbolic name of a constant
+<li>An array name
+<li>An intrinsic function name
+<li>An external procedure name
+<li>A dummy procedure name
+</ol>
+<p>Note that an actual argument in a function reference may
+be a dummy argument that appears in a dummy argument list
+within the subprogram containing the reference.
+<p><h3><a name="sh-15.5.3">15.5.3 Function Subprogram Restrictions.</a></h3>
+A FUNCTION statement must appear only as the first
+statement of a function subprogram.
+A function subprogram may contain any other statement except a
+BLOCK DATA, SUBROUTINE, or PROGRAM
+statement.
+<p>The symbolic name of an external function is a global name
+(
+<a href="rjcnf0001-sh-18.html#sh-18.1.1">18.1.1</a>) and must not be the same as any other global
+name or any local name, except a variable name, in the
+function subprogram.
+<p>Within a function subprogram, the symbolic name of a
+function specified by a FUNCTION or ENTRY statement must
+not appear in any other nonexecutable statement, except
+a type-statement.
+In an executable statement, such a name
+may appear only as a variable.
+<p>If the type of a function is specified in a FUNCTION
+statement, the function name must not appear in a type-statement.
+Note that a name must not have its type explicitly
+specified more than once in a program unit.
+<p>If the name of a function subprogram is of type character,
+each entry name in the function subprogram must be of type
+character.
+If the name of the function subprogram or any entry
+in the subprogram has a length of (*) declared,
+all such entities must have a length of (*) declared;
+otherwise, all such entities must have a length specification
+of the same integer value.
+<p>In a function subprogram, the symbolic name of a dummy
+argument is local to the program unit and must not appear
+in an EQUIVALENCE, PARAMETER, SAVE, INTRINSIC, DATA, or
+COMMON statement, except as a common block name.
+<p>A character dummy argument whose length specification is
+an asterisk in parentheses must not appear as an operand
+for concatenation, except in a character assignment
+statement (
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>).
+<p>A function specified in a subprogram may be referenced
+within any other procedure subprogram or the main program
+of the executable program.
+A function subprogram must not
+reference itself, either directly or indirectly.
+<p><h2><a name="sh-15.6">15.6 Subroutines</a></h2>
+A subroutine is specified externally to the program unit
+that references it.
+A subroutine is a procedure and may
+be specified in a subroutine subprogram or by some other
+means.
+<p><h3><a name="sh-15.6.1">15.6.1 Subroutine Subprogram and SUBROUTINE Statement.</a></h3>
+A subroutine subprogram specifies one or more subroutines (
+<a href="#sh-15.7">15.7</a>).
+A subroutine subprogram is a program unit that has a
+SUBROUTINE statement as its first statement.
+The form of
+a subroutine subprogram is as described in 
+<a href="rjcnf0001-sh-2.html#sh-2.4">2.4</a> and 
+<a href="rjcnf0001-sh-3.html#sh-3.5">3.5</a>,
+except as noted in 
+<a href="#sh-15.6.3">15.6.3</a> and 
+<a href="#sh-15.7.4">15.7.4</a>.
+<p>The form of a SUBROUTINE statement is:
+<pre>
+SUBROUTINE <i>sub</i> [( [<i>d</i> [,<i>d</i>]...] )]</pre>
+
+<ul>
+<li> where: 
+<i>sub</i>
+is the symbolic name of the subroutine subprogram
+in which the SUBROUTINE statement appears.
+
+<i>sub</i>
+
+is a
+<i>subroutine name.</i>
+</ul>
+<ul>
+<li> 
+<i>d</i>
+is a variable name, array name, or dummy
+procedure name, or is an asterisk (
+<a href="#sh-15.9.3.5">15.9.3.5</a>).
+
+<i>d</i>
+ is a dummy argument.
+</ul>
+<p>Note that if there are no dummy arguments,
+either of the forms
+
+<i>sub</i>
+ or 
+<i>sub</i>()
+
+may be used in 
+the SUBROUTINE statement.
+A subroutine that is specified by either form may be referenced
+by a CALL statement of the form CALL
+
+<i>sub</i>
+ or CALL 
+<i>sub</i>().
+
+<p>One or more dummy arguments of a subroutine in a subprogram may
+become defined or redefined to return results.
+<p><h3><a name="sh-15.6.2">15.6.2 Subroutine Reference.</a></h3>
+A subroutine is referenced by a CALL statement.
+<p><h4><a name="sh-15.6.2.1">15.6.2.1 Form of a CALL Statement.</a></h4>
+The form of a CALL statement is:
+<pre>
+CALL <i>sub</i> [( [<i>a</i> [,<i>a</i>]...] )]</pre>
+
+<ul>
+<li> where: 
+<i>sub</i>
+is the symbolic name of a subroutine or dummy 
+procedure
+</ul>
+<ul>
+<li> 
+<i>a</i>
+is an actual argument
+</ul>
+<p><h4><a name="sh-15.6.2.2">15.6.2.2 Execution of a CALL Statement.</a></h4>
+Execution of a CALL statement results in
+<ol>
+<li>evaluation of actual arguments that are expressions,
+<li>association of actual arguments with the
+corresponding dummy arguments, and
+<li>the actions specified by the referenced subroutine.
+</ol>
+<p>Return of control from the referenced subroutine completes
+execution of the CALL statement.
+<p>A subroutine specified in a subprogram may be referenced
+within any other procedure subprogram or the main program
+of the executable program.
+A subprogram must not reference
+itself, either directly or indirectly.
+<p>When a CALL statement is executed, the referenced subroutine
+must be one of the subroutines specified in subroutine
+subprograms or by other means in the executable program.
+<p><h4><a name="sh-15.6.2.3">15.6.2.3 Actual Arguments for a Subroutine.</a></h4>
+The actual arguments in a subroutine reference must agree
+in order, number, and type with the corresponding dummy
+arguments in the dummy argument list of the referenced
+subroutine.
+The use of a subroutine name or an alternate return
+specifier as an actual
+argument is an exception to the rule requiring agreement
+of type.
+<p>An actual argument in a subroutine reference must be one
+of the following:
+<ol>
+<li>An expression except a character expression involving
+concatenation of an operand whose length
+specification is an asterisk in parentheses
+unless the operand is the symbolic name of a constant
+<li>An array name
+<li>An intrinsic function name
+<li>An external procedure name
+<li>A dummy procedure name
+<li>An
+<i>alternate return specifier,</i>
+of the form 
+*<i>s</i>
+, where 
+<i>s</i>
+
+is the statement label of an executable statement
+that appears
+in the same program unit as the CALL statement
+(
+<a href="#sh-15.8.3">15.8.3</a>)
+</ol>
+<p>Note that an actual argument in a subroutine reference may
+be a dummy argument name that appears in a dummy argument list
+within the subprogram containing the reference.
+An asterisk dummy argument must not be used as an
+actual argument in a subprogram reference.
+<p><h3><a name="sh-15.6.3">15.6.3 Subroutine Subprogram Restrictions.</a></h3>
+A SUBROUTINE statement must appear only as the
+first statement of a subroutine subprogram.
+A subroutine subprogram may contain any other statement except
+a BLOCK DATA, FUNCTION, or PROGRAM
+statement.
+<p>The symbolic name of a subroutine is a global name (
+<a href="rjcnf0001-sh-18.html#sh-18.1.1">18.1.1</a>)
+and must not be the same as any other global name or any
+local name in the program unit.
+<p>In a subroutine subprogram, the symbolic name of a dummy
+argument is local to the program unit and must not appear
+in an EQUIVALENCE, PARAMETER, SAVE, INTRINSIC, DATA, or
+COMMON statement, except as a common block name.
+<p>A character dummy argument whose length specification is
+an asterisk in parentheses must not appear as an operand
+for concatenation, except in a character assignment
+statement (
+<a href="rjcnf0001-sh-10.html#sh-10.4">10.4</a>).
+<p><h2><a name="sh-15.7">15.7 ENTRY Statement</a></h2>
+An ENTRY statement permits a procedure reference to begin
+with a particular executable statement within the function
+or subroutine subprogram in which the ENTRY statement
+appears.
+It may appear anywhere
+within a function subprogram after the FUNCTION statement
+or within a subroutine subprogram after the SUBROUTINE
+statement, except that an ENTRY statement must not appear
+between a block IF statement and its
+corresponding END IF statement, or
+between a DO statement and the terminal
+statement of its DO-loop.
+<p>Optionally, a subprogram may have one or more
+ENTRY statements.
+<p>An ENTRY statement is classified as a nonexecutable statement.
+<p><h3><a name="sh-15.7.1">15.7.1 Form of an ENTRY Statement.</a></h3>
+The form of an ENTRY statement is:
+<pre>
+ENTRY <i>en</i> [( [<i>d</i> [,<i>d</i>]...] )]</pre>
+
+<ul>
+<li> where: 
+<i>en</i>
+is the symbolic name of an entry in a function
+or subroutine subprogram and is called an 
+<i>entry name.</i>
+If the ENTRY statement appears in a
+subroutine subprogram, 
+<i>en</i>
+ is a 
+<i>subroutine name.</i>
+If the ENTRY statement appears in a function
+subprogram, 
+<i>en</i>
+ is an
+<i>external function name.</i>
+</ul>
+<ul>
+<li> 
+<i>d</i>
+is a variable name, array name, or dummy	
+procedure name, or is an asterisk.
+
+<i>d</i>
+  is a dummy argument.
+An asterisk
+is permitted in an ENTRY statement only in a
+subroutine subprogram.
+</ul>
+<p>Note that if there are no dummy arguments,
+either of the forms 
+<i>en</i>
+ or 
+<i>en</i>()
+ may be used in
+the ENTRY statement.
+A function that is specified by either form must be
+referenced by the form 
+<i>en</i>()
+ (
+<a href="#sh-15.2.1">15.2.1</a>).  A subroutine that
+is specified by either form may be referenced by
+a CALL statement of the form CALL 
+<i>en</i>
+ or CALL 
+<i>en</i>()
+.
+<p>The entry name 
+<i>en</i>
+ in a function subprogram may appear
+in a type-statement.
+<p><h3><a name="sh-15.7.2">15.7.2 Referencing External Procedure by Entry Name.</a></h3>
+An
+entry name in an ENTRY statement in a function subprogram
+identifies an external function within the executable
+program and may be referenced as an external function (
+<a href="#sh-15.5.2">15.5.2</a>).
+An entry name in an ENTRY statement in a
+subroutine subprogram identifies a subroutine within the
+executable program and may be referenced as a subroutine (
+<a href="#sh-15.6.2">15.6.2</a>).
+<p>When an entry name 
+<i>en</i>
+ is used to reference a procedure,
+execution of the procedure begins with the first executable
+statement that follows the ENTRY statement whose entry
+name is 
+<i>en</i>
+.
+<p>An entry name is available for reference in any program
+unit of an executable program, except in the program unit
+that contains the entry name in an ENTRY statement.
+<p>The order, number, type, and names of the dummy arguments
+in an ENTRY statement may be different from the order,
+number, type, and names of the dummy arguments in the
+FUNCTION statement or SUBROUTINE statement and other ENTRY
+statements in the same subprogram.
+However, each reference
+to a function or subroutine must use an actual
+argument list that agrees in order, number, and type with
+the dummy argument list in the corresponding FUNCTION,
+SUBROUTINE, or ENTRY statement.
+The use of a subroutine
+name or an alternate return specifier
+as an actual argument is an exception to the rule
+requiring agreement of type.
+<p><h3><a name="sh-15.7.3">15.7.3 Entry Association.</a></h3>
+Within a function subprogram, all variables whose
+names are also the names of entries
+are associated with each other and with the variable, if any,
+whose name is also the name of the function subprogram (
+<a href="rjcnf0001-sh-17.html#sh-17.1.3">17.1.3</a>).
+Therefore, any such variable that becomes defined causes
+all associated variables of the same type to become
+defined and all associated variables of different type
+to become undefined.
+Such variables are not required
+to be of the same type unless the type is character, but
+the variable whose name is used to reference the function
+must be in a defined state when a RETURN or END
+statement is executed in the subprogram.
+An associated variable of a different type must
+not become defined during the execution
+of the function reference.
+<p><h3><a name="sh-15.7.4">15.7.4 ENTRY Statement Restrictions.</a></h3>
+Within a subprogram, an entry name must not appear both
+as an entry name in an ENTRY statement and as a dummy
+argument in a FUNCTION, SUBROUTINE, or ENTRY statement and
+must not appear in an EXTERNAL statement.
+<p>In a function subprogram, a variable name that is the same
+as an entry name must not appear in any statement that
+precedes the appearance of the entry name in an ENTRY
+statement, except in a type-statement.
+<p>If an entry name in a function subprogram is of type character,
+each entry name and the name of the function subprogram must be
+of type character.
+If the name of the function subprogram or any entry
+in the subprogram has a length of (*) declared,
+all such entities must have a length of (*) declared;
+otherwise, all such entities must have a length specification
+of the same integer value.
+<p>In a subprogram, a name that appears as a dummy argument
+in an ENTRY statement must not appear in an executable
+statement preceding that ENTRY statement unless it also
+appears in a FUNCTION, SUBROUTINE, or ENTRY statement that
+precedes the executable statement.
+<p>In a subprogram, a
+name that appears as a dummy argument in an ENTRY statement
+must not appear in the expression of a statement function
+statement unless the name is also a dummy argument of the
+statement function, appears in a FUNCTION or SUBROUTINE
+statement, or appears in an ENTRY statement that precedes
+the statement function statement.
+<p>If a dummy
+argument appears
+in an executable statement,
+the execution of the
+executable statement is permitted during the execution of
+a reference to the function or subroutine only if the
+dummy argument appears in the dummy argument list of the procedure
+name referenced.
+Note that the association of dummy arguments with actual arguments
+is not retained between references to a function or subroutine.
+<p><h2><a name="sh-15.8">15.8 RETURN Statement</a></h2>
+A RETURN statement causes return of control to the
+referencing program unit and may appear only in a function
+subprogram or subroutine subprogram.
+<p><h3><a name="sh-15.8.1">15.8.1 Form of a RETURN Statement.</a></h3>
+The form of a RETURN statement in a function subprogram
+is:
+<pre>
+RETURN</pre>
+
+The form of a RETURN statement in a subroutine subprogram
+is:
+<pre>
+RETURN [<i>e</i>]</pre>
+
+where 
+<i>e</i>
+ is an integer expression.
+<p><h3><a name="sh-15.8.2">15.8.2 Execution of a RETURN Statement.</a></h3>
+Execution of a RETURN statement terminates the reference
+of a function or subroutine subprogram.
+Such subprograms
+may contain more than one RETURN statement; however, a
+subprogram need not contain a RETURN statement.
+Execution
+of an END statement in a function or subroutine subprogram
+has the same effect as executing a RETURN statement in the
+subprogram.
+<p>In the execution of an executable program, a function or
+subroutine subprogram must not be referenced a second time
+without the prior execution of a RETURN or END statement
+in that procedure.
+<p>Execution of a RETURN statement in a function subprogram
+causes return of control to the currently referencing program
+unit.
+The value of the function (
+<a href="#sh-15.5">15.5</a>) must be defined
+and is available to the referencing program unit.
+<p>Execution of a RETURN statement in a subroutine subprogram
+causes return of control to the currently referencing program
+unit.
+Return of control to the referencing program unit
+completes execution of the CALL statement.
+<p>Execution of a RETURN statement terminates the association
+between the dummy arguments of the external procedure
+in the subprogram and the
+current actual arguments.
+<p><h3><a name="sh-15.8.3">15.8.3 Alternate Return.</a></h3>
+If 
+<i>e</i>
+ is not specified in a RETURN statement, or if the
+value of 
+<i>e</i>
+ is less than one or greater than
+the number of asterisks in the SUBROUTINE or subroutine
+ENTRY statement that specifies the currently referenced
+name, control returns to the CALL statement that initiated
+the subprogram reference and this completes the execution
+of the CALL statement.
+<p>If 
+1 &lt;= <i>e</i> &lt;= <i>n</i>
+, where 
+<i>n</i>
+ is the number of asterisks in the
+SUBROUTINE or subroutine ENTRY statement that specifies
+the currently referenced name,
+the value of 
+<i>e</i>
+ identifies the 
+<i>e</i>th
+ asterisk in
+the dummy argument list.
+Control is returned to the
+statement identified by the alternate return specifier
+in the CALL statement that is associated with the
+
+<i>e</i>th
+ asterisk in the dummy argument list of the
+currently referenced name.
+This completes the execution of the CALL statement.
+<p><h3><a name="sh-15.8.4">15.8.4 Definition Status.</a></h3>
+Execution of a RETURN statement (or END statement) within
+a subprogram causes all entities within the subprogram to
+become undefined, except for the following:
+<ol>
+<li>Entities specified by SAVE statements
+<li>Entities in blank common
+<li>Initially defined entities that have neither been
+redefined or become undefined
+<li>Entities in a named common block that appears in the
+subprogram and appears in at least one other program
+unit that is referencing, either directly or
+indirectly, the subprogram
+</ol>
+<p>Note that if a named common block appears in the main
+program, the entities in the named common block do not
+become undefined at the execution of any RETURN statement
+in the executable program.
+<p><h2><a name="sh-15.9">15.9 Arguments and Common Blocks</a></h2>
+Arguments and common blocks provide means of
+communication between the referencing program unit and the
+referenced procedure.
+<p>Data may be communicated to a statement function or
+intrinsic function by an argument list.
+Data may be
+communicated to and from an external procedure by an
+argument list or common blocks.
+Procedure names may be
+communicated to an external procedure only by an argument
+list.
+<p>A dummy argument appears in the argument list of a
+procedure.
+An actual argument appears in the argument
+list of a procedure reference.
+<p>The number of actual arguments must be the same as the
+number of dummy arguments in the  procedure referenced.
+<p><h3><a name="sh-15.9.1">15.9.1 Dummy Arguments.</a></h3>
+Statement functions, function subprograms, and subroutine
+subprograms use dummy arguments to indicate the types of
+actual arguments and whether each argument is a single
+value, array of values, procedure, or statement label.
+Note that a statement function dummy argument may be only
+a variable.
+<p>Each dummy argument is classified as a variable, array,
+dummy procedure, or asterisk. Dummy argument names may appear wherever
+an actual name of the same class (Section 
+<a href="rjcnf0001-sh-18.html#sh-18">18</a>) and type may
+appear, except where they are explicitly prohibited.
+<p>Dummy argument names of type integer may appear in
+adjustable dimensions in dummy array declarators (
+<a href="rjcnf0001-sh-5.html#sh-5.5.1">5.5.1</a>).
+Dummy argument names must not appear in EQUIVALENCE, DATA,
+PARAMETER, SAVE, INTRINSIC, or COMMON statements, except
+as common block names.
+A dummy argument name must not be
+the same as the procedure name appearing in a FUNCTION,
+SUBROUTINE, ENTRY, or statement function statement in the
+same program unit.
+<p><h3><a name="sh-15.9.2">15.9.2 Actual Arguments.</a></h3>
+Actual arguments specify the entities that are to be
+associated with the dummy arguments for a particular
+reference of a subroutine or function.
+An actual argument
+must not be the name of a statement function in the program
+unit containing the reference.
+Actual arguments may be constants, symbolic names of constants,
+function references, expressions involving operators,
+and expressions enclosed in parentheses if and only if the
+associated dummy argument is a variable that is not defined
+during execution of the referenced external procedure.
+<p>The type of each actual argument must agree with the type
+of its associated dummy argument, except when the actual
+argument is a subroutine name (
+<a href="#sh-15.9.3.4">15.9.3.4</a>)
+or an alternate return specifier (
+<a href="#sh-15.6.2.3">15.6.2.3</a>).
+<p><h3><a name="sh-15.9.3">15.9.3 Association of Dummy and Actual Arguments.</a></h3>
+At the execution of a function or subroutine reference,
+an association is established between the corresponding
+dummy and actual arguments.
+The first dummy argument
+becomes associated with the first actual argument, the
+second dummy argument becomes associated with the second
+actual argument, etc.
+<p>All appearances within a function or subroutine subprogram of a dummy
+argument whose name appears in the dummy argument list of
+the procedure name referenced become associated with the
+actual argument when a reference to the function or
+subroutine is executed.
+<p>A valid association occurs only if the type of the actual
+argument is the same as the type of the corresponding dummy
+argument.
+A subroutine name has no type and must be associated
+with a dummy procedure name.
+An alternate return specifier has no type and
+must be associated with an asterisk.
+<p>If an actual argument is an expression, it is evaluated
+just before the association of arguments takes place.
+<p>If an actual argument is an array element name, its
+subscript is evaluated just before the association of
+arguments takes place.
+Note that the subscript value
+remains constant as long as that association of arguments
+persists, even if the subscript contains variables that
+are redefined during the association.
+<p>If an actual argument is a character substring name,
+its substring expressions are evaluated just before the
+association of arguments takes place.
+Note that the value of each of the substring expressions
+remains constant as long as that association of
+arguments persists, even if the substring expression
+contains variables that are redefined
+during the association.
+<p>If an actual argument is an external procedure name, the
+procedure must be available at the time a reference to it
+is executed.
+<p>If an actual argument becomes associated with a dummy
+argument that appears in an adjustable dimension (
+<a href="rjcnf0001-sh-5.html#sh-5.5.1">5.5.1</a>),
+the actual argument must be defined with an integer value
+at the time the procedure is referenced.
+<p>A dummy argument is undefined if it is not currently
+associated with an actual argument.
+An adjustable array
+is undefined if the dummy argument array is not currently
+associated with an actual argument array or if any variable
+appearing in the adjustable array declarator is not
+currently associated with an actual argument and is not in
+a common block.
+<p>Argument association may be carried through more than one
+level of procedure reference.
+A valid association exists
+at the last level only if a valid association exists at
+all intermediate levels.
+Argument association within a
+program unit terminates at the execution of a RETURN or
+END statement in the program unit.
+Note that there is no
+retention of argument association between one reference
+of a subprogram and the next reference of the subprogram.
+<p><h4><a name="sh-15.9.3.1">15.9.3.1 Length of Character Dummy and Actual Arguments.</a></h4>
+If a dummy argument is of type character, the associated
+actual argument must be of type character and the length
+of the dummy argument must be less than or equal to the
+length of the actual argument.
+If the length 
+<i>len</i>
+ of a
+dummy argument of type character is less than the length
+of an associated actual argument, the leftmost 
+<i>len</i>
+
+characters of the actual argument are associated with the
+dummy argument.
+<p>If a dummy argument of type character is an array name,
+the restriction on length is for the entire array and not
+for each array element.
+The length of an array element in the dummy
+argument array may be different from the length of
+an array element in an associated actual argument
+array, array element, or array element substring,
+but the dummy argument array must not extend beyond the
+end of the associated actual argument array.
+<p>If an actual
+argument is a character substring, the length of the actual
+argument is the length of the substring.
+If an actual argument is the concatenation of two
+or more operands, its length is the sum of the lengths of the
+operands.
+<p><h4><a name="sh-15.9.3.2">15.9.3.2 Variables as Dummy Arguments.</a></h4>
+A dummy argument that is a variable may be associated with
+an actual argument that is a variable, array element, substring, or
+expression.
+<p>If the actual argument is a variable name, array element
+name, or substring name, the associated dummy
+argument may be defined or redefined within the subprogram.
+If the actual argument is a constant, a symbolic name of
+a constant, a function reference, an expression involving
+operators, or an expression enclosed in parentheses, the
+associated dummy argument must not be redefined within the
+subprogram.
+<p><h4><a name="sh-15.9.3.3">15.9.3.3 Arrays as Dummy Arguments.</a></h4>
+Within a program unit, the array declarator given for an
+array provides all array declarator information needed for
+the array in an execution of the program unit.
+The number
+and size of dimensions in an actual argument array
+declarator may be different from the number and size of
+the dimensions in an associated dummy argument array
+declarator.
+<p>A dummy argument that is an array may be associated with
+an actual argument that is an array, array
+element, or array element substring.
+<p>If the actual argument is a noncharacter array name, the
+size of the dummy argument array must not exceed the size
+of the actual argument array, and each actual argument
+array element becomes associated with the dummy argument
+array element that has the same subscript value as the
+actual argument array element.
+Note that association by
+array elements exists for character arrays if there is
+agreement in length between the actual argument and the
+dummy argument array elements; if the lengths do not agree,
+the dummy and actual argument array elements do not consist
+of the same characters, but an association still exists.
+<p>If the actual argument is a noncharacter array element
+name, the size of the dummy argument array must not exceed
+the size of the actual argument array plus one minus the
+subscript value of the array element.
+When an actual
+argument is a noncharacter array element name with a
+subscript value of 
+<i>as</i>
+, the dummy argument array element
+with a subscript value of 
+<i>ds</i>
+ becomes associated with the
+actual argument array element that has a subscript value
+of 
+<i>as</i> + <i>ds</i> - 1
+ (Table 1, 
+<a href="rjcnf0001-sh-5.html#sh-5.4.3">5.4.3</a>).
+<p>If the actual argument is a character array name,
+character array element name, or character array
+element substring name and begins
+at character storage unit 
+<i>acu</i>
+ of an array,
+character storage unit 
+<i>dcu</i>
+ of an associated dummy
+argument array becomes associated with character
+storage unit 
+<i>acu</i> + <i>dcu</i> - 1
+
+of the actual argument array.
+<p><h4><a name="sh-15.9.3.4">15.9.3.4 Procedures as Dummy Arguments.</a></h4>
+A dummy argument that is a dummy procedure may be associated
+only with an actual argument that is an intrinsic function,
+external function, subroutine, or another dummy procedure.
+<p>If a dummy argument is used as if it were an external
+function, the associated actual argument must be an
+intrinsic function, external function, or dummy procedure.
+A dummy argument that becomes associated with an intrinsic
+function never has any automatic typing property, even if
+the dummy argument name appears in Table 5 (
+<a href="#sh-15.10">15.10</a>).
+Therefore,
+the type of the dummy argument must agree with the type
+of the result of all specific actual arguments that become
+associated with the dummy argument.
+If a dummy argument
+name is used as if it were an external function and that
+name also appears in Table 5, the intrinsic function
+corresponding to the dummy argument name is not available
+for referencing within the subprogram.
+<p>A dummy argument that is used as a procedure name in a
+function reference and is associated with an intrinsic
+function must have arguments that agree in order, number, and type
+with those specified in Table 5 for the intrinsic function.
+<p>If a dummy argument appears in a type-statement and an
+EXTERNAL statement, the actual argument must be the name
+of an intrinsic function, external function, or dummy procedure.
+<p>If the dummy argument is referenced as a subroutine, the
+actual argument must be the name of a subroutine or dummy
+procedure and must not appear in a type-statement or be
+referenced as a function.
+<p>Note that it may not be possible to determine in a given
+program unit whether a dummy procedure is associated with
+a function or a subroutine.
+If a procedure name appears
+only in a dummy argument list, an EXTERNAL statement, and
+an actual argument list, it is not possible to determine
+whether the symbolic name becomes associated with a
+function or subroutine by examination of the subprogram
+alone.
+<p><h4><a name="sh-15.9.3.5">15.9.3.5 Asterisks as Dummy Arguments.</a></h4>
+A dummy argument that is an asterisk may appear only
+in the dummy argument list of a SUBROUTINE statement
+or an ENTRY statement in a subroutine subprogram.
+<p>A dummy argument that is an asterisk may be
+associated only with an actual argument that is
+an alternate return specifier in the CALL statement
+that identifies the current referencing name.
+If a dummy argument is an asterisk,
+the corresponding actual argument must be an
+alternate return specifier.
+<p><h4><a name="sh-15.9.3.6">15.9.3.6 Restrictions on Association of Entities.</a></h4>
+If a subprogram reference causes a dummy argument in the
+referenced subprogram to become associated with another
+dummy argument in the referenced subprogram, neither dummy
+argument may become defined during execution of that
+subprogram.
+For example, if a subroutine is headed by
+<pre>
+SUBROUTINE XYZ (A,B)</pre>
+
+and is referenced by
+<pre>
+CALL XYZ (C,C)</pre>
+
+the[n the dummy arguments A and B each become associated
+with the same actual argument C and therefore with each
+other.
+Neither A nor B may become
+defined during this execution of subroutine XYZ or by any
+procedures referenced by XYZ.
+<p>If a subprogram reference causes a dummy argument to become
+associated with an entity in a common block in the
+referenced subprogram or in a subprogram referenced
+by the referenced subprogram,
+neither the dummy argument nor the
+entity in the common block may become defined within the
+subprogram or within a subprogram referenced
+by the referenced subprogram.
+For example, if a subroutine contains the
+statements:
+<ol>
+<li> SUBROUTINE XYZ (A)
+<li> COMMON C
+</ol>
+<p>and is referenced by a program unit that contains the
+statements:
+<ol>
+<li> COMMON B
+<li> CALL XYZ (B)
+</ol>
+<p>then the dummy argument A becomes associated with the
+actual argument B, which is associated with C, which is
+in a common block.
+Neither A nor C may become
+defined during execution of the subroutine
+XYZ or by any procedures referenced by XYZ.
+<p><h3><a name="sh-15.9.4">15.9.4 Common Blocks.</a></h3>
+A common block provides a means of communication between
+external procedures or between a main program and an
+external procedure.
+The variables and arrays in a common
+block may be defined and referenced in all subprograms
+that contain a declaration of that common block.
+Because
+association is by storage rather than by name, the names
+of the variables and arrays may be different in the
+different subprograms.
+A reference to a datum in a common
+block is proper if the datum is in a defined state of the
+same type as the type of the name used to reference the
+datum.
+However, an integer variable that has been assigned
+a statement label must not be referenced in any program
+unit other than the one in which it was assigned (
+<a href="rjcnf0001-sh-10.html#sh-10.3">10.3</a>).
+<p>No difference in data type is permitted between the defined
+state and the type of the reference, except that either part
+of a complex datum may be referenced also as a real datum.
+<p>In a subprogram that has declared a named common block,
+the entities in the block remain defined after the execution
+of a RETURN or END statement if a common block of the same
+name has been declared in any program unit that is currently
+referencing the subprogram, either directly or indirectly.
+Otherwise, such entities become undefined at the execution
+of a RETURN or END statement, except for those that are
+specified by SAVE statements and those that were initially
+defined by DATA statements and have neither been redefined
+nor become undefined.
+<p>Execution of a RETURN or END statement does not cause
+entities in blank common or in any named common block that
+appears in the main program to become undefined.
+<p>Common blocks may be used also to reduce the total number
+of storage units required for an executable program by
+causing two or more subprograms to share some of the same
+storage units.
+This sharing of storage is permitted if
+the rules for defining and referencing data are not
+violated.
+<p>
+<p><h2><a name="sh-15.10">15.10 Table of Intrinsic Functions</a></h2>
+
+<p>
+<p>
+<p>
+<p>
+<p>Notes for Table 5:
+<ol>
+<li><a name="note1">For </a>
+<i>a</i>
+ of type integer, 
+int(<i>a</i>)=<i>a</i>
+.
+For 
+<i>a</i>
+ of type real or double precision, there are two
+cases: if
+
+|<i>a</i>| &lt; 1, int(<i>a</i>)=0; if |<i>a</i>| &gt;= 1, int(<i>a</i>)
+ is the integer
+whose magnitude is the largest integer that does
+not exceed the magnitude of 
+<i>a</i>
+ and whose sign is the
+same as the sign of 
+<i>a</i>
+.
+For example,
+<pre>
+int(-3.7) = -3</pre>
+
+For 
+<i>a</i>
+ of type complex, 
+int(<i>a</i>)
+ is the value obtained
+by applying the above rule to the real part of 
+<i>a</i>
+.
+<p>For 
+<i>a</i>
+ of type real, 
+IFIX(<i>a</i>)
+ is the 
+same as 
+INT(<i>a</i>)
+.
+<li><a name="note2">For </a>
+<i>a</i>
+ of type real, 
+REAL(<i>a</i>)
+ is 
+<i>a</i>
+.
+For 
+<i>a</i>
+ of type
+integer or double precision, 
+REAL(<i>a</i>)
+ is as much
+precision of the significant part of 
+<i>a</i>
+ as a real
+datum can contain.
+For 
+<i>a</i>
+ of type complex, 
+REAL(<i>a</i>)
+
+is the real part of 
+<i>a</i>
+.
+<p>For 
+<i>a</i>
+ of type integer, 
+FLOAT(<i>a</i>)
+ is the same as
+
+REAL(<i>a</i>)
+.
+<li><a name="note3">For </a>
+<i>a</i>
+ of type double precision, 
+DBLE(<i>a</i>)
+ is 
+<i>a</i>
+.
+For
+
+<i>a</i>
+ of type integer or real, 
+DBLE(<i>a</i>)
+ is as much
+precision of the significant part of 
+<i>a</i>
+ as a double
+precision datum can contain.
+For 
+<i>a</i>
+ of type complex,
+
+DBLE(<i>a</i>)
+ is as much precision of the significant
+part of the real part of 
+<i>a</i>
+ as a double precision
+datum can contain.
+<li><a name="note4">CMPLX</a> may have one
+or two arguments.
+If there is one argument, it may
+be of  type  integer,  real, double precision, or
+complex.
+If there are two arguments, they must
+both be of the same type and may be of type integer,
+real, or double precision.
+<p>For 
+<i>a</i>
+ of type complex, 
+CMPLX(<i>a</i>)
+ is 
+<i>a</i>
+.
+For 
+<i>a</i>
+ of
+type integer, real, or double precision, 
+CMPLX(<i>a</i>)
+
+is the complex value whose real part is 
+REAL(<i>a</i>)
+ and
+whose imaginary part is zero.
+<p>
+CMPLX(<i>a</i> ,<i>a</i> )
+                               1  2
+ is the complex value whose real part
+is 
+REAL(<i>a</i> )
+                                1
+ and whose imaginary part is 
+REAL(<i>a</i> )
+                                2
+.
+<li><a name="note5">ICHAR</a> provides a means of
+converting from a character to an integer, based on
+the position of the character in the processor collating
+sequence.
+The first character in the collating sequence corresponds
+to position 0 and the last to position 
+<i>n</i>-1
+, where 
+<i>n</i>
+ is the
+number of characters in the collating sequence.
+<p>The value of 
+ICHAR(<i>a</i>)
+ is an integer in the range:
+
+0 &lt;= ICHAR(<i>a</i>) &lt;= <i>n</i>-1
+, where 
+<i>a</i>
+
+is an argument of type character of
+length one.
+The value of 
+<i>a</i>
+ must be a character capable of representation
+in the processor.
+The position of that character in the collating sequence is the value of
+ICHAR.
+<p>For any characters 
+<i>c</i>
+                              1
+ and 
+<i>c</i>
+                              2
+ capable of
+representation in the processor,
+
+(<i>c</i>  .LE <i>c</i> )
+                          1      2
+ is true if and only if 
+(ICHAR(<i>c</i> ) .LE. ICHAR(<i>c</i> ))
+                         1              2
+
+is true, and
+
+(<i>c</i>  .EQ. <i>c</i> )
+                          1       2
+ is true if and only if 
+(ICHAR(<i>c</i> ) .EQ. ICHAR(<i>c</i> ))
+                         1              2
+
+is true.
+<p>
+CHAR(<i>i</i>)
+ returns the character in the 
+<i>i</i>th
+ position of
+the processor collating sequence.
+The value is of type character of length one.
+
+<i>i</i>
+ must be an integer expression whose value
+must be in the range 
+0 &lt;= <i>i</i> &lt;= <i>n</i>-1
+.
+<ul>
+<li> 
+ICHAR(CHAR(<i>i</i>)) = <i>i</i>
+for 
+0 &lt;= <i>i</i> &lt;=<i>n</i>-1.
+
+<li> 
+CHAR(ICHAR(<i>c</i>)) = <i>c</i>
+ for any character 
+<i>c</i>
+ capable of
+representation in the processor.
+</ul>
+<li><a name="note6">A complex value</a> is expressed as an ordered pair of
+reals, 
+(<i>ar</i>,<i>ai</i>)
+, where 
+<i>ar</i>
+ is the real part and 
+<i>ai</i>
+
+is the imaginary part.
+<li><a name="note7">All</a> angles are expressed in radians.
+<li><a name="note8">The result</a> of a function of type complex is the principal
+value.
+<li><a name="note9">All arguments</a> in an intrinsic function reference
+must be of the same type.
+<li><a name="note10">
+INDEX(<i>a</i> ,<i>a</i> )</a>
+                               1  2
+ returns an integer value indicating
+the starting position within the character string 
+<i>a</i>
+                              1
+
+of a substring identical to string 
+<i>a</i>
+                              2
+.
+If 
+<i>a</i>
+                              2
+ occurs more than once in 
+<i>a</i>
+                              1
+, the starting position
+of the first occurrence is returned.
+<p>If 
+<i>a</i>
+                              2
+ does not occur in 
+<i>a</i>
+                              1
+, the value zero is returned.
+Note that zero is returned if 
+LEN(<i>a</i> ) &lt; LEN(<i>a</i> )
+                          1         2
+.
+<li><a name="note11">The value</a> of the argument of the LEN function
+need not be defined at the time the function reference
+is executed.
+<li><a name="note12">
+LGE(<i>a</i> ,<i>a</i> )</a>
+                              1  2
+ returns the value true if 
+<i>a</i> =<i>a</i>
+                            1  2
+ or if
+
+<i>a</i>
+                              1
+ follows 
+<i>a</i>
+                              2
+ in the collating sequence described in
+American National Standard Code for Information Interchange,
+ANSI X3.4-1977 (ASCII), and otherwise returns the value false.
+<p>
+LGT(<i>a</i> ,<i>a</i> )
+                              1  2
+ returns the value true if
+
+<i>a</i>
+                              1
+ follows 
+<i>a</i>
+                              2
+ in the collating sequence described in
+ANSI X3.4-1977 (ASCII), and otherwise returns the value false.
+<p>
+LLE(<i>a</i> ,<i>a</i> )
+                              1  2
+ returns the value true if 
+<i>a</i> =<i>a</i>
+                            1  2
+ or if
+
+<i>a</i>
+                              1
+ precedes 
+<i>a</i>
+                              2
+ in the collating sequence described in
+ANSI X3.4-1977 (ASCII), and otherwise returns the value false.
+<p>
+LLT(<i>a</i> ,<i>a</i> )
+                              1  2
+ returns the value true if
+
+<i>a</i>
+                              1
+ precedes 
+<i>a</i>
+                              2
+ in the collating sequence described in
+ANSI X3.4-1977 (ASCII), and otherwise returns the value false.
+<p>If the operands for LGE, LGT, LLE, and LLT are of unequal
+length, the shorter operand is considered as if it were
+extended on the right with blanks to the length of the
+longer operand.
+<p>If either of the character entities being compared contains
+a character that is not in the ASCII character set,
+the result is processor-dependent.
+</ol>
+<p><h3><a name="sh-15.10.1">15.10.1 Restrictions on Range of Arguments and Results.</a></h3>
+Restrictions on the range of arguments and results for
+intrinsic functions when referenced by their specific names
+are as follows:
+<ol>
+<li>Remaindering: The result for MOD, AMOD, and DMOD
+is undefined when the value of the second argument
+is zero.
+<li>Transfer of Sign: If the value of the first argument
+of ISIGN, SIGN, or DSIGN is zero, the result is
+zero, which is neither positive or negative (
+<a href="rjcnf0001-sh-4.html#sh-4.1.3">4.1.3</a>).
+<li>Square Root: The value of the argument of SQRT and
+DSQRT must be greater than or equal to zero.
+The
+result of CSQRT is the principal value with the
+real part greater than or equal to zero.
+When the
+real part of the result is zero, the imaginary part
+is greater than or equal to zero.
+<li>Logarithms: The value of the argument of ALOG, DLOG,
+ALOG10, and DLOG10 must be greater than zero.
+The
+value of the argument of CLOG must not be (0.,0.).
+The range of the imaginary part of the result of
+CLOG is: 
+-pi &lt; imaginary part &lt;= pi
+.  The imaginary
+part of the result is 
+pi
+ only when the real part of
+the argument is less than zero and the imaginary
+part of the argument is zero.
+<li>Sine, Cosine, and Tangent: The absolute value of
+the argument of SIN, DSIN, COS, DCOS, TAN, and DTAN
+is not restricted to be less than 
+2pi
+.
+<li>Arcsine: The absolute value of the argument of ASIN
+and DASIN must be less than or equal to one.
+ The
+range of the result is: 
+-pi/2 &lt;= result &lt;= pi/2
+.
+<li>Arccosine: The absolute value of the argument of
+ACOS and DACOS must be less than or equal to one.
+The range of the result is: 
+0 &lt;= result &lt;=pi
+.
+<li>Arctangent: The range of the result for ATAN and
+DATAN is: 
+-pi/2 &lt;= result &lt;= pi/2
+.
+If the value of the
+first argument of ATAN2 or DATAN2 is positive, the
+result is positive. If the value of the first
+argument is zero, the result is zero if the second
+argument is positive and 
+pi
+ if the second argument
+is negative. If the value of the first argument is
+negative, the result is negative.
+If the value of the second argument is zero,
+the absolute value of the result is 
+pi/2
+.
+The arguments must not both have the value zero.
+The range of the
+result for ATAN2 and DATAN2 is: 
+-pi &lt; result &lt;= pi
+.
+</ol>
+<p>The above restrictions on arguments and results also apply
+to the intrinsic functions when referenced by their generic
+names.
+<dl><dd><br>
+<i>Table</i>_<i>5</i></dl><br>
+
+Intrinsic Functions
+<pre>
+_________________________________________________________________________________________________
+|                  |                   |           |         |          |                       |
+|                  |                   |  Number of|  Generic|  Specific|         Type of       |
+<i>|Intrinsic</i>_<i>Function|</i>__<i>Definition</i>_______<i>|</i>__<i>Arguments|</i>___<i>Name</i>__<i>|</i>__<i>Name</i>____<i>|</i>__<i>Argument</i>_<i>|</i>__<i>Function</i>_<i>|</i>
+|                  |                   |           |         |          |           |           |
+|Type Conversion   |  Conversion       |      1    |  INT    |  -       |  Integer  |  Integer  |
+|                  |  to Integer       |           |         |  INT     |  Real     |  Integer  |
+|                  |  int(<i>a</i>)           |           |         |  IFIX    |  Real     |  Integer  |
+|                  |  See <a href="#note1">Note 1</a>       |           |         |  IDINT   |  Double   |  Integer  |
+|                  |                   |           |         |  -       |  Complex  |  Integer  |
+|                  | __________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>___________<i>|</i>
+|                  |                   |           |         |          |           |           |
+|                  |  Conversion       |      1    |  REAL   |  REAL    |  Integer  |  Real     |
+|                  |  to Real          |           |         |  FLOAT   |  Integer  |  Real     |
+|                  |  See <a href="#note2">Note 2</a>       |           |         |  -       |  Real     |  Real     |
+|                  |                   |           |         |  SNGL    |  Double   |  Real     |
+|                  | __________________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>-</i>_______<i>|</i>__<i>Complex</i>__<i>|</i>__<i>Real</i>_____<i>|</i>
+|                  |                   |           |         |          |           |           |
+|                  |  Conversion       |      1    |  DBLE   |  -       |  Integer  |  Double   |
+|                  |  to Double        |           |         |  -       |  Real     |  Double   |
+|                  |  See <a href="#note3">Note 3</a>       |           |         |  -       |  Double   |  Double   |
+|                  |                   |           |         |  -       |  Complex  |  Double   |
+|                  | __________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>___________<i>|</i>
+|                  |                   |           |         |          |           |           |
+|                  |  Conversion       |   1 or 2  |  CMPLX  |  -       |  Integer  |  Complex  |
+|                  |  to Complex       |           |         |  -       |  Real     |  Complex  |
+|                  |  See <a href="#note4">Note 4</a>       |           |         |  -       |  Double   |  Complex  |
+|                  | __________________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>-</i>_______<i>|</i>__<i>Complex</i>__<i>|</i>__<i>Complex</i>__<i>|</i>
+|                  |                   |           |         |          |           |           |
+|                  |  Conversion       |      1    |         |  ICHAR   |  Character|  Integer  |
+|                  |  to Integer       |           |         |          |           |           |
+|                  |  See <a href="#note5">Note 5</a>       |           |         |          |           |           |
+|                  | __________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>___________<i>|</i>
+|                  |                   |           |         |          |           |           |
+|                  |  Conversion       |      1    |         |  CHAR    |  Integer  |  Character|
+|                  |  to Character     |           |         |          |           |           |
+<i>|</i>__________________<i>|</i>__<i>See</i>_<i>Note</i>_<i>5</i>_______<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>___________<i>|</i>
+|                  |                   |           |         |          |           |           |
+|Truncation        |  int(<i>a</i>)           |      1    |  AINT   |  AINT    |  Real     |  Real     |
+|                  |  See <a href="#note1">Note 1</a>       |           |         |  DINT    |  Double   |  Double   |
+<i>|</i>__________________<i>|</i>___________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>___________<i>|</i>
+|                  |                   |           |         |          |           |           |
+|Nearest Whole     |  int(<i>a</i>+.5) if <i>a</i>&gt;=0|      1    |  ANINT  |  ANINT   |  Real     |  Real     |
+<i>|</i>__<i>Number</i>__________<i>|</i>__<i>int(</i><i>a</i><i>-.5)</i>_<i>if</i>_<i>a</i><i>&lt;</i>__<i>|</i>___________<i>|</i>_________<i>|</i>__<i>DNINT</i>___<i>|</i>__<i>Double</i>___<i>|</i>__<i>Double</i>___<i>|</i>
+|                  |                   |           |         |          |           |           |
+|Nearest Integer   |  int(<i>a</i>+.5) if <i>a</i>&gt;=0|      1    |  NINT   |  NINT    |  Real     |  Integer  |
+|                  |  int(<i>a</i>-.5) if <i>a</i>&lt;0 |           |         |  IDNINT  |  Double   |  Integer  |
+<i>|</i>__________________<i>|</i>___________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>___________<i>|</i>
+|                  |                   |           |         |          |           |           |
+|Absolute Value    |  |<i>a</i>|              |      1    |  ABS    |  IABS    |  Integer  |  Integer  |
+|                  |  See <a href="#note6">Note 6</a>       |           |         |  ABS     |  Real     |  Real     |
+|                  |     2     1/2     |           |         |  DABS    |  Double   |  Double   |
+<i><b>|</b></i>__________________<i><b>|</b></i>__<i>(</i><i>ar</i>_<i>+</i><i>ai</i>_<i>)</i>________<i><b>|</b></i>___________<i><b>|</b></i>_________<i><b>|</b></i>__<i>CABS</i>____<i><b>|</b></i>__<i>Complex</i>__<i>|</i>__<i>Real</i>_____<i><b>|</b></i>
+</pre>
+
+<p>
+<dl><dd>Table 5 (continued)<br>
+Intrinsic Functions</dl><br>
+
+<pre>
+________________________________________________________________________________________________
+|                   |                  |           |         |          |                      |
+|                   |                  |  Number of|  Generic|  Specific|        Type of       |
+<i>|Intrinsic</i>_<i>Function</i>_<i>|</i>__<i>Definition</i>______<i>|</i>__<i>Arguments|</i>___<i>Name</i>__<i>|</i>__<i>Name</i>____<i>|</i>__<i>Argument</i>_<i>|</i>__<i>Function|</i>
+|                   |                  |           |         |          |           |          |
+|Remaindering       |  <i>a</i> -int(<i>a</i> /<i>a</i> )*<i>a</i> |      2    |  MOD    |  MOD     |  Integer  |  Integer |
+|                   |   1      1  2   2|           |         |  AMOD    |  Real     |  Real    |
+|                   |  See <a href="#note1">Note 1</a>      |           |         |  DMOD    |  Double   |  Double  |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Transfer of Sign   |  |<i>a</i>1|  if <i>a</i>2 &gt;= 0|      2    |  SIGN   |  ISIGN   |  Integer  |  Integer |
+|                   |  -|<i>a</i>1| if <i>a</i>2 &lt; 0 |           |         |  SIGN    |  Real     |  Real    |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>DSIGN</i>___<i>|</i>__<i>Double</i>___<i>|</i>__<i>Double</i>__<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Positive Difference|  <i>a</i> -<i>a</i>  if <i>a</i> &gt;<i>a</i>   |      2    |  DIM    |  IDIM    |  Integer  |  Integer |
+|                   |   10 2 if <i>a</i>1&lt;=<i>2</i>  |           |         |  DIM     |  Real     |  Real    |
+|                   |            1   2 |           |         |  DDIM    |  Double   |  Double  |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Double Precision   |  <i>a</i>1*<i>a</i>2           |      2    |         |  DPROD   |  Real     |  Double  |
+<i>|</i>__<i>Product</i>__________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Choosing Largest   |  max(<i>a</i> ,<i>a</i> ,...)  |     &gt;=2   |  Max    |  MAX0    |  Integer  |  Integer |
+|  Value            |       1  2       |           |         |  AMAX1   |  Real     |  Real    |
+|                   |                  |           |         |  DMAX1   |  Double   |  Double  |
+|                   |                  |           | ________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|                   |                  |           |         |  AMAX0   |  Integer  |  Real    |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>MAX1</i>____<i>|</i>__<i>Real</i>_____<i>|</i>__<i>Integer</i>_<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Choosing Smallest  |  min(<i>a</i> ,<i>a</i> ,...)  |     &gt;=2   |  MIN    |  MIN0    |  Integer  |  Integer |
+|  Value            |       1  2       |           |         |  AMIN1   |  Real     |  Real    |
+|                   |                  |           |         |  DMIN1   |  Double   |  Double  |
+|                   |                  |           | ________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|                   |                  |           |         |  AMIN0   |  Integer  |  Real    |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>MIN1</i>____<i>|</i>__<i>Real</i>_____<i>|</i>__<i>Integer</i>_<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Length             |  Length of       |      1    |         |  LEN     |  Character|  Integer |
+|                   |  Character Entity|           |         |          |           |          |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Index of           |  Location of     |      2    |         |  INDEX   |  Character|  Integer |
+|a Substring        |  Substring <i>a</i>2    |           |         |          |           |          |
+|                   |  in String <i>a</i>1    |           |         |          |           |          |
+<i>|</i>___________________<i>|</i>__<i>See</i>_<i>Note</i>_<i>1</i>______<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Imaginary Part of  |  <i>ai</i>              |      1    |         |  AIMAG   |  Complex  |  Real    |
+| Complex Argument  |  See <a href="#note6">Note 6</a>      |           |         |          |           |          |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Conjugate of a     |  (<i>ar</i>,-<i>ai</i>)        |      1    |         |  CONJG   |  Complex  |  Complex |
+<i>|</i>_<i>Complex</i>_<i>Argument</i>__<i>|</i>__<i>See</i>_<i>Note</i>_<i>6</i>______<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                   |                  |           |         |          |           |          |
+|Square Root        |  (<i>a</i>)1/2          |      1    |  SQRT   |  SQRT    |  Real     |  Real    |
+|                   |                  |           |         |  DSQRT   |  Double   |  Double  |
+|                   |                  |           |         |  CSQRT   |  Complex  |  Complex |
+<i>|</i>___________________<i>|</i>__________________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+</pre>
+
+<p>
+<dl><dd>Table 5 (continued)<br>
+Intrinsic Functions</dl><br>
+
+<pre>
+___________________________________________________________________________________________
+|                  |               |           |         |          |                     |
+|                  |               |  Number of|  Generic|  Specific|        Type of      |
+<i>|Intrinsic</i>_<i>Function|</i>__<i>Definition</i>___<i>|</i>__<i>Arguments|</i>___<i>Name</i>__<i>|</i>__<i>Name</i>____<i>|</i>__<i>Argument|</i>__<i>Function|</i>
+|                  |               |           |         |          |          |          |
+|Exponential       |  e**<i>a</i>         |      1    |  EXP    |  EXP     |  Real    |  Real    |
+|                  |               |           |         |  DEXP    |  Double  |  Double  |
+|                  |               |           |         |  CEXP    |  Complex |  Complex |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+|                  |               |           |         |          |          |          |
+|Natural Logarithm |  log(<i>a</i>)       |      1    |  LOG    |  ALOG    |  Real    |  Real    |
+|                  |               |           |         |  DLOG    |  Double  |  Double  |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>CLOG</i>____<i>|</i>__<i>Complex</i>_<i>|</i>__<i>Complex</i>_<i>|</i>
+|                  |               |           |         |          |          |          |
+|Common Logarithm  |  log10(<i>a</i>)     |      1    |  LOG10  |  ALOG10  |  Real    |  Real    |
+|                  |               |           |         |  DLOG10  |  Double  |  Double  |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+|                  |               |           |         |          |          |          |
+|Sine              |  sin(<i>a</i>)       |      1    |  SIN    |  SIN     |  Real    |  Real    |
+|                  |               |           |         |  DSIN    |  Double  |  Double  |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>CSIN</i>____<i>|</i>__<i>Complex</i>_<i>|</i>__<i>Complex</i>_<i>|</i>
+|                  |               |           |         |          |          |          |
+|Cosine            |  cos(<i>a</i>)       |      1    |  COS    |  COS     |  Real    |  Real    |
+|                  |               |           |         |  DCOS    |  Double  |  Double  |
+|                  |               |           |         |  CCOS    |  Complex |  Complex |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+|                  |               |           |         |          |          |          |
+|Tangent           |  tan(<i>a</i>)       |      1    |  TAN    |  TAN     |  Real    |  Real    |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>DTAN</i>____<i>|</i>__<i>Double</i>__<i>|</i>__<i>Double</i>__<i>|</i>
+|                  |               |           |         |          |          |          |
+|Arcsine           |  arcsin(<i>a</i>)    |      1    |  ASIN   |  ASIN    |  Real    |  Real    |
+|                  |               |           |         |  DASIN   |  Double  |  Double  |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+|                  |               |           |         |          |          |          |
+|Arccosine         |  arccos(<i>a</i>)    |      1    |  ACOS   |  ACOS    |  Real    |  Real    |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>DACOS</i>___<i>|</i>__<i>Double</i>__<i>|</i>__<i>Double</i>__<i>|</i>
+|                  |               |           |         |          |          |          |
+|Arctangent        |  arctan(<i>a</i>)    |      1    |  ATAN   |  ATAN    |  Real    |  Real    |
+|                  |               |           |         |  DATAN   |  Double  |  Double  |
+|                  | ______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+|                  |               |           |         |          |          |          |
+|                  |  arctan(<i>a</i>1/<i>a</i>2)|      2    |  ATAN2  |  ATAN2   |  Real    |  Real    |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>DATAN2</i>__<i>|</i>__<i>Double</i>__<i>|</i>__<i>Double</i>__<i>|</i>
+|                  |               |           |         |          |          |          |
+|Hyperbolic Sine   |  sinh(<i>a</i>)      |      1    |  SINH   |  SINH    |  Real    |  Real    |
+|                  |               |           |         |  DSINH   |  Double  |  Double  |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+|                  |               |           |         |          |          |          |
+|Hyperbolic Cosine |  cosh(<i>a</i>)      |      1    |  COSH   |  COSH    |  Real    |  Real    |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__<i>DCOSH</i>___<i>|</i>__<i>Double</i>__<i>|</i>__<i>Double</i>__<i>|</i>
+|                  |               |           |         |          |          |          |
+|Hyperbolic Tangent|  tanh(<i>a</i>)      |      1    |  TANH   |  TANH    |  Real    |  Real    |
+|                  |               |           |         |  DTANH   |  Double  |  Double  |
+<i>|</i>__________________<i>|</i>_______________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>__________<i>|</i>__________<i>|</i>
+</pre>
+
+<p>
+<dl><dd>Table 5 (continued)<br>
+Intrinsic Functions</dl><br>
+
+<pre>
+__________________________________________________________________________________________
+|                  |             |           |         |          |                      |
+|                  |             |  Number of|  Generic|  Specific|        Type of       |
+<i>|Intrinsic</i>_<i>Function|</i>__<i>Definition</i>_<i>|</i>__<i>Arguments|</i>___<i>Name</i>__<i>|</i>__<i>Name</i>____<i>|</i>__<i>Argument</i>_<i>|</i>__<i>Function|</i>
+|                  |             |           |         |          |           |          |
+|Lexically Greater |  <i>a</i>  &gt;= <i>a</i>    |      2    |         |  LGE     |  Character|  Logical |
+|  Than or Equal   |   1     2   |           |         |          |           |          |
+|                  |  See <a href="#note12">Note 12</a>|           |         |          |           |          |
+<i>|</i>__________________<i>|</i>_____________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                  |             |           |         |          |           |          |
+|Lexically Greater |  <i>a</i>1 &gt; <i>a</i>2    |      2    |         |  LGT     |  Character|  Logical |
+<i>|</i>__<i>Than</i>____________<i>|</i>__<i>See</i>_<i>Note</i>_<i>12|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                  |             |           |         |          |           |          |
+|Lexically Less    |  <i>a</i>  &lt;= <i>a</i>    |      2    |         |  LLE     |  Character|  Logical |
+|  Than or Equal   |   1     2   |           |         |          |           |          |
+|                  |  See <a href="#note12">Note 12</a>|           |         |          |           |          |
+<i>|</i>__________________<i>|</i>_____________<i>|</i>___________<i>|</i>_________<i>|</i>__________<i>|</i>___________<i>|</i>__________<i>|</i>
+|                  |             |           |         |          |           |          |
+|Lexically Less    |  <i>a</i>1 &lt; <i>a</i>2    |      2    |         |  LLT     |  Character|  Logical |
+<i><b>|</b></i>__<i>Than</i>____________<i><b>|</b></i>__<i>See</i>_<i>Note</i>_<i>12</i><i><b>|</b></i>___________<i><b>|</b></i>_________<i><b>|</b></i>__________<i><b>|</b></i>___________<i>|</i>__________<i><b>|</b></i>
+</pre>
+
+<p>
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<hr> <a href="rjcnf0001.html">[Contents]</a> <a href="rjcnf0001-sh-14.html">[Previous]</a> <a href="rjcnf0001-sh-16.html">[Next]</a> <br>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+<p>
+</body></html>
+
+
+<!--
+     FILE ARCHIVED ON 21:32:04 Oct 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:21 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 145.064
+  exclusion.robots: 0.062
+  exclusion.robots.policy: 0.055
+  cdx.remote: 0.055
+  esindex: 0.009
+  LoadShardBlock: 61.605 (3)
+  PetaboxLoader3.datanode: 79.249 (4)
+  load_resource: 133.427
+  PetaboxLoader3.resolve: 48.157
+-->

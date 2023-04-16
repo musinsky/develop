@@ -1,0 +1,698 @@
+<html><head><script type="text/javascript" src="/_static/js/bundle-playback.js?v=TPXmWR5s" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://www.fortran.com:80/F77_std/rjcnf0001-sh-11.html","20051016190821","https://web.archive.org/","web","/_static/",
+	      "1129489701");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+<title>
+11 CONTROL STATEMENTS
+</title></head><body>
+<h1><a name="sh-11">11 CONTROL STATEMENTS</a></h1>
+
+Control statements may be used to control the execution
+sequence.
+<p>There are sixteen control statements:
+<ol>
+<li>Unconditional GO TO
+<li>Computed GO TO
+<li>Assigned GO TO
+<li>Arithmetic IF
+<li>Logical IF
+<li>Block IF
+<li>ELSE IF
+<li>ELSE
+<li>END IF
+<li>DO
+<li>CONTINUE
+<li>STOP
+<li>PAUSE
+<li>END
+<li>CALL
+<li>RETURN
+</ol>
+<p>The CALL and RETURN statements are described in Section 
+<a href="rjcnf0001-sh-15.html#sh-15">15</a>.
+<p><h2><a name="sh-11.1">11.1 Unconditional GO TO Statement</a></h2>
+The form of an unconditional GO TO statement is:
+<pre>
+GO TO <i>s</i></pre>
+
+where 
+<i>s</i>
+ is the statement label of an executable statement
+that appears in the same program unit as the unconditional
+GO TO statement.
+<p>Execution of an unconditional GO TO statement causes a
+transfer of control so that the statement identified by
+the statement label is executed next.
+<p><h2><a name="sh-11.2">11.2 Computed GO TO Statement</a></h2>
+The form of a computed GO TO statement is:
+<pre>
+GO TO (<i>s</i> [,<i>s</i>]...)  <i>i</i></pre>
+
+<ul>
+<li> where: 
+<i>i</i>
+is an integer expression
+</ul>
+<ul>
+<li> 
+<i>s</i>
+is the statement label of an executable statement
+that appears in the same program unit as the
+computed GO TO statement.  The same statement
+label may appear more than once in the same
+computed GO TO statement.
+</ul>
+<p>Execution of a computed GO TO statement causes evaluation
+of the expression 
+<i>i</i>
+.  The evaluation of 
+<i>i</i>
+ is followed by
+a transfer of control so that the statement identified by
+the 
+<i>i</i>th
+ statement label in the list of statement labels
+is executed next, provided that 
+1 &lt;= <i>i</i> &lt;= <i>n</i>
+, where
+
+<i>n</i>
+ is the number of statement labels in the list of statement
+labels.  If 
+<i>i</i>&lt;1 or <i>i</i>&gt;<i>n</i>
+, the execution sequence
+continues as though a CONTINUE statement were executed.
+<p><h2><a name="sh-11.3">11.3 Assigned GO TO Statement</a></h2>
+The form of an assigned GO TO statement is:
+<pre>
+GO TO <i>i</i> [ (<i>s</i> [,<i>s</i>]...)]</pre>
+
+<ul>
+<li> where: 
+<i>i</i>
+is an integer variable name
+</ul>
+<ul>
+<li> 
+<i>s</i>
+is the statement label of an executable statement
+that appears in the same program unit as the
+assigned GO TO statement.  The same statement
+label may appear more than once in the same
+assigned GO TO statement.
+</ul>
+<p>At the time of execution of an assigned GO TO statement,
+the variable 
+<i>i</i>
+ must be defined with the value of a
+statement label of an executable statement that appears
+in the same program unit.
+Note that the variable may be defined with a statement
+label value only by an ASSIGN statement (
+<a href="rjcnf0001-sh-10.html#sh-10.3">10.3</a>)
+in the same program unit as the assigned GO TO statement.
+The execution of the
+assigned GO TO statement causes a transfer of control so
+that the statement identified by that statement label is
+executed next.
+<p>If the  parenthesized list is present, the statement label
+assigned to 
+<i>i</i>
+ must be one of the statement labels in the
+list.
+<p><h2><a name="sh-11.4">11.4 Arithmetic IF Statement</a></h2>
+The form of an arithmetic IF statement is:
+<pre>
+IF (<i>e</i>) <i>s</i>  , <i>s</i>  , <i>s</i>
+                            1    2    3</pre>
+
+<ul>
+<li> where: 
+<i>e</i>
+is an integer, real, or double precision
+expression
+</ul>
+<ul>
+<li> 
+<i>s</i> ,  <i>s</i> ,  and <i>s</i>
+                       1    2        3
+ are each the statement label of an
+executable statement that appears in the same
+program unit as the arithmetic IF statement.
+The same statement label may appear more than
+once in the same arithmetic IF statement.
+</ul>
+<p>Execution of an arithmetic IF statement causes evaluation
+of the expression 
+<i>e</i>
+ followed by a transfer of control.
+The statement identified by 
+<i>s</i> , <i>s</i> , or <i>s</i>
+                        1   2      3
+ is executed next
+as the value of 
+<i>e</i>
+ is less than zero, equal to zero, or
+greater than zero, respectively.
+<p><h2><a name="sh-11.5">11.5 Logical IF Statement</a></h2>
+The form of a logical IF statement is:
+<pre>
+IF (<i>e</i>) <i>st</i></pre>
+
+<ul>
+<li> where: 
+<i>e</i>
+is a logical expression
+</ul>
+<ul>
+<li> 
+<i>st</i>
+is any executable statement except a DO,
+block IF, ELSE IF, ELSE, END IF, END, or another
+logical IF statement
+</ul>
+<p>Execution of a logical IF statement causes evaluation of
+the expression 
+<i>e</i>
+.  If the value of 
+<i>e</i>
+ is true, statement
+
+<i>st</i>
+ is executed.  If the value of 
+<i>e</i>
+ is false, statement 
+<i>st</i>
+
+is not executed and the execution sequence continues as
+though a CONTINUE statement were executed.
+<p>Note that the execution of a function reference in the
+expression 
+<i>e</i>
+ of a logical IF statement is permitted to
+affect entities in the statement 
+<i>st</i>
+.
+<p><h2><a name="sh-11.6">11.6 Block IF Statement</a></h2>
+The block IF statement is used with the END IF statement
+and, optionally, the ELSE IF and ELSE statements to control
+the execution sequence.
+<p>The form of a block IF statement is:
+<pre>
+IF (<i>e</i>) THEN</pre>
+
+where 
+<i>e</i>
+ is a logical expression.
+<p><h3><a name="sh-11.6.1">11.6.1 IF-Level.</a></h3>
+The
+<i>IF-level</i>
+of a statement 
+<i>s</i>
+ is
+<pre>
+<i>n</i>  - <i>n</i>
+                           1    2</pre>
+
+where 
+<i>n</i>
+                              1
+ is the number of block IF statements from the
+beginning of the program unit up to and including 
+<i>s</i>
+, and
+
+<i>n</i>
+                              2
+ is the number of END IF statements in the program unit
+up to but not including 
+<i>s</i>
+.
+<p>The IF-level of every statement must be zero or positive.
+The IF-level of each block IF, ELSE IF, ELSE, and END IF
+statement must be positive.  The IF-level of the END
+statement of each program unit must be zero.
+<p><h3><a name="sh-11.6.2">11.6.2 IF-Block.</a></h3>
+An
+<i>IF-block</i>
+consists of all of the executable statements
+that appear following
+the block IF statement up to, but not including, the
+next ELSE IF, ELSE, or END IF statement that has the same
+IF-level as the block IF statement.  An IF-block may be
+empty.
+<p><h3><a name="sh-11.6.3">11.6.3 Execution of a Block IF Statement.</a></h3>
+Execution of a block IF statement causes evaluation of the
+expression 
+<i>e</i>
+.  If the value of 
+<i>e</i>
+ is true, normal execution
+sequence continues with the first statement of the IF-block.
+If the value of 
+<i>e</i>
+ is true and
+the IF-block is empty, control is transferred
+to the next END IF statement that has the same IF-level
+as the block IF statement.  If the value of 
+<i>e</i>
+ is false,
+control is transferred to the next ELSE IF, ELSE, or END IF
+statement that has the same IF-level as the block IF
+statement.
+<p>Transfer of control into an IF-block from outside the
+IF-block is prohibited.
+<p>If the execution of the last statement in the IF-block
+does not result in a transfer of control, control is
+transferred to the next END IF statement that has the same
+IF-level as the block IF statement that precedes the IF-block.
+<p><h2><a name="sh-11.7">11.7 ELSE IF Statement</a></h2>
+The form of an ELSE IF statement is:
+<pre>
+ELSE IF (<i>e</i>) THEN</pre>
+
+where 
+<i>e</i>
+ is a logical expression.
+<p><h3><a name="sh-11.7.1">11.7.1 ELSE IF-Block.</a></h3>
+An
+<i>ELSE IF-block</i>
+consists of all of the executable
+statements that appear following the ELSE IF statement up to, but not
+including, the next ELSE IF, ELSE, or END IF statement
+that has the same IF-level as the ELSE IF statement.  An
+ELSE IF-block may be empty.
+<p><h3><a name="sh-11.7.2">11.7.2 Execution of an ELSE IF Statement.</a></h3>
+Execution of an ELSE IF statement causes evaluation of the
+expression 
+<i>e</i>
+.  If the value of 
+<i>e</i>
+ is true, normal execution
+sequence continues with the first statement of the ELSE IF-block.
+If the value of 
+<i>e</i>
+ is true and
+the ELSE IF-block is empty, control is
+transferred to the next END IF statement that has the same
+IF-level as the ELSE IF statement.  If the value of 
+<i>e</i>
+ is
+false, control is transferred to the next ELSE IF, ELSE,
+or END IF statement that has the same IF-level as the
+ELSE IF statement.
+<p>Transfer of control into an ELSE IF-block from outside the
+ELSE IF-block is prohibited.
+The statement label, if any, of the ELSE IF statement
+must not be referenced by any statement.
+<p>If execution of the last statement in the ELSE IF-block
+does not result in a transfer of control, control is
+transferred to the next END IF statement that has the same
+IF-level as the ELSE IF statement that precedes the ELSE IF-block.
+<p><h2><a name="sh-11.8">11.8 ELSE Statement</a></h2>
+The form of an ELSE statement is:
+<pre>
+ELSE</pre>
+
+<p><h3><a name="sh-11.8.1">11.8.1 ELSE-Block.</a></h3>
+An
+<i>ELSE-block</i>
+consists of all of the executable statements
+that appear following
+the ELSE statement up to, but not including, the
+next END IF statement that has the same IF-level as the
+ELSE statement.  An ELSE-block may be empty.
+<p>An END IF statement of the same IF-level as the ELSE
+statement must appear before the appearance of an ELSE IF
+or ELSE statement of the same IF-level.
+<p><h3><a name="sh-11.8.2">11.8.2 Execution of an ELSE Statement.</a></h3>
+Execution of an ELSE statement has no effect.
+<p>Transfer of control into an ELSE-block from outside the
+ELSE-block is prohibited.
+The statement label, if any, of an ELSE statement
+must not be referenced by any statement.
+<p><h2><a name="sh-11.9">11.9 END IF Statement</a></h2>
+The form of an END IF statement is:
+<pre>
+END IF</pre>
+
+Execution of an END IF statement has no effect.
+<p>For each block IF statement there must be a corresponding
+END IF statement in the same program unit. A
+<i>corresponding END IF statement</i>
+is the next END IF statement that has the
+same IF-level as the block IF statement.
+<p><h2><a name="sh-11.10">11.10 DO Statement</a></h2>
+A DO statement is used to specify a loop, called a
+<i>DO-loop.</i>
+<p>The form of a DO statement is:
+<pre>
+DO <i>s</i>  <i>i</i> = <i>e</i> , <i>e</i> , [,<i>e</i> ]
+                               1   2     3</pre>
+
+<ul>
+<li> where: 
+<i>s</i>
+is the statement label of an executable
+statement.  The statement identified by 
+<i>s</i>
+, called
+the 
+<i>terminal</i> <i>statement</i>
+ of the DO-loop, must
+follow the DO statement in the sequence of
+statements within the same program
+unit as the DO statement.
+</ul>
+<ul>
+<li> 
+<i>i</i>
+is the name of an integer, real, or double
+precision variable, called the 
+<i>DO-variable</i>
+
+<li> 
+<i>e</i> ,  <i>e</i> , and <i>e</i>
+                       1    2       3
+ are each an integer, real, or double
+precision expression
+</ul>
+<p>The terminal statement of a DO-loop must not be an
+unconditional GO TO, assigned GO TO, arithmetic IF,
+block IF, ELSE IF, ELSE, END IF, RETURN, STOP, END, or DO
+statement.  If the terminal statement of a DO-loop is a
+logical IF statement, it may contain any executable statement except
+a DO, block IF, ELSE IF, ELSE, END IF, END, or another
+logical IF statement.
+<p><h3><a name="sh-11.10.1">11.10.1 Range of a DO-Loop.</a></h3>
+The
+<i>range of a DO-loop</i>
+consists of all of the executable statements
+that appear following
+the DO statement that specifies the DO-loop, up to and
+including the terminal statement of the DO-loop.
+<p>If a DO statement appears within the range of a DO-loop,
+the range of the DO-loop specified by that DO statement
+must be contained entirely within the range of the outer DO-loop.  More than
+one DO-loop may have the same terminal statement.
+<p>If a DO statement appears within an IF-block, ELSE IF-block,
+or ELSE-block, the range of that DO-loop must be
+contained entirely within that IF-block, ELSE IF-block,
+or ELSE-block, respectively.
+<p>If a block IF statement appears within the range of a
+DO-loop, the corresponding END IF statement must also appear
+within the range of that DO-loop.
+<p><h3><a name="sh-11.10.2">11.10.2 Active and Inactive DO-Loops.</a></h3>
+A DO-loop is either active or inactive.  Initially inactive,
+a DO-loop becomes active only when its DO statement is
+executed.
+<p>Once active, the DO-loop becomes inactive only when:
+<ol>
+<li>its iteration count is tested (
+<a href="#sh-11.10.4">11.10.4</a>)
+and determined to be zero,
+<li>a RETURN statement is executed within its range,
+<li>control is transferred to a statement
+that is in the same program unit and is outside the
+range of the DO-loop, or
+<li>any STOP statement in the executable program is
+executed, or execution is terminated for any other reason
+(
+<a href="rjcnf0001-sh-12.html#sh-12.6">12.6</a>).
+</ol>
+<p>Execution of a function reference or CALL statement
+that appears in the range of a DO-loop does not
+cause the DO-loop to become inactive,
+except when control is returned by means of an
+alternate return specifier in a CALL statement to a
+statement that is not in the range of the DO-loop.
+<p>When a DO-loop becomes inactive, the DO-variable of the
+DO-loop retains its last defined value.
+<p><h3><a name="sh-11.10.3">11.10.3 Executing a DO Statement.</a></h3>
+The effect of executing a DO statement is to perform the
+following steps in sequence:
+<ol>
+<li>The
+<i>initial parameter 
+m
+                              1
+,</i>
+the
+<i>terminal parameter 
+m
+                              2
+,</i>
+and the
+<i>incrementation parameter 
+m
+                              3
+</i>
+are established by evaluating 
+<i>e</i>
+                              1
+, 
+<i>e</i>
+                              2
+, and 
+<i>e</i>
+                              3
+,
+respectively, including, if necessary, conversion
+to the type of the DO-variable according to the
+rules for arithmetic conversion (Table 4).  If 
+<i>e</i>
+                              3
+ 
+does not appear, 
+<i>m</i>
+                              3
+ has a value of one.  
+<i>m</i>
+                              3
+ must
+not have a value of zero.
+<li>The DO-variable becomes defined with the value of
+the initial parameter 
+<i>m</i>
+                              1
+.
+<li>The iteration count is established and is the value
+of the expression
+</ol>
+<ul>
+<li> 
+MAX( INT( (<i>m</i>  - <i>m</i>  + <i>m</i> )/<i>m</i> ), 0)
+                            2    1    3   3
+
+<li>Notethat the iteration count is zero whenever:
+<li> 
+<i>m</i>  &gt; <i>m</i>  and <i>m</i>  &gt; 0, or
+                      1    2      3
+
+<li> 
+<i>m</i>  &lt; <i>m</i>  and <i>m</i>  &lt; 0.
+                       1    2      3
+
+</ul>
+<p>At the completion of execution of the DO statement, loop
+control processing begins.
+<p><h3><a name="sh-11.10.4">11.10.4 Loop Control Processing.</a></h3>
+Loop control processing determines if further execution
+of the range of the DO-loop is required. The iteration
+count is tested. If it is not zero, execution of the first
+statement in the range of the DO-loop begins.  If the
+iteration count is zero, the DO-loop becomes inactive.
+If, as a result, all of the DO-loops sharing the terminal
+statement of this DO-loop are inactive, normal execution
+continues with execution of the next executable statement
+following the terminal statement.  However, if some of the
+DO-loops sharing the terminal statement are active,
+execution continues with incrementation processing, as
+described in 
+<a href="#sh-11.10.7">11.10.7</a>.
+<p><h3><a name="sh-11.10.5">11.10.5 Execution of the Range.</a></h3>
+Statements in the range of a DO-loop are executed until
+the terminal statement is reached.  Except by the
+incrementation described in 
+<a href="#sh-11.10.7">11.10.7</a>, the DO-variable of
+the DO-loop may neither be redefined nor become undefined
+during execution of the range of the DO-loop.
+<p><h3><a name="sh-11.10.6">11.10.6 Terminal Statement Execution.</a></h3>
+Execution of the terminal statement occurs as a result of
+the normal execution sequence or as a result of transfer
+of control, subject to the restrictions in 
+<a href="#sh-11.10.8">11.10.8</a>.  Unless
+execution of the terminal statement results in a transfer
+of control, execution then continues with incrementation
+processing, as described in 
+<a href="#sh-11.10.7">11.10.7</a>.
+<p><h3><a name="sh-11.10.7">11.10.7 Incrementation Processing.</a></h3>
+Incrementation processing has the effect of the following
+steps performed in sequence:
+<ol>
+<li>The DO-variable, the iteration count, and the incrementation parameter
+of the active DO-loop whose DO statement was most
+recently executed, are selected for processing.
+<li>The value of the DO-variable is incremented by the
+value of the incrementation parameter 
+<i>m</i>
+                              3
+.
+<li>The iteration count is decremented by one.
+<li>Execution continues with loop control processing
+(
+<a href="#sh-11.10.4">11.10.4</a>) of the same DO-loop whose iteration count
+was decremented.
+</ol>
+<p>For example:
+<ol>
+<li> 
+N=0
+
+<li> 
+DO 100 I=1,10
+
+<li> 
+J=I
+
+<li> 
+DO 100 K=1,5
+
+<li> 
+L=K
+
+<li>100
+N=N+1
+
+<li>101
+CONTINUE
+
+</ol>
+<p>After execution of these statements and at the execution
+of the CONTINUE statement, I=11, J=10, K=6, L=5, and N=50.
+<p>Also consider the following example:
+<ol>
+<li> 
+N=0
+
+<li> 
+DO 200=I=1,10
+
+<li> 
+J=I
+
+<li> 
+D0 200 K=5,1
+
+<li> 
+L=K
+
+<li>200
+N=N+1
+
+<li>201
+CONTINUE
+
+</ol>
+<p>After execution of these statements and at the execution
+of the CONTINUE statement, I=11, J=10, K=5, and N=0.  L
+is not defined by these statements.
+<p><h3><a name="sh-11.10.8">11.10.8 Transfer into the Range of a DO-Loop.</a></h3>
+Transfer of control into the range of
+a DO-loop from outside the range
+is not permitted.
+<p><h2><a name="sh-11.11">11.11 CONTINUE Statement</a></h2>
+The form of a CONTINUE statement is:
+<pre>
+CONTINUE</pre>
+
+Execution of a CONTINUE statement has no effect.
+<p>If the
+CONTINUE statement is the terminal statement of a DO-loop,
+the next statement executed depends on the result of the
+DO-loop incrementation processing (
+<a href="#sh-11.10.7">11.10.7</a>).
+<p><h2><a name="sh-11.12">11.12 STOP Statement</a></h2>
+The form of a STOP statement is:
+<pre>
+STOP [<i>n</i>]</pre>
+
+where 
+<i>n</i>
+ is a string of not more than five digits, or is
+a character constant.
+<p>Execution of a STOP statement causes termination of
+execution of the executable program.  At the time of
+termination, the digit string or character constant is
+accessible.
+<p><h2><a name="sh-11.13">11.13 PAUSE Statement</a></h2>
+The form of a PAUSE statement is:
+<pre>
+PAUSE [<i>n</i>]</pre>
+
+where 
+<i>n</i>
+ is a string of not more than five digits, or is
+a character constant.
+<p>Execution of a PAUSE statement causes a cessation of
+execution of the executable program.  Execution must be
+resumable.  At the time of cessation of execution, the
+digit string or character constant is accessible.
+Resumption of execution is not under control of the program.
+If execution is resumed, the execution sequence
+continues as though a CONTINUE statement were executed.
+<p><h2><a name="sh-11.14">11.14 END Statement</a></h2>
+The END statement indicates  the end of the sequence of
+statements and comment lines of a program unit (
+<a href="rjcnf0001-sh-3.html#sh-3.5">3.5</a>).  If
+executed in a function or subroutine subprogram, it has the effect of a RETURN
+statement (
+<a href="rjcnf0001-sh-15.html#sh-15.8">15.8</a>).  If executed in a main program, it
+terminates the execution of the executable program.
+<p>The form of an END statement is:
+<pre>
+END</pre>
+
+An END statement is written only in columns 7 through 72
+of an initial line.  An END statement must not be continued.
+No other statement in a program unit may have an initial
+line that appears to be an END statement.
+<p>The last line of every program unit must be an END
+statement.
+<p>
+'
+<pre>
+</pre>
+
+<p>
+<hr> <a href="rjcnf0001.html">[Contents]</a> <a href="rjcnf0001-sh-10.html">[Previous]</a> <a href="rjcnf0001-sh-12.html">[Next]</a> <br>
+<i>This document was translated by troff2html v0.21 on August 16, 1995.</i>
+<p>
+</body></html>
+
+<!--
+     FILE ARCHIVED ON 19:08:21 Oct 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 22:53:13 Apr 15, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 181.78
+  exclusion.robots: 0.088
+  exclusion.robots.policy: 0.079
+  cdx.remote: 0.056
+  esindex: 0.008
+  LoadShardBlock: 159.758 (3)
+  PetaboxLoader3.datanode: 286.418 (4)
+  load_resource: 204.085
+  PetaboxLoader3.resolve: 42.576
+-->
