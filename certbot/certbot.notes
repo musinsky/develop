@@ -1,0 +1,28 @@
+# 2023-04-29
+
+* https://github.com/certbot/certbot
+* https://eff-certbot.readthedocs.io
+* https://certbot.eff.org/instructions?ws=apache&os=fedora
+* https://letsencrypt.org/
+
+$ dnf install httpd mod_ssl python-certbot-apache
+
+--work-dir  = /var/lib/letsencrypt
+--logs-dir  = /var/log/letsencrypt
+--config-dir = /etc/letsencrypt
+
+## script - make typescript of terminal session
+$ cat typescript.certbot.1
+$ cat typescript.certbot.2
+$ cat typescript.certbot.3
+
+## muke.saske.sk
+[root@muke ~]# httpd -D DUMP_VHOSTS
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 147.213.192.75. Set the 'ServerName' directive globally to suppress this message
+VirtualHost configuration:
+*:80                   muke.saske.sk (/etc/httpd/conf.d/le-redirect-muke.saske.sk.conf:1)
+*:443                  muke.saske.sk (/etc/httpd/conf.d/ssl.conf:56)
+[root@muke ~]#
+
+[root@muke ~]# systemctl list-timers
+[root@muke ~]# systemctl status certbot-renew.timer

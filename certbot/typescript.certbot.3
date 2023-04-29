@@ -1,0 +1,36 @@
+Script started on 2023-04-29 20:59:07+02:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="428" LINES="73"]
+]0;root@muke:~[?2004h[root@muke ~]# [7mcertbot --nginx -d wiki.example.com[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccertbot --nginx -d wiki.example.com[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1@a[1@p[1@a[1@c[1@h[1@e[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004lSaving debug log to /var/log/letsencrypt/letsencrypt.log
+Please enter the domain name(s) you would like on your certificate (comma and/or
+space separated) (Enter 'c' to cancel): muke.saske.sk
+Certificate not yet due for renewal
+
+You have an existing certificate that has exactly the same domains or certificate name you requested and isn't close to expiry.
+(ref: /etc/letsencrypt/renewal/muke.saske.sk.conf)
+
+What would you like to do?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Attempt to reinstall this existing certificate
+2: Renew & replace the certificate (may be subject to CA rate limits)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 1
+Deploying certificate
+
+We were unable to find a vhost with a ServerName or Address of muke.saske.sk.
+Which virtual host would you like to choose?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: ssl.conf                       |                       | HTTPS | Enabled
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press 1 [enter] to confirm the selection (press 'c' to cancel): 1
+Successfully deployed certificate for muke.saske.sk to /etc/httpd/conf.d/ssl.conf
+Congratulations! You have successfully enabled HTTPS on https://muke.saske.sk
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+]0;root@muke:~[?2004h[root@muke ~]# [?2004l
+exit
+
+Script done on 2023-04-29 21:01:05+02:00 [COMMAND_EXIT_CODE="0"]
