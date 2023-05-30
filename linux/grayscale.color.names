@@ -1,0 +1,175 @@
+# 2023-05-30
+# https://github.com/musinsky/develop/blob/master/linux/grayscale.color.names
+
+# https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+# https://github.com/emacs-mirror/emacs/blob/master/etc/rgb.txt
+# https://gitlab.freedesktop.org/xorg/app/rgb/-/blob/master/rgb.txt
+
+## Fedora
+$ printenv | grep 'TERM='
+COLORTERM=truecolor   # 24-bit, true colors (16M)
+TERM=xterm-256color   # 8-bit,  256 colors
+$ infocmp -D
+/etc/terminfo
+/usr/share/terminfo
+$ find /usr/share/terminfo -type f | grep 'xterm'
+
+## Emacs
+M-x list-colors-display => If you run this command on a graphical display, it
+shows the full range of color names known to Emacs (these are the standard X11
+color names, defined in rgb.txt file).
+
+$ emacs => truecolor (16M colors) => M-x list-colors-display => 548 color names
+
+$ COLORTERM= TERM=xterm          emacs -nw => 3-bit,    8 colors =>   8 color names
+$ COLORTERM= TERM=xterm-16color  emacs -nw => 4-bit,   16 colors =>  16 color names
+$ COLORTERM= TERM=xterm-256color emacs -nw => 8-bit,  256 colors => 256 color names
+$                                emacs -nw => 24-bit, 16M colors => 556 color names
+
+## Grayscale color names
+# 8/16 colors (3-bit/4-bit)
+=> 4 black/white color names: black, white, brightblack and brightwhite
+# 256 colors (8-bit)
+=> pre-defined set of 24 grayscale color names (color-232 -> color-255)
+# 16M colors (24-bit, TrueColor):
+=> X11 color names defined set of 100 grayscale color names (gray0 -> gray100)
+!!! white (#ffffff) in TrueColor != white (#e5e5e5) in 8/16/256color !!!
+
+## Midnight Commander
+# https://github.com/MidnightCommander/mc/blob/master/lib/tty/color-internal.c
+mc-black     = "COLOR_BLACK"                   = black       = #000000
+mc-gray      = "COLOR_BLACK + COLOR_INTENSITY" = brightblack = #7f7f7f
+mc-lightgray = "COLOR_WHITE"                   = white       = #e5e5e5
+mc-white     = "COLOR_WHITE + COLOR_INTENSITY" = brightwhite = #ffffff
+
+The 24 grayscale colors ("color232" to "color255") have the aliases
+"gray0" to "gray23".
+
+
+#000000   color-000     *
+#000000   gray000       *   black, mc-black
+#030303   gray001
+#050505   gray002
+#080808   color-232     *   mc-gray0
+#080808   gray003       *
+#0a0a0a   gray004
+#0d0d0d   gray005
+#0f0f0f   gray006
+#121212   color-233     *   mc-gray1
+#121212   gray007       *
+#141414   gray008
+#171717   gray009
+#1a1a1a   gray010
+#1c1c1c   color-234     *   mc-gray2
+#1c1c1c   gray011       *
+#1f1f1f   gray012
+#212121   gray013
+#242424   gray014
+#262626   color-235     *   mc-gray3
+#262626   gray015       *
+#292929   gray016
+#2b2b2b   gray017
+#2e2e2e   gray018
+#303030   color-236     *   mc-gray4
+#303030   gray019       *
+#333333   gray020
+#363636   gray021
+#383838   gray022
+#3a3a3a   color-237         mc-gray5
+#3b3b3b   gray023
+#3d3d3d   gray024
+#404040   gray025
+#424242   gray026
+#444444   color-238         mc-gray6
+#454545   gray027
+#474747   gray028
+#4a4a4a   gray029
+#4d4d4d   gray030
+#4e4e4e   color-239         mc-gray7
+#4f4f4f   gray031
+#525252   gray032
+#545454   gray033
+#575757   gray034
+#585858   color-240         mc-gray8
+#595959   gray035
+#5c5c5c   gray036
+#5e5e5e   gray037
+#616161   gray038
+#626262   color-241         mc-gray9
+#636363   gray039
+#666666   gray040
+#696969   gray041
+#6b6b6b   gray042
+#6c6c6c   color-242         mc-gray10
+#6e6e6e   gray043
+#707070   gray044
+#737373   gray045
+#757575   gray046
+#767676   color-243         mc-gray11
+#787878   gray047
+#7a7a7a   gray048
+#7d7d7d   gray049
+#7f7f7f   gray050           brightblack, mc-gray
+#808080   color-244         mc-gray12
+#828282   gray051
+#858585   gray052
+#878787   gray053
+#8a8a8a   color-245     *   mc-gray13
+#8a8a8a   gray054       *
+#8c8c8c   gray055
+#8f8f8f   gray056
+#919191   gray057
+#949494   color-246     *   mc-gray14
+#949494   gray058       *
+#969696   gray059
+#999999   gray060
+#9c9c9c   gray061
+#9e9e9e   color-247     *   mc-gray15
+#9e9e9e   gray062       *
+#a1a1a1   gray063
+#a3a3a3   gray064
+#a6a6a6   gray065
+#a8a8a8   color-248     *   mc-gray16
+#a8a8a8   gray066       *
+#ababab   gray067
+#adadad   gray068
+#b0b0b0   gray069
+#b2b2b2   color-249         mc-gray17
+#b3b3b3   gray070
+#b5b5b5   gray071
+#b8b8b8   gray072
+#bababa   gray073
+#bcbcbc   color-250         mc-gray18
+#bdbdbd   gray074
+#bfbfbf   gray075
+#c2c2c2   gray076
+#c4c4c4   gray077
+#c6c6c6   color-251         mc-gray19
+#c7c7c7   gray078
+#c9c9c9   gray079
+#cccccc   gray080
+#cfcfcf   gray081
+#d0d0d0   color-252         mc-gray20
+#d1d1d1   gray082
+#d4d4d4   gray083
+#d6d6d6   gray084
+#d9d9d9   gray085
+#dadada   color-253         mc-gray21
+#dbdbdb   gray086
+#dedede   gray087
+#e0e0e0   gray088
+#e3e3e3   gray089
+#e4e4e4   color-254         mc-gray22
+#e5e5e5   gray090           white, mc-lightgray
+#e8e8e8   gray091
+#ebebeb   gray092
+#ededed   gray093
+#eeeeee   color-255         mc-gray23
+#f0f0f0   gray094
+#f2f2f2   gray095
+#f5f5f5   gray096
+#f7f7f7   gray097
+#fafafa   gray098
+#fcfcfc   gray099
+#ffffff   color-231     *
+#ffffff   gray100       *   brightwhite, mc-white
