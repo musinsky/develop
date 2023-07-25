@@ -1,8 +1,12 @@
-# 2022-04-14
-# tested on Windows 10 Home x64 (version 21H2)
+# 2023-07-25
+# tested on Windows 10 Home x64 (version 22H2)
 
 ## about
-Digital Visual Fortran 6.0 => Compaq bought Digital in 1999 => Compaq Visual Fortran 6.1
+Digital Visual Fortran 6.0 (1998) => Compaq bought Digital in 1999 => Compaq Visual Fortran 6.1
+
+Compaq Visual Fortran 6.5  (2000)
+Compaq Visual Fortran 6.6  (2001)
+Compaq Visual Fortran 6.6c (2003)
 
 Compaq_Visual_Fortran_6.5.7z    => CD-ROM from Dubna 2004 (version exist also on ru tracker)
 cernlib_archive_20220413.tar.xz => from cernlib web
@@ -18,7 +22,7 @@ cernlib_archive_20220413.tar.xz => from cernlib web
 - Environment Variable Update => Yes
 - Compaq Array Visualizer Install => No
 
-- upgrade to v6.6 and v6.6C   (optional)
+- upgrade to v6.6 and v6.6C   (optional, recommended)
 
 ## install CERNLIB 2001
 - copy necessary files from "download\2001_wnt\bin\" and "download\2001_wnt\lib\" to
@@ -35,16 +39,38 @@ cernlib_archive_20220413.tar.xz => from cernlib web
 IGSET 2buf 11
 
 ## usage
+- Compaq Visual Fortran Installing and Getting Started (cvf_gs.pdf)
+  page 90: Using the Command-Line Interface
+- Compaq Visual Fortran Programmer's Guide (cvf_pg.pdf)
+  page 81:  Using the Compiler and Linker from the Command Line       => DF
+  page 222: Microsoft Fortran PowerStation Command-Line Compatibility => FL32
+
+"C:\Program Files (x86)\Microsoft Visual Studio\DF98\BIN\DFVARS.BAT"
+"C:\Program Files (x86)\Microsoft Visual Studio\DF98\BIN\"
+"DF.EXE", "F77.EXE", "F90.EXE" and "FL32.EXE" - Invokes Compaq Fortran preprocessor,
+  Compaq Fortran compiler, and linker. Files are identical, but invoke a different driver.
+
+- Compile and link your application with the DF command
+- FL32 command (FL32 driver) supports the Microsoft Fortran Powerstation options
+  but invokes the Compaq Fortran compiler
+- The file extension determines whether a file gets passed to the compiler
+  or to the linker
+
+D:\> df  hexam.f packlib.lib   # OK, preferred
+D:\> f77 hexam.f packlib.lib   # identical result as "df"
+
 D:\> fl32 hexam.f packlib.lib
-D:\> fl32 htest.f packlib.lib
-D:\> fl32 minexam.f fcnk0.f packlib.lib
+# FL32 requests full Microsoft Fortran PowerStation compatibility,
+# debug information, no optimization, etc. (see p. 222 in cvf_pg.pdf)
 
 ## notes
-- C:\Program Files (x86)\cernlib\2001\bin\cernlib.bat
+"C:\Program Files (x86)\cernlib\2001\bin\cernlib.bat"
+create "cernlib" file with list of CERN a VC98 libraries
+ "packlib.lib shiftmd.lib user32.lib kernel32.lib advapi32.lib oldnames.lib wsock32.lib ws2_32.lib"
+why with multithread library "shiftmd.lib" ?!
   "fl32 your_program_name.f @cernlib"
-  create "cernlib" file, but with "shiftmd.lib" multithread library, why ?!
+why "fl32" ?!
 
-- use "FL32.exe", "F77.exe" or "DF.exe" gives different results ?!
-
-- batch file with CVF environment variable
-  C:\Program Files (x86)\Microsoft Visual Studio\DF98\BIN\DFVARS.BAT
+## attention
+D:\> df collider.f packlib.lib == linux =~ fl32 collider.f packlib.lib
+prefer DF before FL32 (especially with cernlib)
