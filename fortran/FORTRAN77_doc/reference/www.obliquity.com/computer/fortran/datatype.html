@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Data Types and Declarations</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Data types and declarations in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Data Types and Declarations</h1>
+
+<h2>Data Types</h2>
+<p>
+FORTRAN&nbsp;77 supports six data types:
+</p>
+<dl>
+<dt><code>CHARACTER</code></dt>
+<dd>character</dd>
+<dt><code>COMPLEX</code></dt>
+<dd>single precision complex number</dd>
+<dt><code>DOUBLE&nbsp;PRECISION</code></dt>
+<dd>double precision floating point number</dd>
+<dt><code>INTEGER</code></dt>
+<dd>integer</dd>
+<dt><code>LOGICAL</code></dt>
+<dd>boolean (true or false)</dd>
+<dt><code>REAL</code></dt>
+<dd>single precision floating point number</dd>
+</dl>
+<p>
+Numerical data in FORTRAN&nbsp;77 can be represented in one of four types.
+An <code>INTEGER</code> is any signed number that has no fractional part
+and no decimal point.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<ul>
+<li>-13</li>
+<li>12345</li>
+<li>+5</li>
+</ul>
+</div>
+
+<p>
+<code>INTEGER</code> numbers are also referred to as 
+<strong>fixed point</strong> numbers.  The other three numerical types are 
+called <strong>floating point</strong> numbers.  A <code>REAL</code> number 
+is a signed number with a decimal point.  
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<ul>
+<li>-13.0</li>
+<li>123.45</li>
+<li>+0.0005</li>
+</ul>
+</div>
+
+<p>
+Very large or very small numbers are often represented in 
+<strong>scientific notation</strong>.  In this notation, a number is 
+represented as 
+</p>
+<p>
+<em>&plusmn;b &times; 10<sup>&plusmn;n</sup></em>
+</p>
+<p>
+where <em>b</em> is a number between 1 and 10 and <em>n</em> is
+the appropriate power of ten.  FORTRAN&nbsp;77 offers a similar representation 
+called <strong>exponential notation</strong>:
+</p>
+<p>
+<em>&plusmn;0.mE&plusmn;p</em>
+</p>
+<p>
+In this case, the mantissa <em>m</em> is a number between 0.1 and 1.0
+and <em>p</em> is again the appropriate power of ten.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<table class="layout">
+<tr>
+<th>Decimal</th>
+<th>Scientific</th>
+<th>Exponential</th>
+</tr>
+<tr class="bottom">
+<td>0.000135</td>
+<td>1.35&nbsp;&times;&nbsp;10<sup>-4</sup></td>
+<td class="code">0.135E-03</td>
+</tr>
+<tr class="bottom">
+<td>-246.8</td>
+<td>-2.468&nbsp;&times;&nbsp;10<sup>2</sup></td>
+<td class="code">-0.2468E+03</td>
+</tr>
+<tr class="bottom">
+<td>235700000000000000000.0</td>
+<td>2.357&nbsp;&times;&nbsp;10<sup>20</sup></td>
+<td class="code">0.2357E+21</td>
+</tr>
+</table>
+</div>
+
+<p>
+A number stored in a computer is limited in magnitude and precision.  The
+limits depend on the particular computer.  Thus, a <code>REAL</code> number
+has only a certain number of significant digits.  If more significant digits
+are required for a calculation, then <code>DOUBLE&nbsp;PRECISION</code> numbers
+must be used.  A <code>DOUBLE&nbsp;PRECISION</code> constant is written in
+the same exponential form as a single precision <code>REAL</code> constant
+except with a <code>D</code> instead of an <code>E</code> separating the
+mantissa from the exponent.
+</p>
+<p>
+In practice, most computers use 32 bits to store <code>INTEGER</code> and 
+<code>REAL</code> numbers.  This means that an <code>INTEGER</code> is 
+limited to numbers between -2,147,483,648 and +2,147,483,647 (a sign bit and 
+31 magnitude bits).  If the 
+<abbr title="Institute of Electrical and Electronics Engineers">IEEE</abbr> 
+standard is used, then a <code>REAL</code> number will have about seven 
+decimal digits and be within the magnitude range of 10<sup>-38</sup> to 
+10<sup>+38</sup>.  <code>DOUBLE&nbsp;PRECISION</code> numbers usually have 
+at least twice the number of significant decimal digits and a magnitude 
+range of 10<sup>-308</sup> to 10<sup>+308</sup>.
+</p>
+<p>
+Complex numbers are common in many fields of science and engineering so
+it is not surprising that FORTRAN&nbsp;77 offers a <code>COMPLEX</code> data 
+type.  The complex number <em>a+ib</em> where <i>i</i> is the 
+<strong>imaginary unit</strong> (square root of -1) is represented in 
+FORTRAN&nbsp;77 as <code>(a,b)</code> where <code>a</code> and <code>b</code>
+themselves are single precision <code>REAL</code> numbers.  There are no
+double precision complex numbers available in FORTRAN&nbsp;77.
+</p>
+<p>
+The other two data types deal with non-numerical information.  A
+<code>LOGICAL</code> value is either <code>.TRUE.</code> or 
+<code>.FALSE.</code> (note the full stops!) whilst a <code>CHARACTER</code> 
+value can contain any combination of characters from the FORTRAN&nbsp;77 
+character set.  In fact, on most computers, a <code>CHARACTER</code> string 
+can contain any combination of printable characters.  A <code>CHARACTER</code> 
+constant is any set of characters enclosed in apostrophes.  If an apostrophe 
+is needed as part of the string, then two apostrophes (not a double quote) 
+are used.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<table class="layout">
+<tr>
+<th>CHARACTER&nbsp;Constant</th>
+<th>Result</th>
+<th>Length</th>
+</tr>
+<tr>
+<td><code>'a&nbsp;character&nbsp;string'</code></td>
+<td>a&nbsp;character&nbsp;string</td>
+<td class="textright">18</td>
+</tr>
+<tr>
+<td><code>'Let''s&nbsp;go!'</code></td>
+<td>Let's&nbsp;go!</td>
+<td class="textright">9</td>
+</tr>
+<tr>
+<td><code>'&nbsp;$&nbsp;10.25&nbsp;'</code></td>
+<td>&nbsp;$&nbsp;10.25&nbsp;</td>
+<td class="textright">9</td>
+</tr>
+<tr>
+<td><code>'&nbsp;'</code></td>
+<td></td>
+<td class="textright">1</td>
+</tr>
+</table>
+</div>
+
+<h2>Type Declarations</h2>
+<p>
+The type of any constant, variable or array used in a FORTRAN&nbsp;77 program 
+must be specified either implicitly or explicitly.  In 
+<strong>implicit typing</strong>, all constants, variables and arrays 
+beginning with the letters I, J, K, L, M, or N are automatically taken to be 
+of type <code>INTEGER</code>.  Constants, variables and arrays beginning with 
+all other letters are assumed to be <code>REAL</code>.  Thus, with implicit 
+typing, the variable <code>COUNT</code> is <code>REAL</code> whilst the 
+variable <code>KOUNT</code> is an <code>INTEGER</code>.  Implicit typing 
+can be overridden with explicit type declaration.  To explicitly declare a 
+constant, variable or array to be of a given type, simply put a statement 
+of the form
+</p>
+<p>
+<em>type</em> <em>name-list</em>
+</p>
+<p>
+where <em>type</em> is one of the six data types and the 
+<em>name-list</em> is a list of the names of the constants, variables or 
+arrays of the chosen type separated by commas.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The declarations
+</p>
+<pre>
+      COMPLEX          FALL,TRIP
+      DOUBLE PRECISION BIGJMP
+      INTEGER          A,AA,AAA
+      LOGICAL          DECIDE
+      REAL             BOUND,JUMP,LEAP
+</pre>
+<p>
+at the beginning of a program unit define the variables named 
+<code>FALL</code> and <code>TRIP</code> to be of type <code>COMPLEX</code>;
+<code>BIGJMP</code> to be <code>DOUBLE&nbsp;PRECISION</code>; 
+<code>A</code>, <code>AA</code>, and <code>AAA</code> to be 
+<code>INTEGER</code>; <code>DECIDE</code> to be <code>LOGICAL</code>; and
+<code>BOUND</code>, <code>JUMP</code>, and <code>LEAP</code> to be
+<code>REAL</code>.
+</p>
+</div>
+<p>
+<code>CHARACTER</code> declarations are a little more subtle in that they
+require prior knowledge of the length of the string that will be stored
+in the <code>CHARACTER</code> variable.  The syntax for a 
+<code>CHARACTER</code> variable is
+</p>
+<pre>CHARACTER*<em class="encode">m variable-list</em></pre>
+<p>
+where all of the variables in the <em>variable-list</em> are <em>m</em> 
+characters long.  Some or all of these characters may be blank.  It is
+also possible to use one declaration statement to specify several
+variables of different lengths:
+</p>
+<pre>CHARACTER <em class="encode">variable<sub>1</sub></em>*<em class="encode">m<sub>1</sub></em>, <em class="encode">variable<sub>2</sub></em>*<em class="encode">m<sub>2</sub></em>, &hellip;, <em class="encode">variable<sub>n</sub></em>*<em class="encode">m<sub>n</sub></em></pre>
+<p>
+In this case, the first variable is of length <em>m<sub>1</sub></em>, the 
+second variable is of length <em>m<sub>2</sub></em> and so on.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The declarations
+</p>
+<pre>
+      CHARACTER*3 CONST,GREEK
+      CHARACTER   CATLOG*10,NAME*20
+</pre>
+<p>
+at the beginning of a program unit define <code>CONST</code> and 
+<code>GREEK</code> to be <code>CHARACTER</code> variables of length 3 whilst 
+<code>CATLOG</code> is of length 10 and <code>NAME</code> is of length 20.
+</p>
+</div>
+
+<h2>IMPLICIT Statement</h2>
+<p>
+Although only <code>INTEGER</code> and <code>REAL</code> constants, 
+variables and arrays have implicit types, it is possible to assign defaults 
+for all data types through the use of the <code>IMPLICIT</code> statement.  
+The syntax for this statement is
+</p>
+<pre>IMPLICIT <em class="encode">type<sub>1</sub></em> (<em class="encode">range<sub>1</sub></em>), <em class="encode">type<sub>2</sub></em> (<em class="encode">range<sub>2</sub></em>), &hellip;, <em class="encode">type<sub>n</sub></em> (<em class="encode">range<sub>n</sub></em>)</pre>
+<p>
+Explicit type declarations override implicit type declarations.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+A program that has only <code>DOUBLE&nbsp;PRECISION</code> variables might
+contain the statement
+</p>
+<pre>
+      IMPLICIT DOUBLE PRECISION(A-Z)
+</pre>
+<p>
+at the beginning.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Because of the declarations
+</p>
+<pre>
+      IMPLICIT COMPLEX(A-C),DOUBLE PRECISION(D),INTEGER(E-Z)
+      LOGICAL  HELP
+</pre>
+<p>
+all variables beginning with the letters A through C are of type 
+<code>COMPLEX</code>, all variables beginning with the letter D are of
+type <code>DOUBLE&nbsp;PRECISION</code>, and everything else is an
+<code>INTEGER</code>.  The explicit type declaration that 
+<code>HELP</code> is of type <code>LOGICAL</code> overrides the 
+<code>INTEGER</code> default.
+</p>
+</div>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash; by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/datatype.html</span>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - FORMAT Edit Descriptors</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="FORMAT edit descriptors in FORTRAN 77.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>FORMAT Edit Descriptors</h1>
+<p>
+A <code>FORMAT</code> statement is a labelled nonexecutable statement which 
+can appear anywhere within a program unit.  It is of the form
+</p>
+<pre><em class="encode">label</em> FORMAT(<em class="encode">edit-descriptor-list</em>)</pre>
+<p>
+Data descriptors are used to read and write items in the data transfer list 
+in <code>READ</code> and <code>WRITE</code> statements.  Format control 
+descriptors do not correspond to any item in the data transfer list but 
+control other aspects of I/O such as tabulation, new lines, treatment of 
+blanks, etc.  Commas must separate most descriptors in the list but can be 
+omitted around some of them like the record control descriptor.
+</p>
+<p>
+In the following examples, leading, embedded and trailing blanks are denoted as
+<code class="blank">&#9251;</code>.  The leading space <code>'&nbsp;'</code> 
+at the beginning of each <code>FORMAT</code> statement used for output is a 
+carriage control descriptor, not a printable space character.  (Alternatively, 
+you can use <code>1X</code> in place of <code>'&nbsp;'</code> as the carriage 
+control descriptor.)
+</p>
+
+<h2>Data Descriptors</h2>
+
+<h3>Symbols</h3>
+<p>
+In the following discussion, the letters <em>w</em>, <em>m</em>, <em>d</em> 
+and <em>e</em> are unsigned integers which mean the following:
+</p>
+<table class="layout">
+<tr>
+<td><em>w</em></td>
+<td>total field width (must be greater than zero)</td>
+</tr>
+<tr>
+<td><em>m</em></td>
+<td>minimum number of digits produced on output (may be zero)</td>
+</tr>
+<tr>
+<td><em>d</em></td>
+<td>number of digits to the right of the decimal point (may be zero)</td>
+</tr>
+<tr>
+<td><em>e</em></td>
+<td>number of digits in the exponent part (must be greater than zero)</td>
+</tr>
+</table>
+<p>
+Any data descriptor can be preceded by a <em>repeat-count</em>.  The 
+repeat-count is another unsigned integer which indicates how often the 
+descriptor is to be repeated.
+</p>
+<p>
+Note that the number of positions used in a format descriptor is 
+<strong>not</strong> the precision of that number.
+</p>
+
+<h3>INTEGER Data</h3>
+<p>
+<code>INTEGER</code> data may not contains decimal points, exponential 
+notation, or any other punctuation (such as commas).  The field width should 
+be large enough to include one character for a leading plus or minus sign.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><code>I</code><em>w</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>The <code>INTEGER</code> is right-justified in a field <em>w</em> 
+characters wide with leading blanks if necessary.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>The <code>INTEGER</code> is right-justified in a field <em>w</em> 
+characters wide with leading blanks if necessary.</td>
+</tr>
+<tr><th colspan="2"></th></tr>
+<tr>
+<th>Descriptor</th>
+<td><code>I</code><em>w.m</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>The <code>INTEGER</code> is right-justified in a field <em>w</em> 
+characters wide with leading blanks if necessary.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>The <code>INTEGER</code> is right-justified in a field <em>w</em> 
+but requires that at least <em>m</em> digits are written out, putting in
+leading zeros if necessary.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      I = -1024
+      J = 666
+      K = 112358
+      WRITE(*,100)I,J,K
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  100 FORMAT(' ',I10,I10,I10)
+</pre>
+<p>
+begins with the carriage control descriptor <code>'&nbsp;'</code> which is 
+followed by three <code>I10</code> descriptors.  These tell the computer to 
+output three right-justified <code>INTEGER</code>s, each with a field width 
+of 10.  The numbers are padded with blanks <span class="blank">&#9251;</span> 
+from the left to make up the required width.  The output is
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>-1024<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>666<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>112358
+</pre>
+<p>
+Note that <code>I10,I10,I10</code> is equivalent to <code>3I10</code>
+where 3 is the repeat-count.  There is no comma between the repeat-count 
+and its associated descriptor(s).
+</p>
+<p>
+A slightly different <code>FORMAT</code> statement is
+</p>
+<pre>
+  100 FORMAT(' ',3I10.8)
+</pre>
+<p>
+which again yields three right-justified <code>INTEGER</code>s of width 10 but
+this time requires a minimum of 8 digits to be printed.  Zeros are padded onto 
+the left to make up the required number of digits.  The output is
+</p>
+<pre>
+<span class="blank">&#9251;</span>-00001024<span class="blank">&#9251;</span><span class="blank">&#9251;</span>00000666<span class="blank">&#9251;</span><span class="blank">&#9251;</span>00112358
+</pre>
+<p>
+What happens if the <code>I</code> descriptor is too short to accomodate the 
+number (plus any leading sign)?
+</p>
+<pre>
+  100 FORMAT(' ',3I5)
+</pre>
+<p>
+In this instance three right-justified <code>INTEGER</code>s of width 5 are 
+output but since one of the data values is 6 digits long, 5 asterisks 
+<code>*</code> are printed in its place:
+</p>
+<pre>
+-1024<span class="blank">&#9251;</span><span class="blank">&#9251;</span>666*****
+</pre>
+</div>
+
+<h3>REAL, DOUBLE&nbsp;PRECISION and COMPLEX Data</h3>
+<p>
+Floating point data (<code>REAL</code>, <code>DOUBLE&nbsp;PRECISION</code> 
+and <code>COMPLEX</code>) can be transferred using <code>D</code>, 
+<code>E</code>, <code>F</code> or <code>G</code> descriptors.  On output 
+the numbers are rounded to the specified number of digits.
+</p>
+<p>
+The <code>F</code> notation produces a decimal or fixed-point notation which 
+is particularly useful in formatting tables but cannot be used for very large 
+or very small numbers.  The field width must be large enough to include one 
+character for a leading plus or minus sign in addition to a decimal point.  
+In practice, this means <em>w</em>&nbsp;&gt;&nbsp;<em>d</em>&nbsp;+&nbsp;1.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><code>F</code><em>w.d</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>A decimal point always takes precedence.  If there is a decimal point, 
+then <em>d</em> is ignored and the number is read into the <em>w</em> 
+positions.  If there is no decimal point, then the last <em>d</em> digits 
+are taken to be the decimal part of the number and the <em>w-d</em> digits 
+before those are taken to be the whole part of the number.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>The floating point number is right-justified in a field <em>w</em> 
+characters wide.  This means <em>d</em> decimal places, a decimal point
+and <em>w-d-1</em> places preceding the decimal point which must include
+any leading plus or minus sign.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      A = 3.14159
+      B = -88.9
+      C = 123.4567E-02
+      WRITE(*,200)A,B,C
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  200 FORMAT(' ',F7.2,F7.2,F7.2)
+</pre>
+<p>
+begins with the carriage control descriptor <code>'&nbsp;'</code> which is 
+followed by three <code>F6.2</code> descriptors.  These tell the computer to 
+output three right-justified floating point numbers, each with a field width 
+of 7 and with 2 digits after the decimal point.  The output appears as
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>3.14<span class="blank">&#9251;</span>-88.90<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>1.23
+</pre>
+<p>
+Values are rounded as necessary to fit the width and digit specifications.  
+Even though <code>C</code> is given explicitly in exponential notation, it 
+can be written with the <code>F</code> descriptor.  Again, note that 
+<code>F7.2,F7.2,F7.2</code> could have been written more simply with a 
+repeat-count as <code>3F7.2</code>.
+</p>
+<p>
+If we alter the <code>FORMAT</code> statement to
+</p>
+<pre>
+  200 FORMAT(' ',3F7.4)
+</pre>
+<p>
+to include more places after the decimal point, what happens?
+</p>
+<pre>
+<span class="blank">&#9251;</span>3.1416*******<span class="blank">&#9251;</span>1.2346
+</pre>
+<p>
+Recall that the field width must include the decimal point and any leading sign.
+The value <code>-88.9</code> requires a field width that is at least 4 spaces 
+longer than the number of digits following the decimal point.  Since the 
+space alloted is too small, 7 asterisks <code>*</code> are printed instead.
+</p>
+</div>
+
+<p>
+The <code>E</code> descriptor produces exponential notation which is useful for 
+very large and very small numbers.  The field width <em>w</em> must accomodate
+</p>
+<ul>
+<li>a optional leading plus or minus sign,</li>
+<li>an optional digit in front of the decimal point,</li>
+<li>the decimal point,</li>
+<li>the required number of digits <em>d</em> after the decimal point,</li>
+<li>the <code>D</code> or <code>E</code> exponent designator,</li>
+<li>the exponent sign (plus or minus) and</li>
+<li>the number of digits <em>e</em> in the exponent.</li>
+</ul>
+<p>
+As a result, <em>w</em> has to be quite a bit bigger than <em>d</em>.  In 
+practice, this means 
+<em>w</em>&nbsp;&gt;&nbsp;<em>d</em>&nbsp;+&nbsp;4&nbsp;+&nbsp;<em>e</em> 
+where <em>e</em> is 2 unless explicitly stated otherwise.
+</p>
+<p>
+Note that the <code>D</code> notation is identical to the <code>E</code> 
+notation on input.  On output it produces a <code>D</code> instead of an 
+<code>E</code> exponent designator.  It is used for 
+<code>DOUBLE&nbsp;PRECISION</code> numbers.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><code>D</code><em>w.d</em>, <code>E</code><em>w.d</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>Identical to <code>F</code><em>w.d</em> descriptor.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>The floating point number is written in exponential notation with a 
+mantissa of <em>d</em> digits and is right-justified in a field <em>w</em> 
+characters wide.</td>
+</tr>
+<tr><th colspan="2"></th></tr>
+<tr>
+<th>Descriptor</th>
+<td><code>D</code><em>w.d</em><code>E</code><em>e</em>, <code>E</code><em>w.d</em><code>E</code><em>e</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>Identical to <code>F</code><em>w.d</em> descriptor.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>The floating point number is written in exponential notation with an 
+exponent of <em>e</em> digits, a mantissa of <em>d</em> digits and is 
+right-justified in a field <em>w</em> characters wide.</td>
+</tr>
+</table>
+<p>
+This second form explicitly states how many digits are in the exponent.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      DOUBLE PRECISION D
+      A = 3.14159
+      B = -88.9
+      C = 123.4567E-02
+      D = 2.99792458D+08
+      WRITE(*,201)A,B,C,D
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  201 FORMAT(' ',3E10.2,D10.2)
+</pre>
+<p>
+begins with the carriage control descriptor <code>'&nbsp;'</code> which is 
+followed by four descriptors, three <code>E10.2</code> (using a repeat-count) 
+and one <code>D10.2</code>.  These tell the computer to output four 
+right-justified floating point numbers in exponential format, each with a 
+field width of 10 and with 2 digits after the decimal point.  The fourth 
+number is printed with a <code>D</code> exponent designator rather than the 
+usual <code>E</code> exponent designator.  The output looks like
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.31E+01<span class="blank">&#9251;</span>-0.89E+02<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.12E+01<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.30D+09
+</pre>
+<p>
+Another example shows all of the numbers being printed with more digits.  It 
+is permissible to output <code>DOUBLE&nbsp;PRECISION</code> numbers using the 
+<code>E</code> data descriptor just as it is permissible to output 
+<code>REAL</code> numbers using the <code>E</code> data descriptor.
+</p>
+<pre>
+  201 FORMAT(' ',4E15.7)
+</pre>
+<p>
+requires a field width of 15 and 7 digits after the decimal point for 4 
+right-justified floating point numbers written in exponential notation.  
+The result is
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.3141590E+01<span class="blank">&#9251;</span>-0.8890000E+02<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.1234567E+01<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.2997925E+09
+</pre>
+<p>
+As in the case of the <code>F</code> descriptor, values are rounded as 
+necessary in order to achieve the required number of digits after the 
+decimal point.
+</p>
+<p>
+The field width must be quite a bit larger than the number of digits after 
+the decimal point in order to allow for a leading sign, a leading digit, a 
+decimal point and at least four spaces for the exponent field.  If the field
+width is too small, the output will be asterisks <code>*</code>.
+</p>
+</div>
+
+<p>
+The <code>G</code> descriptor can be used if you don't know ahead of time 
+the magnitude of your numbers.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><code>G</code><em>w.d</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>Identical to <code>F</code><em>w.d</em> descriptor.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>If the value is greater than 0.1 but not too large to fit in the 
+field, then the number is written as if in decimal format (similar to 
+the <code>F</code> descriptor) using a field width of <em>w</em> and
+outputting <em>d</em> significant digits.  This number is followed by 
+four blanks. Otherwise, it behaves exactly like the 
+<code>E</code><em>w.d</em> descriptor.</td>
+</tr>
+<tr><th colspan="2"></th></tr>
+<tr>
+<th>Descriptor</th>
+<td><code>G</code><em>w.d</em><code>E</code><em>e</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>Identical to <code>F</code><em>w.d</em> descriptor.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>This form allows you to specify the length of exponent to be 
+<em>e</em> digits.  As before, if the value is greater than 0.1 but 
+not too large to fit in the field, then the number is written as if in 
+decimal format using a field width of <em>w</em> and outputting 
+<em>d</em> significant digits.  This number is followed by 
+<em>e</em>&nbsp;+&nbsp;2 blanks.  Otherwise, it behaves exactly like the 
+<code>E</code><em>w.d</em> descriptor.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      DOUBLE PRECISION D
+      A = 3.14159
+      B = -88.9
+      C = 123.4567E-02
+      D = 2.99792458D+08
+      WRITE(*,202)A,B,C,D
+  202 FORMAT(' ',4G10.2)
+</pre>
+<p>
+The <code>FORMAT</code> statement begins with the carriage control descriptor 
+<code>'&nbsp;'</code> which is followed by four <code>G10.2</code> descriptors 
+(using a repeat-count).  These tell the computer to output four floating point
+ numbers in either fixed point or exponential format, depending on the 
+magnitude of the number.  The result is
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>3.1<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>-89.<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>1.2<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.30E+09
+</pre>
+<p>
+The first three numbers are larger than 0.1 but not 'too large' so they are 
+printed with 2 significant digits and followed by 4 blanks <span class="blank">&#9251;</span>.  (They are padded out on the left with blanks 
+<span class="blank">&#9251;</span> to achieve the required field width of 10.) 
+The fourth number is 'large' so it is printed out as if an <code>E10.2</code> 
+descriptor had been used.
+</p>
+</div>
+
+<p>
+Note that a <code>COMPLEX</code> number requires two data descriptors, one 
+for the real part and one for the imaginary part.  They may <code>D</code>, 
+<code>E</code>, <code>F</code>, <code>G</code> or any combination, as long 
+as there are two of them.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      COMPLEX T
+      T = (-15.8,309.67)
+      WRITE(*,203)T
+  203 FORMAT(' ',2F10.5)
+</pre>
+<p>
+The <code>FORMAT</code> statement begins with the carriage control 
+descriptor <code>'&nbsp;'</code> which is followed by two <code>F10.5</code> 
+descriptors (using a repeat-count).  These tell the computer to output 2 
+right-justified floating point numbers in decimal format, each with a field 
+width of 10 and with 5 digits after the decimal point.  The output is
+</p>
+<pre>
+<span class="blank">&#9251;</span>-15.80000<span class="blank">&#9251;</span>309.67001
+</pre>
+<p>
+Why does the number <code>309.67</code> appear as <code>309.67001</code> 
+when written out to five decimal places?  Floating point numbers that cannot
+be expressed as combinations of powers of 2 will not be exactly representable 
+when stored internally in binary.  The computer will store the number as the 
+nearest binary value, either single-precision or double-precision.  Then, 
+when the value is output, it is translated back into decimal but it may not 
+be exactly the decimal value you started with.  Thus, a number like 
+0.1 may appear as 0.1000000 or 0.1000001 or even 0.9999999, depending on 
+the compiler.  There is also the problem of precision.  The computer can 
+only store so many digits for each number and if you attempt to print out 
+more, you end up with whatever garbage happens to be occupying that memory 
+space.  Do not mistake the number of digits you print out with the actual 
+precision of the number.
+</p>
+</div>
+
+<h3>CHARACTER Data</h3>
+<p>
+If no field width is specified, then the length of the <code>CHARACTER</code> 
+item determines it.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><code>A</code> or <code>A</code><em>w</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>If the length <em>k</em> of the <code>CHARACTER</code> variable is 
+shorter than the field width <em>w</em>, then the rightmost <em>k</em> 
+characters are used.  If the length <em>k</em> is greater than <em>w</em>, then 
+<em>w</em> characters will be read in, with the trailing <em>k-w</em> 
+positions of the <code>CHARACTER</code> variable consisting of blanks.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>If the length <em>k</em> of the <code>CHARACTER</code> data is shorter 
+than the field width <em>w</em>, then the value is right-justified and 
+preceded with <em>w-k</em> blanks.  If the length <em>k</em> is greater 
+than <em>w</em>, then the first (leftmost) <em>w</em> characters of 
+<code>CHARACTER</code> data is written and the rest ignored.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER P*11,Q*20
+      P = 'Hello world'
+      Q = 'The cow jumped'
+      WRITE(*,300)P,Q
+</pre>
+<p>
+First, it is important to understand how values are stored in the 
+<code>CHARACTER</code> variables.  The content of <code>P</code> exactly 
+matches the declared length of the variable but the content of 
+<code>Q</code> is shorter than the declared length so the content is padded 
+out on the right with blanks <span class="blank">&#9251;</span>.
+</p>
+<pre>
+P : Hello<span class="blank">&#9251;</span>world
+Q : The<span class="blank">&#9251;</span>cow<span class="blank">&#9251;</span>jumped<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  300 FORMAT(' ',A11,A20)
+</pre>
+<p>
+begins with the carriage control descriptor <code>'&nbsp;'</code> which is 
+followed by two <code>A</code> descriptors, the first of width 11 and the 
+second of width 20.  These widths exactly match the declared sizes of the 
+variables and the output is
+</p>
+<pre>
+Hello<span class="blank">&#9251;</span>worldThe<span class="blank">&#9251;</span>cow<span class="blank">&#9251;</span>jumped<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>
+</pre>
+<p>
+The exact same effect can be obtained by using <code>A,A</code> in place of 
+<code>A11,A20</code>.  The <code>A</code> descriptor with no declared field 
+width automatically takes the length of the corresponding item in the data 
+transfer list.
+</p>
+<p>
+If the width <em>w</em> is shorter than the length of the value to be printed, 
+then only the first <em>w</em> characters are used and the rest are discarded. 
+However, if the width <em>w</em> is longer than the length of the value to be 
+printed, then the value is right-justified and blanks 
+<span class="blank">&#9251;</span> are added to the left to pad it out to
+the required length.  In
+</p>
+<pre>
+  300 FORMAT(' ',A5,A25)
+</pre>
+<p>
+the first 5 positions in the first variable <code>P</code> are printed, 
+followed by <code>Q</code>.  However, because <code>Q</code> is 20 characters 
+long but has been given 25 spaces to fill, 5 blanks 
+<span class="blank">&#9251;</span> are prepended to it.  The output looks 
+like this:
+</p>
+<pre>
+Hello<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>The<span class="blank">&#9251;</span>cow<span class="blank">&#9251;</span>jumped<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>
+</pre>
+</div>
+
+<h3>LOGICAL Data</h3>
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><code>L</code><em>w</em></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>The input field must contain the letter <code>T</code> or the letter 
+<code>F</code> within the <em>w</em> characters specified.  The letters 
+<code>T</code> or <code>F</code> may be preceded by a period and any number 
+of blanks.  Anything appearing after the letters <code>T</code> or 
+<code>F</code> is ignored.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>The output field is <em>w</em> characters wide and consists of the 
+letter <code>T</code> or the letter <code>F</code> preceded by <em>w-1</em> 
+blanks.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      LOGICAL X,Y
+      X = .FALSE.
+      Y = .TRUE.
+      WRITE(*,400)X,Y
+  400 FORMAT(' ','X =',L2,' and Y =',L5)
+</pre>
+<p>
+The <code>FORMAT</code> statement begins with the carriage control 
+descriptor <code>'&nbsp;'</code> which is followed by a string 
+<code>'The&nbsp;value&nbsp;of&nbsp;X&nbsp;is'</code>, a logical descriptor 
+of width 2, another string 
+<code>'&nbsp;and&nbsp;the&nbsp;value&nbsp;of&nbsp;Y&nbsp;is'</code>, and 
+another logical descriptor, this time of width 5.  The output from these 
+statements is
+</p>
+<pre>
+X<span class="blank">&#9251;</span>=<span class="blank">&#9251;</span>F<span class="blank">&#9251;</span>and<span class="blank">&#9251;</span>Y<span class="blank">&#9251;</span>=<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>T
+</pre>
+<p>
+The string is written out, followed by an <code>F</code> for 
+<code>.FALSE.</code>, right-justified in a field width of 2.  Another string 
+follows, then a <code>T</code> for <code>.TRUE.</code>, right-justified in a 
+field width of 5.  Strings or character constants are written out exactly as 
+they appear.
+</p>
+</div>
+
+<h2>Format Control Descriptors</h2>
+
+<h3>Symbols</h3>
+<p>
+In the following discussion, the letter <em>k</em> is a signed integer and 
+the letter <em>n</em> is an unsigned integer.
+</p>
+
+<h3>Character Constants</h3>
+<p>
+A character constant or string (text appearing within apostrophes) may 
+appear in <code>FORMAT</code> statements associated with output only.  The
+character constant is simply output as is.
+</p>
+<p>
+Another method is to use a Hollerith string.  Named in honour of Herman 
+Hollerith, an American inventer who founded a company that later became part
+of <abbr title="International Business Machines Corporation">IBM</abbr>, the 
+<code>H</code> descriptor has the form <em>n</em><code>H</code><em>string</em> 
+where <em>string</em> is exactly <em>n</em> characters long.
+</p>
+
+<p class="bang">
+The Hollerith string is a deprecated feature in FORTRAN&nbsp;77 and 
+its use is strongly discouraged.
+
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER Q*20
+      Q = 'The cow jumped'
+      WRITE(*,500)Q
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  500 FORMAT(' ',A14,' over the moon.')
+</pre>
+<p>
+begins with the carriage control descriptor <code>'&nbsp;'</code> which is 
+followed by an <code>A</code> descriptor (14 characters wide) and a character 
+constant or string <code>'&nbsp;over&nbsp;the&nbsp;moon.'</code>.  These tell 
+the computer to print the first 14 characters of the variable, followed by 
+the string exactly as it is given.  The output is
+</p>
+<pre>
+The&nbsp;cow&nbsp;jumped&nbsp;over&nbsp;the&nbsp;moon.
+</pre>
+<p>
+The equivalent <code>FORMAT</code> statement using a Hollerith string instead 
+of a character constant is
+</p>
+<pre>
+  500 FORMAT(' ',A14,15H over the moon.)
+</pre>
+<p>
+The descriptor <code>15H</code> tells the compiler that the next 15 
+characters are a character constant and should be output exactly as is.
+The use of character constants is far less prone to error than Hollerith 
+strings.
+</p>
+</div>
+
+<h3>Blank Control</h3>
+<p>
+The default value depends on the <code>BLANK=</code> item in the 
+<code>OPEN</code> statement and is restored at the start of every new 
+formatted transfer.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<th>Action</th>
+</tr>
+<tr>
+<td>BN</td>
+<td>All embedded and trailing blanks are treated as null and ignored.  This 
+descriptor applies only to input and is ignored on output.</td>
+</tr>
+<tr>
+<td>BZ</td>
+<td>All embedded and trailing blanks are treated as zeros.  This 
+descriptor applies only to input and is ignored on output.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Suppose that you have an input file with the values 
+<code>1<span class="blank">&#9251;</span>-23<span class="blank">&#9251;</span>456<span class="blank">&#9251;</span>-7890</code> all in one record (line).  
+The following code is used to read it in:
+</p>
+<pre>
+      OPEN(1,FILE='input.dat',STATUS='OLD')
+      READ(1,600)I,J,K
+  600 FORMAT(I1,I3,I6)
+      CLOSE(1)
+</pre>
+<p>
+The data descriptors don't exactly match the way the numbers are arranged in 
+the data file so the numbers stored in the variables <code>I</code>, 
+<code>J</code> and <code>K</code> may not be what you expect or want.
+</p>
+<ul>
+<li><code>I = 1</code></li>
+<li><code>J = -2</code></li>
+<li><code>K = 3456</code></li>
+</ul>
+<p>
+What happened?  The first number in the file and the first data descriptor 
+are both <code>INTEGER</code>s of length 1 so <code>I</code> takes that value.
+However, the second number in the file is <code>-23</code>, yet 
+<code>J</code> is assigned the value <code>-2</code>.  That's because the 
+next 3 positions in the file are 
+<code><span class="blank">&#9251;</span>-2</code>.  Finally, the third 
+number <code>K</code> takes the next 6 characters in the file which are
+<code>3<span class="blank">&#9251;</span>456<span class="blank">&#9251;</span></code>.  
+The blanks <code class="blank">&#9251;</code> are ignored so the number 
+becomes <code>3456</code>.
+</p>
+<p>
+The results get even stranger if you use the <code>BZ</code> descriptor 
+in the <code>FORMAT</code> statement.  Then all blanks 
+<code class="blank">&#9251;</code> are regarded as zeros.
+</p>
+<pre>
+      OPEN(1,FILE='input.dat',STATUS='OLD')
+      READ(1,600)I,J,K
+  600 FORMAT(BZ,I1,I3,I6)
+      CLOSE(1)
+</pre>
+<p>
+The values stored in the variables now are
+</p>
+<ul>
+<li><code>I = 1</code></li>
+<li><code>J = -2</code></li>
+<li><code>K = 304560</code></li>
+</ul>
+<p>
+When using formatted input, you must know exactly how the file is arranged.
+Now see what happens if you instead use an unformatted <code>READ</code> 
+statment:
+</p>
+<pre>
+      OPEN(1,FILE='input.dat',STATUS='OLD')
+      READ(1,*)I,J,K
+      CLOSE(1)
+</pre>
+<p>
+The values stored in the variables are what you probably want:
+</p>
+<ul>
+<li><code>I = 1</code></li>
+<li><code>J = -23</code></li>
+<li><code>K = 456</code></li>
+</ul>
+</div>
+
+<h3>Plus Sign Control</h3>
+<p>
+In all instances the minus <code>-</code> sign is always printed.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<th>Action</th>
+</tr>
+<tr>
+<td>S</td>
+<td>Restore the system default for printing plus <code>+</code> signs.  This 
+is normally <code>SS</code>.</td>
+</tr>
+<tr>
+<td>SP</td>
+<td>Force the printing of plus <code>+</code> signs in front of numerical 
+data for the remainder of the <code>FORMAT</code> description.  This 
+descriptor applies only to output and is ignored on input.</td>
+</tr>
+<tr>
+<td>SS</td>
+<td>Suppress the printing of plus <code>+</code> signs in front of numerical 
+data for the remainder of the <code>FORMAT</code> description.  This 
+descriptor applies only to output and is ignored on input.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      A = 3.14159
+      B = -88.9
+      C = 123.4567E-02
+      I = -1024
+      J = 666
+      K = 112358
+      WRITE(*,601)I,A,J,B,K,C
+  601 FORMAT(' ',SP,I6,F6.2,I8,F8.2,SS,I12,E12.4)
+</pre>
+<p>
+The <code>FORMAT</code> statement begins with the carriage control 
+descriptor <code>'&nbsp;'</code> which is immediately followed by the 
+<code>SP</code> descriptor, activating the printing of plus <code>+</code> 
+signs.  Then follows an <code>I</code> descriptor and a <code>F</code> 
+descriptor, both of width 6, and another pair of <code>I</code> and 
+<code>F</code> descriptors, these of width 8.  The <code>SS</code> descriptor 
+then suppresses the printing of plus <code>+</code> signs for the last two 
+numbers which are formatted by an <code>I</code> descriptor and an 
+<code>E</code> descriptor, both of width 12.  The output is
+</p>
+<pre>
+<span class="blank">&#9251;</span>-1024<span class="blank">&#9251;</span>+3.14<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>+666<span class="blank">&#9251;</span><span class="blank">&#9251;</span>-88.90<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>112358<span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.1235E+01
+</pre>
+</div>
+
+<h3>Scaling Factor</h3>
+<p>
+The scaling factor is used to scale floating point values by a factor 
+of 10<sup>k</sup> where <em>k</em> is a (small) signed integer.  The default 
+value for <em>k</em> is 0.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<td><em>k</em><code>P</code></td>
+</tr>
+<tr>
+<th>Input</th>
+<td>If there is an explicit exponent in the input value, the scaling factor 
+has no effect.  Otherwise, the number is multiplied by 10<sup>-k</sup> before 
+input, thus changing the value.</td>
+</tr>
+<tr>
+<th>Output</th>
+<td>If there is an explicit exponent in the output value, the mantissa is 
+multiplied by 10<sup>k</sup> and the exponent is reduced by <em>k</em>, thus 
+leaving the value unchanged.  Otherwise, the number is multiplied by 
+10<sup>k</sup> before output, thus changing the value.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      A = 3.14159
+      B = -88.9
+      C = 123.4567E-02
+      WRITE(*,602)A,B,C
+  602 FORMAT(' ',F10.4,F10.4,E12.5)
+      WRITE(*,603)A,B,C
+  603 FORMAT(' ',-2P,F10.4,F10.4,E12.5)
+</pre>
+<p>
+Both <code>FORMAT</code> statements begin with the carriage control 
+descriptor <code>'&nbsp;'</code> and contain two <code>F</code> 
+descriptors and one <code>E</code> descriptor.  However, in the second 
+<code>FORMAT</code> statement, a scaling factor <code>-2P</code> of 
+10<sup>-2</sup> is applied before the numbers are printed.  The output 
+appears as
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>3.1416<span class="blank">&#9251;</span><span class="blank">&#9251;</span>-88.9000<span class="blank">&#9251;</span>0.12346E+01
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.0314<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>-0.8890<span class="blank">&#9251;</span>0.00123E+03
+</pre>
+<p>
+When a scaling factor is used with an <code>F</code> descriptor, the value 
+is actually changed upon input or output.  However, the value is unchanged 
+when there is an explicit exponent in the number.  In this case, the 
+mantissa is shifted and the exponent changed to keep the number the same.
+</p>
+</div>
+
+<h3>Column Position Control</h3>
+<p>
+These descriptors control which column position you are in a record.
+</p>
+
+<table class="layout">
+<tr>
+<th>Descriptor</th>
+<th>Action</th>
+</tr>
+<tr>
+<td><em>n</em><code>X</code></td>
+<td>Shift right <em>n</em> spaces from current position.  Note that the 
+number <em>n</em> is placed before the descriptor <code>X</code>, not 
+after.</td>
+</tr>
+<tr>
+<td><code>T</code><em>n</em></td>
+<td>Shift to column <em>n</em> in the record.</td>
+</tr>
+<tr>
+<td><code>TL</code><em>n</em></td>
+<td>Shift left <em>n</em> spaces from current position.  Note that you 
+cannot shift left past column 1.  This descriptor allows you to reread 
+records on input and overwrite records on output.</td>
+</tr>
+<tr>
+<td><code>TR</code><em>n</em></td>
+<td>Shift right <em>n</em> spaces from current position.  Note that 
+<code>TR</code><em>n</em> is exactly equivalent to 
+<em>n</em><code>X</code>.</td>
+</tr>
+</table>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER P*11,Q*20
+      P = 'Hello world'
+      Q = 'The cow jumped'
+      WRITE(*,700)Q(5:7),P
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  700 FORMAT(' ',TR6,A,'. How are you?',TL23,A5)
+</pre>
+<p>
+begins with the carriage control descriptor <code>'&nbsp;'</code> as usual.
+Then tab right 6 spaces before printing a <code>CHARACTER</code> variable.  
+The <code>A</code> descriptor is used so the field width is exactly the same 
+as the corresponding value in the data transfer list.  In this case, the 
+variable to be output is <code>Q(5:7)</code>, a 3-letter substring of 
+<code>Q</code>.  This is followed by a character constant 
+<code>'. How are you?'</code>.  At this point, you tab left 23 places and 
+write out a 5-letter <code>CHARACTER</code> variable.  The output is
+</p>
+<pre>
+Hello<span class="blank">&#9251;</span>cow.<span class="blank">&#9251;</span>How<span class="blank">&#9251;</span>are<span class="blank">&#9251;</span>you?
+</pre>
+<p>
+The <code>FORMAT</code> statement
+</p>
+<pre>
+  700 FORMAT(' ',6X,A,' How are you?',T1,A5)
+</pre>
+<p>
+accomplishes exactly the same thing.  The <code>6X</code> descriptor gives 
+6 spaces before the first <code>A</code> descriptor and character constant. 
+Then <code>T1</code> instructs the computer to tab to column 1 before 
+acting on the last <code>A</code> descriptor.  The <code>X</code> descriptor 
+for spacing is possibly one of the most useful descriptors available.
+</p>
+</div>
+
+<h3>Record Control</h3>
+<p>
+The slash <code>/</code> descriptor begins a new line (record) on output 
+and skips to the next line on input, ignoring any unread information on the 
+current record.  Two slashes <code>//</code> skips one line, three slashes 
+<code>///</code> skips two lines, etc.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER P*11,Q*20
+      S = 1024.0
+      P = 'Hello world'
+      Q = 'The cow jumped'
+      WRITE(*,701)P,Q(5:7),'Did you know that the square root of',
+     $            S,SQRT(S)
+  701 FORMAT(' ',A5,1X,A,/,' ',A,1X,F6.1,' = ',F6.1,'?',//,
+     $       ' ',20X,'It is!')
+</pre>
+<p>
+The data transfer list contains five element, a <code>CHARACTER</code> 
+variable of length 11, a <code>CHARACTER</code> substring of length 3, a 
+character constant, and two <code>REAL</code> numbers.  (<code>SQRT(S)</code> 
+is a call to the intrinsic square root function <code>SQRT</code> and it 
+returns a <code>REAL value</code>.)  As always the <code>FORMAT</code> 
+statement begins with the carriage control descriptor <code>'&nbsp;'</code>.  
+Then it prints out the first five characters stored in <code>P</code>, 
+followed by a single space and then the substring <code>Q(5:7)</code>.  The 
+record control descriptor <code>/</code> then tells the computer to start 
+a new line.  This is followed by a carriage control descriptor.  On this new 
+line the <code>A</code> descriptor controls the output for the character 
+string.  A single space follows, then a floating point number of width 6.
+The character constant <code>' = '</code> is next and then another floating 
+point number, followed by yet another character constant <code>'?'</code>.
+The double record control descriptor <code>//</code> starts a new line and 
+then another new line immediately, effectively double-spacing.  The final 
+line of output is 20 spaces followed by the string <code>'It is!'</code>.
+Here's the final product:
+</p>
+<pre>
+Hello<span class="blank">&#9251;</span>cow
+Did<span class="blank">&#9251;</span>you<span class="blank">&#9251;</span>know<span class="blank">&#9251;</span>that<span class="blank">&#9251;</span>the<span class="blank">&#9251;</span>square<span class="blank">&#9251;</span>root<span class="blank">&#9251;</span>of<span class="blank">&#9251;</span>1024.0<span class="blank">&#9251;</span>=<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>32.0?
+&nbsp;
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>It is!
+</pre>
+</div>
+
+<h3>Forced Reversion and Scan Control</h3>
+<p>
+If there are fewer items in the data transfer list than there are data 
+descriptors, then all of the unused descriptors are simply ignored.  However, 
+if there are more items in the data transfer list than there are data 
+descriptors, then <strong>forced reversion</strong> occurs.  In this case, 
+FORTRAN&nbsp;77 advances to the next record and rescans the format, starting 
+with the right-most left parenthesis, including any repeat-count indicators.  
+It then re-uses this part of the format.  If there are no inner parenthesis 
+in the <code>FORMAT</code> statement, then the entire format is reused.
+</p>
+<p>
+Forced reversion has no effect on plus sign control, blank control or 
+scaling factors.
+</p>
+<p>
+The colon descriptor <code>:</code> is used to terminate format scanning 
+immediately if there are no more items in the data transfer list.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+What happens if there is a mismatch in the number of data transfer list items 
+and data descriptors?
+</p>
+<pre>
+      A = 3.14159
+      B = -88.9
+      C = 123.4567E-02
+      I = -1024
+      J = 666
+      K = 112358
+      WRITE(*,702)I,J,K
+  702 FORMAT(' ',6I10)
+      WRITE(*,*)
+      WRITE(*,703)I,A,J,B,K,C
+  703 FORMAT(' ',SP,I10,F10.4)
+</pre>
+<p>
+The output is
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>-1024<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>666<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>112358
+&nbsp;
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>-1024<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>+3.1416
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>+666<span class="blank">&#9251;</span><span class="blank">&#9251;</span>-88.9000
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>+112358<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>+1.2346
+</pre>
+<p>
+In the first <code>WRITE/FORMAT</code> pair, there are three 
+<code>INTEGER</code>s to be printed but the <code>FORMAT</code> statement has
+6 <code>I</code> descriptors.  Thus, the three values are printed out 
+according to the <code>FORMAT</code> statement and the rest of the unused
+descriptors are ignored.
+</p>
+<p>
+The unformatted <code>WRITE(*,*)</code> statement simply outputs a blank 
+line.
+</p>
+<p>
+In the second <code>WRITE/FORMAT</code> pair, there are six numbers (three 
+sets of <code>INTEGER</code>/<code>REAL</code> pairs) to be printed but there 
+are only two data descriptors.  (Recall that the <code>SP</code> descriptor 
+turns on plus <code>+</code> sign printing.)  After the first two numbers are
+output, forced reversion occurs.  Since there are no internal parentheses in 
+the <code>FORMAT</code> statement, the entire statement is reused.  In this 
+example, it is reused twice more before all of the values are written out.
+Every time the <code>FORMAT</code> statement is reused, in whole or in part, 
+a new record (line) is started.  Thus, the output from the second 
+<code>WRITE/FORMAT</code> pair covers three lines.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      INTEGER          NMAX
+      PARAMETER(NMAX=6)
+      DOUBLE PRECISION PHYSIX(NMAX)
+      DATA PHYSIX /6.02214129D+23,1.3806488D-23,96485.3365,
+     $             483597.870D+09,6.62606957D-34,10973731.568539/
+      WRITE(*,704)PHYSIX(1),PHYSIX(2),PHYSIX(3),PHYSIX(4),
+     $            PHYSIX(5),PHYSIX(6)
+  704 FORMAT(' ',E14.7,2X,:,'There is more to come!')
+</pre>
+<p>
+This is another case of forced reversion when there are more items 
+in the data transfer list than data descriptors.  Because of the scan 
+control descriptor <code>:</code> in the <code>FORMAT</code> statement, 
+once all the items in the data transfer list are used, anything after the 
+<code>:</code> is ignored.  This is why the string 
+<code>'There&nbsp;is&nbsp;more&nbsp;to&nbsp;come!'</code> is not printed 
+the last time.
+</p>
+<pre>
+0.6022141E+24<span class="blank">&#9251;</span><span class="blank">&#9251;</span>There<span class="blank">&#9251;</span>is<span class="blank">&#9251;</span>more<span class="blank">&#9251;</span>to<span class="blank">&#9251;</span>come!
+0.1380649E-22<span class="blank">&#9251;</span><span class="blank">&#9251;</span>There<span class="blank">&#9251;</span>is<span class="blank">&#9251;</span>more<span class="blank">&#9251;</span>to<span class="blank">&#9251;</span>come!
+0.9648534E+05<span class="blank">&#9251;</span><span class="blank">&#9251;</span>There<span class="blank">&#9251;</span>is<span class="blank">&#9251;</span>more<span class="blank">&#9251;</span>to<span class="blank">&#9251;</span>come!
+0.4835979E+15<span class="blank">&#9251;</span><span class="blank">&#9251;</span>There<span class="blank">&#9251;</span>is<span class="blank">&#9251;</span>more<span class="blank">&#9251;</span>to<span class="blank">&#9251;</span>come!
+0.6626070E-33<span class="blank">&#9251;</span><span class="blank">&#9251;</span>There<span class="blank">&#9251;</span>is<span class="blank">&#9251;</span>more<span class="blank">&#9251;</span>to<span class="blank">&#9251;</span>come!
+0.1097373E+08<span class="blank">&#9251;</span><span class="blank">&#9251;</span>
+</pre>
+<p>
+If the scan control descriptor <code>:</code> is placed before the second 
+<code>2X</code> instead of after, then the final line of output will simply be
+</p>
+<pre>
+0.1097373E+08
+</pre>
+<p>
+In other words, the two final spaces will not be included in the output.
+</p>
+</div>
+
+<h3>Carriage Control</h3>
+<p>
+These four characters (also known as 
+<abbr title="American Standards Association">ASA</abbr> carriage control 
+characters) control the pagination.
+</p>
+
+<table class="layout">
+<tr>
+<th>Character</th>
+<th>Vertical Spacing Before Printing</th>
+</tr>
+<tr>
+<td><code>'&nbsp;'</code></td>
+<td>advance one line</td>
+</tr>
+<tr>
+<td><code>'0'</code></td>
+<td>advance two lines</td>
+</tr>
+<tr>
+<td><code>'1'</code></td>
+<td>advance one page</td>
+</tr>
+<tr>
+<td><code>'+'</code></td>
+<td>do not advance</td>
+</tr>
+</table>
+<p>
+These control characters only work if the output device recognises them.
+Unfortunately, not all systems do so the results can be unpredictable.  
+Normal practice is to put a blank or <code>1X</code> at the start of each 
+<code>FORMAT</code> statement and after each slash <code>/</code>.  If 
+following this convention, special care must be taken in cases of forced 
+reversion to make sure a blank is the first item in each new record.
+</p>
+
+<h2>More Examples</h2>
+<p>
+In the following examples, leading, embedded and trailing blanks are denoted as
+<code class="blank">&#9251;</code>.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+It is permissible to have a <code>READ</code> or <code>WRITE</code> statement 
+with no data transfer list at all.  For example, the program fragment
+</p>
+<pre>
+      WRITE(*,800)
+  800 FORMAT(' ',50('-'))
+</pre>
+<p>
+writes out 50 dashes <code>-</code>, effectively making a dashed line 50 
+characters long.  The output looks like this:
+</p>
+<pre>
+--------------------------------------------------
+</pre>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+An implied&nbsp;<code>DO</code> loop is often used with arrays to write out
+data in a neat tabular form.
+</p>
+<pre>
+      INTEGER          I,NMAX
+      PARAMETER(NMAX=6)
+      CHARACTER*30     LABEL(NMAX)
+      DOUBLE PRECISION PHYSIX(NMAX)
+      LABEL(1)  = 'Avogadro constant'
+      LABEL(2)  = 'Boltzmann constant'
+      LABEL(3)  = 'Faraday constant'
+      LABEL(4)  = 'Josephson constant'
+      LABEL(5)  = 'Planck constant'
+      LABEL(6)  = 'Rydberg constant'
+      PHYSIX(1) = 6.02214129D+23
+      PHYSIX(2) = 1.3806488D-23
+      PHYSIX(3) = 96485.3365
+      PHYSIX(4) = 483597.870D+09
+      PHYSIX(5) = 6.62606957D-34
+      PHYSIX(6) = 10973731.568539
+      WRITE(*,801)(I,LABEL(I),PHYSIX(I),I=1,NMAX)
+  801 FORMAT(' ',I2,3X,A,1X,1P,E14.7)
+</pre>
+<p>
+The output consists of three columns.  In each line there is an 
+<code>INTEGER</code> of width 2, 3 spaces, a <code>CHARACTER</code> (of 
+length 30 in this instance), another space, and finally a floating point number 
+written in exponential form (width 14 and 7 digits after the decimal).  The 
+floating point number is scaled by a factor of 10<sup>1</sup>.  This is what 
+it looks like:
+</p>
+<pre>
+<span class="blank">&#9251;</span>1<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>Avogadro<span class="blank">&#9251;</span>constant<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>6.0221413E+23
+<span class="blank">&#9251;</span>2<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>Boltzmann<span class="blank">&#9251;</span>constant<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>1.3806488E-23
+<span class="blank">&#9251;</span>3<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>Faraday<span class="blank">&#9251;</span>constant<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>9.6485336E+04
+<span class="blank">&#9251;</span>4<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>Josephson<span class="blank">&#9251;</span>constant<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>4.8359787E+14
+<span class="blank">&#9251;</span>5<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>Planck<span class="blank">&#9251;</span>constant<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>6.6260696E-34
+<span class="blank">&#9251;</span>6<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>Rydberg<span class="blank">&#9251;</span>constant<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>1.0973732E+07
+</pre>
+<p>
+Because the implied&nbsp;<code>DO</code> loop in the <code>WRITE</code> 
+statement has 18 items in the data transfer list and the <code>FORMAT</code> 
+statement has only three data descriptors in it, forced reversion occurs five 
+times, leading to a nicely formatted table over six lines.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Finally, forced reversion can lead to unexpected results when the 
+<code>FORMAT</code> statement contains interior parentheses.
+</p>
+<pre>
+      INTEGER          I,NMAX
+      PARAMETER(NMAX=6)
+      DOUBLE PRECISION D,PHYSIX(NMAX)
+      DATA PHYSIX /6.02214129D+23,1.3806488D-23,96485.3365,
+     $             483597.870D+09,6.62606957D-34,10973731.568539/
+      D = 2.99792458D+08
+      WRITE(*,802)D,(PHYSIX(I),I=1,NMAX)
+</pre>
+<p>
+The output for the <code>FORMAT</code> statement
+</p>
+<pre>
+  802 FORMAT(' ',2X,D15.7,2(2X,E15.7))
+</pre>
+<p>
+appears as follows:
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.2997925D+09<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.6022141E+24<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.1380649E-22
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.9648534E+05<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.4835979E+15
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.6626070E-33<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.1097373E+08
+</pre>
+<p>
+The <code>WRITE</code> statement contains a total of seven numbers to print 
+out but there are only three data descriptors in the <code>FORMAT</code> 
+statement so forced reversion occurs.  The first pass through the 
+<code>FORMAT</code> statement yields 2 spaces, a number written in 
+double-precision exponential format, and then the parenthetical group 
+containing 2 spaces and a number written in single-precision exponential 
+format which has a repeat-count of 2 in front of it.  When forced reversion 
+occurs, only the <code>2(2X,E15.7)</code> part of the <code>FORMAT</code> 
+statement is reused.
+</p>
+<p>
+Compare this with the <code>FORMAT</code> statement
+</p>
+<pre>
+  802 FORMAT(' ',2X,D15.7,2X,E15.7,2X,E15.7)
+</pre>
+<p>
+Although <code>2(2X,E15.7)</code> is equivalent to 
+<code>2X,E15.7,2X,E15.7</code>, they are treated differently when forced 
+reversion occurs.  The output for the <code>FORMAT</code> statement without 
+the internal parentheses is
+</p>
+<pre>
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.2997925D+09<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.6022141E+24<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.1380649E-22
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.9648534D+05<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.4835979E+15<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.6626070E-33
+<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span>0.1097373D+08
+</pre>
+<p>
+In the second case, the entire <code>FORMAT</code> statement is reused, not 
+just a subset of it.
+</p>
+</div>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+<a href="io.html" class="button">Input/Output</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash; by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/format.html</span>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Initialisation</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Initialisation of data using =, DATA and PARAMETER statements in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Initialisation</h1>
+<p>
+The value of every variable and array element is undefined at the start of 
+program execution unless it has been initialised in a <code>DATA</code> 
+statement.  Undefined values may be used in executable statements only in 
+ways which cause them to become defined.  There are a number of ways of 
+assigning a value to a variable or array element, including:
+</p>
+<ul>
+<li>on the left side of an assignment statement</li>
+<li>in the data transfer list of a <code>READ</code> statement</li>
+<li>as a <code>DO</code>&nbsp;loop control variable</li>
+<li>in a procedure call provided that the corresponding dummy argument 
+is defined before control is returned to the calling program unit</li>
+<li>as an internal file identifer in a <code>WRITE</code> statement</li>
+<li>as an <abbr title="input/output">I/O</abbr> status identifier in any 
+<abbr title="input/output">I/O</abbr> statement</li>
+<li>in an <code>INQUIRE</code> statement</li>
+</ul>
+<p>
+Using undefined variables in any other way can cause obscure errors which are 
+fiendishly difficult to track down.  Make sure your variables and arrays 
+are properly initialised before you use them.
+</p>
+
+<h2>Assignment Operator</h2>
+<p>
+The equals sign <code>=</code> acts as an assignment operator in 
+FORTRAN&nbsp;77.
+</p>
+<p>
+An arithmetic assignment statement has the form
+</p>
+<pre><em class="encode">symbolic&nbsp;name</em> = <em class="encode">arithmetic&nbsp;expression</em></pre>
+<p>
+where the <em>symbolic&nbsp;name</em> represents a variable or array element 
+of type <code>COMPLEX</code>, <code>DOUBLE&nbsp;PRECISION</code>, 
+<code>INTEGER</code> or <code>REAL</code>.  If the arithmetic expression on 
+the right side of the <code>=</code> operator has a different type from the 
+symbolic name on the left, type conversion is automatically applied to the 
+value of the arithmetic expression before it is applied to the variable or 
+array element.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider this program fragment where an array and a number of variables 
+are declared and then initialised.
+</p>
+<pre>
+      COMPLEX          X
+      DOUBLE PRECISION DUB
+      INTEGER          K,L
+      REAL             ARRAY(5),Y,Z
+      Y   = 119.7
+      Z   = -0.45E+01
+      X   = (Y,Z)
+      DUB = 3.21D+08
+      K   = Y
+      DO 10, L = 1,5
+         ARRAY(L) = 2.0*Y + L*Z
+   10 CONTINUE
+</pre>
+<p>
+In this example, the <code>REAL</code> variable <code>Y</code> is assigned 
+the value 119.7 and the <code>REAL</code> variable <code>Z</code> is assigned 
+the value -4.5.
+</p>
+<p>
+The <code>COMPLEX</code> variable <code>X</code> holds the value which can 
+be written mathematically as 119.7&nbsp;-&nbsp;4.5<i>i</i>.
+</p>
+<p>
+The variable <code>DUB</code> is given the value 
+3.21&nbsp;&times;&nbsp;10<sup>8</sup> using double precision rather than 
+single precision.
+</p>
+<p>
+In the statement <code>K&nbsp;=&nbsp;Y</code>, automatic type conversion 
+occurs since <code>K</code> is type <code>INTEGER</code> and <code>Y</code> 
+is type <code>REAL</code>.  However, the value assigned to <code>K</code> 
+is 119 and <strong>not</strong> 120.  The <code>REAL</code> value is 
+truncated, not rounded.
+</p>
+<p>
+Finally, a <code>DO</code>&nbsp;loop is used to initialise the 
+<code>REAL</code> array:
+</p>
+<ul>
+<li><code>ARRAY(1)</code> is assigned <code>2.0*Y&nbsp;+&nbsp;1*Z</code></li>
+<li><code>ARRAY(2)</code> is assigned <code>2.0*Y&nbsp;+&nbsp;2*Z</code></li>
+<li><code>ARRAY(3)</code> is assigned <code>2.0*Y&nbsp;+&nbsp;3*Z</code></li>
+<li><code>ARRAY(4)</code> is assigned <code>2.0*Y&nbsp;+&nbsp;4*Z</code></li>
+<li><code>ARRAY(5)</code> is assigned <code>2.0*Y&nbsp;+&nbsp;5*Z</code></li>
+</ul>
+</div>
+
+<p>
+An character assignment statement has the form
+</p>
+<pre><em class="encode">symbolic&nbsp;name</em> = <em class="encode">character&nbsp;expression</em></pre>
+<p>
+where the <em>symbolic&nbsp;name</em> represents a variable, array element or
+substring of type <code>CHARACTER</code>.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER BYE*20,GREET*5,HELLO*11
+      HELLO       = 'Hello world'
+      HELLO(7:11) = 'Earth'
+</pre>
+<p>
+In the first assignment statement, the string <code>Hello world</code> is 
+assigned to the variable <code>HELLO</code> and is stored as 
+<code>Hello<span class="blank">&#9251;</span>world</code> where 
+<code class="blank">&#9251;</code> is a blank or space.
+The second assignment statement assigns the string <code>Earth</code> to the 
+substring <code>HELLO(7:11)</code> which means the variable 
+<code>HELLO</code> now contains 
+<code>Hello<span class="blank">&#9251;</span>Earth</code>.  The previously 
+defined values in positions 1 through 6 are unaffected.  (If 
+<code>HELLO</code> had not been previously defined, then those positions 
+would still be undefined.)
+</p>
+<p>
+Now consider what happens if the expression on the right is longer than 
+the variable on the left:
+</p>
+<pre>
+      GREET = HELLO
+</pre>
+<p>
+In this statement, a character expression of length&nbsp;11 is assigned to 
+a variable of length&nbsp;5.  When this occurs, the characters after position 
+5 are lost and the variable <code>GREET</code> contains <code>Hello</code>, 
+the first 5 characters of <code>HELLO</code>.
+</p>
+<p>
+Finally, examine the case where the expression on the right is shorter than 
+the variable on the left:
+</p>
+<pre>
+      BYE = 'Farewell'
+</pre>
+<p>
+When this happens, blanks <code class="blank">&#9251;</code> are appended 
+(added to the right side).  The variable <code>BYE</code> is stored as
+<code>Farewell<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span></code>.
+</p>
+</div>
+
+<p>
+An logical assignment statement has the form
+</p>
+<pre><em class="encode">symbolic&nbsp;name</em> = <em class="encode">logical&nbsp;expression</em></pre>
+<p>
+where the <em>symbolic&nbsp;name</em> represents a variable or array element 
+of type <code>LOGICAL</code>.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER*1 ANS
+      LOGICAL     DEBUG
+      WRITE(*,*)'Do you wish to turn debugging on?  Y/N'
+      READ(*,10)ANS
+   10 FORMAT(A)
+      DEBUG = ANS .EQ. 'Y' .OR. ANS .EQ. 'y'
+</pre>
+<p>
+The logical expression 
+<code>ANS&nbsp;.EQ.&nbsp;'Y'&nbsp;.OR.&nbsp;ANS&nbsp;.EQ.&nbsp;'y'</code> 
+evaluates to <code>.TRUE.</code> only if <code>ANS</code> contains either 
+<code>Y</code> or <code>y</code>.  Once the expression is evaluated, the
+value assigned to the <code>LOGICAL</code> variable <code>DEBUG</code>
+</p>
+</div>
+
+<h3>= Is Not 'Equals'</h3>
+<p>
+It is important to realise that the assignment operator <code>=</code> is 
+not an 'equals&nbsp;sign' in the mathematical sense.  In FORTRAN&nbsp;77, the 
+assignment operator <code>=</code> always assigns the value on the right 
+side of the operator to the symbolic name on the left side of the operator.  
+Thus, <code>X&nbsp;=&nbsp;-13</code> is a valid arithmetic assignment 
+statement but <code>-13&nbsp;=&nbsp;X</code> is not, even though the 
+mathematical statements <em>x&nbsp;=&nbsp;-13</em> and 
+<em>-13&nbsp;=&nbsp;x</em> are equivalent.
+</p>
+
+<h2>PARAMETER Statement</h2>
+<p>
+A <strong>variable</strong> is simply a named memory location of a fixed type.  
+The value of a variable can be changed during the execution of the program.  A 
+<strong>named constant</strong>, on the other hand, is fixed at compile time 
+and cannot be changed.  The <code>PARAMETER</code> statement is used to assign 
+a constant value to a symbolic name.
+</p>
+<pre>PARAMETER(<em class="encode">cname<sub>1</sub></em>&nbsp;=&nbsp;<em class="encode">value<sub>1</sub></em>, <em class="encode">cname<sub>2</sub></em>&nbsp;=&nbsp;<em class="encode">value<sub>2</sub></em>, &hellip;, <em class="encode">cname<sub>n</sub></em>&nbsp;=&nbsp;<em class="encode">value<sub>n</sub></em>)</pre>
+<p>
+Although the value of a FORTRAN&nbsp;77 constant cannot be changed elsewhere 
+in the program, it can be used in other <code>PARAMETER</code> statements as 
+well as in type declarations, <code>DATA</code> statements and in calculations.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      DOUBLE PRECISION DEG,PI,RAD,TWOPI
+      PARAMETER(PI=3.141592653589793D0,TWOPI=2D0*PI)
+&hellip;
+      RAD = DEG*PI/180D0
+</pre>
+<p>
+The value of the <code>DOUBLE&nbsp;PRECISION</code> constant <code>PI</code> 
+is assigned in the <code>PARAMETER</code> statement.  The value of another 
+<code>DOUBLE&nbsp;PRECISION</code> constant, <code>TWOPI</code>, is also
+assigned in the same <code>PARAMETER</code> statement.  This is done 
+simply by multiplying the already-defined constant <code>PI</code> by 
+<code>2D0</code>.  Later in the program, the value of <code>PI</code> is 
+used in an arithmetic expression.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      INTEGER   COLS,ROWS
+      PARAMETER(ROWS=12,COLS=10)
+      REAL      MATRIX(ROWS,COLS),VECTOR(ROWS)
+</pre>
+<p>
+In this set of declarations, the constants <code>COLS</code> and 
+<code>ROWS</code> are declared to be of type <code>INTEGER</code> before
+being given the values in the following <code>PARAMETER</code> statement.
+After the constants have been defined, they can be used in the array 
+declarations on the next line.  Using named constants as array bounds is
+a common application in FORTRAN&nbsp;77.
+</p>
+</div>
+
+<p>
+<code>CHARACTER</code> constants are also possible.  They can be declared
+in the following manner:
+</p>
+<pre>
+CHARACTER*(*) <em class="encode">cname</em>
+PARAMETER(<em class="encode">cname</em>&nbsp;=&nbsp;'<em class="encode">string</em>')
+</pre>
+<p>
+The length of the <code>CHARACTER</code> constant <em>cname</em> is 
+automatically set to the length of the <em>string</em> in the 
+<code>PARAMETER</code> statement.  This only works with 
+<code>CHARACTER</code> constants, not <code>CHARACTER</code> variables which
+must have the length explicitly declared.  The <code>CHARACTER*(*)</code>
+statement must precede the <code>PARAMETER</code> statement.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER*(*) ERRMSG
+      PARAMETER(ERRMSG='Division by zero!')
+</pre>
+<p>
+In this example, the <code>CHARACTER</code> constant <code>ERRMSG</code> is
+17 characters long and contains the string 
+<code>Division&nbsp;by&nbsp;zero!</code>
+</p>
+</div>
+
+<p>
+<code>LOGICAL</code> constants can take the values <code>.TRUE.</code> or
+<code>.FALSE.</code>
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      LOGICAL DEBUG
+      PARAMETER(DEBUG=.TRUE.)
+&hellip;
+      IF (DEBUG) WRITE(*,*)'Entering first DO loop'
+</pre>
+<p>
+The <code>LOGICAL</code> constant <code>DEBUG</code> is set to 
+<code>.TRUE.</code> and is used in an <code>IF</code> statement later in 
+the program.
+</p>
+</div>
+
+<h2>DATA Statement</h2>
+<p>
+The <code>DATA</code> statement is also used to initialise variables and 
+arrays.  It takes the form
+</p>
+<pre>DATA&nbsp;<em class="encode">var-list<sub>1</sub></em>&nbsp;/<em class="encode">value-list<sub>1</sub></em>/, <em class="encode">var-list<sub>2</sub></em>&nbsp;/<em class="encode">value-list<sub>2</sub></em>/, &hellip;, <em class="encode">var-list<sub>n</sub></em>&nbsp;/<em class="encode">value-list<sub>n</sub></em>/</pre>
+<p>
+where <em>var-list</em> is a list of variable names, array names, substring 
+names and implied&nbsp;<code>DO</code> lists, and <em>value-list</em> is a 
+list of literal or named constants, optionally preceded by a repeat-count and 
+an asterisk <code>*</code>.  The repeat-count is either an unsigned integer 
+value or a named constant.
+</p>
+<p>
+The <code>DATA</code> statement must follow the type specification statements 
+but can appear anywhere else in the program unit.  By convention, they always 
+appear directly after the specification statements and before the executable 
+statements.
+</p>
+<p>
+The important difference between the <code>DATA</code> and 
+<code>PARAMETER</code> statements is that the <code>DATA</code> statement 
+specifies an initial value for a variable or array element which may be 
+subsequently changed during program execution.  The value of a named constant 
+defined by a <code>PARAMETER</code> statement may not be changed.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CHARACTER IFILE*20
+      INTEGER   YEAR
+      LOGICAL   DEBUG
+      DATA      IFILE /'myinput.dat'/, YEAR /2013/, DEBUG /.FALSE./
+</pre>
+<p>
+In this example, the <code>CHARACTER</code> variable is initialised to the 
+value <code>myinput.dat<span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span><span class="blank">&#9251;</span></code> where <code class="blank">&#9251;</code> 
+is a blank or space.  <code>YEAR</code> takes the initial value 2013 and
+<code>DEBUG</code> is set to <code>.FALSE.</code>
+</p>
+<p>
+An equivalent set of statements would be
+</p>
+<pre>
+      CHARACTER IFILE*20
+      INTEGER   YEAR
+      LOGICAL   DEBUG
+      DATA      IFILE,YEAR,DEBUG /'myinput.dat',2013,.FALSE./
+</pre>
+<p>
+or even
+</p>
+<pre>
+      CHARACTER IFILE*20
+      INTEGER   YEAR
+      LOGICAL   DEBUG
+      DATA      IFILE /'myinput.dat'/
+      DATA      YEAR /2013/
+      DATA      DEBUG /.FALSE./
+</pre>
+<p>
+although there is little to recommend this last version.
+</p>
+</div>
+
+<h3>Initialising Arrays</h3>
+<p>
+Either an entire array or just certain specified elements can be initialised 
+in a <code>DATA</code> statement.  If the entire array is being initialised, 
+then just the name of the array is used in the <code>DATA</code> statement 
+but all of the elements must then be initialised.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      LOGICAL OFFON(500)
+      REAL    MASS(500)
+      DATA    MASS /500*0.0/, OFFON /100*.TRUE.,400*.FALSE./
+</pre>
+<p>
+A repeat count of <code>500</code> is used to initialise all elements of the 
+array <code>MASS</code> to <code>0.0</code>.  The first 100 elements of the 
+array <code>OFFON</code> are initialised to <code>.TRUE.</code> and the 
+remaining 400 elements are set to <code>.FALSE.</code>.
+</p>
+<p>
+It is common practice to use named constants as array bounds and it is 
+permissible to use named constants (but not expressions involving named 
+constants) in <code>DATA</code> statements.
+</p>
+<pre>
+      INTEGER   N1,N2,NTOTAL
+      REAL      ZERO
+      PARAMETER(N1=100, N2=400, NTOTAL=N1+N2, ZERO=0.0)
+      LOGICAL   OFFON(NTOTAL)
+      REAL      MASS(NTOTAL)
+      DATA      MASS /NTOTAL*ZERO/, OFFON /N1*.TRUE.,N2*.FALSE./
+</pre>
+<p>
+This code accomplishes the same task as the previous snippet but uses 
+named constants in the <code>DATA</code> statement.
+</p>
+</div>
+
+<p>
+If only a few elements of an array are to initialised, then each element 
+must be listed separately.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      INTEGER SMALL(10)
+      DATA    SMALL(2),SMALL(7) /4,-14/, 
+</pre>
+<p>
+Only the second and seventh elements of the array <code>SMALL</code> are 
+initialised.  All of the rest of the array elements remain undefined.
+</p>
+</div>
+
+<h4>Implied DO loop</h4>
+<p>
+An implied&nbsp;<code>DO</code>&nbsp;loop allows selective access to array 
+elements and is used in <abbr title="input/output">I/O</abbr> statements as 
+well as <code>DATA</code> statements.  The general form of the 
+implied&nbsp;<code>DO</code>&nbsp;loop is
+</p>
+<pre>(<em class="encode">data-list</em>,&nbsp;<em class="encode">loop-control-variable</em>&nbsp;=&nbsp;<em class="encode">initial-value</em>,&nbsp;<em class="encode">final-value</em>,&nbsp;<em class="encode">step-size</em>)</pre>
+<p>
+The rules for the <em>initial-value</em>, <em>final-value</em> and 
+<em>step-size</em> are exactly the same as for a <code>DO</code>&nbsp;loop. 
+An implied&nbsp;<code>DO</code>&nbsp;loop may contain other 
+implied&nbsp;<code>DO</code>&nbsp;loops nested within.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      LOGICAL ODD(100)
+      DATA    (ODD(I),I=1,99,2) /50*.TRUE./,
+     $        (ODD(I),I=2,100,2) /50*.FALSE./
+</pre>
+<p>
+The first line of the <code>DATA</code> statement assigns the value 
+<code>.TRUE.</code> to the array elements with odd-numbered indices whilst 
+the continuation line of the statement initialises the even-numbered array 
+elements with the value <code>.FALSE.</code>
+</p>
+</div>
+
+<p>
+Nested implied&nbsp;<code>DO</code>&nbsp;loops are particularly useful when 
+initialising multi-dimensional arrays.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      REAL UPTRI(10,10)
+      DATA ((UPTRI(I,J),I=1,J),J=1,10) /55*1.0/
+</pre>
+<p>
+This <code>DATA</code> statement initialises the upper triangular part of 
+the square matrix (two-dimensional array) <code>UPTRI</code> to 
+<code>1.0</code>.  The rest of the matrix is undefined.
+</p>
+<table class="layout">
+<tr class="textcentre">
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+<td class="lines">1.0</td>
+</tr>
+<tr class="textcentre">
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines"></td>
+<td class="lines">1.0</td>
+</tr>
+</table>
+</div>
+
+<h3>DATA Statements in Procedures</h3>
+<p>
+In the main program unit, a nonexecutable <code>DATA</code> statement has 
+the same effect as a bunch of assignment statements at the very beginning 
+of the program.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      PROGRAM MAIN
+      CHARACTER*20 NAME
+      REAL         DEC,MAG,RA
+      DATA NAME,MAG,RA,DEC /'Alpha Centauri',-0.27,14.66,-60.84/
+</pre>
+<p>
+is equivalent to
+</p>
+<pre>
+      PROGRAM MAIN
+      CHARACTER*20 NAME
+      REAL         DEC,MAG,RA
+      NAME = 'Alpha Centauri'
+      MAG  = -0.27
+      RA   = 14.66
+      DEC  = -60.84
+</pre>
+</div>
+
+<p>
+However, this does not hold true in procedures.  In an external function 
+or subroutine, the <code>DATA</code> statement sets the values exactly 
+once, before the procedure is called, whereas assignment statements are 
+executed every time the procedure is called.  This can be useful if there 
+are certain actions which need to happen the first time a procedure is 
+called but not subsequently.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      SUBROUTINE ONEREC(UNITNO,RECORD)
+      INTEGER UNITNO
+      REAL    RECORD
+      LOGICAL OPENED
+      DATA    OPENED /.FALSE./
+      SAVE    OPENED
+      IF (.NOT. OPENED) THEN
+         OPEN(UNITNO,FILE='inputfile.dat',STATUS='old',ERR=999)
+         OPENED = .TRUE.
+      END IF
+      READ(UNITNO,*)RECORD
+      RETURN
+  999 STOP 'Error opening file'
+      END
+</pre>
+<p>
+The first time the subroutine is called, the <code>LOGICAL</code> variable 
+<code>OPENED</code> is initialised to <code>.FALSE.</code>  Therefore, the 
+logical expression <code>.NOT.&nbsp;OPENED</code> is <code>.TRUE.</code> 
+on the first call and the block&nbsp;<code>IF</code> statement is executed.
+A file is opened and the variable <code>OPENED</code> is reset to 
+<code>.TRUE.</code>.  Then <code>RECORD</code> is read in from the opened 
+file and the subroutine returns to the calling program.  On subsequent calls 
+to this subroutine, the logical expression in the block&nbsp;<code>IF</code> 
+will always be <code>.FALSE.</code> and the subroutine will only read in 
+another value into <code>RECORD</code>.  This is because the <code>SAVE</code> 
+command preserves the value of <code>OPENED</code> between calls to the 
+subroutine.
+</p>
+</div>
+<p>
+Note that <code>DATA</code> cannot be used to initialise variables or arrays 
+which are dummy arguments in the procedure.  <code>DATA</code> cannot be used 
+to initialise values in blank <code>COMMON</code> blocks but can be used in 
+the special <code>BLOCK&nbsp;DATA</code> subroutine to initialise variables in 
+named <code>COMMON</code> blocks.
+</p>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/initial.html</span>
+</p>
+
+</body>
+</html>

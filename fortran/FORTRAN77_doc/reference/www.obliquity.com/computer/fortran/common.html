@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - COMMON Blocks, BLOCK DATA and EQUIVALENCE</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Declaring, initialising and using COMMON blocks, BLOCK DATA subprograms and the EQUIVALENCE statement in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>COMMON Blocks, BLOCK&nbsp;DATA and EQUIVALENCE</h1>
+
+<h2>COMMON Block</h2>
+<p>
+Lengthy argument lists in subroutines and user-defined functions can occur
+as modularised programs grow ever larger, requiring more and more information
+to be passed between program units.  The <code>COMMON</code> block, a piece
+of shared memory in the computer, is another method for passing information
+between program units.  Data stored in a <code>COMMON</code> block is not 
+passed between program units via argument lists, but through the
+<code>COMMON</code> statement near the beginning of each program unit.
+</p>
+<p>
+There are two types of <code>COMMON</code> blocks: <strong>blank</strong> and
+<strong>named</strong>.  A program may contain only one blank 
+<code>COMMON</code> block but any number of named <code>COMMON</code> blocks.  
+Every <code>COMMON</code> block must be declared in every program unit in which 
+the information stored therein is needed.  In addition, the unique
+blank <code>COMMON</code> block must be declared in the main program.
+</p>
+<p>
+The blank <code>COMMON</code> block is set up with the statement
+</p>
+<pre>COMMON <em class="encode">variable-list</em></pre>
+<p>
+and the named <code>COMMON</code> block is declared by
+</p>
+<pre>COMMON /<em class="encode">name</em>/ <em class="encode">variable-list</em></pre>
+<p>
+where the <em>name</em> between the forward slashes is the name of the
+named <code>COMMON</code> block.
+</p>
+<p>
+Every subroutine or user-defined function that uses data stored in the
+<code>COMMON</code> block, blank or named, must have a similar statement
+to those above.  The variable names do not need to match between program
+units but it is vital that their types and the order in which they appear
+in the list are identical.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the following program fragment:
+</p>
+<pre>
+      PROGRAM MAIN
+      INTEGER A
+      REAL    F,R,X,Y
+      COMMON  R,A,F
+      A = -14
+      R = 99.9
+      F = 0.2
+      CALL SUB(X,Y)
+&hellip;
+      END
+
+      SUBROUTINE SUB(P,Q)
+      INTEGER I
+      REAL    A,B,P,Q
+      COMMON  A,I,B
+&hellip;
+      END
+</pre>
+<p>
+In this example, a blank <code>COMMON</code> block holds three values: a
+<code>REAL</code> number, an <code>INTEGER</code> number, and another
+<code>REAL</code> number.  Memory is shared in the <code>COMMON</code>
+block in the following way:
+</p>
+<table>
+<tr>
+<th>Main Program</th>
+<th>Common Memory Storage</th>
+<th>Subroutine</th>
+</tr>
+<tr class="textcentre">
+<td class="lines"><code>R</code></td>
+<td class="lines">99.9</td>
+<td class="lines"><code>A</code></td>
+</tr>
+<tr class="textcentre">
+<td class="lines"><code>A</code></td>
+<td class="lines">-14</td>
+<td class="lines"><code>I</code></td>
+</tr>
+<tr class="textcentre">
+<td class="lines"><code>F</code></td>
+<td class="lines">0.2</td>
+<td class="lines"><code>B</code></td>
+</tr>
+</table>
+<p>
+Note that the variable names for each memory area differ between the
+main program and the subroutine, but that the number and type of variables
+are the same as is the order in which they are listed.
+</p>
+</div>
+<p>
+Named <code>COMMON</code> blocks are used in much the same manner.  Note
+that a variable cannot appear in more than one named <code>COMMON</code>
+block in a program unit.
+</p>
+
+<h3>Blank Versus Named</h3>
+
+<h4>Declaration</h4>
+<p>
+Blank <code>COMMON</code> blocks must be declared in the main program.
+It is not necessary to declare named <code>COMMON</code> blocks in the
+main program unless they are used there.
+</p>
+
+<h4>Length</h4>
+<p>
+Blank <code>COMMON</code> blocks need not be the same length in
+different program units.  However, a named <code>COMMON</code> block must 
+be exactly the same length wherever it appears.  This means that
+some knowledge about how the computer stores information is necessary.
+That is, the programmer must know how much storage each variable or
+array takes in order to ensure that the named <code>COMMON</code> blocks
+are the same length.
+</p>
+
+<h4>Initialisation</h4>
+<p>
+Variables in blank <code>COMMON</code> blocks may be initialised with
+<code>READ</code> or assignment statements but <strong>not</strong> with a
+<code>DATA</code> statement.  The same restrictions apply to named 
+<code>COMMON</code> blocks with one important difference: named
+<code>COMMON</code> blocks may be initialised in a special nonexecutable
+subroutine called a <code>BLOCK&nbsp;DATA</code> subprogram.
+</p>
+
+<h4>SAVE Statement</h4>
+<p>
+When a subroutine or function is exited, local variables become
+undefined.  The same thing may happen with the variables stored in
+named <code>COMMON</code> blocks.  Therefore, it is possible to
+<code>SAVE</code> an entire named <code>COMMON</code> block (but not
+individual variables in the block) in a procedure with the command
+</p>
+<pre>SAVE /<em class="encode">named&nbsp;common&nbsp;block<sub>1</sub></em>/, /<em class="encode">named&nbsp;common&nbsp;block<sub>2</sub></em>/, &hellip;, /<em class="encode">named&nbsp;common&nbsp;block<sub>n</sub></em>/</pre>
+<p>
+Variables in a blank <code>COMMON</code> block never become undefined since
+the it is declared in the main program.  Similarly, if a named
+<code>COMMON</code> block is declared in the main program, then it is
+unecessary to use the <code>SAVE</code> command in other program units.
+Note that you cannot use the <code>SAVE</code> command on a blank 
+<code>COMMON</code> block.
+</p>
+
+<h2>BLOCK DATA Subprogram</h2>
+<p>
+A <code>BLOCK DATA</code> subprogram consists of the 
+<code>BLOCK&nbsp;DATA</code> statement, any necessary type declarations, a 
+list of the named <code>COMMON</code> blocks and their variables, and one or 
+more <code>DATA</code> statements initialising one or more of the variables 
+appearing in the <code>COMMON</code> blocks.  Its sole purpose is to 
+initialise the values in named <code>COMMON</code> blocks.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      BLOCK DATA SETUP
+      INTEGER A,B,C
+      REAL    I,J,K,L
+      COMMON  /AREA1/ A,B,C
+      COMMON  /AREA2/ I,J,K,L
+      DATA    A,B,C,I,J,K,L/0,1,2,10.0,-20.0,30.0,-40.0/
+      END
+</pre>
+</div>
+
+<h3>EXTERNAL Statement</h3>
+<p>
+During compilation and linking, if one of the modules containing a procedure 
+is omitted, the linker will almost certainly return an error but this will 
+not happen if it's the <code>BLOCK&nbsp;DATA</code> subprogram that's missing.
+To avoid this possibility, the name of the <code>BLOCK&nbsp;DATA</code> 
+subprogram unit should be included in an <code>EXTERNAL</code> statement in 
+some or all of the procedures which contain the named <code>COMMON</code> 
+blocks initialised by the <code>BLOCK&nbsp;DATA</code> subprogram.
+</p>
+<p>
+The general form of the statement is
+</p>
+<pre>EXTERNAL <em class="encode">ename<sub>1</sub></em>, <em class="encode">ename<sub>2</sub></em>, <em class="encode">&hellip;</em>, <em class="encode">ename<sub>n</sub></em></pre>
+<p>
+where <em>ename</em> is the name of an external function, subroutine, 
+<code>BLOCK&nbsp;DATA</code> subprogram or dummy procedure in an argument list.
+</p>
+
+<h2>Use of COMMON Blocks</h2>
+<p>
+The use of <code>COMMON</code> blocks is discouraged unless there are
+extremely large amounts of data to be passed between program units.  The
+reason for this is simple: it weakens modularity.  Variables in
+<code>COMMON</code> blocks are <strong>global</strong> in nature and when one
+program unit alters a variable in this shared memory area, then it affects
+all of the other program units which also use this shared area, often with
+unexpected results.  The debugging process becomes that much harder.
+</p>
+
+<h2>EQUIVALENCE Statement</h2>
+<p>
+The <code>EQUIVALENCE</code> statement causes two or more items (arrays or 
+variables) to occupy the same memory space.  In the early days of
+FORTRAN, when computer memory was measured in kilobytes, this was a valuable
+technique to make the most efficient use of very limited memory.  Today, 
+computers routinely have gigabytes of memory, but <code>EQUIVALENCE</code>
+still has a use, as the case study below demonstrates.
+</p>
+<p>  
+The general form of the statement is
+</p>
+<pre>EQUIVALENCE (<em class="encode">variable-list<sub>1</sub></em>), (<em class="encode">variable-list<sub>2</sub></em>), &hellip;, (<em class="encode">variable-list<sub>n</sub></em>)</pre>
+<p>
+where there are one or more <em>variable-lists</em>.  The 
+<em>variable-list</em> contains two or more variables or arrays or mixture 
+of the two.  The <code>EQUIVALENCE</code> statement occurs near the 
+beginning of a program unit, along with type declarations and other 
+specification statements.
+</p>
+
+<div class="example">
+<h4>Case Study</h4>
+<p>
+Some years ago, one of the authors wrote a FORTRAN&nbsp;77 program to model 
+the dynamics of planetary satellites by numerical integration of the equations 
+of motion.  The orbits were to be fitted to observational data, so it was 
+necessary to integrate not only the coordinates of the satellites, but also 
+the partial derivatives of the coordinates with respect to the initial 
+position and velocity of each satellite, in order to calculate the variational 
+equations.
+</p>
+<p>
+Thus the (one-dimensional) array of quantities being integrated in the case of
+N satellites were:
+</p>
+<p>
+x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>,
+x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>, &hellip;,
+x<sub>N</sub>, y<sub>N</sub>, z<sub>N</sub>,
+&#8706;x<sub>1</sub>/&#8706;&xi;<sub>1</sub>,
+&#8706;y<sub>1</sub>/&#8706;&xi;<sub>1</sub>,
+&#8706;z<sub>1</sub>/&#8706;&xi;<sub>1</sub>, &hellip;,
+&#8706;x<sub>1</sub>/&#8706;&eta;<sub>1</sub>,
+&#8706;y<sub>1</sub>/&#8706;&eta;<sub>1</sub>,
+&#8706;z<sub>1</sub>/&#8706;&eta;<sub>1</sub>, &hellip;,
+&#8706;z<sub>N</sub>/&#8706;&zeta;'<sub>N</sub>
+</p>
+<p>
+where &xi;<sub>1</sub> denotes the initial value of x<sub>1</sub>, and so forth.
+</p>
+<p>
+In the main program, the number of coordinates and free parameters were defined
+using the <code>PARAMETER</code> statement as <code>NCOORD</code> and 
+<code>NPARAM</code> respectively.  For a two-satellite system, there are 6 
+coordinates and 12 components of the initial position and velocity vectors, 
+hence:
+</p>
+<pre>
+      PARAMETER(NCOORD=6, NPARAM=12)
+</pre>
+<p>
+Then the number of partial derivatives was defined as the product of
+those two quantities,
+</p>
+<pre>
+      PARAMETER(NPTLS=NCOORD*NPARAM)
+</pre>
+<p>
+and the total number of equations to be integrated was the number of coordinates
+plus the number of partial derivatives,
+</p>
+<pre>
+      PARAMETER(NEQNS=NCOORD+NPTLS)
+</pre>
+<p>
+The one-dimensional array of quantities being integrated was declared as 
+</p>
+<pre>
+      DOUBLE PRECISION P(NEQNS)
+</pre>
+<p>
+and the two-dimensional array of partial derivatives was declared as 
+</p>
+<pre>
+      DOUBLE PRECISION PTLS(NCOORD,NPARAM)
+</pre>
+<p>
+Finally, <code>EQUIVALENCE</code> was used to make these two array share
+the same memory:
+</p>
+<pre>
+      EQUIVALENCE (PTLS,P(NCOORD+1))
+</pre>
+<p>
+In the case of two satellites, this results in the following memory layout:
+</p>
+<table>
+<tr>
+<td class="lines"><code>P(1)</code></td>
+<td class="textcentre"></td>
+<td class="textcentre"></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">x<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(2)</code></td>
+<td class="textcentre"></td>
+<td class="textcentre"></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">y<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(3)</code></td>
+<td class="textcentre"></td>
+<td class="textcentre"></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">z<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(4)</code></td>
+<td class="textcentre"></td>
+<td class="textcentre"></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">x<sub>2</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(5)</code></td>
+<td class="textcentre"></td>
+<td class="textcentre"></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">y<sub>2</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(6)</code></td>
+<td class="textcentre"></td>
+<td class="textcentre"></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">z<sub>2</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(7)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(1,1)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;x<sub>1</sub>/&#8706;&xi;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(8)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(2,1)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;y<sub>1</sub>/&#8706;&xi;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(9)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(3,1)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;x<sub>1</sub>/&#8706;&xi;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(10)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(4,1)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;x<sub>2</sub>/&#8706;&xi;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(11)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(5,1)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;y<sub>2</sub>/&#8706;&xi;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(12)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(6,1)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;z<sub>2</sub>/&#8706;&xi;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(13)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(1,2)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;x<sub>1</sub>/&#8706;&eta;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(14)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(2,2)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;y<sub>1</sub>/&#8706;&eta;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="lines"><code>P(15)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(3,2)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;z<sub>1</sub>/&#8706;&eta;<sub>1</sub></td>
+</tr>
+<tr>
+<td class="textcentre">&hellip;</td>
+<td></td>
+<td class="textcentre">&hellip;</td>
+<td></td>
+<td class="textcentre">&hellip;</td>
+</tr>
+<tr>
+<td class="lines"><code>P(81)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="lines"><code>PTLS(6,12)</code></td>
+<td class="textcentre">&nbsp;=&nbsp;</td>
+<td class="textcentre">&#8706;z<sub>2</sub>/&#8706;&zeta;'<sub>2</sub></td>
+</tr>
+</table>
+<p>
+Why do this?  The integration routine required a one-dimensional array
+of equations, but in the rest of the program, it was preferable to represent
+the partial derivatives as a two-dimensional array.  There were three
+options:
+</p>
+<ol>
+<li>Don't use a two-dimensional array at all. Calculate the offset of each 
+required partial directly in the array <code>P</code>. This would greatly 
+complicate the program, as well as increasing the likelihood of bugs due to 
+miscalculation of the correct offset.</li>
+<li>Copy elements 7 to 81 of the array <code>P</code> into the array 
+<code>PTLS</code> after every integration step.  This would be slow and 
+wasteful, because the program performs many thousands of integration steps, 
+and the number of partial derivatives grows quadratically with the number of 
+satellites.</li>
+<li>Use <code>EQUIVALENCE</code> to map the two-dimensional array of partial 
+derivatives directly onto the one-dimensional array of integrated 
+quantities.</li>
+</ol>
+<p>
+The third option was the most elegant and the most efficient.  It demonstrates 
+that <code>EQUIVALENCE</code> still has a place in modern FORTRAN&nbsp;77 
+programming.
+</p>
+</div>
+<p>
+There are a few restrictions on the use of the <code>EQUIVALENCE</code> 
+statement.  Dummy arguments in external functions and subroutines cannot 
+appear in the <em>variable-list</em> nor can variables which are external 
+function names.  It is also illegal to equivalence two or more elements of 
+the same array or do anything else which violates storage sequence rules.
+It is possible to equivalence different numerical data types but you must 
+know exactly how these values are stored internally in order to do it 
+correctly and sensibly.  The resulting code may not be portable to other 
+machines.  Use with caution.
+</p>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/common.html</span>
+</p>
+
+</body>
+</html>

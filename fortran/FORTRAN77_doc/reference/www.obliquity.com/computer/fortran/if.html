@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Branching Control Structures</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Branching control structures in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Branching Control Structures</h1>
+<p>
+Control structures alter the normal sequential flow of a statement execution.
+<code>IF</code> statements allow a program to follow different paths 
+depending on predefined criteria.
+</p>
+
+<h2>Logical IF</h2>
+<pre>IF (<em class="encode">logical-expression</em>) <em class="encode">statement</em></pre>
+<p>
+Any executable statement may appear in the <em>statement</em> except 
+<code>DO</code>, <code>IF</code>, any part of a block&nbsp;<code>IF</code> 
+statement or <code>END</code>.
+</p>
+<p>
+If the <em>logical-expression</em> evaluates to <code>.TRUE.</code>, then
+the <em>statement</em> is executed and control passes on to the next
+executable statement in the program.  However, if the 
+<em>logical-expression</em> evaluates to <code>.FALSE.</code>, then the
+<em>statement</em> is ignored and as before, control passes on to the next
+executable statement in the program.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      Y = 0.0
+      IF (X .NE. 0.0) Y = 1.0/X
+      WRITE(*,*)X,Y
+</pre>
+<p>
+The variable <code>Y</code> is assigned the value <code>0.0</code>.  Then
+a logical&nbsp;<code>IF</code> statement is encountered.  If <code>X</code> 
+is nonzero (supposedly <code>X</code> has been assigned a value somewhere
+earlier in the program), then <code>Y</code> is assigned the value of 
+<code>1.0/X</code> and both values are written out to the default output 
+device.  However, if <code>X</code> is zero, then the logical 
+expression <code>X&nbsp;.NE.&nbsp;0.0</code> is false.  In this instance,
+the statement <code>Y&nbsp;=&nbsp;1.0/X</code> is skipped and control 
+passes immediately to the <code>WRITE</code> statement following.
+</p>
+</div>
+
+<h2>Block IF</h2>
+<p>
+The block&nbsp;<code>IF</code> statement is a more general version of the 
+simple logical&nbsp;<code>IF</code> and can take several forms, depending 
+on the complexity of the decisions and/or branching.
+</p>
+
+<h3>IF-THEN-END IF</h3>
+<pre>
+IF (<em class="encode">logical-expression</em>) THEN
+   <em class="encode">statement<sub>1</sub></em>
+   <em class="encode">statement<sub>2</sub></em>
+&hellip;
+   <em class="encode">statement<sub>n</sub></em>
+END IF
+</pre>
+<p>
+This is the simplest form of the block&nbsp;<code>IF</code>.  Instead of 
+a single executable statement, the word <code>THEN</code> follows the 
+<em>logical-expression</em>.  Then one or more executable statements
+are listed in the order they should be executed (this is the 
+'statement block' which gives the block&nbsp;<code>IF</code> its
+name) and the block&nbsp;<code>IF</code> statement concludes with an 
+<code>END&nbsp;IF</code> statement.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      Y = 0.0
+      Z = -1.0
+      IF (X .NE. 0.0) THEN
+         Y = 1.0/X
+         Z = X**2
+      END IF
+      WRITE(*,*)X,Y,Z
+</pre>
+<p>
+Here the variable <code>Y</code> is assigned the value <code>0.0</code> and
+the variable <code>Z</code> is assigned the value <code>-1.0</code>.
+Then a block&nbsp;<code>IF</code> statement is encountered.  If <code>X</code> 
+is nonzero then <code>Y</code> is assigned the value of <code>1.0/X</code> and 
+<code>Z</code> is assigned the value <code>X**2</code>.  Then all 
+three values are written out to the default output device.  However, if 
+<code>X</code> is zero, then the logical expression 
+<code>X&nbsp;.NE.&nbsp;0.0</code> is false.  In this instance, the statements
+inside the block are skipped and control passes immediately to the 
+<code>WRITE</code> statement following the <code>END&nbsp;IF</code> statement.
+</p>
+</div>
+
+<h3>IF-THEN-ELSE-END IF</h3>
+<pre>
+IF (<em class="encode">logical-expression</em>) THEN
+   <em class="encode">statement-block<sub>1</sub></em>
+ELSE
+   <em class="encode">statement-block<sub>2</sub></em>
+END IF
+</pre>
+<p>
+This slightly more complicated case allows for one statement block to be 
+executed if the <em>logical-expression</em> evaluates to <code>.TRUE.</code> 
+and an alternative statement block to be executed if the 
+<em>logical-expression</em> is <code>.FALSE.</code>
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Suppose <code>CREDIT</code> and <code>DEBIT</code> have been declared to be 
+<code>INTEGER</code> variables and <code>TRNSCT</code> (short for 
+'transaction') has been declared to be a <code>REAL</code> variable.
+</p>
+<pre>
+      IF (TRNSCT .GE. 0.0) THEN
+         CREDIT = CREDIT + 1
+      ELSE
+         DEBIT  = DEBIT + 1
+      END IF
+</pre>
+<p>
+Assuming that these variables have been given values earlier in the program, 
+this <code>IF</code> statement tests to see if <code>TRNSCT</code> is 
+non-negative.  If it is, the logical expression evaluates to 
+<code>.TRUE.</code> and the variable <code>CREDIT</code> is incremented by 1.  
+Otherwise, the variable <code>DEBIT</code> is incremented by 1.  Only one of 
+the blocks is executed, depending on the value of the 
+<em>logical-expression</em>.  Once one of the blocks has been executed, 
+control transfers to the end of the block&nbsp;<code>IF</code> and the 
+statements following.
+</p>
+</div>
+
+<p>
+Note how this structure differs from the previous one.  In the 
+<code>IF-THEN-END&nbsp;IF</code>, it is possible for no action to take place.
+However, with an <code>IF-THEN-ELSE-END&nbsp;IF</code> structure, one of the 
+blocks <strong>must</strong> be executed.
+</p>
+
+<h3>IF-THEN-ELSE&nbsp;IF-THEN-ELSE-END IF</h3>
+<pre>
+IF (<em class="encode">logical-expression<sub>1</sub></em>) THEN
+   <em class="encode">statement-block<sub>1</sub></em>
+ELSE IF (<em class="encode">logical-expression<sub>2</sub></em>) THEN
+   <em class="encode">statement-block<sub>2</sub></em>
+ELSE IF (<em class="encode">logical-expression<sub>3</sub></em>) THEN
+   <em class="encode">statement-block<sub>3</sub></em>
+&hellip;
+ELSE
+   <em class="encode">statement-block<sub>n</sub></em>
+END IF
+</pre>
+<p>
+This is the most general case, allowing for multiple decisions with an 
+optional default.  Any number of <code>ELSE&nbsp;IF-THEN</code> blocks may be 
+used and the final <code>ELSE</code> block is optional.  If it exists, then 
+it will be executed if none of the preceding logical expressions evaluate to 
+<code>.TRUE.</code>  However, if there is no <code>ELSE</code> block, then
+it is entirely possible that none of the blocks in the 
+block&nbsp;<code>IF</code> statement will be executed.  Note that if an
+<code>ELSE</code> block is to be included in a block&nbsp;<code>IF</code> 
+statement, it must be the <strong>final</strong> block.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The Gregorian reform of the Julian calendar during the sixteenth century 
+gave us the rule we use today to determine leap years.  Years evenly 
+divisible by 4 are leap years but the only centurial years (years ending 
+with 00) that are leap years are those evenly divisible by 400.
+</p>
+<pre>
+      IF (MOD(YEAR,400) .EQ. 0) THEN
+         WRITE(*,*)YEAR,' is a leap year'
+      ELSE IF (MOD(YEAR,100) .EQ. 0) THEN
+         WRITE(*,*)YEAR,' is NOT a leap year'
+      ELSE IF (MOD(YEAR,4) .EQ. 0) THEN
+         WRITE(*,*)YEAR,' is a leap year'
+      ELSE
+         WRITE(*,*)YEAR,' is NOT a leap year'
+      END IF
+</pre>
+<p>
+This block&nbsp;<code>IF</code> statement is one way of testing to see if an 
+<code>INTEGER</code> variable called <code>YEAR</code> is a leap year or not.
+(Note that this is a very inefficient algorithm for calculating leap years!)
+The <code>MOD</code> function returns the value <em>argument<sub>1</sub></em> 
+modulo <em>argument<sub>2</sub></em>.  The first logical expression, 
+<code>(MOD(YEAR,400)&nbsp;.EQ.&nbsp;0</code> returns <code>.TRUE.</code> if 
+the year is evenly divisible by 400.  If it is, then the year followed by 
+the message <code>is&nbsp;a&nbsp;leap&nbsp;year</code> is written to the 
+standard output device.  If not, the second logical expression is 
+evaluated.  This one tests to see if <code>YEAR</code> is evenly divisible 
+by <code>100</code>.  This takes care of the other three centurial year 
+cases.  The third logical expression looks for years that are evenly 
+divisible by 4.  If none of the logical expressions evaluate to 
+<code>.TRUE.</code>, then the <code>ELSE</code> block is executed, leaving 
+us with no leap year.
+</p>
+</div>
+
+<h3>General Considerations</h3>
+<p>
+Any executable statement may appear in the statement block except 
+<code>END</code>.  In particular, another complete block&nbsp;<code>IF</code> 
+or a complete <code>DO</code>&nbsp;loop may appear within the statement block.
+Control may pass out of the block (for instance, with a 
+<code>GO&nbsp;TO</code> statement) but it is illegal to transfer into the 
+middle of a block.  After a block of statements has been executed, control
+is passed to the next executable statement following the 
+<code>END&nbsp;IF</code> statement (unless, of course, control was passed out 
+of the block in some manner).
+</p>
+<p>
+If a block&nbsp;<code>IF</code> statement contains many branches, then the 
+order in which the <code>ELSE&nbsp;IF</code> blocks occur may affect efficiency.
+Place the blocks which are most likely to be executed near the top of the
+block&nbsp;<code>IF</code>.  Remember: the optional <code>ELSE</code> block
+must always occur last.
+</p>
+<p>
+In each of the examples, the statement blocks are indented slightly from
+the left.  This is not a requirement but makes the structure of the 
+program much more immediately obvious, particularly when there is deep
+nesting of control structures.
+</p>
+
+<h2>Nesting</h2>
+<p>
+<strong>Nesting</strong> refers to the inclusion of a complete control 
+structure within another control structure.  For instance, it is possible to 
+place a block&nbsp;<code>IF</code> statement within another 
+block&nbsp;<code>IF</code>.  The two block&nbsp;<code>IF</code> statements 
+do not overlap; rather, one contains the other.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider this program fragment where the variables <code>A</code>, 
+<code>B</code> and <code>C</code> have already been assigned values.
+</p>
+<pre>
+      IF (A .NE. 0.0) THEN
+         DISC = B**2 - 4.0*A*C
+         IF (DISC .GT. 0.0) THEN
+            WRITE(*,*)'The roots are real and distinct'
+         ELSE IF (DISC .LT. 0.0) THEN
+            WRITE(*,*)'The roots are complex conjugates'
+         ELSE
+            WRITE(*,*)'The roots are real and identical'
+         END IF
+      ELSE
+         WRITE(*,*)'The equation is linear, not quadratic'
+      END IF
+</pre>
+<p>
+If <code>A</code> is non-zero, then the first statement block is 
+executed.  The value for the variable <code>DISC</code> is calculated and
+then another complete block&nbsp;<code>IF</code> statement is encountered.
+The string 
+<code>The&nbsp;roots&nbsp;are&nbsp;real&nbsp;and&nbsp;distinct</code> is
+written out if <code>DISC</code> is positive.  If <code>DISC</code> is 
+exactly zero, then 
+<code>The&nbsp;roots&nbsp;are&nbsp;real&nbsp;and&nbsp;identical</code> is
+written out.  However, if <code>DISC</code> is neither positive nor zero
+(that is, if <code>DISC</code> is negative), then 
+<code>The&nbsp;roots&nbsp;are&nbsp;complex&nbsp;conjugates</code> is
+written out.  This inner or nested block&nbsp;<code>IF</code> statement 
+then concludes within in the first statement block of the outer
+block&nbsp;<code>IF</code>.
+</p>
+<p>
+If, however, <code>A</code> is zero, then the second statement block is
+executed; namely, the string 
+<code>The&nbsp;equation&nbsp;is&nbsp;linear,&nbsp;not&nbsp;quadratic</code> 
+is written out.  The outer block&nbsp;<code>IF</code> statement then 
+concludes.
+</p>
+<p>
+The careful use of indentation makes nested constructs easier to see although
+it has no effect on the running of the program.
+</p>
+</div>
+
+<p>
+It is also possible to nest different types of control structures.  For 
+instance, you can nest a <code>DO</code>&nbsp;loop within a statement block
+of a block&nbsp;<code>IF</code> statement.  Conversely, a 
+<code>DO</code>&nbsp;loop can contain a block&nbsp;<code>IF</code>.  The
+only consideration is that one structure must be fully contained within the
+other.  Overlap is not allowed.
+</p>
+
+<h2>Arithmetic IF</h2>
+<pre>IF (<em class="encode">arithmetic-expression</em>) <em class="encode">label<sub>-1</sub></em>, <em class="encode">label<sub>0</sub></em>, <em class="encode">label<sub>1</sub></em></pre>
+<p class="bang">
+This form of <code>IF</code> statement is obscure and its use is strongly 
+discouraged.
+</p>
+<p>
+It is equivalent to this block&nbsp;<code>IF</code> statement:
+</p>
+<pre>
+IF (<em class="encode">arithmetic-expression</em> .LT. 0) THEN
+   GO TO <em class="encode">label<sub>-1</sub></em>
+ELSE IF (<em class="encode">arithmetic-expression</em> .EQ. 0) THEN
+   GO TO <em class="encode">label<sub>0</sub></em>
+ELSE
+   GO TO <em class="encode">label<sub>1</sub></em>
+END IF
+</pre>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash; by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/if.html</span>
+</p>
+
+</body>
+</html>

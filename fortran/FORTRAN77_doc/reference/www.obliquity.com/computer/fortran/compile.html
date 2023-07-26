@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Compiling and Linking</title>
+<meta charset="UTF-8">
+<meta name="author" content="David Harper and L.M. Stockman">
+<meta name="description" content="Compiling and linking in FORTRAN 77.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Compiling and Linking</h1>
+<p>
+FORTRAN&nbsp;77 is a compiled language.  This means that FORTRAN&nbsp;77 
+source code must be converted into the host computer's native instruction 
+set, a format known as <strong>machine code</strong>.  This process is known as 
+<strong>compilation</strong>.  If a program uses functions or subroutines, 
+these must also be compiled into machine code.
+</p>
+<p>
+Then the machine code for the main program plus all functions and subroutines 
+which it uses must be merged into a single file, called an 
+<strong>executable</strong>.  This process is known as <strong>linking</strong>.
+</p>
+
+<h2>What happens during compilation?</h2>
+<p>
+The FORTRAN&nbsp;77 compiler processes each <strong>source file</strong> to 
+convert the FORTRAN&nbsp;77 statements into their equivalent in the low-level 
+machine code for the target computer.  This is normally the computer on which 
+the FORTRAN&nbsp;77 program is being compiled, but it could be a computer with 
+a different type of <abbr title="central processing unit">CPU</abbr>, in which 
+case it is known as <strong>cross-compilation</strong>.  In either case, the 
+output is a binary file called an <strong>object file</strong>.  Each source 
+file is compiled into a separate object file.
+</p>
+<p>
+The object file contains the machine code corresponding to the FORTRAN&nbsp;77 
+source code, plus additional information which allows the linker to resolve 
+references to functions and subroutines in other object files.
+</p>
+<p>
+Most FORTRAN&nbsp;77 compilers generate reasonably efficient machine code by 
+default, but also provide options to apply higher levels of optimisation.  This 
+requires that the compiler analyse the source code in greater depth, so 
+compilation is slower.  However, the resulting machine code can often be 
+much more efficient, leading to programs which run more quickly.
+</p>
+<p>
+Many compilers can also take advantage of specific features of the target 
+<abbr title="central processing unit">CPU</abbr>, such as the streaming 
+<abbr title="single instruction, multiple data">SIMD</abbr> extension 
+instruction set of Intel and <abbr title="Advanced Micro Devices">AMD</abbr> 
+processors.  These allow certain types of operation on arrays of numbers to 
+be handled by the <abbr title="central processing unit">CPU</abbr>'s internal 
+vector pipeline.
+</p>
+
+<h2>Creating subroutine libraries</h2>
+<p>
+Most operating systems provide a facility for combining a set of object files 
+into a library of pre-compiled functions and subroutines, which can be shared 
+by many programs.  This is a very useful technique which avoids the need to 
+attach copies of the source code for commonly-used functions and subroutines 
+to every program.
+</p>
+<p>
+Libraries are also the normal way to distribute collections of functions and 
+subroutines that have been written by other programmers.  One example is the 
+very large and comprehensive collection of numerical algorithms which has 
+been created by the Numerical Algorithms Group.  This is a commercial product, 
+and it is provided as a pre-compiled library.
+</p>
+
+<h2>What happens during linking?</h2>
+<p>
+The linker takes one or more object files, plus libraries, and combines 
+them to create an executable file.
+</p>
+<p>
+One of the most important tasks which the linker performs is to resolve 
+references to functions and subroutines from different object files.  To 
+understand this, consider a FORTRAN&nbsp;77 program which consists of two 
+source code files.  The first file contains the main program, which calls a 
+subroutine named <code>INVERT</code>.  That subroutine is defined in the 
+second file.
+</p>
+<p>
+When the compiler processes the first file, it finds a call to the 
+<code>INVERT</code> subroutine, which it converts into the machine code 
+instructions for a subroutine call.  However, it does not know the location 
+for the machine code of the <code>INVERT</code> subroutine, so it cannot put 
+the location in the object file.  Instead, it adds information to the object 
+file to indicate that location of the <code>INVERT</code> is unknown and 
+must be filled in by the linker.
+</p>
+<p>
+When the compiler processes the second file, it adds information to that 
+object file to indicate that it contains a subroutine named <code>INVERT</code>.
+</p>
+<p>
+Finally, when the two object files are combined by the linker, the sections of 
+machine code from each object file are copied into the executable file, and 
+then the subroutine call instruction in the main program is updated with the 
+location of the <code>INVERT</code> subroutine.
+</p>
+<p>
+If the user forgets to include the second object file, then the linker has no 
+information about a subroutine named <code>INVERT</code>, and it cannot create 
+a valid executable file.  It will display an error message to tell the user 
+that there is a call to an undefined subroutine.
+</p>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by David Harper and L.M. Stockman<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/compile.html</span>
+</p>
+
+</body>
+</html>

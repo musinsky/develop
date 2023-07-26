@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Intrinsic Functions</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="The intrinsic functions of FORTRAN 77.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Intrinsic Functions</h1>
+<p>
+FORTRAN&nbsp;77 provides a variety of intrinsic functions which may be used 
+in any program unit.  They are subject neither to type declarations nor 
+<code>IMPLICIT</code> statements.  Their names are not reserved keywords 
+but to avoid confusion, it is inadvisable to use these names as arrays, 
+constants, variables or user-defined external subprograms.  If, however, it 
+is desirable to use the name of an intrinsic function as the name of a 
+user-defined external subprogram, then the name must be declared in an 
+<code>EXTERNAL</code> statement in the program unit which invokes it.
+</p>
+<p>
+If an intrinsic function 
+<a href="procedure.html">appears in the actual argument list</a> of an 
+external function reference or <code>CALL</code> statement, then its 
+<strong>specific name</strong> must be declared in an 
+<code>INTRINSIC</code> statement.
+</p>
+<p>
+The following table outlines the generic forms of these functions.
+<span class="contrast">C</span> stands for <code>CHARACTER</code> data, 
+<span class="contrast">D</span> for <code>DOUBLE&nbsp;PRECISION</code>, 
+<span class="contrast">I</span> for <code>INTEGER</code>, 
+<span class="contrast">L</span> for <code>LOGICAL</code>, 
+<span class="contrast">R</span> for <code>REAL</code> (single&nbsp;precision)
+and <span class="contrast">X</span> for <code>COMPLEX</code> 
+(single&nbsp;precision).  Note that the <code>MAX</code> and 
+<code>MIN</code> intrinsic functions may take any number of arguments but 
+the rest take either one or two arguments.
+</p>
+
+<table class="layout">
+<tr>
+<th>Function</th>
+<th>Argument&nbsp;Type</th>
+<th>Return&nbsp;Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>ABS</code></td>
+<td>X</td>
+<td>R</td>
+<td>modulus of a complex number</td>
+</tr>
+<tr>
+<td><code>ABS</code></td>
+<td>DIR</td>
+<td>DIR</td>
+<td>absolute value of a number</td>
+</tr>
+<tr>
+<td><code>ACOS</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>arccosine of a number</td>
+</tr>
+<tr>
+<td><code>AIMAG</code></td>
+<td>X</td>
+<td>R</td>
+<td>imaginary part of a complex number</td>
+</tr>
+<tr>
+<td><code>AINT</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>truncates fractional part but preserves data type</td>
+</tr>
+<tr>
+<td><code>ANINT</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>rounds to nearest whole number but preserves data type</td>
+</tr>
+<tr>
+<td><code>ASIN</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>arcsine of a number</td>
+</tr>
+<tr>
+<td><code>ATAN</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>arctangent of a number</td>
+</tr>
+<tr>
+<td><code>ATAN2</code></td>
+<td>DR,DR</td>
+<td>DR</td>
+<td>arctangent of arg<sub>1</sub> divided by arg<sub>2</sub> resolved into 
+the correct quadrant</td>
+</tr>
+<tr class="bottom">
+<td><code>CHAR</code></td>
+<td>I</td>
+<td>C</td>
+<td>returns n<sup>th</sup> character in character code table</td>
+</tr>
+<tr>
+<td><code>CMPLX</code></td>
+<td>DIRX</td>
+<td>X</td>
+<td>converts to the <code>COMPLEX</code> data type</td>
+</tr>
+<tr>
+<td><code>CMPLX</code></td>
+<td>DIR,DIR</td>
+<td>X</td>
+<td>converts to the <code>COMPLEX</code> data type 
+arg<sub>1</sub>&nbsp;+&nbsp;i&nbsp;arg<sub>2</sub></td>
+</tr>
+<tr>
+<td><code>CONJG</code></td>
+<td>X</td>
+<td>X</td>
+<td>complex conjugate of a complex number</td>
+</tr>
+<tr>
+<td><code>COS</code></td>
+<td>DRX</td>
+<td>DRX</td>
+<td>cosine of an angle in radians</td>
+</tr>
+<tr>
+<td><code>COSH</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>hyperbolic cosine</td>
+</tr>
+<tr>
+<td><code>DBLE</code></td>
+<td>DIRX</td>
+<td>D</td>
+<td>converts to the <code>DOUBLE&nbsp;PRECISION</code> data type</td>
+</tr>
+<tr>
+<td><code>DIM</code></td>
+<td>DIR,DIR</td>
+<td>DIR</td>
+<td>if arg<sub>1</sub> &gt; arg<sub>2</sub>, then returns 
+arg<sub>1</sub> - arg<sub>2</sub>; otherwise 0</td>
+</tr>
+<tr>
+<td><code>DPROD</code></td>
+<td>R,R</td>
+<td>D</td>
+<td>double precision product of two single precision numbers</td>
+</tr>
+<tr>
+<td><code>EXP</code></td>
+<td>DRX</td>
+<td>DRX</td>
+<td>exponential</td>
+</tr>
+<tr>
+<td><code>ICHAR</code></td>
+<td>C</td>
+<td>I</td>
+<td>position of first character in string in the character code table</td>
+</tr>
+<tr>
+<td><code>INDEX</code></td>
+<td>C,C</td>
+<td>I</td>
+<td>searches first string and returns position of second string within it</td>
+</tr>
+<tr>
+<td><code>INT</code></td>
+<td>DIRX</td>
+<td>I</td>
+<td>converts to the <code>INTEGER</code> data type by truncation</td>
+</tr>
+<tr>
+<td><code>LEN</code></td>
+<td>C</td>
+<td>I</td>
+<td>length of character argument</td>
+</tr>
+<tr>
+<td><code>LGE</code></td>
+<td>C,C</td>
+<td>L</td>
+<td>lexical comparison; true if arg<sub>1</sub> &gt;= arg<sub>2</sub> in 
+ASCII character code</td>
+</tr>
+<tr>
+<td><code>LGT</code></td>
+<td>C,C</td>
+<td>L</td>
+<td>lexical comparison; true if arg<sub>1</sub> &gt; arg<sub>2</sub> in 
+ASCII character code</td>
+</tr>
+<tr>
+<td><code>LLE</code></td>
+<td>C,C</td>
+<td>L</td>
+<td>lexical comparison; true if arg<sub>1</sub> &lt;= arg<sub>2</sub> in 
+ASCII character code</td>
+</tr>
+<tr>
+<td><code>LLT</code></td>
+<td>C,C</td>
+<td>L</td>
+<td>lexical comparison; true if arg<sub>1</sub> &lt; arg<sub>2</sub> in 
+ASCII character code</td>
+</tr>
+<tr>
+<td><code>LOG</code></td>
+<td>DRX</td>
+<td>DRX</td>
+<td>natural logarithm</td>
+</tr>
+<tr>
+<td><code>LOG10</code></td>
+<td>DRX</td>
+<td>DRX</td>
+<td>common logarithm</td>
+</tr>
+<tr>
+<td><code>MAX</code></td>
+<td>DIR,DIR,...</td>
+<td>DIR</td>
+<td>maximum value of arguments</td>
+</tr>
+<tr>
+<td><code>MIN</code></td>
+<td>DIR,DIR,...</td>
+<td>DIR</td>
+<td>minimum value of arguments</td>
+</tr>
+<tr>
+<td><code>MOD</code></td>
+<td>DIR,DIR</td>
+<td>DIR,DIR</td>
+<td>arg<sub>1</sub> modulo arg<sub>2</sub></td>
+</tr>
+<tr>
+<td><code>NINT</code></td>
+<td>DR</td>
+<td>I</td>
+<td>converts to the <code>INTEGER</code> data type by rounding</td>
+</tr>
+<tr>
+<td><code>REAL</code></td>
+<td>X</td>
+<td>R</td>
+<td>real part of a complex number</td>
+</tr>
+<tr>
+<td><code>REAL</code></td>
+<td>DIR</td>
+<td>R</td>
+<td>converts to the <code>REAL</code> data type</td>
+</tr>
+<tr>
+<td><code>SIGN</code></td>
+<td>DIR,DIR</td>
+<td>DIR</td>
+<td>if arg<sub>2</sub> &lt; 0, then returns -arg<sub>1</sub>; else 
++arg<sub>1</sub></td>
+</tr>
+<tr>
+<td><code>SIN</code></td>
+<td>DRX</td>
+<td>DRX</td>
+<td>sine of an angle in radians</td>
+</tr>
+<tr>
+<td><code>SINH</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>hyperbolic sine</td>
+</tr>
+<tr>
+<td><code>SQRT</code></td>
+<td>DRX</td>
+<td>DRX</td>
+<td>square root</td>
+</tr>
+<tr>
+<td><code>TAN</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>tangent of an angle in radians</td>
+</tr>
+<tr>
+<td><code>TANH</code></td>
+<td>DR</td>
+<td>DR</td>
+<td>hyperbolic tangent</td>
+</tr>
+</table>
+
+<p>
+Specific names must be used when intrinsic function names are used as 
+actual arguments in a procedure call.  The specific name must be declared 
+in the <code>INTRINSIC</code> statement of the calling program unit.  The 
+following generic functions have specific names for different data types.
+</p>
+<table class="layout">
+<tr>
+<th rowspan="2">Generic&nbsp;Name</th>
+<th colspan="4">Specific&nbsp;Name</th>
+</tr>
+<tr>
+<th>Complex</th>
+<th>Double&nbsp;Precision</th>
+<th>Integer</th>
+<th>Real</th>
+</tr>
+<tr>
+<td><code>ABS</code></td>
+<td><code>CABS</code></td>
+<td><code>DABS</code></td>
+<td><code>IABS</code></td>
+<td><code>ABS</code></td>
+</tr>
+<tr>
+<td><code>ACOS</code></td>
+<td></td>
+<td><code>DACOS</code></td>
+<td></td>
+<td><code>ACOS</code></td>
+</tr>
+<tr>
+<td><code>AINT</code></td>
+<td></td>
+<td><code>DINT</code></td>
+<td></td>
+<td><code>AINT</code></td>
+</tr>
+<tr>
+<td><code>ANINT</code></td>
+<td></td>
+<td><code>DNINT</code></td>
+<td></td>
+<td><code>ANINT</code></td>
+</tr>
+<tr>
+<td><code>ASIN</code></td>
+<td></td>
+<td><code>DASIN</code></td>
+<td></td>
+<td><code>ASIN</code></td>
+</tr>
+<tr>
+<td><code>ATAN</code></td>
+<td></td>
+<td><code>DATAN</code></td>
+<td></td>
+<td><code>ATAN</code></td>
+</tr>
+<tr>
+<td><code>ATAN2</code></td>
+<td></td>
+<td><code>DATAN2</code></td>
+<td></td>
+<td><code>ATAN2</code></td>
+</tr>
+<tr>
+<td><code>COS</code></td>
+<td><code>CCOS</code></td>
+<td><code>DCOS</code></td>
+<td></td>
+<td><code>COS</code></td>
+</tr>
+<tr>
+<td><code>COSH</code></td>
+<td></td>
+<td><code>DCOSH</code></td>
+<td></td>
+<td><code>COSH</code></td>
+</tr>
+<tr>
+<td><code>DIM</code></td>
+<td></td>
+<td><code>DDIM</code></td>
+<td><code>IDIM</code></td>
+<td><code>DIM</code></td>
+</tr>
+<tr>
+<td><code>EXP</code></td>
+<td><code>CEXP</code></td>
+<td><code>DEXP</code></td>
+<td></td>
+<td><code>EXP</code></td>
+</tr>
+<tr>
+<td><code>LOG</code></td>
+<td><code>CLOG</code></td>
+<td><code>DLOG</code></td>
+<td></td>
+<td><code>ALOG</code></td>
+</tr>
+<tr>
+<td><code>LOG10</code></td>
+<td></td>
+<td><code>DLOG10</code></td>
+<td></td>
+<td><code>ALOG10</code></td>
+</tr>
+<tr>
+<td><code>MOD</code></td>
+<td></td>
+<td><code>DMOD</code></td>
+<td><code>MOD</code></td>
+<td><code>AMOD</code></td>
+</tr>
+<tr>
+<td><code>NINT</code></td>
+<td></td>
+<td><code>IDNINT</code></td>
+<td></td>
+<td><code>NINT</code></td>
+</tr>
+<tr>
+<td><code>SIGN</code></td>
+<td></td>
+<td><code>DSIGN</code></td>
+<td><code>ISIGN</code></td>
+<td><code>SIGN</code></td>
+</tr>
+<tr>
+<td><code>SIN</code></td>
+<td><code>CSIN</code></td>
+<td><code>DSIN</code></td>
+<td></td>
+<td><code>SIN</code></td>
+</tr>
+<tr>
+<td><code>SINH</code></td>
+<td></td>
+<td><code>DSINH</code></td>
+<td></td>
+<td><code>SINH</code></td>
+</tr>
+<tr>
+<td><code>SQRT</code></td>
+<td><code>CSQRT</code></td>
+<td><code>DSQRT</code></td>
+<td></td>
+<td><code>SQRT</code></td>
+</tr>
+<tr>
+<td><code>TAN</code></td>
+<td></td>
+<td><code>DTAN</code></td>
+<td></td>
+<td><code>TAN</code></td>
+</tr>
+<tr>
+<td><code>TANH</code></td>
+<td></td>
+<td><code>DTANH</code></td>
+<td></td>
+<td><code>TANH</code></td>
+</tr>
+</table>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+<a href="procedure.html" class="button">External&nbsp;Functions&nbsp;and&nbsp;Subroutines</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 1995&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/intrinsic.html</span>
+</p>
+
+</body>
+</html>

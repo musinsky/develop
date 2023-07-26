@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Arrays</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Arrays in FORTRAN 77.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Arrays</h1>
+<p>
+A constant or variable is simply a symbolic name which refers to a particular 
+memory location holding a particular type of data.  An array, however, is a
+symbolic name which refers to a group of memory locations, all holding the 
+same data type.  Each individual memory location in an array is referenced by
+a <strong>subscript</strong>.  
+</p>
+
+<table class="layout">
+<tr>
+<th>Mathematical Notation</th>
+<th>FORTRAN&nbsp;77 Notation</th>
+</tr>
+<tr>
+<td><em>a<sub>1</sub></em>, <em>a<sub>2</sub></em>, &hellip;, <em>a<sub>n</sub></em></td>
+<td><code>A(1)</code>, <code>A(2)</code>, &hellip;, <code>A(N)</code></td>
+</tr>
+<tr>
+<td><em>b<sub>1,1</sub></em>, <em>b<sub>1,2</sub></em>, &hellip;, <em>b<sub>m,n</sub></em></td>
+<td><code>B(1,1)</code>, <code>B(1,2)</code>, &hellip;, <code>B(M,N)</code></td>
+</tr>
+</table>
+<p>
+Array elements are referenced by the array name followed by the subscript 
+in parentheses.  In the case of multidimensional arrays, the subscripts are
+separated with commas.
+</p>
+
+<h2>One-Dimensional Arrays</h2>
+<p>
+In order to declare a one-dimensional array, two pieces of information are 
+required: the data type and the number of elements in the array.  There are 
+two ways that this can be done.  If the array holds numerical data and 
+implicit typing is used, then the <code>DIMENSION</code> statement is all 
+that is necessary.
+</p>
+<pre>DIMENSION <em class="encode">array-name</em>(<em class="encode">array-length</em>)</pre>
+<p>
+The <em>array-name</em> is the symbolic name used to reference the array 
+and the <em>array-length</em> is the number of elements in the array.  In
+this instance, the elements of the array have the subscripts 1, 2, 3, &hellip;, 
+<em>array-length</em>.  However, it is often convenient to have subscripts
+which have a different lower bound than one.  In this case, the 
+implicitly-typed array may be declared in this fashion:
+</p>
+<pre>DIMENSION <em class="encode">array-name</em>(<em class="encode">lower-bound</em>:<em class="encode">upper-bound</em>)</pre>
+<p>
+The subscripts range from <em>lower-bound</em> to <em>upper-bound</em>.
+</p>
+<p>
+The <em>array-length</em>, <em>lower-bound</em> and <em>upper-bound</em> 
+must be <code>INTEGER</code> constants.  The <em>array-length</em> must be
+positive (although if the <em>array-length</em> is 1, then the array is really 
+no different from a variable) but the <em>lower-bound</em> and 
+<em>upper-bound</em> values may be negative, zero or positive as long as the 
+<em>upper-bound</em> is greater than the <em>lower-bound</em>.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider these statement which appear at the beginning of a program:
+</p>
+<pre>
+      DIMENSION KOUNT(15),PERCNT(0:100)
+</pre>
+<p>
+Two arrays have been declared with a single <code>DIMENSION</code> statement.
+<code>KOUNT</code> is an <code>INTEGER</code> array of length 15.  Its 
+elements are <code>KOUNT(1)</code>, <code>KOUNT(2)</code>, &hellip;, 
+<code>KOUNT(15)</code>.  <code>PERCNT</code> is a <code>REAL</code> array of
+length 101.  Its elements are <code>PERCNT(0)</code>, <code>PERCNT(1)</code>, 
+&hellip;, <code>PERCNT(100)</code>.
+</p>
+</div>
+
+<p>
+If the array is to take a data type which is contrary to the implicit 
+types, then the array can be declared in the same statement as the type 
+declaration.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider these declarations:
+</p>
+<pre>
+      DOUBLE PRECISION LINE(-100:200)
+      INTEGER          DAYNO,MONNO
+      PARAMETER(DAYNO=31,MONNO=12)
+      CHARACTER*3      MONTH(MONNO)
+      LOGICAL          DAY(DAYNO)
+</pre>
+<p>
+The array <code>LINE</code> contains 301 <code>DOUBLE&nbsp;PRECISION</code> 
+elements with subscripts ranging from <code>-100</code> to <code>200</code>.
+Two <code>INTEGER</code> constants are declared and then initialised in a
+<code>PARAMETER</code> statement.  These constants are then used in the 
+arrays declarations of the <code>CHARACTER</code> array <code>MONTH</code> 
+and the <code>LOGICAL</code> array <code>DAY</code>.  In the case of the 
+<code>CHARACTER</code> array, each element is a three characters long.  An 
+alternative declaration of this array would be
+</p>
+<pre>
+      CHARACTER        MONTH(MONNO)*3
+</pre>
+</div>
+
+<p>
+It is also possible to use a combination of type declarations and 
+<code>DIMENSION</code> statements to declare arrays but there is little to 
+recommend it.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      REAL      MEASUR
+      DIMENSION MEASUR(-100:-1)
+</pre>
+<p>
+The symbolic name <code>MEASUR</code> is declared to be of type 
+<code>REAL</code> and then declared to be an array of length 100 in the 
+following <code>DIMENSION</code> statement.  However, the same thing 
+could be accomplished with one line.
+</p>
+<pre>
+      REAL MEASUR(-100:-1)
+</pre>
+<p>
+In either case, the array elements are <code>MEASUR(-100)</code>, 
+<code>MEASUR(-99)</code>, &hellip;, <code>MEASUR(-1)</code>.
+</p>
+</div>
+
+<h2>Multidimensional Arrays</h2>
+<p>
+FORTRAN&nbsp;77 arrays may have up to seven dimensions.  The elements in each 
+dimension are of the same type so it is not possible to have an array with 
+<code>INTEGER</code> values in the first dimension, <code>REAL</code> 
+values in the second dimension, <code>CHARACTER</code> values in the third 
+dimension, etc.
+</p>
+<p>
+Multidimensional arrays are declared in the same way as one-dimensional 
+arrays.  The array bounds or lengths of each dimension are separated by 
+commas.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      INTEGER BATTLE(31,12,1939:1945)
+</pre>
+<p>
+<code>BATTLE</code> is a three-dimensional array.  The first dimension
+has length 31, the second length 12 and the third length 7.  The subscripts
+for the first dimension range from 1 to 31, the subscripts for the second 
+dimension range from 1 to 12 and the subscripts for the third dimension 
+range from 1939 to 1945.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The judicious use of <code>PARAMETER</code> statements in setting array 
+bounds can lead to programs which are easy to understand and update.
+Consider this program fragment:
+</p>
+<pre>
+      INTEGER   I,J,NCOL,NROW
+      PARAMETER(NCOL=200,NROW=400)
+      REAL      MATRIX(NROW,NCOL),SUM
+&hellip;
+      SUM = 0.0
+      DO 20, J = 1,NCOL
+         DO 10, I = 1,NROW
+            SUM = SUM + MATRIX(I,J)
+   10    CONTINUE
+   20 CONTINUE
+&hellip;
+</pre>
+<p>
+It is quite common to use the dimensions of the arrays in loops and other 
+calculations.  By using named constants instead of the actual numbers, the 
+program is easier to understand and if at some later date it is necessary 
+to change the dimension bounds, then this change is done in the 
+<code>PARAMETER</code> statement only.  It isn't necessary to hunt through 
+the entire program looking for instances where the array bounds are used.
+</p>
+</div>
+
+<h2>Storage</h2>
+<p>
+Arrays are stored in contiguous memory locations in the computer.
+Consider a one-dimensional array <code>A(8)</code>.  The elements are 
+stored in the following manner:
+</p>
+<table>
+<tr><td class="lines"><code>A(1)</code></td></tr>
+<tr><td class="lines"><code>A(2)</code></td></tr>
+<tr><td class="lines"><code>A(3)</code></td></tr>
+<tr><td class="lines"><code>A(4)</code></td></tr>
+<tr><td class="lines"><code>A(5)</code></td></tr>
+<tr><td class="lines"><code>A(6)</code></td></tr>
+<tr><td class="lines"><code>A(7)</code></td></tr>
+<tr><td class="lines"><code>A(8)</code></td></tr>
+</table>
+<p>
+Higher dimensional arrays are a little trickier.  Consider now a 
+two-dimensional array <code>B(3,4)</code>:
+</p>
+<table>
+<tr><td class="lines"><code>B(1,1)</code></td></tr>
+<tr><td class="lines"><code>B(2,1)</code></td></tr>
+<tr><td class="lines"><code>B(3,1)</code></td></tr>
+<tr><td class="lines"><code>B(1,2)</code></td></tr>
+<tr><td class="lines"><code>B(2,2)</code></td></tr>
+<tr><td class="lines"><code>B(3,2)</code></td></tr>
+<tr><td class="lines"><code>B(1,3)</code></td></tr>
+<tr><td class="lines"><code>B(2,3)</code></td></tr>
+<tr><td class="lines"><code>B(3,3)</code></td></tr>
+<tr><td class="lines"><code>B(1,4)</code></td></tr>
+<tr><td class="lines"><code>B(2,4)</code></td></tr>
+<tr><td class="lines"><code>B(3,4)</code></td></tr>
+</table>
+<p>
+Similarly, a three-dimensional array <code>C(4,2,3)</code> is stored
+like this:
+</p>
+<table>
+<tr><td class="lines"><code>C(1,1,1)</code></td></tr>
+<tr><td class="lines"><code>C(2,1,1)</code></td></tr>
+<tr><td class="lines"><code>C(3,1,1)</code></td></tr>
+<tr><td class="lines"><code>C(4,1,1)</code></td></tr>
+<tr><td class="lines"><code>C(1,2,1)</code></td></tr>
+<tr><td class="lines"><code>C(2,2,1)</code></td></tr>
+<tr><td class="lines"><code>C(3,2,1)</code></td></tr>
+<tr><td class="lines"><code>C(4,2,1)</code></td></tr>
+<tr><td class="lines"><code>C(1,1,2)</code></td></tr>
+<tr><td class="lines"><code>C(2,1,2)</code></td></tr>
+<tr><td class="lines"><code>C(3,1,2)</code></td></tr>
+<tr><td class="lines"><code>C(4,1,2)</code></td></tr>
+<tr><td class="lines"><code>C(1,2,2)</code></td></tr>
+<tr><td class="lines"><code>C(2,2,2)</code></td></tr>
+<tr><td class="lines"><code>C(3,2,2)</code></td></tr>
+<tr><td class="lines"><code>C(4,2,2)</code></td></tr>
+<tr><td class="lines"><code>C(1,1,3)</code></td></tr>
+<tr><td class="lines"><code>C(2,1,3)</code></td></tr>
+<tr><td class="lines"><code>C(3,1,3)</code></td></tr>
+<tr><td class="lines"><code>C(4,1,3)</code></td></tr>
+<tr><td class="lines"><code>C(1,2,3)</code></td></tr>
+<tr><td class="lines"><code>C(2,2,3)</code></td></tr>
+<tr><td class="lines"><code>C(3,2,3)</code></td></tr>
+<tr><td class="lines"><code>C(4,2,3)</code></td></tr>
+</table>
+<p>
+Unlike some other programming languages, FORTRAN&nbsp;77 stores arrays in 
+<strong>column-major form</strong>.  That is to say, the left-most array index 
+varies the most rapidly, followed by the next left-most array index, etc.
+Thus, the last index in an array varies the most slowly.  Knowledge of 
+how FORTRAN&nbsp;77 stores arrays can lead to increased efficiency (and 
+increased speed).
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the following <code>REAL</code> array:
+</p>
+<pre>
+      INTEGER   I,J,NCOL,NROW
+      PARAMETER(NCOL=4,NROW=2)
+      INTEGER   B(NROW,NCOL)
+</pre>
+<p>
+The nested <code>DO</code>&nbsp;loops
+</p>
+<pre>
+      DO 20, J = 1,NCOL
+         DO 10, I = 1,NROW
+            B(I,J) = I + J
+   10    CONTINUE
+   20 CONTINUE
+</pre>
+<p>
+access the array in the following order:
+</p>
+<ol>
+<li><code>B(1,1) = 1 + 1</code></li>
+<li><code>B(2,1) = 2 + 1</code></li>
+<li><code>B(1,2) = 1 + 2</code></li>
+<li><code>B(2,2) = 2 + 2</code></li>
+<li><code>B(1,3) = 1 + 3</code></li>
+<li><code>B(2,3) = 2 + 3</code></li>
+<li><code>B(1,4) = 1 + 4</code></li>
+<li><code>B(2,4) = 2 + 4</code></li>
+</ol>
+<p>
+Note that the order in which the array is accessed is exactly the same in 
+which it is stored.  This allows the compiler to generate simpler, more
+efficient machine code, which will run more quickly.  However, if the loops
+are reversed
+</p>
+<pre>
+      DO 10, I = 1,NROW
+         DO 20, J = 1,NCOL
+            B(I,J) = I + J
+   20    CONTINUE
+   10 CONTINUE
+</pre>
+<p>
+then the array is accessed in this order:
+</p>
+<ol>
+<li><code>B(1,1) = 1 + 1</code></li>
+<li><code>B(1,2) = 1 + 2</code></li>
+<li><code>B(1,3) = 1 + 3</code></li>
+<li><code>B(1,4) = 1 + 4</code></li>
+<li><code>B(2,1) = 2 + 1</code></li>
+<li><code>B(2,2) = 2 + 2</code></li>
+<li><code>B(2,3) = 2 + 3</code></li>
+<li><code>B(2,4) = 2 + 4</code></li>
+</ol>
+<p>
+Accessing an array 'out of order' slows down the program because the compiler 
+is forced to generate less-efficient machine code.  Ordering loops carefully 
+reduces processor overheads and lookup times.
+</p>
+</div>
+
+<h2>General Considerations</h2>
+<ul>
+<li>The number of subscripts in any array reference must match the array 
+declaration.</li>
+<li>The subscript must always remain within the bounds declared.</li>
+<li>The subscript must be an <code>INTEGER</code> expression.</li>
+<li>An array element is undefined until it has a value assigned to it in 
+some manner.</li>
+<li>An array may be accessed by its name only (without subscripts) in
+a few limited circumstances:
+<ul>
+<li>in a type declaration if a <code>DIMENSION</code> statement is used to 
+set the array bounds;</li>
+<li>in a <code>DATA</code> statement which initialises the entire array;</li>
+<li>in a <code>READ</code> or <code>WRITE</code> statement which reads in 
+or writes out the entire array;</li>
+<li>as an actual argument in an external function reference or subroutine 
+call;</li>
+<li>as a dummy argument in an external function or subroutine.</li>
+</ul></li>
+</ul>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/array.html</span>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Statement Functions</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Definition and use of statement functions in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Statement Functions</h1>
+<p>
+A statement function is a user-defined function which is defined and used 
+within a program unit.  It appears after the type declarations but before 
+the executable statements, and looks superficially like a simple assignment 
+statement.
+</p>
+<pre><em class="encode">fname</em>(<em class="encode">dummy<sub>1</sub></em>, <em class="encode">dummy<sub>2</sub></em>, &hellip;, <em class="encode">dummy<sub>n</sub></em>) = <em class="encode">expression</em></pre>
+<p>
+A statement function may contain any number of dummy arguments, all of which 
+must appear in the <em>expression</em> on the right hand side of the 
+statement.  The <em>expression</em> also may contain constants, variables 
+and array elements defined elsewhere in the program unit in which the 
+statement function appears.  Intrinsic functions, external functions and 
+previously defined statement functions also may appear in the definition 
+of a statement function.
+</p>
+<p>
+Statement functions may return any of the six FORTRAN&nbsp;77 data types.  
+<em>fname</em> is a symbolic name and must be unique within the 
+program unit defining it.  It conforms to normal FORTRAN&nbsp;77 implicit 
+typing.  To override this, simply declare the name <em>fname</em> in the type 
+declarations.  If the statement function returns a <code>CHARACTER</code> 
+value, then the length must be declared in the statement function 
+definition.
+</p>
+<p>
+The dummy arguments <em>dummy<sub>1</sub></em>, <em>dummy<sub>2</sub></em>, 
+&hellip;, <em>dummy<sub>n</sub></em> are also symbolic names conforming 
+to normal FORTRAN&nbsp;77 implicit typing.  Their type(s) may be declared in 
+the usual way.  Each of these symbolic names must be unique; that is, the same 
+dummy argument cannot appear twice in the list.  However, the symbolic 
+names of the dummy arguments may be used elsewhere in the program unit as 
+variables of the same type.  Use elsewhere in this manner does not affect 
+the statement function.
+</p>
+<p>
+Like an intrinsic or external function, a statement function is invoked by 
+its name and argument list.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      REAL C,F,TEMP
+      C(F) = 5.0*(F - 32.0)/9.0
+      WRITE(*,*)'Enter the temperature in Fahrenheit'
+      READ(*,*)TEMP
+      WRITE(*,*)'Fahrenheit = ',TEMP,' and Celsius = ',C(TEMP)
+</pre>
+<p>
+This statement function converts Fahrenheit to Celsius.  Note that the dummy 
+argument <code>F</code> appears in the right hand side of the statement 
+<code>5.0*(F&nbsp;-&nbsp;32.0)/9.0</code>.  The function is invoked by 
+<code>C(TEMP)</code> in the second <code>WRITE</code> statement.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+In this program fragment, the statement function is invoked in an 
+assignment statement with an array element as its actual argument.  Notice 
+also that the statement function uses the value of the constant <code>C</code>
+which is <strong>not</strong> an argument of the function.
+</p>
+<pre>
+      DOUBLE PRECISION C,E,M
+      INTEGER          I,NMAX
+      PARAMETER(C=299792458D0,NMAX=100)
+      DOUBLE PRECISION ENERGY(NMAX),MASS(NMAX)
+      E(M) = M*C**2
+&hellip;
+      DO 10, I = 1,NMAX
+         ENERGY(I) = E(MASS(I))
+   10 CONTINUE
+</pre>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      DOUBLE PRECISION F,FORCE,G,M1,M2,R
+      PARAMETER(G=6.67428D-11)
+      F(M1,M2,R) = G*M1*M2/R**2
+&hellip;
+      FORCE = F(MASS,MASS,RADIUS)
+</pre>
+<p>
+This definition of a statement function calculating the attractive force 
+between two bodies involves three arguments.  Although the dummy arguments 
+must be unique, the actual arguments do not have the same restriction.  In 
+this example, the force between two identical bodies (same mass) is 
+determined.
+</p>
+</div>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/function.html</span>
+</p>
+
+</body>
+</html>

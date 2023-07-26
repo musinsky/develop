@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Operations</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Arithmetic, character, logical and relational operators in FORTRAN 77.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Operations</h1>
+
+<h2>Arithmetic Operators</h2>
+<p>
+The basic arithmetic operations of addition, subtraction, multiplication, 
+division, and exponentiation (raising to a power) are all possible in
+FORTRAN&nbsp;77.  Addition and subtraction in FORTRAN&nbsp;77 use the same 
+familiar symbols <code>+</code> and <code>-</code>.  However, multiplication 
+(which is denoted in a variety of ways in mathematics) is represented in 
+FORTRAN&nbsp;77 by an asterisk <code>*</code> and division by a forward slash 
+<code>/</code>.  A double asterisk <code>**</code> is employed to raise a 
+base to a power.
+</p>
+<table class="layout">
+<tr>
+<th>Priority</th>
+<th>Operation</th>
+<th>Symbol</th>
+<th>FORTRAN&nbsp;77 Expression</th>
+<th>Arithmetic Expression</th>
+</tr>
+<tr>
+<td>inside to outside</td>
+<td>Parentheses</td>
+<td><code>(&nbsp;)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="bottom">
+<td>right to left</td>
+<td>Exponentiation</td>
+<td><code>**</code></td>
+<td><code>A**B</code></td>
+<td><em>a<sup>b</sup></em></td>
+</tr>
+<tr>
+<td>left to right</td>
+<td>Multiplication and Division</td>
+<td><code>*<br>/</code></td>
+<td><code>A*B<br>A/B</code></td>
+<td><em>a&times;b</em><br><em>a&divide;b</em></td>
+</tr>
+<tr>
+<td>left to right</td>
+<td>Addition, Subtraction, and Unary Minus</td>
+<td><code>+<br>-</code></td>
+<td><code>A+B<br>A-B<br>-A</code></td>
+<td><em>a+b</em><br><em>a-b</em><br><em>-a</em></td>
+</tr>
+</table>
+<p>
+Parentheses have the highest priority and can be used to force lower
+priority calculations to occur before higher priority ones.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The arithmetic expression <em>-a<sup>n</sup>+b&times;c-d&divide;e</em> is
+written in FORTRAN&nbsp;77 as <code>-A**N+B*C-D/E</code> and is evaluated 
+in the following order:
+</p>
+<ol>
+<li><code>A**N</code></li>
+<li><code>B*C</code></li>
+<li><code>D/E</code></li>
+<li><code>-</code> in front of <code>A**N</code></li>
+<li><code>+</code> between <code>-A**N</code> and <code>B*C</code></li>
+<li><code>-</code> between <code>B*C</code> and <code>D/E</code></li>
+</ol>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The arithmetic expression <em>a+(b<sup>m</sup>)<sup>n</sup>/(c-d)</em> 
+is written in FORTRAN&nbsp;77 as <code>A+((B**M)**N)/(C-D)</code> and is
+evaluated in the following order:
+</p>
+<ol>
+<li><code>B**M</code></li>
+<li>raise <code>B**M</code> to the <code>N</code> power</li>
+<li><code>C-D</code></li>
+<li><code>/</code> between <code>(B**M)**N</code> and <code>C-D</code></li>
+<li><code>+</code> between <code>A</code> and the rest of the expression</li>
+</ol>
+<p>
+Here parentheses are used to override the default priorities.
+</p>
+</div>
+<p>
+Use as many parentheses as necessary to make the expression clear.
+Note that only parentheses are used in FORTRAN&nbsp;77.  Neither square 
+brackets [&nbsp;] nor curly braces {&nbsp;} are used.
+</p>
+
+<h2>Character Operators</h2>
+<p>
+Two <code>CHARACTER</code> strings can be joined together in a process
+called <strong>concatenation</strong>.  The concatenation operator is a double
+forward slash <code>//</code>.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The two strings <code>'FORT'</code> and <code>'RAN'</code> can be
+combined as <code>'FORT'//'RAN'</code> to give <code>'FORTRAN'</code>.
+</p>
+</div>
+
+<p>
+The concatenation operator can be used on <code>CHARACTER</code> constants
+(as in the above example) or on <code>CHARACTER</code> variables.  Any
+number of strings can be combined into one string using this operator.
+</p>
+<p>
+A <strong>substring</strong> is any string that is a subset of the original 
+stringand maintains the order of the original.  The notation 
+<em>variable(a:b)</em> indicates a substring of the <code>CHARACTER</code> 
+variable <em>variable</em> starting at the <em>a<sup>th</sup></em> character 
+and ending at the <em>b<sup>th</sup></em> character.  In order for a substring
+to make sense, <em>a</em> must be greater than or equal to 1, <em>b</em>
+must be greater than or equal to <em>a</em>, and <em>b</em> must be less
+than or equal to the length of the original string.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Suppose the <code>CHARACTER</code> variable <code>BEST</code> has length
+7 and has been assigned the value <code>FORTRAN</code>.  Then
+<code>BEST(6:6)</code> gives the value <code>A</code> and
+<code>BEST(1:4)</code> gives <code>FORT</code>.
+</p>
+</div>
+
+<h2>Logical Operators</h2>
+<p>
+Three operations can be performed on <code>LOGICAL</code> variables:
+<strong>negation</strong>, <strong>and</strong>, and <strong>or</strong>.  
+To negate a <code>LOGICAL</code> expression, precede it with 
+<code>.NOT.</code>  When two <code>LOGICAL</code> expressions are combined 
+with an <code>.AND.</code>, then the result is <code>.TRUE.</code> only if both
+parts are <code>.TRUE.</code>  Two <code>LOGICAL</code> expressions 
+combined with an <code>.OR.</code> yield <code>.TRUE.</code> unless both
+parts are <code>.FALSE.</code>  The <strong>truth table</strong> below sums 
+this up:
+</p>
+<table class="layout">
+<tr>
+<th class="encode">A</th>
+<th class="encode">B</th>
+<th class="encode">.NOT.&nbsp;A</th>
+<th class="encode">A&nbsp;.AND.&nbsp;B</th>
+<th class="encode">A&nbsp;.OR.&nbsp;B</th>
+</tr>
+<tr class="textcentre">
+<td><code>.TRUE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.TRUE.</code></td>
+</tr>
+<tr class="textcentre">
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+</tr>
+<tr class="textcentre">
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+</tr>
+<tr class="textcentre">
+<td><code>.FALSE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.FALSE.</code></td>
+</tr>
+</table>
+<p>
+<code>.NOT.</code> has the highest precedence, followed by 
+<code>.AND.</code> and then <code>.OR.</code>  A <code>LOGICAL</code>
+expression may contain several logical operators, and parentheses may
+be used to override default precedences.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The FORTRAN&nbsp;77 expression 
+</p>
+<pre>A .OR. .NOT. (B .OR. C) .AND. D</pre>
+<p>
+where all of the variables are of type <code>LOGICAL</code> is evaluated
+in the following order:
+</p>
+<ol>
+<li><code>B .OR. C</code></li>
+<li><code>.NOT.</code> in front of <code>B .OR. C</code></li>
+<li><code>.AND.</code> between <code>.NOT. (B .OR. C)</code> and 
+<code>D</code></li>
+<li><code>.OR.</code> between <code>A</code> and the rest of the
+expression.</li>
+</ol>
+<p>
+If the parentheses were absent, then the evaluation order of
+</p>
+<pre>A .OR. .NOT. B .OR. C .AND. D</pre>
+<p>
+would be
+</p>
+<ol>
+<li><code>.NOT. B</code></li>
+<li><code>C .AND. D</code></li>
+<li><code>.OR.</code> between <code>A</code> and <code>.NOT. B</code></li>
+<li><code>.OR.</code> between <code>.NOT. B</code> and 
+<code>C .AND. D</code></li>
+</ol>
+</div>
+
+<p>
+Note that it is possible to have two <code>LOGICAL</code> operators
+next to each other provided the first is an <code>.AND.</code> or an
+<code>.OR.</code> and the second is <code>.NOT.</code>
+</p>
+
+<h2>Relational Operators</h2>
+<p>
+Relational operators compare two expressions of a similar type and
+evaluate to either <code>.TRUE.</code> or <code>.FALSE.</code>
+</p>
+<table class="layout">
+<tr>
+<th colspan="2">Comparing&nbsp;Numbers</th>
+<th colspan="2">Comparing&nbsp;Booleans</th>
+</tr>
+<tr>
+<th>Operator</th><th>Meaning</th>
+<th>Operator</th><th>Meaning</th>
+</tr>
+<tr>
+<td class="textcentre"><code>.EQ.</code></td>
+<td>equal to</td>
+<td class="textcentre"><code>.EQV.</code></td>
+<td>equivalent to</td>
+</tr>
+<tr>
+<td class="textcentre"><code>.NE.</code></td>
+<td>not equal to</td>
+<td class="textcentre"><code>.NEQV.</code></td>
+<td>not equivalent to</td>
+</tr>
+<tr>
+<td class="textcentre"><code>.LT.</code></td>
+<td>less than</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="textcentre"><code>.LE.</code></td>
+<td>less than or equal to</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="textcentre"><code>.GT.</code></td>
+<td>greater than</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="textcentre"><code>.GE.</code></td>
+<td>greater than or equal to</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>
+Every character in a program is represented internally as a binary
+number.  There are a number of different codes for translating characters
+into binary strings but the two most commonly used are <strong>EBCDIC</strong>
+(Extended Binary Coded Decimal Interchange Code) and <strong>ASCII</strong>
+(American Standard Code for Information Interchange).  Because every code
+has a different collating sequence, it is impossible to use the
+relational operators to try to compare two <code>CHARACTER</code>
+strings alphabetically.  However, FORTRAN&nbsp;77 provides a number of 
+intrinsic functions that permit alphabetical comparisons of two strings 
+based on the ASCII code, regardless of which code the computer actually uses.
+</p>
+<p>
+A <code>LOGICAL</code> expression is defined when two numbers are compared 
+using one of the relational operators.  These <code>LOGICAL</code> 
+expressions can be combined into a compound <code>LOGICAL</code> expression 
+by using the <code>LOGICAL</code> operators defined above.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+To test whether a value <em>a</em> is less than 2.0, or greater than or 
+equal to 5.0, write
+</p>
+<pre>A .LT. 2.0 .OR. A .GE. 5.0</pre>
+<p>
+The relational operators <code>.LT.</code> and <code>.GE.</code> have a
+higher priority than the <code>LOGICAL</code> operator <code>.OR.</code>
+However, parentheses such as these
+</p>
+<pre>(A .LT. 2.0) .OR. (A .GE. 5.0)</pre>
+<p>
+might make the logic clearer.
+</p>
+</div>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+To test whether either <em>a</em> or <em>b</em> are negative <code>REAL</code>
+numbers, you cannot write
+</p>
+<pre>A .OR. B .LT. 0.0</pre>
+<p>
+because the <code>LOGICAL</code> operator <code>.OR.</code> can only be used
+between two <code>LOGICAL</code> expressions.  In this instance,
+</p>
+<pre>B .LT. 0.0</pre>
+<p>
+returns a <code>LOGICAL</code> expression which leaves the comparison
+</p>
+<p>
+<em>numerical expression</em> <code>.OR. LOGICAL</code> <em>expression</em>
+</p>
+<p>
+Instead, write
+</p>
+<pre>A .LT. 0.0 .OR. B .LT. 0.0</pre>
+</div>
+
+<p>
+The <code>.EQV.</code> relational operator is true if both operands are 
+identical, i.e. if both are true or if both are false.  The 
+<code>.NEQV.</code> relational operator is the negation of <code>.EQV.</code>.
+It is true only if one operand is true and the other is false. It is also 
+known as <strong>exclusive OR</strong>. Note how it differs from 
+<code>.OR.</code>, which is true if either or both operands is true.
+</p>
+<table class="layout">
+<tr>
+<th class="encode">A</th>
+<th class="encode">B</th>
+<th class="encode">A&nbsp;.EQV.&nbsp;B</th>
+<th class="encode">A&nbsp;.NEQV.&nbsp;B</th>
+</tr>
+<tr class="textcentre">
+<td><code>.TRUE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+</tr>
+<tr class="textcentre">
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+</tr>
+<tr class="textcentre">
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+</tr>
+<tr class="textcentre">
+<td><code>.FALSE.</code></td>
+<td><code>.FALSE.</code></td>
+<td><code>.TRUE.</code></td>
+<td><code>.FALSE.</code></td>
+</tr>
+</table>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/operate.html</span>
+</p>
+
+</body>
+</html>

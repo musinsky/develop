@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - External Functions and Subroutines</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="External functions and subroutines in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>External Functions and Subroutines</h1>
+<p>
+Besides the main program and the <code>BLOCK&nbsp;DATA</code> subprogram there
+are two other kinds of complete program units: the external function and 
+the subroutine.  Any FORTRAN&nbsp;77 statement (except 
+<code>BLOCK&nbsp;DATA</code> and <code>PROGRAM</code>) may appear in these 
+procedures and two statements, <code>RETURN</code> and <code>SAVE</code>, may 
+only appear in them.  Both must end with an <code>END</code> statement.  The 
+external function returns one value via the name of the function and the 
+subroutine may return zero or more values via an argument list.  In a sense, 
+the external function is a specialised form of the subroutine.
+</p>
+<p>
+Program units are independent in that they have their own symbolic names 
+and labels.  They may call each other but cannot call themselves, either 
+directly or indirectly.  (This is called <strong>recursion</strong> and it 
+is not allowed in FORTRAN&nbsp;77.)  Information is passed to and from external 
+procedures via three methods:
+</p>
+<ul>
+<li>argument lists</li>
+<li><code>COMMON</code> blocks</li>
+<li>external files</li>
+</ul>
+
+<h2>External Functions</h2>
+<p>
+The first line of an external&nbsp;function declares the
+type and name of the function, as well as listing the dummy arguments.
+</p>
+<pre><em class="encode">type</em> FUNCTION <em class="encode">fname</em>(<em class="encode">dummy<sub>1</sub></em>, <em class="encode">dummy<sub>2</sub></em>, &hellip;, <em class="encode">dummy<sub>n</sub></em>)</pre>
+<p>
+The data type of the function <em>type</em> designates the data type of the 
+value returned by the external&nbsp;function.  If it is omitted, 
+then the data type returned is determined by the first letter of the symbolic 
+name <em>fname</em>.  If the external&nbsp;function returns a
+<code>CHARACTER</code> value, then the length must be specified or given as 
+<code>CHARACTER*(*)</code>.  In this second case, the length will be as 
+specified in the invoking program unit.
+</p>
+<p>
+The name <em>fname</em> may be used within the external&nbsp;function as a 
+variable but it must be assigned a value before the end of the program unit.  
+The last value assigned to the name <em>fname</em> is the value returned to 
+the invoking program unit.
+</p>
+<p>
+A function is invoked by using its name <em>fname</em> followed by parentheses
+and an optional list of arguments called <strong>actual arguments</strong> 
+which correspond to the dummy arguments in the <code>FUNCTION</code> 
+statement.  There may be zero or more dummy arguments of any data type which 
+are declared (if necessary) in the body of the external&nbsp;function.  
+However, the parentheses must be present even if there are no arguments.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the following program consisting of a main program and an 
+external&nbsp;function.
+</p>
+<pre>
+      PROGRAM MAIN
+      INTEGER   I,N,NMAX
+      PARAMETER(NMAX=10)
+      REAL      COEF(0:NMAX),HORNER,X
+
+   10 CONTINUE
+         WRITE(*,*)'Enter the degree of the polynomial'
+         READ(*,*)N
+      IF (N .GT. NMAX) THEN
+         WRITE(*,*)'Degree too large.  Choose smaller value.'
+         GO TO 10
+      END IF
+      WRITE(*,*)'Enter the coefficients in ascending order'
+      DO 20, I = 0,N
+         WRITE(*,*)'Enter the value for coefficient ',I
+         READ(*,*)COEF(I)
+   20 CONTINUE
+      WRITE(*,*)'Enter the value of X'
+      READ(*,*)X
+      WRITE(*,*)'The value of the polynomial at ',X,' is ',
+     $          HORNER(COEF,N,X)
+      STOP 'End of program'
+      END
+
+      REAL FUNCTION HORNER(A,N,X)
+C This function returns the value of the polynomial 
+C y = a_0 + a_1 x + a_2 x^2 + &hellip; + a_n x^n
+C using Horner's method.
+      INTEGER I,N
+      REAL    A(0:N),X
+
+      HORNER = A(N)
+      D0 10 I = N-1,0,-1
+         HORNER = A(I) + HORNER*X
+   10 CONTINUE
+      END
+</pre>
+<p>
+In this example, <code>COEF</code>, <code>N</code> and <code>X</code> are 
+the actual arguments in the function reference in the main program and 
+<code>A</code>, <code>N</code> and <code>X</code> are the dummy arguments in 
+the <code>FUNCTION</code> statement.  The main program invokes the function 
+in a <code>WRITE</code> statement.
+</p>
+</div>
+
+<h3>Side Effects</h3>
+<p>
+An external function is supposed to return exactly one value via the function 
+name.  However, it is permitted for the function to have 'side effects', that 
+is, for the function to alter the values of the actual arguments or of 
+variables appearing in <code>COMMON</code> blocks.  However, there are many 
+restrictions on how a function with side effects can be used in a program so 
+if it is necessary to alter arguments or variables in <code>COMMON</code> 
+blocks, it is best to use a subroutine instead.
+</p>
+
+<h2>Subroutines</h2>
+<p>
+The first line of a subroutine gives the name of the program unit and a 
+listing of the dummy arguments.  Unlike an external&nbsp;function, a 
+subroutine does not have a data type because a subroutine returns any 
+values through its argument list, not through its name.
+</p>
+<pre>SUBROUTINE <em class="encode">subname</em>(<em class="encode">dummy<sub>1</sub></em>, <em class="encode">dummy<sub>2</sub></em>, &hellip;, <em class="encode">dummy<sub>n</sub></em>)</pre>
+<p>
+There may be zero or more dummy arguments of any data type which are declared 
+(if necessary) in the body of the subroutine.  Unlike external&nbsp;functions, 
+however, the parentheses may be omitted if there are no dummy arguments.
+</p>
+<p>
+Because the symbolic name <em>subname</em> is global in nature, it may not 
+be used as a variable within the subroutine.
+</p>
+<p>
+A subroutine is invoked with a <code>CALL</code> statement in the invoking 
+program unit.
+</p>
+<pre>CALL <em class="encode">subname</em>(<em class="encode">arg<sub>1</sub></em>, <em class="encode">arg<sub>2</sub></em>, &hellip;, <em class="encode">arg<sub>n</sub></em>)</pre>
+<p>
+The arguments <em>arg<sub>i</sub></em> in the <code>CALL</code> statment are 
+known as <strong>actual arguments</strong> (as opposed to the dummy arguments 
+which appear in the <code>SUBROUTINE</code> statement).  If the subroutine 
+has no arguments, then the <code>CALL</code> statement is simply
+</p>
+<pre>CALL <em class="encode">subname</em></pre>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the following program consisting of a main program and a subroutine.
+</p>
+<pre>
+      PROGRAM MAIN
+      REAL TIME,H,M,S
+
+   10 CONTINUE
+         WRITE(*,*)'Enter the time in decimal hours'
+         READ(*,*,END=999)TIME
+         IF (TIME .LT. 0.0) GO TO 999
+         CALL CONVRT(TIME,H,M,S)
+         WRITE(*,20)TIME,H,M,S
+   20    FORMAT(' ',F9.2,' hours = ',I6,' h ',I2,' m ',F5.2,' s')
+      GO TO 10
+  999 STOP 'End of program'
+      END
+
+      SUBROUTINE CONVRT(DTIME,HOURS,MINS,SECS)
+C This subroutine converts DTIME (time in decimal hours) to individual 
+C hours, minutes and seconds
+      INTEGER HOURS, MINS
+      REAL    DSECS,DTIME,SECS
+
+C Convert DTIME from decimal hours to decimal seconds for ease of calculation.
+      DSECS = DTIME*3600.0
+C Calculate individual hours, minutes and seconds.
+      HOURS = INT(DTIME)
+      SECS  = DSECS - 3600.0*HOURS
+      MINS  = INT(SECS/60.0)
+      SECS  = SECS - 60.0*MINS
+      END
+</pre>
+<p>
+The main program consists of a repeat-until loop which is stopped if the 
+user enters a negative value or the <abbr title="end of file">EOF</abbr> 
+character.  (The <abbr title="end of file">EOF</abbr> is system dependent 
+but should be something like &lt;CTRL&gt;C, &lt;CTRL&gt;D or &lt;CTRL&gt;Z.)  
+If a legal value is input for the variable <code>TIME</code>, the subroutine 
+<code>CONVRT</code> is called with four arguments.  The first argument, 
+<code>TIME</code>, already has a value when the subroutine is called.  The 
+other three arguments, <code>H</code>, <code>M</code> and <code>S</code>, 
+will receive their values in the subroutine.  After the <code>CALL</code> 
+statement is executed, the <code>WRITE</code> statement outputs the results 
+of the calculations in the subroutine and the loop repeats.
+</p>
+<p>
+The subroutine <code>CONVRT</code> begins with the 
+<code>SUBROUTINE</code> statement and assorted variable type declarations.
+One of the variables, <code>DSECS</code>, is local to the subroutine but 
+the rest are the arguments in the dummy argument list.  The first value in 
+the dummy argument list is passed to the subroutine from the calling 
+program.  Several calculations take place and values are assigned to the 
+other three arguments which are passed back to the calling program at the 
+end of the subroutine.
+</p>
+<p>
+In this example, <code>TIME</code>, <code>H</code>, <code>M</code> and 
+<code>S</code> are actual arguments in the <code>CALL</code> statement in 
+the main program.  <code>DTIME</code>, <code>HOURS</code>, <code>MINS</code> 
+and <code>SECS</code> are the corresponding dummy arguments in the 
+<code>SUBROUTINE</code> statement.
+</p>
+</div>
+
+<h2>Arguments</h2>
+<p>
+One method for passing information between program units is via an argument 
+list.  The list of dummy (or formal) arguments is specified in the 
+<code>FUNCTION</code> and <code>SUBROUTINE</code> statements in the external 
+procedure.  There may be zero or more dummy arguments in the list.  If there 
+are no arguments, then the parentheses may be omitted from the 
+<code>CALL</code> and <code>SUBROUTINE</code> statements but not from the 
+function reference and the <code>FUNCTION</code> statements.
+</p>
+<p>
+Dummy arguments may be constants, variables, arrays, procedures or labels.
+Dummy arguments may not appear in <code>COMMON</code> blocks, <code>DATA</code> 
+statements, <code>EQUIVALENCE</code> statements or <code>SAVE</code> 
+statements.
+</p>
+<p>
+The actual arguments in the function reference or <code>CALL</code> statement 
+are associated in a one-to-one fashion with the dummy arguments in the 
+external procedure, subject to the following restrictions:
+</p>
+<ul>
+<li>There must be the same number of actual and dummy arguments.</li>
+<li>An actual argument and a dummy argument must be of the same type.</li>
+<li>An actual argument and a dummy argument are associated solely by their 
+position in the list.</li>
+<li>A dummy argument may not appear more than once in the argument list but 
+an actual argument may.</li>
+<li>If a dummy argument is an array, then its array bounds must not be 
+greater than that of the corresponding array in the actual argument list.</li>
+<li>The dimension bounds of the dummy argument array may be passed into the 
+procedure via the argument list.</li>
+<li>If a dummy argument is of type <code>CHARACTER</code>, then its length 
+must not be greater than that of the corresponding <code>CHARACTER</code> 
+variable  in the actual argument list.</li>
+</ul>
+<p>
+Because program units are compiled separately, the compiler is unlikely to 
+detect mismatched argument lists.  This is a common source of run-time errors.
+</p>
+
+<h3>Variables, constants and expressions as arguments</h3>
+<p>
+If a dummy argument is a variable which has a value assigned to it in the 
+procedure, then the corresponding actual argument may be a variable, an 
+array element or a character substring.  However, if the dummy argument 
+does not alter any input value, then the corresponding actual argument may 
+also be a constant or expression.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider this snippet of code consisting of a main program and a subroutine:
+</p>
+<pre>
+      PROGRAM MAIN
+      INTEGER M,N
+
+      M = 5
+      N = 20
+      CALL ADD(M,N)
+      END
+
+      SUBROUTINE ADD(I,J)
+      INTEGER I,J
+      J = I + J
+      END
+</pre>
+<p>
+In this example, <code>M</code> and <code>N</code> are assigned values in the 
+main program and passed to the subroutine <code>ADD</code>.  The subroutine 
+adds the two values and returns the sum in the second argument in the list.
+Thus, before the subroutine call, <code>M</code>&nbsp;=&nbsp;5 and 
+<code>N</code>&nbsp;=20 but after the subroutine call, <code>N</code> has 
+been altered to the number 25.
+</p>
+<p>
+Now consider a slightly different example.
+</p>
+<pre>
+      PROGRAM MAIN
+      INTEGER N
+
+      N = 20
+      CALL ADD(5,N)
+      END
+
+      SUBROUTINE ADD(I,J)
+      INTEGER I,J
+      J = I + J
+      END
+</pre>
+<p>
+The program works in exactly the same way although in this case, the first 
+actual argument is a constant, the number 5.  Since the first dummy argument 
+is not altered in the subroutine, this is perfectly legal.
+</p>
+<p>
+What happens in this case?
+</p>
+<pre>
+      PROGRAM MAIN
+      INTEGER M
+
+      M = 5
+      CALL ADD(M,20)
+      END
+
+      SUBROUTINE ADD(I,J)
+      INTEGER I,J
+      J = I + J
+      END
+</pre>
+<p>
+The second actual argument is a constant (the number 20) but the value of 
+the second dummy argument is altered in the subroutine.  What happens next is 
+system-dependent.  Some systems will detect that the program is attempting to 
+overwrite a constant and stop with an error message, but other systems will 
+actually overwrite the constant 20 with 25 so that anywhere you try to use 
+the value 20, you will actually be using 25.  Such errors are nearly 
+impossible to track down so be careful when passing constants as actual 
+arguments.
+</p>
+</div>
+
+<p>
+If the actual argument is an expression, that expression is evaluated before
+the procedure is referenced or called.  As in the case with constant actual 
+arguments, you should not attempt to alter the value of the corresponding 
+dummy argument.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      CALL EVAL(N,I**ABS(N),RESULT)
+</pre>
+<p>
+The second actual argument, <code>I**ABS(N)</code>, is evaluated before the 
+subroutine <code>EVAL</code> is called.  The corresponding dummy argument 
+should be an input argument only and not get altered in the subroutine.
+</p>
+</div>
+
+<p>
+<code>CHARACTER</code> variables may be passed to a procedure along with 
+another variable denoting their lengths but it is usually preferable to have
+the computer set the length automatically using the <code>*(*)</code> length 
+specification in the procedure.  When this is used, the length of the 
+dummy <code>CHARACTER</code> argument is automatically set equal to the 
+length of the actual <code>CHARACTER</code> argument.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      PROGRAM MAIN
+&hellip;
+      CALL INPUT('model01.dat',M,N,RADIUS,DENSE,X)
+&hellip;
+      END
+
+      SUBROUTINE INPUT(FNAME,NMAX,N,R,RHO,X)
+      CHARACTER*(*)    FNAME
+      INTEGER          N,NMAX
+      DOUBLE PRECISION R(0:NMAX),RHO(0:NMAX),X(0:NMAX)
+
+      OPEN(1,FILE=FNAME,STATUS='OLD',ERR=900)
+&hellip;
+      END
+</pre>
+<p>
+The dummy argument <code>FNAME</code> is of type <code>CHARACTER</code> and is 
+of length 11, the same size as the corresponding actual argument, the 
+<code>CHARACTER</code> constant <code>model01.dat</code>.
+</p>
+</div>
+
+<h3>Arrays as arguments</h3>
+<p>
+If a dummy argument is an array, then the corresponding actual argument must 
+either be an array name (without a subscript) or an array element (with a 
+subscript).  In the first instance, the entire array is passed.  In the 
+second, only part of the array is passed, starting with the position denoted 
+in the actual argument.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider a program consisting of main program unit and a subroutine which 
+multiplies element-wise two arrays of length 100 and returns the product in 
+a third array.
+</p>
+<pre>
+      PROGRAM MAIN
+      REAL A(100),B(100),C(100)
+&hellip;
+      CALL MULT(A,B,C)
+&hellip;
+      END
+
+      SUBROUTINE MULT(X,Y,Z)
+      INTEGER I
+      REAL    X(100),Y(100),Z(100)
+
+      DO 10, I = 1,100
+         Z(I) = X(I)*Y(I)
+   10 CONTINUE
+      END
+</pre>
+<p>
+In this example, entire arrays are passed to and from the subroutine.
+</p>
+</div>
+
+<p>
+It is more often the case that the dimension of the array is also passed 
+with the array name.  This makes the procedure more generalised so that it 
+can work on arrays of any size.  When an array appearing in the dummy 
+argument list of in an external procedure is declared using an input value for 
+the dimension, this is known as an <strong>adjustable size declaration</strong>.
+Note that adjustable size declarations can be made only for arrays appearing 
+as dummy arguments in external procedures, not for arrays which are local to 
+the proceudre.  Also note that the variables being used as array dimensions 
+must be declared as <code>INTEGER</code>s before they are used in the 
+adjustable size declaration.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      PROGRAM MAIN
+      INTEGER   N,NMAX
+      PARAMETER(NMAX=100)
+      REAL      A(NMAX),B(NMAX),C(NMAX)
+&hellip;
+      CALL MULT(N,A,B,C)
+&hellip;
+      END
+
+      SUBROUTINE MULT(SIZE,X,Y,Z)
+      INTEGER I,SIZE
+      REAL    X(SIZE),Y(SIZE),Z(SIZE)
+
+      DO 10, I = 1,SIZE
+         Z(I) = X(I)*Y(I)
+   10 CONTINUE
+      END
+</pre>
+<p>
+In this example, the actual array size <code>N</code> (which may be less than 
+or equal to the maximum-allowed size <code>NMAX</code>) is passed to the 
+subroutine along with the array names.  Now the procedure will work on any 
+size array.
+</p>
+</div>
+
+<p>
+Sometimes it isn't known ahead of time how large the array will be.  Either 
+the maximum size of the array can be passed to the procedure or the array 
+appearing in the dummy argument list can be declared as an 
+<strong>assumed size array</strong>.  In this instance, the upper bound of 
+the last dimension of the array may be declared using as asterisk 
+<code>*</code>
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      SUBROUTINE DERIV(X,H,N)
+      INTEGER N
+      REAL    H,X(*)
+
+      X(N) = (X(N+1) - X(N-1))/(2.0*H)
+      END
+</pre>
+<p>
+All that is known about array <code>X</code> is that its lower bound (or 
+subscript) is 1.  It is up to the programmer to ensure that the subroutine 
+is never called if the value of <code>N</code> is out-of-bounds.
+</p>
+</div>
+
+<p>
+All of these discussions hold for multi-dimensional arrays and arrays whose 
+lower bound is not 1.  Multi-dimensional arrays are a little tricky; it is 
+usually sensible to pass the declared sizes of the arrays to the procedure 
+in order to preserve the storage scheme of the array.  Only the upper bound 
+of the last dimension may be assumed size or less than the actual declared 
+size.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      PROGRAM MAIN
+      INTEGER   MMAX,NMAX,M,N
+      PARAMETER(MMAX=4,NMAX=3)
+      REAL      A(MMAX,NMAX),X(NMAX),Y(MMAX)
+&hellip;
+      CALL MATVEC(MMAX,M,N,A,X,Y)
+&hellip;
+      END
+
+      SUBROUTINE MATVEC(DIM1,M,N,MATRIX,VECX,VECY)
+C Multiply a matrix by a vector.
+      INTEGER DIM1,I,M,N
+      READ    SUM,MATRIX(DIM1,*),VECX(*),VECY(*)
+
+      DO 20, I = 1,M
+         SUM = 0.0
+         DO 10, J = 1,N
+            SUM = SUM + MATRIX(I,J)*VECX(J)
+   10    CONTINUE
+         VECY(I) = SUM
+   20 CONTINUE
+      END
+</pre>
+<p>
+In the subroutine, the first dimension of the two-dimensional array is set 
+to the declared size in the main program.  This will preserve the integrity 
+of the storage scheme.
+</p>
+<table>
+<tr>
+<th>Main</th>
+<th>Subroutine</th>
+<th>Main</th>
+<th>Subroutine</th>
+<th>Main</th>
+<th>Subroutine</th>
+</tr>
+<tr>
+<td><code>A(1,1)</code></td>
+<td><code>MATRIX(1,1)</code></td>
+<td><code>X(1)</code></td>
+<td><code>VECX(1)</code></td>
+<td><code>Y(1)</code></td>
+<td><code>VECY(1)</code></td>
+</tr>
+<tr>
+<td><code>A(2,1)</code></td>
+<td><code>MATRIX(2,1)</code></td>
+<td><code>X(2)</code></td>
+<td><code>VECX(2)</code></td>
+<td><code>Y(2)</code></td>
+<td><code>VECY(2)</code></td>
+</tr>
+<tr>
+<td><code>A(3,1)</code></td>
+<td><code>MATRIX(3,1)</code></td>
+<td><code>X(3)</code></td>
+<td><code>VECX(3)</code></td>
+<td><code>Y(3)</code></td>
+<td><code>VECY(3)</code></td>
+</tr>
+<tr>
+<td><code>A(4,1)</code></td>
+<td><code>MATRIX(4,1)</code></td>
+<td></td>
+<td></td>
+<td><code>Y(4)</code></td>
+<td><code>VECY(4)</code></td>
+</tr>
+<tr>
+<td><code>A(1,2)</code></td>
+<td><code>MATRIX(1,2)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(2,2)</code></td>
+<td><code>MATRIX(2,2)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(3,2)</code></td>
+<td><code>MATRIX(3,2)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(4,2)</code></td>
+<td><code>MATRIX(4,2)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(1,3)</code></td>
+<td><code>MATRIX(1,3)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(2,3)</code></td>
+<td><code>MATRIX(2,3)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(3,3)</code></td>
+<td><code>MATRIX(3,3)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>A(4,3)</code></td>
+<td><code>MATRIX(4,3)</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+
+<p>
+It is possible to transfer sections of arrays by using array elements in 
+the actual argument list and array names in the dummy argument list.  This 
+works because FORTRAN&nbsp;77 passes arguments by reference rather than by 
+value.  That is to say, it is the storage address of the symbolic name that 
+is passed, not the actual value(s) stored in the symbolic name.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      PROGRAM MAIN
+      INTEGER   NMAX
+      PARAMETER(NMAX=5)
+      DOUBLE PRECISION ARRAY(-NMAX:NMAX)
+&hellip;
+      CALL FLUMOX(ARRAY(-2))
+&hellip;
+      END
+
+      SUBROUTINE FLUMOX(A)
+      DOUBLE PRECISION A(*)
+&hellip;
+      END
+</pre>
+<p>
+In this example, the actual argument is an array element and the dummy 
+argument is an array.  What is passed to the subroutine is the address of 
+storage space of <code>ARRAY(2)</code> and what the subroutine sees is this:
+</p>
+<table>
+<tr>
+<th>Main</th>
+<th>Subroutine</th>
+</tr>
+<tr>
+<td><code>ARRAY(-5)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ARRAY(-4)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ARRAY(-3)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ARRAY(-2)</code></td>
+<td><code>A(1)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(-1)</code></td>
+<td><code>A(2)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(0)</code></td>
+<td><code>A(3)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(1)</code></td>
+<td><code>A(4)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(2)</code></td>
+<td><code>A(5)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(3)</code></td>
+<td><code>A(6)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(4)</code></td>
+<td><code>A(7)</code></td>
+</tr>
+<tr>
+<td><code>ARRAY(5)</code></td>
+<td><code>A(8)</code></td>
+</tr>
+</table>
+<p>
+So only a part of the array is transferred and the subroutine effectively 
+thinks it's getting an array with 8 elements in it, starting with the 
+storage space assigned to <code>ARRAY(-2)</code> in the main program.
+</p>
+<p>
+This can make your code rather obscure so use this trick with caution.
+</p>
+</div>
+
+<h3>Procedures as arguments</h3>
+
+<h4>EXTERNAL Statement</h4>
+<p>
+The <code>EXTERNAL</code> statement names external procedures which are 
+required in order to run a given program unit.  It is required any time an 
+external procedure or dummy procedure is used as an actual argument of 
+another procedure call.  It is also necessary when calling a user-defined 
+procedure which has the same name as an intrinsic function.  The general 
+form of the statement is
+</p>
+<pre>EXTERNAL <em class="encode">ename<sub>1</sub></em>, <em class="encode">ename<sub>2</sub></em>, &hellip;, <em class="encode">ename<sub>n</sub></em></pre>
+<p>
+where <em>ename</em> is the name of an external function, subroutine or 
+dummy procedure in an argument list.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the following program fragment consisting of a main program, a 
+user-defined function <code>POLY</code> and a subroutine <code>BISECT</code>.
+The main program calls the subroutine <code>BISECT</code> with the function 
+<code>POLY</code> as an actual argument.
+</p>
+<pre>
+      PROGRAM MAIN
+      REAL A,B,EPS,POLY,X
+      EXTERNAL POLY
+&hellip;
+      CALL BISECT(POLY,A,B,X,EPS)
+&hellip;
+      END
+
+      REAL FUNCTION POLY(X)
+      REAL X
+      POLY = X**2 - X - 2.0
+      END
+
+      SUBROUTINE BISECT(FUNC,XLOWER,XUPPER,XZERO,TOL)
+C This subroutine uses the bisection method to find a known root of the 
+C external user-supplied function FUNC in the interval [XLOWER,XUPPER].
+C The root is returned in XZERO.  The tolerance for the interval size is
+C TOL and is defined by the calling program unit.
+      INTEGER   I,NMAX
+      REAL      FUNC,FX,TOL,XL,XLOWER,XU,XUPPER,XZERO
+      PARAMETER(NMAX=25)
+
+C Error trapping for incorrect interval.
+      IF (XLOWER .GE. XUPPER) THEN
+         WRITE(*,*)'Incorrect interval. No zero found.'
+         RETURN
+      END IF
+C Initialise local copies of bounds so original values are unaltered.
+      XL = XLOWER
+      XU = XUPPER
+C Bisection method.  Perform at most NMAX iterations.
+      DO 10, I = 1,NMAX
+C Set midpoint of current interval and evaluate function at midpoint.
+         XZERO = 0.5*(XL + XU)
+         FX    = FUNC(XZERO)
+C If root is found or interval is 'small enough', return.
+         IF (FX .EQ. 0.0 .OR. 0.5*(XU-XL) .LT. TOL) THEN
+            RETURN
+C Root is in the lower half of the current interval.
+         ELSE IF (FX*FUNC(XL) .LT. 0.0) THEN
+            XU = XZERO
+C Root is in the upper half of the current interval.
+         ELSE
+            XL = XZERO
+         END IF
+   10 CONTINUE
+      WRITE(*,*)'WARNING: Tolerance not met after ',NMAX,' iterations'
+      END
+</pre>
+<p>
+Because <code>POLY</code> is the name of an external function and it 
+appears as an actual argument in the <code>CALL&nbsp;BISECT</code> 
+statement in the main program, it has to be declared as <code>EXTERNAL</code>
+in the main program.
+</p>
+</div>
+
+<h4>INTRINSIC Statement</h4>
+<p>
+The <code>INTRINSIC</code> statement is related to the <code>EXTERNAL</code> 
+statement.  It is used to declare a name to be that of an 
+<a href="intrinsic.html">intrinsic function</a> but is necessary only if 
+that function is used as an actual argument in another procedure call.  The 
+general form of the statement is
+</p>
+<pre>INTRINSIC <em class="encode">iname<sub>1</sub></em>, <em class="encode">iname<sub>2</sub></em>, &hellip;, <em class="encode">iname<sub>n</sub></em></pre>
+<p>
+where <em>iname</em> is the name of an intrinsic function.
+</p>
+<p>
+The name of the intrinsic function being used as an actual argument must 
+be the <strong>specific name</strong> of the function and not the 
+<strong>generic name</strong>.  Only some of the numerical functions have 
+specific names.  The other functions, such as those for type conversion as 
+well as <code>MAX</code> and <code>MIN</code>, do not have specific names 
+and cannot appear in argument lists.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      PROGRAM MAIN
+      REAL      PI
+      PARAMETER(PI=3.14159265)
+      INTRINSIC COS,SIN
+
+      WRITE(*,*)'Cosine Function'
+      CALL TABLE(COS,-PI,PI)
+      WRITE(*,*)'PAUSE: Press &lt;Enter&gt; to continue'
+      READ(*,*)
+      WRITE(*,*)'Sine Function'
+      CALL TABLE(SIN,-PI,PI)
+      STOP 'End of program'
+      END
+
+      SUBROUTINE TABLE(F,LOWER,UPPER)
+      INTEGER   I,NMAX
+      REAL      DELTAX,F,LOWER,UPPER,X
+      PARAMETER(NMAX = 100)
+
+      DELTAX = (UPPER - LOWER)/NMAX
+      DO 10, I = 0,NMAX
+         X = LOWER + I*DELTAX
+         WRITE(*,20)X,F(X)
+   10 CONTINUE
+   20 FORMAT(' ',F10.6,2X,F10.6)
+      END
+</pre>
+<p>
+The intrinsic functions <code>COS</code> and <code>SIN</code> are passed to 
+a subroutine called <code>TABLE</code> and so must be declared as 
+<code>INTRINSIC</code> in the calling program unit (the main program in this 
+case).  Note that <code>COS</code> and <code>SIN</code> are the specific 
+names of the <code>REAL</code> intrinsic functions of cosine and sine.
+</p>
+</div>
+
+<h2>RETURN Statement</h2>
+<p>
+The <code>RETURN</code> statement is simply
+</p>
+<pre>RETURN</pre>
+<p>
+without any arguments or qualifiers.  When encountered in a procedure, it 
+immediately transfers execution back to the calling program.  The 
+<code>END</code> statement also has the same effect so it is unnecessary 
+(although not incorrect) to include a <code>RETURN</code> statement at the 
+bottom of a procedure.  However, sometimes it is necessary to have more than 
+one exit point from a procedure, perhaps for error-trapping purposes.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      SUBROUTINE QUAD(A,B,C,X1,X2,FLAG)
+C This subroutine calculates the real roots of the quadratic equation 
+C a x^2 + b x + c = 0
+C using the method of Forsythe, Malcolm and Moler to avoid catastrophic 
+C floating point cancellation.  If the equation is linear or if complex 
+C roots are encountered, the error flag is set to TRUE and no roots are 
+C calculated.
+      LOGICAL FLAG
+      REAL    A,B,C,DISC,X1,X2
+
+C Calculate discriminant.
+      DISC = B*B - 4.0*A*C
+C Set error flag.
+      FLAG = DISC .LT. 0.0 .OR. A .EQ. 0.0
+C If error flag is TRUE, return early.
+      IF (FLAG) THEN
+         WRITE(*,*)'ERROR!  Complex roots or non-quadratic equation.'
+         RETURN
+      END IF
+C Otherwise, calculate roots.
+      X1 = - (B + SIGN(SQRT(DISC),B))/(2.0*A)
+      X2 = C/(A*X1)
+      END
+</pre>
+<p>
+In this subroutine, the subroutine exits early if an error occurs.
+Otherwise, execution returns to the calling program when the <code>END</code> 
+statement is reached.
+</p>
+</div>
+
+<h2>SAVE Statement</h2>
+<p>
+Under normal circumstances, local variables declared within a procedure 
+become undefined as soon as control passes back to the calling program.  
+However, it is sometimes useful or even necessary to preserve the values of 
+the local variables between calls or references to the procedure.  This 
+is done with the <code>SAVE</code> command.
+</p>
+<pre>SAVE <em class="encode">item<sub>1</sub></em>, <em class="encode">item<sub>2</sub></em>, &hellip;, <em class="encode">item<sub>n</sub></em></pre>
+<p>
+saves the values of each <em>item<sub>i</sub></em> listed and 
+</p>
+<pre>SAVE</pre>
+<p>
+saves the values of all allowable items in the procedure.  The items may be 
+variables, array names or entire named <code>COMMON</code> blocks but 
+not anything which appears as a dummy argument or in a blank 
+<code>COMMON</code> block.  The <code>SAVE</code> statement also may be 
+used in the main program but it has no effect.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      SUBROUTINE MODEL(A,B,C,X,Y,Z)
+&hellip;
+      LOGICAL FIRST
+      SAVE    FIRST
+      DATA    FIRST /.TRUE./
+
+C Execute this block only the first time the subroutine is called.
+      IF (FIRST) THEN
+         FIRST = .FALSE.
+&hellip;
+      END IF
+C Execution starts here on subsequent calls to the subroutine.
+&hellip;
+      END
+</pre>
+<p>
+In this example, there is a certain block of statements which must be 
+executed the first time the subroutine is called but not on subsequent 
+calls.  To do this, a local <code>LOGICAL</code> variable called 
+<code>FIRST</code> is initialised to <code>.TRUE.</code> in a 
+<code>DATA</code> statement so that it has appropriate value the first 
+time the subroutine is called.  On the first call to the subroutine, 
+the block&nbsp;<code>IF</code> is executed, one of the statements being 
+<code>FIRST&nbsp;=&nbsp;.FALSE.</code>  Local variables become undefined as 
+soon as the subroutine is exited but the <code>SAVE</code> statement keeps 
+the current value of <code>FIRST</code> between calls to the subroutine.  
+The block&nbsp;<code>IF</code> statement will not execute on any call to the 
+subroutine except the first.
+</p>
+</div>
+
+<h2>ENTRY Statement</h2>
+<p>
+A function or subroutine is usually entered at the beginning of the 
+program unit but it is possible to enter them at other points using the 
+<code>ENTRY</code> statement.  The <code>ENTRY</code> statement is a 
+nonexecutable statement which looks very much like a <code>SUBROUTINE</code> 
+statement and may occur one or more times within a subroutine or external 
+function.  It may not appear within a <code>DO</code> loop or 
+block&nbsp;<code>IF</code> construct as this would have the effect of jumping 
+into the middle of these structures (which is not allowed).
+</p>
+<pre>ENTRY <em class="encode">ename</em>(<em class="encode">dummy<sub>1</sub></em>, <em class="encode">dummy<sub>2</sub></em>, &hellip;, <em class="encode">dummy<sub>n</sub></em>)</pre>
+<p class="bang">
+This statement is difficult to use correctly and its use is strongly 
+discouraged.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the program fragment:
+</p>
+<pre>
+      PROGRAM MAIN
+      REAL A,B,C,D,E,F
+&hellip;
+      CALL SUB(A)
+&hellip;
+      CALL SUB1(B,C)
+&hellip;
+      CALL SUB2(D,E,F)
+&hellip;
+      END
+
+      SUBROUTINE SUB(X)
+      REAL X,Y,Z
+      WRITE(*,*)'The value of X is ',X
+      RETURN
+      ENTRY SUB1(X,Y)
+      X = X + Y
+      RETURN
+      ENTRY SUB2(X,Y,Z)
+      X = X + Y + Z
+      RETURN
+      END      
+</pre>
+<p>
+In the subroutine <code>SUB</code>, the names <code>SUB1</code> and 
+<code>SUB2</code> define alternate entry points to the subroutine.  If 
+the subroutine is called in the usual manner, then the first executable 
+statement is 
+<code>WRITE(*,*)'The&nbsp;value&nbsp;of&nbsp;X&nbsp;is&nbsp;',X</code>.
+However, if the subroutine is called at the entry point <code>SUB1</code>, 
+then the first executable statement is 
+<code>X&nbsp;=&nbsp;X&nbsp;+&nbsp;Y</code>.  Similarly, if the subroutine 
+is called at the entry point <code>SUB2</code>, then the first executable 
+statement is <code>X&nbsp;=&nbsp;X&nbsp;+&nbsp;Y&nbsp;+&nbsp;Z</code>.
+</p>
+</div>
+<p>
+The rules for using the <code>ENTRY</code> statement are complicated, 
+particularly in external functions.  It is usually better to use separate 
+subroutines or functions than to create multiple entry points in a single 
+subroutine or external function.  
+</p>
+
+<h2>Alternate RETURN Statement</h2>
+<p>
+Not only is it possible to enter a subroutine in different places, it is 
+possible to return from a subroutine in different places via the 
+alternate&nbsp;<code>RETURN</code> statement.  The 
+alternate&nbsp;<code>RETURN</code> returns control to the calling program 
+unit to a labelled statement after the completion of the <code>CALL</code> 
+statement.  Note that the alternate&nbsp;<code>RETURN</code> may be used in 
+subroutines but not external functions.
+</p>
+<pre>RETURN <em class="encode">integer</em></pre>
+<p class="bang">
+This statement leads to a lack of modularity and its use is strongly 
+discouraged.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Consider the program fragment:
+</p>
+<pre>
+      PROGRAM MAIN
+&hellip;
+      CALL CONFUS(A,B,C,*13,*66,*42)
+&hellip;
+   13 A = -A
+&hellip;
+   42 WRITE(*,*)'Default return'
+&hellip;
+   66 B = A - C
+&hellip;
+      END
+
+      SUBROUTINE CONFUS(X,Y,Z,*,*,*)
+&hellip;
+      IF (X .LT. 0.0) RETURN 2
+&hellip;
+      END
+</pre>
+<p>
+In the main program, the subroutine <code>CONFUS</code> is called with six 
+arguments: <code>A</code>, <code>B</code>, <code>C</code> and three 
+statement labels, each preceded by an asterisk <code>*</code>.  The 
+subroutine also contains six arguments, <code>X</code>, <code>Y</code>, 
+<code>Z</code> and three asterisks <code>*</code> which correspond to the 
+three label arguments in the calling program.  In the subroutine, if 
+<code>X&nbsp;&lt;&nbsp;0</code>, then control is passed back to the main 
+program and execution resumed at the statement associated with the second 
+label in the argument list.  In this example, that is the statement with 
+the label <code>66</code> which is <code>B&nbsp;=&nbsp;A&nbsp;-&nbsp;C</code>.
+</p>
+<p>
+If none of the alternate&nbsp;<code>RETURN</code> statements are used 
+(<code>RETURN&nbsp;1</code>, <code>RETURN&nbsp;2</code> and 
+<code>RETURN&nbsp;3</code> in the given example), then control will be 
+returned to the main program in the usual way.
+</p>
+</div>
+<p>
+The alternate&nbsp;<code>RETURN</code> can easily be replaced with some kind 
+of <code>INTEGER</code> flag which is returned via the argument list and an 
+<code>IF</code> statement in the calling program which decides what action 
+to take according to the status of the flag.
+</p>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+<a href="intrinsic.html" class="button">Intrinsic&nbsp;Functions</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/procedure.html</span>
+</p>
+
+</body>
+</html>

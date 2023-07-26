@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Program Layout</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Basic layout of a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Program Layout</h1>
+
+<h2>Character Set</h2>
+<p>
+FORTRAN&nbsp;77 requires only a limited character set.  For truly portable 
+software, you should use only the following:
+</p>
+
+<table class="layout">
+<tr>
+<th>Character(s)</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>A&nbsp;B&nbsp;C&nbsp;D&nbsp;E&nbsp;F&nbsp;G&nbsp;H&nbsp;I&nbsp;J&nbsp;K&nbsp;L&nbsp;M N&nbsp;O&nbsp;P&nbsp;Q&nbsp;R&nbsp;S&nbsp;T&nbsp;U&nbsp;V&nbsp;W&nbsp;X&nbsp;Y&nbsp;Z</code></td>
+<td>26 upper-case letters</td>
+</tr>
+<tr>
+<td><code>0&nbsp;1&nbsp;2&nbsp;3&nbsp;4&nbsp;5&nbsp;6&nbsp;7&nbsp;8&nbsp;9</code></td>
+<td>10 digits</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>plus</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>minus</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>asterisk</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>(forward) slash</td>
+</tr>
+<tr>
+<td><code>(&nbsp;)</code></td>
+<td>left and right parentheses</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>equals</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>full stop or period</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>comma</td>
+</tr>
+<tr>
+<td><code>'</code></td>
+<td>apostrophe</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>colon</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>currency symbol</td>
+</tr>
+<tr>
+<td><code>&nbsp;</code></td>
+<td>blank</td>
+</tr>
+</table>
+<p>
+The letters A-Z and digits 0-9 are often grouped together and referred
+to as <strong>alpha-numeric characters</strong>.  Although this character
+set seems somewhat limited, it should be available on any computer.
+The <strong>blank</strong> character is ignored except within character 
+constants and the currency symbol is not actually used.  Of course, most 
+computer keyboards provide many other characters, not least of which are the
+lower-case letters.  Any printable characters may be used within comments
+and character constants.
+</p>
+
+<h2>Symbolic Names</h2>
+<p>
+Symbolic names can be used to identify constants, variables, arrays,
+functions, subroutines and common blocks.  Each symbolic name must begin
+with a letter and may be followed by up to five letters or digits.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+Valid symbolic names include
+</p>
+<ul>
+<li><code>NAME</code></li>
+<li><code>HE3</code></li>
+<li><code>X</code></li>
+<li><code>FINISH</code></li>
+</ul>
+<p>
+Invalid symbolic names are 
+</p>
+<ul>
+<li><code>12C</code> (begins with a digit)</li>
+<li><code>Y_1</code> (contains an underscore character)</li>
+<li><code>pi</code> (contains lower-case letters)</li>
+<li><code>COMPLETE</code> (too long)</li>
+</ul>
+</div>
+
+<p>
+Be careful using <code>O</code> (oh) and <code>0</code> (zero) in symbolic
+names as they are easily confused.  Another troublesome twosome is
+<code>I</code> (eye) and <code>1</code> (one), not to mention
+<code>S</code> (ess) and <code>5</code> (five).  It is not illegal to use
+these characters in symbolic names but you must take extra care not to mix
+them up.
+</p>
+
+<h2>Statements</h2>
+<p>
+A leftover from the bad old days of punch cards is the statement layout
+in FORTRAN&nbsp;77.  Each line is divided into four fields:
+</p>
+<dl>
+<dt><span class="contrast">columns 1-5</span></dt>
+<dd>label field</dd>
+<dt><span class="contrast">column 6</span></dt>
+<dd>continuation field</dd>
+<dt><span class="contrast">columns 7-72</span></dt>
+<dd>statement field</dd>
+<dt><span class="contrast">columns 73-80</span></dt>
+<dd><em>Danger!  Stay out!</em> (card sequence field)</dd>
+</dl>
+<p>
+A statement label is a number from 1 to 99999 that precedes a statement.
+Any executable statement (and some nonexecutable ones) may have a label.
+</p>
+<p>
+The continuation field is used only when a statement is too long to fit
+on one line (within columns 7 to 72).  A statement may be continued on
+the next line by placing any symbol (like the currency symbol) in
+the sixth column preceding the continuation.  Up to 19 continuations are
+permitted for a single statement; hence, a single statement can cover
+up to 20 lines.  Finally, the statement itself is placed within
+columns 7 to 72.  Any characters that stray past the last allowed column
+will be ignored by the compiler and will almost certainly cause an error
+in the program.
+</p>
+<p>
+It is imperative to document your programs.  A piece of code that is
+clear today will be difficult if not impossible to understand six months
+down the road so you should include comments in your program explaining
+what it does.  To place a comment line in a program, place a <code>C</code>
+or an asterisk <code>*</code> in the first column.  The text of the comment
+follows.  Each comment line must be preceded by a <code>C</code> or an
+asterisk <code>*</code>.  Like statements, comments should not extend past
+column 72 but this rule is rarely enforced.  A comment may appear anywhere 
+in a program except after the <code>END</code> statement.  Completely blank 
+lines are also permitted.
+</p>
+
+<h2>Reserved Words</h2>
+<p>
+FORTRAN&nbsp;77 has no reserved words but it is unwise to use the various 
+keywords like <code>DATA</code> or <code>DO</code> or <code>IF</code> or 
+intrinsic function names as symbolic names.  It makes for very 
+difficult-to-read code.
+</p>
+
+<h2>Blanks</h2>
+<p>
+Blank spaces in columns 1 through 5 and 7 through 72 are ignored in 
+FORTRAN&nbsp;77.  (The blank in column&nbsp;6, the continuation field, is 
+significant.)
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<p>
+The following assignments statements are equivalent in FORTRAN&nbsp;77.
+</p>
+<pre>
+     COUNT = 100
+     COUNT=100
+     COUNT = 1 0 0
+     COUN T = 10 0
+     C 0 U N T = 1 00
+</pre>
+</div>
+
+<p>
+This also means the the spaces between keywords are ignored.  For example, 
+<code>END&nbsp;IF</code> and <code>ENDIF</code> are treated exactly the same, 
+as is <code>BLOCK&nbsp;DATA</code> and <code>BLOCKDATA</code>, 
+<code>GO&nbsp;TO</code> and <code>GOTO</code>, etc.  Which form you 
+choose to use (with a space or without) is down to personal preference.
+</p>
+
+<div class="example">
+<h4>Case Study</h4>
+<p>
+A well-known example of this particular foible of FORTRAN occurred at 
+<abbr title="National Aeronautics and Space Administration">NASA</abbr> 
+during the early days of spaceflight.  During later testing of an orbit 
+computation program used on the Mercury flights, the answers kept coming 
+back slightly incorrect.  Delving into the source code revealed the 
+following statement at the beginning of a <code>DO</code>&nbsp;loop:
+</p>
+<pre>
+      DO 10 I=1.10
+</pre>
+<p>
+The compiler, ignoring blanks, correctly interpreted this statement as
+<pre>
+      DO10I = 1.10
+</pre>
+<p>
+which is an assignment statement and clearly not what the programmer 
+intended.  The full stop <code>.</code> was changed to a comma 
+<code>,</code> and the statement became
+</p>
+<pre>
+      DO 10 I=1,10
+</pre>
+<p>
+after which the program ran correctly.  This is also why FORTRAN&nbsp;77 
+allows an optional comma between the <em>label</em> and the 
+<em>loop-control-variable</em> in a <code>DO</code>&nbsp;loop.
+</p>
+</div>
+
+
+<h2>Program Units</h2>
+<p>
+A complete program consists of one or more program units.  There is exactly 
+one <strong>main program</strong> which begins with a <code>PROGRAM</code> 
+statement:
+</p>
+<pre>PROGRAM <em class="encode">main-name</em></pre>
+<p>
+This statement appears only at the beginning of the main program and the
+symbolic name <em>main-name</em> must be unique (not used elsewhere in any 
+of the program units).
+</p>
+<p>
+There may also be any number of external procedures (functions and 
+subroutines) and <code>BLOCK&nbsp;DATA</code> subprograms.  Every program 
+unit must end with an <code>END</code> statement.
+</p>
+<pre>END</pre>
+<p>
+The <code>END</code> statement is executable and may have a label.  When an 
+<code>END</code> statement is encountered in an external procedure or 
+<code>BLOCK&nbsp;DATA</code> subprogram, control is returned to the calling 
+program unit.  When an <code>END</code> statement is encountered in the 
+main program, any open files are closed and execution stops.  At this point
+control is returned to the operating system.
+</p>
+
+<h2>Statement Order</h2>
+<p>
+FORTRAN&nbsp;77 statements must appear in a certain order within a program unit.
+</p>
+<table class="layout">
+<tr>
+<td class="lines" colspan="3"><code>BLOCK&nbsp;DATA</code>, 
+<code>FUNCTION</code>, <code>PROGRAM</code>, <code>SUBROUTINE</code></td>
+</tr>
+<tr>
+<td class="lines" rowspan="4"><code>FORMAT</code></td>
+<td class="lines" rowspan="2"><code>PARAMETER</code></td>
+<td class="lines"><code>IMPLICIT</code></td>
+</tr>
+<tr>
+<td class="lines">type declarations and other specification statements:
+<code>COMMON</code>, <code>DIMENSION</code>, <code>EQUIVALENCE</code>,
+<code>EXTERNAL</code>, <code>INTRINSIC</code>, <code>SAVE</code></td>
+</tr>
+<tr>
+<td class="lines" rowspan="2"><code>DATA</code></td>
+<td class="lines">statement functions</td>
+</tr>
+<tr>
+<td class="lines">executable statements</td>
+</tr>
+<tr>
+<td class="lines" colspan="3"><code>END</code></td>
+</tr>
+</table>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/layout.html</span>
+</p>
+
+</body>
+</html>

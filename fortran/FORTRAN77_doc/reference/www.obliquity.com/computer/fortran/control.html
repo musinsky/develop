@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FORTRAN 77 - Other Control Structures</title>
+<meta charset="UTF-8">
+<meta name="author" content="L.M. Stockman and David Harper">
+<meta name="description" content="Control structures in a FORTRAN 77 program.">
+<meta name="generator" content="Handcrafted by Obliquity">
+<meta name="keywords" content="computer, computing, fortran, Fortran, FORTRAN, FORTRAN 77, programming, reference, scientific programming, tutorial">
+<meta name="robots" content="index, nofollow">
+<link rel="icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../../iconz/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/fortran.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/fortranprint.css" type="text/css" media="print">
+</head>
+
+<body>
+<h1>Other Control Structures</h1>
+
+<h2>Unconditional GO TO Statement</h2>
+<pre>GO TO <em class="encode">label</em></pre>
+<p>
+When an unconditional&nbsp;<code>GO&nbsp;TO</code> is encountered, control is 
+immediately transferred to the executable statement labelled with the 
+<em>label</em>.  Whilst it is sometimes necessary to use 
+unconditional&nbsp;<code>GO&nbsp;TO</code> statements in a program, they 
+should be used sparingly lest unreadable 'spaghetti' code result.
+</p>
+<p>
+A <code>GO&nbsp;TO</code> statement may be used to transfer control 
+<strong>out</strong> of a block&nbsp;<code>IF</code> or 
+<code>DO</code>&nbsp;loop but not <strong>in</strong> to them.  The 
+unconditional&nbsp;<code>GO&nbsp;TO</code> statement is often used in 
+conjunction with logical or block <code>IF</code> statements to construct 
+loops when a simple <code>DO</code>&nbsp;loop is not appropriate.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+   10 CONTINUE
+         WRITE(*,*)'Enter a positive value'
+         READ(*,*)A
+      IF (A .LE. 0.0) GO TO 10
+</pre>
+<p>
+The statement labelled <code>10</code> is a <code>CONTINUE</code> statement
+which is often used at the beginning or end of a loop structure.  This 
+program fragment executes the <code>CONTINUE</code> statement (which does
+nothing) and then prints out the statement 
+<code>Enter&nbsp;a&nbsp;positive&nbsp;value</code>.  The program then 
+reads in a value from the standard input device and stores it in the 
+variable <code>A</code>.  At this point <code>A</code> is tested to see if
+it is positive.  If it is, then control passes to the next executable 
+statement, but if it isn't, then the <code>GO&nbsp;TO&nbsp;10</code> statement 
+is executed and the program returns to the <code>CONTINUE</code> statement.
+The program then goes through the <code>WRITE</code> and <code>READ</code> 
+statements again and tests the new value of <code>A</code>.  The program 
+will not break out of this loop until <code>A</code> is positive.
+</p>
+<p>
+The indentation of the loop body makes the structure of the program that 
+much more readable.
+</p>
+</div>
+
+<h2>Computed GO TO Statement</h2>
+<pre>GO TO (<em class="encode">label<sub>1</sub></em>, <em class="encode">label<sub>2</sub></em>, &hellip;, <em class="encode">label<sub>n</sub></em>), <em class="encode">integer-expression</em></pre>
+<p class="bang">
+This form of <code>GO&nbsp;TO</code> statement is obscure and its use is 
+strongly discouraged.
+</p>
+<p>
+It is equivalent to this block&nbsp;<code>IF</code> statement:
+</p>
+<pre>
+IF (<em class="encode">integer-expression</em> .EQ. 1) THEN
+   GO TO <em class="encode">label<sub>1</sub></em>
+ELSE IF (<em class="encode">integer-expression</em> .EQ. 2) THEN
+   GO TO <em class="encode">label<sub>2</sub></em>
+&hellip;
+ELSE IF (<em class="encode">integer-expression</em> .EQ. n) THEN
+   GO TO <em class="encode">label<sub>n</sub></em>
+END IF
+</pre>
+<p>
+If the <em>integer-expression</em> is less than <em>1</em> or greater than
+<em>n</em>, then control passes on and no <code>GO&nbsp;TO</code> is executed.
+It is permissible for two or more of the labels to be the same.
+</p>
+<p>
+As with the unconditional&nbsp;<code>GO&nbsp;TO</code> statement, unrestrained 
+use of the computed&nbsp;<code>GO&nbsp;TO</code> statement rapidly leads to 
+unreadable code.
+</p>
+
+<h2>ASSIGN and Assigned GO TO Statements</h2>
+<pre>ASSIGN <em class="encode">label</em> TO <em class="encode">integer-variable</em></pre>
+<p>
+The <code>ASSIGN</code> statement is the only way to assign a statement label 
+value to an <code>INTEGER</code> variable.  The statement label must be a 
+label in the same program unit as the <code>ASSIGN</code> statement and it 
+must be the label of an executable statement or a <code>FORMAT</code> 
+statement.  When an <code>INTEGER</code> variable is assigned a statement 
+label in such a way, it may not be referenced as a number as it no longer 
+has a numerical value.
+</p>
+<pre>GO TO <em class="encode">integer-variable</em>, (<em class="encode">label<sub>1</sub></em>, <em class="encode">label<sub>2</sub></em>, &hellip;, <em class="encode">label<sub>n</sub></em>)</pre>
+<p class="bang">
+This form of <code>GO&nbsp;TO</code> statement is obscure and its use is 
+strongly discouraged.
+</p>
+<p>
+The <em>integer-variable</em> following the <code>GO&nbsp;TO</code> in an 
+assigned&nbsp;<code>GO&nbsp;TO</code> must be assigned a statement label in an 
+earlier <code>ASSIGN</code> statement.  The <code>ASSIGN</code> and 
+<code>GO&nbsp;TO</code> statements, plus the labelled statements, must all be 
+in the same program unit.  The comma and the list of labels in parentheses in 
+the assigned&nbsp;<code>GO&nbsp;TO</code> statement are optional but if 
+present, then the statement label assigned to the <em>integer-variable</em> 
+<strong>must</strong> match one of the labels in the list.
+</p>
+
+<h2>PAUSE Statement</h2>
+<pre>PAUSE '<em class="encode">string</em>'</pre>
+<p>
+A <code>PAUSE</code> statement halts the program in such a way that 
+execution can be resumed in some manner by the user.  When a 
+<code>PAUSE</code> statement is encountered, the optional <em>string</em> 
+is printed out and the program waits for the user to reactivate it.  
+This <em>string</em> must be a constant, not a variable.  
+Alternatively, it can be an integer up to five digits long.
+</p>
+<p class="bang">
+Implementation of the <code>PAUSE</code> statement is system-dependent and 
+its use is strongly discouraged.
+</p>
+<p>
+Instead, the <code>PAUSE</code> statement can be replaced by one 
+<code>WRITE</code> and one <code>READ</code> statement which is more 
+flexible and reliable.
+</p>
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      IF (DEBUG) PAUSE 'Entering main DO loop'
+</pre>
+<p>
+In this program fragment, the program pauses if the <code>LOGICAL</code> 
+variable <code>DEBUG</code> is true.  The string
+<code>Entering&nbsp;main&nbsp;DO&nbsp;loop</code> is printed out to the 
+standard output device as the program waits for the user.
+</p>
+<p>
+Because it is impossible to predict how any system will treat a 
+<code>PAUSE</code> statement, it is safer to use a 
+<code>WRITE</code>/<code>READ</code> pair of statements instead:
+</p>
+<pre>
+      IF (DEBUG) THEN
+         WRITE(*,*)'Entering main DO loop'
+         READ(*,*)
+      END IF
+</pre>
+<p>
+In this program fragement, if the <code>LOGICAL</code> variable 
+<code>DEBUG</code> is true, then the program writes the string
+<code>Entering&nbsp;main&nbsp;DO&nbsp;loop</code> to the standard output
+device.  The user then has to press the <em>Enter</em> or <em>Return</em> key 
+on the keyboard to resume running the program.
+</p>
+</div>
+
+
+<h2>STOP Statement</h2>
+<pre>STOP '<em class="encode">string</em>'</pre>
+<p>
+A <code>STOP</code> statement stops the program and returns control to the 
+computer's operating system.  When a <code>STOP</code> statement is 
+encountered, the optional <em>string</em> is printed out and the program 
+ends.  This <em>string</em> must be a constant, not a variable.  
+Alternatively, it can be an integer up to five digits long.  Although 
+ideally a program stops only at the end of the program, it may be 
+necessary, perhaps as an error-trapping device, to have multiple 
+<code>STOP</code> statements in a program.  In this instance, putting a 
+meaningful message in the <em>string</em> following the <code>STOP</code> 
+can help with debugging.
+</p>
+<p>
+It is not necessary for a program to contain a <code>STOP</code> statement.
+The program will automatically terminate when the <code>END</code> statement
+in the main program is encountered.
+</p>
+
+<div class="example">
+<h4 class="printX">Example</h4>
+<pre>
+      IF (X .EQ. 0.0) STOP 'Emergency stop - Denominator is zero'
+</pre>
+<p>
+In this program fragment, the program stops if <code>X</code> is zero.
+The string 
+<code>Emergency&nbsp;stop&nbsp;-&nbsp;Denominator&nbsp;is&nbsp;zero</code>
+is printed out to the standard output device as the program terminates.
+</p>
+</div>
+
+<h2>Other Considerations</h2>
+<p>
+Besides the <code>DO</code>, <code>IF</code>, <code>GO&nbsp;TO</code> and 
+<code>STOP</code> statements, sequential execution of statements may be 
+altered by the <code>END=</code> and <code>ERR=</code> keywords in 
+input/output statements, and by alternate entries and returns from subprograms.
+</p>
+
+<p class="menu">
+<a href="index.html" class="button">Table&nbsp;of&nbsp;Contents</a>
+<a href="keywords.html" class="button">Index</a>
+</p>
+<p class="footer">
+<a href="https://www.obliquity.com/"><img src="../../iconz/logo.png" alt="Obliquity" width="100" height="100" class="logo"></a>
+Copyright &copy; 2014&ndash;2021 by L.M. Stockman and David Harper<br>
+All Rights Reserved<br>
+Designed and maintained by 
+<a href="https://www.obliquity.com/cgi-bin/contact.cgi?subject=computing">Obliquity</a><br>
+<span class="printURL">https://www.obliquity.com/computer/fortran/control.html</span>
+</p>
+
+</body>
+</html>
