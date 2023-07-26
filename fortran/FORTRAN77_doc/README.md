@@ -23,7 +23,7 @@ Standardization (ISO) 1539-1980.
 * https://www.star.le.ac.uk/~cgp/prof77.html
 
 Professional Programmer's Guide to Fortran77 Clive G. Page, University of
-Leicester, UK 7th June 2005
+Leicester, UK 7th June 2005.
 
 [`Professional.Programmers.Guide.to.Fortran77.2005.Page.html`](Professional.Programmers.Guide.to.Fortran77.2005.Page.html) in one long html file ([see directly from GitHub](https://raw.githack.com/musinsky/develop/master/fortran/FORTRAN77_doc/Professional.Programmers.Guide.to.Fortran77.2005.Page.html)).
 [`Professional.Programmers.Guide.to.Fortran77.2005.Page.pdf`](Professional.Programmers.Guide.to.Fortran77.2005.Page.pdf) to same in pdf format.
@@ -33,4 +33,4 @@ Leicester, UK 7th June 2005
 
 FORTRAN 77 Reference (designed and maintained by Obliquity, 2021).
 
-[`reference/www.obliquity.com/computer/fortran/`](reference/www.obliquity.com/computer/fortran) mirror (backup) dir of web pages ([see directly from GitHub](https://raw.githack.com/musinsky/develop/master/fortran/FORTRAN77_doc/reference/www.obliquity.com/computer/fortran/index.html)).
+[`reference/obliquity_com/computer/fortran/`](reference/obliquity_com/computer/fortran) mirror (backup) dir of web pages ([see directly from GitHub](https://raw.githack.com/musinsky/develop/master/fortran/FORTRAN77_doc/reference/obliquity_com/computer/fortran/index.html)).
