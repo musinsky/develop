@@ -1,13 +1,13 @@
-<p align="right">last edit: 2023-04-16</p>
+<p align="right">last edit: 2023-08-16</p>
 
-# FORTRAN 77
-* https://en.wikipedia.org/wiki/CERN_Program_Library
-
-CERNLIB modules are written in the FORTRAN 77 language.
-
-## Fortran
+# Fortran
 * https://en.wikipedia.org/wiki/Fortran
+* https://fortran-lang.org/
+* https://wg5-fortran.org/
+* https://gcc.gnu.org/wiki/GFortranStandards
 * https://fortranwiki.org/fortran/show/Standards
+
+## FORTRAN 77
 * https://wg5-fortran.org/fearlier.html
 
 An important practical extension to FORTRAN 77 was the release of MIL-STD-1753
@@ -15,6 +15,9 @@ in 1978. This specification, developed by the U.S. Department of Defense,
 standardized a number of features implemented by most FORTRAN 77 compilers but
 not included in the ANSI FORTRAN 77 standard. These features would eventually be
 incorporated into the Fortran 90 standard.
+
+[CERNLIB](https://en.wikipedia.org/wiki/CERN_Program_Library) modules are
+written in the FORTRAN 77 language.
 
 ## GNU Fortran compiler
 * https://gcc.gnu.org/wiki/GFortran
@@ -84,7 +87,7 @@ be given for obsolete extensions not recommended for use in new code. The
 and may be useful for old non-standard programs.
 
 ### notes
-GFortran 4.2 and 4.3 [use
+GFortran 4.2 (2007-05) [use
 now](https://gcc.gnu.org/wiki/GFortran/News#gfortran_4.2) 4-byte record markers
 by default for unformatted files to be compatible with g77 and most other
 compilers. The implementation allows for records bigger than 2 GB, compatible
