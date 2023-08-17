@@ -30,13 +30,13 @@ c     STATUS: default is 'KEEP'       # 'KEEP' or 'DELETE'
       REAL       ARRAY(NA)
       I1=12345
       I2=-7
-      R1=3.14                   ! 3.14159265359
-      R2=-999.0
+      R1=3.14                   ! 0x4048f5c3
+      R2=-999.0                 ! 0xc479c000
       DO 10, I = 1,NA
          ARRAY(I) = I*1.1
    10 CONTINUE
 
-      OPEN(UNIT=30, FILE='fortran.write.FMT.SEQ.txt')
+      OPEN(UNIT=30, FILE='fortran.io.FMT.SEQ.txt')
       WRITE(UNIT=30, FMT=100) I1, I2, R1, R2
       WRITE(UNIT=30, FMT=101) NA, (ARRAY(I), I=1,NA)
 c     https://www.obliquity.com/computer/fortran/format.html
@@ -45,7 +45,7 @@ c     https://www.obliquity.com/computer/fortran/format.html
       CALL inquire_unit(30)
       CLOSE(UNIT=30)
 
-      OPEN(UNIT=31, FILE='fortran.write.UNFMT.SEQ.bin',
+      OPEN(UNIT=31, FILE='fortran.io.UNFMT.SEQ.bin',
      &     FORM='UNFORMATTED')
 c     $ gfortran -frecord-marker=8   # default length is 4 (for gcc/gfortran 4.2+)
       WRITE(UNIT=31) I1, I2, R1, R2
@@ -54,7 +54,7 @@ c     WRITE(UNIT=31) NA, ARRAY
       CALL inquire_unit(31)
       CLOSE(UNIT=31)
 
-      OPEN(UNIT=32, FILE='fortran.write.UNFMT.STREAM.bin',
+      OPEN(UNIT=32, FILE='fortran.io.UNFMT.STREAM.bin',
      &     FORM='UNFORMATTED',
      &     ACCESS='STREAM', STATUS='REPLACE') ! F2003 standard
       WRITE(UNIT=32) I1, I2, R1, R2
