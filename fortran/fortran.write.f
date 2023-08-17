@@ -70,13 +70,13 @@ c     WRITE(UNIT=32) NA, ARRAY
       SUBROUTINE inquire_unit(unit_num)
       INTEGER      unit_num
 c     F77 standard
-c     https://docs.oracle.com/cd/E19957-01/802-2998/802-2998.pdf   # (page 199/173)
+c     https://wg5-fortran.org/ARCHIVE/Fortran77.html   # find 'Inquiry_Specifiers'
       INTEGER      q_iostat, q_number,    q_recl,        q_nextrec
       CHARACTER*30 q_name,   q_access,    q_direct,      q_sequential
       CHARACTER*30 q_form,   q_formatted, q_unformatted, q_blank
       LOGICAL      q_exist,  q_opened,    q_named
 c     F2003 standard
-c     https://j3-fortran.org/doc/year/04/04-007.pdf   # (page 226/210)
+c     https://j3-fortran.org/doc/year/04/04-007.pdf    # (page 226/210)
       INTEGER      q_size
       CHARACTER*30 q_action, q_stream
 
