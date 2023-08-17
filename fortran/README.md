@@ -1,4 +1,4 @@
-<p align="right">last edit: 2023-08-16</p>
+<p align="right">last edit: 2023-08-17</p>
 
 # Fortran
 * https://en.wikipedia.org/wiki/Fortran
@@ -86,7 +86,7 @@ be given for obsolete extensions not recommended for use in new code. The
 `legacy` value is equivalent but without the warnings for obsolete extensions,
 and may be useful for old non-standard programs.
 
-### notes
+### notes 1
 GFortran 4.2 (2007-05) [use
 now](https://gcc.gnu.org/wiki/GFortran/News#gfortran_4.2) 4-byte record markers
 by default for unformatted files to be compatible with g77 and most other
@@ -95,3 +95,25 @@ with several other compilers. Older versions of GFortran used by default 8-byte
 record markers (on most systems); in order to change length of record markers,
 e.g. to the read unformatted files created by older gfortran versions, the
 `-frecord-marker=8` option can be used.
+
+
+### notes 2
+An INTEGER is any signed number that has no fractional part and no decimal
+point. INTEGER numbers are also referred to as fixed point numbers. The other
+three numerical types are called floating point numbers. A REAL number is a
+signed number with a decimal point.
+
+The integer data type, INTEGER, holds a signed integer. The default size for
+INTEGER with no size specified is 4 bytes, and is aligned on 4-byte boundaries.
+The usual default size for a REAL item with no size specified is 4 bytes, and is
+aligned on 4-byte boundaries. However, these defaults can be changed by
+compiling with certain special options. Data types are system dependent.
+
+A REAL element has a sign bit, an 8-bit exponent, and a 23-bit fraction. These
+REAL elements in f77 conform to the IEEE standard.
+
+In practice, most computers use 32 bits to store INTEGER and REAL numbers. This
+means that an INTEGER is limited to numbers between -2,147,483,648 and
++2,147,483,647 (a sign bit and 31 magnitude bits). If the IEEE standard is used,
+then a REAL number will have about seven decimal digits and be within the
+magnitude range of 10-38 to 10+38.
