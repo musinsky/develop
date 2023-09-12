@@ -29,11 +29,13 @@ cat << EOF > "${TNAME}3.el"
 (message (format "arg[6]: %S" (nth 6 command-line-args)))
 (message (format "arg[7]: %S" (nth 7 command-line-args)))
 
+(message (format "function arguments before: %S" command-line-args-left))
 (let ((num1 (string-to-number (pop command-line-args-left)))
       (num2 (string-to-number (pop command-line-args-left))))
   ;;(setq c-basic-offset num1)
   (message "function numeric arguments: %d and %d" num1 num2))
 (message "function string argument:   %S" (pop command-line-args-left))
+(message (format "function arguments after:  %S" command-line-args-left))
 
 (setq c-basic-offset (string-to-number (nth 4 command-line-args)))
 (indent-region (point-min) (point-max) nil)
