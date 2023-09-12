@@ -23,6 +23,7 @@
 ;; this shebang script working (must be executable)
 ;; #####################################
 
+;; https://www.emacswiki.org/emacs/BatchMode
 ;; https://www.emacswiki.org/emacs/EmacsScripts
 ;; https://kitchingroup.cheme.cmu.edu/blog/2014/08/06/Writing-scripts-in-Emacs-lisp/
 ;; https://stackoverflow.com/q/6238331
