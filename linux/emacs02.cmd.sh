@@ -27,6 +27,7 @@
 ;; https://kitchingroup.cheme.cmu.edu/blog/2014/08/06/Writing-scripts-in-Emacs-lisp/
 ;; https://stackoverflow.com/q/6238331
 ;; https://gist.github.com/Kreyren/a12e3618525477c3dd5fb16c3de45bf3
+;; https://medium.com/code-art/emacs-discovery-journey-2-run-emacs-in-batch-mode-61e9c6c47320
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Initial-Options.html
 ;;
