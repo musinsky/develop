@@ -53,6 +53,7 @@ emacs --batch "${TNAME}1.c" -l "${TNAME}3.el" 20 123 bla_bla "$@"
 # https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Invocation.html
 # https://www.gnu.org/software/emacs/manual/html_node/emacs/Initial-Options.html
 # https://www.gnu.org/software/emacs/manual/html_node/emacs/Command-Example.html
+# https://www.gnu.org/software/emacs/manual/html_node/elisp/Batch-Mode.html
 # https://www.gnu.org/software/emacs/manual/html_node/elisp/Command_002dLine-Arguments.html
 
 # --batch
