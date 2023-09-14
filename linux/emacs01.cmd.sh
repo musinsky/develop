@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 2023-09-12
+# 2023-09-14
 
 TNAME='emacs01.test'
 cat << EOF > "${TNAME}1.c"
@@ -55,6 +55,9 @@ emacs --batch "${TNAME}1.c" -l "${TNAME}3.el" 20 123 bla_bla "$@"
 # https://www.gnu.org/software/emacs/manual/html_node/emacs/Command-Example.html
 # https://www.gnu.org/software/emacs/manual/html_node/elisp/Batch-Mode.html
 # https://www.gnu.org/software/emacs/manual/html_node/elisp/Command_002dLine-Arguments.html
+
+# mucha-clean in one line
+# emacs --batch sample.tex -l $HOME/.emacs.el -f mucha-clean -f save-buffer
 
 # --batch
 # Run Emacs in batch mode. Batch mode is used for running programs written in
