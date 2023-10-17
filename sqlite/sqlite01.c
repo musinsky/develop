@@ -1,4 +1,4 @@
-// 2023-10-11
+// 2023-10-17
 
 // $ gcc -o sqlite01 sqlite01.c -lsqlite3 && ./sqlite01
 
@@ -24,7 +24,7 @@ int main(void) {
   // sqlite3_open_v2() works like sqlite3_open(), ale umoznuju dodatocnu
   // kontrolu over the new database connection
 
-  if (rc != SQLITE_OK) { // https://sqlite.org/rescode.html#ok (rc=0)
+  if (rc != SQLITE_OK) { // https://sqlite.org/rescode.html#ok (SQLITE_OK=0)
     // https://sqlite.org/c3ref/errcode.html
     fprintf(stderr, "Error opening database: %s\n", sqlite3_errmsg(db));
     sqlite3_close(db);
@@ -48,7 +48,9 @@ int main(void) {
   // Advance an sqlite3_stmt to the next result row or to completion
   rc = sqlite3_step(stmt);
   // aka evaluate an SQL statement aka get record one by one
-  if (rc == SQLITE_ROW) { // https://sqlite.org/rescode.html#row (rc=100)
+  // sqlite3_step() returns SQLITE_ROW(100) for each record in the set until
+  // it reaches the end, whereupon it returns SQLITE_DONE(101)
+  if (rc == SQLITE_ROW) { // https://sqlite.org/rescode.html#row (SQLITE_ROW=100)
     // https://sqlite.org/c3ref/column_blob.html
     // Column values in the current result row for an sqlite3_stmt
     printf("%s\n", sqlite3_column_text(stmt, 0));
@@ -59,6 +61,7 @@ int main(void) {
   // Destructor for sqlite3_stmt
   sqlite3_finalize(stmt);
   // aka destroy a prepared statement object
+  // or sqlite3_reset() to reset a prepared statement, ready for re-executed (re-used)
 
   // https://sqlite.org/c3ref/close.html
   // Destructor for sqlite3

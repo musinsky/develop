@@ -1,4 +1,4 @@
-// 2023-10-16
+// 2023-10-17
 
 // $ gcc -o sqlite01a sqlite01a.c -lsqlite3 && ./sqlite01a
 
@@ -21,7 +21,7 @@ static int exec_callback(void *NotUsed, int argc, char **argv, char **azColName)
     printf("callback arg[%d]: %s = %s\n", i, azColName[i], argv[i] ? argv[i] : "NULL");
   }
   printf("\n");
-  return 0;
+  return 0; // if non-zero, the sqlite3_exec() routine returns SQLITE_ABORT
 }
 
 int main(void) {
