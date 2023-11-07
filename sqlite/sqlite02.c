@@ -1,4 +1,4 @@
-// 2023-10-17
+// 2023-11-07
 
 // $ gcc -o sqlite02 sqlite02.c -lsqlite3 && ./sqlite02
 
@@ -53,6 +53,9 @@ int main(void) {
     sqlite3_close(db);
     return 1;
   }
+
+  // https://sqlite.org/c3ref/last_insert_rowid.html
+  printf("Last insert rowid: %lld\n", sqlite3_last_insert_rowid(db));
 
   sqlite3_close(db);
   return 0;
