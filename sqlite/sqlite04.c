@@ -9,7 +9,7 @@
 static int exec_callback(void *user, int ncols, char **col_values, char **col_names) {
   if (user) printf("%s\n", (const char *)user);
   for(int i = 0; i < ncols; i++) {
-    printf("arg[%d]: %s = %s\n", i, col_names[i], col_values[i] ? col_values[i] : "NULL");
+    printf("column[%d]: %s = %s\n", i, col_names[i], col_values[i] ? col_values[i] : "NULL");
   }
   printf("\n");
   return 0;
