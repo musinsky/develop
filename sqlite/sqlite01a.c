@@ -16,7 +16,7 @@ static int exec_callback(void *NotUsed, int argc, char **argv, char **azColName)
   // 4th argument is an array of pointers to strings where each entry represents the name
   // of corresponding result column as obtained from sqlite3_column_name().
 
-  //printf("callback 1st argument: %s\n", (const char *)NotUsed);
+  if (NotUsed) printf("callback 1st argument: %s\n", (const char *)NotUsed);
   for(int i = 0; i < argc; i++) {
     printf("callback arg[%d]: %s = %s\n", i, azColName[i], argv[i] ? argv[i] : "NULL");
   }
