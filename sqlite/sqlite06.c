@@ -1,4 +1,4 @@
-// 2023-11-10
+// 2023-11-14
 
 // $ gcc -o sqlite06 sqlite06.c -lsqlite3 && ./sqlite06
 
@@ -46,7 +46,7 @@ int main(void) {
     sqlite3_close(db);
     return 1;
   }
-  sqlite3_exec(db, "SELECT * FROM test", print_callback, "1st callback", NULL);
+  sqlite3_exec(db, "SELECT * FROM test", print_callback, "1st (init) callback", NULL);
   printf("\n\n");
 
   // no tail
@@ -68,9 +68,12 @@ int main(void) {
   sql = "INSERT INTO test VALUES('Ema', 33);" // 1st statement
     "INSERT INTO test VALUES('Mia', 44);"     // 2nd statement
     "INSERT INTO test VALUES('Oto', 55);";    // 3rd statement
+  char info[64]; int count = 0;
   do {
     printf("sql : %s\n", sql);
     if (sqlite3_prepare_v2(db, sql, -1, &stmt, &tail) != SQLITE_OK) {
+      // 'sqlite3_prepare' compile only the first statement in 'stmt',
+      // 'tail' pointing to what remains uncompiled
       fprintf(stderr, "Error compiling SQL statement: %s\n", sqlite3_errmsg(db));
       sqlite3_close(db);
       return 1;
@@ -78,8 +81,10 @@ int main(void) {
     print_tail(tail);
     if (sqlite3_step(stmt) != SQLITE_DONE)
       fprintf(stderr, "statement did not finished executing successfully\n");
-    sqlite3_exec(db, "SELECT * FROM test", print_callback, "3rd callback", NULL);
+    sprintf(info, "3rd [%d] callback", count++);
+    sqlite3_exec(db, "SELECT * FROM test", print_callback, info, NULL);
     sqlite3_finalize(stmt);
+    printf("\n");
     sql = (char *)tail;
   } while(tail[0] != '\0');
 
