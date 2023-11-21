@@ -35,7 +35,7 @@ int main(void) {
     fprintf(stderr, "Error compiling SQL statement: %s\n", sqlite3_errmsg(db));
     sqlite3_close(db);
     return 1;
-    // sqlite3_prepare_v2(db, "first statement; second statement;", -1,  &stmt, zTail)
+    // sqlite3_prepare_v2(db, "first statement; second statement;", -1,  &stmt, &tail)
     // WARNING: 'sqlite3_prepare' routines only compile the first statement in
     // 'zSql' (2nd arg), so '*pzTail' (5th arg) is left pointing to what remains
     // uncompiled. For multiple statements better choice is 'sqlite3_exec'.
