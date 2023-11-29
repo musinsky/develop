@@ -1,20 +1,33 @@
-// 2023-11-07
+// 2023-10-18
 
-// $ gcc -o sqlite04 sqlite04.c -lsqlite3 && ./sqlite04
+// $ gcc -o sqlite03 sqlite03.c -lsqlite3 && ./sqlite03
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <sqlite3.h>
 
-static int exec_callback(void *user, int ncols, char **col_values, char **col_names) {
-  if (user) printf("%s\n", (const char *)user);
-  for(int i = 0; i < ncols; i++) {
-    printf("column[%d]: %s = %s\n", i, col_names[i], col_values[i] ? col_values[i] : "NULL");
-  }
-  printf("\n");
-  return 0;
-}
+// https://sqlite.org/backup.html
+int loadOrSaveDb(sqlite3 *pInMemory, const char *zFilename, int isSave) {
+  int rc;                   /* Function return code */
+  sqlite3 *pFile;           /* Database connection opened on zFilename */
+  sqlite3_backup *pBackup;  /* Backup object used to copy data */
+  sqlite3 *pTo;             /* Database to copy to (pFile or pInMemory) */
+  sqlite3 *pFrom;           /* Database to copy from (pFile or pInMemory) */
 
+  rc = sqlite3_open(zFilename, &pFile);
+  if (rc == SQLITE_OK) {
+    pFrom = (isSave ? pInMemory : pFile);
+    pTo   = (isSave ? pFile     : pInMemory);
+    pBackup = sqlite3_backup_init(pTo, "main", pFrom, "main");
+    if (pBackup) {
+      (void)sqlite3_backup_step(pBackup, -1);
+      (void)sqlite3_backup_finish(pBackup);
+    }
+    rc = sqlite3_errcode(pTo);
+  }
+
+  (void)sqlite3_close(pFile);
+  return rc;
+}
 
 int main(void) {
   sqlite3 *db;   // SQLite db handle
@@ -26,38 +39,30 @@ int main(void) {
     return 1;
   }
 
-  FILE *fp = fopen("dst.files.sql", "r");
-  if (!fp) { perror("fopen"); return 1; }
-  fseek(fp, 0, SEEK_END);
-  long fsize = ftell(fp);
-  fseek(fp, 0, SEEK_SET); // rewind to beginning of the file
-  char *fbulk = (char *)malloc(fsize);
-  fread(fbulk, fsize, 1, fp);
-  // // contents of the text file is properly terminated by '\0'
-  // printf("file size: %ld\n", fsize);
-  // for (int i = 0; i < fsize; i++) printf("%c", fbulk[i]);
-
-  if (sqlite3_exec(db, fbulk, NULL, NULL, NULL) != SQLITE_OK) {
-    fprintf(stderr, "Error executing SQL query: %s\n", sqlite3_errmsg(db));
-    sqlite3_close(db);
-    return 1;
-  }
-  free(fbulk);
-  fclose(fp);
-
-  sql = "SELECT * FROM DST_files WHERE prefix='he4p8'";
-  if (sqlite3_exec(db, sql, exec_callback, NULL, NULL) != SQLITE_OK) {
+  sql = "CREATE TABLE test (name TEXT, age INTEGER);"
+    "INSERT INTO test VALUES('Jan', 11);"
+    "INSERT INTO test VALUES('Eva', 22);"
+    "INSERT INTO test VALUES('Ema', 33);";
+  if (sqlite3_exec(db, sql, NULL, NULL, NULL) != SQLITE_OK) {
+    //fprintf(stderr, "Error executing SQL query\n");
     fprintf(stderr, "Error executing SQL query: %s\n", sqlite3_errmsg(db));
     sqlite3_close(db);
     return 1;
   }
 
-  sql = "PRAGMA table_info(DST_files)";
-  if (sqlite3_exec(db, sql, exec_callback, NULL, NULL) != SQLITE_OK) {
-    fprintf(stderr, "Error executing SQL query: %s\n", sqlite3_errmsg(db));
-    sqlite3_close(db);
-    return 1;
-  }
+  // saving SQLite db (from memory) into file
+  if (loadOrSaveDb(db, "test.db", 1) != SQLITE_OK)
+    fprintf(stderr, "Error loadOrSaveDb (save from memory to file)\n");
+  else
+    fprintf(stdout, "SQLite db 'test.db' saved\n");
+
+  sqlite3_close(db);
+  db = NULL; // not necessary
+
+  // loading SQLite db (from file) into memory
+  sqlite3_open(":memory:", &db);
+  if (loadOrSaveDb(db, "test.db", 0) != SQLITE_OK)
+    fprintf(stderr, "Error loadOrSaveDb (load from file to memory)\n");
 
   sqlite3_close(db);
   return 0;

@@ -1,39 +1,29 @@
-// 2023-10-18
+// 2023-11-07
 
-// $ gcc -o sqlite03 sqlite03.c -lsqlite3 && ./sqlite03
+// $ gcc -o sqlite02 sqlite02.c -lsqlite3 && ./sqlite02
 
 #include <stdio.h>
 #include <sqlite3.h>
 
-// https://sqlite.org/backup.html
-int loadOrSaveDb(sqlite3 *pInMemory, const char *zFilename, int isSave) {
-  int rc;                   /* Function return code */
-  sqlite3 *pFile;           /* Database connection opened on zFilename */
-  sqlite3_backup *pBackup;  /* Backup object used to copy data */
-  sqlite3 *pTo;             /* Database to copy to (pFile or pInMemory) */
-  sqlite3 *pFrom;           /* Database to copy from (pFile or pInMemory) */
-
-  rc = sqlite3_open(zFilename, &pFile);
-  if (rc == SQLITE_OK) {
-    pFrom = (isSave ? pInMemory : pFile);
-    pTo   = (isSave ? pFile     : pInMemory);
-    pBackup = sqlite3_backup_init(pTo, "main", pFrom, "main");
-    if (pBackup) {
-      (void)sqlite3_backup_step(pBackup, -1);
-      (void)sqlite3_backup_finish(pBackup);
-    }
-    rc = sqlite3_errcode(pTo);
+static int exec_callback(void *user, int ncols, char **col_values, char **col_names) {
+  // sqlite3_exec() callback is invoked for each result row coming out of the evaluated
+  // SQL statements (sqlite3_exec() wrapper called i.a. sqlite3_column() function)
+  if (user) printf("%s\n", (const char *)user);
+  for(int i = 0; i < ncols; i++) {
+    printf("column[%d]: %s = %s\n", i, col_names[i], col_values[i] ? col_values[i] : "NULL");
   }
-
-  (void)sqlite3_close(pFile);
-  return rc;
+  printf("\n");
+  return 0;
 }
 
 int main(void) {
   sqlite3 *db;   // SQLite db handle
+  char *err_msg; // error msg
   char *sql;     // sql statement
+  int rc;        // return code
 
-  if (sqlite3_open(":memory:", &db) != SQLITE_OK) {
+  rc = sqlite3_open(":memory:", &db);
+  if (rc != SQLITE_OK) {
     fprintf(stderr, "Error opening database: %s\n", sqlite3_errmsg(db));
     sqlite3_close(db);
     return 1;
@@ -43,26 +33,30 @@ int main(void) {
     "INSERT INTO test VALUES('Jan', 11);"
     "INSERT INTO test VALUES('Eva', 22);"
     "INSERT INTO test VALUES('Ema', 33);";
-  if (sqlite3_exec(db, sql, NULL, NULL, NULL) != SQLITE_OK) {
-    //fprintf(stderr, "Error executing SQL query\n");
-    fprintf(stderr, "Error executing SQL query: %s\n", sqlite3_errmsg(db));
+  //rc = sqlite3_exec(db, sql, exec_callback, NULL, &err_msg); // callback not called
+  rc = sqlite3_exec(db, sql, NULL, NULL, &err_msg);
+  sql = "INSERT INTO test VALUES('Mia', 44)";
+  //rc = sqlite3_exec(db, sql, exec_callback, NULL, &err_msg); // callback not called
+  rc = sqlite3_exec(db, sql, NULL, NULL, &err_msg);
+
+  char *user_data = "Callback function called";
+  sql = "SELECT * FROM test";
+  rc = sqlite3_exec(db, sql, exec_callback, user_data, &err_msg);
+  user_data = "Callback function called 2nd";
+  sql = "INSERT INTO test VALUES('Oto', 55);"
+    "SELECT rowid, name, age FROM test;";
+  rc = sqlite3_exec(db, sql, exec_callback, user_data, &err_msg);
+
+  // appropriate test after each call sqlite3_exec()
+  if (rc != SQLITE_OK) {
+    fprintf(stderr, "Error executing SQL query: %s\n", err_msg);
+    sqlite3_free(err_msg);
     sqlite3_close(db);
     return 1;
   }
 
-  // saving SQLite db (from memory) into file
-  if (loadOrSaveDb(db, "test.db", 1) != SQLITE_OK)
-    fprintf(stderr, "Error loadOrSaveDb (save from memory to file)\n");
-  else
-    fprintf(stdout, "SQLite db 'test.db' saved\n");
-
-  sqlite3_close(db);
-  db = NULL; // not necessary
-
-  // loading SQLite db (from file) into memory
-  sqlite3_open(":memory:", &db);
-  if (loadOrSaveDb(db, "test.db", 0) != SQLITE_OK)
-    fprintf(stderr, "Error loadOrSaveDb (load from file to memory)\n");
+  // https://sqlite.org/c3ref/last_insert_rowid.html
+  printf("Last insert rowid: %lld\n", sqlite3_last_insert_rowid(db));
 
   sqlite3_close(db);
   return 0;

@@ -1,25 +1,32 @@
-// 2023-11-07
+// 2023-10-17
 
-// $ gcc -o sqlite02 sqlite02.c -lsqlite3 && ./sqlite02
+// $ gcc -o sqlite01a sqlite01a.c -lsqlite3 && ./sqlite01a
 
 #include <stdio.h>
 #include <sqlite3.h>
 
-static int exec_callback(void *user, int ncols, char **col_values, char **col_names) {
-  // sqlite3_exec() callback is invoked for each result row coming out of the evaluated
-  // SQL statements (sqlite3_exec() wrapper called i.a. sqlite3_column() function)
-  if (user) printf("%s\n", (const char *)user);
-  for(int i = 0; i < ncols; i++) {
-    printf("column[%d]: %s = %s\n", i, col_names[i], col_values[i] ? col_values[i] : "NULL");
+static int exec_callback(void *NotUsed, int argc, char **argv, char **azColName) {
+  // If the callback function of the 3rd argument to sqlite3_exec() is not NULL, then it
+  // is invoked for each result row coming out of the evaluated SQL statements.
+  //
+  // 1st argument is relayed through to the 4th argument to sqlite3_exec(), often not used.
+  // 2nd argument is the number of columns in the result.
+  // 3rd argument is an array of pointers to strings obtained as if from
+  // sqlite3_column_text(), one for each column.
+  // 4th argument is an array of pointers to strings where each entry represents the name
+  // of corresponding result column as obtained from sqlite3_column_name().
+
+  if (NotUsed) printf("callback 1st argument: %s\n", (const char *)NotUsed);
+  for(int i = 0; i < argc; i++) {
+    printf("callback arg[%d]: %s = %s\n", i, azColName[i], argv[i] ? argv[i] : "NULL");
   }
   printf("\n");
-  return 0;
+  return 0; // if non-zero, the sqlite3_exec() routine returns SQLITE_ABORT
 }
 
 int main(void) {
   sqlite3 *db;   // SQLite db handle
   char *err_msg; // error msg
-  char *sql;     // sql statement
   int rc;        // return code
 
   rc = sqlite3_open(":memory:", &db);
@@ -29,35 +36,22 @@ int main(void) {
     return 1;
   }
 
-  sql = "CREATE TABLE test (name TEXT, age INTEGER);"
-    "INSERT INTO test VALUES('Jan', 11);"
-    "INSERT INTO test VALUES('Eva', 22);"
-    "INSERT INTO test VALUES('Ema', 33);";
-  //rc = sqlite3_exec(db, sql, exec_callback, NULL, &err_msg); // callback not called
-  rc = sqlite3_exec(db, sql, NULL, NULL, &err_msg);
-  sql = "INSERT INTO test VALUES('Mia', 44)";
-  //rc = sqlite3_exec(db, sql, exec_callback, NULL, &err_msg); // callback not called
-  rc = sqlite3_exec(db, sql, NULL, NULL, &err_msg);
-
-  char *user_data = "Callback function called";
-  sql = "SELECT * FROM test";
-  rc = sqlite3_exec(db, sql, exec_callback, user_data, &err_msg);
-  user_data = "Callback function called 2nd";
-  sql = "INSERT INTO test VALUES('Oto', 55);"
-    "SELECT rowid, name, age FROM test;";
-  rc = sqlite3_exec(db, sql, exec_callback, user_data, &err_msg);
-
-  // appropriate test after each call sqlite3_exec()
+  // https://sqlite.org/c3ref/exec.html
+  // A wrapper function that does sqlite3_prepare_v2(), sqlite3_step(), sqlite3_column()
+  // and sqlite3_finalize() for a string of one or more SQL statements
+  //  rc = sqlite3_exec(db, "SELECT SQLITE_VERSION()", NULL, NULL, &err_msg);
+  rc = sqlite3_exec(db, "SELECT SQLITE_VERSION()", exec_callback, NULL, &err_msg);
+  // aka one step query execution interface
   if (rc != SQLITE_OK) {
     fprintf(stderr, "Error executing SQL query: %s\n", err_msg);
+    // https://sqlite.org/c3ref/free.html
+    // memory allocated message string must be freed
     sqlite3_free(err_msg);
     sqlite3_close(db);
     return 1;
   }
 
-  // https://sqlite.org/c3ref/last_insert_rowid.html
-  printf("Last insert rowid: %lld\n", sqlite3_last_insert_rowid(db));
-
   sqlite3_close(db);
+
   return 0;
 }
