@@ -1,11 +1,18 @@
-<p align="right">last edit: 2023-11-29</p>
+<p align="right">last edit: 2023-11-30</p>
+
+# SQLite
+* https://en.wikipedia.org/wiki/SQLite
+* https://sqlite.org
+
+* https://www.sqlitetutorial.net/
+* https://www.tutorialspoint.com/sqlite
+* https://www.tutlane.com/tutorial/sqlite
+* https://www.techonthenet.com/sqlite
 
 * [SQLite — замечательная встраиваемая БД](https://habr.com/ru/articles/149356/)
 
 ## Command Line Shell For SQLite
 * https://sqlite.org/cli.html
-
-
 ```
 $ sqlite3 dst.files.db < dst.files.sql
 $ sqlite3 dst.files.db
@@ -22,7 +29,7 @@ sqlite> .read dst.files.sql
 sqlite> .q
 
 $ sqlite3 -init dst.files.sql
-sqlite> pragma table_info('DST_files');
+sqlite> PRAGMA table_info(DST_files);
 sqlite> .mode table
 sqlite> SELECT * FROM DST_files;
 sqlite> SELECT new_name FROM DST_files WHERE format='full' AND real_as_int=1;
@@ -41,6 +48,12 @@ tables](https://sqlite.org/stricttables.html) that do rigid type enforcement,
 for developers who prefer that kind of thing. <br /> `CREATE TABLE test (name
 TEXT, age INTEGER) STRICT;`
 
+Note that numeric arguments in parentheses that following the type name (ex:
+`VARCHAR(255)`) are ignored by SQLite, SQLite does not impose any length
+restrictions. Type `VARCHAR` contains the string "CHAR" and is thus assigned
+`TEXT` affinity.
+
+SQLite does not have a storage class set aside for storing dates and/or times.
 
 ## SQLite notes
 * SQLite is a **case insensitive**. Table names and column names can be typed in
@@ -57,8 +70,8 @@ identifiers (such as table and column names), when quoted, must use `"double
 quotes"`. For compatibility with MySQL, SQLite also allows `` `backticks` `` for
 identifiers and for MS databases compatibility allows `[brackets]`. If possible,
 always use the standard SQL quotes. More info:
-[1](https://sqlite.org/lang_keywords.html),
-[2](https://stackoverflow.com/questions/25141090/use-backticks-or-double-quotes-with-python-and-sqlite).
+[[1]](https://sqlite.org/lang_keywords.html),
+[[2]](https://stackoverflow.com/questions/25141090/use-backticks-or-double-quotes-with-python-and-sqlite).
 
 * Interactive use of sqlite3 requires ending each statement with a
 **semicolon**.<br /> `sqlite> SELECT SQLITE_VERSION();`<br /> The C API does not
@@ -66,6 +79,35 @@ require that command statements end with a semicolon (for single SQL
 statement).<br /> `sqlite3_exec(db, "SELECT SQLITE_VERSION()", NULL, NULL,
 NULL)`
 
-* SQLite 3.7.11 (2012-03-20) supports INSERT syntax to allow **multiple rows**
-to be inserted via the VALUES clause.<br /> `sqlite> INSERT INTO test VALUES
+* SQLite 3.7.11 (2012-03-20) supports `INSERT` syntax to allow **multiple rows**
+to be inserted via the `VALUES` clause.<br /> `sqlite> INSERT INTO test VALUES
 ('Eva', 22), ('Ema', 33);`
+
+* All rows within SQLite tables have a 64-bit signed integer key that uniquely
+identifies the row within its table, **rowid**. In most cases, `INTEGER PRIMARY
+KEY` is alias for the **rowid**. According to the SQL standard, `PRIMARY KEY`
+should always imply `NOT NULL`. More info:
+[[1]](https://sqlite.org/lang_createtable.html).
+
+* [PRAGMA Statements](https://sqlite.org/pragma.html) aka SQLite metadata.
+<br/>`$ echo "PRAGMA compile_options;" | sqlite3`
+
+* By **default**, SQLite operates in **autocommit mode**, all changes to the
+database are committed as soon as all operations associated with the current
+database connection complete. Autocommit mode is disabled by a `BEGIN` statement
+and re-enabled by a `COMMIT` or `ROLLBACK`. More info:
+[[1]](https://sqlite.org/lang_transaction.html).
+
+## C Programming Interface (C API)
+* [book: Using.SQLite.2010.Kreibich](https://www.oreilly.com/library/view/using-sqlite/9781449394592/)
+* [book: The.Definitive.Guide.to.SQLite.2nd.Edition.2010.Allen](https://link.springer.com/book/10.1007/978-1-4302-3226-1)
+
+* https://zetcode.com/db/sqlitec/
+* https://souptonuts.sourceforge.net/readme_sqlite_tutorial.html
+* https://stackoverflow.com/questions/tagged/sqlite+c
+* [[1]](https://renenyffenegger.ch/notes/development/databases/SQLite/c-interface/basic/index),
+[[2]](https://icculus.org/~chunky/stuff/sqlite3_example/)
+
+## Others
+* https://github.com/thombashi/sqlitebiter
+* https://github.com/simonw/sqlite-utils
