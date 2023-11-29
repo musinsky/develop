@@ -1,5 +1,6 @@
--- 2023-10-03
+-- 2023-11-29
 
+BEGIN TRANSACTION;
 CREATE TABLE DST_files (
   id INTEGER PRIMARY KEY, -- file ID
   name TEXT,              -- file name
@@ -45,3 +46,4 @@ VALUES
   ( 27, 'he8p2p4',  'he4p8',  'full', 1, 'he4p-08.full.p2p4'  ),
   ( 28, 'he8p3p5',  'he4p8',  'full', 1, 'he4p-08.full.p3p5'  ),
   ( 29, 'he8pnfit', 'he4p8',  'full', 1, 'he4p-08.full.pnfit' );
+COMMIT;
