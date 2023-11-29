@@ -1,0 +1,26 @@
+Date;Region;District;District_code;Gender;AgeGroup;PCR_Pos;PCR_Neg;PCR_Total
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;M;00;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;F;00;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;M;01-04;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;NA;01-04;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;F;01-04;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;M;05-09;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;NA;05-09;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;F;05-09;0;0;0
+2022-10-13;Banskobystrický kraj;Okres Banská Bystrica;SK0321;M;10-14;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;M;00;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;F;00;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;M;01-04;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;NA;01-04;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;F;01-04;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;M;05-09;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;NA;05-09;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;F;05-09;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;M;10-14;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;NA;10-14;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;F;10-14;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;M;15-19;0;2;2
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;NA;15-19;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;F;15-19;0;0;0
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;M;20-24;0;1;1
+2022-10-13;Prešovský kraj;Okres Bardejov;SK0411;NA;20-24;0;0;0
