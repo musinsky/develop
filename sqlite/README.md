@@ -4,12 +4,12 @@
 * https://en.wikipedia.org/wiki/SQLite
 * https://sqlite.org
 
+---
+
 * https://www.sqlitetutorial.net/
-* https://www.tutorialspoint.com/sqlite
+* https://www.tutorialspoint.com/sqlite ([русский перевод](https://coderlessons.com/tutorials/bazy-dannykh/vyuchit-sqlite/uchebnik-po-sqlite))
 * https://www.tutlane.com/tutorial/sqlite
 * https://www.techonthenet.com/sqlite
-
-* [SQLite — замечательная встраиваемая БД](https://habr.com/ru/articles/149356/)
 
 ## Command Line Shell For SQLite
 * https://sqlite.org/cli.html
@@ -18,16 +18,18 @@ $ sqlite3 dst.files.db < dst.files.sql
 $ sqlite3 dst.files.db
 sqlite> .output dst.files.dump.sql
 sqlite> .dump
+sqlite> .output dst.files.csv
 sqlite> .mode csv
 sqlite> .headers on
-sqlite> .output dst.files.csv
 sqlite> SELECT * FROM DST_files;
 sqlite> .q
+
+$ sqlite3 dst.files.db .dump > dst.files.dump.sql
+$ sqlite3 dst.files.db 'SELECT * FROM DST_files'
 
 $ sqlite3
 sqlite> .read dst.files.sql
 sqlite> .q
-
 $ sqlite3 -init dst.files.sql
 sqlite> PRAGMA table_info(DST_files);
 sqlite> .mode table
@@ -54,6 +56,9 @@ restrictions. Type `VARCHAR` contains the string "CHAR" and is thus assigned
 `TEXT` affinity.
 
 SQLite does not have a storage class set aside for storing dates and/or times.
+Instead, the built-in [Date And Time
+Functions](https://sqlite.org/lang_datefunc.html) of SQLite are capable of
+storing dates and times as `TEXT`, `REAL` or `INTEGER` values.
 
 ## SQLite notes
 * SQLite is a **case insensitive**. Table names and column names can be typed in
@@ -98,10 +103,11 @@ database connection complete. Autocommit mode is disabled by a `BEGIN` statement
 and re-enabled by a `COMMIT` or `ROLLBACK`. More info:
 [[1]](https://sqlite.org/lang_transaction.html).
 
+* [SQLite — замечательная встраиваемая БД](https://habr.com/ru/articles/149356/)
+
 ## C Programming Interface (C API)
 * [book: Using.SQLite.2010.Kreibich](https://www.oreilly.com/library/view/using-sqlite/9781449394592/)
 * [book: The.Definitive.Guide.to.SQLite.2nd.Edition.2010.Allen](https://link.springer.com/book/10.1007/978-1-4302-3226-1)
-
 * https://zetcode.com/db/sqlitec/
 * https://souptonuts.sourceforge.net/readme_sqlite_tutorial.html
 * https://stackoverflow.com/questions/tagged/sqlite+c
