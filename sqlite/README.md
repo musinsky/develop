@@ -1,4 +1,4 @@
-<p align="right">last edit: 2023-11-30</p>
+<p align="right">last edit: 2023-12-06</p>
 
 # SQLite
 * https://en.wikipedia.org/wiki/SQLite
@@ -106,6 +106,12 @@ and re-enabled by a `COMMIT` or `ROLLBACK`. More info:
 * [SQLite — замечательная встраиваемая БД](https://habr.com/ru/articles/149356/)
 
 ## C Programming Interface (C API)
+* https://sqlite.org/c3ref/intro.html
+* https://sqlite.org/cintro.html
+* https://sqlite.org/capi3ref.html (single large HTML file)
+
+---
+
 * [book: Using.SQLite.2010.Kreibich](https://www.oreilly.com/library/view/using-sqlite/9781449394592/)
 * [book: The.Definitive.Guide.to.SQLite.2nd.Edition.2010.Allen](https://link.springer.com/book/10.1007/978-1-4302-3226-1)
 * https://zetcode.com/db/sqlitec/
