@@ -31,6 +31,9 @@ int main(void) {
     return 1;
   }
 
+  // https://sqlite.org/c3ref/stmt.html
+  // Single SQL statement that has been compiled into binary form and is ready to be evaluated
+
   // https://sqlite.org/c3ref/prepare.html
   // Compile SQL text into byte-code that will do the work of querying or updating the database
   rc = sqlite3_prepare_v2(db, "SELECT SQLITE_VERSION()", -1, &stmt, NULL);
