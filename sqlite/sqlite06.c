@@ -36,9 +36,9 @@ int main(void) {
     sqlite3_close(db);
     return 1;
     // sqlite3_prepare_v2(db, "first statement; second statement;", -1,  &stmt, &tail)
-    // WARNING: 'sqlite3_prepare' routines only compile the first statement in
+    // WARNING: sqlite3_prepare() routines only compile the first statement in
     // 'zSql' (2nd arg), so '*pzTail' (5th arg) is left pointing to what remains
-    // uncompiled. For multiple statements better choice is 'sqlite3_exec'.
+    // uncompiled. For multiple statements better choice is sqlite3_exec().
   }
 
   // https://sqlite.org/c3ref/column_count.html
@@ -58,6 +58,14 @@ int main(void) {
     //         // https://sqlite.org/c3ref/c_blob.html
     //         sqlite3_column_type(stmt, 0), sqlite3_column_type(stmt, 1),
     //         sqlite3_column_type(stmt, 2), sqlite3_column_type(stmt, 3));
+
+    // TEXT or BLOB pointers returned are valid until a type conversion occurs,
+    // or until sqlite3_step() or sqlite3_reset() or sqlite3_finalize() is
+    // called. You'll have to copy them into memory that you control.
+
+    // You should call sqlite3_column_text() (or BLOB) first to force the result
+    // into the desired format, then invoke sqlite3_column_bytes() to find the
+    // size of the result.
   }
 
   sqlite3_finalize(stmt);
