@@ -66,6 +66,10 @@ int main(void) {
     // You should call sqlite3_column_text() (or BLOB) first to force the result
     // into the desired format, then invoke sqlite3_column_bytes() to find the
     // size of the result.
+
+    // sqlite3_reset() be called before retrying sqlite3_step() after any error
+    // or after SQLITE_DONE. But beginning with SQLite 3.7.0 (2010-07-21)
+    // sqlite3_reset() would be called automatically (automatic reset).
   }
 
   sqlite3_finalize(stmt);
