@@ -1,4 +1,4 @@
-<p align="right">last edit: 2023-12-06</p>
+<p align="right">last edit: 2023-12-19</p>
 
 # SQLite
 * https://en.wikipedia.org/wiki/SQLite
@@ -109,6 +109,10 @@ and re-enabled by a `COMMIT` or `ROLLBACK`. More info:
 * https://sqlite.org/c3ref/intro.html
 * https://sqlite.org/cintro.html
 * https://sqlite.org/capi3ref.html (single large HTML file)
+
+---
+
+* https://github.com/sqlite/sqlite/blob/master/src/shell.c.in
 
 ---
 
