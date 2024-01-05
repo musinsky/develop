@@ -1,0 +1,26 @@
+# 2024-01-05
+# new USB flash drive: Silicon Power Marvel M02 64 GB, USB 3.2 Gen 1 (USB 3.0)
+
+[root]# rpm -qf /usr/bin/lsblk /usr/sbin/fdisk /usr/sbin/gdisk
+util-linux-2.39.3-1.fc39.x86_64
+util-linux-2.39.3-1.fc39.x86_64
+gdisk-1.0.9-6.fc39.x86_64
+
+[root]# lsblk -p -o NAME,SIZE,TYPE,FSTYPE,FSVER,LABEL,MOUNTPOINT,PTTYPE,PARTTYPE,PARTTYPENAME,PARTLABEL,PARTFLAGS /dev/sdb
+NAME         SIZE TYPE FSTYPE FSVER LABEL    MOUNTPOINT                   PTTYPE PARTTYPE PARTTYPENAME    PARTLABEL PARTFLAGS
+/dev/sdb    58.6G disk                                                    dos                                       
+└─/dev/sdb1 58.6G part vfat   FAT32 USB DISK /run/media/musinsky/USB DISK dos    0xc      W95 FAT32 (LBA)           
+
+[root]# fdisk -x /dev/sdb | grep -B 999 '^$' && fdisk -l -o +Attrs /dev/sdb | grep -A 999 'Device'
+Disk /dev/sdb: 58.59 GiB, 62914560000 bytes, 122880000 sectors
+Disk model: USB DISK 3.0    
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x548f99b5
+
+Device     Boot Start       End   Sectors  Size Id Type            Attrs
+/dev/sdb1        8064 122879998 122871935 58.6G  c W95 FAT32 (LBA) 
+
+[root]#
