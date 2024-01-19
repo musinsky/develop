@@ -1,0 +1,12 @@
+root@muke:~# mkfs.fat -v -F 32 -n "xpg_efi" /dev/nvme0n1p1
+mkfs.fat 4.2 (2021-01-31)
+mkfs.fat: Warning: lowercase labels might not work properly on some systems
+/dev/nvme0n1p1 has 64 heads and 32 sectors per track,
+hidden sectors 0x0800;
+logical sector size is 512,
+using 0xf8 media descriptor, with 204800 sectors;
+drive number 0x80;
+filesystem has 2 32-bit FATs and 1 sector per cluster.
+FAT size is 1576 sectors, and provides 201616 clusters.
+There are 32 reserved sectors.
+Volume ID is db6a2330, volume label xpg_efi.
