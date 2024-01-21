@@ -10,3 +10,29 @@ filesystem has 2 32-bit FATs and 1 sector per cluster.
 FAT size is 1576 sectors, and provides 201616 clusters.
 There are 32 reserved sectors.
 Volume ID is db6a2330, volume label xpg_efi.
+
+
+
+root@tn2pc:~# fdisk -l /dev/sdb
+Disk /dev/sdb: 14.72 GiB, 15804137472 bytes, 30867456 sectors
+Disk model: Transcend 16GB
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x4e0584c8
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        2048 30865407 30863360 14.7G  c W95 FAT32 (LBA)
+
+root@tn2pc:~# mkfs.fat -v -F 32 -n "MAZDA CX-5" /dev/sdb1
+mkfs.fat 4.2 (2021-01-31)
+/dev/sdb1 has 64 heads and 32 sectors per track,
+hidden sectors 0x0800;
+logical sector size is 512,
+using 0xf8 media descriptor, with 30863360 sectors;
+drive number 0x80;
+filesystem has 2 32-bit FATs and 16 sectors per cluster.
+FAT size is 15056 sectors, and provides 1927076 clusters.
+There are 32 reserved sectors.
+Volume ID is 2fb6d315, volume label MAZDA CX-5.
