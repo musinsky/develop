@@ -1,3 +1,18 @@
+root@muke:~# fdisk -l /dev/nvme0n1
+Disk /dev/nvme0n1: 476.94 GiB, 512110190592 bytes, 1000215216 sectors
+Disk model: XPG GAMMIX S11 Pro
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 5113CAAC-51D5-4B11-85C2-B9DC908FB1B6
+
+Device             Start        End   Sectors   Size Type
+/dev/nvme0n1p1      2048     206847    204800   100M EFI System
+/dev/nvme0n1p2    206848    2303999   2097152     1G Linux filesystem
+/dev/nvme0n1p3   2304000  159590399 157286400    75G Linux filesystem
+/dev/nvme0n1p4 159590400 1000212479 840622080 400.8G Linux filesystem
+
 root@muke:~# mkfs.fat -v -F 32 -n "xpg_efi" /dev/nvme0n1p1
 mkfs.fat 4.2 (2021-01-31)
 mkfs.fat: Warning: lowercase labels might not work properly on some systems
@@ -11,8 +26,7 @@ FAT size is 1576 sectors, and provides 201616 clusters.
 There are 32 reserved sectors.
 Volume ID is db6a2330, volume label xpg_efi.
 
-
-
+##########
 root@tn2pc:~# fdisk -l /dev/sdb
 Disk /dev/sdb: 14.72 GiB, 15804137472 bytes, 30867456 sectors
 Disk model: Transcend 16GB
