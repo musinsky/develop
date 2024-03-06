@@ -1,11 +1,15 @@
-<p align="right">last edit: 2023-08-17</p>
+<p align="right">last edit: 2024-03-06</p>
 
 # Fortran
 * https://en.wikipedia.org/wiki/Fortran
-* https://fortran-lang.org/
 * https://wg5-fortran.org/
 * https://gcc.gnu.org/wiki/GFortranStandards
 * https://fortranwiki.org/fortran/show/Standards
+
+---
+
+* https://fortran-lang.org/
+* https://fortran-lang.org/learn/quickstart/
 
 ## FORTRAN 77
 * https://wg5-fortran.org/fearlier.html
