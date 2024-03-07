@@ -1,4 +1,4 @@
-<p align="right">last edit: 2024-03-06</p>
+<p align="right">last edit: 2024-03-07</p>
 
 # Fortran
 * https://en.wikipedia.org/wiki/Fortran
@@ -10,6 +10,7 @@
 
 * https://fortran-lang.org/
 * https://fortran-lang.org/learn/quickstart/
+* https://en.wikibooks.org/wiki/Fortran
 
 ## FORTRAN 77
 * https://wg5-fortran.org/fearlier.html
