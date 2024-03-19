@@ -1,4 +1,4 @@
-<p align="right">last edit: 2024-03-07</p>
+<p align="right">last edit: 2024-03-19</p>
 
 # Fortran
 * https://en.wikipedia.org/wiki/Fortran
@@ -84,12 +84,12 @@ extension.
 
 * `-std=std`<br />
 Specify the standard to which the program is expected to conform, which may be
-one of `f95`, `f2003`, `f2008`, `f2018`, `gnu`, or `legacy`. The default value
-for std is `gnu`, which specifies a superset of the latest Fortran standard that
-includes all of the extensions supported by GNU Fortran, although warnings will
-be given for obsolete extensions not recommended for use in new code. The
-`legacy` value is equivalent but without the warnings for obsolete extensions,
-and may be useful for old non-standard programs.
+one of `f95`, `f2003`, `f2008`, `f2018`, `f2023`, `gnu`, or `legacy`. The
+default value for std is `gnu`, which specifies a superset of the latest Fortran
+standard that includes all of the extensions supported by GNU Fortran, although
+warnings will be given for obsolete extensions not recommended for use in new
+code. The `legacy` value is equivalent but without the warnings for obsolete
+extensions, and may be useful for old non-standard programs.
 
 ### notes 1
 GFortran 4.2 (2007-05) [use
