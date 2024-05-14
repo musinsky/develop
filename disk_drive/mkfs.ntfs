@@ -1,0 +1,42 @@
+root@muke01:~# fdisk -l /dev/sdc
+Disk /dev/sdc: 698.64 GiB, 750156374016 bytes, 1465149168 sectors
+Disk model:
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+Disk identifier: 92ED9450-C549-4872-B66B-2CD35D1DD208
+
+Device     Start        End    Sectors  Size Type
+/dev/sdc1   2048 1258295295 1258293248  600G Microsoft basic data
+
+root@muke01:~# mkfs.ntfs --verbose --fast --no-indexing --label "Samsung600G" /dev/sdc1
+Cluster size has been automatically set to 4096 bytes.
+Creating NTFS volume structures.
+Creating root directory (mft record 5)
+Creating $MFT (mft record 0)
+Creating $MFTMirr (mft record 1)
+Creating $LogFile (mft record 2)
+Creating $AttrDef (mft record 4)
+Creating $Bitmap (mft record 6)
+Creating $Boot (mft record 7)
+Creating backup boot sector.
+Creating $Volume (mft record 3)
+Creating $BadClus (mft record 8)
+Creating $Secure (mft record 9)
+Creating $UpCase (mft record 0xa)
+Creating $Extend (mft record 11)
+Creating system file (mft record 0xc)
+Creating system file (mft record 0xd)
+Creating system file (mft record 0xe)
+Creating system file (mft record 0xf)
+Creating $Quota (mft record 24)
+Creating $ObjId (mft record 25)
+Creating $Reparse (mft record 26)
+Syncing root directory index record.
+Syncing $Bitmap.
+Syncing $MFT.
+Updating $MFTMirr.
+Syncing device.
+mkntfs completed successfully. Have a nice day.
+root@muke01:~#
