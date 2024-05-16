@@ -1,0 +1,32 @@
+% 2024-05-17
+
+% https://www.overleaf.com/learn/latex/Counters
+% https://tex.stackexchange.com/q/222732
+% https://tex.stackexchange.com/q/175413
+
+\documentclass{article}
+\setlength\parindent{0pt}   % noindent at all
+\newenvironment{alltt}{\ttfamily}{\par}
+
+\begin{document}
+\newcounter{idx}   % => theIDX
+\setcounter{idx}{20}
+
+write \verb|\Roman{idx}| to obtain \Roman{idx} value \\ write
+\verb|\arabic{idx}| to obtain \arabic{idx} value \\ write \verb|\theidx| to
+obtain \theidx value \\ write \verb|\theidx{}| to obtain \theidx{} value
+\\ write \verb|\texttt{\theidx}| to obtain \texttt{\theidx} value
+
+\vspace{10pt}
+\begin{alltt}
+  \stepcounter{idx} {[\theidx]} 1st \\
+  \stepcounter{idx} {[\theidx]} 2nd \\
+  \stepcounter{idx} {[\theidx]} 3rd \\
+  \stepcounter{idx} {[\theidx]} 4th \\
+  \setcounter{idx}{123} {[\arabic{idx}]} 1st \\
+  \stepcounter{idx} {[\arabic{idx}]} 2nd \\
+  \stepcounter{idx} {[\arabic{idx}]} 3rd \\
+  \stepcounter{idx} {[\arabic{idx}]} 4th
+\end{alltt}
+
+\end{document}
