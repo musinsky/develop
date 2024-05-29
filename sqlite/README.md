@@ -1,4 +1,4 @@
-<p align="right">last edit: 2024-05-27</p>
+<p align="right">last edit: 2024-05-29</p>
 
 # SQLite
 * https://en.wikipedia.org/wiki/SQLite
@@ -91,11 +91,14 @@ to be inserted via the `VALUES` clause.<br /> `sqlite> INSERT INTO test VALUES
 * All rows within SQLite tables have a 64-bit signed integer key that uniquely
 identifies the row within its table, **rowid**. In most cases, `INTEGER PRIMARY
 KEY` is alias for the **rowid**. According to the SQL standard, `PRIMARY KEY`
-should always imply `NOT NULL`. More info:
+should always imply `NOT NULL` (and `UNIQUE`). More info:
 [[1]](https://sqlite.org/lang_createtable.html).
 
 * [PRAGMA Statements](https://sqlite.org/pragma.html) aka SQLite metadata.
 <br/>`$ echo "PRAGMA compile_options;" | sqlite3`
+
+* `JOIN` (in SQLite) = `INNER JOIN`<br/>
+`LEFT JOIN` (in SQLite) = `LEFT OUTER JOIN`
 
 * By **default**, SQLite operates in **autocommit mode**, all changes to the
 database are committed as soon as all operations associated with the current
