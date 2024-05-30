@@ -1,6 +1,6 @@
 // 2023-10-17
 
-// $ gcc -o sqlite01a sqlite01a.c -lsqlite3 && ./sqlite01a
+// $ gcc -o sqlite02 sqlite02.c -lsqlite3 && ./sqlite02
 
 #include <stdio.h>
 #include <sqlite3.h>
