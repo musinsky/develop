@@ -1,4 +1,4 @@
-// 2023-11-07
+// 2024-05-30
 
 // $ gcc -o sqlite05 sqlite05.c -lsqlite3 && ./sqlite05
 
@@ -31,11 +31,16 @@ int main(void) {
   fseek(fp, 0, SEEK_END);
   long fsize = ftell(fp);
   fseek(fp, 0, SEEK_SET); // rewind to beginning of the file
-  char *fbulk = (char *)malloc(fsize);
+  char *fbulk = (char *)malloc(fsize+1);
+  fbulk[fsize] = 0; // to same as '\0';
+  // memset(fbulk, 0, fsize+1); // or simalar solution
   fread(fbulk, fsize, 1, fp);
-  // // contents of the text file is properly terminated by '\0'
+  // // contents of the text file must properly terminated by '\0'
+  // // for example find 'fread' on https://sqlite.org/src/file/src/shell.c.in
   // printf("file size: %ld\n", fsize);
   // for (int i = 0; i < fsize; i++) printf("%c", fbulk[i]);
+  // printf("no last char: '%c' hex 0x%X\n", fbulk[fsize-1], fbulk[fsize-1]);
+  // printf("   last char: '%c' hex 0x%X\n", fbulk[fsize], fbulk[fsize]);
 
   if (sqlite3_exec(db, fbulk, NULL, NULL, NULL) != SQLITE_OK) {
     fprintf(stderr, "Error executing SQL query: %s\n", sqlite3_errmsg(db));

@@ -1,4 +1,4 @@
-// 2023-11-09
+// 2024-05-30
 
 // $ gcc -o sqlite06 sqlite06.c -lsqlite3 && ./sqlite06
 
@@ -12,7 +12,8 @@ int main(void) {
   fseek(fp, 0, SEEK_END);
   long fsize = ftell(fp);
   fseek(fp, 0, SEEK_SET); // rewind to beginning of the file
-  char *fbulk = (char *)malloc(fsize);
+  char *fbulk = (char *)malloc(fsize+1);
+  fbulk[fsize] = 0; // contents of the read file must properly terminated by '\0'
   fread(fbulk, fsize, 1, fp);
   fclose(fp);
 

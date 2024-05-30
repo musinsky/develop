@@ -1,4 +1,4 @@
-// 2024-05-15
+// 2024-05-30
 
 // $ gcc -o dst.files dst.files.c -lsqlite3 && ./dst.files
 
@@ -75,7 +75,8 @@ sqlite3 *sqlite_read(const char *sqlfname)
   fseek(fp, 0, SEEK_END);
   long fsize = ftell(fp);
   fseek(fp, 0, SEEK_SET); // rewind to beginning of the file
-  char *fbulk = (char *)malloc(fsize);
+  char *fbulk = (char *)malloc(fsize+1);
+  fbulk[fsize] = 0; // contents of the read file must properly terminated by '\0'
   fread(fbulk, fsize, 1, fp);
   if (sqlite3_exec(db, fbulk, NULL, NULL, NULL) != SQLITE_OK) { // read sql from file
     fprintf(stderr, "Error executing SQL query: %s\n", sqlite3_errmsg(db));
