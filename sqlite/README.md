@@ -1,4 +1,4 @@
-<p align="right">last edit: 2024-05-29</p>
+<p align="right">last edit: 2024-06-05</p>
 
 # SQLite
 * https://en.wikipedia.org/wiki/SQLite
@@ -65,7 +65,7 @@ storing dates and times as `TEXT`, `REAL` or `INTEGER` values.
 uppercase, lowercase, or mixed case, and different capitalizations of the same
 database object name can be used interchangeably.
 
-* [SQL Comment Syntax](https://sqlite.org/lang_comment.html) begin with `--`
+* [SQLite Comment Syntax](https://sqlite.org/lang_comment.html) begin with `--`
 extend up to and including the next newline character (`-- comment`) or C-style
 comments begin with `/*` and extend up to and including the next `*/` (`/*
 comment */`).
@@ -77,6 +77,11 @@ identifiers and for MS databases compatibility allows `[brackets]`. If possible,
 always use the standard SQL quotes. More info:
 [[1]](https://sqlite.org/lang_keywords.html),
 [[2]](https://stackoverflow.com/questions/25141090/use-backticks-or-double-quotes-with-python-and-sqlite).
+
+* [SQLite operators](https://www.sqlite.org/lang_expr.html) `=` and `==` are the
+same, which means equals (or `<>` and `!=` are the same, which means not
+equals). It would be better to use `=` instead of `==` (or `<>` instead of `!=`)
+because it's SQL standard comparison operator.
 
 * Interactive use of sqlite3 requires ending each statement with a
 **semicolon**.<br /> `sqlite> SELECT SQLITE_VERSION();`<br /> The C API does not
