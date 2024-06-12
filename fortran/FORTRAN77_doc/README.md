@@ -1,4 +1,4 @@
-<p align="right">last edit: 2023-08-16</p>
+<p align="right">last edit: 2024-06-12</p>
 
 ## FORTRAN 77 (ANSI X3J3/90.4) standard
 * https://web.archive.org/web/20101122180558/http://www.fortran.com/F77_std/rjcnf.html
