@@ -29,7 +29,7 @@ FORTRAN 77 Reference (designed and maintained by Obliquity, 2021).
 [`reference_obliquity/computer/fortran/`](reference_obliquity/computer/fortran) mirror (backup) dir of web pages ([see directly from GitHub](https://raw.githack.com/musinsky/develop/master/fortran/FORTRAN77_doc/reference_obliquity/computer/fortran/index.html)).
 
 ## Professional Programmer's Guide to Fortran77 (Clive G. Page)
-* https://www.star.le.ac.uk/~cgp/prof77.html
+* https://web.archive.org/web/20240114211219/https://www.star.le.ac.uk/~cgp/prof77.html
 
 Professional Programmer's Guide to Fortran77 Clive G. Page, University of
 Leicester, UK 7th June 2005.
