@@ -39,14 +39,14 @@ int main ()
 
   const float pi = 3.14; // 3.14 = 1078523331 as integer, 0x4048f5c3 as hex
   float f32 = pi;
-  std::uint32_t i32 = 0;
+  std::uint32_t i32 = 0; // any 32-bit word as unsigned integer
   static_assert(sizeof(float) == sizeof(std::uint32_t));
   static_assert(std::numeric_limits<float>::is_iec559); // IEEE 754 standard
 
   // $ g++ -fstrict-aliasing => warning: dereferencing type-punned pointer will
   // break strict-aliasing rules [-Wstrict-aliasing]
   std::cout << "# reinterpret_cast, not recommended (break strict aliasing)\n";
-  i32 = *reinterpret_cast<std::uint32_t*>(&f32); // undefined behavior
+  i32 = *reinterpret_cast<std::uint32_t*>(&f32); // undefined behavior, aliasing violation
   //  = *(uint32_t*)&f32; // C equivalent
   std::cout << "f32 = " << f32 << '\n'
             << "i32 = " << i32 << '\n'
@@ -71,6 +71,7 @@ int main ()
             << "f32 (back) = " << std::bit_cast<float>(i32) << '\n';
 
   std::cout << "\n# std::memcpy, recommended cast\n";
+  // memcpy is best and safe method for type punning (type cast)
   f32 = pi;
   std::memcpy(&i32, &f32, sizeof(f32));
   std::cout << "f32 = " << f32 << '\n'
@@ -79,4 +80,17 @@ int main ()
   float ff32 = 0.0;
   std::memcpy(&ff32, &i32, sizeof(float));
   std::cout << "f32 (back) = " << ff32 << '\n';
+
+  // union type is an allowed form of type punning (type cast) in C, provided
+  // that the member read is not larger than the one whose value was set
+  // (otherwise the read has unspecified behavior). The same is syntactically
+  // valid but has undefined behavior in C++.
+  //
+  // In C++ it works as a GNU gcc extension (but not as part of the C++
+  // standard), see: https://stackoverflow.com/q/67206482
+  std::cout << "\n# union, not safe in C++ (allowed in C)\n";
+  union { float uf32; std::uint32_t ui32; } float_vs_32word;
+  float_vs_32word.uf32 = pi;
+  std::cout << "f32 = " << float_vs_32word.uf32 << '\n'
+            << "i32 = " << float_vs_32word.ui32 << '\n';
 }
