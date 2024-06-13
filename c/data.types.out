@@ -1,0 +1,52 @@
+# locale 'de_DE.UTF8' => '.' as thousands_sep and ',' as decimal_point
+
+## C data types ##
+char          // smallest addressable unit (integer type), 1 byte = 8 bits, [-128, +127]
+signed char   // as char but guaranteed to be   signed, 1 byte, [-128, +127]
+unsigned char // as char but guaranteed to be unsigned, 1 byte, [0, 255]
+
+short          // short   signed integer type, 2 bytes, [-32.768, +32.767]
+unsigned short // short unsigned integer type, 2 bytes, [0, 65.535]
+int            // basic   signed integer type, 4 bytes, [-2.147.483.648, +2.147.483.647]
+unsigned int   // basic unsigned integer type, 4 bytes, [0, 4.294.967.295]
+long           // long    signed integer type, 8 bytes, [-9.223.372.036.854.775.808, +9.223.372.036.854.775.807]
+unsigned long  // long  unsigned integer type, 8 bytes, [0, 18.446.744.073.709.551.615]
+long long          // long long   signed integer type, 8 bytes, [-9.223.372.036.854.775.808, +9.223.372.036.854.775.807]
+unsigned long long // long long unsigned integer type, 8 bytes, [0, 18.446.744.073.709.551.615]
+                   // on x86_64 platform: (unsigned) long long = (unsigned) long
+
+float       // single-precision   floating-point type, 4 bytes, [+1,17549e-38, +3,40282e+38]
+double      // double-precision   floating-point type, 8 bytes, [+2,22507e-308, +1,79769e+308]
+long double // extended precision floating-point number format, 16 bytes, [+3,3621e-4932, +1,18973e+4932]
+
+## Fixed width integer types ##
+int8_t   //   signed integer type, exact  8-bit width, 1 bytes, [-128, +127]
+uint8_t  // unsigned integer type, exact  8-bit width, 1 bytes, [0, 255]
+int16_t  //   signed integer type, exact 16-bit width, 2 bytes, [-32.768, +32.767]
+uint16_t // unsigned integer type, exact 16-bit width, 2 bytes, [0, 65.535]
+int32_t  //   signed integer type, exact 32-bit width, 4 bytes, [-2.147.483.648, +2.147.483.647]
+uint32_t // unsigned integer type, exact 32-bit width, 4 bytes, [0, 4.294.967.295]
+int64_t  //   signed integer type, exact 64-bit width, 8 bytes, [-9.223.372.036.854.775.808, +9.223.372.036.854.775.807]
+uint64_t // unsigned integer type, exact 64-bit width, 8 bytes, [0, 18.446.744.073.709.551.615]
+### printf and scanf format specifiers ###
+# printf/scanf macros are in the format PRI/SCN{fmt}{type}
+PRId8:   d, PRIx8:   x, PRIo8:   o, PRIu8:   u, PRIi8:   i
+PRId16:  d, PRIx16:  x, PRIo16:  o, PRIu16:  u, PRIi16:  i
+PRId32:  d, PRIx32:  x, PRIo32:  o, PRIu32:  u, PRIi32:  i
+PRId64: ld, PRIx64: lx, PRIo64: lo, PRIu64: lu, PRIi64: li
+
+## Bit precise integer types (since C23) ##
+BITINT_MAXWIDTH = 65535 and ULLONG_WIDTH = 64
+The 3-bit example variable has a value of -4 and sizeof 1 byte
+sizeof _BitInt(15) = 2 bytes
+sizeof _BitInt(16) = 2 bytes
+sizeof _BitInt(17) = 4 bytes
+
+## Fixed width floating point types (since C23) ##
+sizeof _Float16 = 2, _Float32 = 4, _Float64 = 8, _Float128 = 16 bytes
+
+## Decimal floating point types (since C23) ##
+sizeof _Decimal32 = 4, _Decimal64 = 8, _Decimal128 = 16 bytes
+
+info: GNU gcc 14.1.1 20240607 (Red Hat 14.1.1-5)
+info: __STDC_VERSION__ = 202000
