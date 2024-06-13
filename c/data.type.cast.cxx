@@ -1,12 +1,14 @@
-// 2024-06-12
+// 2024-06-13
 
 // $ g++ -std=c++20 -pedantic -Wall -Wextra data.type.cast.cxx -o data.type.cast
 
+#include <bitset>
 #include <cassert>
+#include <climits>
 #include <cstdint>
 #include <cstring>
-#include <limits>
 #include <iostream>
+#include <limits>
 
 // https://en.cppreference.com/w/cpp/language/object#Strict_aliasing
 // https://en.cppreference.com/w/cpp/language/reinterpret_cast
@@ -46,32 +48,34 @@ int main ()
   std::cout << "# reinterpret_cast, not recommended (break strict aliasing)\n";
   i32 = *reinterpret_cast<std::uint32_t*>(&f32); // undefined behavior
   //  = *(uint32_t*)&f32; // C equivalent
-  std::cout << "f32 = " << f32 << '\n';
-  std::cout << "i32 = " << i32 << '\n';
-  std::cout << "f32 (back) = " << *reinterpret_cast<float*>(&i32) << '\n';
+  std::cout << "f32 = " << f32 << '\n'
+            << "i32 = " << i32 << '\n'
+            << "f32 (back) = " << *reinterpret_cast<float*>(&i32) << '\n';
 
   std::cout << "\n# reinterpret_cast exception with std::(u)intptr_t\n";
   // uintptr_t: unsigned integer type capable of holding a pointer to void
   f32 = pi;
   std::uintptr_t uip = reinterpret_cast<std::uintptr_t>(&f32); // static_cast is an error
   i32 = *reinterpret_cast<std::uint32_t*>(uip);
-  std::cout << "f32 = " << f32 << '\n';
-  std::cout << "i32 = " << i32 << '\n';
+  std::cout << "f32 = " << f32 << '\n'
+            << "i32 = " << i32 << '\n';
   uip = reinterpret_cast<std::uintptr_t>(&i32);
   std::cout << "f32 (back) = " << *reinterpret_cast<float*>(uip) << '\n';
 
   std::cout << "\n# std::bit_cast (since C++20)\n";
   f32 = pi;
   i32 = std::bit_cast<std::uint32_t>(f32);
-  std::cout << "f32 = " << f32 << '\n';
-  std::cout << "i32 = " << i32 << " = 0x" << std::hex << i32 << std::dec << '\n';
-  std::cout << "f32 (back) = " << std::bit_cast<float>(i32) << '\n';
+  std::cout << "f32 = " << f32 << '\n'
+            << "i32 = " << i32 << " = 0x" << std::hex << i32 << std::dec
+            << " = " << std::bitset<CHAR_BIT*sizeof(i32)>(i32) << '\n'
+            << "f32 (back) = " << std::bit_cast<float>(i32) << '\n';
 
   std::cout << "\n# std::memcpy, recommended cast\n";
   f32 = pi;
   std::memcpy(&i32, &f32, sizeof(f32));
-  std::cout << "f32 = " << f32 << '\n';
-  std::cout << "i32 = " << i32 << " = 0x" << std::hex << i32 << std::dec << '\n';
+  std::cout << "f32 = " << f32 << '\n'
+            << "i32 = " << i32 << " = 0x" << std::hex << i32 << std::dec
+            << " = " << std::bitset<CHAR_BIT*sizeof(i32)>(i32) << '\n';
   float ff32 = 0.0;
   std::memcpy(&ff32, &i32, sizeof(float));
   std::cout << "f32 (back) = " << ff32 << '\n';
