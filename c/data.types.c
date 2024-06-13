@@ -1,6 +1,7 @@
-// 2024-06-11
+// 2024-06-14
 
 // $ gcc -pedantic -Wall -Wextra -o data.types data.types.c && ./data.types
+//       -std=c23 # (optional) experimental mode for C23 standard
 
 #include <stdio.h>
 #include <locale.h>
@@ -19,9 +20,11 @@
 // https://en.cppreference.com/w/cpp/io/c/fprintf
 
 int main() {
-  setlocale(LC_NUMERIC, "de_DE.UTF8"); // '.' as thousands_sep and ',' as decimal_point
-  struct lconv *lc = localeconv();     // read only locale settings
-  printf("# locale '%s': '%s' as thousands_sep and '%s' as decimal_point\n\n",
+  // en_US.UTF8  => 1,000.23   de_DE.UTF8 => 1.000,23
+  // mfe_MU.UTF8 => 1 000.23   sk_SK.UTF8 => 1 000,23
+  setlocale(LC_NUMERIC, "de_DE.UTF8");
+  struct lconv *lc = localeconv(); // read only locale settings
+  printf("# locale '%s' => '%s' as thousands_sep and '%s' as decimal_point\n\n",
          setlocale(LC_NUMERIC, NULL), lc->thousands_sep, lc->decimal_point);
 
   // gcc -pedantic => warning: ISO C does not support the ''' printf flag [-Wformat=]
@@ -53,7 +56,7 @@ int main() {
          sizeof(long long), LLONG_MIN, LLONG_MAX);
   printf("unsigned long long // long long unsigned integer type, %lu bytes, [%'d, %'llu]\n",
          sizeof(unsigned long long), 0, ULLONG_MAX);
-  printf("                   // on x86_64 platform: (unsigned) long = (unsigned) long long\n");
+  printf("                   // on x86_64 platform: (unsigned) long long = (unsigned) long\n");
   printf("\n");
   printf("float       // single-precision   floating-point type, %lu bytes, [%'+g, %'+g]\n",
          sizeof(float), FLT_MIN, FLT_MAX);
@@ -92,29 +95,38 @@ int main() {
          PRId64,      PRIx64,     PRIo64,     PRIu64,     PRIi64);
   // printf("usage example: INT64_MAX = %"PRId64"\n", INT64_MAX);
 
-  // printf("\n");
-  // printf("## Bit precise integer types (since C23) ##\n"); // $ gcc -std=c23
-  // // still experimental, not recommended
-  // // CLANG: _ExtInt(N) is now a deprecated alias for _BitInt(N)
-  // printf("BITINT_MAXWIDTH = %d and ULLONG_WIDTH = %d\n", BITINT_MAXWIDTH, ULLONG_WIDTH);
-  // _BitInt(3) i3bit = -4; // or signed _BitInt(3); 3-bit values from interval <-4, 3>
-  // printf("The 3-bit example variable has a value of %d and sizeof %lu byte\n",
-  //        (int)i3bit, sizeof(i3bit));
-  // printf("sizeof _BitInt(15) = %lu bytes\n", sizeof(_BitInt(15))); // padding bits
-  // printf("sizeof _BitInt(16) = %lu bytes\n", sizeof(_BitInt(16)));
-  // printf("sizeof _BitInt(17) = %lu bytes\n", sizeof(_BitInt(17))); // padding bits
+#if __STDC_VERSION__ > 201710L
+  // An unspecified value larger than 201710L (C17) is used for the experimental
+  // and incomplete -std=c23 and -std=gnu23 modes.
+  // 2024-06, gcc 14.1 -std=c23 => 202000L (final C23 will be 202311L)
 
-  // printf("\n");
-  // printf("## Fixed width floating point types (since C23) ##\n"); // $ gcc -std=c23
-  // // still experimental, not recommended
-  // // C type _FloatN in C++ as std::floatN_t type (N = 16, 32, 64, 128)
-  // printf("sizeof _Float16 = %lu, _Float32 = %lu, _Float64 = %lu, _Float128 = %lu bytes\n",
-  //        sizeof(_Float16), sizeof(_Float32), sizeof(_Float64), sizeof(_Float128));
+  printf("\n");
+  printf("## Bit precise integer types (since C23) ##\n");
+  // still experimental, not recommended
+  // CLANG: _ExtInt(N) is now a deprecated alias for _BitInt(N)
+  printf("BITINT_MAXWIDTH = %d and ULLONG_WIDTH = %d\n", BITINT_MAXWIDTH, ULLONG_WIDTH);
+  _BitInt(3) i3bit = -4; // or signed _BitInt(3); 3-bit values from interval <-4, 3>
+  printf("The 3-bit example variable has a value of %d and sizeof %lu byte\n",
+         (int)i3bit, sizeof(i3bit));
+  printf("sizeof _BitInt(15) = %lu bytes\n", sizeof(_BitInt(15))); // padding bits
+  printf("sizeof _BitInt(16) = %lu bytes\n", sizeof(_BitInt(16)));
+  printf("sizeof _BitInt(17) = %lu bytes\n", sizeof(_BitInt(17))); // padding bits
 
-  // printf("\n");
-  // printf("## Decimal floating point types (since C23) ##\n"); // $ gcc -std=c23
-  // // https://en.wikipedia.org/wiki/Decimal_floating_point
-  // // C type _DecimalN (N = 32, 64, 128)
-  // printf("sizeof _Decimal32 = %lu, _Decimal64 = %lu, _Decimal128 = %lu bytes\n",
-  //        sizeof(_Decimal32), sizeof(_Decimal64), sizeof(_Decimal128));
+  printf("\n");
+  printf("## Fixed width floating point types (since C23) ##\n");
+  // still experimental, not recommended
+  // C type _FloatN in C++ as std::floatN_t type (N = 16, 32, 64, 128)
+  printf("sizeof _Float16 = %lu, _Float32 = %lu, _Float64 = %lu, _Float128 = %lu bytes\n",
+         sizeof(_Float16), sizeof(_Float32), sizeof(_Float64), sizeof(_Float128));
+
+  printf("\n");
+  printf("## Decimal floating point types (since C23) ##\n");
+  // https://en.wikipedia.org/wiki/Decimal_floating_point
+  // C type _DecimalN (N = 32, 64, 128)
+  printf("sizeof _Decimal32 = %lu, _Decimal64 = %lu, _Decimal128 = %lu bytes\n",
+         sizeof(_Decimal32), sizeof(_Decimal64), sizeof(_Decimal128));
+#endif
+
+  printf("\ninfo: GNU gcc %s\n",  __VERSION__);
+  printf("info: __STDC_VERSION__ = %ld\n", __STDC_VERSION__);
 }
