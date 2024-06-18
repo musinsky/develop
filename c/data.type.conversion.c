@@ -3,20 +3,21 @@
 // $ gcc -o data.type.conversion data.type.conversion.c && ./data.type.conversion
 
 #include <stdio.h>
+#include <assert.h>
 
 // https://en.wikipedia.org/wiki/Type_conversion
 // https://learn.microsoft.com/en-us/cpp/cpp/type-conversions-and-type-safety-modern-cpp
 // https://learn.microsoft.com/en-us/cpp/cpp/standard-conversions
 
 int main() {
-  printf("=============================================\n");
-  printf("# safe conversions and the value is unchanged:\n");
-  printf("# char (%lu byte) -> short (%lu bytes) -> int (%lu bytes) -> "
+  printf("============================================\n");
+  printf("safe conversions and the value is unchanged:\n");
+  printf("char (%lu byte) -> short (%lu bytes) -> int (%lu bytes) -> "
          "long (%lu bytes) => long long (%lu bytes)\n",
          sizeof(char), sizeof(short), sizeof(int), sizeof(long), sizeof(long long));
-  printf("# float (%lu bytes) -> double (%lu byte) -> long double (%lu bytes)\n",
+  printf("float (%lu bytes) -> double (%lu byte) -> long double (%lu bytes)\n",
          sizeof(float), sizeof(double), sizeof(long double));
-  printf("=============================================\n");
+  printf("============================================\n");
 
   printf("\n# long -> int (short, char) type conversion\n");
   printf("# long to int causes dropping of excess higher order bits\n");
@@ -49,7 +50,7 @@ int main() {
   // https://en.wikipedia.org/wiki/Double-precision_floating-point_format
   // https://stackoverflow.com/q/56690872
   // https://stackoverflow.com/q/52267201
-  printf("\n=========================\n");
+  printf("\n=====================================================================\n");
   printf("IEEE 754 single precision (4-byte, 32-bit word) floating point format\n");
   printf("binary32 = 1 bit: sign, 8 bits: exponent, 23 bits: fraction or mantissa\n");
   printf("precision limitations on integer: 2^23 (fraction) * 2 (sign/unsign) = 2^24 = "
@@ -64,16 +65,26 @@ int main() {
          "9.007.199.254.740.992\n");
   printf("=> integers between 0 and 2^53 = 9.007.199.254.740.992 can be exactly represented\n");
   printf("=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n−52)\n");
-  printf("=========================\n");
+  printf("=====================================================================\n");
 
-  printf("(float)16777215.0  =  %.1f\n", (float)16777215.0);
-  printf("(float)16777216.0  =  %.1f\n", (float)16777216.0);
-  printf("(float)16777217.0 !=! %.1f\n", (float)16777217.0);
-  printf("(float)16777218.0  =  %.1f\n", (float)16777218.0);
-  printf("(float)16777219.0 !=! %.1f\n", (float)16777219.0);
-  printf("(float)16777220.0  =  %.1f\n", (float)16777220.0);
-  printf("(float)16777221.0 !=! %.1f\n", (float)16777221.0);
-  printf("(float)16777222.0  =  %.1f\n", (float)16777222.0);
+  assert(__STDC_IEC_559__ == 1); // IEEE 754 standard (since C23 deprecated)
+  printf("\n# IEEE 754 single (double) precision limitations on integer values\n");
+  printf("(float)16777215.0  =  %.1f", (float)16777215.0);
+  printf(" | (float)1e07 = %17.1f\n", (float)1e07);
+  printf("(float)16777216.0  =  %.1f", (float)16777216.0);
+  printf(" | (float)1e08 = %17.1f\n", (float)1e08);
+  printf("(float)16777217.0 !=! %.1f", (float)16777217.0);
+  printf(" | (float)1e09 = %17.1f\n", (float)1e09);
+  printf("(float)16777218.0  =  %.1f", (float)16777218.0);
+  printf(" | (float)1e10 = %17.1f\n", (float)1e10);
+  printf("(float)16777219.0 !=! %.1f", (float)16777219.0);
+  printf(" | (float)1e11 = %17.1f\n", (float)1e11);
+  printf("(float)16777220.0  =  %.1f", (float)16777220.0);
+  printf(" | (float)1e12 = %17.1f\n", (float)1e12);
+  printf("(float)16777221.0 !=! %.1f", (float)16777221.0);
+  printf(" | (float)1e13 = %17.1f\n", (float)1e13);
+  printf("(float)16777222.0  =  %.1f", (float)16777222.0);
+  printf(" | (float)1e14 = %17.1f\n", (float)1e14);
   if ((float)16777216.0 == (int)16777217) printf("true: (float)16777216.0 == (int)16777217\n");
   if ((float)16777217.0 == (int)16777217) printf("true: (float)16777217.0 == (int)16777217\n");
   printf("(double)9007199254740993.0 !=! %.1f\n", (double)9007199254740993);
@@ -103,4 +114,7 @@ int main() {
   printf("int value %d as float value %.1f\n", i1, (float)i1);
   i1 = 16777216;
   printf("int value %d as float value %.1f\n", i1, (float)i1);
+
+  printf("\ninfo: GNU gcc %s\n",  __VERSION__);
+  printf("info: GNU C Library (glibc) %d.%d\n", __GLIBC__, __GLIBC_MINOR__);
 }
