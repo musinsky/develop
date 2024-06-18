@@ -1,7 +1,8 @@
-// 2024-06-18
+// 2024-06-19
 
 // $ g++ -std=c++20 -pedantic -Wall -Wextra data.type.cast.cxx -o data.type.cast
 //       -fstrict-aliasing # (optional) strictest aliasing rules
+// see also 'data.type.punning.c' for C punning (casting)
 
 #include <bitset>
 #include <cassert>
@@ -80,7 +81,7 @@ int main ()
             << " = " << std::bitset<CHAR_BIT*sizeof(i32)>(i32) << '\n'
             << "f32 (back) = " << std::bit_cast<float>(i32) << '\n';
 
-  std::cout << "\n# std::memcpy, recommended cast\n";
+  std::cout << "\n# std::memcpy, recommended type cast\n";
   // memcpy is best and safe method for type punning (type cast)
   f32 = pi;
   std::memcpy(&i32, &f32, sizeof(f32));
@@ -99,8 +100,9 @@ int main ()
   // In C++ it works as a GNU gcc extension (but not as part of the C++
   // standard), see: https://stackoverflow.com/q/67206482
   std::cout << "\n# union, not safe in C++ (allowed in C)\n";
-  union { float uf32; std::uint32_t ui32; } float_vs_32word;
-  float_vs_32word.uf32 = pi;
-  std::cout << "f32 = " << float_vs_32word.uf32 << '\n'
-            << "i32 = " << float_vs_32word.ui32 << '\n';
+  union { float u_f32; std::int32_t u_i32; std::uint32_t u_ui32; } word32;
+  word32.u_f32 = pi;
+  std::cout << "u_f32  = " << word32.u_f32 << '\n'
+            << "u_i32  = " << word32.u_i32 << '\n'
+            << "u_ui32 = " << word32.u_ui32 << '\n';
 }
