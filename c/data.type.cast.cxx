@@ -1,6 +1,7 @@
-// 2024-06-13
+// 2024-06-18
 
 // $ g++ -std=c++20 -pedantic -Wall -Wextra data.type.cast.cxx -o data.type.cast
+//       -fstrict-aliasing # (optional) strictest aliasing rules
 
 #include <bitset>
 #include <cassert>
@@ -14,11 +15,20 @@
 // https://en.cppreference.com/w/cpp/language/reinterpret_cast
 // https://en.cppreference.com/w/cpp/numeric/bit_cast
 // https://en.cppreference.com/w/cpp/string/byte/memcpy
+// https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-fstrict-aliasing
 
 // Strict aliasing
 //
 // Accessing an object using an expression of a type other than the type with
 // which it was created is undefined behavior in many cases.
+//
+// $ gcc/g++ -fstrict-aliasing   # option is enabled at levels -O2, -O3, -Os
+// Allow the compiler to assume the strictest aliasing rules applicable to the
+// language being compiled. For C (and C++), this activates optimizations based
+// on the type of expressions. In particular, an object of one type is assumed
+// never to reside at the same address as an object of a different type, unless
+// the types are almost the same. For example, an 'unsigned int' can alias an
+// 'int', but not a 'void*' or a 'double'.
 //
 // Strict aliasing prohibits examining the same memory as values of two
 // different types. When it is needed to interpret the bytes of an object as a
