@@ -1,6 +1,7 @@
 // 2024-06-18
 
-// $ gcc -o data.type.conversion data.type.conversion.c && ./data.type.conversion
+// $ gcc -pedantic -Wall -Wextra -o data.type.conversion data.type.conversion.c
+// $ ./data.type.conversion
 
 #include <stdio.h>
 #include <assert.h>
