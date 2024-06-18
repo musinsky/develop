@@ -128,5 +128,6 @@ int main() {
 #endif
 
   printf("\ninfo: GNU gcc %s\n",  __VERSION__);
+  printf("info: GNU C Library (glibc) %d.%d\n", __GLIBC__, __GLIBC_MINOR__);
   printf("info: __STDC_VERSION__ = %ld\n", __STDC_VERSION__);
 }

@@ -49,4 +49,5 @@ sizeof _Float16 = 2, _Float32 = 4, _Float64 = 8, _Float128 = 16 bytes
 sizeof _Decimal32 = 4, _Decimal64 = 8, _Decimal128 = 16 bytes
 
 info: GNU gcc 14.1.1 20240607 (Red Hat 14.1.1-5)
+info: GNU C Library (glibc) 2.39
 info: __STDC_VERSION__ = 202000
