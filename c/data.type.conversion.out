@@ -1,0 +1,71 @@
+============================================
+safe conversions and the value is unchanged:
+char (1 byte) -> short (2 bytes) -> int (4 bytes) -> long (8 bytes) => long long (8 bytes)
+float (4 bytes) -> double (8 byte) -> long double (16 bytes)
+============================================
+
+# long -> int (short, char) type conversion
+# long to int causes dropping of excess higher order bits
+long value 1234567890123456789 as int value 2112454933
+long value 1234567890123456789 as short value -32491
+long value 1234567890123456789 as char value 21
+int value 1234567890 as short value 722
+int value 1234567890 as char value -46
+
+# double -> float type conversion
+# double to float causes rounding of digit
+double value 123456789.1234567 as float value 123456792.0000000
+    or short 1.23457e+08 as 1.23457e+08
+double value 100.12345678901234 as float value 100.12345886230469
+    or short 100.123 as 100.123
+double value 1234567890123456.00 as float value 1234567948140544.00
+    or short 1.23457e+15 as 1.23457e+15
+double value 1.123e+123 as float value inf
+
+=====================================================================
+IEEE 754 single precision (4-byte, 32-bit word) floating point format
+binary32 = 1 bit: sign, 8 bits: exponent, 23 bits: fraction or mantissa
+precision limitations on integer: 2^23 (fraction) * 2 (sign/unsign) = 2^24 = 16.777.216
+=> integers between 0 and 2^24 = 16.777.216 can be exactly represented
+=> integers between 2^24 and 2^25 round to a multiple of 2
+=> integers between 2^25 and 2^26 round to a multiple of 4
+=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n-23)
+
+IEEE 754 double precision (8-byte, 64-bit word) floating point format
+binary64 = 1 bit: sign, 11 bits: exponent, 52 bits: fraction or mantissa
+precision limitations on integer: 2^52 (fraction) * 2 (sign/unsign) = 2^53 = 9.007.199.254.740.992
+=> integers between 0 and 2^53 = 9.007.199.254.740.992 can be exactly represented
+=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n−52)
+=====================================================================
+
+# IEEE 754 single (double) precision limitations on integer values
+(float)16777215.0  =  16777215.0 | (float)1e07 =        10000000.0
+(float)16777216.0  =  16777216.0 | (float)1e08 =       100000000.0
+(float)16777217.0 !=! 16777216.0 | (float)1e09 =      1000000000.0
+(float)16777218.0  =  16777218.0 | (float)1e10 =     10000000000.0
+(float)16777219.0 !=! 16777220.0 | (float)1e11 =     99999997952.0
+(float)16777220.0  =  16777220.0 | (float)1e12 =    999999995904.0
+(float)16777221.0 !=! 16777220.0 | (float)1e13 =   9999999827968.0
+(float)16777222.0  =  16777222.0 | (float)1e14 = 100000000376832.0
+true: (float)16777216.0 == (int)16777217
+true: (float)16777217.0 == (int)16777217
+(double)9007199254740993.0 !=! 9007199254740992.0
+
+# float -> int type conversion (types with same size)
+# float to int causes truncation, i.e. removal of the fractional part
+f1 = 3.140000, f2 = 9.990000
+(int)f1 = 3, (int)f2 = 9, (int)(f1+f2) = 13, (int)f1+(int)f2 = 12
+value 123456789.0 stored in float 123456792.0 and as int value 123456792
+value 100000000.0 stored in float 100000000.0 and as int value 100000000
+value 16777217.0 stored in float 16777216.0 and as int value 16777216
+value 16777216.0 stored in float 16777216.0 and as int value 16777216
+
+# int -> float type conversion (types with same size)
+# int to float causes rounding and adding zero decimal point
+int value 123456789 as float value 123456792.0
+int value 100000000 as float value 100000000.0
+int value 16777217 as float value 16777216.0
+int value 16777216 as float value 16777216.0
+
+info: GNU gcc 14.1.1 20240607 (Red Hat 14.1.1-5)
+info: GNU C Library (glibc) 2.39
