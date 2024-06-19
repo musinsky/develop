@@ -15,6 +15,8 @@
 // https://en.wikipedia.org/wiki/Union_type
 // https://learn.microsoft.com/en-us/cpp/cpp/type-conversions-and-type-safety-modern-cpp
 // https://learn.microsoft.com/en-us/cpp/cpp/standard-conversions
+// https://gist.github.com/shafik/848ae25ee209f698763cffee272a58f8
+// perevod: https://habr.com/p/442554/ and https://habr.com/p/443602/
 
 int main() {
   assert(CHAR_BIT == 8);                    // 1 byte = 8 bits
@@ -54,8 +56,11 @@ int main() {
 
   // $ gcc -fstrict-aliasing => no warning, but still aliasing violation
   printf("# the same in a different way\n");
+  // Taking the address of the object, casting it to a pointer of the type we
+  // want to reinterpret it as and then accessing the value, or in other words
+  // by aliasing. Traditional, but not correct way.
   f32 = pi;
-  int32_t *i32ptr = (int32_t *)&f32;
+  int32_t *i32ptr = (int32_t *)&f32; // not valid aliasing, undefined behavior
   float   *f32ptr = (float *)i32ptr; // = (float *)&(*i32ptr)
   printf("f32 = %f\n", f32);
   printf("*i32ptr = %d\n", *i32ptr);
