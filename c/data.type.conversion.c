@@ -68,7 +68,7 @@ int main() {
   printf("=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n−52)\n");
   printf("=====================================================================\n");
 
-  assert(__STDC_IEC_559__ == 1); // IEEE 754 standard (since C23 deprecated)
+  assert(__STDC_IEC_559__ == 1); // IEEE 754 standard
   printf("\n# IEEE 754 single (double) precision limitations on integer values\n");
   printf("(float)16777215.0  =  %.1f", (float)16777215.0);
   printf(" | (float)1e07 = %17.1f\n", (float)1e07);
