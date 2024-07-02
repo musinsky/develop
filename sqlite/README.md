@@ -1,4 +1,4 @@
-<p align="right">last edit: 2024-06-05</p>
+<p align="right">last edit: 2024-07-03</p>
 
 # SQLite
 * https://en.wikipedia.org/wiki/SQLite
@@ -98,6 +98,14 @@ identifies the row within its table, **rowid**. In most cases, `INTEGER PRIMARY
 KEY` is alias for the **rowid**. According to the SQL standard, `PRIMARY KEY`
 should always imply `NOT NULL` (and `UNIQUE`). More info:
 [[1]](https://sqlite.org/lang_createtable.html).
+
+* Be careful with `UNIQUE` constraints (obmedzenia). `NULL` values are
+considered distinct (sa povazuju za odlisne) from all other values, including
+other `NULL`s. More info:
+[[1]](https://sqlite.org/lang_createtable.html#unique_constraints),
+[[2]](https://sqlite.org/faq.html#q26),
+[[3]](https://www.sqlite.org/nulls.html). Prefer way `name TEXT NOT NULL
+UNIQUE`.
 
 * [PRAGMA Statements](https://sqlite.org/pragma.html) aka SQLite metadata.
 <br/>`$ echo "PRAGMA compile_options;" | sqlite3`
