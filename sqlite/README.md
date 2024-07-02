@@ -107,6 +107,19 @@ other `NULL`s. More info:
 [[3]](https://www.sqlite.org/nulls.html). Prefer way `name TEXT NOT NULL
 UNIQUE`.
 
+``` sql
+CREATE TABLE tableA (
+  column1 type UNIQUE,   -- unique rows in column1
+  column2 type UNIQUE    -- unique rows in column2
+);
+-- be careful with UNIQUE for one column and/or multiple columns
+CREATE TABLE tableB (
+  column1 type,
+  column2 type,
+  UNIQUE (column1, column2)   -- unique rows in both column1 and column2 together
+);
+```
+
 * [PRAGMA Statements](https://sqlite.org/pragma.html) aka SQLite metadata.
 <br/>`$ echo "PRAGMA compile_options;" | sqlite3`
 
