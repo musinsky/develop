@@ -1,6 +1,7 @@
-// 2024-06-18
+// 2024-07-04
 
 // $ gcc -pedantic -Wall -Wextra -o data.type.conversion data.type.conversion.c
+//       -Wconversion # (optional) implicit conversions that may alter a value
 // $ ./data.type.conversion
 
 #include <stdio.h>
@@ -31,6 +32,11 @@ int main() {
   int i1 = 1234567890;
   printf("int value %d as short value %hd\n", i1, (short)i1);
   printf("int value %d as char value %d\n", i1, (char)i1);
+  // i1 = l1;                       // gcc without warning
+  // i1 = (int)1234567890123456789; // gcc without warning
+  // i1 = 1234567890123456789;
+  // // gcc warning: overflow in conversion from 'long int' to 'int' changes value
+  // // from '1234567890123456789' to '2112454933'
 
   printf("\n# double -> float type conversion\n");
   printf("# double to float causes rounding of digit\n");
@@ -51,6 +57,7 @@ int main() {
   // https://en.wikipedia.org/wiki/Double-precision_floating-point_format
   // https://stackoverflow.com/q/56690872
   // https://stackoverflow.com/q/52267201
+  // https://www.h-schmidt.net/FloatConverter/IEEE754.html
   printf("\n=====================================================================\n");
   printf("IEEE 754 single precision (4-byte, 32-bit word) floating point format\n");
   printf("binary32 = 1 bit: sign, 8 bits: exponent, 23 bits: fraction or mantissa\n");
@@ -65,7 +72,7 @@ int main() {
   printf("precision limitations on integer: 2^52 (fraction) * 2 (sign/unsign) = 2^53 = "
          "9.007.199.254.740.992\n");
   printf("=> integers between 0 and 2^53 = 9.007.199.254.740.992 can be exactly represented\n");
-  printf("=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n−52)\n");
+  printf("=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n-52)\n");
   printf("=====================================================================\n");
 
   assert(__STDC_IEC_559__ == 1); // IEEE 754 standard
@@ -115,6 +122,37 @@ int main() {
   printf("int value %d as float value %.1f\n", i1, (float)i1);
   i1 = 16777216;
   printf("int value %d as float value %.1f\n", i1, (float)i1);
+
+  // https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wfloat-conversion
+  // Warn for implicit conversions that reduce the precision of a real value.
+  // This includes conversions from real to integer, and from higher precision
+  // real to lower precision real values (also enabled by -Wconversion option).
+#pragma GCC diagnostic push
+#pragma GCC diagnostic warning "-Wconversion"
+  f1 = 0.123; // double to float changes value from 1.23e-1 to 1.23000003e-1f
+  f1 = 1.230; // double to float changes value from 1.23e+0 to 1.23000002e+0f
+  f1 = 3.14;  // double to float changes value from 3.1400000000000001e+0 to 3.1400001e+0f
+  f1 = 3.14f;       // gcc without warning
+  f1 = (float)3.14; // gcc without warning
+
+  f1 = 16777216.0; // gcc without warning
+  f1 = 16777217.0; // double to float changes value from 1.6777217e+7 to 1.6777216e+7f
+  f1 = 16777218.0; // gcc without warning
+  f1 = 16777219.0; // double to float changes value from 1.6777219e+7 to 1.677722e+7f
+
+  f1 = 16777216;        // gcc without warning
+  f1 = 16777217;        // int to float changes value from 16777217 to 1.6777216e+7f
+  f1 = (float)16777217; // gcc without warning (f1 = 16777216.0)
+  f1 = 123456789;       // int to float changes value from 123456789 to 1.23456792e+8f
+  f1 = 123456789.0;     // double to float changes value from 1.23456789e+8 to 1.23456792e+8f
+
+  i1 = 3.14;        // double to int changes value from 3.1400000000000001e+0 to 3
+  i1 = (float)3.14; // float to int changes value from 3.1400001e+0f to 3
+  i1 = (int)3.14;   // gcc without warning
+
+  i1 = 16777217.0;        // gcc without warning (i1 = 16777217)
+  i1 = (float)16777217.0; // gcc without warning (i1 = 16777216)
+#pragma GCC diagnostic pop
 
   printf("\ninfo: GNU gcc %s\n",  __VERSION__);
   printf("info: GNU C Library (glibc) %d.%d\n", __GLIBC__, __GLIBC_MINOR__);
