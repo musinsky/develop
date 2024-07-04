@@ -35,7 +35,7 @@ IEEE 754 double precision (8-byte, 64-bit word) floating point format
 binary64 = 1 bit: sign, 11 bits: exponent, 52 bits: fraction or mantissa
 precision limitations on integer: 2^52 (fraction) * 2 (sign/unsign) = 2^53 = 9.007.199.254.740.992
 => integers between 0 and 2^53 = 9.007.199.254.740.992 can be exactly represented
-=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n−52)
+=> integers between 2^n and 2^(n+1) round to a multiple of 2^(n-52)
 =====================================================================
 
 # IEEE 754 single (double) precision limitations on integer values
@@ -67,5 +67,5 @@ int value 100000000 as float value 100000000.0
 int value 16777217 as float value 16777216.0
 int value 16777216 as float value 16777216.0
 
-info: GNU gcc 14.1.1 20240607 (Red Hat 14.1.1-5)
+info: GNU gcc 14.1.1 20240701 (Red Hat 14.1.1-7)
 info: GNU C Library (glibc) 2.39
