@@ -1,4 +1,4 @@
-// 2024-05-30
+// 2024-07-16
 
 // $ gcc -o sqlite05 sqlite05.c -lsqlite3 && ./sqlite05
 
@@ -32,10 +32,10 @@ int main(void) {
   long fsize = ftell(fp);
   fseek(fp, 0, SEEK_SET); // rewind to beginning of the file
   char *fbulk = (char *)malloc(fsize+1);
-  fbulk[fsize] = 0; // to same as '\0';
+  fbulk[fsize] = '\0'; // terminating null byte '\0';
   // memset(fbulk, 0, fsize+1); // or simalar solution
   fread(fbulk, fsize, 1, fp);
-  // // contents of the text file must properly terminated by '\0'
+  // // contents of the text file must properly terminated by '\0' (null byte)
   // // for example find 'fread' on https://sqlite.org/src/file/src/shell.c.in
   // printf("file size: %ld\n", fsize);
   // for (int i = 0; i < fsize; i++) printf("%c", fbulk[i]);
