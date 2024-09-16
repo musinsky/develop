@@ -1,0 +1,67 @@
+% 2024-09-16
+
+% spacing (horizontal) in LaTeX
+% https://tex.stackexchange.com/q/74353
+% https://www.overleaf.com/learn/latex/Spacing_in_math_mode
+
+\documentclass{article}
+\usepackage[a4paper,margin=1.00cm]{geometry}
+\usepackage{xcolor}
+
+\begin{document}
+\pagestyle{empty}
+\centering
+
+\begin{tabular}{lllll}
+  \multicolumn{5}{c}{\textbf{LaTeX spacing}} \\ \\
+  H\!H & \verb*|H\!H| & $H\!H$ & \verb*|$H\!H$|
+  & -3mu = -3/18 of \verb*|\quad| or \verb*|\negthinspace| \\
+  H H  & \verb*|H H|  & $H H$  & \verb*|$H H$|
+  & \textbf{space} or \verb*|{ }| \verb*|\space| \\
+  H\,H & \verb*|H\,H| & $H\,H$ & \verb*|$H\,H$|
+  & 3mu = 3/18 of \verb*|\quad| or \verb*|\thinspace| \\
+  H\:H & \verb*|H\:H| & $H\:H$ & \verb*|$H\:H$|
+  & 4mu = 4/18 of \verb*|\quad| or \verb*|\medspace| \\
+  H\;H & \verb*|H\;H| & $H\;H$ & \verb*|$H\;H$|
+  & 5mu = 5/18 of \verb*|\quad| or \verb*|\thickspace| \\
+  H\ H & \verb*|H\ H| & $H\ H$ & \verb*|$H\ H$|
+  & control space (normal) \\
+  H H  & \verb*|H H|  & $H H$  & \verb*|$H H$|
+  & \textbf{space} or \verb*|{ }| \verb*|\space| \\
+  H  H & \verb*|H  H| & $H  H$ & \verb*|$H  H$|
+  & spaces \\
+  H{\quad}H & \verb*|H{\quad}H| & $H{\quad}H$
+  & \verb*|$H{\quad}H$| & 18 mu = \verb*|\quad|
+\end{tabular}
+\vspace{2em}
+
+\begin{tabular}{lll}
+  \multicolumn{3}{c}{\textbf{Reaction LaTeX typeset}} \\ \\
+  ${}^{4}\!H\!e\, p\, \!\to {}^{3}\!H\!e\, p\, p\, \pi^{-} \pi^{0}$ &
+  \verb*|${}^{4}\!H\!e\, p\, \!\to {}^{3}\!H\!e\, p\, p\, \pi^{-} \pi^{0}$| & {\color{red} advanced} \\
+  ${}^{4}He p \to {}^{3}He p p \pi^{-} \pi^{0}$ &
+  \verb*|${}^{4}He p \to {}^{3}He p p \pi^{-} \pi^{0}$| & simple \\
+\end{tabular}
+\vspace{2em}
+
+\begin{tabular}[t]{lll}
+  % https://www.overleaf.com/learn/latex/Errors/Illegal_unit_of_measure_(pt_inserted)
+  % If linebreak command '\\' is ever followed by square brackets '[]' it will generate error
+  \multicolumn{3}{c}{\textbf{Interval LaTeX typeset}} \\ \\
+  & [-123,-123]       & \verb*|[-123,-123]| \\
+  & [-123, -123]      & \verb*|[-123, -123]| \\
+  & [ -123, -123]     & \verb*|[ -123, -123]| \\
+  & [\,-123,-123\,]   & \verb*|[\,-123,-123\,]| \\
+  & [\,-123,\,-123\,] & {\color{red} \verb*|[\,-123,\,-123\,]|} \\
+  & [\,-123, -123\,]  & \verb*|[\,-123, -123\,]| \\
+\end{tabular}
+\quad
+\begin{tabular}[t]{lll}
+  \multicolumn{3}{c}{\textbf{Interval LaTeX indent of numbers}} \\ \\
+  & [\, 1,\, 2\,]                     & \verb*|[\, 1,\, 2\,]| \quad (wrong indent) \\
+  & [\,11,\,22\,]                     & \verb*|[\,11,\,22\,]| \\
+  & [\,\phantom{0}1,\,\phantom{0}2\,] & \verb*|[\,\phantom{0}1,\,\phantom{0}2\,]| \\
+  & [\,11,\,\phantom{0}2\,]           & \verb*|[\,11,\,\phantom{0}2\,]| \\
+  & [\,\phantom{0}1,\,22\,]           & \verb*|[\,\phantom{0}1,\,22\,]| \\
+\end{tabular}
+\end{document}
