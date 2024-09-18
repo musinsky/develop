@@ -108,7 +108,7 @@ printf "\n"
 
 
 
-BS_direct2="\\"; BS_direct4="\\\\" # not "\", "\\\" or "\\\\\" (error)
+BS_direct2="\\"; BS_direct4="\\\\" # !!! not "\", "\\\" or "\\\\\" (error) !!!
 printf "VAR declare in double quotes, direct2: ${BS_direct2}tab, direct4: ${BS_direct4}tab\n"
 BS_direct2='\\'; BS_direct4='\\\\'
 printf "VAR declare in single quotes, direct2: ${BS_direct2}tab, direct4: ${BS_direct4}tab\n"
@@ -123,11 +123,21 @@ printf "VAR as %%s argument: %s, VAR as %%b argument: %b\n" \
        "${BS_argument_s}tab" "${BS_argument_b}tab"
 printf 'VAR as %%s argument: %s, VAR as %%b argument: %b\n' \
        "${BS_argument_s}tab" "${BS_argument_b}tab"
+printf "\n"
 
 # SUMMARUM (pre pripad pouzivanie backslash)
-# printf output FORMAT premenych cez ARGUMENTS (nie direct)
-# printf '%s' "$var" to same output as printf "%s" "$var"
+# preferovat printf output FORMAT premenych cez ARGUMENTS (nie direct)
+# printf '%s' "$var" has the same output as printf "%s" "$var"
 
+# Rozne zapisy toho isteho: '$1n \ 2\pi^{0}$ \\' (LaTeX example)
+# TEST: ? is or is not backslash escape sequence ?
+# kdekolvek za poslednym '\' napisat napr. 'tab'
+# 1st) cez ARGUMENTS (printf '%s' "$var" has the same output as printf "%s" "$var")
 # shellcheck disable=SC1003
-printf "$%dn %s %d%s$ %s\n" 1 '\'  2 '\pi^{0}' '\\'
-printf "$%dn %s %d%s$ %s\n" 1 "\\" 2 '\pi^{0}' "\\\\"
+printf "$%dn %s %d%s$ %s\n" 1 '\'  2 '\pi^{0}' '\\'   # prefer 1
+printf "$%dn %s %d%s$ %s\n" 1 "\\" 2 '\pi^{0}' "\\\\" # prefer 2
+# 2nd) direct
+printf "\$1n \\\ 2\\\pi^{0}$ \\\\\\\\\n" # OK, but serious ?!
+# shellcheck disable=SC2016
+printf '$1n \\ 2\\pi^{0}$ \\\\\n'        # OK, maybe
+printf "\n"
