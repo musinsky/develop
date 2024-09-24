@@ -1,4 +1,4 @@
-% 2024-09-16
+% 2024-09-24
 
 % spacing (horizontal) in LaTeX
 % https://tex.stackexchange.com/q/74353
@@ -6,7 +6,10 @@
 
 \documentclass{article}
 \usepackage[a4paper,margin=1.00cm]{geometry}
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
+% the 'table' option ('xcolor' package) loads the 'colortbl' package,
+% which requires the 'color' and 'array' packages
+%\usepackage{array}   % required for '!{}'
 
 \begin{document}
 \pagestyle{empty}
@@ -64,4 +67,17 @@
   & [\,11,\,\phantom{0}2\,]           & \verb*|[\,11,\,\phantom{0}2\,]| \\
   & [\,\phantom{0}1,\,22\,]           & \verb*|[\,\phantom{0}1,\,22\,]| \\
 \end{tabular}
+\vspace{2em}
+
+% https://en.wikibooks.org/wiki/LaTeX/Tables#@_and_!_expressions
+% '@{bla}' suppresses inter-column space and inserts 'bla' instead (plain LaTeX)
+% '!{bla}' keep initial space and inserts 'bla' (requires the 'array' package)
+\begin{tabular}{|l|@{}l|l@{}|@{}l@{}|!{xx}l!{xx}|@{xx}l@{xx}|@{\hspace{2em}}l@{\hspace{2em}}|}
+  \hline \multicolumn{7}{|c|}{\textbf{LaTeX tabular spacing}} \\ \hline
+  \multicolumn{7}{|@{leftA}c@{rightA}|}{\textbf{LaTeX tabular spacing}} \\ \hline
+  \multicolumn{7}{|!{leftB}c!{rightB}|}{\textbf{LaTeX tabular spacing}} \\ \hline
+  column 1 & column 2 & column 3 & column 4 & column 5 & column 6 & column 7 \\ \hline
+  column 1 & column 2 & column 3 & column 4 & column 5 & column 6 & column 7 \\ \hline
+\end{tabular}
+
 \end{document}
