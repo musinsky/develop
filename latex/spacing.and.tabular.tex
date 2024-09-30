@@ -1,4 +1,4 @@
-% 2024-09-24
+% 2024-09-30
 
 % spacing (horizontal) in LaTeX
 % https://tex.stackexchange.com/q/74353
@@ -78,6 +78,73 @@
   \multicolumn{7}{|!{leftB}c!{rightB}|}{\textbf{LaTeX tabular spacing}} \\ \hline
   column 1 & column 2 & column 3 & column 4 & column 5 & column 6 & column 7 \\ \hline
   column 1 & column 2 & column 3 & column 4 & column 5 & column 6 & column 7 \\ \hline
+\end{tabular}
+\vspace{2em}
+
+% https://tex.stackexchange.com/q/16604
+% https://tex.stackexchange.com/q/180357
+
+%% \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}} % OK1, hidden column
+%% \newcolumntype{H}{>{\setbox0=\hbox\bgroup\cellcolor{green}}c<{\egroup}@{}}
+%%
+%% \newcolumntype{H}{>{\lrbox0}c<{\endlrbox}@{}} % % OK2, hidden column
+%% \newcolumntype{H}{>{\lrbox0\cellcolor{blue}}c<{\endlrbox}@{}}
+
+% columns align with '@{}' (inter-column space)
+\newcolumntype{H}{@{}>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\begin{tabular}{|c|Hc|}
+  \hline \multicolumn{3}{|c|}{he4p@13.5, ver: 2024-08-08, 1} \\ \hline
+  \multicolumn{1}{|c|}{Id} &
+  \multicolumn{1}{@{}c@{}}{} &
+  \multicolumn{1}{c|}{Reaction channel column} \\ \hline
+  1234 & hidden text & more text \\ \hline
+  4321 & hidden hiddent text & more more more text \\ \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|}
+  \hline \multicolumn{2}{|c|}{he4p@13.5, ver: 2024-08-08, 2} \\ \hline
+  \multicolumn{1}{|c|}{Id} &
+  \multicolumn{1}{c|}{Reaction channel column} \\ \hline
+  1234 & more text \\ \hline
+  4321 & more more more text \\ \hline
+\end{tabular}
+
+\newif\ifHIDDENCOLUMN
+\newcommand{\multicolumnHidden}{
+  \ifHIDDENCOLUMN \multicolumn{1}{@{}c@{}}{}
+  \else           \multicolumn{1}{c|}{Hidden} \fi }
+
+\HIDDENCOLUMNtrue
+\ifHIDDENCOLUMN \newcolumntype{Z}{@{}>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\else           \newcolumntype{Z}{c|} \fi
+%%\else         \newcolumntype{Z}{>{}c<{}|} \fi   % the same
+
+%% \newcolumntype{Z}{
+%%   >{{\ifHIDDENCOLUMN \setbox0=\hbox\bgroup \fi}}c
+%%   <{{\ifHIDDENCOLUMN \egroup \fi}}
+%%   {\ifHIDDENCOLUMN @{} \else | \fi}}   % error with this condition
+
+\begin{tabular}{|c|Zc|}   % identical tables
+  \hline \multicolumn{3}{|c|}{he4p@13.5, ver: 2024-08-08, 3} \\ \hline
+  \multicolumn{1}{|c|}{Id} &
+  \multicolumnHidden &
+  \multicolumn{1}{c|}{Reaction channel column} \\ \hline
+  1234 & hidden text & more text \\ \hline
+  4321 & hidden hiddent text & more more more text \\ \hline
+\end{tabular}
+
+\HIDDENCOLUMNfalse
+\ifHIDDENCOLUMN \newcolumntype{Z}{@{}>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\else           \newcolumntype{Z}{c|} \fi
+%%\else         \newcolumntype{Z}{>{}c<{}|} \fi   % the same
+
+\begin{tabular}{|c|Zc|}   % identical tables
+  \hline \multicolumn{3}{|c|}{he4p@13.5, ver: 2024-08-08, 4} \\ \hline
+  \multicolumn{1}{|c|}{Id} &
+  \multicolumnHidden &
+  \multicolumn{1}{c|}{Reaction channel column} \\ \hline
+  1234 & hidden text & more text \\ \hline
+  4321 & hidden hiddent text & more more more text \\ \hline
 \end{tabular}
 
 \end{document}
