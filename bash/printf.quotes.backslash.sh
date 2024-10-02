@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 2024-09-18
+# 2024-10-02
 
 # https://www.gnu.org/software/bash/manual/bash.html#Quoting
 # https://stackoverflow.com/q/6697753
@@ -140,4 +140,36 @@ printf "$%dn %s %d%s$ %s\n" 1 "\\" 2 '\pi^{0}' "\\\\" # prefer 2
 printf "\$1n \\\ 2\\\pi^{0}$ \\\\\\\\\n" # OK, but serious ?!
 # shellcheck disable=SC2016
 printf '$1n \\ 2\\pi^{0}$ \\\\\n'        # OK, maybe
+printf "\n"
+
+printf "=== backslash and sed ===\n"
+# https://www.shellcheck.net/wiki/SC2001 (not in these cases, in real case 'sed -i')
+VAR_SINGLE_1='\tab'
+VAR_DOUBLE_1="\tab"
+sed "s/replace/$VAR_SINGLE_1/" <<< "1)___replace___" # wrong
+sed "s/replace/$VAR_DOUBLE_1/" <<< "2)___replace___" # wrong
+VAR_SINGLE_1='\\tab'
+VAR_DOUBLE_1="\\tab"
+sed "s/replace/$VAR_SINGLE_1/" <<< "3)___replace___" # OK
+sed "s/replace/$VAR_DOUBLE_1/" <<< "4)___replace___" # wrong
+VAR_SINGLE_1='\tab'
+VAR_DOUBLE_1="\tab"
+# Shell Parameter Expansion ('\' replaced by '\\')
+sed "s/replace/${VAR_SINGLE_1//\\/\\\\}/" <<< "5)___replace___" # OK
+sed "s/replace/${VAR_DOUBLE_1//\\/\\\\}/" <<< "6)___replace___" # OK
+
+# particles="{}^{3}\!H\!e\, p\,"
+# impulse="13.5"
+# title="$\mathbf{$particles}$ \textbf{at $impulse GeV\!/c}"
+# https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
+# ${parameter//pattern/string} => all matches of 'pattern' are replaced with 'string'
+# ${parameter/pattern/string}  => only the first match is replaced
+# printf "title (original): %s\n" "$title"
+# printf "title (expanded): %s\n" "${title//\\/\\\\}" # '\' replaced by '\\'
+# sed -i "s|ReplaceTableTitle|${title//\\/\\\\}|" "$F_FINAL"
+
+printf "sed delimiters\n"
+# sed "s/replace/GeV/c/" <<< "___replace___" # error
+sed "s/replace/GeV\/c/" <<< "___replace___" # OK
+sed "s|replace|GeV/c|"  <<< "___replace___" # OK
 printf "\n"
