@@ -20,3 +20,6 @@ jeden z piatich diskov (vsetkych 5 diskov absolutne identickych)
 # 2023-03-27
 partitions_a8c05b01_KODAK.microSD.128GB_2023-03-27.txt   default od vyroby naformatovana SD karta
 partitions_a8c05b01_KODAK.microSD.64GB_2023-03-27.txt
+
+# 2024-01-04
+partitions_a8c06700_Samsung.SSD.960.EVO.250GB_2025-01-04   # NUC pre Joza do Nemecka, disk absolutne noy, bez partition table, W11
