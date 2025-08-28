@@ -1,9 +1,9 @@
-# 2025-08-27
+# 2025-08-28
 
 CTP counter (scaler) names from file
 https://github.com/AliceO2Group/AliceO2/blob/dev/DataFormats/Detectors/CTP/src/Scalers.cxx
 Variable 'std::vector<std::string> CTPRunScalers::scalerNames = {};' (1085 values)
-Be careful when indexing, starts from 0 or from 1 (mismatch) ?!
+Be careful when indexing. Mismatch with indexing start (from 0 or from 1).
 
 ================================================================================
 [   0] "runn0"  [  16] "ltg1_ORB"      [  48] "ltg2_ORB"      [  80] "ltg3_ORB"
