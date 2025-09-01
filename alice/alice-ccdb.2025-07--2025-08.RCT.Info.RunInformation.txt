@@ -1,0 +1,5089 @@
+# 2025-09-01
+# $ curl http://alice-ccdb.cern.ch/browse/RCT/Info/RunInformation > alice-ccdb.RCT.Info.RunInformation.$(date +%F)
+# manually trimmed from July to August 2025 only (by 'Created' timestamp)
+
+Listing content of RCT/Info/RunInformation
+
+ID: ec490e79-86d1-11f0-823d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565804 - 565805 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565805 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756689661898 (Mon Sep 01 03:21:01 CEST 2025)
+Last modified: 1756700036844 (Mon Sep 01 06:13:56 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756689712087
+  ETF = 1756699979614
+  SOR = 1756689660371
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756700036383
+  SOX = 1756689712120
+  partName = send
+  EOX = 1756699979730
+
+
+ID: 40f05518-86aa-11f0-823d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565798 - 565799 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565799 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756672624053 (Sun Aug 31 22:37:04 CEST 2025)
+Last modified: 1756672961899 (Sun Aug 31 22:42:41 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1756672622695
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756672961390
+  SOX = 1756672646211
+  partName = send
+  EOX = 1756672932717
+
+
+ID: 4cb5bfe4-8665-11f0-823c-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565792 - 565793 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565793 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756643008528 (Sun Aug 31 14:23:28 CEST 2025)
+Last modified: 1756659297147 (Sun Aug 31 18:54:57 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756643058630
+  ETF = 1756659225121
+  SOR = 1756643007017
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756659296685
+  SOX = 1756643058625
+  partName = send
+  EOX = 1756659225300
+
+
+ID: 7a747bd4-865d-11f0-823c-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565790 - 565791 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565791 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756639649302 (Sun Aug 31 13:27:29 CEST 2025)
+Last modified: 1756642734668 (Sun Aug 31 14:18:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756639679191
+  ETF = 1756642558000
+  SOR = 1756639647593
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756642734226
+  SOX = 1756639679192
+  partName = send
+  EOX = 1756642558085
+
+
+ID: 18daa32d-8632-11f0-823c-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565788 - 565789 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565789 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756621017195 (Sun Aug 31 08:16:57 CEST 2025)
+Last modified: 1756638689678 (Sun Aug 31 13:11:29 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756621068101
+  ETF = 1756638613493
+  SOR = 1756621015652
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756638689178
+  SOX = 1756621068137
+  partName = send
+  EOX = 1756638613577
+
+
+ID: d95c4f5c-859b-11f0-823a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565777 - 565778 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565778 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756556486161 (Sat Aug 30 14:21:26 CEST 2025)
+Last modified: 1756604269876 (Sun Aug 31 03:37:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756556535798
+  ETF = 1756604182109
+  SOR = 1756556484638
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756604269402
+  SOX = 1756556535833
+  partName = send
+  EOX = 1756604182134
+
+
+ID: 6f83b25d-8522-11f0-823a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565766 - 565767 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565767 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756504339476 (Fri Aug 29 23:52:19 CEST 2025)
+Last modified: 1756549769141 (Sat Aug 30 12:29:29 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756504389726
+  ETF = 1756549692929
+  SOR = 1756504337963
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756549768644
+  SOX = 1756504389759
+  partName = send
+  EOX = 1756549692977
+
+
+ID: f90d0ed7-84d0-11f0-823a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565755 - 565756 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565756 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756469351493 (Fri Aug 29 14:09:11 CEST 2025)
+Last modified: 1756491856922 (Fri Aug 29 20:24:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756469403015
+  ETF = 1756491679810
+  SOR = 1756469349953
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756491856460
+  SOX = 1756469403048
+  partName = send
+  EOX = 1756491679884
+
+
+ID: 04a5f317-84be-11f0-823a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565749 - 565750 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565750 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756461210512 (Fri Aug 29 11:53:30 CEST 2025)
+Last modified: 1756461282597 (Fri Aug 29 11:54:42 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756461222669
+  ETF = 1756461254153
+  SOR = 1756461209146
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756461282129
+  SOX = 1756461222643
+  partName = send
+  EOX = 1756461254433
+
+
+ID: e6d3fca6-8450-11f0-8239-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565741 - 565742 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565742 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756414345338 (Thu Aug 28 22:52:25 CEST 2025)
+Last modified: 1756460120640 (Fri Aug 29 11:35:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756414395466
+  ETF = 1756459943350
+  SOR = 1756414343781
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756460120187
+  SOX = 1756414395497
+  partName = send
+  EOX = 1756459943426
+
+
+ID: a842daf9-844e-11f0-8239-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565739 - 565740 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565740 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756413381375 (Thu Aug 28 22:36:21 CEST 2025)
+Last modified: 1756413481689 (Thu Aug 28 22:38:01 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1756413379822
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756413481221
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 8a2c3c0f-844d-11f0-8239-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565738 - 565739 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565739 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756412901398 (Thu Aug 28 22:28:21 CEST 2025)
+Last modified: 1756413002022 (Thu Aug 28 22:30:02 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1756412899832
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756413001541
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: e3cf1467-8429-11f0-8239-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565728 - 565729 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565729 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756397589901 (Thu Aug 28 18:13:09 CEST 2025)
+Last modified: 1756404482512 (Thu Aug 28 20:08:02 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756397639951
+  ETF = 1756404404964
+  SOR = 1756397588316
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756404482048
+  SOX = 1756397639985
+  partName = send
+  EOX = 1756404405064
+
+
+ID: 3dfb460d-838f-11f0-8235-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565717 - 565718 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565718 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756331169192 (Wed Aug 27 23:46:09 CEST 2025)
+Last modified: 1756384985131 (Thu Aug 28 14:43:05 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756331219359
+  ETF = 1756384808413
+  SOR = 1756331167611
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756384984671
+  SOX = 1756331219394
+  partName = send
+  EOX = 1756384808431
+
+
+ID: 928ce1b1-8383-11f0-8235-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565712 - 565713 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565713 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756326157114 (Wed Aug 27 22:22:37 CEST 2025)
+Last modified: 1756326362441 (Wed Aug 27 22:26:02 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756326169229
+  ETF = 1756326334008
+  SOR = 1756326155745
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756326361975
+  SOX = 1756326169338
+  partName = send
+  EOX = 1756326334432
+
+
+ID: 25695f2a-8343-11f0-8234-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565702 - 565703 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565703 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756298486219 (Wed Aug 27 14:41:26 CEST 2025)
+Last modified: 1756317979320 (Wed Aug 27 20:06:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756298536325
+  ETF = 1756317913051
+  SOR = 1756298484674
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756317978820
+  SOX = 1756298536319
+  partName = send
+  EOX = 1756317913146
+
+
+ID: d7515b73-831f-11f0-822f-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565701 - 565702 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565702 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756283322814 (Wed Aug 27 10:28:42 CEST 2025)
+Last modified: 1756297425730 (Wed Aug 27 14:23:45 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756283372752
+  ETF = 1756297248238
+  SOR = 1756283321262
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756297425276
+  SOX = 1756283372772
+  partName = send
+  EOX = 1756297248308
+
+
+ID: 0560a5e6-830f-11f0-822c-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565700 - 565701 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565701 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756276098645 (Wed Aug 27 08:28:18 CEST 2025)
+Last modified: 1756281380586 (Wed Aug 27 09:56:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756276148623
+  ETF = 1756281203265
+  SOR = 1756276097122
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756281380149
+  SOX = 1756276148656
+  partName = send
+  EOX = 1756281203634
+
+
+ID: bc1cb816-82d3-11f0-822b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565684 - 565685 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565685 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756250635419 (Wed Aug 27 01:23:55 CEST 2025)
+Last modified: 1756729672307 (Mon Sep 01 14:27:52 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  UpdatedBy = shahoian
+  ObjectType = char
+  Comment = old ETF 1756255989002
+  STF = 1756250685226
+  ETF = 1756257297942
+  SOR = 1756250633906
+  UpdatedFrom = 128.141.224.245
+  EOR = 1756257365097
+  JIRA = O2-6277
+  SOX = 1756250685239
+  partName = send
+  EOX = 1756257298040
+
+
+ID: c8b327eb-82c6-11f0-822b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565681 - 565682 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565682 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756245073080 (Tue Aug 26 23:51:13 CEST 2025)
+Last modified: 1756729681584 (Mon Sep 01 14:28:01 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  UpdatedBy = shahoian
+  ObjectType = char
+  Comment = old ETF 1756249181518
+  STF = 1756245102947
+  ETF = 1756250266323
+  SOR = 1756245071564
+  UpdatedFrom = 128.141.224.245
+  EOR = 1756250342107
+  JIRA = O2-6277
+  SOX = 1756245102969
+  partName = send
+  EOX = 1756250266424
+
+
+ID: 64d580b9-82b6-11f0-822a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565679 - 565680 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565680 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756238033585 (Tue Aug 26 21:53:53 CEST 2025)
+Last modified: 1756729692228 (Mon Sep 01 14:28:12 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  UpdatedBy = shahoian
+  ObjectType = char
+  Comment = old ETF 1756243301007
+  STF = 1756238083629
+  ETF = 1756244589468
+  SOR = 1756238032023
+  UpdatedFrom = 128.141.224.245
+  EOR = 1756244665438
+  JIRA = O2-6277
+  SOX = 1756238083664
+  partName = send
+  EOX = 1756244589584
+
+
+ID: 5bb87dcd-8234-11f0-8223-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565670 - 565671 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565671 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756182183721 (Tue Aug 26 06:23:03 CEST 2025)
+Last modified: 1756729705764 (Mon Sep 01 14:28:25 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  UpdatedBy = shahoian
+  ObjectType = char
+  Comment = old ETF 1756207908464
+  STF = 1756182233642
+  ETF = 1756209247513
+  SOR = 1756182182163
+  UpdatedFrom = 128.141.224.245
+  EOR = 1756209322507
+  JIRA = O2-6277
+  SOX = 1756182233676
+  partName = send
+  EOX = 1756209247600
+
+
+ID: bd545b3e-8214-11f0-821f-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565660 - 565661 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565661 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756168603586 (Tue Aug 26 02:36:43 CEST 2025)
+Last modified: 1756729716278 (Mon Sep 01 14:28:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  UpdatedBy = shahoian
+  ObjectType = char
+  Comment = old ETF 1756173646980
+  STF = 1756168653926
+  ETF = 1756174938175
+  SOR = 1756168602013
+  UpdatedFrom = 128.141.224.245
+  EOR = 1756175004864
+  JIRA = O2-6277
+  SOX = 1756168653958
+  partName = send
+  EOX = 1756174938386
+
+
+ID: 9ea5ebbd-81cf-11f0-8219-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565646 - 565647 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565647 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756138916837 (Mon Aug 25 18:21:56 CEST 2025)
+Last modified: 1756140081562 (Mon Aug 25 18:41:21 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1756138915488
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756140081090
+  SOX = 1756138951458
+  partName = send
+  EOX = 1756140052392
+
+
+ID: 4aface26-81ce-11f0-8219-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565644 - 565645 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565645 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756138346968 (Mon Aug 25 18:12:26 CEST 2025)
+Last modified: 1756141318779 (Mon Aug 25 19:01:58 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1756138345528
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756141318301
+  SOX = 1756138376830
+  partName = send
+  EOX = 1756141242733
+
+
+ID: 2f5311aa-81cc-11f0-8219-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565643 - 565644 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565644 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756137441577 (Mon Aug 25 17:57:21 CEST 2025)
+Last modified: 1756137544726 (Mon Aug 25 17:59:04 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756137454292
+  ETF = 1756137516167
+  SOR = 1756137440198
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756137544254
+  SOX = 1756137454435
+  partName = send
+  EOX = 1756137516659
+
+
+ID: 35c74942-818b-11f0-8217-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565632 - 565633 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565633 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756109535117 (Mon Aug 25 10:12:15 CEST 2025)
+Last modified: 1756127741613 (Mon Aug 25 15:15:41 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756109585293
+  ETF = 1756127565021
+  SOR = 1756109533588
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756127741167
+  SOX = 1756109585286
+  partName = send
+  EOX = 1756127565065
+
+
+ID: df4756d7-8186-11f0-8217-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565631 - 565632 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565632 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756107672008 (Mon Aug 25 09:41:12 CEST 2025)
+Last modified: 1756107771461 (Mon Aug 25 09:42:51 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756107684096
+  ETF = 1756107743151
+  SOR = 1756107670637
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756107770997
+  SOX = 1756107684097
+  partName = send
+  EOX = 1756107743465
+
+
+ID: d8c5db97-8180-11f0-8216-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565629 - 565630 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565630 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756105084112 (Mon Aug 25 08:58:04 CEST 2025)
+Last modified: 1756109178794 (Mon Aug 25 10:06:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756105134060
+  ETF = 1756109104220
+  SOR = 1756105082614
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756109178329
+  SOX = 1756105134063
+  partName = send
+  EOX = 1756109104290
+
+
+ID: e1b58601-8155-11f0-8215-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565628 - 565629 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565629 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756086630745 (Mon Aug 25 03:50:30 CEST 2025)
+Last modified: 1756104803775 (Mon Aug 25 08:53:23 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756086681077
+  ETF = 1756104626601
+  SOR = 1756086629232
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756104803319
+  SOX = 1756086681114
+  partName = send
+  EOX = 1756104626708
+
+
+ID: c7c5f483-8125-11f0-8215-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565617 - 565618 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565618 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756065971389 (Sun Aug 24 22:06:11 CEST 2025)
+Last modified: 1756079731304 (Mon Aug 25 01:55:31 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756066001495
+  ETF = 1756079622276
+  SOR = 1756065969884
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756079730852
+  SOX = 1756066001471
+  partName = send
+  EOX = 1756079622506
+
+
+ID: fa9381bd-80f8-11f0-8215-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565616 - 565617 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565617 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756046729270 (Sun Aug 24 16:45:29 CEST 2025)
+Last modified: 1756065013580 (Sun Aug 24 21:50:13 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756046779099
+  ETF = 1756064979969
+  SOR = 1756046727731
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756065013084
+  SOX = 1756046779110
+  partName = send
+  EOX = 1756064980032
+
+
+ID: 6dc97906-80ed-11f0-8214-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565614 - 565615 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565615 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756041768601 (Sun Aug 24 15:22:48 CEST 2025)
+Last modified: 1756045998848 (Sun Aug 24 16:33:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756041798471
+  ETF = 1756045964402
+  SOR = 1756041766887
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756045998345
+  SOX = 1756041798492
+  partName = send
+  EOX = 1756045965291
+
+
+ID: d46731b5-80e7-11f0-8214-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565613 - 565614 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565614 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756039363781 (Sun Aug 24 14:42:43 CEST 2025)
+Last modified: 1756041358802 (Sun Aug 24 15:15:58 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756039396209
+  ETF = 1756041278943
+  SOR = 1756039362251
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756041358305
+  SOX = 1756039396233
+  partName = send
+  EOX = 1756041279051
+
+
+ID: bf13e203-80da-11f0-8214-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565612 - 565613 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565613 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1756033744546 (Sun Aug 24 13:09:04 CEST 2025)
+Last modified: 1756039071158 (Sun Aug 24 14:37:51 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1756033794258
+  ETF = 1756038994483
+  SOR = 1756033742954
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756039070652
+  SOX = 1756033794293
+  partName = send
+  EOX = 1756038994960
+
+
+ID: 8334fa3c-8064-11f0-8214-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565600 - 565601 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565601 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755982963485 (Sat Aug 23 23:02:43 CEST 2025)
+Last modified: 1756016630299 (Sun Aug 24 08:23:50 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755983013713
+  ETF = 1756016554378
+  SOR = 1755982961936
+  UpdatedFrom = 10.161.69.39
+  EOR = 1756016629799
+  SOX = 1755983013715
+  partName = send
+  EOX = 1756016554397
+
+
+ID: c52534e9-803b-11f0-8214-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565598 - 565599 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565599 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755965464746 (Sat Aug 23 18:11:04 CEST 2025)
+Last modified: 1755982233813 (Sat Aug 23 22:50:33 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755965514542
+  ETF = 1755982108768
+  SOR = 1755965463214
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755982233320
+  SOX = 1755965514578
+  partName = send
+  EOX = 1755982109110
+
+
+ID: 59583e68-7fd9-11f0-8213-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565586 - 565587 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565587 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755923193207 (Sat Aug 23 06:26:33 CEST 2025)
+Last modified: 1755957761191 (Sat Aug 23 16:02:41 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755923242993
+  ETF = 1755957691044
+  SOR = 1755923191696
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755957760700
+  SOX = 1755923242999
+  partName = send
+  EOX = 1755957691127
+
+
+ID: d8b3ced6-7fb1-11f0-8213-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565585 - 565586 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565586 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755906227008 (Sat Aug 23 01:43:47 CEST 2025)
+Last modified: 1755922548184 (Sat Aug 23 06:15:48 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755906277000
+  ETF = 1755922514569
+  SOR = 1755906225410
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755922547702
+  SOX = 1755906277035
+  partName = send
+  EOX = 1755922514652
+
+
+ID: 8c613386-7f68-11f0-8213-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565574 - 565575 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565575 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755874745699 (Fri Aug 22 16:59:05 CEST 2025)
+Last modified: 1755899298997 (Fri Aug 22 23:48:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755874795960
+  ETF = 1755899231881
+  SOR = 1755874744152
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755899298498
+  SOX = 1755874795950
+  partName = send
+  EOX = 1755899231940
+
+
+ID: 5cc2d004-7f61-11f0-8213-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565573 - 565574 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565574 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755871659331 (Fri Aug 22 16:07:39 CEST 2025)
+Last modified: 1755874311958 (Fri Aug 22 16:51:51 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755871709446
+  ETF = 1755874134452
+  SOR = 1755871657791
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755874311497
+  SOX = 1755871709442
+  partName = send
+  EOX = 1755874134546
+
+
+ID: 08e362ce-7f58-11f0-8212-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565571 - 565572 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565572 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755867653145 (Fri Aug 22 15:00:53 CEST 2025)
+Last modified: 1755871402479 (Fri Aug 22 16:03:22 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755867683020
+  ETF = 1755871326407
+  SOR = 1755867651632
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755871401993
+  SOX = 1755867683024
+  partName = send
+  EOX = 1755871326490
+
+
+ID: d491b5a7-7f2f-11f0-810d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565569 - 565570 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565570 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755850385499 (Fri Aug 22 10:13:05 CEST 2025)
+Last modified: 1755867261748 (Fri Aug 22 14:54:21 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755850435418
+  ETF = 1755867186248
+  SOR = 1755850383967
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755867261253
+  SOX = 1755850435451
+  partName = send
+  EOX = 1755867186337
+
+
+ID: c684974d-7ec2-11f0-810c-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565555 - 565556 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565556 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755803546781 (Thu Aug 21 21:12:26 CEST 2025)
+Last modified: 1755820740236 (Fri Aug 22 01:59:00 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755803596771
+  ETF = 1755820671335
+  SOR = 1755803545261
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755820739754
+  SOX = 1755803596805
+  partName = send
+  EOX = 1755820671488
+
+
+ID: ec7f6e79-7e7e-11f0-8100-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565541 - 565542 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565542 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755774404723 (Thu Aug 21 13:06:44 CEST 2025)
+Last modified: 1755787472169 (Thu Aug 21 16:44:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755774454787
+  ETF = 1755787406155
+  SOR = 1755774403170
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755787471683
+  SOX = 1755774454823
+  partName = send
+  EOX = 1755787406310
+
+
+ID: 4b35d50e-7e15-11f0-80fc-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565527 - 565528 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565528 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755729036971 (Thu Aug 21 00:30:36 CEST 2025)
+Last modified: 1755734676482 (Thu Aug 21 02:04:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755729086907
+  ETF = 1755734609762
+  SOR = 1755729035466
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755734675984
+  SOX = 1755729086942
+  partName = send
+  EOX = 1755734609897
+
+
+ID: ceec473b-7dda-11f0-80fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565522 - 565523 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565523 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755703917641 (Wed Aug 20 17:31:57 CEST 2025)
+Last modified: 1755708077231 (Wed Aug 20 18:41:17 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755703916133
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755708076753
+  SOX = 1755703967606
+  partName = send
+  EOX = 1755708002228
+
+
+ID: 9c961d25-7dd5-11f0-80fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565521 - 565522 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565522 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755701685707 (Wed Aug 20 16:54:45 CEST 2025)
+Last modified: 1755703578422 (Wed Aug 20 17:26:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755701684208
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755703577919
+  SOX = 1755701735936
+  partName = send
+  EOX = 1755703503336
+
+
+ID: 439b0a92-7dcf-11f0-80fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565517 - 565518 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565518 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755698959442 (Wed Aug 20 16:09:19 CEST 2025)
+Last modified: 1755701289896 (Wed Aug 20 16:48:09 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755698957975
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755701289443
+  SOX = 1755699009579
+  partName = send
+  EOX = 1755701214866
+
+
+ID: aa5261c3-7dcc-11f0-80fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565515 - 565516 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565516 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755697843281 (Wed Aug 20 15:50:43 CEST 2025)
+Last modified: 1755698670513 (Wed Aug 20 16:04:30 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755697841833
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755698670024
+  SOX = 1755697893084
+  partName = send
+  EOX = 1755698595717
+
+
+ID: ec818a0e-7dc8-11f0-80fa-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565509 - 565510 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565510 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755696236332 (Wed Aug 20 15:23:56 CEST 2025)
+Last modified: 1755697574488 (Wed Aug 20 15:46:14 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755696234865
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755697574014
+  SOX = 1755696286336
+  partName = send
+  EOX = 1755697499784
+
+
+ID: bc2828dc-7dbe-11f0-80fa-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565500 - 565501 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565501 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755691860249 (Wed Aug 20 14:11:00 CEST 2025)
+Last modified: 1755695765499 (Wed Aug 20 15:16:05 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755691858748
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755695765012
+  SOX = 1755691909787
+  partName = send
+  EOX = 1755695690538
+
+
+ID: c6d4c8b5-7daf-11f0-80fa-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565499 - 565500 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565500 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755685435706 (Wed Aug 20 12:23:55 CEST 2025)
+Last modified: 1755691530519 (Wed Aug 20 14:05:30 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755685434213
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755691530024
+  SOX = 1755685485926
+  partName = send
+  EOX = 1755691455401
+
+
+ID: ac334ac0-7dac-11f0-80fa-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565498 - 565499 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565499 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755684102537 (Wed Aug 20 12:01:42 CEST 2025)
+Last modified: 1755685166647 (Wed Aug 20 12:19:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755684101064
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755685166143
+  SOX = 1755684152292
+  partName = send
+  EOX = 1755685091542
+
+
+ID: f057c4b0-7da9-11f0-80fa-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565497 - 565498 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565498 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755682928371 (Wed Aug 20 11:42:08 CEST 2025)
+Last modified: 1755683700552 (Wed Aug 20 11:55:00 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755682926863
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755683700054
+  SOX = 1755682978180
+  partName = send
+  EOX = 1755683625523
+
+
+ID: 26b317a6-7da1-11f0-80fa-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565496 - 565497 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565497 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755679154096 (Wed Aug 20 10:39:14 CEST 2025)
+Last modified: 1755680381918 (Wed Aug 20 10:59:41 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755679152657
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755680381444
+  SOX = 1755679183751
+  partName = send
+  EOX = 1755680307085
+
+
+ID: b3c453c3-7d90-11f0-80f9-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565488 - 565489 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565489 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755672089323 (Wed Aug 20 08:41:29 CEST 2025)
+Last modified: 1755675349201 (Wed Aug 20 09:35:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755672139121
+  ETF = 1755675273846
+  SOR = 1755672087808
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755675348722
+  SOX = 1755672139154
+  partName = send
+  EOX = 1755675273960
+
+
+ID: 88e54164-7cff-11f0-80f6-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565476 - 565477 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565477 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755609740371 (Tue Aug 19 15:22:20 CEST 2025)
+Last modified: 1755658008483 (Wed Aug 20 04:46:48 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755609790165
+  ETF = 1755657910881
+  SOR = 1755609738860
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755658008023
+  SOX = 1755609790199
+  partName = send
+  EOX = 1755657910911
+
+
+ID: 50f17730-7c69-11f0-80ef-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565460 - 565461 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565461 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755545221989 (Mon Aug 18 21:27:01 CEST 2025)
+Last modified: 1755593378495 (Tue Aug 19 10:49:38 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755545272203
+  ETF = 1755593311441
+  SOR = 1755545220452
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755593378000
+  SOX = 1755545272239
+  partName = send
+  EOX = 1755593311655
+
+
+ID: 3bb38544-7c4d-11f0-80ec-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565451 - 565452 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565452 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755533160443 (Mon Aug 18 18:06:00 CEST 2025)
+Last modified: 1755533907997 (Mon Aug 18 18:18:27 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755533158936
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755533907510
+  SOX = 1755533210190
+  partName = send
+  EOX = 1755533833020
+
+
+ID: 75418c99-7c41-11f0-801a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565447 - 565448 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565448 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755528103043 (Mon Aug 18 16:41:43 CEST 2025)
+Last modified: 1755528153086 (Mon Aug 18 16:42:33 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755528101662
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755528152591
+  SOX = 1755528107530
+  partName = send
+  EOX = 1755528147488
+
+
+ID: 10901c57-7c1e-11f0-801a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565444 - 565445 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565445 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755512901722 (Mon Aug 18 12:28:21 CEST 2025)
+Last modified: 1755517024177 (Mon Aug 18 13:37:04 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755512900253
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755517023712
+  SOX = 1755512951693
+  partName = send
+  EOX = 1755516961754
+
+
+ID: 54434248-7c13-11f0-8019-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565437 - 565438 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565438 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755508290840 (Mon Aug 18 11:11:30 CEST 2025)
+Last modified: 1755508683428 (Mon Aug 18 11:18:03 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755508340681
+  ETF = 1755508617321
+  SOR = 1755508289325
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755508682965
+  SOX = 1755508340686
+  partName = send
+  EOX = 1755508617897
+
+
+ID: 9bb38ebe-7c0f-11f0-8019-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565436 - 565437 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565437 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755506692707 (Mon Aug 18 10:44:52 CEST 2025)
+Last modified: 1755507109633 (Mon Aug 18 10:51:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755506714568
+  ETF = 1755507066834
+  SOR = 1755506691343
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755507109172
+  SOX = 1755506714576
+  partName = send
+  EOX = 1755507067264
+
+
+ID: bb8a3cdc-7c0c-11f0-8019-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565435 - 565436 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565436 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755505457633 (Mon Aug 18 10:24:17 CEST 2025)
+Last modified: 1755508040359 (Mon Aug 18 11:07:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755505507857
+  ETF = 1755507860941
+  SOR = 1755505456121
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755508039917
+  SOX = 1755505507867
+  partName = send
+  EOX = 1755507863427
+
+
+ID: fd6c3b1e-7c0a-11f0-8019-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565434 - 565435 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565435 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755504709173 (Mon Aug 18 10:11:49 CEST 2025)
+Last modified: 1755504786442 (Mon Aug 18 10:13:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755504707644
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755504785976
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: deaeefd1-7beb-11f0-8017-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565433 - 565434 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565434 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755491343202 (Mon Aug 18 06:29:03 CEST 2025)
+Last modified: 1755504452042 (Mon Aug 18 10:07:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755491392854
+  ETF = 1755504383833
+  SOR = 1755491341688
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755504451570
+  SOX = 1755491392889
+  partName = send
+  EOX = 1755504386370
+
+
+ID: 013a0ec6-7b6c-11f0-8011-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565422 - 565423 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565423 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755436425575 (Sun Aug 17 15:13:45 CEST 2025)
+Last modified: 1755483816207 (Mon Aug 18 04:23:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755436475489
+  ETF = 1755483749338
+  SOR = 1755436424050
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755483815711
+  SOX = 1755436475524
+  partName = send
+  EOX = 1755483750376
+
+
+ID: 922eb85d-7ac0-11f0-8007-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565411 - 565412 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565412 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755362795333 (Sat Aug 16 18:46:35 CEST 2025)
+Last modified: 1755427626009 (Sun Aug 17 12:47:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755362845371
+  ETF = 1755427537269
+  SOR = 1755362793818
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755427625556
+  SOX = 1755362845405
+  partName = send
+  EOX = 1755427538264
+
+
+ID: 53f5c052-7a47-11f0-8004-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565399 - 565400 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565400 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755310721836 (Sat Aug 16 04:18:41 CEST 2025)
+Last modified: 1755336116023 (Sat Aug 16 11:21:56 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755310771747
+  ETF = 1755336049800
+  SOR = 1755310720310
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755336115535
+  SOX = 1755310771734
+  partName = send
+  EOX = 1755336050537
+
+
+ID: c1b89e45-7a07-11f0-887a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565398 - 565399 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565399 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755283418194 (Fri Aug 15 20:43:38 CEST 2025)
+Last modified: 1755310038181 (Sat Aug 16 04:07:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755283468091
+  ETF = 1755309865441
+  SOR = 1755283416660
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755310037726
+  SOX = 1755283468127
+  partName = send
+  EOX = 1755309861027
+
+
+ID: 28ac006a-79e0-11f0-8878-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565387 - 565388 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565388 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755266411048 (Fri Aug 15 16:00:11 CEST 2025)
+Last modified: 1755269296566 (Fri Aug 15 16:48:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755266461229
+  ETF = 1755269229843
+  SOR = 1755266409529
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755269296096
+  SOX = 1755266461264
+  partName = send
+  EOX = 1755269230953
+
+
+ID: f3c93e90-79ba-11f0-8878-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565381 - 565382 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565382 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755250430941 (Fri Aug 15 11:33:50 CEST 2025)
+Last modified: 1755257582788 (Fri Aug 15 13:33:02 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755250429483
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755257582300
+  SOX = 1755250481305
+  partName = send
+  EOX = 1755257518994
+
+
+ID: c6e72d72-79b6-11f0-8876-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565379 - 565380 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565380 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755248637653 (Fri Aug 15 11:03:57 CEST 2025)
+Last modified: 1755249256403 (Fri Aug 15 11:14:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755248636307
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755249255948
+  SOX = 1755248659597
+  partName = send
+  EOX = 1755249237418
+
+
+ID: 0fb9d437-797a-11f0-8876-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565370 - 565371 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565371 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755222560529 (Fri Aug 15 03:49:20 CEST 2025)
+Last modified: 1755238679857 (Fri Aug 15 08:17:59 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755222610261
+  ETF = 1755238613117
+  SOR = 1755222559002
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755238679401
+  SOX = 1755222610294
+  partName = send
+  EOX = 1755238614252
+
+
+ID: 23fa504e-793e-11f0-8874-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565358 - 565359 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565359 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755196824702 (Thu Aug 14 20:40:24 CEST 2025)
+Last modified: 1755196998121 (Thu Aug 14 20:43:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755196874977
+  ETF = 1755196931866
+  SOR = 1755196823133
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755196997643
+  SOX = 1755196875010
+  partName = send
+  EOX = 1755196932571
+
+
+ID: 25215850-792b-11f0-8874-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565347 - 565348 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565348 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755188666198 (Thu Aug 14 18:24:26 CEST 2025)
+Last modified: 1755190129356 (Thu Aug 14 18:48:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755188716637
+  ETF = 1755190042387
+  SOR = 1755188664621
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755190128910
+  SOX = 1755188716674
+  partName = send
+  EOX = 1755190043669
+
+
+ID: e68f496f-78e7-11f0-8872-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565333 - 565334 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565334 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755159784941 (Thu Aug 14 10:23:04 CEST 2025)
+Last modified: 1755174241898 (Thu Aug 14 14:24:01 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755159835202
+  ETF = 1755174175176
+  SOR = 1755159783395
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755174241416
+  SOX = 1755159835236
+  partName = send
+  EOX = 1755174176191
+
+
+ID: 890f1c76-782f-11f0-8869-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565320 - 565321 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565321 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755080600675 (Wed Aug 13 12:23:20 CEST 2025)
+Last modified: 1755126393109 (Thu Aug 14 01:06:33 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755080630960
+  ETF = 1755126214960
+  SOR = 1755080599187
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755126392654
+  SOX = 1755080630937
+  partName = send
+  EOX = 1755126216344
+
+
+ID: 3d99d64d-782c-11f0-8869-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565319 - 565320 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565320 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755079185587 (Wed Aug 13 11:59:45 CEST 2025)
+Last modified: 1755080265158 (Wed Aug 13 12:17:45 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755079215599
+  ETF = 1755080231514
+  SOR = 1755079184085
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755080264703
+  SOX = 1755079215579
+  partName = send
+  EOX = 1755080231658
+
+
+ID: c0996d11-77e6-11f0-8868-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565318 - 565319 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565319 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755049340594 (Wed Aug 13 03:42:20 CEST 2025)
+Last modified: 1755078703136 (Wed Aug 13 11:51:43 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755049390594
+  ETF = 1755078635122
+  SOR = 1755049339038
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755078702667
+  SOX = 1755049390629
+  partName = send
+  EOX = 1755078637445
+
+
+ID: 7b369f00-7786-11f0-8862-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565307 - 565308 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565308 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755007992498 (Tue Aug 12 16:13:12 CEST 2025)
+Last modified: 1755040559921 (Wed Aug 13 01:15:59 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1755008042444
+  ETF = 1755040472217
+  SOR = 1755007990970
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755040559462
+  SOX = 1755008042450
+  partName = send
+  EOX = 1755040473246
+
+
+ID: 65959f8a-7785-11f0-8862-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565306 - 565307 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565307 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1755007526714 (Tue Aug 12 16:05:26 CEST 2025)
+Last modified: 1755007539912 (Tue Aug 12 16:05:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1755007525177
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755007539437
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 342fa0d8-775e-11f0-8862-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565305 - 565306 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565306 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754990693465 (Tue Aug 12 11:24:53 CEST 2025)
+Last modified: 1755005775408 (Tue Aug 12 15:36:15 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754990743170
+  ETF = 1755005646699
+  SOR = 1754990691914
+  UpdatedFrom = 10.161.69.39
+  EOR = 1755005774926
+  SOX = 1754990743206
+  partName = send
+  EOX = 1755005650716
+
+
+ID: d9e2ebe7-76c7-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565296 - 565297 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565297 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754926117458 (Mon Aug 11 17:28:37 CEST 2025)
+Last modified: 1754982266791 (Tue Aug 12 09:04:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754926167188
+  ETF = 1754982179010
+  SOR = 1754926115915
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754982266327
+  SOX = 1754926167224
+  partName = send
+  EOX = 1754982180022
+
+
+ID: 75db8058-76b5-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565290 - 565291 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565291 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754918218696 (Mon Aug 11 15:16:58 CEST 2025)
+Last modified: 1754918952262 (Mon Aug 11 15:29:12 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754918217233
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754918951781
+  SOX = 1754918269135
+  partName = send
+  EOX = 1754918893148
+
+
+ID: 144a6c27-76b1-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565289 - 565290 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565290 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754916337019 (Mon Aug 11 14:45:37 CEST 2025)
+Last modified: 1754917947267 (Mon Aug 11 15:12:27 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754916335553
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754917946807
+  SOX = 1754916450072
+  partName = send
+  EOX = 1754917884706
+
+
+ID: 47045e5b-76ab-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565288 - 565289 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565289 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754913845143 (Mon Aug 11 14:04:05 CEST 2025)
+Last modified: 1754915604462 (Mon Aug 11 14:33:24 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754913843692
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754915604003
+  SOX = 1754913894951
+  partName = send
+  EOX = 1754915542012
+
+
+ID: 9eaeb8a0-769a-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565287 - 565288 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565288 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754906690777 (Mon Aug 11 12:04:50 CEST 2025)
+Last modified: 1754913407851 (Mon Aug 11 13:56:47 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754906689270
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754913407383
+  SOX = 1754906740996
+  partName = send
+  EOX = 1754913345087
+
+
+ID: 4d25a1e5-7688-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565286 - 565287 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565287 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754898823042 (Mon Aug 11 09:53:43 CEST 2025)
+Last modified: 1754906136853 (Mon Aug 11 11:55:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754898821531
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754906136363
+  SOX = 1754898872979
+  partName = send
+  EOX = 1754906073368
+
+
+ID: 5437a7b0-766e-11f0-885a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565285 - 565286 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565286 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754887667989 (Mon Aug 11 06:47:47 CEST 2025)
+Last modified: 1754898586450 (Mon Aug 11 09:49:46 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754887666513
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754898585985
+  SOX = 1754887717970
+  partName = send
+  EOX = 1754898523366
+
+
+ID: 42421d8d-7655-11f0-8859-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565277 - 565278 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565278 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754876900441 (Mon Aug 11 03:48:20 CEST 2025)
+Last modified: 1754881586818 (Mon Aug 11 05:06:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754876950129
+  ETF = 1754881520016
+  SOR = 1754876898882
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754881586350
+  SOX = 1754876950144
+  partName = send
+  EOX = 1754881521125
+
+
+ID: b179ab6e-764b-11f0-8859-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565275 - 565276 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565276 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754872792065 (Mon Aug 11 02:39:52 CEST 2025)
+Last modified: 1754876661362 (Mon Aug 11 03:44:21 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754872821873
+  ETF = 1754876593360
+  SOR = 1754872790551
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754876660869
+  SOX = 1754872821894
+  partName = send
+  EOX = 1754876595985
+
+
+ID: 83458785-763c-11f0-8859-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565274 - 565275 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565275 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754866272097 (Mon Aug 11 00:51:12 CEST 2025)
+Last modified: 1754871695885 (Mon Aug 11 02:21:35 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754866321585
+  ETF = 1754871655857
+  SOR = 1754866270586
+  UpdatedFrom = 10.162.0.51
+  EOR = 1754871689122
+  SOX = 1754866321618
+  partName = send
+  EOX = 1754871656074
+
+
+ID: 152be5f9-75aa-11f0-8857-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565263 - 565264 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565264 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754803380857 (Sun Aug 10 07:23:00 CEST 2025)
+Last modified: 1754852053964 (Sun Aug 10 20:54:13 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754803430878
+  ETF = 1754851987307
+  SOR = 1754803379324
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754852053486
+  SOX = 1754803430911
+  partName = send
+  EOX = 1754851988378
+
+
+ID: 7ff8d608-7561-11f0-8850-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565252 - 565253 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565253 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754772206777 (Sat Aug 09 22:43:26 CEST 2025)
+Last modified: 1754795526189 (Sun Aug 10 05:12:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754772257045
+  ETF = 1754795462529
+  SOR = 1754772205269
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754795525713
+  SOX = 1754772257079
+  partName = send
+  EOX = 1754795463204
+
+
+ID: 3f8b7228-7530-11f0-8850-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565247 - 565248 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565248 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754751053346 (Sat Aug 09 16:50:53 CEST 2025)
+Last modified: 1754758052529 (Sat Aug 09 18:47:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754751051882
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754758052101
+  SOX = 1754751103110
+  partName = send
+  EOX = 1754757875318
+
+
+ID: 855c019a-74d1-11f0-8850-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565246 - 565247 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565247 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754710368287 (Sat Aug 09 05:32:48 CEST 2025)
+Last modified: 1754750768548 (Sat Aug 09 16:46:08 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754710366820
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754750768090
+  SOX = 1754710418464
+  partName = send
+  EOX = 1754750710678
+
+
+ID: f548181c-74cf-11f0-8850-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565245 - 565246 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565246 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754709697068 (Sat Aug 09 05:21:37 CEST 2025)
+Last modified: 1754709710252 (Sat Aug 09 05:21:50 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754709695577
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754709709803
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 5ef47e1d-74be-11f0-8850-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565236 - 565237 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565237 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754702143417 (Sat Aug 09 03:15:43 CEST 2025)
+Last modified: 1754704298685 (Sat Aug 09 03:51:38 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754702193405
+  ETF = 1754704120613
+  SOR = 1754702141906
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754704298271
+  SOX = 1754702193439
+  partName = send
+  EOX = 1754704122038
+
+
+ID: eb5b3aa0-74a0-11f0-884d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565225 - 565226 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565226 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754689494069 (Fri Aug 08 23:44:54 CEST 2025)
+Last modified: 1754693772545 (Sat Aug 09 00:56:12 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754689543982
+  ETF = 1754693705599
+  SOR = 1754689492552
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754693772084
+  SOX = 1754689544018
+  partName = send
+  EOX = 1754693706915
+
+
+ID: 64be51b9-7447-11f0-8841-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565211 - 565212 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565212 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754651043017 (Fri Aug 08 13:04:03 CEST 2025)
+Last modified: 1754682246575 (Fri Aug 08 21:44:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754651093155
+  ETF = 1754682179658
+  SOR = 1754651041490
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754682246100
+  SOX = 1754651093193
+  partName = send
+  EOX = 1754682180944
+
+
+ID: 3b1f9d9d-73bc-11f0-883d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565206 - 565207 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565207 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754591273145 (Thu Aug 07 20:27:53 CEST 2025)
+Last modified: 1754641054852 (Fri Aug 08 10:17:34 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754591271667
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754641054388
+  SOX = 1754591323514
+  partName = send
+  EOX = 1754640991549
+
+
+ID: a5d7f1f2-7370-11f0-883c-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565190 - 565191 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565191 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754558810440 (Thu Aug 07 11:26:50 CEST 2025)
+Last modified: 1754568000969 (Thu Aug 07 14:00:00 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754558860155
+  ETF = 1754567934627
+  SOR = 1754558808926
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754568000510
+  SOX = 1754558860190
+  partName = send
+  EOX = 1754567935237
+
+
+ID: dbaa3a6d-72e8-11f0-8836-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565178 - 565179 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565179 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754500489183 (Wed Aug 06 19:14:49 CEST 2025)
+Last modified: 1754546891138 (Thu Aug 07 08:08:11 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754500538934
+  ETF = 1754546825362
+  SOR = 1754500487627
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754546890669
+  SOX = 1754500538969
+  partName = send
+  EOX = 1754546826741
+
+
+ID: 5463f870-7279-11f0-8831-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565167 - 565168 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565168 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754452588093 (Wed Aug 06 05:56:28 CEST 2025)
+Last modified: 1754492417007 (Wed Aug 06 17:00:17 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754452637902
+  ETF = 1754492350070
+  SOR = 1754452586464
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754492416511
+  SOX = 1754452637942
+  partName = send
+  EOX = 1754492351345
+
+
+ID: accaa47f-7232-11f0-8823-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565152 - 565153 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565153 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754422242137 (Tue Aug 05 21:30:42 CEST 2025)
+Last modified: 1754432753138 (Wed Aug 06 00:25:53 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754422290889
+  ETF = 1754432541365
+  SOR = 1754422240620
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754432752711
+  SOX = 1754422291897
+  partName = send
+  EOX = 1754432543747
+
+
+ID: db8b6436-71f2-11f0-87fd-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565140 - 565141 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565141 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754394832785 (Tue Aug 05 13:53:52 CEST 2025)
+Last modified: 1754399611229 (Tue Aug 05 15:13:31 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754394882556
+  ETF = 1754399544515
+  SOR = 1754394831268
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754399610783
+  SOX = 1754394883216
+  partName = send
+  EOX = 1754399546358
+
+
+ID: f7e1905f-7164-11f0-87fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565129 - 565130 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565130 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754333891790 (Mon Aug 04 20:58:11 CEST 2025)
+Last modified: 1754385889996 (Tue Aug 05 11:24:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754333941130
+  ETF = 1754385799510
+  SOR = 1754333890224
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754385889554
+  SOX = 1754333941772
+  partName = send
+  EOX = 1754385801093
+
+
+ID: c5d553a0-713f-11f0-87fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565118 - 565119 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565119 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754317916445 (Mon Aug 04 16:31:56 CEST 2025)
+Last modified: 1754323749606 (Mon Aug 04 18:09:09 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1754317965555
+  ETF = 1754323682151
+  SOR = 1754317914890
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754323749155
+  SOX = 1754317966072
+  partName = send
+  EOX = 1754323683903
+
+
+ID: f23a2495-7110-11f0-87fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565100 - 565101 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565101 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754297804579 (Mon Aug 04 10:56:44 CEST 2025)
+Last modified: 1754298201853 (Mon Aug 04 11:03:21 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754297803248
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754298201408
+  SOX = 1754297823756
+  partName = send
+  EOX = 1754298180453
+
+
+ID: 0db377ac-710e-11f0-87fb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565097 - 565098 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565098 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754296562183 (Mon Aug 04 10:36:02 CEST 2025)
+Last modified: 1754296771496 (Mon Aug 04 10:39:31 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754296560699
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754296771024
+  SOX = 1754296671810
+  partName = send
+  EOX = 1754296710732
+
+
+ID: 8ea6543c-6ebb-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565069 - 565070 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565070 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754041227969 (Fri Aug 01 11:40:27 CEST 2025)
+Last modified: 1754042877601 (Fri Aug 01 12:07:57 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754041226304
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754042877143
+  SOX = 1754041277761
+  partName = send
+  EOX = 1754042814014
+
+
+ID: c3103701-6eb7-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565068 - 565069 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565069 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754039597917 (Fri Aug 01 11:13:17 CEST 2025)
+Last modified: 1754040572929 (Fri Aug 01 11:29:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754039596530
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754040572446
+  SOX = 1754039610127
+  partName = send
+  EOX = 1754040554880
+
+
+ID: b65f25d5-6e9e-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565066 - 565067 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565067 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1754028839206 (Fri Aug 01 08:13:59 CEST 2025)
+Last modified: 1754040713823 (Fri Aug 01 11:31:53 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1754028837756
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754040713362
+  SOX = 1754028889392
+  partName = send
+  EOX = 1754040651691
+
+
+ID: 23c751bc-6e1b-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565065 - 565066 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565066 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753972329192 (Thu Jul 31 16:32:09 CEST 2025)
+Last modified: 1754028372444 (Fri Aug 01 08:06:12 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753972327731
+  UpdatedFrom = 10.161.69.39
+  EOR = 1754028371965
+  SOX = 1753972379152
+  partName = send
+  EOX = 1754028309577
+
+
+ID: f4f61861-6e18-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565064 - 565065 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565065 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753971391652 (Thu Jul 31 16:16:31 CEST 2025)
+Last modified: 1753971949090 (Thu Jul 31 16:25:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753971390181
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753971948643
+  SOX = 1753971442031
+  partName = send
+  EOX = 1753971888243
+
+
+ID: c96a7925-6e16-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565063 - 565064 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565064 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753970459601 (Thu Jul 31 16:00:59 CEST 2025)
+Last modified: 1753970732806 (Thu Jul 31 16:05:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753970458140
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753970732360
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: b0e2af70-6e13-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565062 - 565063 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565063 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753969129956 (Thu Jul 31 15:38:49 CEST 2025)
+Last modified: 1753970259166 (Thu Jul 31 15:57:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753969128505
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753970258717
+  SOX = 1753969180083
+  partName = send
+  EOX = 1753970196981
+
+
+ID: 1dff4c83-6e0e-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565060 - 565061 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565061 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753966736035 (Thu Jul 31 14:58:56 CEST 2025)
+Last modified: 1753969519189 (Thu Jul 31 15:45:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753966734692
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753969518748
+  SOX = 1753966755080
+  partName = send
+  EOX = 1753969498084
+
+
+ID: e2fd247d-6e0a-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565059 - 565060 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565060 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753965348545 (Thu Jul 31 14:35:48 CEST 2025)
+Last modified: 1753968522894 (Thu Jul 31 15:28:42 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753965347094
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753968522447
+  SOX = 1753965398724
+  partName = send
+  EOX = 1753968489404
+
+
+ID: 7e8a351e-6e08-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565058 - 565059 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565059 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753964321026 (Thu Jul 31 14:18:41 CEST 2025)
+Last modified: 1753964968702 (Thu Jul 31 14:29:28 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753964319523
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753964968230
+  SOX = 1753964371198
+  partName = send
+  EOX = 1753964906938
+
+
+ID: 86cbefc1-6dee-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565047 - 565048 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565048 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753953167964 (Thu Jul 31 11:12:47 CEST 2025)
+Last modified: 1753953292084 (Thu Jul 31 11:14:52 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753953166626
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753953291639
+  SOX = 1753953178414
+  partName = send
+  EOX = 1753953271313
+
+
+ID: b107c365-6ded-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565045 - 565046 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565046 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753952809323 (Thu Jul 31 11:06:49 CEST 2025)
+Last modified: 1753952996646 (Thu Jul 31 11:09:56 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753952807980
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753952996200
+  SOX = 1753952819681
+  partName = send
+  EOX = 1753952975925
+
+
+ID: 71b12c15-6ded-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565044 - 565045 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565045 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753952703059 (Thu Jul 31 11:05:03 CEST 2025)
+Last modified: 1753952716218 (Thu Jul 31 11:05:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753952701709
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753952715770
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 34343b26-6deb-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565043 - 565044 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565044 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753951740906 (Thu Jul 31 10:49:00 CEST 2025)
+Last modified: 1753952379956 (Thu Jul 31 10:59:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753951739544
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753952379511
+  SOX = 1753951748245
+  partName = send
+  EOX = 1753952359293
+
+
+ID: 13833617-6de8-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565042 - 565043 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565043 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753950397569 (Thu Jul 31 10:26:37 CEST 2025)
+Last modified: 1753951195561 (Thu Jul 31 10:39:55 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753950396219
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753951195104
+  SOX = 1753950404860
+  partName = send
+  EOX = 1753951174849
+
+
+ID: 092dfe5a-6de2-11f0-87f1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565039 - 565040 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565040 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753947803253 (Thu Jul 31 09:43:23 CEST 2025)
+Last modified: 1753948198185 (Thu Jul 31 09:49:58 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753947801889
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753948197737
+  SOX = 1753947825275
+  partName = send
+  EOX = 1753948179174
+
+
+ID: 2020e9ac-6d3d-11f0-87ef-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565030 - 565031 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565031 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753876974794 (Wed Jul 30 14:02:54 CEST 2025)
+Last modified: 1753890363770 (Wed Jul 30 17:46:03 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753877024609
+  ETF = 1753890297602
+  SOR = 1753876973258
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753890363307
+  SOX = 1753877024640
+  partName = send
+  EOX = 1753890299088
+
+
+ID: ecba7419-6d3a-11f0-87ef-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565029 - 565030 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565030 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753876029565 (Wed Jul 30 13:47:09 CEST 2025)
+Last modified: 1753876129837 (Wed Jul 30 13:48:49 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753876028018
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753876129365
+  SOX = 1753876079685
+  partName = send
+  EOX = 1753876079926
+
+
+ID: 03dcf0a7-6d3a-11f0-87ef-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565028 - 565029 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565029 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753875638882 (Wed Jul 30 13:40:38 CEST 2025)
+Last modified: 1753875739313 (Wed Jul 30 13:42:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753875637341
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753875738846
+  SOX = 1753875689094
+  partName = send
+  EOX = 1753875689357
+
+
+ID: 9bc909b7-6c62-11f0-87d7-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 565007 - 565008 (Thu Jan 01 01:09:25 CET 1970 - Thu Jan 01 01:09:25 CET 1970)
+Initial validity limit: 565008 (Thu Jan 01 01:09:25 CET 1970)
+Created: 1753783122472 (Tue Jul 29 11:58:42 CEST 2025)
+Last modified: 1753830175571 (Wed Jul 30 01:02:55 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753783234044
+  ETF = 1753830109881
+  SOR = 1753783120958
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753830175101
+  SOX = 1753783234079
+  partName = send
+  EOX = 1753830110169
+
+
+ID: bb473631-6bd1-11f0-87d1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564987 - 564988 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564988 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753720898282 (Mon Jul 28 18:41:38 CEST 2025)
+Last modified: 1753769870736 (Tue Jul 29 08:17:50 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753720948557
+  ETF = 1753769805022
+  SOR = 1753720896748
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753769870266
+  SOX = 1753720948592
+  partName = send
+  EOX = 1753769805368
+
+
+ID: 5b28fce1-6bb3-11f0-87d1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564982 - 564983 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564983 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753707852121 (Mon Jul 28 15:04:12 CEST 2025)
+Last modified: 1753710131681 (Mon Jul 28 15:42:11 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753707850776
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753710131234
+  SOX = 1753707871498
+  partName = send
+  EOX = 1753710121585
+
+
+ID: fa84548a-6baf-11f0-87d1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564980 - 564981 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564981 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753706401491 (Mon Jul 28 14:40:01 CEST 2025)
+Last modified: 1753706707420 (Mon Jul 28 14:45:07 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753706400132
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753706706976
+  SOX = 1753706423544
+  partName = send
+  EOX = 1753706688337
+
+
+ID: 2ab77dbe-6bac-11f0-87d1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564976 - 564977 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564977 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753704764370 (Mon Jul 28 14:12:44 CEST 2025)
+Last modified: 1753705690007 (Mon Jul 28 14:28:10 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753704763015
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753705689551
+  SOX = 1753704811235
+  partName = send
+  EOX = 1753705670990
+
+
+ID: 754ee7b0-6b30-11f0-87cb-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564965 - 564966 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564966 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753651631919 (Sun Jul 27 23:27:11 CEST 2025)
+Last modified: 1753698284721 (Mon Jul 28 12:24:44 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753651681801
+  ETF = 1753698196727
+  SOR = 1753651630353
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753698284270
+  SOX = 1753651681836
+  partName = send
+  EOX = 1753698197977
+
+
+ID: 9c670747-6b06-11f0-87ca-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564953 - 564954 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564954 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753633658645 (Sun Jul 27 18:27:38 CEST 2025)
+Last modified: 1753641080971 (Sun Jul 27 20:31:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753633709041
+  ETF = 1753641015973
+  SOR = 1753633657105
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753641080508
+  SOX = 1753633709075
+  partName = send
+  EOX = 1753641016189
+
+
+ID: 0bd542fd-6a9a-11f0-87c9-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564947 - 564948 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564948 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753587030451 (Sun Jul 27 05:30:30 CEST 2025)
+Last modified: 1753606159018 (Sun Jul 27 10:49:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753587028965
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753606158546
+  SOX = 1753587080489
+  partName = send
+  EOX = 1753606097165
+
+
+ID: c6ce0d50-6a25-11f0-87c5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564937 - 564938 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564938 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753537093021 (Sat Jul 26 15:38:13 CEST 2025)
+Last modified: 1753538302160 (Sat Jul 26 15:58:22 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753537091674
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753538301716
+  SOX = 1753537115032
+  partName = send
+  EOX = 1753538283127
+
+
+ID: a534a17d-6a23-11f0-87c5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564936 - 564937 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564937 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753536177657 (Sat Jul 26 15:22:57 CEST 2025)
+Last modified: 1753536376208 (Sat Jul 26 15:26:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753536176312
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753536375767
+  SOX = 1753536199846
+  partName = send
+  EOX = 1753536357108
+
+
+ID: d947370e-6a20-11f0-87c5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564935 - 564936 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564936 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753534976530 (Sat Jul 26 15:02:56 CEST 2025)
+Last modified: 1753535452155 (Sat Jul 26 15:10:52 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753534975189
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753535451718
+  SOX = 1753535137868
+  partName = send
+  EOX = 1753535433216
+
+
+ID: a6629216-6a19-11f0-87c5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564929 - 564930 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564930 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753531884668 (Sat Jul 26 14:11:24 CEST 2025)
+Last modified: 1753532925521 (Sat Jul 26 14:28:45 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753531883317
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753532925073
+  SOX = 1753531919305
+  partName = send
+  EOX = 1753532906576
+
+
+ID: 5611dafe-69fe-11f0-87c5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564926 - 564927 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564927 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753520153510 (Sat Jul 26 10:55:53 CEST 2025)
+Last modified: 1753520408075 (Sat Jul 26 11:00:08 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753520152131
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753520407593
+  SOX = 1753520165039
+  partName = send
+  EOX = 1753520390032
+
+
+ID: 61acd119-69cd-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564918 - 564919 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564919 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753499127641 (Sat Jul 26 05:05:27 CEST 2025)
+Last modified: 1753519682722 (Sat Jul 26 10:48:02 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753499236806
+  ETF = 1753519505615
+  SOR = 1753499125927
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753519682277
+  SOX = 1753499236828
+  partName = send
+  EOX = 1753519506248
+
+
+ID: 412da6d8-69ca-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564917 - 564918 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564918 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753497784630 (Sat Jul 26 04:43:04 CEST 2025)
+Last modified: 1753498650062 (Sat Jul 26 04:57:30 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753497783235
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753498649594
+  SOX = 1753497806733
+  partName = send
+  EOX = 1753498630971
+
+
+ID: da968f06-69c8-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564916 - 564917 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564917 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753497183016 (Sat Jul 26 04:33:03 CEST 2025)
+Last modified: 1753497685572 (Sat Jul 26 04:41:25 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753497181660
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753497685091
+  SOX = 1753497204990
+  partName = send
+  EOX = 1753497666496
+
+
+ID: e6ba47ac-69c7-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564915 - 564916 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564916 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753496773886 (Sat Jul 26 04:26:13 CEST 2025)
+Last modified: 1753498923427 (Sat Jul 26 05:02:03 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753496824050
+  ETF = 1753498854834
+  SOR = 1753496772366
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753498922950
+  SOX = 1753496824077
+  partName = send
+  EOX = 1753498857833
+
+
+ID: 388caa76-69c7-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564914 - 564915 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564915 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753496481663 (Sat Jul 26 04:21:21 CEST 2025)
+Last modified: 1753496581797 (Sat Jul 26 04:23:01 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753496480135
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753496581312
+  SOX = 1753496531577
+  partName = send
+  EOX = 1753496531856
+
+
+ID: 8e413ce9-69bf-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564913 - 564914 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564914 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753493189479 (Sat Jul 26 03:26:29 CEST 2025)
+Last modified: 1753496266185 (Sat Jul 26 04:17:46 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753493240110
+  ETF = 1753496197969
+  SOR = 1753493187938
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753496265458
+  SOX = 1753493240142
+  partName = send
+  EOX = 1753496200475
+
+
+ID: e7de1b7f-69be-11f0-87c2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564912 - 564913 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564913 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753492910328 (Sat Jul 26 03:21:50 CEST 2025)
+Last modified: 1753493004457 (Sat Jul 26 03:23:24 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753492908793
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753493004002
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 0814f182-6986-11f0-87c1-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564900 - 564901 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564901 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753468483060 (Fri Jul 25 20:34:43 CEST 2025)
+Last modified: 1753480518803 (Fri Jul 25 23:55:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753468533196
+  ETF = 1753480452239
+  SOR = 1753468481535
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753480518318
+  SOX = 1753468533230
+  partName = send
+  EOX = 1753480453240
+
+
+ID: 7edda7df-6904-11f0-87b4-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564889 - 564890 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564890 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753412847772 (Fri Jul 25 05:07:27 CEST 2025)
+Last modified: 1753461367161 (Fri Jul 25 18:36:07 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753412897921
+  ETF = 1753461280747
+  SOR = 1753412846259
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753461366717
+  SOX = 1753412897958
+  partName = send
+  EOX = 1753461281694
+
+
+ID: 6f60359d-687e-11f0-87b2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564877 - 564878 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564878 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753355269222 (Thu Jul 24 13:07:49 CEST 2025)
+Last modified: 1753404491019 (Fri Jul 25 02:48:11 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753355319517
+  ETF = 1753404402704
+  SOR = 1753355267659
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753404490577
+  SOX = 1753355319552
+  partName = send
+  EOX = 1753404404195
+
+
+ID: 36e2651f-685c-11f0-87b2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564864 - 564865 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564865 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753340571557 (Thu Jul 24 09:02:51 CEST 2025)
+Last modified: 1753340994312 (Thu Jul 24 09:09:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753340570206
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753340993877
+  SOX = 1753340593467
+  partName = send
+  EOX = 1753340983290
+
+
+ID: 8216500b-685b-11f0-87b2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564863 - 564864 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564864 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753340268229 (Thu Jul 24 08:57:48 CEST 2025)
+Last modified: 1753340416388 (Thu Jul 24 09:00:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753340266863
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753340415946
+  SOX = 1753340290217
+  partName = send
+  EOX = 1753340397405
+
+
+ID: b53a487e-6838-11f0-87b2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564849 - 564850 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564850 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753325321643 (Thu Jul 24 04:48:41 CEST 2025)
+Last modified: 1753332758606 (Thu Jul 24 06:52:38 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753325351661
+  ETF = 1753332692809
+  SOR = 1753325320155
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753332758166
+  SOX = 1753325351622
+  partName = send
+  EOX = 1753332694250
+
+
+ID: 3d7257a1-67d9-11f0-87ae-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564848 - 564849 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564849 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753284318495 (Wed Jul 23 17:25:18 CEST 2025)
+Last modified: 1753325072936 (Thu Jul 24 04:44:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753284368269
+  ETF = 1753324861053
+  SOR = 1753284316925
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753325072499
+  SOX = 1753284368303
+  partName = send
+  EOX = 1753324863476
+
+
+ID: c63c1a49-67bc-11f0-87ae-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564839 - 564840 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564840 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753272092582 (Wed Jul 23 14:01:32 CEST 2025)
+Last modified: 1753272373207 (Wed Jul 23 14:06:13 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753272091210
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753272372774
+  SOX = 1753272108763
+  partName = send
+  EOX = 1753272324177
+
+
+ID: 0cae2ef6-67bc-11f0-87ae-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564837 - 564838 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564838 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753271781273 (Wed Jul 23 13:56:21 CEST 2025)
+Last modified: 1753272534111 (Wed Jul 23 14:08:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753271779894
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753272533681
+  SOX = 1753271803764
+  partName = send
+  EOX = 1753272515161
+
+
+ID: a1d5cab4-67a1-11f0-87ae-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564818 - 564819 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564819 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753260435102 (Wed Jul 23 10:47:15 CEST 2025)
+Last modified: 1753262744573 (Wed Jul 23 11:25:44 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753260433752
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753262744133
+  SOX = 1753260451316
+  partName = send
+  EOX = 1753262695632
+
+
+ID: a6d24b3e-6791-11f0-87ad-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564805 - 564806 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564806 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753253571520 (Wed Jul 23 08:52:51 CEST 2025)
+Last modified: 1753255686444 (Wed Jul 23 09:28:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753253570169
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753255685986
+  SOX = 1753253599745
+  partName = send
+  EOX = 1753255667349
+
+
+ID: 59fb5596-6733-11f0-87ab-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564797 - 564798 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564798 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753213069912 (Tue Jul 22 21:37:49 CEST 2025)
+Last modified: 1753248740936 (Wed Jul 23 07:32:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753213120337
+  ETF = 1753248673242
+  SOR = 1753213068371
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753248739506
+  SOX = 1753213120371
+  partName = send
+  EOX = 1753248674468
+
+
+ID: aecef7f7-66ce-11f0-87a8-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564789 - 564790 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564790 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753169833058 (Tue Jul 22 09:37:13 CEST 2025)
+Last modified: 1753198222427 (Tue Jul 22 17:30:22 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753169883132
+  ETF = 1753198154620
+  SOR = 1753169831302
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753198221953
+  SOX = 1753169883133
+  partName = send
+  EOX = 1753198157198
+
+
+ID: a9f0c456-66a4-11f0-87a5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564788 - 564789 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564789 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753151786028 (Tue Jul 22 04:36:26 CEST 2025)
+Last modified: 1753169038224 (Tue Jul 22 09:23:58 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753151836109
+  ETF = 1753169003658
+  SOR = 1753151784451
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753169037756
+  SOX = 1753151836142
+  partName = send
+  EOX = 1753169004694
+
+
+ID: ee7a449d-66a3-11f0-87a5-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564787 - 564788 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564788 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753151471517 (Tue Jul 22 04:31:11 CEST 2025)
+Last modified: 1753151571700 (Tue Jul 22 04:32:51 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753151469984
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753151571227
+  SOX = 1753151521599
+  partName = send
+  EOX = 1753151521773
+
+
+ID: 80e054d1-666a-11f0-87a4-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564775 - 564776 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564776 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753126806323 (Mon Jul 21 21:40:06 CEST 2025)
+Last modified: 1753143042379 (Tue Jul 22 02:10:42 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753126856321
+  ETF = 1753142976646
+  SOR = 1753126804774
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753143041910
+  SOX = 1753126856357
+  partName = send
+  EOX = 1753142977933
+
+
+ID: 73589fb0-662b-11f0-87a2-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564763 - 564764 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564764 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753099725330 (Mon Jul 21 14:08:45 CEST 2025)
+Last modified: 1753113735096 (Mon Jul 21 18:02:15 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753099775276
+  ETF = 1753113647741
+  SOR = 1753099723807
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753113734664
+  SOX = 1753099775248
+  partName = send
+  EOX = 1753113648285
+
+
+ID: 49bbba69-65d8-11f0-879e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564762 - 564763 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564763 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753064007286 (Mon Jul 21 04:13:27 CEST 2025)
+Last modified: 1753099494424 (Mon Jul 21 14:04:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753064057464
+  ETF = 1753099297112
+  SOR = 1753064005691
+  UpdatedFrom = 10.162.0.51
+  EOR = 1753099477164
+  SOX = 1753064057500
+  partName = send
+  EOX = 1753099297160
+
+
+ID: a407a865-65b5-11f0-879e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564753 - 564754 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564754 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753049126393 (Mon Jul 21 00:05:26 CEST 2025)
+Last modified: 1753050199873 (Mon Jul 21 00:23:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1753049125051
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753050199441
+  SOX = 1753049154426
+  partName = send
+  EOX = 1753050177497
+
+
+ID: 020e7cd3-657b-11f0-879e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564747 - 564748 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564748 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753023943837 (Sun Jul 20 17:05:43 CEST 2025)
+Last modified: 1753046400879 (Sun Jul 20 23:20:00 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753023994346
+  ETF = 1753046222820
+  SOR = 1753023942315
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753046400442
+  SOX = 1753023994363
+  partName = send
+  EOX = 1753046223855
+
+
+ID: 0757a1d8-6563-11f0-879e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564746 - 564747 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564747 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1753013644783 (Sun Jul 20 14:14:04 CEST 2025)
+Last modified: 1753023725364 (Sun Jul 20 17:02:05 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1753013694792
+  ETF = 1753023656931
+  SOR = 1753013643253
+  UpdatedFrom = 10.161.69.39
+  EOR = 1753023724902
+  SOX = 1753013694826
+  partName = send
+  EOX = 1753023659661
+
+
+ID: 41cc267c-64eb-11f0-879e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564735 - 564736 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564736 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752962203247 (Sat Jul 19 23:56:43 CEST 2025)
+Last modified: 1752998207440 (Sun Jul 20 09:56:47 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752962252955
+  ETF = 1752998140492
+  SOR = 1752962201710
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752998206976
+  SOX = 1752962252952
+  partName = send
+  EOX = 1752998141825
+
+
+ID: 86479d6f-64b9-11f0-879d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564734 - 564735 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564735 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752940843305 (Sat Jul 19 18:00:43 CEST 2025)
+Last modified: 1752961988193 (Sat Jul 19 23:53:08 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752940894514
+  ETF = 1752961920175
+  SOR = 1752940841773
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752961987737
+  SOX = 1752940894546
+  partName = send
+  EOX = 1752961922733
+
+
+ID: 0660dd01-6487-11f0-879d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564717 - 564718 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564718 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752919153885 (Sat Jul 19 11:59:13 CEST 2025)
+Last modified: 1752920906256 (Sat Jul 19 12:28:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752919203819
+  ETF = 1752920839911
+  SOR = 1752919152368
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752920905776
+  SOX = 1752919203807
+  partName = send
+  EOX = 1752920840673
+
+
+ID: 5cfdb4e7-644b-11f0-879b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564716 - 564717 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564717 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752893529394 (Sat Jul 19 04:52:09 CEST 2025)
+Last modified: 1752918908916 (Sat Jul 19 11:55:08 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752893579210
+  ETF = 1752918840226
+  SOR = 1752893527871
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752918908460
+  SOX = 1752893579243
+  partName = send
+  EOX = 1752918843100
+
+
+ID: d4e4fcb1-644a-11f0-879b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564715 - 564716 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564716 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752893301061 (Sat Jul 19 04:48:21 CEST 2025)
+Last modified: 1752893314266 (Sat Jul 19 04:48:34 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752893299544
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752893313835
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: a4dbc2d9-6425-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564704 - 564705 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564705 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752877329091 (Sat Jul 19 00:22:09 CEST 2025)
+Last modified: 1752885789645 (Sat Jul 19 02:43:09 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752877379335
+  ETF = 1752885722634
+  SOR = 1752877327543
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752885789200
+  SOX = 1752877379368
+  partName = send
+  EOX = 1752885723991
+
+
+ID: 79cd5ddf-6409-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564693 - 564694 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564694 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752865230947 (Fri Jul 18 21:00:30 CEST 2025)
+Last modified: 1752866556559 (Fri Jul 18 21:22:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752865281026
+  ETF = 1752866490361
+  SOR = 1752865229376
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752866556108
+  SOX = 1752865280993
+  partName = send
+  EOX = 1752866490920
+
+
+ID: 3c1ea9a0-6405-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564691 - 564692 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564692 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752863409474 (Fri Jul 18 20:30:09 CEST 2025)
+Last modified: 1752863772269 (Fri Jul 18 20:36:12 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752863408126
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752863771837
+  SOX = 1752863437606
+  partName = send
+  EOX = 1752863750097
+
+
+ID: 0162502b-63e4-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564684 - 564685 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564685 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752849137539 (Fri Jul 18 16:32:17 CEST 2025)
+Last modified: 1752849777837 (Fri Jul 18 16:42:57 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752849163482
+  ETF = 1752849643877
+  SOR = 1752849136148
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752849777370
+  SOX = 1752849163478
+  partName = send
+  EOX = 1752849677427
+
+
+ID: 34afa12d-63e2-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564682 - 564683 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564683 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752848364616 (Fri Jul 18 16:19:24 CEST 2025)
+Last modified: 1752848861121 (Fri Jul 18 16:27:41 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752848389175
+  ETF = 1752848732725
+  SOR = 1752848363222
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752848860669
+  SOX = 1752848389174
+  partName = send
+  EOX = 1752848766308
+
+
+ID: 095aab79-63e0-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564681 - 564682 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564682 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752847432924 (Fri Jul 18 16:03:52 CEST 2025)
+Last modified: 1752847891600 (Fri Jul 18 16:11:31 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752847457367
+  ETF = 1752847788881
+  SOR = 1752847431542
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752847891140
+  SOX = 1752847457368
+  partName = send
+  EOX = 1752847820382
+
+
+ID: 5f4d78be-63de-11f0-879a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564679 - 564680 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564680 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752846718128 (Fri Jul 18 15:51:58 CEST 2025)
+Last modified: 1752847140465 (Fri Jul 18 15:59:00 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752846743600
+  ETF = 1752847026469
+  SOR = 1752846716748
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752847140023
+  SOX = 1752846743601
+  partName = send
+  EOX = 1752847054976
+
+
+ID: 57ef3077-63c2-11f0-8798-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564676 - 564677 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564677 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752834679858 (Fri Jul 18 12:31:19 CEST 2025)
+Last modified: 1752845137130 (Fri Jul 18 15:25:37 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752834730035
+  ETF = 1752845069479
+  SOR = 1752834678308
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752845136673
+  SOX = 1752834730054
+  partName = send
+  EOX = 1752845071545
+
+
+ID: 3c4109a6-63af-11f0-8796-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564675 - 564676 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564676 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752826472980 (Fri Jul 18 10:14:32 CEST 2025)
+Last modified: 1752834387993 (Fri Jul 18 12:26:27 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752826523305
+  ETF = 1752834210602
+  SOR = 1752826471429
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752834387564
+  SOX = 1752826523341
+  partName = send
+  EOX = 1752834210702
+
+
+ID: 21769bb7-6381-11f0-8795-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564663 - 564664 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564664 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752806671183 (Fri Jul 18 04:44:31 CEST 2025)
+Last modified: 1752815698821 (Fri Jul 18 07:14:58 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752806721165
+  ETF = 1752815520879
+  SOR = 1752806669670
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752815698385
+  SOX = 1752806721164
+  partName = send
+  EOX = 1752815522165
+
+
+ID: c8a9197f-636c-11f0-8794-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564662 - 564663 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564663 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752797932262 (Fri Jul 18 02:18:52 CEST 2025)
+Last modified: 1752806396742 (Fri Jul 18 04:39:56 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752797982385
+  ETF = 1752806334427
+  SOR = 1752797930741
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752806396311
+  SOX = 1752797982399
+  partName = send
+  EOX = 1752806335476
+
+
+ID: 4c2ffce0-6357-11f0-8791-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564661 - 564662 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564662 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752788704000 (Thu Jul 17 23:45:04 CEST 2025)
+Last modified: 1752797088584 (Fri Jul 18 02:04:48 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752788754242
+  ETF = 1752797021327
+  SOR = 1752788702451
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752797088144
+  SOX = 1752788754274
+  partName = send
+  EOX = 1752797023066
+
+
+ID: 248b37a8-6355-11f0-8791-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564660 - 564661 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564661 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752787778495 (Thu Jul 17 23:29:38 CEST 2025)
+Last modified: 1752788367337 (Thu Jul 17 23:39:27 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752787828815
+  ETF = 1752788303792
+  SOR = 1752787776940
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752788366874
+  SOX = 1752787828847
+  partName = send
+  EOX = 1752788303893
+
+
+ID: 08d4384a-6352-11f0-8791-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564659 - 564660 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564660 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752786443507 (Thu Jul 17 23:07:23 CEST 2025)
+Last modified: 1752787466678 (Thu Jul 17 23:24:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752786493697
+  ETF = 1752787401245
+  SOR = 1752786441993
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752787466253
+  SOX = 1752786493732
+  partName = send
+  EOX = 1752787401373
+
+
+ID: a6e19e28-6318-11f0-878b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564644 - 564645 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564645 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752761797865 (Thu Jul 17 16:16:37 CEST 2025)
+Last modified: 1752764672829 (Thu Jul 17 17:04:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752761849140
+  ETF = 1752764612792
+  SOR = 1752761796327
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752764672402
+  SOX = 1752761849175
+  partName = send
+  EOX = 1752764612898
+
+
+ID: cbc98672-62a0-11f0-8789-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564631 - 564632 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564632 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752710320175 (Thu Jul 17 01:58:40 CEST 2025)
+Last modified: 1752738572521 (Thu Jul 17 09:49:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752710370127
+  ETF = 1752738506792
+  SOR = 1752710318631
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752738572050
+  SOX = 1752710370164
+  partName = send
+  EOX = 1752738507609
+
+
+ID: 3e2455a4-6236-11f0-8785-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564618 - 564619 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564619 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752664555881 (Wed Jul 16 13:15:55 CEST 2025)
+Last modified: 1752684097824 (Wed Jul 16 18:41:37 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752664605974
+  ETF = 1752684031852
+  SOR = 1752664554323
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752684097375
+  SOX = 1752664606053
+  partName = send
+  EOX = 1752684032229
+
+
+ID: e301b281-622a-11f0-8785-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564611 - 564612 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564612 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752659678517 (Wed Jul 16 11:54:38 CEST 2025)
+Last modified: 1752660184601 (Wed Jul 16 12:03:04 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752659677154
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752660184151
+  SOX = 1752659697552
+  partName = send
+  EOX = 1752660163639
+
+
+ID: bd50d0d0-61b4-11f0-8783-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564605 - 564606 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564606 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752608934668 (Tue Jul 15 21:48:54 CEST 2025)
+Last modified: 1752611166904 (Tue Jul 15 22:26:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752608933303
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752611166455
+  SOX = 1752608950795
+  partName = send
+  EOX = 1752611157883
+
+
+ID: 49aa646b-618c-11f0-8783-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564603 - 564604 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564604 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752591560770 (Tue Jul 15 16:59:20 CEST 2025)
+Last modified: 1752594401811 (Tue Jul 15 17:46:41 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752591559439
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752594401338
+  SOX = 1752591579785
+  partName = send
+  EOX = 1752594392651
+
+
+ID: 23dd5900-5ffb-11f0-8780-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564586 - 564587 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564587 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752419269162 (Sun Jul 13 17:07:49 CEST 2025)
+Last modified: 1752461139144 (Mon Jul 14 04:45:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752419311215
+  ETF = 1752461072758
+  SOR = 1752419267622
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752461138669
+  SOX = 1752419311249
+  partName = send
+  EOX = 1752461073657
+
+
+ID: 33b4dad7-5f19-11f0-877e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564575 - 564576 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564576 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752322229479 (Sat Jul 12 14:10:29 CEST 2025)
+Last modified: 1752411159094 (Sun Jul 13 14:52:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752322271199
+  ETF = 1752411092685
+  SOR = 1752322227958
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752411158629
+  SOX = 1752322271234
+  partName = send
+  EOX = 1752411093568
+
+
+ID: 36734c02-5f04-11f0-877d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564568 - 564569 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564569 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752313214651 (Sat Jul 12 11:40:14 CEST 2025)
+Last modified: 1752314101354 (Sat Jul 12 11:55:01 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752313213306
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752314100925
+  SOX = 1752313220550
+  partName = send
+  EOX = 1752314092546
+
+
+ID: 2d7ccad5-5f03-11f0-877d-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564567 - 564568 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564568 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752312770117 (Sat Jul 12 11:32:50 CEST 2025)
+Last modified: 1752313097117 (Sat Jul 12 11:38:17 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752312768763
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752313096697
+  SOX = 1752312775946
+  partName = send
+  EOX = 1752313087932
+
+
+ID: ad97c8c0-5eec-11f0-877b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564560 - 564561 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564561 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752303106618 (Sat Jul 12 08:51:46 CEST 2025)
+Last modified: 1752305552804 (Sat Jul 12 09:32:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752303147862
+  ETF = 1752305485526
+  SOR = 1752303105034
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752305552346
+  SOX = 1752303147897
+  partName = send
+  EOX = 1752305487124
+
+
+ID: 3573aafe-5e87-11f0-877b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564546 - 564547 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564547 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752259525885 (Fri Jul 11 20:45:25 CEST 2025)
+Last modified: 1752263076583 (Fri Jul 11 21:44:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752259567231
+  ETF = 1752263009606
+  SOR = 1752259524347
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752263076143
+  SOX = 1752259567189
+  partName = send
+  EOX = 1752263010927
+
+
+ID: d8277bdf-5e84-11f0-877a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564545 - 564546 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564546 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752258510364 (Fri Jul 11 20:28:30 CEST 2025)
+Last modified: 1752259265206 (Fri Jul 11 20:41:05 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752258552079
+  ETF = 1752259199134
+  SOR = 1752258508797
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752259264750
+  SOX = 1752258552039
+  partName = send
+  EOX = 1752259199731
+
+
+ID: f64a464d-5e65-11f0-877a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564543 - 564544 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564544 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752245246525 (Fri Jul 11 16:47:26 CEST 2025)
+Last modified: 1752257685371 (Fri Jul 11 20:14:45 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752245268705
+  ETF = 1752257674110
+  SOR = 1752245245173
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752257684943
+  SOX = 1752245268689
+  partName = send
+  EOX = 1752257674296
+
+
+ID: ea802b4d-5e65-11f0-877a-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564542 - 564543 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564543 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752245226746 (Fri Jul 11 16:47:06 CEST 2025)
+Last modified: 1752257710319 (Fri Jul 11 20:15:10 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752245244990
+  ETF = 1752257660770
+  SOR = 1752245225344
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752257709896
+  SOX = 1752245244973
+  partName = send
+  EOX = 1752257660901
+
+
+ID: dd843e7d-5e22-11f0-8775-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564541 - 564542 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564542 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752216428681 (Fri Jul 11 08:47:08 CEST 2025)
+Last modified: 1752244999624 (Fri Jul 11 16:43:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752216470459
+  ETF = 1752244932075
+  SOR = 1752216427151
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752244999177
+  SOX = 1752216470494
+  partName = send
+  EOX = 1752244933960
+
+
+ID: 3dddb10f-5e20-11f0-8775-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564540 - 564541 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564541 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752215301838 (Fri Jul 11 08:28:21 CEST 2025)
+Last modified: 1752216128254 (Fri Jul 11 08:42:08 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752215343652
+  ETF = 1752215928016
+  SOR = 1752215300136
+  UpdatedFrom = 10.162.0.51
+  EOR = 1752216108128
+  SOX = 1752215343688
+  partName = send
+  EOX = 1752215928125
+
+
+ID: 54e824f8-5db9-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564527 - 564528 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564528 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752171102331 (Thu Jul 10 20:11:42 CEST 2025)
+Last modified: 1752186066960 (Fri Jul 11 00:21:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752171143970
+  ETF = 1752186000553
+  SOR = 1752171100793
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752186066501
+  SOX = 1752171144000
+  partName = send
+  EOX = 1752186001442
+
+
+ID: 4579fb8d-5db4-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564526 - 564527 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564527 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752168928960 (Thu Jul 10 19:35:28 CEST 2025)
+Last modified: 1752170862234 (Thu Jul 10 20:07:42 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752168970554
+  ETF = 1752170683688
+  SOR = 1752168927404
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752170861790
+  SOX = 1752168970586
+  partName = send
+  EOX = 1752170685285
+
+
+ID: 7abfab4c-5d95-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564515 - 564516 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564516 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752155703937 (Thu Jul 10 15:55:03 CEST 2025)
+Last modified: 1752155920650 (Thu Jul 10 15:58:40 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752155702578
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752155920202
+  SOX = 1752155722814
+  partName = send
+  EOX = 1752155899945
+
+
+ID: be9041d0-5d71-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564501 - 564502 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564502 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752140355829 (Thu Jul 10 11:39:15 CEST 2025)
+Last modified: 1752140432562 (Thu Jul 10 11:40:32 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752140354486
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752140432134
+  SOX = 1752140396806
+  partName = send
+  EOX = 1752140408739
+
+
+ID: 7bcb6074-5cc9-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564497 - 564498 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564498 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752068088359 (Wed Jul 09 15:34:48 CEST 2025)
+Last modified: 1752081740970 (Wed Jul 09 19:22:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752068086889
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752081740508
+  SOX = 1752068129704
+  partName = send
+  EOX = 1752081675423
+
+
+ID: b924ae18-5cbc-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564494 - 564495 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564495 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752062607828 (Wed Jul 09 14:03:27 CEST 2025)
+Last modified: 1752067598440 (Wed Jul 09 15:26:38 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752062606347
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752067597984
+  SOX = 1752062649146
+  partName = send
+  EOX = 1752067535833
+
+
+ID: 1f40a8c9-5cb2-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564493 - 564494 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564494 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752058054675 (Wed Jul 09 12:47:34 CEST 2025)
+Last modified: 1752062311646 (Wed Jul 09 13:58:31 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752058053204
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752062311210
+  SOX = 1752058096530
+  partName = send
+  EOX = 1752062250227
+
+
+ID: aa8a4487-5cac-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564489 - 564490 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564490 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752055711380 (Wed Jul 09 12:08:31 CEST 2025)
+Last modified: 1752057196046 (Wed Jul 09 12:33:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752055710030
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752057195576
+  SOX = 1752055733925
+  partName = send
+  EOX = 1752057184719
+
+
+ID: 8ca41cdf-5ca8-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564487 - 564488 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564488 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752053943231 (Wed Jul 09 11:39:03 CEST 2025)
+Last modified: 1752054237111 (Wed Jul 09 11:43:57 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752053941902
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752054236687
+  SOX = 1752053959444
+  partName = send
+  EOX = 1752054187953
+
+
+ID: cb9ca38f-5ca6-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564485 - 564486 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564486 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752053189885 (Wed Jul 09 11:26:29 CEST 2025)
+Last modified: 1752053487055 (Wed Jul 09 11:31:27 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752053188534
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752053486624
+  SOX = 1752053206160
+  partName = send
+  EOX = 1752053437780
+
+
+ID: beef8502-5ca5-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564484 - 564485 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564485 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752052739121 (Wed Jul 09 11:18:59 CEST 2025)
+Last modified: 1752053627800 (Wed Jul 09 11:33:47 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752052737662
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752053627368
+  SOX = 1752052780870
+  partName = send
+  EOX = 1752053584819
+
+
+ID: dc8e13a2-5ca2-11f0-8773-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564482 - 564483 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564483 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752051500324 (Wed Jul 09 10:58:20 CEST 2025)
+Last modified: 1752051718024 (Wed Jul 09 11:01:58 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1752051498864
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752051717588
+  SOX = 1752051541951
+  partName = send
+  EOX = 1752051690997
+
+
+ID: f2b07f17-5c47-11f0-8772-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564472 - 564473 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564473 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752012453257 (Wed Jul 09 00:07:33 CEST 2025)
+Last modified: 1752021906560 (Wed Jul 09 02:45:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752012495234
+  ETF = 1752021840307
+  SOR = 1752012451737
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752021906102
+  SOX = 1752012495222
+  partName = send
+  EOX = 1752021841055
+
+
+ID: cc6bd008-5c44-11f0-8772-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564471 - 564472 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564472 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752011100563 (Tue Jul 08 23:45:00 CEST 2025)
+Last modified: 1752012148659 (Wed Jul 09 00:02:28 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752011122542
+  ETF = 1752012137353
+  SOR = 1752011099204
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752012148230
+  SOX = 1752011122532
+  partName = send
+  EOX = 1752012137653
+
+
+ID: afc039e8-5c44-11f0-8772-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564470 - 564471 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564471 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1752011052462 (Tue Jul 08 23:44:12 CEST 2025)
+Last modified: 1752012144147 (Wed Jul 09 00:02:24 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1752011070699
+  ETF = 1752012092848
+  SOR = 1752011051064
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752012143711
+  SOX = 1752011070690
+  partName = send
+  EOX = 1752012093129
+
+
+ID: f777258e-5c07-11f0-8772-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564468 - 564469 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564469 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751984973479 (Tue Jul 08 16:29:33 CEST 2025)
+Last modified: 1752010846057 (Tue Jul 08 23:40:46 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751985015246
+  ETF = 1752010783861
+  SOR = 1751984971940
+  UpdatedFrom = 10.161.69.39
+  EOR = 1752010845602
+  SOX = 1751985015282
+  partName = send
+  EOX = 1752010785074
+
+
+ID: 60627712-5b88-11f0-8771-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564458 - 564459 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564459 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751930173923 (Tue Jul 08 01:16:13 CEST 2025)
+Last modified: 1751952604168 (Tue Jul 08 07:30:04 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751930172455
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751952603694
+  SOX = 1751930215678
+  partName = send
+  EOX = 1751952541067
+
+
+ID: ced39bbf-5b7f-11f0-8771-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564457 - 564458 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564458 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751926493743 (Tue Jul 08 00:14:53 CEST 2025)
+Last modified: 1751929825383 (Tue Jul 08 01:10:25 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751926492281
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751929824940
+  SOX = 1751926535314
+  partName = send
+  EOX = 1751929764317
+
+
+ID: 7c05488d-5b7a-11f0-8771-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564456 - 564457 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564457 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751924207334 (Mon Jul 07 23:36:47 CEST 2025)
+Last modified: 1751926036215 (Tue Jul 08 00:07:16 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751924205852
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751926035780
+  SOX = 1751924249164
+  partName = send
+  EOX = 1751925973014
+
+
+ID: f81acd8b-5b77-11f0-8771-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564455 - 564456 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564456 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751923127022 (Mon Jul 07 23:18:47 CEST 2025)
+Last modified: 1751923226668 (Mon Jul 07 23:20:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751923125511
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751923226196
+  SOX = 1751923173358
+  partName = send
+  EOX = 1751923173480
+
+
+ID: 113908e0-5b0b-11f0-8770-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564445 - 564446 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564446 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751876354020 (Mon Jul 07 10:19:14 CEST 2025)
+Last modified: 1751895239344 (Mon Jul 07 15:33:59 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751876395351
+  ETF = 1751895173442
+  SOR = 1751876352450
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751895238889
+  SOX = 1751876395389
+  partName = send
+  EOX = 1751895173740
+
+
+ID: ffdc4173-5aaa-11f0-876f-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564430 - 564431 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564431 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751835093205 (Sun Jul 06 22:51:33 CEST 2025)
+Last modified: 1751862966752 (Mon Jul 07 06:36:06 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751835134708
+  ETF = 1751862900504
+  SOR = 1751835091681
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751862966292
+  SOX = 1751835134743
+  partName = send
+  EOX = 1751862901169
+
+
+ID: 0b7cd232-5a6b-11f0-876f-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564414 - 564415 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564415 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751807624921 (Sun Jul 06 15:13:44 CEST 2025)
+Last modified: 1751827976654 (Sun Jul 06 20:52:56 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751807666600
+  ETF = 1751827915844
+  SOR = 1751807623343
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751827976197
+  SOX = 1751807666634
+  partName = send
+  EOX = 1751827916462
+
+
+ID: 08ffbffe-5a6a-11f0-876f-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564413 - 564414 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564414 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751807191249 (Sun Jul 06 15:06:31 CEST 2025)
+Last modified: 1751807342211 (Sun Jul 06 15:09:02 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751807189653
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751807341766
+  SOX = 1751807291190
+  partName = send
+  EOX = 1751807291313
+
+
+ID: 6d2ed707-5a18-11f0-876e-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564400 - 564401 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564401 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751772140598 (Sun Jul 06 05:22:20 CEST 2025)
+Last modified: 1751800135808 (Sun Jul 06 13:08:55 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751772181998
+  ETF = 1751800048194
+  SOR = 1751772139057
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751800135382
+  SOX = 1751772182033
+  partName = send
+  EOX = 1751800049196
+
+
+ID: 441cfd67-59d5-11f0-876b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564387 - 564388 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564388 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751743295414 (Sat Jul 05 21:21:35 CEST 2025)
+Last modified: 1751765537891 (Sun Jul 06 03:32:17 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751743337205
+  ETF = 1751765476032
+  SOR = 1751743293845
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751765537437
+  SOX = 1751743337240
+  partName = send
+  EOX = 1751765477051
+
+
+ID: e0736b81-5993-11f0-876b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564374 - 564375 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564375 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751715210921 (Sat Jul 05 13:33:30 CEST 2025)
+Last modified: 1751735693605 (Sat Jul 05 19:14:53 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751715252846
+  ETF = 1751735632106
+  SOR = 1751715209386
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751735693153
+  SOX = 1751715252877
+  partName = send
+  EOX = 1751735633120
+
+
+ID: 89912764-5990-11f0-876b-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564373 - 564374 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564374 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751713776663 (Sat Jul 05 13:09:36 CEST 2025)
+Last modified: 1751714705750 (Sat Jul 05 13:25:05 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751713818086
+  ETF = 1751714640122
+  SOR = 1751713775120
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751714705316
+  SOX = 1751713818121
+  partName = send
+  EOX = 1751714640243
+
+
+ID: e6d656e6-5964-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564359 - 564360 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564360 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751695035289 (Sat Jul 05 07:57:15 CEST 2025)
+Last modified: 1751706407376 (Sat Jul 05 11:06:47 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751695076837
+  ETF = 1751706350671
+  SOR = 1751695033767
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751706406935
+  SOX = 1751695076850
+  partName = send
+  EOX = 1751706351655
+
+
+ID: 38954efe-5964-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564358 - 564359 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564359 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751694742939 (Sat Jul 05 07:52:22 CEST 2025)
+Last modified: 1751694834941 (Sat Jul 05 07:53:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751694741396
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751694834516
+  SOX = 1751694784794
+  partName = send
+  EOX = 1751694785056
+
+
+ID: 513e8469-5952-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564357 - 564358 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564358 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751687053372 (Sat Jul 05 05:44:13 CEST 2025)
+Last modified: 1751693959641 (Sat Jul 05 07:39:19 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751687071665
+  ETF = 1751693908353
+  SOR = 1751687051938
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751693959203
+  SOX = 1751687071694
+  partName = send
+  EOX = 1751693908431
+
+
+ID: 09fb1af8-5949-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564356 - 564357 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564357 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751683068342 (Sat Jul 05 04:37:48 CEST 2025)
+Last modified: 1751686771315 (Sat Jul 05 05:39:31 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751683109900
+  ETF = 1751686704781
+  SOR = 1751683066600
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751686770854
+  SOX = 1751683109933
+  partName = send
+  EOX = 1751686705764
+
+
+ID: fcbfeeb9-58e6-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564336 - 564337 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564337 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751640955464 (Fri Jul 04 16:55:55 CEST 2025)
+Last modified: 1751641173121 (Fri Jul 04 16:59:33 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751640980362
+  ETF = 1751641081721
+  SOR = 1751640954099
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751641172684
+  SOX = 1751640980382
+  partName = send
+  EOX = 1751641122376
+
+
+ID: cec5f62d-5843-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564332 - 564333 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564333 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751570870361 (Thu Jul 03 21:27:50 CEST 2025)
+Last modified: 1751572046159 (Thu Jul 03 21:47:26 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751570911824
+  ETF = 1751571994968
+  SOR = 1751570868897
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751572045743
+  SOX = 1751570911855
+  partName = send
+  EOX = 1751571995140
+
+
+ID: aa5dc937-583f-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564331 - 564332 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564332 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751569091294 (Thu Jul 03 20:58:11 CEST 2025)
+Last modified: 1751570281868 (Thu Jul 03 21:18:01 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751569132934
+  ETF = 1751570230650
+  SOR = 1751569089844
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751570281441
+  SOX = 1751569132967
+  partName = send
+  EOX = 1751570230797
+
+
+ID: 2f28bc0c-5821-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564328 - 564329 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564329 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751555999684 (Thu Jul 03 17:19:59 CEST 2025)
+Last modified: 1751558724565 (Thu Jul 03 18:05:24 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751556016799
+  ETF = 1751558713451
+  SOR = 1751555998331
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751558724137
+  SOX = 1751556016830
+  partName = send
+  EOX = 1751558713782
+
+
+ID: 826532e9-581c-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564327 - 564328 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564328 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751553991848 (Thu Jul 03 16:46:31 CEST 2025)
+Last modified: 1751555294703 (Thu Jul 03 17:08:14 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751553999742
+  ETF = 1751555277348
+  SOR = 1751553990474
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751555294282
+  SOX = 1751553999773
+  partName = send
+  EOX = 1751555277434
+
+
+ID: d2b8ff6d-5819-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564326 - 564327 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564327 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751552838125 (Thu Jul 03 16:27:18 CEST 2025)
+Last modified: 1751555256192 (Thu Jul 03 17:07:36 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751552855199
+  ETF = 1751555245292
+  SOR = 1751552836757
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751555255769
+  SOX = 1751552855234
+  partName = send
+  EOX = 1751555245627
+
+
+ID: 48aaeb0d-57f2-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564318 - 564319 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564319 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751535856134 (Thu Jul 03 11:44:16 CEST 2025)
+Last modified: 1751536038444 (Thu Jul 03 11:47:18 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751535854793
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751536038006
+  SOX = 1751535873321
+  partName = send
+  EOX = 1751536028425
+
+
+ID: 8f9a2bf7-57f0-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564317 - 564318 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564318 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751535116149 (Thu Jul 03 11:31:56 CEST 2025)
+Last modified: 1751535714486 (Thu Jul 03 11:41:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751535114811
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751535714047
+  SOX = 1751535133198
+  partName = send
+  EOX = 1751535704486
+
+
+ID: 9b9658ad-57ee-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564316 - 564317 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564317 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751534277263 (Thu Jul 03 11:17:57 CEST 2025)
+Last modified: 1751534379831 (Thu Jul 03 11:19:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751534275913
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751534379394
+  SOX = 1751534294415
+  partName = send
+  EOX = 1751534369779
+
+
+ID: 00efd3cf-57ee-11f0-8769-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564315 - 564316 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564316 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751534017803 (Thu Jul 03 11:13:37 CEST 2025)
+Last modified: 1751534180108 (Thu Jul 03 11:16:20 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751534016428
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751534179658
+  SOX = 1751534034983
+  partName = send
+  EOX = 1751534157203
+
+
+ID: 7caeb535-573e-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564297 - 564298 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564298 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751458633989 (Wed Jul 02 14:17:13 CEST 2025)
+Last modified: 1751519804714 (Thu Jul 03 07:16:44 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751458675757
+  ETF = 1751519738547
+  SOR = 1751458632428
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751519804255
+  SOX = 1751458675792
+  partName = send
+  EOX = 1751519739259
+
+
+ID: d3eae662-572d-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564289 - 564290 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564290 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751451478901 (Wed Jul 02 12:17:58 CEST 2025)
+Last modified: 1751451734653 (Wed Jul 02 12:22:14 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751451477536
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751451734210
+  SOX = 1751451507084
+  partName = send
+  EOX = 1751451712073
+
+
+ID: 3ff90740-572c-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564288 - 564289 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564289 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751450801194 (Wed Jul 02 12:06:41 CEST 2025)
+Last modified: 1751450933789 (Wed Jul 02 12:08:53 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751450799829
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751450933339
+  SOX = 1751450829193
+  partName = send
+  EOX = 1751450911311
+
+
+ID: 0d643891-56fa-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564275 - 564276 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564276 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751429241497 (Wed Jul 02 06:07:21 CEST 2025)
+Last modified: 1751437908581 (Wed Jul 02 08:31:48 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751429283065
+  ETF = 1751437801051
+  SOR = 1751429239965
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751437908175
+  SOX = 1751429283013
+  partName = send
+  EOX = 1751437801959
+
+
+ID: 465ec288-56e7-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564274 - 564275 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564275 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751421176653 (Wed Jul 02 03:52:56 CEST 2025)
+Last modified: 1751428118239 (Wed Jul 02 05:48:38 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751421194865
+  ETF = 1751428067006
+  SOR = 1751421175252
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751428117785
+  SOX = 1751421194826
+  partName = send
+  EOX = 1751428067021
+
+
+ID: 51044cb7-56e6-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564273 - 564274 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564274 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751420765018 (Wed Jul 02 03:46:05 CEST 2025)
+Last modified: 1751421038146 (Wed Jul 02 03:50:38 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751420763598
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751421037723
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 881a7dbb-56c9-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564272 - 564273 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564273 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751408402033 (Wed Jul 02 00:20:02 CEST 2025)
+Last modified: 1751420429176 (Wed Jul 02 03:40:29 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751408443912
+  ETF = 1751420367272
+  SOR = 1751408400500
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751420428708
+  SOX = 1751408443896
+  partName = send
+  EOX = 1751420368041
+
+
+ID: 82264176-5689-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564271 - 564272 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564272 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751380904253 (Tue Jul 01 16:41:44 CEST 2025)
+Last modified: 1751408094191 (Wed Jul 02 00:14:54 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751380945806
+  ETF = 1751408029552
+  SOR = 1751380902667
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751408093733
+  SOX = 1751380945841
+  partName = send
+  EOX = 1751408029969
+
+
+ID: 66ce185f-5688-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564270 - 564271 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564271 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751380428880 (Tue Jul 01 16:33:48 CEST 2025)
+Last modified: 1751380702101 (Tue Jul 01 16:38:22 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751380427314
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751380701649
+  SOX = 0
+  partName = send
+  EOX = 0
+
+
+ID: 8cdb19a9-5687-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564269 - 564270 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564270 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751380063222 (Tue Jul 01 16:27:43 CEST 2025)
+Last modified: 1751380154806 (Tue Jul 01 16:29:14 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  SOR = 1751380061668
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751380154396
+  SOX = 1751380104830
+  partName = send
+  EOX = 1751380104955
+
+
+ID: ae822c4f-565c-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564261 - 564262 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564262 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751361651323 (Tue Jul 01 11:20:51 CEST 2025)
+Last modified: 1751362944431 (Tue Jul 01 11:42:24 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751361658754
+  ETF = 1751362932536
+  SOR = 1751361649923
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751362943991
+  SOX = 1751361658791
+  partName = send
+  EOX = 1751362932618
+
+
+ID: a8f27f88-5639-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564251 - 564252 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564252 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751346609607 (Tue Jul 01 07:10:09 CEST 2025)
+Last modified: 1751353883071 (Tue Jul 01 09:11:23 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751346650865
+  ETF = 1751353819641
+  SOR = 1751346608004
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751353882632
+  SOX = 1751346650887
+  partName = send
+  EOX = 1751353820631
+
+
+ID: 4ffb9ba7-562e-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564250 - 564251 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564251 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751341735885 (Tue Jul 01 05:48:55 CEST 2025)
+Last modified: 1751346399794 (Tue Jul 01 07:06:39 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751341777689
+  ETF = 1751346274163
+  SOR = 1751341734347
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751346399366
+  SOX = 1751341777720
+  partName = send
+  EOX = 1751346274929
+
+
+ID: fff5a945-55d0-11f0-8764-0aa145271b9a
+Path: RCT/Info/RunInformation
+Validity: 564239 - 564240 (Thu Jan 01 01:09:24 CET 1970 - Thu Jan 01 01:09:24 CET 1970)
+Initial validity limit: 564240 (Thu Jan 01 01:09:24 CET 1970)
+Created: 1751301658433 (Mon Jun 30 18:40:58 CEST 2025)
+Last modified: 1751302830675 (Mon Jun 30 19:00:30 CEST 2025)
+Original file: tmp.dat, size: 1, md5: 93b885adfe0da089cdf634904fd59f71, content type: application/x-ns-proxy-autoconfig
+Uploaded from: 10.161.69.39
+Metadata:
+  ObjectType = char
+  STF = 1751301675511
+  ETF = 1751302819923
+  SOR = 1751301657043
+  UpdatedFrom = 10.161.69.39
+  EOR = 1751302830226
+  SOX = 1751301675518
+  partName = send
+  EOX = 1751302820242
