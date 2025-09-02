@@ -65,7 +65,7 @@ int main()
         continue;
       }
 
-      if (buffer[i] == ' ')  { // word after space
+      if (buffer[i] == ' ')  { // word before space
         word[word_size] = '\0';
         if (was_dot == 1) {    // timestamp epoch seconds.nanoseconds
           // epoch 1753480801.035600400 => there should be 9 digits for nanoseconds
