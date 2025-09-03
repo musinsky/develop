@@ -1,4 +1,4 @@
-// 2025-08-11
+// 2025-09-03
 
 // $ gcc -pedantic -Wall -Wextra -o read.values.fast read.values.fast.c && ./read.values.fast
 //       -DPRINT # optional
@@ -9,6 +9,8 @@
 // program's runtime, but no reason to manually override this function.
 // Note, that function atoll() is the same as function strtol(nptr, NULL, 10)
 // without detect errors.
+//
+// More options for reading values from a file can be found at the end.
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -145,3 +147,17 @@ int main()
   printf("count_lines: %zu\n", count_lines);
   return EXIT_SUCCESS;
 }
+
+// https://en.cppreference.com/w/c/io/fscanf
+// https://manned.org/man/fedora/scanf.3
+// The scanf() family of functions scans formatted input like sscanf(3), but
+// read from a FILE. It is very difficult to use these functions correctly, and
+// it is preferable to read entire lines with fgets(3) or getline(3) and parse
+// them later with sscanf(3) or more specialized functions such as strtol(3).
+
+// https://en.cppreference.com/w/c/io/fgets
+// https://manned.org/man/fedora/fgets.3
+// fgets() reads in at most one less than size characters from stream and stores
+// them into the buffer pointed to by s. Reading stops after an EOF or a
+// newline. If a newline is read, it is stored into the buffer. A terminating
+// null byte ('\0') is stored after the last character in the buffer.
