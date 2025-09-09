@@ -1,0 +1,75 @@
+# 2024-04-09
+
+// https://manned.org/man/fedora/fopen.3
+// https://www.gnu.org/software/libc/manual/html_node/Opening-Streams.html
+// https://www.gnu.org/software/libc/manual/html_node/Binary-Streams.html
+
+In the GNU C Library, and on all POSIX systems, there is no difference between
+text streams and binary streams ('b' is ignored).
+
+https://stackoverflow.com/questions/12102332/when-should-i-use-perror-and-fprintfstderr
+// https://www.gnu.org/software/libc/manual/html_node/Error-Messages.html
+  if (fstream == NULL) {
+    fprintf (stderr, "Couldn't open file '%s': %s\n", sname, strerror(errno));
+    fprintf (stderr, "Couldn't open file '%s': ", sname); perror("");
+    exit(EXIT_FAILURE);
+  }
+
+https://wiki.sei.cmu.edu/confluence/display/c/FIO19-C.+Do+not+use+fseek%28%29+and+ftell%28%29+to+compute+the+size+of+a+regular+file
+POSIX = stat
+ANSI C (standard) = fseek, ftell
+
+portabilty = malloc() + fread()
+POSIX = mmap() // OK pre large files, alebo pre random citanie
+buffer[file_size] = '\0';   # !!! ais kvoli txt file !!!
+# Why use mmap over fread?
+https://stackoverflow.com/questions/30385635/why-use-mmap-over-fread
+
+
+https://stackoverflow.com/questions/1893490/what-is-the-difference-between-conversion-specifiers-i-and-d-in-formatted-io-f
+%d or %i are identical for printf() but different for scanf().
+https://en.wikipedia.org/wiki/Printf
+%d and %i are synonymous for output, but are different when used with scanf for input
+
+
+man scanf
+The scanf() family of functions scans input like sscanf(3), but read
+from a FILE. It is very difficult to use these functions correctly, and it is
+preferable to read entire lines with fgets(3) or getline(3) and parse them later
+with sscanf(3) or more specialized functions such as strtol(3).
+
+
+
+// https://stackoverflow.com/questions/5431941/why-is-while-feoffile-always-wrong
+// https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1046476070&id=1043284351
+Don't use !feof(file), resp. EOF
+The feof() function returns nonzero if and only if the end-of-file indicator is set for stream.
+If there is a read error, the loop never terminates.
+Co znamena, ze nekotroluje mozny error, preto ak feof(), tak v kombinacii s ferror().
+
+
+// https://en.wikipedia.org/wiki/Type_punning
+// https://stackoverflow.com/questions/13982340/is-it-safe-to-reinterpret-cast-an-integer-to-float
+// https://stackoverflow.com/questions/42878158/cast-double-to-int64-t-and-back-without-info-lost
+// https://stackoverflow.com/questions/7831696/reinterpret-cast-vs-c-style-cast/
+
+
+
+SEI CERT Coding Standards: https://en.wikipedia.org/wiki/CERT_Coding_Standards
+Software Engineering Institute (SEI), Computer Emergency Response Team (CERT)
+SEI CERT C Coding Standard: https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard
+
+
+
+
+
+https://en.wikibooks.org/wiki/C_Programming
+
+
+https://stackoverflow.com/questions/12642574/difference-between-static-function-and-non-static-function-in-c
+https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions
+Static functions
+If a function is to be called only from within the file in which it is declared,
+it is appropriate to declare it as a static function. When a function is
+declared static, the compiler will know to compile an object file in a way that
+prevents the function from being called from code in other files.
