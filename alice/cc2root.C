@@ -1,4 +1,4 @@
-// 2025-10-06
+// 2025-10-07
 
 #include <TFile.h>
 #include <TTree.h>
@@ -20,11 +20,11 @@ void cc2root()
   // on x86_64 platform (unsigned) long long = (unsigned) long = (u)int64_t = 8 bytes
   // ULLONG_MAX = ULONG_MAX = 18.446.744.073.709.551.615 => max. 20 digits
   //               UINT_MAX =              4.294.967.295 => max. 10 digits
-  // static_assert(sizeof(ULong64_t) == 8, "code assumes 8-bytes long");
+  static_assert(sizeof(ULong_t) == 8, "code assumes 8-bytes unsigned long");
 
   char buffer[4096*16];         // 4096*16 = 65536 = 64 kB (most caches are 64 kB aligned)
   char word[20+1];              // max. 20 digits for uint64_t value
-  std::uint64_t value64;        // 64-bit value
+  std::uint64_t value64;        // 64-bit (temporary) value
   static constexpr std::uint64_t kLimit32 = 0xFFFFFFFFull;
   std::uint32_t values32[1085]; // 1085 (32-bit) values (NCOUNTERS = 1085, see bellow)
   std::uint64_t epoch;          // exactly 13 digits (ALICE CCDB millisecond resolution)
@@ -32,11 +32,12 @@ void cc2root()
   char epochNano[9+1];          // max. 9 digits (see bellow)
   bool epochDot = false;
 
-  // ccTree.Branch("epoch", &epoch, "epoch/l"); // epoch/1000 = epochSec
-  ccTree.Branch("epoch", &epochSec, "epoch/l");
+  // ccTree.Branch("epoch", &epoch, "epoch/g"); // epoch/1000 = epochSec
+  ccTree.Branch("epoch", &epochSec, "epoch/g");
   ccTree.Branch("scaler", values32, TString::Format("scaler[%zu]/i", std::size(values32)));
-  // 'l' 64-bit unsigned integer (ULong64_t)
-  // 'i' 32-bit unsigned integer (UInt_t)
+  // 'i' 32-bit unsigned integer (UInt_t), 13                  => std::uint32_t or unsigned int
+  // 'g' long unsigned integer, stored as 64 bit (ULong_t), 14 => std::uint64_t or unsigned long
+  // 'l' 64-bit unsigned integer (ULong64_t), 17               => unsigned long long
 
   size_t nread, i, n;
   size_t wordSize = 0, countValues = 0, countLines = 0;
