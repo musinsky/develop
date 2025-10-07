@@ -12,6 +12,7 @@ void cc2root()
     return;
   }
   TFile ccFile(TString::Format("%s.root", fname.Data()), "RECREATE");
+  // ccFile.SetCompressionLevel(ROOT::RCompressionSetting::ELevel::kUncompressed);
   TTree ccTree("cc", fname.Data());
   // write identical file as read file (only for compare, verify)
   // FILE *fcopy = fopen(TString::Format("/tmp/%s.copy", fname.Data()), "w");
