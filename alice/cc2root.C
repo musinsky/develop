@@ -1,4 +1,6 @@
-// 2025-10-07
+// 2025-10-15
+
+// see also '../c/read.values.fast.c'
 
 #include <TFile.h>
 #include <TTree.h>
@@ -6,6 +8,7 @@
 void cc2root()
 {
   TString fname = "20250726.cc"; // "cc" means CTP counters
+  fname = "../c/read.values.file.sample";
   FILE *fin = fopen(fname.Data(), "r");
   if (!fin) {
     fprintf(stderr, "fopen('%s') failed: %s\n", fname.Data(), strerror(errno));
@@ -53,6 +56,7 @@ void cc2root()
         // epoch 9999999999 (10 digits) => 2286-11-20 17:46:39 UTC
         // epoch 1753480801.035600400   => exactly 10 digits for seconds
         // std::from_chars(word, word+wordSize, epochSec); // #include <charconv>
+        // epochSec = strtoull(word, nullptr, 10); // better choice than atoll()
         epochSec = atoll(word);
         if ((wordSize != 10) || (epochSec == 0))
           fprintf(stderr, "epochSec '%s' does not contain 10 digits\n", word);
