@@ -1,3 +1,4 @@
+* https://github.com/7etsuo/windows-api-function-cheatsheets/blob/main/socket-cheatsheet.txt   # 2025-10
 * https://github.com/nguyenchiemminhvu/LinuxNetworkProgramming     # 2025-04
 
 * http://man7.org/tlpi/code/online/all_files_by_chapter.html#ch57
