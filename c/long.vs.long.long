@@ -1,0 +1,21 @@
+// 2025-11-07
+
+
+// https://en.wikipedia.org/wiki/64-bit_computing#64-bit_data_models
+// https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits
+
+// 2^32 - 1 = 0xFFFFFFFF         =              4.294.967.295 = 4 bytes = UINT32_MAX
+//          => LP64 (Unix-like)  = UINT_MAX (unsigned int)
+//          => LLP64 (MS Win)    = UINT_MAX (unsigned int) = ULONG_MAX (unsigned long)
+//
+// 2^64 - 1 = 0xFFFFFFFFFFFFFFFF = 18.446.744.073.709.551.615 = 8 bytes = UINT64_MAX
+//          => LP64 (Unix-like)  = ULONG_MAX (unsigned long) = ULLONG_MAX (unsigned long long)
+//          => LLP64 (MS Win)    = ULLONG_MAX (unsigned long long)
+
+// LP64  (Unix-like): (unsigned) long [64-bit] == (unsigned) long long [64-bit]
+// LLP64 (MS Win)   : (unsigned) long [32-bit] != (unsigned) long long [64-bit]
+//
+// std::(u)int64_t => first 64-bit type available on the platform
+//         on  LP64 = (unsigned) long
+//         on LLP64 = (unsigned) long long
+// static_assert(sizeof(ULong_t) == 8, "code assumes 8-byte unsigned long");
