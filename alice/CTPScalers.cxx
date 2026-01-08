@@ -1,4 +1,4 @@
-// Date:   2025-11-19
+// Date:   2026-01-08
 // Author: Musinsky Jan
 
 #include <iostream>
@@ -427,7 +427,7 @@ void CTPScalers::ClassesConditions(const char* rootfn, std::uint32_t run,
          << "#                       (all values are in percentages)\n"
          << "#         "
          << "run: " << run << ", file: " << gSystem->BaseName(f->GetName())
-         << ", entries: " << cnt0 << "\n" << "#\n"
+         << ", entries: " << cnt0 << " (= 100 %)\n" << "#\n"
          << "#         "
          << "| LMB < LMA | LMA < L0B | L0B < L0A | L0A < L1B | L1B < L1A |\n"
          << "#         "
