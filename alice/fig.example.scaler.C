@@ -1,17 +1,24 @@
-// 2026-01-13
+// 2026-01-14
 
-void fig_scaler_example()
+void example_scaler(const char *fn, int run, int scaler)
 {
-  TFile *f = TFile::Open("20250726.cc.root", "READ");
+  TFile *f = TFile::Open(fn, "READ");
   if (!f) return;
   TTree *cc = f->Get<TTree>("cc");
   if (!cc) return;
   // CTPScalerEntry *entry = nullptr;
   // cc->SetBranchAddress("CTPScalerEntry", &entry);
 
+  // exactly the graphics area size of a canvas
+  int w = 1920/2, h = 1080/2; // widescreen (16:9)
+  TCanvas *c = new TCanvas(TString::Format("c_%d_%d", run, scaler), "", 0, 0, w, h);
+  c->SetTitle(c->GetName());
+  c->SetWindowSize(w + (w - c->GetWw()), h + (h - c->GetWh()));
+  gStyle->SetGridColor(kGray);
+  c->SetGrid();
+
   // setenv("TZ", "Asia/Tokyo", 1); tzset(); // only for testing
   setenv("TZ", "Europe/Zurich", 1); tzset(); // set CERN time as local time
-  int scaler = 647, run = 564918;
   cc->Draw(TString::Format("GetScaler(%d):GetEpochSec()", scaler),
            TString::Format("HasRun(%d)", run));
   TGraph *g = dynamic_cast<TGraph *>(gPad->FindObject("Graph"));
@@ -50,7 +57,7 @@ void fig_scaler_example()
   latex.SetTextAlign(12); // middle, left
   latex.SetTextSize(0.04);
   latex.SetTextColor(g->GetMarkerColor());
-  latex.DrawLatex(htemp->GetXaxis()->GetXmin()-2000, 0xFFFFFFFF*1.01, "#bf{ 2^{32}} #Rightarrow");
+  latex.DrawLatex(htemp->GetXaxis()->GetXmin()-2000, 0xFFFFFFFF*1.01, "#bf{ 2^{32}} #rightarrow");
 
   cc->Draw(TString::Format("GetScalerIncr(%d):GetEpochSec()", scaler),
            TString::Format("HasRun(%d)", run), "same");
@@ -64,7 +71,8 @@ void fig_scaler_example()
   pad2->SetFrameFillStyle(0); // transparent
   pad2->Draw();
   pad2->cd();
-  if (scaler == 647) g->SetMinimum(4000000); // !!! specific for scaler[647] !!!
+  if (scaler == 647) g->SetMinimum(4000e3);                           // !!!
+  if (scaler == 917) { g->SetMinimum(2.5e6); g->SetMaximum(16.5e6); } // !!!
   g->Draw("APY+");
   g->GetXaxis()->SetLimits(htemp->GetXaxis()->GetXmin(), htemp->GetXaxis()->GetXmax());
   // g->GetXaxis()->SetNoExponent();
@@ -74,7 +82,7 @@ void fig_scaler_example()
   g->GetYaxis()->SetTitleColor(g->GetMarkerColor());
   g->GetYaxis()->SetLabelColor(g->GetMarkerColor());
   g->GetYaxis()->CenterTitle();
-  g->GetYaxis()->SetNdivisions(409);
+  g->GetYaxis()->SetNdivisions(309);
   g->GetYaxis()->SetTitleOffset(1.25);
   g->SetTitle(nullptr);
   info.SetTextColor(g->GetMarkerColor());
@@ -87,14 +95,13 @@ void fig_scaler_example()
   info.DrawTextNDC(0.70, 0.95, TString::Format("file: %s", cc->GetTitle()));
 
   // unsetenv("TZ"); tzset();
-  TCanvas *c = gPad->GetCanvas();
-  c->SetWindowSize(1920/2, 1080/2); // widescreen (16:9)
-  std::uint32_t w = c->GetWindowWidth(), h = c->GetWindowHeight();
-  // exactly the graphics area size of a canvas
-  c->SetWindowSize(w + (w - c->GetWw()), h + (h - c->GetWh()));
-  gStyle->SetGridColor(kGray);
-  c->SetGrid();
   c->ModifiedUpdate();
   TDatime now;
-  c->Print(TString::Format("fig.scaler.example.%.10s.pdf", now.AsSQLString()));
+  c->Print(TString::Format("fig.example.scaler.%d.%d.%.10s.pdf", run, scaler, now.AsSQLString()));
+}
+
+void fig_example_scaler()
+{
+  example_scaler("20250726.cc.root", 564918, 647); // 647 = kLMB, 0  = "clamb1"
+  example_scaler("20241116.cc.root", 560089, 917); // 917 = kL1B, 14 = "cla1b15"
 }
