@@ -1,4 +1,4 @@
-// 2026-01-12
+// 2026-01-13
 
 void fig_scaler_example()
 {
@@ -17,7 +17,7 @@ void fig_scaler_example()
   TGraph *g = dynamic_cast<TGraph *>(gPad->FindObject("Graph"));
   if (!g) return;
   g->SetMarkerStyle(6);
-  g->SetMarkerColor(kGreen+1);
+  g->SetMarkerColor(kGreen+2);
   TH2F *htemp = dynamic_cast<TH2F *>(gPad->FindObject("htemp"));
   if (!htemp) return;
   // htemp->GetXaxis()->SetNoExponent();
@@ -57,13 +57,14 @@ void fig_scaler_example()
   g = dynamic_cast<TGraph *>(gPad->GetListOfPrimitives()->Last()); // ?!
   if (!g) return;
   g->SetMarkerStyle(6);
-  g->SetMarkerColor(kGreen+4);
+  g->SetMarkerColor(kBlue+2);
   gPad->GetListOfPrimitives()->Remove(g); // no draw
   TPad *pad2 = new TPad("pad2", "", 0.00, 0.00, 1.00, 1.00);
   pad2->SetFillStyle(4000);   // transparent
   pad2->SetFrameFillStyle(0); // transparent
   pad2->Draw();
   pad2->cd();
+  if (scaler == 647) g->SetMinimum(4000000); // !!! specific for scaler[647] !!!
   g->Draw("APY+");
   g->GetXaxis()->SetLimits(htemp->GetXaxis()->GetXmin(), htemp->GetXaxis()->GetXmax());
   // g->GetXaxis()->SetNoExponent();
