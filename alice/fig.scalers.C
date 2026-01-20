@@ -1,4 +1,4 @@
-// 2026-01-14
+// 2026-01-20
 
 TCanvas *CanvasExactSize(const char* nt)
 {
@@ -127,12 +127,24 @@ void fig_scalers()
   c30->Print(TString::Format("fig.scalers.%d.03.%.10s.pdf", run, now.AsSQLString()));
 }
 
-// ROOT history 2025-11-11 with Roman
-// cc->Draw("(GetScalerIncr(kLMB, 0) - GetScalerIncr(kLMA, 0))>>htemp(10,-5,5)",
-//          "HasRun(560089)")
-// cc->Draw("(GetScalerIncr(kLMB, 0) - GetScalerIncr(kInput, 2))>>htemp(100, -19e6, 0)",
-//          "HasRun(560089)")
+// TFile *_file0 = TFile::Open("20250726.cc.root")
+// TFile *_file0 = TFile::Open("20241116.cc.root")
+// cc->Draw("Iteration$>>h1(1200, 0, 1200)", "fScalersStat==3")   // => 593, 1070
+// cc->Draw("fScalers[1070]:fEpoch")   // scaler[1070] = 'orbitid'
+// cc->Draw("fScalers[ 593]:fEpoch")   // scaler[ 593] = 'clk240'
+
+// ROOT history 2025-11-11 (common with Roman in CERN)
+// TFile *_file0 = TFile::Open("20250726.cc.root")
+// cc->Draw("(GetScalerIncr(kLMB, 1) - GetScalerIncr(kLMA, 1))>>htemp(10,-5,5)",
+//          "HasRun(564918)")
+// cc->Draw("(GetScalerIncr(kL0A, 1) - GetScalerIncr(kL1B, 1))>>htemp(30, -15, 15)",
+//          "HasRun(564918)")
+// TFile *_file0 = TFile::Open("20241116.cc.root")
 // cc->Draw("(GetScalerIncr(kLMB, 45) - GetScalerIncr(kLMA, 45))>>htemp(100, 0, 19e6)",
 //          "HasRun(560089)");
 // cc->Draw("(GetScalerIncr(kLMB, 45) - GetScalerIncr(kInput, 2))>>htemp(10, -5, 5)",
 //          "HasRun(560089)");
+// cc->Draw("(GetScalerIncr(kLMB, 0) - GetScalerIncr(kLMA, 0))>>htemp(10,-5,5)",
+//          "HasRun(560089)")
+// cc->Draw("(GetScalerIncr(kLMB, 0) - GetScalerIncr(kInput, 2))>>htemp(100, -19e6, 0)",
+//          "HasRun(560089)")
