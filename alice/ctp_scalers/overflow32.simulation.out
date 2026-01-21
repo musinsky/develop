@@ -1,0 +1,330 @@
+'x' is always greater than 'y' (condition LMB >= LMA in CTP scalers)
+
+x32:  800000000 (real x64:            800000000)
+y32:  200000000 (real y64:            200000000)
+x32 increment:  800000000 -          0 =  800000000
+y32 increment:  200000000 -          0 =  200000000
+epoch:   0 (condition x32 >= y32 is correct)
+
+x32: 1600000000 (real x64:           1600000000)
+y32:  400000000 (real y64:            400000000)
+x32 increment: 1600000000 -  800000000 =  800000000
+y32 increment:  400000000 -  200000000 =  200000000
+epoch:   1 (condition x32 >= y32 is correct)
+
+x32: 2400000000 (real x64:           2400000000)
+y32:  600000000 (real y64:            600000000)
+x32 increment: 2400000000 - 1600000000 =  800000000
+y32 increment:  600000000 -  400000000 =  200000000
+epoch:   2 (condition x32 >= y32 is correct)
+
+x32: 3200000000 (real x64:           3200000000)
+y32:  800000000 (real y64:            800000000)
+x32 increment: 3200000000 - 2400000000 =  800000000
+y32 increment:  800000000 -  600000000 =  200000000
+epoch:   3 (condition x32 >= y32 is correct)
+
+x32: 4000000000 (real x64:           4000000000)
+y32: 1000000000 (real y64:           1000000000)
+x32 increment: 4000000000 - 3200000000 =  800000000
+y32 increment: 1000000000 -  800000000 =  200000000
+epoch:   4 (condition x32 >= y32 is correct)
+
+x32:  505032704 (real x64:           4800000000)   # x32 count overflow: 1
+y32: 1200000000 (real y64:           1200000000)
+x32 increment:  505032704 - 4000000000 =  800000000
+y32 increment: 1200000000 - 1000000000 =  200000000
+epoch:   5 (condition x32 >= y32 is INCORRECT)
+
+x32: 1305032704 (real x64:           5600000000)
+y32: 1400000000 (real y64:           1400000000)
+x32 increment: 1305032704 -  505032704 =  800000000
+y32 increment: 1400000000 - 1200000000 =  200000000
+epoch:   6 (condition x32 >= y32 is INCORRECT)
+
+x32: 2105032704 (real x64:           6400000000)
+y32: 1600000000 (real y64:           1600000000)
+x32 increment: 2105032704 - 1305032704 =  800000000
+y32 increment: 1600000000 - 1400000000 =  200000000
+epoch:   7 (condition x32 >= y32 is correct)
+
+x32: 2905032704 (real x64:           7200000000)
+y32: 1800000000 (real y64:           1800000000)
+x32 increment: 2905032704 - 2105032704 =  800000000
+y32 increment: 1800000000 - 1600000000 =  200000000
+epoch:   8 (condition x32 >= y32 is correct)
+
+x32: 3705032704 (real x64:           8000000000)
+y32: 2000000000 (real y64:           2000000000)
+x32 increment: 3705032704 - 2905032704 =  800000000
+y32 increment: 2000000000 - 1800000000 =  200000000
+epoch:   9 (condition x32 >= y32 is correct)
+
+x32:  210065408 (real x64:           8800000000)   # x32 count overflow: 2
+y32: 2200000000 (real y64:           2200000000)
+x32 increment:  210065408 - 3705032704 =  800000000
+y32 increment: 2200000000 - 2000000000 =  200000000
+epoch:  10 (condition x32 >= y32 is INCORRECT)
+
+x32: 1010065408 (real x64:           9600000000)
+y32: 2400000000 (real y64:           2400000000)
+x32 increment: 1010065408 -  210065408 =  800000000
+y32 increment: 2400000000 - 2200000000 =  200000000
+epoch:  11 (condition x32 >= y32 is INCORRECT)
+
+x32: 1810065408 (real x64:          10400000000)
+y32: 2600000000 (real y64:           2600000000)
+x32 increment: 1810065408 - 1010065408 =  800000000
+y32 increment: 2600000000 - 2400000000 =  200000000
+epoch:  12 (condition x32 >= y32 is INCORRECT)
+
+x32: 2610065408 (real x64:          11200000000)
+y32: 2800000000 (real y64:           2800000000)
+x32 increment: 2610065408 - 1810065408 =  800000000
+y32 increment: 2800000000 - 2600000000 =  200000000
+epoch:  13 (condition x32 >= y32 is INCORRECT)
+
+x32: 3410065408 (real x64:          12000000000)
+y32: 3000000000 (real y64:           3000000000)
+x32 increment: 3410065408 - 2610065408 =  800000000
+y32 increment: 3000000000 - 2800000000 =  200000000
+epoch:  14 (condition x32 >= y32 is correct)
+
+x32: 4210065408 (real x64:          12800000000)
+y32: 3200000000 (real y64:           3200000000)
+x32 increment: 4210065408 - 3410065408 =  800000000
+y32 increment: 3200000000 - 3000000000 =  200000000
+epoch:  15 (condition x32 >= y32 is correct)
+
+x32:  715098112 (real x64:          13600000000)   # x32 count overflow: 3
+y32: 3400000000 (real y64:           3400000000)
+x32 increment:  715098112 - 4210065408 =  800000000
+y32 increment: 3400000000 - 3200000000 =  200000000
+epoch:  16 (condition x32 >= y32 is INCORRECT)
+
+x32: 1515098112 (real x64:          14400000000)
+y32: 3600000000 (real y64:           3600000000)
+x32 increment: 1515098112 -  715098112 =  800000000
+y32 increment: 3600000000 - 3400000000 =  200000000
+epoch:  17 (condition x32 >= y32 is INCORRECT)
+
+x32: 2315098112 (real x64:          15200000000)
+y32: 3800000000 (real y64:           3800000000)
+x32 increment: 2315098112 - 1515098112 =  800000000
+y32 increment: 3800000000 - 3600000000 =  200000000
+epoch:  18 (condition x32 >= y32 is INCORRECT)
+
+x32: 3115098112 (real x64:          16000000000)
+y32: 4000000000 (real y64:           4000000000)
+x32 increment: 3115098112 - 2315098112 =  800000000
+y32 increment: 4000000000 - 3800000000 =  200000000
+epoch:  19 (condition x32 >= y32 is INCORRECT)
+
+x32: 3915098112 (real x64:          16800000000)
+y32: 4200000000 (real y64:           4200000000)
+x32 increment: 3915098112 - 3115098112 =  800000000
+y32 increment: 4200000000 - 4000000000 =  200000000
+epoch:  20 (condition x32 >= y32 is INCORRECT)
+
+x32:  420130816 (real x64:          17600000000)   # x32 count overflow: 4
+y32:  105032704 (real y64:           4400000000)   # y32 count overflow: 1
+x32 increment:  420130816 - 3915098112 =  800000000
+y32 increment:  105032704 - 4200000000 =  200000000
+epoch:  21 (condition x32 >= y32 is correct)
+
+x32: 1220130816 (real x64:          18400000000)
+y32:  305032704 (real y64:           4600000000)
+x32 increment: 1220130816 -  420130816 =  800000000
+y32 increment:  305032704 -  105032704 =  200000000
+epoch:  22 (condition x32 >= y32 is correct)
+
+x32: 2020130816 (real x64:          19200000000)
+y32:  505032704 (real y64:           4800000000)
+x32 increment: 2020130816 - 1220130816 =  800000000
+y32 increment:  505032704 -  305032704 =  200000000
+epoch:  23 (condition x32 >= y32 is correct)
+
+x32: 2820130816 (real x64:          20000000000)
+y32:  705032704 (real y64:           5000000000)
+x32 increment: 2820130816 - 2020130816 =  800000000
+y32 increment:  705032704 -  505032704 =  200000000
+epoch:  24 (condition x32 >= y32 is correct)
+
+x32: 3620130816 (real x64:          20800000000)
+y32:  905032704 (real y64:           5200000000)
+x32 increment: 3620130816 - 2820130816 =  800000000
+y32 increment:  905032704 -  705032704 =  200000000
+epoch:  25 (condition x32 >= y32 is correct)
+
+x32:  125163520 (real x64:          21600000000)   # x32 count overflow: 5
+y32: 1105032704 (real y64:           5400000000)
+x32 increment:  125163520 - 3620130816 =  800000000
+y32 increment: 1105032704 -  905032704 =  200000000
+epoch:  26 (condition x32 >= y32 is INCORRECT)
+
+x32:  925163520 (real x64:          22400000000)
+y32: 1305032704 (real y64:           5600000000)
+x32 increment:  925163520 -  125163520 =  800000000
+y32 increment: 1305032704 - 1105032704 =  200000000
+epoch:  27 (condition x32 >= y32 is INCORRECT)
+
+x32: 1725163520 (real x64:          23200000000)
+y32: 1505032704 (real y64:           5800000000)
+x32 increment: 1725163520 -  925163520 =  800000000
+y32 increment: 1505032704 - 1305032704 =  200000000
+epoch:  28 (condition x32 >= y32 is correct)
+
+x32: 2525163520 (real x64:          24000000000)
+y32: 1705032704 (real y64:           6000000000)
+x32 increment: 2525163520 - 1725163520 =  800000000
+y32 increment: 1705032704 - 1505032704 =  200000000
+epoch:  29 (condition x32 >= y32 is correct)
+
+x32: 3325163520 (real x64:          24800000000)
+y32: 1905032704 (real y64:           6200000000)
+x32 increment: 3325163520 - 2525163520 =  800000000
+y32 increment: 1905032704 - 1705032704 =  200000000
+epoch:  30 (condition x32 >= y32 is correct)
+
+x32: 4125163520 (real x64:          25600000000)
+y32: 2105032704 (real y64:           6400000000)
+x32 increment: 4125163520 - 3325163520 =  800000000
+y32 increment: 2105032704 - 1905032704 =  200000000
+epoch:  31 (condition x32 >= y32 is correct)
+
+x32:  630196224 (real x64:          26400000000)   # x32 count overflow: 6
+y32: 2305032704 (real y64:           6600000000)
+x32 increment:  630196224 - 4125163520 =  800000000
+y32 increment: 2305032704 - 2105032704 =  200000000
+epoch:  32 (condition x32 >= y32 is INCORRECT)
+
+x32: 1430196224 (real x64:          27200000000)
+y32: 2505032704 (real y64:           6800000000)
+x32 increment: 1430196224 -  630196224 =  800000000
+y32 increment: 2505032704 - 2305032704 =  200000000
+epoch:  33 (condition x32 >= y32 is INCORRECT)
+
+x32: 2230196224 (real x64:          28000000000)
+y32: 2705032704 (real y64:           7000000000)
+x32 increment: 2230196224 - 1430196224 =  800000000
+y32 increment: 2705032704 - 2505032704 =  200000000
+epoch:  34 (condition x32 >= y32 is INCORRECT)
+
+x32: 3030196224 (real x64:          28800000000)
+y32: 2905032704 (real y64:           7200000000)
+x32 increment: 3030196224 - 2230196224 =  800000000
+y32 increment: 2905032704 - 2705032704 =  200000000
+epoch:  35 (condition x32 >= y32 is correct)
+
+x32: 3830196224 (real x64:          29600000000)
+y32: 3105032704 (real y64:           7400000000)
+x32 increment: 3830196224 - 3030196224 =  800000000
+y32 increment: 3105032704 - 2905032704 =  200000000
+epoch:  36 (condition x32 >= y32 is correct)
+
+x32:  335228928 (real x64:          30400000000)   # x32 count overflow: 7
+y32: 3305032704 (real y64:           7600000000)
+x32 increment:  335228928 - 3830196224 =  800000000
+y32 increment: 3305032704 - 3105032704 =  200000000
+epoch:  37 (condition x32 >= y32 is INCORRECT)
+
+x32: 1135228928 (real x64:          31200000000)
+y32: 3505032704 (real y64:           7800000000)
+x32 increment: 1135228928 -  335228928 =  800000000
+y32 increment: 3505032704 - 3305032704 =  200000000
+epoch:  38 (condition x32 >= y32 is INCORRECT)
+
+x32: 1935228928 (real x64:          32000000000)
+y32: 3705032704 (real y64:           8000000000)
+x32 increment: 1935228928 - 1135228928 =  800000000
+y32 increment: 3705032704 - 3505032704 =  200000000
+epoch:  39 (condition x32 >= y32 is INCORRECT)
+
+x32: 2735228928 (real x64:          32800000000)
+y32: 3905032704 (real y64:           8200000000)
+x32 increment: 2735228928 - 1935228928 =  800000000
+y32 increment: 3905032704 - 3705032704 =  200000000
+epoch:  40 (condition x32 >= y32 is INCORRECT)
+
+x32: 3535228928 (real x64:          33600000000)
+y32: 4105032704 (real y64:           8400000000)
+x32 increment: 3535228928 - 2735228928 =  800000000
+y32 increment: 4105032704 - 3905032704 =  200000000
+epoch:  41 (condition x32 >= y32 is INCORRECT)
+
+x32:   40261632 (real x64:          34400000000)   # x32 count overflow: 8
+y32:   10065408 (real y64:           8600000000)   # y32 count overflow: 2
+x32 increment:   40261632 - 3535228928 =  800000000
+y32 increment:   10065408 - 4105032704 =  200000000
+epoch:  42 (condition x32 >= y32 is correct)
+
+x32:  840261632 (real x64:          35200000000)
+y32:  210065408 (real y64:           8800000000)
+x32 increment:  840261632 -   40261632 =  800000000
+y32 increment:  210065408 -   10065408 =  200000000
+epoch:  43 (condition x32 >= y32 is correct)
+
+x32: 1640261632 (real x64:          36000000000)
+y32:  410065408 (real y64:           9000000000)
+x32 increment: 1640261632 -  840261632 =  800000000
+y32 increment:  410065408 -  210065408 =  200000000
+epoch:  44 (condition x32 >= y32 is correct)
+
+x32: 2440261632 (real x64:          36800000000)
+y32:  610065408 (real y64:           9200000000)
+x32 increment: 2440261632 - 1640261632 =  800000000
+y32 increment:  610065408 -  410065408 =  200000000
+epoch:  45 (condition x32 >= y32 is correct)
+
+x32: 3240261632 (real x64:          37600000000)
+y32:  810065408 (real y64:           9400000000)
+x32 increment: 3240261632 - 2440261632 =  800000000
+y32 increment:  810065408 -  610065408 =  200000000
+epoch:  46 (condition x32 >= y32 is correct)
+
+x32: 4040261632 (real x64:          38400000000)
+y32: 1010065408 (real y64:           9600000000)
+x32 increment: 4040261632 - 3240261632 =  800000000
+y32 increment: 1010065408 -  810065408 =  200000000
+epoch:  47 (condition x32 >= y32 is correct)
+
+x32:  545294336 (real x64:          39200000000)   # x32 count overflow: 9
+y32: 1210065408 (real y64:           9800000000)
+x32 increment:  545294336 - 4040261632 =  800000000
+y32 increment: 1210065408 - 1010065408 =  200000000
+epoch:  48 (condition x32 >= y32 is INCORRECT)
+
+x32: 1345294336 (real x64:          40000000000)
+y32: 1410065408 (real y64:          10000000000)
+x32 increment: 1345294336 -  545294336 =  800000000
+y32 increment: 1410065408 - 1210065408 =  200000000
+epoch:  49 (condition x32 >= y32 is INCORRECT)
+
+x32: 2145294336 (real x64:          40800000000)
+y32: 1610065408 (real y64:          10200000000)
+x32 increment: 2145294336 - 1345294336 =  800000000
+y32 increment: 1610065408 - 1410065408 =  200000000
+epoch:  50 (condition x32 >= y32 is correct)
+
+x32: 2945294336 (real x64:          41600000000)
+y32: 1810065408 (real y64:          10400000000)
+x32 increment: 2945294336 - 2145294336 =  800000000
+y32 increment: 1810065408 - 1610065408 =  200000000
+epoch:  51 (condition x32 >= y32 is correct)
+
+x32: 3745294336 (real x64:          42400000000)
+y32: 2010065408 (real y64:          10600000000)
+x32 increment: 3745294336 - 2945294336 =  800000000
+y32 increment: 2010065408 - 1810065408 =  200000000
+epoch:  52 (condition x32 >= y32 is correct)
+
+x32:  250327040 (real x64:          43200000000)   # x32 count overflow: 10
+y32: 2210065408 (real y64:          10800000000)
+x32 increment:  250327040 - 3745294336 =  800000000
+y32 increment: 2210065408 - 2010065408 =  200000000
+epoch:  53 (condition x32 >= y32 is INCORRECT)
+
+
+=== Manual restore (last values) ===
+x32 =  250327040 +  10*(0xFFFFFFFFull + 1) = 43200000000
+y32 = 2210065408 +   2*(0xFFFFFFFFull + 1) = 10800000000
