@@ -1,0 +1,152 @@
+=== 2025-11-11 ===
+Roman:
+scaler raw = 32-bit slovo, to co je v zapisane v cc subore
+scaler o2  = 64-bit slovo, ktore "nepreteka"
+
+=== 2025-09-30 ===
+https://github.com/AliceO2Group/AliceO2/blob/dev/DataFormats/Headers/include/Headers/TimeStamp.h
+scaler[839] isdentical as scaler[903] and scaler[967]
+pretecenie 2^32/40Mhz = 107 sekund
+
+With a reference clock of 40 MHz
+bunch-crossing counter (40 MHz counter)
+LHC: 40 MHz clock
+number of LHC bunch crossings per TPC time bin (40 MHz / 5 MHz)
+
+Frequency (40 MHz):
+This is the number of cycles or events that occur in one second. In this case,
+there are 40 million cycles per second.
+
+Period (25 ns):
+This is the duration of a single cycle. The relationship is expressed by the
+formula: Period = 1 / Frequency.
+*   1 / 40,000,000 Hz = 0.000000025 seconds
+*   0.000000025 seconds = 25 x 10⁻⁹ seconds = 25 nanoseconds (ns).
+
+https://www.ni.com/docs/en-US/bundle/labview-myrio-toolkit/page/myriohelp/myrio_fpga_clock.html
+The FPGA target on the hardware has a clock rate of 40 MHz, which means the
+clock cycle is 25 ns. To generate a frequency that is less than 40 MHz, you can
+change a signal on every x number of rising edges of the clock signal. The
+following figure shows an example of changing a 40 MHz clock signal on rising
+edges to generate 20 MHz and 10 MHz clock signals, respectively.
+
+High-Energy Physics:
+In experiments like the one at CERN, 40 MHz indicates that proton bunches
+collide every 25 ns, a high frequency crucial for data collection and analysis.
+
+Electronics and FPGAs:
+In a 40 MHz system, any code within a single-cycle timed loop (SCTL) on an FPGA
+must execute within 25 ns, a critical factor for designing and timing circuits.
+
+Component Timing:
+If a chip has a required 25 ns execution time at a 40 MHz clock, it means the
+chip can operate reliably within the 25 ns cycle time of the clock.
+
+=== 2025-09-02 ===
+2^32 = 4.294.967.296 (4 milardy)
+2^32*25 ns bunch crossing, pretecenie !!!
+
+25ns ~ 40 MHz
+max count * max time
+
+za 1 sekundu 40.000.000 counters
+za 10 sekund 10x
+
+https://cms.cern/news/lhc-collisions-every-25-nanoseconds
+"25ns 40 Mhz" indicates that a 40 MHz clock has a period of 25 nanoseconds,
+meaning that a single clock cycle is 25 nanoseconds long. This relationship is a
+fundamental concept in digital electronics, particularly in systems like the LHC
+at CERN where proton bunches collide every 25 ns due to the 40 MHz frequency,
+and in FPGA design where the clock cycle determines the execution time of
+operations.
+
+=== 2025-08-26 ===
+inputs  - vystupy z detektorov a trigger rozhoduje co s tym dalej
+classes - rozne logicke kombinacie z inputs
+#         ma (vzdy) 6 counters
+#         ma 3 levely v case (M, 0, 1)
+#         Poznamka: Povodne (Run 1-2) boli 3 levely: L0, L1, L2 potom k nim pridali LM (M ako minus)
+#                   Aktualne v Run 3 zostali M, 0, 1
+
+Pozerat CTP/Config/Config v CCDB
+Config podobne ako Scalers existuje aj v raw formate
+
+CTP Class:CMTVX-NONE-NOPF-CRU Hardware mask:1 Cluster index:0 Desc index:0 Downscale:1 BCM: Descriptor:DMTVX Cluster:CRU:
+6 counters
+clamb1,clama1,cla0b1,cla0a1,cla1b1,cla1a1
+cla = kluc , i.e. class
+m,0,1 = level
+b,a = before/after
+1 = index in array
+claLevel{b,a}index
+
+!!! Kazdy riadok zodpoveda 6 counter !!!
+
+=== 2025-08-22 ===
+Roman:
+1 orbita = 80-90 mikro sekund => toto je presnost v ramci LHC CERN
+Protony obehnu prstenec viac ako 11000x za sekundu => 1/11000 = 90 mikros.
+Frekvencia obehu častíc v CERN LHC je približne 11 245 otáčok za sekundu, teda
+11,2 kHz. Táto hodnota zodpovedá faktu, že jedna orbita trvá asi 89 mikrosekúnd,
+čo je čas, za ktorý svetlo prejde obvodom 27 km.
+
+Pocas seansu sa bezne zapisuju 2-3 ale aj viac run-ov.
+
+Max. sa moze zapisovat asi 16 runov, preto sa pise pole o velkosti [16] s runami.
+Roman zistuje, ci je ten isty run podla toho, ci je zmena v tomto poli.
+
+http://www.ep.ph.bham.ac.uk/user/lietava/alice.html =>
+http://epweb2.ph.bham.ac.uk/user/lietava/alice.html
+http://epweb2.ph.bham.ac.uk/user/lietava/howitworks.html   !!!
+
+###
+https://github.com/AliceO2Group/AliceO2/tree/dev/CCDB
+https://aliceo2group.github.io/analysis-framework/docs/tutorials/workingWithCCDB.html
+https://gitlab.cern.ch/grigoras/ccdb-local
+https://aliceo2group.github.io/QualityControl/md_doc_Advanced.html#local-ccdb-setup
+
+https://hepsoftwarefoundation.org/gsoc/2019/proposal_ALICE_OnlineCond.html
+
+GetScalers("519499", 1656286373953)   // *** Break *** segmentation violation
+GetScalers("564069", 1750757152093)   // non on http://ccdb-test.cern.ch:8080
+GetScalers("564069", 1750757152093, "http://alice-ccdb.cern.ch/") // OK
+// runs more than 500 000
+GetScalers("563484", 1748592694357) // OK, [WARN] L1B > L0A Before error:8
+GetScalers("560354", 1732254419940) // OK
+
+// http://ccdb-test.cern.ch:8080/browse/CTP/Calib/Scalers
+// https://github.com/AliceO2Group/AliceO2/blob/dev/DataFormats/Detectors/CTP/src/Scalers.cxx
+
+=== 2025-08-07 ===
+https://cernbox.cern.ch/remote.php/dav/public-files/vK3s5E5nM0VC37b/20250726.cc
+https://cernbox.cern.ch/s/vK3s5E5nM0VC37b
+
+Tu su counters z 26/07/25, malo by tam byt minimalne 5 runov:
+https://ali-bookkeeping.cern.ch/?page=lhc-fill-details&fillNumber=10878
+
+Counters zacinaju s timestamp a 16 integer ktore zodpovedaju listu 'active runs', t.j. runov, ktore prave bezia:
+1753480801.0356004 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ziadny run nebezi
+
+1753493240.0769327 564913 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+run 564913 started
+
+(z tych 5 runov tam asi 564912 a 564914 nebudu lebo nenastartovali dobre)
+
+A tu su counter names aby si vedel, ktore cislo co znamena:
+https://cernbox.cern.ch/remote.php/dav/public-files/IGiN6bm6xGdr9CC/ctpcountersnames.txt
+https://cernbox.cern.ch/s/IGiN6bm6xGdr9CC
+
+
+Roman tech. otazka:
+1) epoch timestamp 1753480801.0356004, co znamena to cislo za desatinou bodkou ?
+2) vzdy a vsetky cisla (counters) budu nie zaporne (>= 0) ?
+
+Roman:
+1.) Neviem, treba pozriet do Tonovho kodu. Ale to cislo pred desatinou botkou dava spravny cas,
+porovnaj s runom 564913 v BK: https://ali-bookkeeping.cern.ch/?page=run-overview
+2.) ano vsetky counters su >= 0
+
+Filip:
+1.) Timestamp je v sekundach, v desatinnom tvare s presnostou na 100vky ns (presnost ktoru vrati time v pythone)
+1753480801035600400 je teda v ns (bez desatinnej ciarky a 2 nuly na konci).
