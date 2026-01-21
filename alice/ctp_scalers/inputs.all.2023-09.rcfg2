@@ -1,0 +1,43 @@
+# 2026-01-21
+
+# file 'WORK/runs/configs/all.rcfg2' (2023-09-08 08:25:38, 373 bytes)
+# extracted from lxplus.cern.ch:/afs/cern.ch/work/a/alicetrg/public/run3/WORK_runs_ctpctr.tgz
+
+run 0
+INPUTS
+inp MT0A 1
+inp MT0C 2
+inp MTVX 3
+inp MTSC 4
+inp MTCE 5
+inp MVBA 6
+inp MVOR 7
+inp MVIR 8
+inp MVNC 9
+inp MVCH 10
+inp 0UCE 13
+inp 0DMC 14
+inp 0USC 15
+inp 0UVX 16
+inp 0UOC 17
+inp 0UOA 18
+inp 0EMC 21
+inp 0PH0 22
+inp 1ZED 25
+inp 1ZNC 26
+LTG fv0
+LTG ft0
+LTG fdd
+LTG its
+LTG tof
+LTG mft
+LTG tpc
+LTG mch
+LTG mid
+LTG tst
+LTG trd
+LTG hmp
+LTG zdc
+LTG phs
+LTG emc
+LTG cpv
