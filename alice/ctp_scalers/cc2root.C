@@ -1,20 +1,23 @@
 // 2025-10-15
 
-// see also '../c/read.values.fast.c'
+// $ root cc2root.C
+// see also '../../c/read.values.fast.c'
 
+#include <TSystem.h>
 #include <TFile.h>
 #include <TTree.h>
 
 void cc2root()
 {
   TString fname = "20250726.cc"; // "cc" means CTP counters
-  fname = "../c/read.values.file.sample";
+  fname = "../../c/read.values.file.sample";
   FILE *fin = fopen(fname.Data(), "r");
   if (!fin) {
     fprintf(stderr, "fopen('%s') failed: %s\n", fname.Data(), strerror(errno));
     return;
   }
-  TFile ccFile(TString::Format("%s.root", fname.Data()), "RECREATE");
+  fname = gSystem->BaseName(fname.Data());
+  TFile ccFile(TString::Format("/tmp/%s.root", fname.Data()), "RECREATE");
   // ccFile.SetCompressionLevel(ROOT::RCompressionSetting::ELevel::kUncompressed);
   TTree ccTree("cc", fname.Data());
   // write identical file as read file (only for compare, verify)
@@ -157,6 +160,7 @@ void cc2root()
   } while (nread == std::size(buffer));
 
   ccFile.Write();
+  ccFile.Print();
   ccFile.Close();
   if (fcopy) fclose(fcopy);
 
