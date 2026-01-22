@@ -1,0 +1,5 @@
+data_alice_ctp_scalers
+
+*.d
+*.so
+*.pcm
