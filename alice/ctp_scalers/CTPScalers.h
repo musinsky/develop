@@ -1,4 +1,4 @@
-// Date:   2025-11-19
+// Date:   2026-01-22
 // Author: Musinsky Jan
 
 #ifndef CTP_Scalers
@@ -77,9 +77,8 @@ public:
   std::uint64_t QuickStrToULL(const char* nptr) const;
   void  CCToRoot(const char* ccfname, const char* outdn = ".", bool skipFirst = true) const;
   void  RootToCC(const char* rootfn, const char* outdn = "/tmp") const;
-  std::vector<std::size_t> ParseActiveClasses(std::uint32_t run,
-                                              const char* cfgdir = "runs") const;
-  void  ClassesConditions(const char* rootfn, std::uint32_t run,
+  std::vector<std::size_t> ParseActiveClasses(std::uint32_t run, const char* cfgdir) const;
+  void  ClassesConditions(const char* rootfn, std::uint32_t run, const char* cfgdir,
                           std::ostream& stream = std::cout) const;
 
 private:

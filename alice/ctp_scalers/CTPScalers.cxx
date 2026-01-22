@@ -1,4 +1,4 @@
-// Date:   2026-01-08
+// Date:   2026-01-22
 // Author: Musinsky Jan
 
 #include <iostream>
@@ -392,7 +392,7 @@ std::vector<std::size_t> CTPScalers::ParseActiveClasses(std::uint32_t run,
   return classesIdx;
 }
 //______________________________________________________________________________
-void CTPScalers::ClassesConditions(const char* rootfn, std::uint32_t run,
+void CTPScalers::ClassesConditions(const char* rootfn, std::uint32_t run, const char* cfgdir,
                                    std::ostream& stream) const
 {
   TFile *f = TFile::Open(rootfn, "READ");
@@ -405,7 +405,7 @@ void CTPScalers::ClassesConditions(const char* rootfn, std::uint32_t run,
   // 64 classes x 5 conditions (LMB >= LMA >= L0B >= L0A >= L1B >= L1A)
   std::size_t cnt[64][5] = {};
   std::size_t cnt0 = 0;
-  std::vector<std::size_t> clsIdx = ParseActiveClasses(run);
+  std::vector<std::size_t> clsIdx = ParseActiveClasses(run, cfgdir);
   bool isActiveClass = false;
 
   for (std::int64_t i = 0; i < cc->GetEntries(); i++) {
