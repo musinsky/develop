@@ -115,6 +115,8 @@ void example_scaler(const char *fn, int run, int scaler, bool overflow = false)
 
 void fig_example_scaler()
 {
-  example_scaler("20250726.cc.root", 564918, 647, false); // 647 = kLMB, 0  = "clamb1"
-  example_scaler("20241116.cc.root", 560089, 917, false); // 917 = kL1B, 14 = "cla1b15"
+  // 647 = (kLMB,  0) = "clamb1"
+  example_scaler("data_alice_ctp_scalers/20250726.cc.root", 564918, 647, false);
+  // 917 = (kL1B, 14) = "cla1b15"
+  example_scaler("data_alice_ctp_scalers/20241116.cc.root", 560089, 917, false);
 }

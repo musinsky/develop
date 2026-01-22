@@ -87,6 +87,6 @@ void runs(const char *fn, int nScl)
 
 void fig_runs()
 {
-  runs("20241116.cc.root", 0);
-  runs("20250726.cc.root", 1);
+  runs("data_alice_ctp_scalers/20241116.cc.root", 0);
+  runs("data_alice_ctp_scalers/20250726.cc.root", 1);
 }

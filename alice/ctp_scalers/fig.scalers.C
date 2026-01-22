@@ -11,7 +11,8 @@ TCanvas *CanvasExactSize(const char* nt)
 }
 TTree *GetCCTree(const char *fn)
 {
-  TFile *f = TFile::Open(fn, "READ");
+  const char *datad = "data_alice_ctp_scalers";
+  TFile *f = TFile::Open(TString::Format("%s/%s", datad, fn).Data(), "READ");
   if (!f) return nullptr;
   TTree *t = f->Get<TTree>("cc");
   return t;
