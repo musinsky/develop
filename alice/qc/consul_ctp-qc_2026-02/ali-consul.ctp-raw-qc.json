@@ -1,0 +1,461 @@
+{
+  "qc": {
+    "config": {
+      "database": {
+        "implementation": "CCDB",
+        "host": "ali-qcdb.cern.ch:8083",
+        "username": "not_applicable",
+        "password": "not_applicable",
+        "name": "not_applicable"
+      },
+      "infologger": {
+        "filterDiscardDebug": "false",
+        "filterDiscardLevel": "21"
+      },
+      "Activity": {},
+      "monitoring": {
+        "url": "influxdb-unix:///tmp/telegraf.sock"
+      },
+      "consul": {
+        "url": "http://localhost:8500"
+      },
+      "conditionDB": {
+        "url": "o2-ccdb.internal"
+      },
+      "bookkeeping": {
+        "url": "alio2-cr1-hv-web02.cern.ch:4001"
+      }
+    },
+    "tasks": {
+      "CTPRawData": {
+        "active": "true",
+        "taskName": "RawData",
+        "className": "o2::quality_control_modules::ctp::CTPRawDataReaderTask",
+        "moduleName": "QcCTP",
+        "detectorName": "CTP",
+        "cycleDurationSeconds": "180",
+        "resetAfterCycles": "1",
+        "dataSources": [{
+          "type": "dataSamplingPolicy",
+          "name": "ctp-raw"
+        },{
+          "type":"direct",
+          "query":"ctp-config:CTP/CONFIG/0?lifetime=condition&ccdb-path=CTP/Config/Config&ccdb-run-dependent=1s"
+        }],
+        "extendedTaskParameters": {
+          "default": {
+            "default": {
+              "ccdbName": "o2-ccdb.internal",
+              "consistencyCheck" : "true",
+              "readCTPconfigInMonitorData": "true",
+              {% if beam_type == "PbPb" %}
+              "MBclassName" : "C1ZNC-B-NOPF",
+              "MB1inputName" : "1ZNC:28:0",
+              "MB2inputName" : "MTCE"
+              {% elif beam_type == "pO" %}
+              "MBclassName" : "CMTVX-B-NOPF",
+              "MB1inputName" : "MTVX",
+              "MB2inputName" : "1ZNC"
+              {% elif beam_type == "OO" %}
+              "MBclassName" : "CMTVX-B-NOPF",
+              "MB1inputName" : "MTVX",
+              "MB2inputName" : "1ZNC"
+              {% elif beam_type == "NeNe" %}
+              "MBclassName" : "CMTVX-B-NOPF",
+              "MB1inputName" : "MTVX",
+              "MB2inputName" : "1ZNC"
+              {% else %}
+              "MBclassName" : "CMTVX-B-NOPF",
+              "MB1inputName" : "MTVX",
+              "MB2inputName" : "MTVA"
+              {% endif %}
+            }
+          }
+        },
+        "location": "local",
+        "localMachines": [
+          "flp"
+        ]
+      }
+    },
+    "postprocessing": {
+      "TrendingCTP": {
+        "active": "true",
+        "className": "o2::quality_control::postprocessing::CTPTrendingTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "critical": "false",
+        "extendedTaskParameters": {
+          "default": {
+            "default": {
+              {% if beam_type == "PbPb" %}
+              "minBias1Class": "C1ZNC-B-NOPF",
+              "minBias2Class": "CMTVXTCE-B-NOPF",
+              "minBias1Input": "ZNC",
+              "minBias2Input": "MTCE",
+              "minBisDMCclass": "C0TVXTSC-B-NOPF",
+              "minBiasEMCclass": "C0TVXTCE-B-NOPF",
+              "minBiasPHOclass": "C0TVXTCE-B-NOPF",
+              {% elif beam_type == "pO" %}
+              "minBias1Class": "CMTVX-B-NOPF",
+              "minBias2Class": "C1ZNC-B-NOPF",
+              "minBias1Input": "TVX",
+              "minBias2Input": "ZNC",
+              {% elif beam_type == "OO" %}
+              "minBias1Class": "CMTVX-B-NOPF",
+              "minBias2Class": "C1ZNC-B-NOPF",
+              "minBias1Input": "TVX",
+              "minBias2Input": "ZNC",
+              {% elif beam_type == "NeNe" %}
+              "minBias1Class": "CMTVX-B-NOPF",
+              "minBias2Class": "C1ZNC-B-NOPF",
+              "minBias1Input": "TVX",
+              "minBias2Input": "ZNC",
+              {% else %}
+              "minBias1Class": "CMTVX-B-NOPF",
+              "minBias2Class": "CMVBA-B-NOPF",
+              "minBias1Input": "TVX",
+              "minBias2Input": "VBA",
+              "minBiasDMCclass": "CTVXDMC-B-NOPF",
+              "minBiasEMCclass": "CTVXEMC-B-NOPF",
+              "minBiasPHOclass": "CTVXPH0-B-NOPF",
+              {% endif %}
+              "minBisDMCInput": "DMC",
+              "minBiasEMCInput": "EMC",
+              "minBiasPHOInput": "PH0",
+              "ccdbName": "o2-ccdb.internal"
+            }
+          }
+        },
+        "dataSources": [
+          {
+            "type": "repository",
+            "path": "CTP/MO/RawData",
+            "names": ["inputs","classes"],
+            "reductorName": "o2::quality_control_modules::ctp::TH1ctpReductor",
+            "moduleName": "QcCommon"
+          }
+        ],
+        "plots": [
+          {
+            "name": "MinBias1Input_rate",
+            "title": "MinBias1Input_rate",
+            "varexp": "inputs.inputContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "MinBias2Input_rate",
+            "title": "MinBias2Input_rate",
+            "varexp": "inputs.inputContentMinBias2:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "DMCInput_rate",
+            "title": "DMCInput_rate",
+            "varexp": "inputs.inputContentDMC:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "EMCInput_rate",
+            "title": "EMCInput_rate",
+            "varexp": "inputs.inputContentEMC:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "PHOInput_rate",
+            "title": "PHOInput_rate",
+            "varexp": "inputs.inputContentPHO:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_MinBias1_rate",
+            "title": "Class_MinBias1_rate",
+            "varexp": "classes.classContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_MinBias2_rate",
+            "title": "Class_MinBias2_rate",
+            "varexp": "classes.classContentMinBias2:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_DMC_rate",
+            "title": "Class_DMC_rate",
+            "varexp": "classes.classContentDMC:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_EMC_rate",
+            "title": "Class_EMC_rate",
+            "varexp": "classes.classContentEMC:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_PHO_rate",
+            "title": "Class_PHO_rate",
+            "varexp": "classes.classContentPHO:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Input_MinBias2_rate_ratio",
+            "title": "Input_MinBias2_rate_ratio",
+            "varexp": "inputs.inputContentMinBias2/inputs.inputContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Input_DMC_rate_ratio",
+            "title": "Input_DMC_rate_ratio",
+            "varexp": "inputs.inputContentDMC/inputs.inputContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Input_ECM_rate_ratio",
+            "title": "Input_ECM_rate_ratio",
+            "varexp": "inputs.inputContentEMC/inputs.inputContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Input_PHO_rate_ratio",
+            "title": "Input_PHO_rate_ratio",
+            "varexp": "inputs.inputContentPHO/inputs.inputContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_minBias2_rate_ratio",
+            "title": "Class_minBias2_rate_ratio",
+            "varexp": "classes.classContentMinBias2/classes.classContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_DMC_rate_ratio",
+            "title": "Class_DMC_rate_ratio",
+            "varexp": "classes.classContentDMC/classes.classContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_EMC_rate_ratio",
+            "title": "Class_EMC_rate_ratio",
+            "varexp": "classes.classContentEMC/classes.classContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_PHO_rate_ratio",
+            "title": "Class_PHO_rate_ratio",
+            "varexp": "classes.classContentPHO/classes.classContentMinBias1:time",
+            "selection": "",
+            "option": "*L"
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "newobject:qcdb:CTP/MO/RawData/inputs"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      },
+      "CcdbInspector": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::CcdbInspectorTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "extendedTaskParameters": {
+          "default": {
+            "default": {
+              "verbose" : "1",
+              "timeStampTolerance": "60",
+              "retryTimeout" : "0",
+              "retryDelay": "10",
+              "databaseType": "ccdb",
+              "databaseUrl": "o2-ccdb.internal"
+            }
+          }
+        },
+        "dataSources": [
+          {
+            "name": "CTP Config",
+            "path": "CTP/Config/Config",
+            "updatePolicy": "atSOR"
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "60 seconds"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      },
+      "Quality": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::QualityTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "qualityGroups": [
+          {
+            "name": "global",
+            "title": "GLOBAL TRG QUALITY",
+            "path": "CTP/QO",
+            "ignoreQualitiesDetails": [
+              "Null",
+              "Good",
+              "Medium",
+              "Bad"
+            ],
+            "inputObjects": [
+              {
+                "name": "CTPQuality/CTPQuality",
+                "title": "TRG Quality",
+                "messageBad": "Inform on-call immediately",
+                "messageMedium": "Add bookkeeping entry",
+                "messageGood": "All checks are OK",
+                "messageNull": "Some histograms are empty!!!"
+              }
+            ]
+          },
+          {
+            "name": "details",
+            "title": "TRG Details",
+            "path": "CTP/QO",
+            "ignoreQualitiesDetails": [],
+            "inputObjects": [
+              {
+                "name": "RawDataCheck/RawData/inputs",
+                "title": "Inputs"
+              },
+              {
+                "name": "RawDataCheck/RawData/bcMinBias1",
+                "title": "BC position 1"
+              },
+              {% if beam_type == "PbPb" %}
+              {
+                "name": "RawDataCheck/RawData/bcMinBias2",
+                "title": "BC position 2"
+              },
+              {% endif %}
+              {
+                "name": "CcdbCheck",
+                "title": "CCDB objects"
+              }
+            ]
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "newobject:qcdb:CTP/QO/CTPQuality/CTPQuality"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      }
+    },
+    "checks": {
+      "RawDataCheck": {
+        "active": "true",
+        "className": "o2::quality_control_modules::ctp::RawDataReaderCheck",
+        "moduleName": "QcCTP",
+        "policy": "OnEachSeparately",
+        "detectorName": "CTP",
+        "dataSource": [{
+          "type": "Task",
+          "name": "CTPRawData",
+          {% if beam_type == "PbPb" %}
+          "MOs": ["bcMinBias1","bcMinBias2","inputs","classes","inputRatio","classRatio"]
+          {% else %}
+          "MOs": ["bcMinBias1","inputs","classes","inputRatio","classRatio"]
+          {% endif %}
+        }],
+        "checkParameters": {
+          "thresholdRateBad": "3",
+          "thresholdRateMedium": "2",
+          "thresholdRateRatioBad": "3",
+          "thresholdRateRatioMedium": "2",
+          "nSigmaBC": "70"
+        }
+      },
+      "CcdbCheck": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::CcdbInspectorCheck",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "policy": "OnAll",
+        "dataSource": [
+          {
+            "type": "PostProcessing",
+            "name": "CcdbInspector",
+            "MOs" : [
+              "ObjectsStatus"
+            ]
+          }
+        ]
+      }
+    },
+    "aggregators": {
+      "CTPQuality": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::WorstOfAllAggregator",
+        "moduleName": "QualityControl",
+        "policy": "OnAnyNonZero",
+        "detectorName": "CTP",
+        "dataSource": [
+          {
+            "type": "Check",
+            "name": "RawDataCheck",
+            "QOs": [
+              "RawData/bcMinBias1",
+              {% if beam_type == "PbPb" %}
+              "RawData/bcMinBias2",
+              {% endif %}
+              "RawData/inputs"
+            ]
+          },
+          {
+            "type": "Check",
+            "name": "CcdbCheck"
+          }
+        ]
+      }
+    }
+  },
+  "dataSamplingPolicies": [
+    {
+      "id": "ctp-raw",
+      "active": "true",
+      "machines": [],
+      "query": "random:CTP/RAWDATA",
+      "outputs": "filter:DS/RAWDATA",
+      "samplingConditions": [
+        {
+          "condition": "random",
+          "fraction": "0.1",
+          "seed": "1234"
+        }
+      ],
+      "blocking": "false"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "qc": {
+    "config": {
+      "database": {
+        "implementation": "CCDB",
+        "host": "ali-qcdb.cern.ch:8083",
+        "username": "not_applicable",
+        "password": "not_applicable",
+        "name": "not_applicable"
+      },
+      "monitoring": {
+        "url": "influxdb-unix:///tmp/telegraf.sock"
+      },
+      "consul": {
+        "url": "http://localhost:8500"
+      },
+      "conditionDB": {
+        "url": "o2-ccdb.internal"
+      },
+      "bookkeeping": {
+        "url": "alio2-cr1-hv-web02.cern.ch:4001"
+      }
+    },
+    "tasks": {
+      "CTPRawData": {
+        "active": "true",
+        "taskName": "RawData",
+        "className": "o2::quality_control_modules::ctp::CTPRawDataReaderTask",
+        "moduleName": "QcCTP",
+        "detectorName": "CTP",
+        "cycleDurationSeconds": "30",
+        "maxNumberCycles": "-1",
+        "dataSource": {
+          "type": "dataSamplingPolicy",
+          "name": "ctp-raw"
+        },
+        "taskParameters": {},
+        "location": "local",
+        "localMachines": [
+          "flp"
+        ],
+        "remoteMachine": "alio2-cr1-qc08.cern.ch",
+        "remotePort": "29555"
+      }
+    },
+    "postprocessing": {
+      "TrendingCTP": {
+        "active": "true",
+        "className": "o2::quality_control::postprocessing::CTPTrendingTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "dataSources": [
+          {
+            "type": "repository",
+            "path": "CTP/MO/RawData",
+            "names": [
+              "inputs",
+              "classes"
+            ],
+            "reductorName": "o2::quality_control_modules::ctp::TH1ctpReductor",
+            "moduleName": "QcCommon"
+          }
+        ],
+        "plots": [
+          {
+            "name": "L0_3_rate",
+            "title": "L0_3_rate",
+            "varexp": "inputs.inputs[2]/60:time",
+            "": "index of the intputs starts at 1, but in the array, we start at 0",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "L0_6_rate",
+            "title": "L0_6_rate",
+            "varexp": "inputs.inputs[5]/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "L0_14_rate",
+            "title": "L0_14_rate",
+            "varexp": "inputs.inputs[13]/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "L0_21_rate",
+            "title": "L0_21_rate",
+            "varexp": "inputs.inputs[20]/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "L0_22_rate",
+            "title": "L0_22_rate",
+            "varexp": "inputs.inputs[21]/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_MTVX_rate",
+            "title": "Class_MTVX_rate",
+            "varexp": "classes.classContentMTVX/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_MVBA_rate",
+            "title": "Class_MVBA_rate",
+            "varexp": "classes.classContentMVBA/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_TVXDCM_rate",
+            "title": "Class_TVXDCM_rate",
+            "varexp": "classes.classContentTVXDMC/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_TVXEMC_rate",
+            "title": "Class_TVXEMC_rate",
+            "varexp": "classes.classContentTVXEMC/60:time",
+            "selection": "",
+            "option": "*L"
+          },
+          {
+            "name": "Class_TVXPH0_rate",
+            "title": "Class_TVXPH0_rate",
+            "varexp": "classes.classContentTVXPHO/60:time",
+            "selection": "",
+            "option": "*L"
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "newobject:qcdb:CTP/MO/RawData/inputs"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      },
+      "Quality": {
+        "active": "false",
+        "className": "o2::quality_control_modules::common::QualityTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "qualityGroups": [
+          {
+            "name": "global",
+            "title": "GLOBAL CTP QUALITY",
+            "path": "CTP/QO",
+            "ignoreQualitiesDetails": [
+              "Null",
+              "Good",
+              "Medium",
+              "Bad"
+            ],
+            "inputObjects": [
+              {
+                "name": "CTPQuality/CTPQuality",
+                "title": "CTP Quality",
+                "messageBad": "Inform on-call immediately",
+                "messageMedium": "Add bookkeeping entry",
+                "messageGood": "All checks are OK",
+                "messageNull": "Some histograms are empty!!!"
+              }
+            ]
+          },
+          {
+            "name": "rawData",
+            "title": "CTP raw data",
+            "path": "CTP/QO",
+            "ignoreQualitiesDetails": [],
+            "inputObjects": [
+              {
+                "name": "RawDataCheck/RawData/bcMTVX",
+                "title": "BC position"
+              },
+              {
+                "name": "RawDataCheck/RawData/inputs",
+                "title": "Inputs distribution"
+              },
+              {
+                "name": "RawDataCheck/RawData/classes",
+                "title": "Classes distribution"
+              }
+            ]
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "newobject:qcdb:CTP/QO/CTPQuality/CTPQuality"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      }
+    },
+    "checks": {
+      "RawDataCheck": {
+        "active": "false",
+        "className": "o2::quality_control_modules::ctp::RawDataReaderCheck",
+        "moduleName": "QcCTP",
+        "policy": "OnEachSeparately",
+        "detectorName": "CTP",
+        "dataSource": [
+          {
+            "type": "Task",
+            "name": "CTPRawData",
+            "MOs": [
+              "bcMTVX",
+              "inputs",
+              "classes"
+            ]
+          }
+        ]
+      }
+    },
+    "_aggregators": {
+      "CTPQuality": {
+        "active": "false",
+        "className": "o2::quality_control_modules::common::WorstOfAllAggregator",
+        "moduleName": "QualityControl",
+        "policy": "OnAnyNonZero",
+        "detectorName": "CTP",
+        "dataSource": [
+          {
+            "type": "Check",
+            "name": "RawDataCheck",
+            "QOs": [
+              "RawData/bcMTVX",
+              "RawData/inputs",
+              "RawData/classes"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "dataSamplingPolicies": [
+    {
+      "id": "ctp-raw",
+      "active": "true",
+      "machines": [],
+      "query": "random:CTP/RAWDATA",
+      "samplingConditions": [
+        {
+          "condition": "random",
+          "fraction": "0.1",
+          "seed": "1234"
+        }
+      ],
+      "blocking": "false"
+    }
+  ]
+}

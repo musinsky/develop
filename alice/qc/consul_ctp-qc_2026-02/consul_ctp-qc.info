@@ -1,0 +1,19 @@
+# 2026-02-11
+
+Consul of alice-o2-cluster
+
+########## O2 Web UI directory - ALICE PRODUCTION head node
+https://ali-flp.cern.ch/
+Expert view (check)
+Configuration -> Consul => https://ali-consul-ui.cern.ch
+
+https://ali-consul-ui.cern.ch/ui/alice-o2-cluster/kv/o2/components/qc/ANY/any/ctp-raw-qc/edit
+=> 'ali-consul.ctp-raw-qc.json' file
+
+########## O2 Web UI directory (CTP LAB)
+http://acsl-aliecs.cern.ch/
+Expert view (check)
+Configuration -> Consul => http://acsl-aliecs.cern.ch:8500
+
+http://acsl-aliecs.cern.ch:8500/ui/alice-o2-cluster/kv/o2/components/qc/ANY/any/ctp-raw-qc/edit
+=> 'acsl-aliecs.ctp-raw-qc.json' file

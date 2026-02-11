@@ -1,0 +1,219 @@
+{
+  "qc": {
+    "config": {
+      "database": {
+        "implementation": "CCDB",
+        "host": "ali-qcdb.cern.ch:8083",
+        "username": "not_applicable",
+        "password": "not_applicable",
+        "name": "not_applicable"
+      },
+      "infologger": {
+        "filterDiscardDebug": "false",
+        "filterDiscardLevel": "21"
+      },
+      "Activity": {},
+      "monitoring": {
+        "url": "influxdb-unix:///tmp/telegraf.sock"
+      },
+      "consul": {
+        "url": "http://localhost:8500"
+      },
+      "conditionDB": {
+        "url": "o2-ccdb.internal"
+      },
+      "bookkeeping": {
+        "url": "alio2-cr1-hv-web02.cern.ch:4001"
+      }
+    },
+    "tasks": {
+      "CTPRawData": {
+        "active": "true",
+        "taskName": "RawData",
+        "className": "o2::quality_control_modules::ctp::CTPRawDataReaderTask",
+        "moduleName": "QcCTP",
+        "detectorName": "CTP",
+        "cycleDurationSeconds": "180",
+        "resetAfterCycles": "1",
+        "dataSource": {
+          "type": "dataSamplingPolicy",
+          "name": "ctp-raw"
+        },
+        "taskParameters": {
+          "ccdbName": "o2-ccdb.internal"
+        },
+        "location": "local",
+        "localMachines": [
+          "flp"
+        ]
+      }
+    },
+    "postprocessing": {
+      "CcdbInspector": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::CcdbInspectorTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "extendedTaskParameters": {
+          "default": {
+            "default": {
+              "verbose" : "1",
+              "timeStampTolerance": "60",
+              "retryTimeout" : "0",
+              "retryDelay": "10",
+              "databaseType": "ccdb",
+              "databaseUrl": "o2-ccdb.internal"
+            }
+          }
+        },
+        "dataSources": [
+          {
+            "name": "CTP Config",
+            "path": "CTP/Config/Config",
+            "updatePolicy": "atSOR"
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "60 seconds"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      },
+      "Quality": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::QualityTask",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "qualityGroups": [
+          {
+            "name": "global",
+            "title": "GLOBAL TRG QUALITY",
+            "path": "CTP/QO",
+            "ignoreQualitiesDetails": [
+              "Null",
+              "Good",
+              "Medium",
+              "Bad"
+            ],
+            "inputObjects": [
+              {
+                "name": "CTPQuality/CTPQuality",
+                "title": "TRG Quality",
+                "messageBad": "Inform on-call immediately",
+                "messageMedium": "Add bookkeeping entry",
+                "messageGood": "All checks are OK",
+                "messageNull": "Some histograms are empty!!!"
+              }
+            ]
+          },
+          {
+            "name": "details",
+            "title": "TRG Details",
+            "path": "CTP/QO",
+            "ignoreQualitiesDetails": [],
+            "inputObjects": [
+              {
+                "name": "RawDataCheck/RawData/inputs",
+                "title": "Inputs"
+              },
+              {
+                "name": "RawDataCheck/RawData/inputRatio",
+                "title": "Input ratio"
+              },
+              {
+                "name": "CcdbCheck",
+                "title": "CCDB objects"
+              }
+            ]
+          }
+        ],
+        "initTrigger": [
+          "userorcontrol"
+        ],
+        "updateTrigger": [
+          "newobject:qcdb:CTP/QO/CTPQuality/CTPQuality"
+        ],
+        "stopTrigger": [
+          "userorcontrol"
+        ]
+      }
+    },
+    "checks": {
+      "RawDataCheck": {
+        "active": "true",
+        "className": "o2::quality_control_modules::ctp::RawDataReaderCheck",
+        "moduleName": "QcCTP",
+        "detectorName": "CTP",
+        "policy": "OnEachSeparately",
+        "dataSource": [
+          {
+            "type": "Task",
+            "name": "CTPRawData",
+            "MOs" : [
+              "classes", "classRatio", "inputs", "inputRatio"
+            ]
+          }
+        ]
+      },
+      "CcdbCheck": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::CcdbInspectorCheck",
+        "moduleName": "QualityControl",
+        "detectorName": "CTP",
+        "policy": "OnAll",
+        "dataSource": [
+          {
+            "type": "PostProcessing",
+            "name": "CcdbInspector",
+            "MOs" : [
+              "ObjectsStatus"
+            ]
+          }
+        ]
+      }
+    },
+    "aggregators": {
+      "CTPQuality": {
+        "active": "true",
+        "className": "o2::quality_control_modules::common::WorstOfAllAggregator",
+        "moduleName": "QualityControl",
+        "policy": "OnAnyNonZero",
+        "detectorName": "CTP",
+        "dataSource": [
+          {
+            "type": "Check",
+            "name": "RawDataCheck",
+            "QOs": [
+              "RawData/bcMTVX",
+              "RawData/inputs"
+            ]
+          },
+          {
+            "type": "Check",
+            "name": "CcdbCheck"
+          }
+        ]
+      }
+    }
+  },
+  "dataSamplingPolicies": [
+    {
+      "id": "ctp-raw",
+      "active": "true",
+      "machines": [],
+      "query": "random:CTP/RAWDATA",
+      "samplingConditions": [
+        {
+          "condition": "random",
+          "fraction": "0.1",
+          "seed": "1234"
+        }
+      ],
+      "blocking": "false"
+    }
+  ]
+}
