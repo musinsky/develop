@@ -144,40 +144,76 @@ void findLHCData(long ts)
   auto patternBCCopy =    bunchFilling.getBCPattern(); // wrong, unnecessary copy creation (we only need to read BC pattern)
   // to same logic as above: const auto& bunchFilling = ptrGRPLHCIFData->getBunchFilling();
 
-  // as ROOT file (only std::vector, for std::bitset it would be necessary to create dictionary)
-  TFile f(uniqueFileName(fn + ".root").data(), "NEW");
-  f.WriteObject(&filledBC, "filledBC"); // auto* v = (std::vector<int>*)_file0->Get("filledBC");
-  f.Close();
+  /***
+   // as ROOT file (only std::vector, for std::bitset it would be necessary to create dictionary)
+   TFile f(uniqueFileName(fn + ".root").data(), "NEW");
+   f.WriteObject(&filledBC, "filledBC"); // auto* v = (std::vector<int>*)_file0->Get("filledBC");
+   f.Close();
 
-  // as stream file
+   // as stream file
+   auto now = std::chrono::system_clock::now();
+   auto local_time = std::chrono::current_zone()->to_local(now);
+   std::string fn2 = uniqueFileName(fn + ".numbers");
+   std::ofstream out(fn2);
+   out << std::format("# {:%F}\n", local_time);
+   out << std::format("# Fill            : {}\n", ptrGRPLHCIFData->getFillNumber());
+   out << std::format("# Injection scheme: {}\n", ptrGRPLHCIFData->getInjectionScheme());
+   bool first = true;
+   for (auto i : filledBC) {
+   if (!first)
+   out << " ";
+   out << i;
+   first = false;
+   }
+   out << std::endl; // flush to file
+   if (out.good()) {
+   cout << sgr.green() << fn2 << sgr.reset() << " created" << std::endl;
+   }
+   // read from file => std::vector<int> v; int x; while (in >> x) { v.push_back(x); }
+
+   std::ofstream out2(uniqueFileName(fn + ".bits"));
+   out2 << bunchFilling.getBCPattern().to_string();
+  ***/
+
+  // as header/stream file
   auto now = std::chrono::system_clock::now();
   auto local_time = std::chrono::current_zone()->to_local(now);
-  std::string fn2 = uniqueFileName(fn + ".numbers");
+  std::string fn2 = uniqueFileName(fn + ".hpp");
   std::ofstream out(fn2);
-  out << std::format("# {:%F}\n", local_time);
-  out << std::format("# Fill            : {}\n", ptrGRPLHCIFData->getFillNumber());
-  out << std::format("# Injection scheme: {}\n", ptrGRPLHCIFData->getInjectionScheme());
-  bool first = true;
+  out << std::format("// file generated on {:%F}\n//\n", local_time);
+  out << std::format("// Fill            : {}\n", ptrGRPLHCIFData->getFillNumber());
+  out << std::format("// Injection scheme: {}\n\n", ptrGRPLHCIFData->getInjectionScheme());
+  out << std::format("#pragma once\n\n");
+  // out << std::format("inline constexpr std::array<int, {}> enabledBCPatternBits = {{\n", bunchFilling.getNBunches());
+  out << std::format("inline constexpr std::array<int, {}> enabledBCPatternBits = {{\n", filledBC.size());
+  int maxColumn = 25;
+  int count = 0;
+  int lastIdx = filledBC.size() - 1;
   for (auto i : filledBC) {
-    if (!first)
-      out << " ";
-    out << i;
-    first = false;
+    if (count % maxColumn == 0) { //     begin of next line
+      out << "  ";
+    }
+    out << std::format("{:4}", i);
+    if (count == lastIdx) {
+      break;
+    }
+    if ((++count) % maxColumn == 0) { // end of next line
+      out << ",\n";
+    }
+    else {
+      out << ", ";
+    }
   }
-  out << std::endl; // flush to file
+  out << "\n};" << std::endl; // new line and flush to file
   if (out.good()) {
     cout << sgr.green() << fn2 << sgr.reset() << " created" << std::endl;
   }
-  // read from file => std::vector<int> v; int x; while (in >> x) { v.push_back(x); }
-
-  std::ofstream out2(uniqueFileName(fn + ".bits"));
-  out2 << bunchFilling.getBCPattern().to_string();
 
   delete ptrGRPLHCIFData; // ?! need delete ?! see AliceO2/CCDB/test/testCcdbApi.cxx
   // ?! BasicCCDBManager => user should not delete retrieved objects ?!
 }
 
-void ccdb_LHC_data()
+void ccdb_LHC_data(int runNumber = -1)
 {
   // gSystem->Load("libO2CCDB.so");
   // gSystem->Load("libO2DataFormatsParameters.so");
@@ -186,6 +222,9 @@ void ccdb_LHC_data()
 
   long mTimestamp = 1716040930304 + 1; // fill:  9644, run: 551731
   // => /alice/data/CCDB/GLO/Config/GRPLHCIF/07/14077/38376a05-151f-11ef-a37a-0aa202c71b9a
+  if (runNumber == -1) {
+    runNumber = 551731;
+  }
 
   // if "https://" or "alice-ccdb.cern.ch" => need alien token
   // o2::ccdb::CcdbApi ccdb;
@@ -194,7 +233,8 @@ void ccdb_LHC_data()
 
   // findLHCData(mTimestamp);
   // findLHCData(findRunTimestamp(565118));
-  findLHCData(findRunTimestamp(571771));
+  // findLHCData(findRunTimestamp(571771));
+  findLHCData(findRunTimestamp(runNumber));
 }
 
 /**
@@ -210,6 +250,6 @@ void ccdb_LHC_data()
  const auto ptrGRPLHCIFData = ccdb.retrieveFromTFileAny<o2::parameters::GRPLHCIFData>("GLO/Config/GRPLHCIF", metadata, mTimestamp, &headers);
 
  ptrGRPLHCIFData->print();
- // const auto& bunchFilling = ptrGRPLHCIFData->getBunchFilling();
+ const auto& bunchFilling = ptrGRPLHCIFData->getBunchFilling();
  // bunchFilling.print();
  **/
