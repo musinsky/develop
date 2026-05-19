@@ -1,4 +1,4 @@
-// 2026-05-18
+// 2026-05-19
 
 #include <iostream>
 #include <vector>
@@ -137,9 +137,9 @@ void findLHCData(long ts)
   // std::cout << "address  : " << &bunchFilling.getBCPattern() << std::endl;
 
   //  std::cout << "FINAL\n";
-  std::string fn = std::format("LHC.{}.{}", ptrGRPLHCIFData->getFillNumber(), ptrGRPLHCIFData->getInjectionScheme());
+  std::string fn = std::format("LHC.fill.{}.injection.scheme.{}", ptrGRPLHCIFData->getFillNumber(), ptrGRPLHCIFData->getInjectionScheme());
 
-  auto filledBC = bunchFilling.getFilledBCs(-1); // std::vector (as "numbers") [0, 3563]
+  auto filledBC = bunchFilling.getFilledBCs(-1); // std::vector (as "numbers"), values always from [0, 3563] interval
   const auto& patternBC = bunchFilling.getBCPattern(); // std::bitset (as "pattern"), OK we need only reference
   auto patternBCCopy =    bunchFilling.getBCPattern(); // wrong, unnecessary copy creation (we only need to read BC pattern)
   // to same logic as above: const auto& bunchFilling = ptrGRPLHCIFData->getBunchFilling();
@@ -185,24 +185,50 @@ void findLHCData(long ts)
   out << std::format("// Injection scheme: {}\n\n", ptrGRPLHCIFData->getInjectionScheme());
   out << std::format("#pragma once\n\n");
   // out << std::format("inline constexpr std::array<int, {}> enabledBCPatternBits = {{\n", bunchFilling.getNBunches());
-  out << std::format("inline constexpr std::array<int, {}> enabledBCPatternBits = {{\n", filledBC.size());
-  int maxColumn = 25;
-  int count = 0;
-  int lastIdx = filledBC.size() - 1;
-  for (auto i : filledBC) {
-    if (count % maxColumn == 0) { //     begin of next line
-      out << "  ";
+  // out << std::format("inline constexpr std::array<int, {}> enabledBCPatternBits = {{\n", filledBC.size());
+  out << std::format("constexpr std::array<int, {}> enabledBCPatternBits = {{\n", filledBC.size());
+
+  // int maxColumn = 25;
+  // int count = 0;
+  // int lastIdx = filledBC.size() - 1;
+  // for (auto i : filledBC) {
+  //   if (count % maxColumn == 0) { //     begin of next line
+  //     out << "  ";
+  //   }
+  //   out << std::format("{:4}", i);
+  //   if (count == lastIdx) {
+  //     break;
+  //   }
+  //   if ((++count) % maxColumn == 0) { // end of next line
+  //     out << ",\n";
+  //   }
+  //   else {
+  //     out << ", ";
+  //   }
+  // }
+  // out << "\n};" << std::endl; // new line and flush to file
+
+  // print alignment like LHC BC train
+  int prevBC = 999999; // not "-1"
+  size_t lastIdx = filledBC.size() - 1; // need check on filledBC.empty()
+  for (std::size_t i = 0; i < filledBC.size(); i++) {
+    if (i == 0) {
+      out << std::format("  {:4}", filledBC[i]);
+      prevBC = filledBC[i];
+      continue;
     }
-    out << std::format("{:4}", i);
-    if (count == lastIdx) {
+    if (i == lastIdx) { // NOT CORRECT (but OK), for example for fill 9644 (run 551731)
+      out << std::format(", {:4}", filledBC[i]);
       break;
     }
-    if ((++count) % maxColumn == 0) { // end of next line
-      out << ",\n";
-    }
-    else {
+    if ((filledBC[i] - prevBC) == 1) { // next BC in the same train (same line)
       out << ", ";
     }
+    else { //                             first BC in the new train (next line)
+      out << ",\n  ";
+    }
+    out << std::format("{:4}", filledBC[i]);
+    prevBC = filledBC[i];
   }
   out << "\n};" << std::endl; // new line and flush to file
   if (out.good()) {
@@ -218,22 +244,23 @@ void ccdb_LHC_data(int runNumber = -1)
   // gSystem->Load("libO2CCDB.so");
   // gSystem->Load("libO2DataFormatsParameters.so");
 
-  // timestamp -1 or 0 = current (now) timestamp
-
-  long mTimestamp = 1716040930304 + 1; // fill:  9644, run: 551731
-  // => /alice/data/CCDB/GLO/Config/GRPLHCIF/07/14077/38376a05-151f-11ef-a37a-0aa202c71b9a
-  if (runNumber == -1) {
-    runNumber = 551731;
-  }
-
   // if "https://" or "alice-ccdb.cern.ch" => need alien token
   // o2::ccdb::CcdbApi ccdb;
   ccdb.init("alice-ccdb.cern.ch");
   // ccdb.isHostReachable();
 
+  // timestamp -1 or 0 = current (now) timestamp
+  long mTimestamp = 1716040930304 + 1; // fill:  9644, run: 551731
+  // => /alice/data/CCDB/GLO/Config/GRPLHCIF/07/14077/38376a05-151f-11ef-a37a-0aa202c71b9a
+  if (runNumber == -1) {
+    runNumber = 551731; //  9644
+    runNumber = 565118; // 10911
+    runNumber = 567147; // 11203
+    runNumber = 570863; // 11589
+    runNumber = 571014; // 11602
+    runNumber = 571771; // 11733
+  }
   // findLHCData(mTimestamp);
-  // findLHCData(findRunTimestamp(565118));
-  // findLHCData(findRunTimestamp(571771));
   findLHCData(findRunTimestamp(runNumber));
 }
 
