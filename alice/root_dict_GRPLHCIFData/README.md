@@ -3,7 +3,7 @@
 <!-- markdownlint-enable  MD033 MD041-->
 
 ```plain
-$ ./get.O2.files.sh
+$ ./get.O2.GRPLHCIFData.files.sh
 $ ./compile.custom.dict.sh
 $ root test.custom.dict.C
 root [0]
