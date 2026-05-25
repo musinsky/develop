@@ -14,6 +14,8 @@ Number of bunches: 2092
 ```
 
 ```plain
+# https://alice-ccdb.cern.ch/browse/GLO/Config/GRPLHCIF/1778951539107
+
 $ curl http://alice-ccdb.cern.ch/download/651e3112-514a-11f1-b12c-0aa202c71b9a \
        --remote-name --remote-header-name --remote-time
 $ stat --format '%n   %y' *
