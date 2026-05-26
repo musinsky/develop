@@ -1,0 +1,48 @@
+
+$TOKEN header (1st) and payload (2nd) parts:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+{
+  "id": "728993",
+  "username": "musinsky",
+  "name": "Jan Musinsky",
+  "access": "guest,default-role",
+  "iat": 1779285301,
+  "exp": 1779890101,
+  "iss": "o2-ui"
+}
+$TOKEN validity interval:
+2026-05-20 15:55:01 +0200
+2026-05-27 15:55:01 +0200
+
+
+https://ali-bookkeeping.cern.ch/api/lhcFills/11745?token=xxx
+=> out.01.json: 151080 bytes
+# get/fetch one specific fill number,   JSON: {"data":{"fillNumber":11745,"stableBeams
+=> number of runs: 53 (only PHYSICS: 3)
+
+https://ali-bookkeeping.cern.ch/api/lhcFills?filter[fillNumbers]=11745&token=xxx
+=> out.02.json: 9724 bytes
+# query of any filter(s) [fillNumbers], JSON: {"data":[{"fillNumber":11745,"stableBeam
+=> number of runs: 3
+
+https://ali-bookkeeping.cern.ch/api/lhcFills?filter[fillNumbers]=11745&filter[hasStableBeams]=true&token=xxx
+=> out.02a.json: 9724 bytes
+=> number of runs: 3
+
+https://ali-bookkeeping.cern.ch/api/lhcFills?filter[hasStableBeams]=true&filter[stableBeamsStart][from]=1777586400000&filter[stableBeamsEnd][to]=1779055199000&token=xxx
+=> out.03.json: 294732 bytes
+=> number of fills: 25
+
+### api/statistics/lhcFills ###
+
+https://ali-bookkeeping.cern.ch/api/statistics/lhcFills?token=xxx
+=> out.10.json: 276 bytes
+# example with API error
+
+https://ali-bookkeeping.cern.ch/api/statistics/lhcFills?from=1777586400000&to=1779055199000&token=xxx
+=> out.11.json: 7156 bytes
+=> number of fills: 25
+
