@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 MD041-->
-<p align="right">last edit: 2026-05-25</p>
+<p align="right">last edit: 2026-05-26</p>
 <!-- markdownlint-enable  MD033 MD041-->
 
 ```plain
@@ -15,6 +15,7 @@ Number of bunches: 2092
 
 ```plain
 # https://alice-ccdb.cern.ch/browse/GLO/Config/GRPLHCIF/1778951539107
+# https://alice-ccdb.cern.ch/browse/GLO/Config/GRPLHCIF/1778951539107/651e3112-514a-11f1-b12c-0aa202c71b9a
 
 $ curl http://alice-ccdb.cern.ch/download/651e3112-514a-11f1-b12c-0aa202c71b9a \
        --remote-name --remote-header-name --remote-time
