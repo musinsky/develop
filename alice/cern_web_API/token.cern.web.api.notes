@@ -1,0 +1,50 @@
+# 2026-05-26
+
+# OAuth 2.0 / OpenID Connect (OIDC)
+https://auth.docs.cern.ch/user-documentation/oidc/oidc/
+https://auth.docs.cern.ch/authzsvc/overview/
+
+https://auth.docs.cern.ch/user-documentation/oidc/securing-apis/
+https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/certs
+
+$ dnf install oidc-agent
+$ eval $(oidc-agent)
+$ echo $OIDC_SOCK
+$ oidc-gen --pub --client-id oidc-agent --client-secret "" \
+           --redirect-uri http://localhost:43985 \
+           --issuer https://auth.cern.ch/auth/realms/cern \
+           --scope "openid offline_access" cerntest
+$ oidc-token cerntest
+$ oidc-token cerntest | cut -d'.' -f1 | base64 --decode --ignore-garbage | jq
+$ oidc-token cerntest | cut -d'.' -f2 | base64 --decode --ignore-garbage | jq
+
+https://gitlab.cern.ch/authzsvc/tools/auth-get-sso-cookie
+$ dnf install auth-get-sso-cookie
+$ auth-get-user-token -vv -c public-client -o token.txt
+$ auth-get-user-token -vv -c oidc-agent    -o token.txt
+#                            user-portal    (INVALID clientId)
+#                            privacy-policy (INVALID clientId)
+
+https://en.wikipedia.org/wiki/Well-known_URI
+$ curl -s https://auth.cern.ch/auth/realms/cern/.well-known/openid-configuration | jq
+
+# $ curl https://ali-bookkeeping.cern.ch
+# Found. Redirecting to
+# https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/auth
+# ?client_id=alice_p2_bkp
+# &scope=openid
+# &response_type=code
+# &redirect_uri=https%3A%2F%2Fali-bookkeeping.cern.ch%2Fcallback
+# &code_challenge=6bQ9IKrFouNqjKLk08_NAJnoVclPkcmdDRgugYh-h1M
+# &code_challenge_method=S256
+# &state=e30%3D
+
+# $ curl https://ali-qcg.cern.ch
+# https://auth.cern.ch/auth/realms/cern/protocol/openid-connect/auth
+# ?client_id=alice_p2_ali_qcg
+# &scope=openid
+# &response_type=code
+# &redirect_uri=https%3A%2F%2Fali-qcg.cern.ch%2Fcallback
+# &code_challenge=jhzvBu44objIFwGZwLD-ylDk2skenWwQ_Y2JoCGg6yA
+# &code_challenge_method=S256
+# &state=e30%3D
