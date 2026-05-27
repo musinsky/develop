@@ -1,0 +1,43 @@
+# 2026-05-19
+Roman: Spytal som sa Georga Reduta, ako sa da vytahovat z BK a tu je odpoved
+
+curl -G "https://ali-bookkeeping.cern.ch/api/lhcFills" \
+  --data-urlencode "filter[fillNumbers]=11745" \
+  --data-urlencode "filter[hasStableBeams]=true" \
+  --data-urlencode "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx.xxx"
+
+Token is for your team only. Please do not share it with others
+
+# 2026-05-21
+Roman: Novy link od Georga
+
+curl -G "https://ali-bookkeeping.cern.ch/api/lhcFills" \
+  --data-urlencode "filter[fillNumbers]=11745" \
+  --data-urlencode "filter[hasStableBeams]=true" \
+  --data-urlencode "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx.xxx"
+
+################################################################################
+$ echo "$TOKEN_20260519" | base64 --decode --ignore-garbage
+{"alg":"HS256","typ":"JWT"}
+{"id":18,"username":"CTP-Trigger","name":"CTP-Trigger","access":"guest","iat":1779174445,"exp":1779174625,"iss":"o2-ui"}
+
+$ echo "$TOKEN_20260521" | base64 --decode --ignore-garbage
+{"alg":"HS256","typ":"JWT"}
+{"id":18,"username":"CTP-Trigger","name":"CTP-Trigger","access":"guest","iat":1779306292,"exp":1787082292,"iss":"o2-ui"}
+
+$ echo "$TOKEN" | cut -d'.' -f2 | base64 -d | jq '.iat' | LC_TIME=C xargs -I{} date -d "@{}"
+$ echo "$TOKEN" | cut -d'.' -f2 | base64 -d | jq '.exp' | LC_TIME=C xargs -I{} date -d "@{}"
+# echo "$TOKEN" | cut -d'.' -f2 | base64 -d | jq '.iat | strflocaltime("%F %T %z")'   # jq builtin function
+
+# token 2026-05-19 validity             | # token 2026-05-21 validity
+Tue May 19 09:07:25 CEST 2026           | Wed May 20 21:44:52 CEST 2026
+Tue May 19 09:10:25 CEST 2026           | Tue Aug 18 21:44:52 CEST 2026
+
+################################################################################
+$ echo "$TOKEN_musinsky" | base64 --decode --ignore-garbage
+{"alg":"HS256","typ":"JWT"}
+{"id":"728993","username":"musinsky","name":"Jan Musinsky","access":"guest,default-role","iat":1779285301,"exp":1779890101,"iss":"o2-ui"}
+
+# token (from Firefox) validity
+Wed May 20 15:55:01 CEST 2026
+Wed May 27 15:55:01 CEST 2026
