@@ -23,12 +23,12 @@
 
 void test_custom_dict()
 {
-  const std::string dictLibName = "libGRPLHCIFData.only.dict.so";
   if (!TClassTable::GetDict("o2::parameters::GRPLHCIFData")) {
     // or TClass::GetClass() function at a higher level
-    std::cout << "Loading '" << dictLibName << "'" << std::endl;
-    if (gSystem->Load(dictLibName.c_str()) != 0) {
-      std::cout << "Failed to load '" << dictLibName << "'" << std::endl;
+    const char* dictLib = "libGRPLHCIFData.only.dict.so";
+    std::cout << "Loading '" << dictLib << "'" << std::endl;
+    if (gSystem->Load(dictLib) != 0) {
+      std::cout << "Failed to load '" << dictLib << "'" << std::endl;
       return;
     }
   }
