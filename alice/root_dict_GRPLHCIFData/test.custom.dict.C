@@ -82,9 +82,9 @@ void test_custom_dict()
   // getPattern(0)  = getBeamPattern(0) = pattern of beam bunches at P2, 0 for A beam (from ATLAS side, clockwise)
   // getPattern(1)  = getBeamPattern(1) = pattern of beam bunches at P2, 1 for C beam (from CMS side, anticlockwise)
   //
-  // testBC(bcID, -1) = testInteractingBC(bcID) = test interacting (-1) beams bunch    // Interacting
-  // testBC(bcID, 0)  = testBeamBunch(bcID, 0)  = test clockwise (0, A) beam bunch     // Beam-A
-  // testBC(bcID, 1)  = testBeamBunch(bcID, 1)  = test anticlockwise (1, C) beam bunch // Beam-C
+  // testBC(bcID, -1) = testInteractingBC(bcID) = test interacting (-1) beams bunches    // Interacting
+  // testBC(bcID, 0)  = testBeamBunch(bcID, 0)  = test clockwise (0, A) beam bunches     // Beam-A
+  // testBC(bcID, 1)  = testBeamBunch(bcID, 1)  = test anticlockwise (1, C) beam bunches // Beam-C
 
   // const std::bitset<o2::constants::lhc::LHCMaxBunches>& rBCPattern2 = rBunchFilling.getPattern(-1);
   // const std::bitset<o2::constants::lhc::LHCMaxBunches>& rBeamAPattern = rBunchFilling.getPattern(0);
