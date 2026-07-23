@@ -2,10 +2,17 @@
 # The built-in macro attribute 'binary' is equivalent to: [attr]binary -diff -merge -text
 *.tar.gz binary
 *.tar.xz binary
+*.gz binary
+*.xz binary
 *.zip binary
 *.7z binary
 *.png binary
 *.jpg binary
+*.jpeg binary
+*.tif binary
+*.tiff binary
 *.pdf binary
 *.odt binary
+*.doc binary
+*.docx binary
 *.root binary
