@@ -1,0 +1,100 @@
+# 2026-07-30
+
+See also https://muke.saske.sk/wiki/ALICE/CCDB#JSON
+
+Full CCDB <path> database snapshot:
+$ curl -H "Accept: application/json" http://alice-ccdb.cern.ch/browse/GLO/Config/GRPLHCIF     > GRPLHCIF.json
+$ curl -H "Accept: application/json" http://alice-ccdb.cern.ch/browse/RCT/Info/RunInformation > RunInformation.json
+
+You can use 'ccdb.sample.small.json' file instead of 'GRPLHCIF.json' file
+$ ln -s ccdb.sample.small.json GRPLHCIF.json
+
+################################################################################
+
+$ jq 'length'           GRPLHCIF.json
+5
+$ jq 'map_values(type)' GRPLHCIF.json   # jq 'keys_unsorted'
+{
+  "path": "string",                 # metadata
+  "latest": "boolean",              # metadata
+  "patternMatching": "boolean",     # metadata
+  "objects": "array",               # objects data
+  "subfolders": "array"             # subfolders data
+}
+
+# all members (include metadata)    # use '|=' (update)
+jq '.'        GRPLHCIF.json > GRPLHCIF.pretty.format.json     # 16 MB vs 19 MB
+jq '.objects |= .[:3]'            GRPLHCIF.json > GRPLHCIF.first.3.json
+jq '.objects |= .[4:7]'           GRPLHCIF.json > GRPLHCIF.from.4.to.7.json
+jq '.objects |= .[-3:]'           GRPLHCIF.json > GRPLHCIF.last.3.json
+jq '.objects |= (.[:5] + .[-5:])' GRPLHCIF.json > GRPLHCIF.first.5.and.last.5.json
+
+# only "objects" data (no metadata) # use '|'  (pipeline)
+jq '.objects' GRPLHCIF.json > GRPLHCIF.only.objects.data.json # 16 MB vs 18 MB
+jq '.objects[:3]'                 GRPLHCIF.json > GRPLHCIF.only.objects.first.3.json
+jq '.objects[:5] + .objects[-5:]' GRPLHCIF.json > GRPLHCIF.only.objects.first.5.and.last.5.json
+# or to same
+jq '.objects | .[:5] + .[-5:]'    GRPLHCIF.json > GRPLHCIF.only.objects.first.5.and.last.5.json
+
+jq '.objects | length'                            GRPLHCIF.json
+jq '.objects | max_by(.createTime) | .createTime' GRPLHCIF.json
+
+################################################################################
+
+# only "objects" data (no metadata)
+
+jq '.objects[0]'    GRPLHCIF.json   # work with the first (newest) object
+jq '.objects[-1]'   GRPLHCIF.json   # work with the last  (oldest) object
+jq '.objects[0].id' GRPLHCIF.json
+
+jq '.objects[] | .id'       GRPLHCIF.json   # jq '.objects[].id'
+jq '.objects[] | .fileName' GRPLHCIF.json   # jq '.objects[].fileName'
+jq '.objects[] | {id, fileName}'   GRPLHCIF.json
+jq '.objects[] | [.id, .fileName]' GRPLHCIF.json
+jq '.objects[] | .id, .fileName'   GRPLHCIF.json
+jq '.objects[] | "ID: \(.id) \t FNAME: \(.fileName)"' GRPLHCIF.json
+
+# each array "objects" member contain array "replicas" ('alien' and 'http')
+jq '.objects[0] | to_entries[] | select(.value | type == "array") | .key' GRPLHCIF.json
+"replicas"
+
+jq '.objects[] | .replicas'    GRPLHCIF.json
+jq '.objects[] | .replicas[]'  GRPLHCIF.json
+jq '.objects[] | .replicas[0]' GRPLHCIF.json
+jq '.objects[5] | .id, .replicas[1]' GRPLHCIF.json
+
+# filtering
+
+jq '.objects[] | select(.fillNumber == "12028")'       GRPLHCIF.json
+jq '.objects[] | select(.fillNumber == "12028") | .id' GRPLHCIF.json
+jq '.objects[] | select(.fillNumber=="12028" and .createTime>=1782529178634)' GRPLHCIF.json
+# NOTE "fillNumber" is "string" data type and "createTime" is "number" data type
+
+jq '.objects[] | .fillNumber'                               GRPLHCIF.json   # many objects with 'null'
+jq '.objects[] | select(.fillNumber != null) | .fillNumber' GRPLHCIF.json
+jq '.objects[] | select(has("fillNumber")) | .fillNumber'   GRPLHCIF.json   # to same as previous
+
+jq '.objects[] | select(.fileName | contains("178252")) | .fileName'     GRPLHCIF.json
+jq '[.objects[] | select(.Created != .createTime)] | length'             GRPLHCIF.json
+jq '[.objects[] | select(.["Last-Modified"] != .lastModified)] | length' GRPLHCIF.json
+# NOTE "Last-Modified" with special '-' char
+
+# time interval
+
+jq '.objects[] | select(.Created >= 1782528000000 and .Created < 1782529000000) | .Created' GRPLHCIF.json
+jq '[.objects[] | select(.Created >= 1782528000000 and .Created < 1782529000000)] | length' GRPLHCIF.json
+
+jq '[.objects[] | select(.Created >= 1782528000000 and .Created < 1782529000000)]'      GRPLHCIF.json > select.only.objects.json
+jq '.objects |= [.[] | select(.Created >= 1782528000000 and .Created < 1782529000000)]' GRPLHCIF.json > select.all.members.json
+# 'map' function is equivalent (and prefer) to previous "manual function"
+jq '.objects |  map(select(.Created >= 1782528000000 and .Created < 1782529000000))' GRPLHCIF.json > map.select.only.objects.json
+jq '.objects |= map(select(.Created >= 1782528000000 and .Created < 1782529000000))' GRPLHCIF.json > map.select.all.members.json
+
+################################################################################
+
+# https://alice-talk.web.cern.ch/t/downloading-all-qc-plot-root-files-from-a-handful-of-runs/1580
+# 'ali-qcdb-gpn.cern.ch' only from CERN network
+curl -s 'http://ali-qcdb-gpn.cern.ch:8083/browse/qc/ZDC/MO/.*/RunNumber=526174?Accept=application/json' \
+  | jq -r '.objects[] | "curl http://ali-qcdb-gpn.cern.ch:8083\(.replicas[0]) -o \(.path|split("/")|join("_"))_\(.RunNumber).root"'
+
+# see also https://alice-talk.web.cern.ch/search?q=ali-qcdb-gpn.cern.ch
