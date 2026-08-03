@@ -3,6 +3,9 @@
 // $ g++     -O2 -pedantic -Wall -Wextra nlohmann.01.cxx -o nlohmann.01.gcc
 // $ clang++ -O2 -pedantic -Wall -Wextra nlohmann.01.cxx -o nlohmann.01.clang
 
+// $ jq '.objects | length' ccdb.sample.big.json      # 2.7s
+// $ jq '.objects | length' ccdb.sample.normal.json   # 0.02s
+//
 //          ccdb.sample.big.json     ccdb.sample.normal.json
 // optimizations     GCC   CLANG                 GCC   CLANG
 //           -O0   20.8s   22.9s               0.18s   0.20s
