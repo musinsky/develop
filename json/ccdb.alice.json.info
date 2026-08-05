@@ -39,6 +39,11 @@ jq '.objects | .[:5] + .[-5:]'    GRPLHCIF.json > GRPLHCIF.only.objects.first.5.
 jq '.objects | length'                            GRPLHCIF.json
 jq '.objects | max_by(.createTime) | .createTime' GRPLHCIF.json
 
+NOTE
+jq '.objects | length' RunInformation.json           # 2.8s
+grep '"id"'            RunInformation.json | wc -l   # 0.14s
+grep --count '"id"'    RunInformation.json           # 0.06s
+
 ################################################################################
 
 # only "objects" data (no metadata)
