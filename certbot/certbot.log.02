@@ -1,0 +1,21 @@
+Script started on 2026-09-07 17:24:34+02:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="212" LINES="47"]
+]0;root@muke:~]3008;start=a952eb4c-46b4-40aa-b654-2f62a500fd6c;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008483;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# [7m# certbot certonly --webroot -w /var/www/html/ -d muke.saske.sk[27m[C[C[C[C[C[C[C[C[C[C[C[C[C# certbot certonly --webroot -w /var/www/html/ -d muke.saske.sk[1P[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[2@l/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l]3008;start=068367f4-3201-4e34-bb9a-b8dfaaaee722;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008483;type=command;cwd=/root\Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Requesting a certificate for muke.saske.sk
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/muke.saske.sk/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/muke.saske.sk/privkey.pem
+This certificate expires on 2026-12-06.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+]0;root@muke:~]3008;end=068367f4-3201-4e34-bb9a-b8dfaaaee722;exit=success\]3008;start=a952eb4c-46b4-40aa-b654-2f62a500fd6c;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008483;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# [?2004l
+exit
+
+Script done on 2026-09-07 17:25:05+02:00 [COMMAND_EXIT_CODE="0"]

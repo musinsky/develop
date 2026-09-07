@@ -1,0 +1,38 @@
+Script started on 2026-09-07 17:25:22+02:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="212" LINES="47"]
+]0;root@muke:~]3008;start=2b92de60-6350-40ce-b564-5251620cd06d;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008675;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# certbot certonly --webroot -w /var/www/html/ -d muke.saske.sk[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcertbot --apache
+[?2004l]3008;start=0af4d1ac-3b9c-4fa7-b292-358dfbe12469;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008675;type=command;cwd=/root\Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Please enter the domain name(s) you would like on your certificate (comma and/or
+space separated) (Enter 'c' to cancel): muke.saske.sk
+Certificate not yet due for renewal
+
+You have an existing certificate that has exactly the same domains or certificate name you requested and isn't close to expiry.
+(ref: /etc/letsencrypt/renewal/muke.saske.sk.conf)
+
+What would you like to do?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Attempt to reinstall this existing certificate
+2: Renew & replace the certificate (may be subject to CA rate limits)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 1
+Deploying certificate
+
+We were unable to find a vhost with a ServerName or Address of muke.saske.sk.
+Which virtual host would you like to choose?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: ssl.conf                       |                       | HTTPS | Enabled
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press 1 [enter] to confirm the selection (press 'c' to cancel): 1
+Successfully deployed certificate for muke.saske.sk to /etc/httpd/conf.d/ssl.conf
+Congratulations! You have successfully enabled HTTPS on https://muke.saske.sk
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+]0;root@muke:~]3008;end=0af4d1ac-3b9c-4fa7-b292-358dfbe12469;exit=success\]3008;start=2b92de60-6350-40ce-b564-5251620cd06d;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008675;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# 
+[?2004l]0;root@muke:~]3008;end=20193aec-d14b-4558-a62b-a7640d1f32c8;exit=success\]3008;start=2b92de60-6350-40ce-b564-5251620cd06d;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008675;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# 
+[?2004l]0;root@muke:~]3008;end=7a212c9f-5d18-4e04-92ff-60b77dceec95;exit=success\]3008;start=2b92de60-6350-40ce-b564-5251620cd06d;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008675;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# [?2004l
+exit
+
+Script done on 2026-09-07 17:26:22+02:00 [COMMAND_EXIT_CODE="0"]

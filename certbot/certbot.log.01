@@ -1,0 +1,31 @@
+Script started on 2026-09-07 17:22:51+02:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="212" LINES="47"]
+]0;root@muke:~]3008;start=5b7ceb8d-877a-4d16-b2e6-53f500758206;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008189;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# dnf install python-augeas[1@3[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd[Kat /var/log/letsencrypt/letsencrypt.log[C[C[C[C[C[C[C[C[C[C[C[C[Cmc[Kscript typescript.certbot.01[C[C[C[C[C[C[C[C[C[C[C[C[Cmc[Kscript 01mv typescript.certbot.01 OLD.typescript.certbot.01 [C[C[C[C[C[C[C[C[C[C[C[C[Cexit[Kcertbot --apache[K[Khe[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l]3008;start=56a7db43-b3fd-429e-a9e5-c169b618e474;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008189;type=command;cwd=/root\Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Enter email address or hit Enter to skip.
+ (Enter 'c' to cancel): musinsky@gmail.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at:
+https://letsencrypt.org/documents/LE-SA-v1.8-July-06-2026.pdf
+You must agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: n
+Account registered.
+Please enter the domain name(s) you would like on your certificate (comma and/or
+space separated) (Enter 'c' to cancel): muke.saske.sk
+Requesting a certificate for muke.saske.sk
+[31mUnable to find a virtual host listening on port 80 which is currently needed for Certbot to prove to the CA that you control your domain. Please add a virtual host for port 80.[0m
+Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.
+]0;root@muke:~]3008;end=56a7db43-b3fd-429e-a9e5-c169b618e474;exit=failure;status=1\]3008;start=5b7ceb8d-877a-4d16-b2e6-53f500758206;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008189;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# exit
+[?2004l]3008;start=85f7035c-e91b-44ac-a96a-bd6cb0c824cf;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=3c4f2994-348d-4414-aff4-17139af4d3cb;pid=00000000000000008189;type=command;cwd=/root\exit
+
+Script done on 2026-09-07 17:23:55+02:00 [COMMAND_EXIT_CODE="1"]

@@ -1,0 +1,17 @@
+Script started on 2026-09-07 17:52:29+02:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="212" LINES="47"]
+]0;root@muke:~]3008;start=66f8cfcd-a6b1-438e-86e7-156c2e450647;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=bb891b83-c1a2-4580-a743-6a5ce388108d;pid=00000000000000009914;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# mcscript typescript.certbot.03[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C23[C[C[C[C[C[C[C[C[C[C[C[C[Cmc[K[K[7mcertbot renew --dry-run[27m[C[C[C[C[C[C[C[C[C[C[C[C[Ccertbot renew --dry-run[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l]3008;start=c1b4d4d0-d30a-43a5-8167-28a60c77b0ed;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=bb891b83-c1a2-4580-a743-6a5ce388108d;pid=00000000000000009914;type=command;cwd=/root\Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Processing /etc/letsencrypt/renewal/muke.saske.sk.conf
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Simulating renewal of an existing certificate for muke.saske.sk
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations, all simulated renewals succeeded: 
+  /etc/letsencrypt/live/muke.saske.sk/fullchain.pem (success)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+]0;root@muke:~]3008;end=c1b4d4d0-d30a-43a5-8167-28a60c77b0ed;exit=success\]3008;start=66f8cfcd-a6b1-438e-86e7-156c2e450647;machineid=6c0e68c639da410493117f53546800d8;user=root;hostname=muke;bootid=bb891b83-c1a2-4580-a743-6a5ce388108d;pid=00000000000000009914;type=shell;cwd=/root\[?2004h[0m[35mroot@muke[0m:[35m~[0m# [?2004l
+exit
+
+Script done on 2026-09-07 17:52:49+02:00 [COMMAND_EXIT_CODE="0"]

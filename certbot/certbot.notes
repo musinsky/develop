@@ -1,28 +1,35 @@
-# 2023-04-29
+# 2026-09-07
 
 * https://github.com/certbot/certbot
 * https://eff-certbot.readthedocs.io
 * https://certbot.eff.org/instructions?ws=apache&os=fedora
 * https://letsencrypt.org/
 
-$ dnf install httpd mod_ssl python-certbot-apache
+$ dnf install httpd mod_ssl certbot python-certbot-apache python3-augeas
 
---work-dir  = /var/lib/letsencrypt
---logs-dir  = /var/log/letsencrypt
---config-dir = /etc/letsencrypt
+# --work-dir     /var/lib/letsencrypt/
+# --logs-dir     /var/log/letsencrypt/
+# --config-dir   /etc/letsencrypt/
 
-## script - make typescript of terminal session
-$ cat typescript.certbot.1
-$ cat typescript.certbot.2
-$ cat typescript.certbot.3
+$ man script   # make typescript of terminal session
 
-## muke.saske.sk
-[root@muke ~]# httpd -D DUMP_VHOSTS
-AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 147.213.192.75. Set the 'ServerName' directive globally to suppress this message
+## muke.saske.sk (inet6 fe80::a404:b57c:2b78:b532, inet4 147.213.192.75)
+
+[root@muke ~]# certbot --apache   # unable to find a virtual host              # cat certbot.log.01
+[root@muke ~]# certbot certonly --webroot -w /var/www/html/ -d muke.saske.sk   # cat certbot.log.02
+[root@muke ~]# certbot --apache   # successfully deployed certificate          # cat certbot.log.03
+
+[root@muke ~]# certbot renew --dry-run   # test automatic renewal              # cat certbot.log.04
+[root@muke ~]# systemctl list-timers
+[root@muke ~]# systemctl status certbot-renew.timer
+
+[root@muke ~]# httpd -D DUMP_VHOSTS   # BEFORE
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using fe80::a404:b57c:2b78:b532%eno1. Set the 'ServerName' directive globally to suppress this message
+VirtualHost configuration:
+*:443                  fe80::a404:b57c:2b78:b532%eno1 (/etc/httpd/conf.d/ssl.conf:56)
+
+[root@muke ~]# httpd -D DUMP_VHOSTS   # AFTER
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using fe80::a404:b57c:2b78:b532%eno1. Set the 'ServerName' directive globally to suppress this message
 VirtualHost configuration:
 *:80                   muke.saske.sk (/etc/httpd/conf.d/le-redirect-muke.saske.sk.conf:1)
 *:443                  muke.saske.sk (/etc/httpd/conf.d/ssl.conf:56)
-[root@muke ~]#
-
-[root@muke ~]# systemctl list-timers
-[root@muke ~]# systemctl status certbot-renew.timer
