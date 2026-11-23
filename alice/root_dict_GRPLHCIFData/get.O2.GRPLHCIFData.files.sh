@@ -11,7 +11,7 @@ get_file() {
        --output-dir "${OUT_DIR}" --create-dirs
 
   # prepend info
-  date=$(curl --silent "${ALICEO2_GH_API}?path=${file}&per_page=1" |
+  date=$(curl --silent "${ALICEO2_GH_API}?sha=dev&path=${file}&per_page=1" |
            jq --raw-output '.[0].commit.committer.date')
   date=$(date --date "${date}" +%F) # formatted date
   {
