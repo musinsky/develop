@@ -2,6 +2,7 @@
 # https://root.cern/manual/integrate_root_into_my_cmake_project/
 # https://root.cern/manual/io_custom_classes/#using-cmake
 # https://github.com/root-project/root/tree/master/tutorials/io/tree/dictionary
+# https://github.com/eguiraud/root-readspeed
 # https://cliutils.gitlab.io/modern-cmake/root/
 
 # cmake -S . -B build/ # -Wdev -Wdeprecated --warn-uninitialized
@@ -12,6 +13,8 @@
 cmake_minimum_required(VERSION 3.31 FATAL_ERROR)
 
 project(GRPLHCIFData LANGUAGES CXX)
+
+add_compile_options(-Wall -Wextra -Wpedantic)
 
 find_package(ROOT REQUIRED COMPONENTS Core)
 
