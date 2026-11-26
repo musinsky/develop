@@ -15,7 +15,9 @@ project(GRPLHCIFData LANGUAGES CXX)
 
 find_package(ROOT REQUIRED COMPONENTS Core)
 
-include(${ROOT_USE_FILE})
+# https://root.cern/doc/v610/release-notes.html#build-configuration-and-testing-infrastructure (2017-06)
+# https://root.cern/doc/v620/release-notes.html#build-configuration-and-testing-infrastructure (2020-04)
+# include(${ROOT_USE_FILE}) # legacy
 
 # # To ensure compatibility between ROOT's C++ interpreter, Cling, and compiled
 # # code, your application (target in CMake) must be compiled with the same
