@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-# 2026-05-25
+# 2026-11-26
 
 get_file() {
   local file="${1}"
   local file_bn="${file##*/}" # basename in bash
   local date
   curl --silent --write-out "%{url}\n" \
-       --location "${ALICEO2_GH_RAW}/${file}" --remote-name \
-       --output-dir "${OUT_DIR}" --create-dirs
+    --location "${ALICEO2_GH_RAW}/${file}" --remote-name \
+    --output-dir "${OUT_DIR}" --create-dirs
 
   # prepend info
-  date=$(curl --silent "${ALICEO2_GH_API}?sha=dev&path=${file}&per_page=1" |
-           jq --raw-output '.[0].commit.committer.date')
+  date=$(curl --silent "${ALICEO2_GH_API}?sha=dev&path=${file}&per_page=1" \
+    | jq --raw-output '.[0].commit.committer.date')
   date=$(date --date "${date}" +%F) # formatted date
   {
     printf "// %s (%s)\n\n" "${ALICEO2_GH_BLOB}/${file}" "${date}"
@@ -27,8 +27,8 @@ ALICEO2_GH_API="https://api.github.com/repos/${ALICEO2_GH}/commits"
 OUT_DIR='AliceO2_GRPLHCIFData'
 
 get_file "DataFormats/Parameters/include/DataFormatsParameters/GRPLHCIFData.h"
-sed -i 's/CommonTypes\/Units.h/Units.h/'                    "${OUT_DIR}/GRPLHCIFData.h"
-sed -i 's/CommonConstants\/LHCConstants.h/LHCConstants.h/'  "${OUT_DIR}/GRPLHCIFData.h"
+sed -i 's/CommonTypes\/Units.h/Units.h/' "${OUT_DIR}/GRPLHCIFData.h"
+sed -i 's/CommonConstants\/LHCConstants.h/LHCConstants.h/' "${OUT_DIR}/GRPLHCIFData.h"
 sed -i 's/CommonDataFormat\/BunchFilling.h/BunchFilling.h/' "${OUT_DIR}/GRPLHCIFData.h"
 
 get_file "Common/Types/include/CommonTypes/Units.h"
@@ -37,3 +37,4 @@ get_file "Common/Constants/include/CommonConstants/LHCConstants.h"
 
 get_file "DataFormats/common/include/CommonDataFormat/BunchFilling.h"
 sed -i 's/CommonConstants\/LHCConstants.h/LHCConstants.h/' "${OUT_DIR}/BunchFilling.h"
+# get_file "DataFormats/common/src/BunchFilling.cxx" "${OUT_DIR}/BunchFilling.cxx"
